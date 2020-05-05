@@ -53,17 +53,57 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../00/">事前確認</a>
+    <a class="" href="../lect00check_meet/">第 0 回 事前確認</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../00guidance/">ガイダンス</a>
+    <a class="" href="../lect00guidance/">第 0 回 ガイダンス</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../lect01/">第 1 回 05月08日</a>
+    <a class="" href="../lect01/">第 1 回 05 月 08 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect02/">第 2 回</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect03/">第 3 回</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect04/">第 4 回</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect05/">第 5 回</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect06/">第 6 回</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect07/">第 7 回</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect08/">第 8 回</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect09/">第 9 回</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -76,6 +116,12 @@
     <ul class="subnav">
             
     <li class="toctree-l3"><a href="#_1">エコシステム</a></li>
+    
+
+    <li class="toctree-l3"><a href="#windows">自分の Windows で環境構築するには</a></li>
+    
+
+    <li class="toctree-l3"><a href="#_2">資料</a></li>
     
 
     </ul>
@@ -153,6 +199,241 @@
 おなじく，<a href="https://www.kaggle.com/">Kaggle</a>のようなデータ共有により知識は一層拡大し加速しています。</p>
 <p><img alt="" src="/assets/2019-03-03github_stars0.png" /></p>
 <p><img alt="" src="/assets/2019-03-03github_stars.png" /></p>
+<h1 id="windows">自分の Windows で環境構築するには<a class="headerlink" href="#windows" title="Permanent link">&para;</a></h1>
+<ul>
+<li><a href="https://chocolatey.org/">パッケージマネージャは Chocolatey</a>, Mac なら <a href="https://brew.sh/">homebrew</a></li>
+<li><a href="https://www.anaconda.com/">Python 環境は anaconda</a>, もしくは<a href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a></li>
+<li><a href="https://www.python.org/">Python</a>のバージョンは 2.7 系と 3 系とありますが，3 系で良いでしょう</li>
+<li>Python をブラウザ上で動作させるためには <a href="https://jupyter.org/">jupyter notebook</a> anaconda もしくは chocolatory, homebrew からインストールできます。ananconda などを用いることで複雑なライブラリ間の依存関係を吸収することができます。</li>
+<li><a href="https://colab.research.google.com/notebooks/welcome.ipynb?hl=ja#scrollTo=luKDxbnWyNGy">Jupyter notebook のクラウド環境は Google Colaboartory</a></li>
+<li>Python 上で動作するディープラーニング(深層学習)のフレームワークには，<a href="https://www.tensorflow.org/">Tensorflow</a>, <a href="https://keras.io/">keras</a>, <a href="https://pytorch.org/">PyTorch</a> などがあります。</li>
+</ul>
+<!-- - その他にも数多くのフレームワークが存在しますが，GitHub での星の数のグラフを見てください。
+TensorFlow が圧倒的であることがわかります。
+<center>
+<img src='../assets/2019-03-03github_stars0.png' style='width:94%'></br>
+</center>
+TensorFlow を除いてプロットしてみるとそれ以外のフレームワークの動向を見てみると
+Keras と PyTorch が注目すべきであることがわかります。
+<center>
+<img src='../assets/2019-03-03github_stars.png' style='width:94%'></br>
+</center>
+-->
+
+<h1 id="_2">資料<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h1>
+<ul>
+<li>学習済みのモデルを再利用するためには <a href="https://www.tensorflow.org/hub/" target="_blank">TensorFlow Hub</a></li>
+<li>参考資料: <a href="https://insights.stackoverflow.com/trends?tags=python%2Cjavascript%2Cjava%2Cc%23%2Cphp%2Cc%2B%2B" target="_blank">Stackoverflow の言語トレンド</a></li>
+<li><a href=https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_python_for_primers.ipynb" target="_blank">Python の初歩</a></li>
+<li><a href="https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazaawa_kmnist_pca_tsne.ipynb" target="_blank">PCA と tSNE との比較 kmninst を用いて</a></li>
+</ul>
+<!--
+from keras import backend as K
+
+# with a Sequential model
+get_3rd_layer_output = K.function([model.layers[0].input],
+                                  [model.layers[3].output])
+layer_output = get_3rd_layer_output([x])[0]
+```
+
+
+- Similarly, you could build a Theano and TensorFlow function directly.
+
+- Note that if your model has a different behavior in training and testing phase (e.g. if it uses Dropout, BatchNormalization, etc.), you will need to pass the learning phase flag to your function:
+
+
+```python
+get_3rd_layer_output = K.function([model.layers[0].input, K.learning_phase()],
+                                  [model.layers[3].output])
+
+# output in test mode = 0
+layer_output = get_3rd_layer_output([x, 0])[0]
+
+# output in train mode = 1
+layer_output = get_3rd_layer_output([x, 1])[0]
+````
+
+Alternatively, you can build a Keras function that will return the output of a certain layer given a certain input, for example:
+-->
+
+<!--
+# [TensorFlow Hub is a library for reusable machine learning modules](https://www.tensorflow.org/hub)
+
+- [Hub with Keras](https://www.tensorflow.org/tutorials/images/hub_with_keras)
+-->
+
+<!--
+- 李 飛飛さんの TED talk
+<center>
+<iframe width="480" height="300" src="https://www.youtube.com/embed/40riCqvRoMs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></br>
+**李 飛飛さんの TED talk**
+</center>
+
+<center>
+<iframe width="300" height="160" src="https://www.youtube.com/embed/BDKHFq7X4m0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></br>
+
+<iframe width="300" height="160" src="https://www.youtube.com/embed/XlnbNFW2tX8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</center>
+-->
+
+<!--
+<center>
+<iframe width="950" height="533" src="https://www.youtube.com/embed/NkEEQUQkjCQ?list=PL1w8k37X_6L-Y5F0ebFCETbSMf6uONc4j" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+**Ng's coursera video, Brain and Neural Networks**
+</center>
+
+以下は Ng の deeplearning.ai couse week1 の python video のセリフ
+
+Hello. This lesson is going to introduce you to the Python programming language.
+Now, don't worry, the purpose of this course is
+not to teach you to become a proficient Python programmer,
+although that might happen.
+Instead, we want to teach you how to write and execute
+Python scripts to perform basic data analytics tasks.
+Now, this course could, of course,
+use proprietary tools like Microsoft Excel or Tablo to teach you
+these skills but rather than learning how
+to perform those analytic skills and those analytics tasks,
+you instead would have learned how to use those tools.
+If you really want to be able to understand how algorithms
+work and how to apply them to different types of data in different types of situations,
+you need to learn how to do some basic programming.
+That's why we're using Python.
+It's a very simple programming language that has a lot of power and the ability to
+operate on many different types of data both small data on your own laptop or desktop,
+as well as scaling to very large data sets that might be analyzed in the cloud.
+Now, this particular lesson is about introducing you to the basics of Python.
+Specifically, you're going to learn about Python keywords.
+The fact that there's a built in help system that Python
+provides mechanisms to document your code via comments.
+You'll learn about the built in Python math operators and
+basic data types and these allow you to treat Python as a little calculator.
+And you'll also learn about creating and using Python variables.
+So, let's change over to the notebook for this particular lesson.
+Python is an open source,
+high level, general purpose programming language.
+It's been around for several decades.
+It's in what is known as the C family of languages.
+And what that means is, if you learn Python and can understand and read Python,
+you'll be able to look at a program written in C or Java or C
+plus plus or any other language it's in that family of programming languages,
+and you'll be able to understand basically what's going on.
+That's one of the other benefits of using Python,
+is that you can understand some of these other languages.
+Python makes it very easy to do
+complex tasks and Python is meant to be able to be read easily.
+Python has a number of modules that extend
+the language and you'll see many of those in this course.
+This is both a good and bad thing.
+It's good because it enables you to do lots of things
+very easily by simply importing a module into your program.
+The problem is that in order for
+your program then to work these modules have to be installed.
+This used to be a bigger problem than it is now.
+Your course server has all of these modules already installed and
+there are standard ways to ensure these modules are now installed wherever you go.
+If you're working in a company,
+often the IT department will help make sure those are installed.
+One thing I want to mention, any time you see the word optional in a notebook,
+that particular section is optional,
+you do not have to read it,
+but it might be useful for you, particularly,
+if you want to understand
+a more nuanced or detailed version of what you're actually trying to learn.
+In this case, it is a history of the Python programming language and it talks,
+in particular, about the fact that there is now something called Python three.
+You see that we are in a Python three notebook right here.
+And there's differences between Python three and Python two.
+So, if you want to understand that a little bit better you might
+read this particular section.
+We've now left that section and we now come into a required section.
+The rest of the notebook will introduce you to these basic concepts.
+First of all, you'll learn about what you need to
+keep in mind when you're writing a good Python code.
+First of all, in Python,
+white space is important.
+If you are indenting code,
+you need to make sure that you're using the same amount of indentation.
+The standard is four spaces.
+You want to create new names, they should be descriptive.
+Somebody should be able to look at it and know what you're trying to
+do with that particular variable or function.
+You also don't want lines of code to stretch too long.
+We typically try to keep them less than 80 characters.
+And you'll learn how to indicate that the line continues on the next line.
+And of course good code should be thoroughly documented.
+And you'll learn here in this notebook how to do that.
+One important point I want to make is that Python identifiers which
+are variables or function names have to be uniquely defined.
+And it's important to do that because if you think about it,
+if you enter a room and there's a lot of people in the room,
+and two people have the same name say,
+Joe, and you say,
+"Hello Joe," they won't know to which person you're referring.
+The same thing happens in Python.
+When you're trying to write a Python script and you have something named Joe,
+say a variable you're trying to use,
+and there's a function defined in a module you're trying to use with the same name,
+we get what's called a scope conflict.
+And the interpreter doesn't know which Joe you're referring to.
+So, we want to avoid those conflicts.
+One of the important things is we don't want to use
+any of the existing Python three keywords.
+Never name something one of these names.
+There's also other names that are used in Python like string and list,
+or things that might be in one of the Python modules you want to use.
+You should avoid those names.
+And we typically do that by coming up with a descriptive name.
+The rest of this particular notebook talks about how to
+use documentation in particular comments to
+indicate what you're trying to do and the different types of comments.
+You'll also learn about the built in help,
+function which gives you a ability in a notebook to
+learn how something might actually operate and to get more details.
+There are some students exercises and again I want you to try those out.
+So, for instance you might try help.
+And if I execute this code so,
+you'll get a display of the built in documentation for the dictionary.
+We'll learn more about dictionaries in a later course or a later lesson in this course.
+Python has a number of built-in math operators.
+Things to do grouping, exponential's, multiplication, division.
+Two things here that might be a little different is integer division
+which is to say five integer division two would be two.
+And then, of course, the remainder is,
+or what remains after you have divided five by two is an integer.
+There's also addition and subtraction.
+We also have a number of built-in functions that can
+provide additional support for things.
+There's also the math library that has additional functions like trig functions,
+log functions, and some special functions.
+This is part of the standard Python library,
+so it's always available.
+But there's additional libraries so we could bring in to do more things,
+and these are things like SciPy and NumPy.
+And we'll see those in later lessons.
+The rest of this notebook will walk you through using those,
+there's a few more student exercises and you should try those
+out and you can see some interesting things.
+One last thing I want to make a note of is if you see something like this,
+we don't use it a lot in this course but sometimes you'll see it in people's notebooks.
+This underscore is referring to the previous cells result.
+So, this is saying, take two and multiply it by this number right here,
+the result of the previous cell.
+You can do this with a single underscore to refer now to
+the previous cell and two underscores to refer to two cells ago.
+Again, I don't think it's a great thing to do because it's better to use variables.
+This might be confusing but you might see how other people might use it at some point.
+And then lastly, we import from the math library the square root,
+the exponential and the cosine function and we use those in our codes.
+So, hopefully this has given you a quick introduction to the Python programming language.
+Definitely play with this notebook. Try things out.
+See how you can use these techniques and
+ideas to start building your own simple math operations.
+You can treat this if you will as a simple calculator and you can
+learn how to build on these to make more complex things.
+If you have any questions about this,
+please reach out to us in the course forums. And good luck. 
+-->
               
             </div>
           </div>
@@ -163,7 +444,7 @@
         <a href="../python_modules/" class="btn btn-neutral float-right" title="Python 上の標準的なライブラリの利用">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../lect01/" class="btn btn-neutral" title="第 1 回 05月08日"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../lect09/" class="btn btn-neutral" title="第 9 回"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -191,7 +472,7 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../lect01/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../lect09/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../python_modules/" style="color: #fcfcfc">Next &raquo;</a></span>

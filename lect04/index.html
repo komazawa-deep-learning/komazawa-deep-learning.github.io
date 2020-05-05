@@ -96,33 +96,33 @@
     <li class="toctree-l2"><a href="#_3">本日の実習</a></li>
     
 
-    <li class="toctree-l2"><a href="#_4">寄り道</a></li>
-    
-
-    <li class="toctree-l2"><a href="#_5">アレックスネット以降の流れ</a></li>
-    
-
-    <li class="toctree-l2"><a href="#_6">高精度化，高速化への努力</a></li>
-    
-
-    <li class="toctree-l2"><a href="#pholosophical-consideration">Pholosophical consideration</a></li>
-    
-
-    <li class="toctree-l2"><a href="#_7">生理学，視覚心理学との対応</a></li>
+    <li class="toctree-l2"><a href="#_4">用語集</a></li>
     
         <ul>
         
-            <li><a class="toctree-l3" href="#one-algorithm-hypothesis">一つのアルゴリズム仮説 One algorithm hypothesis</a></li>
+            <li><a class="toctree-l3" href="#_5">非線形性</a></li>
         
-            <li><a class="toctree-l3" href="#_8">用語の整理</a></li>
+            <li><a class="toctree-l3" href="#_6">最適化</a></li>
         
-            <li><a class="toctree-l3" href="#_9">正規化，正則化，標準化，白色化，二重中心化</a></li>
+            <li><a class="toctree-l3" href="#_7">結合パターン</a></li>
         
-            <li><a class="toctree-l3" href="#tensorflow-hub">TensorFlow HUB</a></li>
+            <li><a class="toctree-l3" href="#_8">損失関数</a></li>
         
-            <li><a class="toctree-l3" href="#inception-resnet-r-cnn-regional-convolutional-neural-networks">インセプション Inception，残渣ネット ResNet，領域 R-CNN (Regional Convolutional Neural Networks)</a></li>
+            <li><a class="toctree-l3" href="#_9">ハイパーパラメータ</a></li>
         
-            <li><a class="toctree-l3" href="#_10">さらなる情報</a></li>
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#_10">アレックスネット以降の流れ</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_11">高精度化，高速化への努力</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#_12">用語の整理</a></li>
+        
+            <li><a class="toctree-l3" href="#_13">正規化，正則化，標準化，白色化，二重中心化</a></li>
         
         </ul>
     
@@ -265,14 +265,53 @@ Appache 2.0 license<br/>
 <li>'*.ipynb' を提出</li>
 </ul>
 <hr />
-<h1 id="_4">寄り道<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h1>
+<h1 id="_4">用語集<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h1>
+<h2 id="_5">非線形性<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="http://www.mext.go.jp/a_menu/shotou/zyouhou/detail/1416756.htm">5 月 15 日に発表された文部科学省の資料, 高等学校情報科「情報Ⅰ」教員研修用教材（本編）</a></li>
-<li><a href="http://www.mext.go.jp/component/a_menu/education/micro_detail/__icsFiles/afieldfile/2019/05/15/1416758_005.pdf">第3章コンピュータとプログラミング</a>: Python でサンプルコードが書かれている。</li>
-<li><a href="http://www.mext.go.jp/component/a_menu/education/micro_detail/__icsFiles/afieldfile/2019/05/15/1416758_006.pdf">第4章情報通信ネットワークとデータの活用</a>: テキストマイニングで R with Mecab </li>
+<li>ReLU</li>
+<li>Sigmoid</li>
+<li>Tanh</li>
+<li>GRU</li>
+<li>LSTM</li>
+</ul>
+<h2 id="_6">最適化<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<ul>
+<li>SGD</li>
+<li>Momentum</li>
+<li>RMSProp</li>
+<li>Adagrad</li>
+<li>Adam</li>
+<li>KFac</li>
+</ul>
+<h2 id="_7">結合パターン<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<ul>
+<li>完全結合</li>
+<li>畳込み</li>
+<li>Dilated</li>
+<li>再帰結合</li>
+<li>スキップコネクト，残渣</li>
+</ul>
+<h2 id="_8">損失関数<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<ul>
+<li>交差エントロピー</li>
+<li>敵対学習</li>
+<li>変分原理</li>
+<li>最尤法</li>
+<li>L2</li>
+</ul>
+<h2 id="_9">ハイパーパラメータ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<ul>
+<li>学習率</li>
+<li>層数</li>
+<li>バッチサイズ</li>
+<li>ドロップアウト率</li>
+<li>初期化</li>
+<li>データ拡張</li>
+<li>勾配クリップ</li>
+<li>モーメント</li>
 </ul>
 <hr />
-<h1 id="_5">アレックスネット以降の流れ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h1>
+<h1 id="_10">アレックスネット以降の流れ<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h1>
 <ul>
 <li>2013年 ZF ネット</li>
 <li>2014年 GoogLeNet (インセプション)，VGG，Very Deep,  GAN, VAE</li>
@@ -281,12 +320,7 @@ Appache 2.0 license<br/>
 <li>2017年 Mask R-CNN</li>
 <li>2018年 モバイルネット</li>
 </ul>
-<p><a href="../assets/2018asakawa_jdlaGtestChapt7.pdf">G 検定公式テキスト7章より</a></p>
-<p><center>
-<img src='../assets/2012Zeiler_Deconvolution.png' style='width:49%'></br>
-<br>Zeiller 2012 より
-</center></p>
-<h1 id="_6">高精度化，高速化への努力<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h1>
+<h1 id="_11">高精度化，高速化への努力<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h1>
 <ul>
 <li>確率的勾配降下法，オンライン学習，バッチ学習</li>
 <li>データ拡張</li>
@@ -295,63 +329,6 @@ Appache 2.0 license<br/>
 <li>非線形活性化関数</li>
 <li>最適化手法</li>
 </ul>
-<h1 id="pholosophical-consideration">Pholosophical consideration<a class="headerlink" href="#pholosophical-consideration" title="Permanent link">&para;</a></h1>
-<ul>
-<li>Epistemology 思念的，観念的</li>
-<li>Empirical Episitemology 実証的 = psychology</li>
-<li>Constructive epipstemology 構成論的 = computer vision, neural networks</li>
-</ul>
-<h1 id="_7">生理学，視覚心理学との対応<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h1>
-<ul>
-<li>Julesz</li>
-<li>Julesz (1981) Textons, the elements of texture perception, and their interactions, Nature</li>
-</ul>
-<p><center>
-<img src="../assets/1981Julesz-texton-Fig2.svg" style="width:84%"></br>
-Julesz (1981) Fig. 2 より
-</center></p>
-<ul>
-<li>Marr<ul>
-<li>Computational approach: Vision (1908) </li>
-</ul>
-</li>
-<li>Poggio<ul>
-<li>Poggio, Torre, and Koch (1985) Computational vision and regularization theory</li>
-</ul>
-</li>
-</ul>
-<h2 id="one-algorithm-hypothesis">一つのアルゴリズム仮説 One algorithm hypothesis<a class="headerlink" href="#one-algorithm-hypothesis" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Metin and Frost (1989) Visual responses of neurons in somatosensory cortex of hamsters with experimentally induced retinal projections to somatosensory thalamus</li>
-<li>Roe et al. (1992) Visual Projections Routed to the Auditory Pathway in Ferrets: Receptive Fields of Visual Neurons in Primary Auditory Cortex</li>
-</ul>
-<h3 id="hubel-and-wiesel-blackmore">生理学との対応 (Hubel and Wiesel のネコとサル, Blackmore のネコ, ヴァンエッセン)<a class="headerlink" href="#hubel-and-wiesel-blackmore" title="Permanent link">&para;</a></h3>
-<ul>
-<li>層間の結合の仕方, アーキテクチャ</li>
-<li>forward/backward 役割，機能，実現方法</li>
-<li>側抑制 lateral inhibition (これについては多層化して回避できる可能性あり)</li>
-<li>
-<p>shape from X は正しかったのか？ ただし発達心理学におけるシェイプバアスは言語発達において重要な意味を持つはず。だからと言って乳幼児はそのように強制(脅迫？)，矯正されて育つわけではないだろう。</p>
-<ul>
-<li>Ritter (2017) Cognitive Psychology for Deep Neural Networks: A Shape Bias Case Study</li>
-<li>Landau, Smith, Jones (1992) Syntactic Context and the Shape Bias in Childrens and Adults Lexical Learning</li>
-<li>
-<p>Yamins (2016) Using goal-driven deep learning models to understand sensory cortex</p>
-</li>
-<li>
-<p>Julez のアプローチは視覚研究者 Haar, SIFT, DoG などのアルゴリズム開発者と対応</p>
-</li>
-<li>Poggio (1985) Computational Vision and Regularization Theory</li>
-</ul>
-</li>
-</ul>
-<p><center>
-<img src='../assets/2016Yamins_Fig1.svg' style='width:94%'>
-<img src='../assets/2016Yamins_Fig2.svg' style='width:94%'>
-<img src='../assets/2016Yamins_Fig3.svg' style='width:94%'></p>
-<p><img src='../assets/2014Yamins_Fig2.svg' style='width:74%'>
-<img src='../assets/2014Yamins_FigS2.svg' style='width:74%'>
-</center></p>
 <p><center>
 <img src='../assets/2019Inception_screenshot.png' style='width:84%'><br>
 映画インセプションのスクリーンショット。Special thanks to <a href="https://www.netflix.com/watch/70131314?trackId=14170286&amp;tctx=3%2C0%2C9a10a321-9c1f-4396-b5df-00b5b84e6917-23965358%2C3d0e40f0-b286-48eb-afb3-2c7c501c86fc_86910893X3XX1558568676167%2C3d0e40f0-b286-48eb-afb3-2c7c501c86fc_ROOT">Netflix</a><br></p>
@@ -414,7 +391,7 @@ where $\lambda$ is a so-call regualarization parameter.
 <li>Hinton, Deep Learning, (Rumelhart backprop also) は Sutton の Bitter lesson の具現化である。end-to-end 一気通貫学習は，特徴抽出(特徴分析)，表現学習(内部表象)，分類器(意思決定)を含む。
 --&gt;</li>
 </ul>
-<h2 id="_8">用語の整理<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h2 id="_12">用語の整理<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
 <ul>
 <li>SGD 確率的勾配降下法 stochastic gradient descent method<ul>
 <li>勾配消失問題 gradient decent problem</li>
@@ -513,7 +490,7 @@ similar transformations on their inputs.
 これらの結果は、視経路および体性感覚経路における対応するレベルの視床核または皮質領域がそれらの入力に対して同様の変換を実行することを示唆している。
 -->
 
-<h2 id="_9">正規化，正則化，標準化，白色化，二重中心化<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h2 id="_13">正規化，正則化，標準化，白色化，二重中心化<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
 <p>白色化については平井有三先生のパターン認識が参考文献で良いかな</p>
@@ -522,472 +499,6 @@ similar transformations on their inputs.
 <p><a href="https://maristie.com/blog/differences-between-normalization-standardization-and-regularization/">Differences between normalization, standardization and regularization</a></p>
 </li>
 </ul>
-<h2 id="tensorflow-hub"><a href="https://www.tensorflow.org/hub">TensorFlow HUB</a><a class="headerlink" href="#tensorflow-hub" title="Permanent link">&para;</a></h2>
-<h2 id="inception-resnet-r-cnn-regional-convolutional-neural-networks">インセプション Inception，残渣ネット ResNet，領域 R-CNN (Regional Convolutional Neural Networks)<a class="headerlink" href="#inception-resnet-r-cnn-regional-convolutional-neural-networks" title="Permanent link">&para;</a></h2>
-<ul>
-<li>what and where routes</li>
-<li>心理学的対応物(？)</li>
-<li>/2015documents/2014Cadieu_Deep_Neural_Networks_Rival_the_Representation_of_Primate_IT_Cortex_for_Core_Visual_Object_Recognition.pdf</li>
-<li>/2019documents/2019NasrViswanathanNieder_Number_detectors_spontaneously_emerge_in_a_deep_neural_network_designed_for_visual_object_recognition.pdf</li>
-<li>/2018documents/2018Marcus_Deep_Learning_A_Critical_Appraisal.pdf</li>
-<li>転移学習</li>
-</ul>
-<h3 id="notebooks">Notebooks<a class="headerlink" href="#notebooks" title="Permanent link">&para;</a></h3>
-<ul>
-<li><a href="https://github.com/tensorflow/hub/blob/master/examples/colab/text_classification_with_tf_hub_on_kaggle.ipynb">colab/text_classification_with_tf_hub_on_kaggle.ipynb</a>
-Shows how to solve a problem on Kaggle with TF-Hub.</li>
-<li><a href="https://github.com/tensorflow/hub/blob/master/examples/colab/semantic_similarity_with_tf_hub_universal_encoder.ipynb">colab/semantic_similarity_with_tf_hub_universal_encoder.ipynb</a>
-Explores text semantic similarity with the <a href="https://tfhub.dev/google/universal-sentence-encoder/2">Universal Encoder Module</a>.</li>
-<li><a href="https://github.com/tensorflow/hub/blob/master/examples/colab/tf_hub_generative_image_module.ipynb">colab/tf_hub_generative_image_module.ipynb</a>
-Explores a generative image module.</li>
-<li><a href="https://github.com/tensorflow/hub/blob/master/examples/colab/action_recognition_with_tf_hub.ipynb">colab/action_recognition_with_tf_hub.ipynb</a>
-Explores action recognition from video.</li>
-<li><a href="https://github.com/tensorflow/hub/blob/master/examples/colab/tf_hub_delf_module.ipynb">colab/tf_hub_delf_module.ipynb</a>
-Exemplifies use of the <a href="https://tfhub.dev/google/delf/1">DELF Module</a> for landmark recognition and matching.</li>
-<li><a href="https://github.com/tensorflow/hub/blob/master/examples/colab/object_detection.ipynb">colab/object_detection.ipynb</a> 
-Explores object detection with the use of the  <a href="https://github.com/tensorflow/hub/blob/master/examples/colab/object_detection.ipynb">Faster R-CNN module trained on Open Images v4</a>.</li>
-</ul>
-<hr />
-<!--
-<center>
-<img src='https://cdn-images-1.medium.com/max/1280/1*sS_WZM4GLS88XlnDLKcZ-g.png' style='width:94%'><br>
-from [A guide to Face Detection in Python](https://towardsdatascience.com/a-guide-to-face-detection-in-python-3eab0f6b9fc1)
-</center>
-
----
-
--->
-
-<ul>
-<li>
-<p><a href="https://towardsdatascience.com/wtf-is-image-classification-8e78a8235acb">The Complete Beginner’s Guide to Deep Learning: Convolutional Neural Networks and Image Classification</a>, Anne Bonner Feb. 02</p>
-</li>
-<li>
-<p>畳込みニューラルネットワーク (Convlutional Neural Networks:CNN) とは画像認識におけるゲームチェンジャー(以後，画像認識，ビデオ分類，自動運転，ドローン，ゲームなどへの応用多数)</p>
-</li>
-<li><a href="http://image-net.org/challenges/LSVRC/">イメージネット画像コンテスト</a>では，分類 (classification) 課題と位置 (locallization) 課題とからなる。</li>
-<li>コンテストは 2010 年から Li Fei-Fei さん中心となって <a href="https://www.mturk.com/">AMT</a> で画像のアノテーションを行って 画像を2012 年の優勝チームが CNN を使った。通称<a href="https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf">アレックスネット</a></li>
-<li><a href="http://cs231n.stanford.edu/index.html">スタンフォード大学の授業 CS231n: Convolutional Neural Networks for Visual Recognition</a>. スライド](http://cs231n.stanford.edu/slides/2019/cs231n_2019_lecture05.pdf)</li>
-</ul>
-<h2 id="_10">さらなる情報<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Math? <a href="https://web.stanford.edu/class/cs231a/lectures/intro_cnn.pdf">Introduction to Convolutional Neural Networks</a> by Jianxin Wu</li>
-<li>C.-C. Jay Kuo <a href="https://arxiv.org/abs/1609.04112">Understanding Convolutional Neural Networks With a Mathematical Model</a>.</li>
-<li><a href="https://towardsdatascience.com/simply-deep-learning-an-effortless-introduction-45591a1c4abb">the absolute basics of activation functions, you can find that here</a>!</li>
-<li>Artificial neural networks? <a href="https://towardsdatascience.com/simply-deep-learning-an-effortless-introduction-45591a1c4abb">You can learn about them here</a>!)</li>
-</ul>
-<!--
-#### ReLU layer
-The **ReLU** (rectified linear unit) layer is another step to our convolution layer. 
-You’re applying an activation function onto your feature maps to increase non-linearity in the network. 
-This is because images themselves are highly non-linear! 
-It removes negative values from an activation map by setting them to zero.
-
-Convolution is a linear operation with things like element wise matrix
-multiplication and addition. 
-The real-world data we want our CNN to learn will be non-linear. 
-We can account for that with an operation like ReLU. 
-You can use other operations like tanh or sigmoid. ReLU, however, is a popular choice because it can train the network faster without any major penalty to generalization accuracy.
--->
-
-<!--
-Want to dig deeper? Try Kaiming He, et al. [Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification](https://arxiv.org/abs/1502.01852).
-
-If you need a little more info about [the absolute basics of activation functions, you can find that here](https://towardsdatascience.com/simply-deep-learning-an-effortless-introduction-45591a1c4abb)!
--->
-
-<!--
-Here’s how our little buddy is looking after a ReLU activation function
-turns all of the negative pixel values black
-
-
-
-wzxhzdk:0
-
-
-<center>
-<img src="../assets/output2.jpg" style="width:84%">
-</center>
-
-
-#### Pooling
-The last thing you want is for your network to look for one specific feature in an exact shade in an exact location. 
-That’s useless for a good CNN! 
-You want images that are flipped, rotated, squashed, and so on. 
-You want lots of pictures of the same thing so that your network can recognize an object (say, a leopard) in all the images. No matter what the size or location. 
-No matter what the lighting or the number of spots,or whether that leopard is fast asleep or crushing prey. 
-You want **spatial variance**! You want flexibility. 
-That’s what pooling is all about.
-
-Pooling progressively reduces the size of the input representation. 
-It makes it possible to detect objects in an image no matter where they’re located. 
-Pooling helps to reduce the number of required parameters and the amount of computation required. 
-It also helps control **overfitting**.
-
-Overfitting can be kind of like when you memorize super specific details before a test without understanding the information. 
-When you memorize details, you can do a great job with your flashcards at home.
-You’ll fail a real test, though, if you’re presented with new information.
-
-(Another example: if all of the dogs in your training data have spots and dark eyes, your network will believe that for an image to be classified as a dog, it must have spots and dark eyes. 
-If you test your data with that same training data, it will do an amazing job of
-classifying dogs correctly! But if your outputs are only “dog” and “cat,” and your network is presented with new images containing, say, a Rottweiler and a Husky, it will probably wind up classifying both the Rottweiler and the Husky as cats. You can see the problem!)
-
-
-Without variance, your network will be useless with images that don’t exactly match the training data. 
-**Always, always, always keep your training and testing data separate**! 
-If you test with the data you trained on, your network has the information memorized! 
-It will do a terrible job when it’s introduced to any new data.
-
-#### Overfitting is not cool.
-So for this step, you take the **feature map**, apply a **pooling layer**, and the result is the **pooled feature map**.
-
-The most common example of pooling is **max pooling**. 
-In max pooling, the input image is partitioned into a set of areas that don’t overlap. 
-The outputs of each area are the maximum value in each area. 
-This makes a smaller size with fewer parameters.
-
-Max pooling is all about grabbing the maximum value at each spot in the image. 
-This gets rid of 75% of the information that is not the feature. 
-By taking the maximum value of the pixels, you’re accounting for distortion. 
-If the feature rotates a little to the left or right or whatever, the pooled feature will be the same. You’re reducing the size and parameters. 
-This is great because it means that the model won’t overfit on that information.
-
-You could use **average pooling or sum pooling**, but they aren’t common choices. 
-Max pooling tends to perform better than both in practice. 
-In max pooling, you’re taking the largest pixel value. 
-In average pooling, you take the average of all the pixel values at that spot in the image. 
-(Actually, there’s a trend now towards using smaller filters or discarding pooling layers entirely. 
-This is in response to an aggressive reduction in representation size.)
-
-__Want to look a little more at why you might want to choose max pooling
-and why you might prefer a stride of two pixels? Check out Dominik
-Scherer et. al, [Evaluation of Pooling Operations in Convolutional
-Architectures for Object Recognition](http://ais.uni-bonn.de/papers/icann2010_maxpool.pdf).__
-
-If you go [here](http://scs.ryerson.ca/~aharley/vis/conv/flat.html) you can check out a really interesting 2D visualization of a convolutional layer. 
-Draw a number in the box on the left-hand side of the screen and then really go through the output. 
-You can see the  convolved and pooled layers as well as the guesses. 
-Try hovering over a single pixel so you can see where the filter was applied.
-
-
-So now we have an input image, an applied convolutional layer, and an applied pooling layer.
-
-Let’s visualize the output of the pooling layer!
-
-We were here:
-
-<center>
-<img src="../assets/output3.jpg" style="width:94%">
-</center>
-
-The pooling layer takes as input the feature maps pictured above and reduces the dimensionality of those maps. 
-It does this by constructing a new, smaller image of only the maximum (brightest) values in a given kernel area.
-
-See how the image has changed size?
-
-<center>
-<img src="../assets/output4.jpg" style="width:94%">
-</center>
-
-Cool, right?
-
-#### Flattening
-
-This is a pretty simple step. You flatten the pooled feature map into a sequential column of numbers (a long vector). 
-This allows that information to become the input layer of an artificial neural network for further processing.
-
-
-#### Fully connected layer
-At this step, we add an **artificial neural network** to our convolutional neural network. 
-(Not sure about artificial neural networks? [You can learn about them here](https://towardsdatascience.com/simply-deep-learning-an-effortless-introduction-45591a1c4abb)!)
--->
-
-<!--
-The main purpose of the artificial neural network is to combine our features into more attributes. 
-These will predict the classes with greater accuracy. This combines features and attributes that can predict classes better.
-
-At this step, the error is calculated and then backpropagated. 
-The weights and feature detectors are adjusted to help optimize the performance of the model. 
-Then the process happens again and again and again. 
-This is how our network trains on the data! 
-
-How do the output neurons work when there’s more than one?
-
-First, we have to understand what weights to apply to the synapses that connect to the output. 
-We want to know which of the previous neurons are important for the output.
-
-If, for example, you have two output classes, one for a cat and one for a dog, a neuron that reads “0” is absolutely uncertain that the feature belongs to a cat. A neuron that reads “1 is absolutely certain that the feature belongs to a cat. 
-In the final fully connected layer, the neurons will read values between 0 and 1. 
-This signifies different levels of certainty. 
-A value of 0.9 would signify a certainty of 90%. 
-The cat neurons that are certain when a feature is identified know that the image is a cat. 
-They say the mathematical equivalent of, “These are my neurons! I should be triggered!” If this happens many times, the network learns that when certain features fire up, the image is a cat.
-
-
-Through lots of iterations, the cat neuron learns that when certain features fire up, the image is a cat. 
-The dog (for example) neuron learns that when certain other features fire up, the image is a dog. 
-The dog neuron learns that for example again, the “big wet nose” neuron and the “floppy ear” neuron contribute with a great deal of certainty to the dog neuron.
-It gives greater weight to the “big wet nose” neuron and the “floppy ear” neuron. 
-The dog neuron learns to more or less ignore the “whiskers” neuron and the “cat-iris” neuron. 
-The cat neuron learns to give greater weight to neurons like “whiskers” and “cat-iris.”
-(Okay, there aren’t actually “big wet nose” or “whiskers” neurons. 
-But the detected features do have distinctive features of the specific class.)
-
-
-Once the network has been trained, you can pass in an image and the neural network will be able to determine the image class probability for that image with a great deal of certainty.
-
-The fully connected layer is a traditional Multi-Layer Perceptron. 
-It uses a classifier in the output layer. 
-The classifier is usually a softmax activation function. 
-Fully connected means every neuron in the previous layer connects to every neuron in the next layer. 
-What’s the purpose of this layer? To use the features from the output of the previous layer to classify the input image based on the training data.
-
-Once your network is up and running you can see, for example, that you have a 95% probability that your image is a dog and a 5% probability that your image is a cat.
-
-
-Why do these numbers add up to 1.0? (0.95 + 0.05)
-
-There isn’t anything that says that these two outputs are connected to each other. 
-What is it that makes them relate to each other? 
-Essentially, they wouldn’t, but they do when we introduce the **softmax function**.
-This brings the values between 0 and 1 and makes them add up to 1 (100%). 
-(You can read all about this on Wikipedia.) 
-The softmax function takes a vector of scores and squashes it to a vector of values between 0 and 1 that add up to 1.
-
-After you apply a softmax function, you can apply the loss function.
-Cross entropy often goes hand in hand with softmax. 
-We want to minimize the loss function so we can maximize the performance of our
-network.
-
-At the beginning of backpropagation, your output values would be tiny.
-That’s why you might choose cross entropy loss. 
-The gradient would be very low and it would be hard for the neural network to start adjusting in the right direction. 
-Using cross entropy helps the network assess even a tiny error and get to the optimal state faster.
-
-
-#### Want more? Check out
--->
-
-<ul>
-<li><a href="https://www.youtube.com/watch?v=mlaLLQofmR8">video by Geoffrey Hinton</a> on the softmax function</li>
-<li><a href="https://rdipietro.github.io/friendly-intro-to-cross-entropy-loss/">A Friendly Introduction to Cross Entropy Loss</a> by Rob DiPietro</li>
-<li><a href="https://peterroelants.github.io/posts/cross-entropy-softmax/">How to Implement a Neural Network Intermezzo 2</a> by Peter Roelants</li>
-<li>
-<p><a href="https://towardsdatascience.com/simply-deep-learning-an-effortless-introduction-45591a1c4abb">画像分類の基礎</a>)</p>
-</li>
-<li>
-<p><a href="https://web.stanford.edu/class/cs231a/lectures/intro_cnn.pdf">Introduction to Convolutional Neural Networks</a> by Jianxin Wu </p>
-</li>
-<li>Yann LeCun’s original article, <a href="http://yann.lecun.com/exdb/publis/pdf/lecun-01a.pdf">Gradient-Based Learning Applied to Document Recognition</a></li>
-<li><a href="https://adeshpande3.github.io/The-9-Deep-Learning-Papers-You-Need-To-Know-About.html">The Nine Deep Learning Papers You Need to Know About</a> (Understanding CNNs part 3) by Adit Deshpande</li>
-</ul>
-<!--
-from keras import backend as K
-
-# with a Sequential model
-get_3rd_layer_output = K.function([model.layers[0].input],
-                                  [model.layers[3].output])
-layer_output = get_3rd_layer_output([x])[0]
-```
-
-
-- Similarly, you could build a Theano and TensorFlow function directly.
-
-- Note that if your model has a different behavior in training and testing phase (e.g. if it uses Dropout, BatchNormalization, etc.), you will need to pass the learning phase flag to your function:
-
-
-```python
-get_3rd_layer_output = K.function([model.layers[0].input, K.learning_phase()],
-                                  [model.layers[3].output])
-
-# output in test mode = 0
-layer_output = get_3rd_layer_output([x, 0])[0]
-
-# output in train mode = 1
-layer_output = get_3rd_layer_output([x, 1])[0]
-````
-
-Alternatively, you can build a Keras function that will return the output of a certain layer given a certain input, for example:
--->
-
-<!--
-# [TensorFlow Hub is a library for reusable machine learning modules](https://www.tensorflow.org/hub)
-
-- [Hub with Keras](https://www.tensorflow.org/tutorials/images/hub_with_keras)
--->
-
-<!--
-- 李 飛飛さんの TED talk
-<center>
-<iframe width="480" height="300" src="https://www.youtube.com/embed/40riCqvRoMs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></br>
-**李 飛飛さんの TED talk**
-</center>
-
-<center>
-<iframe width="300" height="160" src="https://www.youtube.com/embed/BDKHFq7X4m0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></br>
-
-<iframe width="300" height="160" src="https://www.youtube.com/embed/XlnbNFW2tX8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</center>
--->
-
-<!--
-<center>
-<iframe width="950" height="533" src="https://www.youtube.com/embed/NkEEQUQkjCQ?list=PL1w8k37X_6L-Y5F0ebFCETbSMf6uONc4j" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-**Ng's coursera video, Brain and Neural Networks**
-</center>
-
-以下は Ng の deeplearning.ai couse week1 の python video のセリフ
-
-Hello. This lesson is going to introduce you to the Python programming language.
-Now, don't worry, the purpose of this course is
-not to teach you to become a proficient Python programmer,
-although that might happen.
-Instead, we want to teach you how to write and execute
-Python scripts to perform basic data analytics tasks.
-Now, this course could, of course,
-use proprietary tools like Microsoft Excel or Tablo to teach you
-these skills but rather than learning how
-to perform those analytic skills and those analytics tasks,
-you instead would have learned how to use those tools.
-If you really want to be able to understand how algorithms
-work and how to apply them to different types of data in different types of situations,
-you need to learn how to do some basic programming.
-That's why we're using Python.
-It's a very simple programming language that has a lot of power and the ability to
-operate on many different types of data both small data on your own laptop or desktop,
-as well as scaling to very large data sets that might be analyzed in the cloud.
-Now, this particular lesson is about introducing you to the basics of Python.
-Specifically, you're going to learn about Python keywords.
-The fact that there's a built in help system that Python
-provides mechanisms to document your code via comments.
-You'll learn about the built in Python math operators and
-basic data types and these allow you to treat Python as a little calculator.
-And you'll also learn about creating and using Python variables.
-So, let's change over to the notebook for this particular lesson.
-Python is an open source,
-high level, general purpose programming language.
-It's been around for several decades.
-It's in what is known as the C family of languages.
-And what that means is, if you learn Python and can understand and read Python,
-you'll be able to look at a program written in C or Java or C
-plus plus or any other language it's in that family of programming languages,
-and you'll be able to understand basically what's going on.
-That's one of the other benefits of using Python,
-is that you can understand some of these other languages.
-Python makes it very easy to do
-complex tasks and Python is meant to be able to be read easily.
-Python has a number of modules that extend
-the language and you'll see many of those in this course.
-This is both a good and bad thing.
-It's good because it enables you to do lots of things
-very easily by simply importing a module into your program.
-The problem is that in order for
-your program then to work these modules have to be installed.
-This used to be a bigger problem than it is now.
-Your course server has all of these modules already installed and
-there are standard ways to ensure these modules are now installed wherever you go.
-If you're working in a company,
-often the IT department will help make sure those are installed.
-One thing I want to mention, any time you see the word optional in a notebook,
-that particular section is optional,
-you do not have to read it,
-but it might be useful for you, particularly,
-if you want to understand
-a more nuanced or detailed version of what you're actually trying to learn.
-In this case, it is a history of the Python programming language and it talks,
-in particular, about the fact that there is now something called Python three.
-You see that we are in a Python three notebook right here.
-And there's differences between Python three and Python two.
-So, if you want to understand that a little bit better you might
-read this particular section.
-We've now left that section and we now come into a required section.
-The rest of the notebook will introduce you to these basic concepts.
-First of all, you'll learn about what you need to
-keep in mind when you're writing a good Python code.
-First of all, in Python,
-white space is important.
-If you are indenting code,
-you need to make sure that you're using the same amount of indentation.
-The standard is four spaces.
-You want to create new names, they should be descriptive.
-Somebody should be able to look at it and know what you're trying to
-do with that particular variable or function.
-You also don't want lines of code to stretch too long.
-We typically try to keep them less than 80 characters.
-And you'll learn how to indicate that the line continues on the next line.
-And of course good code should be thoroughly documented.
-And you'll learn here in this notebook how to do that.
-One important point I want to make is that Python identifiers which
-are variables or function names have to be uniquely defined.
-And it's important to do that because if you think about it,
-if you enter a room and there's a lot of people in the room,
-and two people have the same name say,
-Joe, and you say,
-"Hello Joe," they won't know to which person you're referring.
-The same thing happens in Python.
-When you're trying to write a Python script and you have something named Joe,
-say a variable you're trying to use,
-and there's a function defined in a module you're trying to use with the same name,
-we get what's called a scope conflict.
-And the interpreter doesn't know which Joe you're referring to.
-So, we want to avoid those conflicts.
-One of the important things is we don't want to use
-any of the existing Python three keywords.
-Never name something one of these names.
-There's also other names that are used in Python like string and list,
-or things that might be in one of the Python modules you want to use.
-You should avoid those names.
-And we typically do that by coming up with a descriptive name.
-The rest of this particular notebook talks about how to
-use documentation in particular comments to
-indicate what you're trying to do and the different types of comments.
-You'll also learn about the built in help,
-function which gives you a ability in a notebook to
-learn how something might actually operate and to get more details.
-There are some students exercises and again I want you to try those out.
-So, for instance you might try help.
-And if I execute this code so,
-you'll get a display of the built in documentation for the dictionary.
-We'll learn more about dictionaries in a later course or a later lesson in this course.
-Python has a number of built-in math operators.
-Things to do grouping, exponential's, multiplication, division.
-Two things here that might be a little different is integer division
-which is to say five integer division two would be two.
-And then, of course, the remainder is,
-or what remains after you have divided five by two is an integer.
-There's also addition and subtraction.
-We also have a number of built-in functions that can
-provide additional support for things.
-There's also the math library that has additional functions like trig functions,
-log functions, and some special functions.
-This is part of the standard Python library,
-so it's always available.
-But there's additional libraries so we could bring in to do more things,
-and these are things like SciPy and NumPy.
-And we'll see those in later lessons.
-The rest of this notebook will walk you through using those,
-there's a few more student exercises and you should try those
-out and you can see some interesting things.
-One last thing I want to make a note of is if you see something like this,
-we don't use it a lot in this course but sometimes you'll see it in people's notebooks.
-This underscore is referring to the previous cells result.
-So, this is saying, take two and multiply it by this number right here,
-the result of the previous cell.
-You can do this with a single underscore to refer now to
-the previous cell and two underscores to refer to two cells ago.
-Again, I don't think it's a great thing to do because it's better to use variables.
-This might be confusing but you might see how other people might use it at some point.
-And then lastly, we import from the math library the square root,
-the exponential and the cosine function and we use those in our codes.
-So, hopefully this has given you a quick introduction to the Python programming language.
-Definitely play with this notebook. Try things out.
-See how you can use these techniques and
-ideas to start building your own simple math operations.
-You can treat this if you will as a simple calculator and you can
-learn how to build on these to make more complex things.
-If you have any questions about this,
-please reach out to us in the course forums. And good luck. 
--->
               
             </div>
           </div>
