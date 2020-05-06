@@ -8,7 +8,7 @@
   
   <meta name="author" content="Shin Asakawa">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Colabratory 導入 - 2020駒澤大学心理学特講IIIA</title>
+  <title>Colab 事始め - 2020駒澤大学心理学特講IIIA</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -20,7 +20,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Colabratory \u5c0e\u5165";
+    var mkdocs_page_name = "Colab \u4e8b\u59cb\u3081";
     var mkdocs_page_input_path = "colaboratory_intro.md";
     var mkdocs_page_url = null;
   </script>
@@ -53,36 +53,74 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../00/">事前確認</a>
+    <a class="" href="../lect00check_meet/">第 0 回 事前確認</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../00guidance/">ガイダンス</a>
+    <a class="" href="../lect00guidance/">第 0 回 ガイダンス</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../lect01/">第 1 回 05月08日</a>
+    <a class="" href="../lect01/">第 1 回 05 月 08 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect02/">第 2 回</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect03/">第 3 回</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect04/">第 4 回</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect05/">第 5 回</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect06/">第 6 回</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect07/">第 7 回</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect08/">第 8 回</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect09/">第 9 回</a>
 	    </li>
           
             <li class="toctree-l1">
 		
     <span class="caption-text">付録</span>
     <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../eco/">エコシステム</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../python_modules/">Python 上の標準的なライブラリの利用</a>
-                </li>
                 <li class=" current">
                     
-    <a class="current" href="./">Colabratory 導入</a>
+    <a class="current" href="./">Colab 事始め</a>
     <ul class="subnav">
             
+    <li class="toctree-l3"><a href="#_1">簡単な説明</a></li>
+    
+
+    <li class="toctree-l3"><a href="#_2">簡単な操作方法</a></li>
+    
+
     </ul>
                 </li>
                 <li class="">
@@ -91,7 +129,15 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../eco/">エコシステム</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../python_numpy_intro_ja/">Python の基礎</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../python_modules/">Python modules</a>
                 </li>
     </ul>
 	    </li>
@@ -122,7 +168,7 @@
         
       
     
-    <li>Colabratory 導入</li>
+    <li>Colab 事始め</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -135,29 +181,35 @@
                 <!--# Colaboratory 事始め-->
 
 <ul>
-<li>ブラウザを立ち上げて <a href="https://colab.research.google.com/notebooks/welcome.ipynb?hl=ja">https://colab.research.google.com/notebooks/welcome.ipynb?hl=ja</a> にアクセスしてください。</li>
 <li>
-<p><a href="https://youtu.be/inN8seMm7UI">Google Colaboratory のチュートリアルビデオ</a> も参照してください</p>
+<p>ブラウザを立ち上げて <a href="https://colab.research.google.com/notebooks/welcome.ipynb?hl=ja">https://colab.research.google.com/notebooks/welcome.ipynb?hl=ja</a> にアクセスしてください。</p>
 </li>
 <li>
-<p>Google Colaboratory は jupyeter notebook をご存知であれば，ほぼ使い方は同じです。</p>
+<p><a href="https://colab.research.google.com/notebooks/intro.ipynb?hl=ja">Colaboratory へようこそ</a></p>
+</li>
+<li><a href="https://youtu.be/inN8seMm7UI">Google Colaboratory のチュートリアルビデオ</a> も参照してください</li>
+</ul>
+<h1 id="_1">簡単な説明<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<ul>
+<li>Colab とはブラウザ上 <a href="https://jupyter.org/">jupyter notebook</a> (<a href="https://jupyterlab.readthedocs.io/en/stable/">jupyter lab</a>) を実行するクラウド計算環境です。</li>
+<li>従って，ブラウザさえあれば，特別なインストール作業を必要ありません。</li>
+<li>jupyter notebook とは <a href="https://ipython.org/notebook.html">ipython</a> をブラウザ上で実行する環境です。</li>
+<li>ipython とは <a href="https://pytorch.org/">python</a> をインタラクティブに実行する環境です。</li>
+<li>python とは機械学習やニューラルネットワークのコミュニティで使われるコンピュータ言語です。</li>
+<li>したがって colab の使い方は jupyeter notebook をご存知であれば，ほぼ同じです。</li>
+<li>クラウドベースの実行系ですので，インストールの手間は不要です。</li>
+</ul>
+<h1 id="_2">簡単な操作方法<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h1>
 <ul>
 <li>notebook は セル と呼ばれる単位から成り立っています。</li>
 <li>セルは コード，テキスト，画像で構成されます。</li>
-<li>クラウドベースの実行系ですので，インストールの手間は不要です。</li>
 <li>Google Doc に保存可能で Google Drvie 経由シェアできます</li>
 <li>テキストはマークダウン形式で書きます</li>
 <li><a href="https://colab.research.google.com/github/tensorflow/models/blob/master/research/nst_blogpost/4_Neural_Style_Transfer_with_Eager_Execution.ipynb">少し時間がかかりますが Keras によるニューラル画像変換を実行</a>  してみることをお勧めします</li>
 <li><a href="https://research.google.com/seedbank/seeds">https://research.google.com/seedbank/seeds</a></li>
 <li><a href="https://youtu.be/Bgwujw-yom8">How to Train Your Models in the Cloud</a></li>
-<li>
-<p><a href="https://colab.research.google.com/notebooks/basic_features_overview.ipynb">https://colab.research.google.com/notebooks/basic_features_overview.ipynb</a></p>
-</li>
-<li>
-<p><a href="http://colab.research.google.com/">http://colab.research.google.com/</a></p>
-</li>
-</ul>
-</li>
+<li><a href="https://colab.research.google.com/notebooks/basic_features_overview.ipynb">https://colab.research.google.com/notebooks/basic_features_overview.ipynb</a></li>
+<li><a href="http://colab.research.google.com/">http://colab.research.google.com/</a></li>
 </ul>
               
             </div>
@@ -169,7 +221,7 @@
         <a href="../colaboratory_faq/" class="btn btn-neutral float-right" title="Colaboratory FAQ">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../python_modules/" class="btn btn-neutral" title="Python 上の標準的なライブラリの利用"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../lect09/" class="btn btn-neutral" title="第 9 回"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -197,7 +249,7 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../python_modules/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../lect09/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../colaboratory_faq/" style="color: #fcfcfc">Next &raquo;</a></span>
