@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Shin Asakawa">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>ニューラルネットの基礎 - 2020駒澤大学心理学特講IIIA</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="//fonts.googleapis.com/earlyaccess/notosansjp.css" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:600,800" rel="stylesheet">
+  <link href="../css/specific.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u30cb\u30e5\u30fc\u30e9\u30eb\u30cd\u30c3\u30c8\u306e\u57fa\u790e";
+    var mkdocs_page_input_path = "chapt_nn.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> 2020駒澤大学心理学特講IIIA</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect00check_meet/">第 0 回 事前確認</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect00guidance/">第 0 回 ガイダンス</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect01/">第 1 回 05 月 08 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect02/">第 2 回</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect03/">第 3 回</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect04/">第 4 回</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect05/">第 5 回</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect06/">第 6 回</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect07/">第 7 回</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect08/">第 8 回</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect09/">第 9 回</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">付録</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../colaboratory_intro/">Colab 事始め</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../colaboratory_faq/">Colaboratory FAQ</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../eco/">エコシステム</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../python_numpy_intro_ja/">Python の基礎</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../python_modules/">Python modules</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">2020駒澤大学心理学特講IIIA</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>ニューラルネットの基礎</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">ニューラルネットの基礎<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">はじめの一歩<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://playground.tensorflow.org/">Google Playground デモ</a></li>
+</ul>
+<p>あるいは当日通信状態が悪かったときのための保険的意味合いで:</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #658b00">cd</span> ~/study/2019tensorflow_playground.git
+npm run serve
+</pre></div>
+
+
+<!--
+- [画像認識の超簡単なデモ](https://drive.google.com/open?id=1R5qyEhcz8OF_h4q8nTbA4NsazU8exrQM)
+-->
+
+<ul>
+<li><a href="../neural_networks/">ニューラルネットワーク概観</a></li>
+<li><a href="../NN_All_You_Know/">ニューラルネットワークの基礎知識</a></li>
+</ul>
+<hr />
+<p>おそらく排他的論理和を解く最短の python コードを以下に示しました。
+<a href="https://drive.google.com/open?id=1dkeOF94Ra2-RKnZYh6ISmtS1-Bjnh11U">ソース</a></p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+X = np.array([ [<span style="color: #B452CD">0</span>,<span style="color: #B452CD">0</span>,<span style="color: #B452CD">1</span>],[<span style="color: #B452CD">0</span>,<span style="color: #B452CD">1</span>,<span style="color: #B452CD">1</span>],[<span style="color: #B452CD">1</span>,<span style="color: #B452CD">0</span>,<span style="color: #B452CD">1</span>],[<span style="color: #B452CD">1</span>,<span style="color: #B452CD">1</span>,<span style="color: #B452CD">1</span>] ])
+y = np.array([[<span style="color: #B452CD">0</span>,<span style="color: #B452CD">1</span>,<span style="color: #B452CD">1</span>,<span style="color: #B452CD">0</span>]]).T
+w0 = <span style="color: #B452CD">2</span> * np.random.random((<span style="color: #B452CD">3</span>,<span style="color: #B452CD">4</span>)) - <span style="color: #B452CD">1</span>
+w1 = <span style="color: #B452CD">2</span> * np.random.random((<span style="color: #B452CD">4</span>,<span style="color: #B452CD">1</span>)) - <span style="color: #B452CD">1</span>
+<span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">500</span>):
+    l1 = np.tanh(np.dot(X,w0))
+    l2 = <span style="color: #B452CD">1</span>/(<span style="color: #B452CD">1</span>+np.exp(-(np.dot(l1,w1))))
+    dl2 = (y - l2) * (l2 * (<span style="color: #B452CD">1</span> - l2))
+    dl1 = dl2.dot(w1.T) * (<span style="color: #B452CD">1</span> - l1 ** <span style="color: #B452CD">2</span>)
+    w1 += np.dot(l1.T, dl2)
+    w0 += np.dot(X.T, dl1)
+    <span style="color: #658b00">print</span>(l2.T) <span style="color: #8B008B; font-weight: bold">if</span> i % <span style="color: #B452CD">100</span> == <span style="color: #B452CD">0</span> <span style="color: #8B008B; font-weight: bold">else</span> Noneimport numpy <span style="color: #8B008B; font-weight: bold">as</span> np
+</pre></div>
+
+
+<!--
+- [kmnist を用いた PCA, tSNE: 2019si_kmnist_exercise002.ipynb](https://colab.research.google.com/drive/1qSNIYI2X8qsiWCwnScbmNaQSVVdAf2Jc)
+-->
+
+<hr />
+<h3 id="_3">用語集<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="_4">非線形性<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<ul>
+<li>GRU</li>
+<li>LSTM</li>
+<li>Relu</li>
+<li>Sigmoid</li>
+<li>Tanh</li>
+</ul>
+<h4 id="_5">結合パターン<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Fully connected</li>
+<li>Convolutional</li>
+<li>Dilated</li>
+<li>Recurrent</li>
+<li>Recursive</li>
+<li>Skip / Residual</li>
+<li>Random</li>
+</ul>
+<h4 id="_6">最適化<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<ul>
+<li>SGD</li>
+<li>Momentum</li>
+<li>RMSProp</li>
+<li>Adagrad</li>
+<li>Adam</li>
+<li>Second Order (KFac)</li>
+</ul>
+<h4 id="_7">損失関数<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<ul>
+<li>交差エントロピー</li>
+<li>敵対</li>
+<li>変分</li>
+<li>最大対数尤度</li>
+<li>Sparse</li>
+<li>L2 Reg</li>
+<li>REINFORCE</li>
+</ul>
+<h4 id="_8">ハイパーパラメータ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Learning Rate</li>
+<li>Decay</li>
+<li>Layer Size</li>
+<li>Batch Size</li>
+<li>Dropout Rate</li>
+<li>Weight init</li>
+<li>Data augmentation</li>
+<li>Gradient Clipping</li>
+<li>Beta</li>
+<li>Momentum</li>
+</ul>
+<hr />
+<ul>
+<li>尤度，交差エントロピー，情報理論 <!--](../loss)--></li>
+<li>各種最適化手法，確率的勾配降下法，AdaGrad，AdaDelta，RMSProp，Adam，自然勾配法，ニュートン法，L-BGFS <!-- ](../gd/)--></li>
+<li>主成分分析，特異値分解，自己組織化，(非負)行列因子化法 <!--](../pca/)--></li>
+<li>固有顔，フィッシャー顔，部分空間法 <!-- ](../eigen)--></li>
+<li>マッカロックとピッツの形式ニューロンと生理学的対応物 <!--](../biological/)--></li>
+<li>パーセプトロン学習則，誤差逆伝播学習則，正則化項 (L2，L1，L0) <!--](../perceptron/)--></li>
+<li>各種活性化関数，シグモイド関数，ハイパータンジェント，整流線形ユニット，ソフトマックス関数，劣微分 <!--](../activations/)--></li>
+</ul>
+<hr />
+<p>付録</p>
+<ul>
+<li><a href="../all_about_gradient_descent/">勾配降下法の基礎</a></li>
+</ul>
+<!--
+  - [Algorithm choice](../algorithm-choice/)
+  - [Algorithm cheet sheet](../algorithm-cheat-sheet/)
+-->
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright (c) 2020</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
