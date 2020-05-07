@@ -255,72 +255,82 @@ Date: 08/May/2020<br/>
 Appache 2.0 license<br/>
 </div>
 
-<p><center>
+<p>下図は，心理学と神経科学と人工知能の 3 者関係を概念的に表しました。
+<center>
 <img src="../assets/2019GrandSchema.svg" style="width:79%">
 </center></p>
+<p>歴史的には，心理学は実験認識学 experimental epistemology としての側面を持っています。
+すなわち，我々が認識すること，外界を受容し理解するとは何であるのか，という問いを思弁に頼ることなく明らかにしようとしてきました。
+その過程で，およそ 170 年前に 1879年（明治12年）にブントにより，近代的な意味での心理学が成立したとされます。</p>
+<p>ところが，哲学の意味での認識論にまで昇華させるには長い時間が必要でした。今でも実験心理学者の議論を哲学者が参照することはありません。
+むしろ，実験的認識論として心理学は，その基礎を生理学に求めます。上図右下の neuroscience </p>
+<!--
+同時代のジークムント・フロイト（1856–1939），ヘルムホルツ
+ヘルマン・ルートヴィヒ・フェルディナント・フォン・ヘルムホルツ（1821 - 1894）
+
+西洋哲学の根本的な問として，森羅万象の根源を探求するという姿勢がありました。
+そのためギリシャの哲学者たちは万物は，デモクリトス （アトムの提唱），
+デモクリトスの原子論は，万物の根元が分割不可能な原子（アトム）から成り立っていると考えることであり，
+今日的にデモクリトスを解釈するとすれば，物質の根元である物理学と，精神活動の根元であるニューロンの動作を
+還元主義的アプローチと見なすことができるでしょう。
+
+- ピタゴラスは万物は数なり，といった https://ja.wikipedia.org/wiki/%E3%83%94%E3%82%BF%E3%82%B4%E3%83%A9%E3%82%B9
+- ヘラクレイトス 万物は流転する https://ja.wikipedia.org/wiki/%E3%83%98%E3%83%A9%E3%82%AF%E3%83%AC%E3%82%A4%E3%83%88%E3%82%B9
+- エンペドクレス 物質のアルケーは火、水、土、空気の四つのリゾーマタ（rizomata：根）からなり、それらを結合する「ピリア（φιλια　愛）」と分離させる「ネイコス（憎)」がある。それにより四つのリゾーマタ（四大元素）は、集合離散をくり返す。この四つのリゾーマタは新たに生まれることはなく、消滅することもない。https://ja.wikipedia.org/wiki/%E3%82%A8%E3%83%B3%E3%83%9A%E3%83%89%E3%82%AF%E3%83%AC%E3%82%B9
+-->
+
 <h2 id="_1">人工知能の歴史<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://kaiin.hanmoto.com/bd/isbn/9784762830655">シリーズ心理学と仕事9巻 第2章人工知能</a> <ul>
-<li><a href="../2019_02_02kitaohji.pdf">pdf</a></li>
-</ul>
-</li>
+<li><a href="https://kaiin.hanmoto.com/bd/isbn/9784762830655" target="_blank">シリーズ心理学と仕事9巻 第2章人工知能</a>  <a href="../2019_02_02kitaohji.pdf" target="_blank">原稿 pdf</a></li>
 </ul>
 <h2 id="_2">実習<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>Colab の実習として，話題の感染症のモデルを例に解説します。</p>
 <ul>
+<li><a href="https://drive.google.com/open?id=1daHRcQHEZ-b42QHACjUxBLIfWCzdW3po" target="_blank">鈴木知行さんのグラフ</a></li>
 <li><a href="https://github.com/ShinAsakawa/ShinAsakawa.github.io/blob/master/2020komazawa/2020covid19_propagation.ipynb" target="_blank">感染症の拡大はどう計算されているのだろうか</a></li>
+</ul>
+<p>ケルマック=マッケンドリック モデルは 1905 年，インドで流行ったペストのモデルです。詳しくは 下の colab ファイルを見てください。
+感染症の基本モデルがニューラルネットワークモデルと関連することは口頭で解説します。また常微分方程式の簡単な説明にもなっています。
+今回の武漢ウィルス禍も同様のモデルが使われているようです。</p>
+<ul>
 <li><a href="https://github.com/ShinAsakawa/ShinAsakawa.github.io/blob/master/2020chuo/2020Kermack_McKendrick_model.ipynb" target="_blank">感染症のモデル</a></li>
 <li><a href="https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/nothotdog.ipynb" target="_blank">画像認識のデモ</a></li>
 </ul>
-<p><strong>武漢ウィルスの我が国における数理モデルについては，以下の 2 つのサイトも参照してください</strong>
-- <a href="https://www.fttsus.jp/covinfo/" target="_blank">横浜市立大学 佐藤彰宏先生のCOVID-19情報共有</a>
-- <a href="http://jun-makino.sakuraweb.com/articles/corona/face.html" target="_blank">神戸大学 牧野淳一郎先生の新型ウィルスに関するメモ</a>
-- <a href="http://www.bs.s.u-tokyo.ac.jp/content/files/covid/COVID-19_SEIRmodel_full_ver4.1.pdf" target="_blank">東京大学 大橋順先生の計算</a></p>
-<p><br/>
-余談ですが，以下のような劣悪な記事には騙されないでください。
+<p><strong>武漢ウィルスの我が国における数理モデルについては，以下の 2 つのサイトも参照してください</strong></p>
+<ul>
+<li><a href="https://www.fttsus.jp/covinfo/" target="_blank">横浜市立大学 佐藤彰宏先生のCOVID-19情報共有</a></li>
+<li><a href="http://jun-makino.sakuraweb.com/articles/corona/face.html" target="_blank">神戸大学 牧野淳一郎先生の新型ウィルスに関するメモ</a></li>
+<li><a href="http://www.bs.s.u-tokyo.ac.jp/content/files/covid/COVID-19_SEIRmodel_full_ver4.1.pdf" target="_blank">東京大学 大橋順先生の計算</a></li>
+</ul>
+<p><font size="-2" color="teal">
+余談ですが，以下のような劣悪な記事には騙されないでください。この記事のなかで，西浦モデルは単純な線形モデルという記述はまったく，モデルを理解していません。
+西浦モデルの元になた，ケルマック=マッケンドリックモデルは常微分方程式です。8 割削減で，単純な計算にはなりません。
 <a href="https://webronza.asahi.com/politics/articles/2020050300004.html">悪いのは「西浦モデル」ではない。何もしてこなかった安倍政権だ</a>
-この記事のなかで，西浦モデルは単純な線形モデルという記述はまったく，モデルを理解していません。
-西浦モデルの元になた，ケルマック=マッケンドリックモデルは常微分方程式です。8 割削減で，単純な計算にはなりません。</p>
+おそらく，この論壇の解説文はケルマック=マッケンドリック モデルが理解できず，ひたすら基本再生産数 <script type="math/tex">R_o</script> の次式しか理解できなかったのでしょう
+<script type="math/tex; mode=display">
+R_t = (1-q)R_0 < 1\\
+q > 1-\frac{1}{R_0}
+</script>
+</font></p>
 <hr />
 <h2 id="_3">余談<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://www.nikkei.com/article/DGXMZO42932250W9A320C1SHA000/" target="_blank">政府、AI人材年25万人育成へ　全大学生に初級教育</a></li>
 <li><a href="https://www.nikkei.com/article/DGXMZO46386930R20C19A6EAF000/" target="_blank">AI人材25万人目標達成へ 政府、統合イノベ戦略を閣議決定</a></li>
 <li><a href="https://www.nikkei.com/article/DGXMZO56107550X20C20A2000000/" target="_blank">東大など　学生が学ぶべき「AIリテラシー」を定義</a></li>
-<li>
-<p><a href="https://style.nikkei.com/article/DGXMZO47952800Q9A730C1000000" target="_blank">引く手あまたのデータサイエンティスト 学生は及び腰?</a></p>
-</li>
-<li>
-<p><a href="https://www.python.org/" target="_blank">Python</a> って何？</p>
-<ul>
-<li>AI や 機械学習 分野の共同体で使われることが多いコンピュータ言語のことです。下記に示すように高等学校の情報で採択されます。</li>
-<li><a href="https://insights.stackoverflow.com/trends?tags=r%2Cpython%2Cjavascript%2Cjava%2Cc%2B%2B%2Cc%23" target="_blank">StackOverFlow におけるコンピュータ言語のトレンド</a></li>
+<li><a href="https://style.nikkei.com/article/DGXMZO47952800Q9A730C1000000" target="_blank">引く手あまたのデータサイエンティスト 学生は及び腰?</a><ul>
 <li><a href="https://www.mext.go.jp/a_menu/shotou/zyouhou/detail/1416756.htm" target="_blnak">文部科学省 高等学校情報科「情報Ⅰ」教員研修用教材（本編）</a></li>
 <li><a href="https://www.mext.go.jp/component/a_menu/education/micro_detail/__icsFiles/afieldfile/2019/10/09/1416758_005.pdf" target="_blank">上サイト第3章コンピュータとプログラミング</a> Python でサンプルコードが書かれている。</li>
 <li><a href="http://www.mext.go.jp/component/a_menu/education/micro_detail/__icsFiles/afieldfile/2019/05/15/1416758_006.pdf" target="_blank">上サイト第4章情報通信ネットワークとデータの活用</a> テキストマイニングで R with Mecab </li>
 </ul>
 </li>
-<li>
-<p><a href="https://jupyter.org/" target="_blank">Jupyter notebook</a> って何？</p>
-<ul>
-<li>Python をブラウザ上で動かすシステム，あるいはその環境を指します。</li>
-<li>木星を表す ジュピター jupiter とは綴りが異なります。ですが由来は 木星 から来て言います。</li>
-</ul>
-</li>
-<li>
-<p><a href="https://colab.research.google.com/notebooks/intro.ipynb" target="_blank">Google Colab</a> って何？</p>
-<ul>
-<li>Jupyter notebook をクラウド上で実行する環境です</li>
-</ul>
-</li>
-<li>
-<p><a href="https://www.jdla.org/news/20200424001/">日本ディープラーニング協会</a></p>
-</li>
+<li><a href="https://www.jdla.org/news/20200424001/" target="_blank">日本ディープラーニング協会 次回７月４日G検定、受験料半額での実施を決定</a></li>
 </ul>
 <hr />
 <h1 id="_4">ビデオ閲覧<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h1>
 <h3 id="_5">人工知能とは何か<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p><!--- <a href="https://www.youtube.com/watch?v=Ey01neBKFhQ">【AI研究者 浅川伸一先生①】浅川先生とは何者?｜資格スクエア大学・独学部 vol.357</a>-->
-- <a href="https://www.youtube.com/watch?v=uIi9pA5oRZA" target="_blank">AI研究者 浅川伸一先生②】AI＝人工知能の定義｜資格スクエア大学・独学部 vol.358</a></p>
+- <a href="https://www.youtube.com/watch?v=uIi9pA5oRZA" target="_blank">【AI研究者 浅川伸一先生②】AI＝人工知能の定義｜資格スクエア大学・独学部 vol.358</a></p>
 <h3 id="_6">人工知能の歴史<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <ol>
 <li>第 1 次，第 2 次 ブーム<ul>
