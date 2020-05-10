@@ -8,7 +8,7 @@
   
   <meta name="author" content="Shin Asakawa">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>深層学習の応用例 not hotdog - 2020駒澤大学心理学特講IIIA</title>
+  <title>2020-0510 課題提出の方法 - 2020駒澤大学心理学特講IIIA</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -20,8 +20,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "\u6df1\u5c64\u5b66\u7fd2\u306e\u5fdc\u7528\u4f8b not hotdog";
-    var mkdocs_page_input_path = "nothotdog.md";
+    var mkdocs_page_name = "2020-0510 \u8ab2\u984c\u63d0\u51fa\u306e\u65b9\u6cd5";
+    var mkdocs_page_input_path = "2020-0510how_to_save_and_share_colab_files.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -130,9 +130,15 @@
                     
     <a class="" href="../python_modules/">Python modules</a>
                 </li>
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href="../2020-0510how_to_save_and_share_colab_files/">2020-0510 課題提出の方法</a>
+    <a class="current" href="./">2020-0510 課題提出の方法</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#2020-0510">2020-0510 課題提出の方法</a></li>
+    
+
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -158,8 +164,12 @@
     <li><a href="..">Docs</a> &raquo;</li>
     
       
+        
+          <li>付録 &raquo;</li>
+        
+      
     
-    <li>深層学習の応用例 not hotdog</li>
+    <li>2020-0510 課題提出の方法</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -169,60 +179,64 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="not-hotdog">深層学習の応用例 not hotdog<a class="headerlink" href="#not-hotdog" title="Permanent link">&para;</a></h1>
-<ul>
-<li>
-<p>2017年アメリカ合衆国のケーブルテレビのチャンネル <a href="https://www.hbo.com/">HBO</a> のコメディー番組 <a href="https://www.hbo.com/silicon-valley">シリコンバレー</a>において，シーズン 4 のエピソード 4 では，<a href="https://en.wikipedia.org/wiki/Jimmy_O._Yang">ジミー欧陽</a>(中国名:歐陽萬成)がホットドッグかホットドッグではないかを見分けるアプリ <a href="https://www.seefoodtechnologies.com/nothotdog/">not hotdog</a> を作り，<a href="https://itunes.apple.com/app/not-hotdog/id1212457521">iOS</a>, <a href="https://play.google.com/store/apps/details?id=com.seefoodtechnologies.nothotdog">Andoroid</a> アプリとして公開されました。(残念ながら日本からは利用できません)ここで用いられた技術が深層学習です。ちなみにこのアプリは2018年度の<a href="https://ja.wikipedia.org/wiki/%E3%82%A8%E3%83%9F%E3%83%BC%E8%B3%9E#%E3%83%87%E3%82%A4%E3%82%BF%E3%82%A4%E3%83%A0%E3%83%BB%E3%82%A8%E3%83%9F%E3%83%BC%E8%B3%9E">エミー賞</a>に<a href="http://www.emmys.com/awards/nominees-winners/2018/outstanding-creative-achievement-in-interactive-media-within-a-scripted-program">ノミネート</a>されています。</p>
-</li>
-<li>
-<p>この技術のカラクリを探ってみることにしましょう。</p>
-</li>
-</ul>
-<p><center>
-<div>
-<iframe width="591" height="378" src="https://www.youtube.com/embed/vIci3C4JkL0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<!--<iframe width="786" height="491" src="https://www.youtube.com/embed/vIci3C4JkL0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+                <h1 id="2020-0510">2020-0510 課題提出の方法<a class="headerlink" href="#2020-0510" title="Permanent link">&para;</a></h1>
+<ol>
+<li>Google Drive に課題を保存します。</li>
+</ol>
+<div align="center">
+<img src="../assets/2020-0510komazawa_how_to_save_and_share_colab_files01.png" style="width:44%">
 </div>
-<!--
-<video style="width:84%" src='https://youtu.be/pqTntG1RXSY' controls ></br>
--->
-<strong><a href="https://youtu.be/vIci3C4JkL0">https://youtu.be/vIci3C4JkL0</a></strong>
-<!-- その後のエピソード <a href="https://youtu.be/A48AJ_5nWsc?list=RDvIci3C4JkL0">https://youtu.be/A48AJ_5nWsc?list=RDvIci3C4JkL0</a> -->
-</center></p>
-<hr />
-<p>このアプリはホットドッグかそうでないかを認識します。</p>
-<p><center>
-<img src="https://pbs.twimg.com/media/DAFtwTYVoAQ0k_L.jpg" style="width:29%" alt="#nothotdog" >
-<img src="https://pbs.twimg.com/media/DAFtwTZU0AENB2p.jpg" style="width:29%"></br>
-<!-- <img src="https://pbs.twimg.com/media/DAFtwTYVoAQ0k_L.jpg" alt="If there's ketchup, it's a hotdog" style="width:29%"></br>-->
-<strong>from <a href="https://twitter.com/david__kha/status/865093285886304256/photo/1">https://twitter.com/david__kha/status/865093285886304256/photo/1</a></strong><br>
-<strong><a href="https://pbs.twimg.com/media/DAFtwTZU0AENB2p.jpg">https://pbs.twimg.com/media/DAFtwTZU0AENB2p.jpg</a></strong>
-</center></p>
-<hr />
-<ul>
-<li>以前 CNN の人気トーク番組でメインキャストをつとめた<a href="https://en.wikipedia.org/wiki/Larry_King">ラリー・キング</a>の番組<a href="https://en.wikipedia.org/wiki/Larry_King_Now">ラリー・キングナウ</a>でも取り上げられています。</li>
-</ul>
-<p><center>
-<div>
-<iframe width="591" height="378" src="https://www.youtube.com/embed/s1G-cmx_zrg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<!--<iframe width="893" height="502" src="https://www.youtube.com/embed/s1G-cmx_zrg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
-<!--
-<video style="width:84%" src="https://youtu.be/s1G-cmx_zrg" controls><br>
--->
-</div>
-<strong><a href="https://youtu.be/s1G-cmx_zrg">https://youtu.be/s1G-cmx_zrg</a></strong>
-</center></p>
-<!--<https://twitter.com/ProductHunt/status/874453786390966272>-->
 
-<hr />
-<ul>
-<li>not hotdog のホームページは<a href="https://www.seefoodtechnologies.com/nothotdog/">こちら</a></li>
-</ul>
-<p><a href="https://www.seefoodtechnologies.com/nothotdog/">https://www.seefoodtechnologies.com/nothotdog/</a></p>
+<ol>
+<li>駒澤メールの右上にあるアイコンから Google Drive を開きます</li>
+</ol>
+<div align="center">
+<img src="../assets/2020-0510komazawa_how_to_save_and_share_colab_files02.png" style="width:44%">
+</div>
+
+<ol>
+<li>設定にもよりますが，2 箇所くらいに該当するファイル名が表示されています。どちらかを選んでください</li>
+</ol>
+<div align="center">
+<img src="../assets/2020-0510komazawa_how_to_save_and_share_colab_files03.png" style="width:44%">
+</div>
+
+<ol>
+<li>ファイル名を右クリックするとメニューが表示されます。そこで，<em>共有</em> を選んでください。</li>
+</ol>
+<div align="center">
+<img src="../assets/2020-0510komazawa_how_to_save_and_share_colab_files04.png" style="width:44%">
+</div>
+
+<ol>
+<li>共有する相手として <code>educ0233@komazawa-u.ac.jp</code> を入力してください。</li>
+</ol>
+<div align="center">
+<img src="../assets/2020-0510komazawa_how_to_save_and_share_colab_files05.png" style="width:44%">
+</div>
+
+<ol>
+<li>ウィンドウ右上の <em>共有可能なリンクを取得</em> を押下するとリンクアドレスがコピーされます。</li>
+</ol>
+<div align="center">
+<img src="../assets/2020-0510komazawa_how_to_save_and_share_colab_files06.png" style="width:44%">
+</div>
+
+<ol>
+<li>そのアドレスをメールに貼り付けて送信してください。
+以上です。</li>
+</ol>
               
             </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../python_modules/" class="btn btn-neutral" title="Python modules"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -247,6 +261,8 @@
   <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
+      
+        <span><a href="../python_modules/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
     </span>
