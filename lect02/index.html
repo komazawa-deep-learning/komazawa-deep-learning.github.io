@@ -90,7 +90,7 @@
         
             <li><a class="toctree-l3" href="#_5">クイズ: 次の省略形を調べよ</a></li>
         
-            <li><a class="toctree-l3" href="#_6">次の語の示すサイトを訪れ，それぞれどのようなサイトかを調べよ</a></li>
+            <li><a class="toctree-l3" href="#_6">次の語の示すサイトを訪れ，それぞれどのようなサイトかを調べよ。</a></li>
         
             <li><a class="toctree-l3" href="#_7">文献</a></li>
         
@@ -257,12 +257,24 @@ Appache 2.0 license<br/>
 </ul>
 <h1 id="_3">課題総評と先週の補足<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h1>
 <ul>
-<li>先週の話 <code>AI 人材 25 万人</code> は，大学生にとって絶好のチャンスだろう。</li>
+<li>先週 第一回講義での話 <strong>AI 人材 25 万人必要</strong> は，大学生にとって絶好のチャンスだろう。<ul>
+<li>なぜならウィルス禍で，産業構造が変化することが予想されるからである。</li>
+<li>今後必要とされる知識，技能をいち早く身につけることが求められる。</li>
+<li>今年から高等学校の情報科目では Python が採用される。いわば常識，リテラシーの一部となる。</li>
+<li>このような知識の習得に困難を覚える世代や集団は困難が予想される</li>
 <li><font color="white" size="+2">You cannot teach an old dog new tricks.</font></li>
+</ul>
+</li>
 <li>引用と自分の意見とを分けて記述してください</li>
 <li>統計学について，心理統計（推測統計学）だけが統計学ではない。むしろ統計学は 19 世紀に花開いた，統計力学，熱力学を礎にしている。</li>
-<li>一方で，<code>ニューラルネットワークは素人の非線形統計学である</code> との批判もあった(Anderson, 1990)</li>
-<li>実際に <code>熱力学の第2法則</code> すなわち <code>エントロピー</code>， ボルツマン，ラプラス，ヘルムホルツ，などの物理学者の名前を冠したモデルが提案されている。</li>
+<li>一方で，<code>ニューラルネットワークは素人の非線形統計学である</code> との批判もあった(Anderson, 1990)。<ul>
+<li>物理学用語の <strong>熱力学の第2法則</strong> すなわち <strong>エントロピー</strong> や <strong>エネルギー</strong> は ニューラルネットワークで頻用される概念である。</li>
+<li>ニューラルネットワークでは <strong>ボルツマン</strong>, <strong>ラプラス</strong>, <strong>ヘルムホルツ</strong>, <strong>ガウス</strong>, <strong>ラプラス</strong>, <strong>ラグランジェ</strong>  などの物理学者の名前を冠したモデルや手法が提案されている。</li>
+</ul>
+</li>
+<li>実際に，我々の活動は須く神経活動に起因する。これはある系における分子の運動測度が異なるにもかかわらず，この系の温度は一つに定義されることと類似する。
+個々の分子は速度で定義される運動エネルギーを持つが，運動エネルギーは温度だけでなく，圧力，電気，その他へと変換できる。
+このことと同様にして，脳内の神経活動の表現である我々の活動も様々な表出形態を採る。</li>
 </ul>
 <!--
 Authors:    J.A. Anderson, A. Pellionisz, E. Rosenfeld (eds.)
@@ -277,15 +289,25 @@ Reference:  MIT Press, Cambridge (1990), Massachusetts
 <li>人工知能</li>
 <li>ニューラルネットワーク</li>
 <li>ディープラーニング (深層学習)</li>
-<li>データサイエンス: <strong>データサイエンティストは 21 世紀で最もカッコいい職業だ</strong> というハーバードビジネスレビューに載った <a href="https://hbr.org/2012/10/data-scientist-the-sexiest-job-of-the-21st-century" target="_blank">ポジショントーク記事 (2012年)</a></li>
+<li>データサイエンス: <strong>データサイエンティストは 21 世紀で最もカッコいい (the sexist) 職業だ</strong> というハーバードビジネスレビューの <a href="https://hbr.org/2012/10/data-scientist-the-sexiest-job-of-the-21st-century" target="_blank">ポジショントーク記事 (2012年)</a> が話題になって久しい。</li>
 <li>ビッグデータ: こちらも<a href="https://bits.blogs.nytimes.com/2013/02/01/the-origins-of-big-data-an-etymological-detective-story/" target="_blank">ポジショントークらしく学術論文は存在しない</a>。 <a href="http://www.uvm.edu/pdodds/files/papers/others/2011/hilbert2011a.pdf" target="_blank">データが増え続けている</a>
  ことは事実なので社会的な傾向とも言える。</li>
-<li>だがビッグデータの規模感はまだまだ足りないとも言えるだろう。</li>
 </ul>
-<p><center>
+<div align="center">
 <img src='../assets/2017Goodfellow_Fig1_4ja.svg' style="width:77%"></br>
-<strong>Goodfellow et al. (2017) Fig.1 を改変</strong>
-</center></p>
+Goodfellow et al. (2017) Fig.1 を改変
+</div>
+
+<ul>
+<li>私見だが，ビッグデータの規模は，まだまだ足りないと考える。
+例えば，我々の網膜から入力される視覚信号は一秒間に 60 回以下であろう。
+そうでなければ天井にある蛍光灯は点滅して知覚されるはずである。
+我々が蛍光灯を常灯光として認識できることから視覚情報処理過程は 1 秒間に 60 回以下のサンプリングしか行っていないとみなせる。
+アニメーションでは 毎秒 30 回程度の場合もある。
+一日 18 時間覚醒していて，その間に毎秒 60 枚の画像が視覚系に入力されていると考えると一日あたりの入力画像数は，60 (枚/秒) * 60 (秒/分) * 60 (分/時間) * 18 (時間) = 388,8000 である。
+一日あたり 388 万枚以上の画像を見て乳児は視覚情報処理を発達させると考えると，入力データ数が 388 万以下のデータ解析では，新生児がさらされている視覚環境に換算すると一日以下であると言える。</li>
+<li><font size="+1" color="teal">この授業では，<strong>単純化，簡素化した行動モデルとして現在のディープラーニング (多層ニューラルネットワーク) モデルを捉え，心理学モデルとして解釈できるか考える</strong>。</font></li>
+</ul>
 <h2 id="_5">クイズ: 次の省略形を調べよ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <ul>
 <li>ANN: <font color="white">人工ニューラルネットワーク Artificial Neural Networks</font></li>
@@ -293,12 +315,13 @@ Reference:  MIT Press, Cambridge (1990), Massachusetts
 <li>CNN: <font color="white">畳み込みニューラルネットワーク Convolutional Neural Networks</font></li>
 <li>DNN: <font color="white">深層ニューラルネットワーク Deep Neural Networks</font></li>
 </ul>
-<h2 id="_6">次の語の示すサイトを訪れ，それぞれどのようなサイトかを調べよ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h2 id="_6">次の語の示すサイトを訪れ，それぞれどのようなサイトかを調べよ。<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>いずれも現在のエコシステムとしての役割を果たしている。</p>
 <ol>
 <li>arXiv: <font color="white">論文置き場</font></li>
 <li>Github: <font color="white">プログラムのソースコード置き場</font></li>
-<li>Reddit: <font color="white">掲示板，ただしビッグネーム本人が降臨することがある</font></li>
 <li>Stack Oerflow: <font color="white">掲示板，ノウハウ集</font></li>
+<li>Reddit: <font color="white">掲示板，ただしビッグネーム本人が降臨することがある</font></li>
 </ol>
 <!-- 
 # AI を学ぶ人間のための心構え
@@ -319,7 +342,6 @@ Reference:  MIT Press, Cambridge (1990), Massachusetts
 2. DeepMind - AlphaGo - 囲碁
 3. Google 翻訳 - ペッパー
 4. Uber - 自動運転
-
 -->
 
 <hr />
