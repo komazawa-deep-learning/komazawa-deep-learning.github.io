@@ -153,14 +153,12 @@
         
             <li><a class="toctree-l3" href="#cnn_1">CNN の詳細</a></li>
         
-            <li><a class="toctree-l3" href="#activation-functions">活性化関数 activation functions</a></li>
-        
             <li><a class="toctree-l3" href="#tensorflow-hub">TensorFlow HUB</a></li>
         
         </ul>
     
 
-    <li class="toctree-l2"><a href="#_11">さらなる情報</a></li>
+    <li class="toctree-l2"><a href="#_12">さらなる情報</a></li>
     
 
     </ul>
@@ -230,7 +228,15 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../activation_functions/">活性化関数</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../t-SNE/">次元圧縮 t-SNE</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../information_theory/">情報理論</a>
                 </li>
                 <li class="">
                     
@@ -288,11 +294,11 @@ Appache 2.0 license<br/>
 <li>ニューラルネットワーク neural networks</li>
 <li>パーセプトロン perceptron </li>
 <li>畳み込みニューラルネットワーク convolutional neural netoworks</li>
-<li>誤差逆伝播法 back propagation </li>
+<li><font color="gray">誤差逆伝播法 back propagation </li>
 <li>勾配降下法 gradient descent methods</li>
 <li>ソフトマックス関数 softmax function</li>
 <li>交差エントロピー cross entropy</li>
-<li>確率的勾配降下法 stochastic gradient descent</li>
+<li>確率的勾配降下法 stochastic gradient descent</font></li>
 </ul>
 <h1 id="_2">クイズの答え:<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h1>
 <ul>
@@ -363,25 +369,6 @@ CNN はケーブルニュースネットワークだったりします。 DNN �
 <img src="../assets/HistoryOfObjectRecognition_head.svg" style="wdith:94%">
 </div>
 
-<p><center>
-<img src='../assets/2013LeCun-tutorial-icml_9.svg' style="width:84%"></br>
-<strong>LeCun (2013) より</strong>
-</center></p>
-<p><center>
-<img src='../assets/2013LeCun-tutorial-icml_10.svg' style="width:84%"></br>
-<strong>LeCun (2013) より</strong>
-</center></p>
-<p><center>
-<img src='../assets/2013LeCun-tutorial-icml_15.svg' style="width:84%"></br>
-<strong>LeCun (2013) より</strong>
-</center></p>
-<p><center>
-<img src='../assets/2012Ng_ML_and_AI.svg' style="width:84%"></br>
-<strong>Goodfellow et al. (2017) Fig.1 を改変</strong>
-</center></p>
-<p><center>
-<img src='../assets/2015Xu_Show_Attend_and_Tell.svg' style="width:84%"></br>
-</center></p>
 <h1 id="cnn">CNN の特徴<a class="headerlink" href="#cnn" title="Permanent link">&para;</a></h1>
 <ul>
 <li>
@@ -717,15 +704,31 @@ CNN の特徴の一つに <strong>エンドツーエンド</strong> と呼ばれ
 <p>下図 <!--<a href="#fig:2012Ng_01">fig:2012Ng_01</a>{reference-type="ref"
 reference="fig:2012Ng_01"} -->
 に画像処理の例を挙げました。</p>
-<p><center>
+<!--
+<center>
 <img src="../assets/2012Ng_ML_and_AI_01.png" style="width:94%">
-</center></p>
+</center>
+-->
+
 <!--図[[fig:2012Ng_01]](#fig:2012Ng_01){reference-type="ref"
 reference="fig:2012Ng_01"}
 -->
 
-<p>では入力画像がネコであるか否かを判断する画像認識であるとしました。
-我々はネコの画像を瞬時に判断できます。ですが画像認識の難しさは，入力画像が上図 <!--<a href="#fig:2012Ng_01">[fig:2012Ng_01]</a>{reference-type="ref"
+<!--
+<center>
+<img src='../assets/2013LeCun-tutorial-icml_15.svg' style="width:84%"></br>
+**LeCun (2013) より**
+</center>
+-->
+
+<p><center>
+<img src='../assets/2012Ng_ML_and_AI.svg' style="width:84%"></br>
+<strong>Goodfellow et al. (2017) Fig.1 を改変</strong>
+</center></p>
+<!--では入力画像がネコであるか否かを判断する画像認識であるとしました。-->
+
+<p>我々は<!--ネコの--> 画像をほぼ瞬時に判断できます。
+ですが画像認識の難しさは，入力画像が上図 <!--<a href="#fig:2012Ng_01">[fig:2012Ng_01]</a>{reference-type="ref"
 reference="fig:2012Ng_01"}-->
 に示されているように入力信号の数字の集まりでしか無いことです。
 このようなデータを何度も経験することでネコを識別できるようにする必要があります。
@@ -798,6 +801,9 @@ reference="fig:2013LeCun_10"}-->)。</p>
 <img src="../assets/2012Ng_ML_and_AI_08.png" style="width:94%">
 -->
 
+<p><center>
+<img src='../assets/2015Xu_Show_Attend_and_Tell.svg' style="width:84%"></br>
+</center></p>
 <p>まとめると，1950 年代後半以来:固定的，手工芸的特徴抽出器と学習可能な分類器を用いた認識システムを作ることが試みられてきたといえます。
 これに対して CNN が主流となった現在はエンドツーエンドで学習可能な特徴抽出器を多数重ね合わせることで性能が向上しました。</p>
 <p>夢のような話が続きましたが，本節の最後に逆に CNN は簡単に騙すことができる例
@@ -1125,58 +1131,7 @@ Pooling layer downsamples the volume spatially, independently in each depth slic
 その代わり多段にすれば [3x3] が２層で ［5x5]，３層で[7x7]の受容野を形成できるから受容野の広さを層の深さとして実装しているとも解釈できる。１層で[7x7]の受容野より３層で[7x7]の受容野を実現した方が the simpler, the better の原則に沿っているとも（文学的）解釈が可能である（またしても浅川妄想）。</p>
 <p>バックプロパゲーションの計算時に広い受容野を作るより層を分けた方が GPU のメモリに乗せやすいと言う計算上の利点もある。</p>
 <hr />
-<h2 id="activation-functions">活性化関数 activation functions<a class="headerlink" href="#activation-functions" title="Permanent link">&para;</a></h2>
-<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
-<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
-%matplotlib inline
-
-<span style="color: #228B22">## [Original](https://github.com/alrojo/tensorflow-tutorial/\</span>
-<span style="color: #228B22">## blob/master/lab1_FFN/lab1_FFN.ipynb)</span>
-
-<span style="color: #228B22"># PLOT OF DIFFERENT OUTPUT USNITS</span>
-x = np.linspace(-<span style="color: #B452CD">6</span>, <span style="color: #B452CD">6</span>, <span style="color: #B452CD">100</span>)
-relu = <span style="color: #8B008B; font-weight: bold">lambda</span> x: np.maximum(<span style="color: #B452CD">0</span>, x)
-leaky_relu = <span style="color: #8B008B; font-weight: bold">lambda</span> x: np.maximum(<span style="color: #B452CD">0</span>, x) + <span style="color: #B452CD">0.1</span>*np.minimum(<span style="color: #B452CD">0</span>, x) 
-elu = <span style="color: #8B008B; font-weight: bold">lambda</span> x: (x &gt; <span style="color: #B452CD">0</span>)*x + (<span style="color: #B452CD">1</span> - (x &gt; <span style="color: #B452CD">0</span>))*(np.exp(x) - <span style="color: #B452CD">1</span>) 
-sigmoid = <span style="color: #8B008B; font-weight: bold">lambda</span> x: (<span style="color: #B452CD">1</span>+np.exp(-x))**(-<span style="color: #B452CD">1</span>)
-<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">softmax</span>(w, t = <span style="color: #B452CD">1.0</span>):
-    e = np.exp(w)
-    dist = e / np.sum(e)
-    <span style="color: #8B008B; font-weight: bold">return</span> dist
-x_softmax = softmax(x)
-
-plt.figure(figsize=(<span style="color: #B452CD">6</span>,<span style="color: #B452CD">6</span>))
-plt.plot(x, relu(x), label=<span style="color: #CD5555">&#39;ReLU&#39;</span>, lw=<span style="color: #B452CD">2</span>)
-plt.plot(x, leaky_relu(x), label=<span style="color: #CD5555">&#39;Leaky ReLU&#39;</span>,lw=<span style="color: #B452CD">2</span>)
-plt.plot(x, elu(x), label=<span style="color: #CD5555">&#39;Elu&#39;</span>, lw=<span style="color: #B452CD">2</span>)
-plt.plot(x, sigmoid(x), label=<span style="color: #CD5555">&#39;Sigmoid&#39;</span>,lw=<span style="color: #B452CD">2</span>)
-plt.legend(loc=<span style="color: #B452CD">2</span>, fontsize=<span style="color: #B452CD">16</span>)
-plt.title(<span style="color: #CD5555">&#39;Non-linearities&#39;</span>, fontsize=<span style="color: #B452CD">20</span>)
-plt.ylim([-<span style="color: #B452CD">2</span>, <span style="color: #B452CD">5</span>])
-plt.xlim([-<span style="color: #B452CD">6</span>, <span style="color: #B452CD">6</span>])
-
-<span style="color: #228B22"># softmax</span>
-<span style="color: #228B22"># assert that all class probablities sum to one</span>
-<span style="color: #658b00">print</span>(np.sum(x_softmax))
-<span style="color: #8B008B; font-weight: bold">assert</span> <span style="color: #658b00">abs</span>(<span style="color: #B452CD">1.0</span> - x_softmax.sum()) &lt; <span style="color: #B452CD">1e-8</span>
-</pre></div>
-
-
-<p><a href="https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_activaton_functions.ipynb">デモファイル 2019komazawa_activation_functions.ipynb</a></p>
-<p><center>
-<img src="../assets/2012AlexNet_ReLU.svg" style="width:49%"><br>
-アレックスネットの収束の様子
-</center></p>
-<!--
-## 最終層（あるいは最終２層）は全結合層
-
-ドット積を実行し、得られた結果に非線形活性化関数により出力を計算<br>
-ネットワーク全体は、一方の生画像ピクセルから他方のクラススコアまで、単一の微分可能なスコア関数を依然として表現している。 最上位層の全結合層には損失関数（SVM/Softmax）がある。通常のニューラルネットワークの学習と同じ手法を用いる
-
----
--->
-
-<hr />
+<h3 id="_11"><a href="../activation_functions/">活性化関数</a><a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h2 id="tensorflow-hub"><a href="https://www.tensorflow.org/hub">TensorFlow HUB</a><a class="headerlink" href="#tensorflow-hub" title="Permanent link">&para;</a></h2>
 <h3 id="inception-resnet-r-cnn-regional-convolutional-neural-networks">インセプション Inception，残渣ネット ResNet，領域 R-CNN (Regional Convolutional Neural Networks)<a class="headerlink" href="#inception-resnet-r-cnn-regional-convolutional-neural-networks" title="Permanent link">&para;</a></h3>
 <ul>
@@ -1222,7 +1177,7 @@ from [A guide to Face Detection in Python](https://towardsdatascience.com/a-guid
 <li>コンテストは 2010 年から Li Fei-Fei さん中心となって <a href="https://www.mturk.com/">AMT</a> で画像のアノテーションを行って 画像を2012 年の優勝チームが CNN を使った。通称<a href="https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf">アレックスネット</a></li>
 <li><a href="http://cs231n.stanford.edu/index.html">スタンフォード大学の授業 CS231n: Convolutional Neural Networks for Visual Recognition</a>. スライド](http://cs231n.stanford.edu/slides/2019/cs231n_2019_lecture05.pdf)</li>
 </ul>
-<h1 id="_11">さらなる情報<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h1>
+<h1 id="_12">さらなる情報<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h1>
 <ul>
 <li>Math? <a href="https://web.stanford.edu/class/cs231a/lectures/intro_cnn.pdf">Introduction to Convolutional Neural Networks</a> by Jianxin Wu</li>
 <li>C.-C. Jay Kuo <a href="https://arxiv.org/abs/1609.04112">Understanding Convolutional Neural Networks With a Mathematical Model</a>.</li>
@@ -1255,7 +1210,7 @@ turns all of the negative pixel values black
 
 
 
-wzxhzdk:2
+wzxhzdk:1
 
 
 <center>

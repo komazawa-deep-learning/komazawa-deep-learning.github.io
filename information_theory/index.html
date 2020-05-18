@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Shin Asakawa">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>情報理論 - 2020駒澤大学心理学特講IIIA</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="//fonts.googleapis.com/earlyaccess/notosansjp.css" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:600,800" rel="stylesheet">
+  <link href="../css/specific.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u60c5\u5831\u7406\u8ad6";
+    var mkdocs_page_input_path = "information_theory.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> 2020駒澤大学心理学特講IIIA</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect00check_meet/">第 0 回 事前確認</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect00guidance/">第 0 回 ガイダンス</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect01/">第 1 回 05 月 08 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect02/">第 2 回 05 月 15 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect03/">第 3 回 05 月 22 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect04/">第 4 回</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect05/">第 5 回</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect06/">第 6 回</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect07/">第 7 回</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect08/">第 8 回</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect09/">第 9 回</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">付録</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../colaboratory_intro/">Colab 事始め</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../colaboratory_faq/">Colaboratory FAQ</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../eco/">エコシステム</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../python_numpy_intro_ja/">Python の基礎</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../python_modules/">Python modules</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../2020-0510how_to_save_and_share_colab_files/">2020-0510 課題提出の方法</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Hinton_Maxwell_award/">ジェフェリー・ヒントンのマクセル賞受賞記念講演(2016)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../activation_functions/">活性化関数</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../t-SNE/">次元圧縮 t-SNE</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">情報理論</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#_1">情報理論</a></li>
+    
+
+    <li class="toctree-l3"><a href="#information-measure">情報量 Information Measure</a></li>
+    
+
+    <li class="toctree-l3"><a href="#_2">熱力学と情報理論</a></li>
+    
+
+    <li class="toctree-l3"><a href="#ludwig-eduard-boltzmann-1844-1906">ボルツマン Ludwig Eduard Boltzmann (1844-1906)</a></li>
+    
+
+    <li class="toctree-l3"><a href="#_3">エントロピー</a></li>
+    
+
+    <li class="toctree-l3"><a href="#_4">物理学におけるエントロピー </a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#_5">連続系のエントロピー </a></li>
+        
+            <li><a class="toctree-l4" href="#_6">連続系のエントロピーを最大化する分布</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#_7">汎関数としてのエントロピー </a></li>
+    
+
+    <li class="toctree-l3"><a href="#maximizing-a-functional">Maximizing a Functional</a></li>
+    
+
+    <li class="toctree-l3"><a href="#_8">エントロピーの最大化</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#_9">正規分布のエントロピーの微分</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#conditional-entropy">条件付きエントロピー Conditional Entropy</a></li>
+    
+
+    <li class="toctree-l3"><a href="#_10">相対エントロピー </a></li>
+    
+
+    <li class="toctree-l3"><a href="#kl">相対エントロピーと KL ダイバージェンス </a></li>
+    
+
+    <li class="toctree-l3"><a href="#mutual-information">相互情報量 Mutual Information</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../data_science/">データサイエンス小史</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../how_to_read_math/">数式の読み方</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">2020駒澤大学心理学特講IIIA</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>付録 &raquo;</li>
+        
+      
+    
+    <li>情報理論</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">情報理論<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<ul>
+<li>エントロピー entropy</li>
+<li>最大エントロピー</li>
+<li>条件付きエントロピー</li>
+<li>カルバック=ライブラーダイバージェンス</li>
+<li>相互情報量</li>
+</ul>
+<h1 id="information-measure">情報量 Information Measure<a class="headerlink" href="#information-measure" title="Permanent link">&para;</a></h1>
+<!--- 離散変数 $x How much information is received when we observe a specific value for a discrete random ariable $x$?
+- Amount of information is degree of surprise 
+  - Certain means no information
+  - More information when event is unlikely
+- Depends on probability distribution $p\of{x}$, a quantity $h\of{x}$
+- If there are two unrelated events $x$ and $y$ we want $h\of{x,y}=h\of{x}+h\of{y}$
+- Thus we choose $h\of{x}=-\log_2p\of{x}$
+  - Negative assures that information measure is positive
+- Average amount of information transmitted is the expectation w.r.t $p\of{x}$ refered to as entropy
+-->
+
+<ul>
+<li>情報量: 確率変数 <script type="math/tex">x</script> のサプライズ量</li>
+<li>まれにしか起こらない事象が起こった場合には情報量は大きい。<strong>ニュースになる</strong></li>
+<li>必ず起こることが起こっても情報量は小さい。<strong>ニュースにならない</strong></li>
+</ul>
+<p>
+<script type="math/tex; mode=display">\begin{equation}
+H\left(x\right)=-\sum_x p\left(x\right)\log_2p\left(x\right)
+\end{equation}</script>
+- マイナスをつけるのは正の値にするため
+<!--- サプライズ量の平均: 平均エントロピー--></p>
+<h1 id="_2">熱力学と情報理論<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h1>
+<p><center>
+<img src='../assets/Boltzmann.jpg' style="width:39%">
+<img src='../assets/Shannon.jpg' style="width:36%"><br>
+ボルツマン(左)とシャノン(右) 出典:ウィキペディア
+</center></p>
+<ul>
+<li>エントロピー: 確率変数の平均情報量</li>
+<li>物理学起源</li>
+<li>熱力学の平衡の概念</li>
+<li>統計力学</li>
+</ul>
+<!--
+- Entropy is average amount of information needed to specify state of a random variable
+- Concept had much earlier origin in physics
+  - Context of equilibrium thermodynamics
+  - Later given deeper interpretation as measure of disorder (developments in statistical  mechanics)
+-->
+
+<h1 id="ludwig-eduard-boltzmann-1844-1906">ボルツマン Ludwig Eduard Boltzmann (1844-1906)<a class="headerlink" href="#ludwig-eduard-boltzmann-1844-1906" title="Permanent link">&para;</a></h1>
+<ul>
+<li>統計力学</li>
+<li>第一法則: エネルギー保存</li>
+<li>第二法則: エントロピー増大</li>
+<li>マクロとミクロをつなぐ</li>
+</ul>
+<!--
+- Created Statistical Mechanics
+  - First law: conservation of energy
+  - Energy not destroyed but converted from one form to other
+- Second law: principle of decay in nature–entropy increases
+- Explains why not all energy is available to do useful work
+- Relate macro state to statistical behavior of microstate
+-->
+
+<h1 id="_3">エントロピー<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h1>
+<p><center>
+<img src='../assets/EntropySmall.jpg' style="width:34%">
+<img src='../assets/EntropyLarge.jpg' style="width:34%"><br>
+乱雑さの度合い。出典:
+</center></p>
+<h1 id="_4">物理学におけるエントロピー <!--Physics view of Entropy--><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h1>
+<ul>
+<li>
+<script type="math/tex">N</script> 個の物質が <script type="math/tex">i</script> 個の状態，各状態には <script type="math/tex">n_i</script> 個の物質
+<!--- <script type="math/tex">N</script> objects into bins so that <script type="math/tex">n_i</script> are in <script type="math/tex">i^{th}</script> bin where <script type="math/tex">\sum_in_i=N</script>-->
+<!--- Number of different ways of allocating objects to bins--></li>
+<li>
+<script type="math/tex">N</script> 個の物質を全て並べる: <script type="math/tex">N\cdot(N-1)\cdots2\cdot1=N!</script><!-- であればways to choose first, <script type="math/tex">N-1</script> ways for second leads to <script type="math/tex">N\cdot(N-1)\cdots2\cdot1=N!</script>--></li>
+<li>各状態の中では物質の順序は問わないことにする<!--We don’t distinguish between rearrangements within each bin-->
+<!--    - In <script type="math/tex">i^{th}</script> bin there are <script type="math/tex">n_i!</script> ways of reordering objects
+--></li>
+<li>総数 <script type="math/tex">N</script> 個の物質を <script type="math/tex">n_i</script> に分ける場合の組み合わせ: <script type="math/tex">W=\frac{N!}{\prod_{i}n_{i}!}</script>
+<!--  - Total number of ways of allocating <script type="math/tex">N</script> objects to bins is <script type="math/tex">W=\frac{N!}{\prod_{i}n_{i}!}</script>-->
+<!--    - Called Multiplicity (also weight of macrostate)-->
+<!-- Entropy: scaled log of multiplicity --></li>
+<li>
+<p><strong>エントロピーの定義</strong>
+<script type="math/tex; mode=display">\begin{equation}
+H=\frac{1}{N}\ln W=\frac{1}{N}\ln N!-\frac{1}{N}\sum_i\ln n_i!
+\end{equation}</script>
+</p>
+</li>
+<li>
+<p>スターリングの公式 <script type="math/tex">N! \approx N\log N-N</script> を用いて</p>
+</li>
+</ul>
+<p>
+<script type="math/tex; mode=display">\begin{equation}
+H=-\lim_{N\rightarrow\infty}
+\sum_i\left[\frac{n_i}{N}\ln\left(\frac{n_!}{N}\right)\right]
+=-\sum_ip_i\ln p_i
+\end{equation}</script>
+</p>
+<ul>
+<li>全体の分布 <script type="math/tex">\displaystyle\frac{n_i}{N}</script> をマクロステート</li>
+<li>各 <script type="math/tex">i</script> のミクロの状態 <script type="math/tex">n_i</script> を</li>
+</ul>
+<h2 id="_5">連続系のエントロピー <!--Entropy with Continuous Variable--><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<!-- - Divide $x$ into bins of width $\Delta$-->
+
+<!-- - For each bin there must exist a value $x_i$ such that -->
+
+<!-- - Gives a discrete distribution with probabilities $p\left(x_i\right)\Delta$ -->
+
+<ul>
+<li>離散量 <script type="math/tex">p\left(x_i\right)\Delta</script> を考えて <script type="math/tex">\Delta\rightarrow0</script> を考える:</li>
+</ul>
+<p>
+<script type="math/tex; mode=display">\begin{equation}
+\int_{i\Delta}^{\left(i+1\right)\Delta}
+p\left(x\right)d\left(x\right)
+=p\left(x_i\right)\Delta
+\end{equation}</script>
+</p>
+<ul>
+<li><strong>連続系のエントロピー</strong><!--Entropy -->
+<script type="math/tex; mode=display">\begin{equation}
+H_{\Delta}=-\sum_ip\left(x_i\right)\Delta\log\left(p\left(x_i\right)\Delta\right)=-\sum_ip\left(x_i\right)\Delta\log\left(x_i\right)-\Delta\log\Delta
+\end{equation}</script>
+</li>
+</ul>
+<!-- - Omit the second term and consider the limit $\Delta\rightarrow0$-->
+
+<ul>
+<li>
+<script type="math/tex">\Delta\rightarrow0</script> の極限を考えれば:<!--第2項を無視すれば:-->
+<script type="math/tex; mode=display">\begin{equation}
+H_\Delta=-\int p\left(x\right)\log p\left(x\right)\text{d}x
+\end{equation}</script>
+<!-- - Known as Differential Entropy--></li>
+<li>連続系と離散系のエントロピーは <script type="math/tex">\Delta\log\Delta</script> だけ異なる
+<!-- - Discrete and Continuous forms of entropy differ by quantity <script type="math/tex">\log\Delta</script> which diverges-->
+<!-- - Reflects to specify continuous variable very precisely requires a large no of bits--></li>
+</ul>
+<h2 id="_6">連続系のエントロピーを最大化する分布<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<!--
+# Entropy with Multiple Continuous Variables
+- Differential Entropy for multiple continuous variables
+$$
+H\left({x)=-\int p\left(x\right)\log p\left(x\right)\;\text{d}x
+$$
+- For what distribution is differential entropy maximized?
+  - For discrete distribution, it is uniform
+  - For continuous, it is Gaussian
+-->
+
+<ul>
+<li>どのような分布が連続系のエントロピーを最大化するか？</li>
+<li>離散系では一様分布</li>
+<li>連続系では?
+<script type="math/tex; mode=display">
+H\left(x\right)=-\int p\left(x\right)\log p\left(x\right)\;\text{d}x
+</script>
+</li>
+</ul>
+<h1 id="_7">汎関数としてのエントロピー <!--Entropy as a Functional--><a class="headerlink" href="#_7" title="Permanent link">&para;</a></h1>
+<ul>
+<li>通常の関数: 微分 := スカラを入力として，スカラを返す関数(演算子)</li>
+<li>汎関数: 関数を入力としてスカラを返す関数(演算子)</li>
+<li>機械学習における汎関数の例: スカラ値を返すエントロピー <script type="math/tex">H\left[p\left(x\right)\right]</script> を最大化</li>
+<li><strong>変分原理</strong>あるいは<strong>変分推論</strong></li>
+</ul>
+<!--
+- Ordinary calculus deals with functions 
+- A functional is an operator that takes a function as input and returns a scalar
+- A widely used functional in machine learning is entropy $H\left[p\left(x\right)\right]$ which is a scalar quantity
+- We are interested in the maxima and minima of functionals analogous to those for functions
+  - Called calculus of variations
+-->
+
+<h1 id="maximizing-a-functional">Maximizing a Functional<a class="headerlink" href="#maximizing-a-functional" title="Permanent link">&para;</a></h1>
+<ul>
+<li>汎関数: 関数からスカラへの写像</li>
+<li>最大値を与える関数を探す</li>
+<li>制約付の最大化(最小化)</li>
+<li><strong>ラグランジアン Lagrangean</strong>の利用</li>
+</ul>
+<!-- - 汎関数: mapping from set of functions to real value
+- For what function is it maximized?
+- Finding shortest curve length between two points on a sphere (geodesic)
+  - With no constraints it is a straight line
+  - When constrained to lie on a surface solution is less obvious– may be several
+- Constraints incorporated using Lagrangian
+-->
+
+<h1 id="_8">エントロピーの最大化<!--Maximizing Differential Entropy--><a class="headerlink" href="#_8" title="Permanent link">&para;</a></h1>
+<ul>
+<li>確率の制約，及び，平均と分散に関する制約条件を以下のように記述:<!--Assuming constraints on first and second moments of <script type="math/tex">p\left(x\right)</script> as well as normalization--></li>
+<li>
+<script type="math/tex">\displaystyle\int p\left(x\right)\;\text{d}x =1</script> : 確率</li>
+<li>
+<script type="math/tex">\displaystyle\int xp\left(x\right)\;\text{d}x =\mu</script> : 平均</li>
+<li>
+<script type="math/tex">\displaystyle\int \left\{x-\mu\right\}^2p\left(x\right)\;\text{d}x=\sigma^2</script> : 分散</li>
+<li>ラグランジェ乗数を使って制約条件下での最大化&lt;<!--Constrained maximization is performed using Lagrangian multipliers. Maximize following functional w.r.t <script type="math/tex">p\left({x\right)</script>:-->
+<!--- Constrained maximization is performed using Lagrangian multipliers. Maximize following functional w.r.t <script type="math/tex">p\left(x\right)</script>:--></li>
+</ul>
+<p>
+<script type="math/tex; mode=display">\begin{equation}
+-\int p\left(x\right)\log p\left(x\right)\;\text{d}x + \lambda_1\left\{\int p\left(x\right)\;\text{d}x-1\right\} + \lambda_2\left\{\int xp\left(x\right)\;\text{d}x-\mu\right\}+\lambda_3\left\{\int\left\{x-\mu\right\}^2p\left(x\right)\;\text{d}x-\sigma^2\right\}
+\end{equation}</script>
+</p>
+<!--- Using the calculus of variations derivative of functional is set to zero giving-->
+
+<p>各変数で微分して0と置き，整理:
+<script type="math/tex; mode=display">\begin{equation}
+p\left(x\right)=\exp\left(-1+\lambda_1+\lambda_2x+\lambda_3\left(x-\mu\right)^2\right)
+\end{equation}</script>
+</p>
+<ul>
+<li>以上より連続量の最大エントロピーを与える確率分布はガウス分布となる</li>
+</ul>
+<!--  - Backsubstituting into three constraint equations leads to the result that distribution that maximizes differential entropy is Gaussian-->
+
+<h2 id="_9">正規分布のエントロピーの微分<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<!--
+# Differential Entropy of Gaussian -->
+
+<!--- Distribution that maximizes Differential Entropy is Gaussian-->
+
+<p>
+<script type="math/tex; mode=display">\begin{equation}
+p\left(x\right)=\frac{1}{\sqrt{2\pi\sigma^2}} e^{-\left\{\frac{x-\mu}{\sigma}\right\}^2}
+\end{equation}</script>
+</p>
+<ul>
+<li>このとき最大エントロピーは以下:</li>
+</ul>
+<!-- - Value of maximum entropy is-->
+
+<p>
+<script type="math/tex; mode=display">\begin{equation}
+H\left(x\right)=\frac{1}{2}\left[1+\log\left(2\pi\sigma^2\right)\right]
+\end{equation}</script>
+</p>
+<ul>
+<li>分散が大きくなればエントロピーは増大する</li>
+<li>離散系のエントロピーとは異なり，連続系のエントロピーは <script type="math/tex">\sigma^2<\frac{1}{2}\pi e</script> のとき，<strong>負</strong>となる</li>
+</ul>
+<!--
+- Entropy increases as variance increases
+- Differential entropy, unlike discrete entropy, can be negative for $\sigma^2<\frac{1}{2}\pi e$
+-->
+
+<h1 id="conditional-entropy">条件付きエントロピー Conditional Entropy<a class="headerlink" href="#conditional-entropy" title="Permanent link">&para;</a></h1>
+<ul>
+<li>同時確率 <script type="math/tex">p\left(x,y\right)</script> に対して
+<script type="math/tex; mode=display">\begin{equation}
+H\left(x,y\right)=-\int\int p\left(x,y\right)\log p\left(x,y\right)\;\text{d}x\;\text{d}y
+\end{equation}</script>
+</li>
+</ul>
+<!--  - We draw pairs of values of $x$ and $y$-->
+
+<ul>
+<li>
+<p>
+<script type="math/tex">x</script> が所与のとき<strong>条件付きエントロピー</strong>
+<script type="math/tex; mode=display">\begin{equation}
+H\left(y\left|\,x\right.\right)
+=-\int p\left(y\left|\,x\right.\right)\log p\left(y\left|\,x\right.\right)\;dy
+\end{equation}</script>
+</p>
+</li>
+<li>
+<p>さらに以下の関係がある
+<script type="math/tex; mode=display">\begin{equation}
+H\left(x,y\right) = H\left(y\left|x\right.\right) + H\left(x\right)
+\end{equation}</script>
+</p>
+</li>
+</ul>
+<!--
+  - If value of $x$ is already known, additional information to specify corresponding value of $y$ is $-\log p\left(y\left|x\right.\right)$
+- Average additional information needed to specify $y$ is the conditional entropy
+- By product rule $H\left(x,y} = H\left(y\given{x}} + H\left(x}$
+-->
+
+<!--
+  - where $H\left(x,y}$ is differential entropy of $p\left(x,y\right)$
+  - $H\left(x\right)$ is differential entropy of $p\left(x\right)$
+  - Information needed to describe $x$ and $y$ is given by
+  - information needed to describe $x$ plus additional information needed to specify $y$ given $x$
+-->
+
+<!--
+- If we have joint distribution $p\left(x,y}$
+  - We draw pairs of values of $x$ and $y$
+  - If value of $x$ is already known, additional information to specify corresponding value of $y$ is $-\log p\left(y\left|x\right.\right)$
+- Average additional information needed to specify $y$ is the conditional entropy
+- By product rule $H\left(x,y\right) = H\left(y\left|x\right.\right) + H\left(x\right)$
+  - where $H\left(x,y}$ is differential entropy of $p\left(x,y}$
+  - $H\left(x\right)$ is differential entropy of $p\left(x\right)$
+  - Information needed to describe $x$ and $y$ is given by
+  - information needed to describe $x$ plus additional information needed to specify $y$ given $x$
+-->
+
+<h1 id="_10">相対エントロピー <!--Relative Entropy--><a class="headerlink" href="#_10" title="Permanent link">&para;</a></h1>
+<ul>
+<li>未知の分布(真に知らんと欲する分布) <script type="math/tex">p\left(x\right)</script> を，(例えばニュールネットワークなどにより) <script type="math/tex">q\left(x\right)</script> で近似することを考える。</li>
+<li>相対エントロピー(KLダイバージェンス)を用いて真の分布 <script type="math/tex">p(x)</script> の代わりに <script type="math/tex">q(x)</script> を用いた結果
+<script type="math/tex">x</script> の値を特定するために必要な平均情報量</li>
+</ul>
+<!-- If we have modeled unknown distribution $p\left(x\right)$ by approximating distribution $q\left(x\right)$
+  - i.e., $q\left(x\right)$ is used to construct a coding scheme of transmitting values of $x$ to a receiver
+  - Average additional amount of information required to specify value of $x$ as a result of using $q\left(x\right)$ instead of true distribution $p\left(x\right)$ is given by relative entropy or K-L divergence
+-->
+
+<ul>
+<li>ベイズ推論:</li>
+<li>エントロピー: 情報論から</li>
+<li>KL ダイバージェンス(相対情報量): パターン認識から</li>
+</ul>
+<!--
+- If we have modeled unknown distribution $p\left(x\right)$ by approximating distribution $q\left(x\right)$
+  - i.e., $q\left(x\right)$ is used to construct a coding scheme of transmitting values of $x$ to a receiver
+  - Average additional amount of information required to specify value of x as a result of using $q\left(x\right)$ instead of true distribution $p\left(x\right)$ is given by relative entropy or K-L divergence
+- Important concept in Bayesian analysis
+  - Entropy comes from Information Theory
+  - K-L Divergence, or relative entropy, comes from Pattern Recognition, since it is a distance (dissimilarity) measure
+-->
+
+<h1 id="kl">相対エントロピーと KL ダイバージェンス <!--Relative Entropy or K-L Divergence--><a class="headerlink" href="#kl" title="Permanent link">&para;</a></h1>
+<ul>
+<li>相対エントロピーの式に <script type="math/tex">q\left(x\right)</script> を代入</li>
+</ul>
+<p>
+<script type="math/tex; mode=display">\begin{align}
+\mathop{KL}\left(p\left\|\,q\right.\right) 
+&=-\int p(x)\log q(x)\;dx -\left[\int p(x)\log p(x)\;dx\right]\\
+&=-\int p(x)\log\left(\frac{p(x)}{q(x)}\right)\,dx
+\end{align}</script>
+</p>
+<ul>
+<li>KL ダイバージェンスは非対称性:</li>
+</ul>
+<p>
+<script type="math/tex; mode=display">\begin{equation}
+\mathop{KL}\left(p\left\|\,q\right.\right)\ne \mathop{KL}\left(q\left\|\,p\right.\right)
+\end{equation}</script>
+</p>
+<ul>
+<li>K-L ダイバージェンスは常に正か <script type="math/tex">0</script>。
+等号が成り立つのは <script type="math/tex">p(x)=q(x)</script> のときのみ</li>
+</ul>
+<!--
+- Additional information required as a result of using $q\left(x\right)$ in place of $p\left(x\right)$
+$$
+\begin{align}
+\KL{q}{p}&=-\int p\left(x\right)\log q\left(x\right)\;dx -\Brc{\int p\left(x\right)\log p\left(x\right)\;dx}\\
+         &=-\int p\left(x\right)\log\Brc{\frac{p\left(x\right)}{q\left(x\right)}}\;dx
+\end{align}
+$$
+- Not a symmetrical quantity: 
+$$
+\KL{p}{q}\ne \KL{q}{p}
+$$
+- K-L divergence satisfies $\KL{p}{q}>0$ with equality iff $p\left(x\right)=q\left(x\right)$
+  - Proof involves convex functions
+-->
+
+<!-- # KL-->
+
+<!--
+$$
+\begin{align}
+\KL{p}{q}&=-\int p\left(x\right)\ln q\left(x\right)dx-\Brc{\int p\left(x\right)\ln p\left(x\right)dx}\\
+         &=-\int p\left(x\right)\ln\Brc{\frac{p\left(x\right)\right){q\left(x\right)}}dx
+p\end{align}
+$$
+
+- Not a symmetrical quantity: $\KL{p}{q}\ne \KL{q}{p}$
+- K-L divergence satisfies $\KL{p}{q} >0$ with equality iff $p\left(x\right)=q\left(x\right)$
+-->
+
+<!--- Proof involves convex functions-->
+
+<h1 id="mutual-information">相互情報量 Mutual Information<a class="headerlink" href="#mutual-information" title="Permanent link">&para;</a></h1>
+<ul>
+<li>2 変量 <script type="math/tex">x</script>, <script type="math/tex">y</script> が与えら得た時同時確率 <script type="math/tex">p\left(x,y\right)</script> について:<ul>
+<li>両変量が独立な場合: <script type="math/tex">p\left(x,y\right)=p\left(x\right)p\left(y\right)</script>
+</li>
+<li>独立でないければ:<br><ul>
+<li>同時確率との KL ダイバージェンス <!--divergence between joint and product of marginals--></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>
+<script type="math/tex; mode=display">\begin{align}
+I(x,y) &=\mathop{KL}\left(p(x,y)\left\|p(x)p(y)\right.\right)\\
+&=\int\int p(x,y)\ln\left[\frac{p(x)\,p(y)}{p(x,y)}\right]\,\text{d}x\,\text{d}y
+\end{align}</script>
+</p>
+<!--- Called Mutual Information between variables $x$ and $y$-->
+
+<p>
+<script type="math/tex; mode=display">\begin{align}
+\mathop{pmi}(x,y)&\equiv\log\left(\frac{p(x,y)}{p(x)\,p(y)}\right)\\
+&=\log\left(\frac{p\left(x\left|\,y\right.\right)}{p(x)}\right)\\
+&=\log\left(\frac{p\left(y\left|\,x\right.\right)}{p(y)}\right)
+\end{align}</script>
+</p>
+<!--
+-->
+
+<p><a href="https://en.wikipedia.org/wiki/Pointwise_mutual_information">https://en.wikipedia.org/wiki/Pointwise_mutual_information</a></p>
+<!--
+pandoc -s --mathjax --css=../css/turing.css --filter pandoc-citeproc --from markdown --to slidy A02Info.md -o A02Info.html 
+-->
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../data_science/" class="btn btn-neutral float-right" title="データサイエンス小史">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../t-SNE/" class="btn btn-neutral" title="次元圧縮 t-SNE"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright (c) 2020</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../t-SNE/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../data_science/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

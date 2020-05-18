@@ -138,6 +138,10 @@
                     
     <a class="" href="../Hinton_Maxwell_award/">ジェフェリー・ヒントンのマクセル賞受賞記念講演(2016)</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../activation_functions/">活性化関数</a>
+                </li>
                 <li class=" current">
                     
     <a class="current" href="./">次元圧縮 t-SNE</a>
@@ -145,16 +149,25 @@
             
     <li class="toctree-l3"><a href="#dimensionality-reduction-t-sne">次元削減，次元圧縮 (dimensionality reduction) t-SNE</a></li>
     
+
+    <li class="toctree-l3"><a href="#pca">PCA</a></li>
+    
         <ul>
         
-            <li><a class="toctree-l4" href="#pca">PCA</a></li>
+            <li><a class="toctree-l4" href="#_1">(最初は)  知らない方が良い 知らなくても良いラグランジアン (ラグランジェ方程式) の説明</a></li>
         
             <li><a class="toctree-l4" href="#t-sne">t-SNE</a></li>
+        
+            <li><a class="toctree-l4" href="#math-phobia">  数学恐怖症 (math-phobia)     数学愛好者 の皆様へ</a></li>
         
         </ul>
     
 
     </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../information_theory/">情報理論</a>
                 </li>
                 <li class="">
                     
@@ -203,23 +216,42 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="dimensionality-reduction-t-sne">次元削減，次元圧縮 (dimensionality reduction) t-SNE<a class="headerlink" href="#dimensionality-reduction-t-sne" title="Permanent link">&para;</a></h1>
-<p><a href="https://lvdmaaten.github.io/images/laurens.png">Van der Maaten</a> の<a href="https://lvdmaaten.github.io/drtoolbox/">ページ</a>によれば<strong>次元圧縮</strong> dimensionality reduction には 34 種類の方法があります。PCA, FA, MDS などが心理学では伝統的<strike><strong>無批判</strong></strike>に使われてきました。多くの心理学者は因子分析を好む <strike><strong>因子分析偏愛者</strong>，<strong>因子分析フェチ</strong>，<strong>factor analysis-pheria</strong></strike> ようですが，そのことを支持する理論的根拠は存在しません</p>
+                <h2 id="dimensionality-reduction-t-sne">次元削減，次元圧縮 (dimensionality reduction) t-SNE<a class="headerlink" href="#dimensionality-reduction-t-sne" title="Permanent link">&para;</a></h2>
+<p><a href="https://lvdmaaten.github.io/images/laurens.png">Van der Maaten</a> の<a href="https://lvdmaaten.github.io/drtoolbox/">ページ</a>によれば <strong>次元圧縮</strong> dimensionality reduction には 34 種類の方法があります。PCA, FA, MDS などが心理学では伝統的 <strike><font color="red"> 無批判 </font> </strike>に使われてきました。
+心理学者は因子分析を好む <strike><font color="red"> 因子分析偏愛者，因子分析フェチ，factor analysis-pheria  </font> </strike> 方が多いようです。ですが，そのことを支持する理論的根拠は存在しません</p>
 <h2 id="pca">PCA<a class="headerlink" href="#pca" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>主成分分析</strong> PCA: principal component analysis は一番最初に提案された手法で，<strong>固有値分解</strong> に基づきます。</li>
 <li>特に 2 次元へのマッピングは皮質地図 cortial map との対応が考えられるので興味深い</li>
 <li>条件付き最大値を求める一般的方法でラグランジアン Lagrangian，あるいはラグランジェの未定乗数法 Lagrange multiplier が定義される。</li>
 </ul>
-<h3 id="_1">最初は<strike>知らない方が良い</strike>知らなくても良いラグランジアンの説明<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<ul>
-<li><a href="https://www.khanacademy.org/math/multivariable-calculus/applications-of-multivariable-derivatives/lagrange-multipliers-and-constrained-optimization/v/constrained-optimization-introduction">Khan アカデミーのラグランジアンの説明</a>, <a href="https://youtu.be/vwUV2IDLP8Q">YouTube</a></li>
-<li><a href="https://www.khanacademy.org/math/multivariable-calculus/applications-of-multivariable-derivatives/lagrange-multipliers-and-constrained-optimization/v/constrained-optimization-introduction">Constrained optimization introduction</a>, <a href="https://youtu.be/yuqB-d5MjZA">YouTube</a></li>
-<li><a href="https://www.khanacademy.org/math/multivariable-calculus/applications-of-multivariable-derivatives/lagrange-multipliers-and-constrained-optimization/v/lagrange-multipliers-using-tangency-to-solve-constrained-optimization">Lagrange multipliers, using tangency to solve constrained optimization</a>, <a href="https://youtu.be/yuqB-d5MjZA">YouTube</a></li>
-<li><a href="https://www.khanacademy.org/math/multivariable-calculus/applications-of-multivariable-derivatives/lagrange-multipliers-and-constrained-optimization/v/finishing-the-intro-lagrange-multiplier-example">Finishing the intro lagrange multiplier example</a>, <a href="https://youtu.be/aep6lwPqm6I">YouTube</a></li>
-<li><a href="https://www.khanacademy.org/math/multivariable-calculus/applications-of-multivariable-derivatives/lagrange-multipliers-and-constrained-optimization/v/the-lagrangian">The Lagrangian</a>, <a href="https://youtu.be/hQ4UNu1P2kw">YouTube</a></li>
-<li><a href="https://www.khanacademy.org/math/multivariable-calculus/applications-of-multivariable-derivatives/lagrange-multipliers-and-constrained-optimization/v/the-lagrangian">Meaning of the Lagrange multiplier</a>, <a href="https://youtu.be/m-G3K2GPmEQ">YouTube</a></li>
+<h3 id="_1">(最初は) <strike> 知らない方が良い </strike>知らなくても良いラグランジアン (ラグランジェ方程式) の説明<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li><a href="https://www.khanacademy.org/math/multivariable-calculus/applications-of-multivariable-derivatives/lagrange-multipliers-and-constrained-optimization/v/constrained-optimization-introduction" target="_blank">Khan アカデミーのラグランジアンの説明</a>,<ul>
+<li><a href="https://youtu.be/vwUV2IDLP8Q" target="_blank">YouTube</a></li>
 </ul>
+</li>
+<li><a href="https://www.khanacademy.org/math/multivariable-calculus/applications-of-multivariable-derivatives/lagrange-multipliers-and-constrained-optimization/v/constrained-optimization-introduction" target="_blank">Constrained optimization introduction</a>, <ul>
+<li><a href="https://youtu.be/yuqB-d5MjZA" target="_blank">YouTube</a></li>
+</ul>
+</li>
+<li><a href="https://www.khanacademy.org/math/multivariable-calculus/applications-of-multivariable-derivatives/lagrange-multipliers-and-constrained-optimization/v/lagrange-multipliers-using-tangency-to-solve-constrained-optimization" target="_blank">Lagrange multipliers, using tangency to solve constrained optimization</a>, <ul>
+<li><a href="https://youtu.be/yuqB-d5MjZA" target="_blank">YouTube</a></li>
+</ul>
+</li>
+<li><a href="https://www.khanacademy.org/math/multivariable-calculus/applications-of-multivariable-derivatives/lagrange-multipliers-and-constrained-optimization/v/finishing-the-intro-lagrange-multiplier-example" target="_blank">Finishing the intro lagrange multiplier example</a><ul>
+<li><a href="https://youtu.be/aep6lwPqm6I" target="_blank">YouTube</a></li>
+</ul>
+</li>
+<li><a href="https://www.khanacademy.org/math/multivariable-calculus/applications-of-multivariable-derivatives/lagrange-multipliers-and-constrained-optimization/v/the-lagrangian" target="_blank">The Lagrangian</a>, <ul>
+<li><a href="https://youtu.be/hQ4UNu1P2kw" target="_blank">YouTube</a></li>
+</ul>
+</li>
+<li><a href="https://www.khanacademy.org/math/multivariable-calculus/applications-of-multivariable-derivatives/lagrange-multipliers-and-constrained-optimization/v/the-lagrangian" target="_blank">Meaning of the Lagrange multiplier</a>, <ul>
+<li><a href="https://youtu.be/m-G3K2GPmEQ" target="_blank">YouTube</a></li>
+</ul>
+</li>
+</ol>
 <!--
 ## ラグランジアン
 - [オイラーラグランジェ方程式](https://youtu.be/sFqp2lCEvwM)
@@ -230,8 +262,8 @@
 \mathcal{L}=\mathbf{w}^\top\mathbf{X}^\top\mathbf{Xw}+\lambda\left({\mathbf{ww}^\top-1}\right)
 \end{equation}</script>
 </p>
-<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
-<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">math</span>
+<p>ちなみに ガンマ関数とは次の Python コードから分かるように，順列の一般化です</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">math</span>
 
 math.gamma(<span style="color: #B452CD">1</span>)
 math.gamma(<span style="color: #B452CD">2</span>)
@@ -239,38 +271,38 @@ math.gamma(<span style="color: #B452CD">3</span>)
 </pre></div>
 
 
-<h2 id="t-sne">t-SNE<a class="headerlink" href="#t-sne" title="Permanent link">&para;</a></h2>
+<h3 id="t-sne">t-SNE<a class="headerlink" href="#t-sne" title="Permanent link">&para;</a></h3>
 <ul>
-<li>t-SNE は「ティーズニー」と発音します。<ul>
-<li>ちなみに <script type="math/tex">f(x)</script> はどのように発音するか知っていますか？あるいは <script type="math/tex">f\left(x\vert y\right)</script> は？</li>
-</ul>
-</li>
+<li>t-SNE は「ティーズニー」と発音します。</li>
 <li>心理学者以外では支配的(かも)</li>
 <li>t: **<script type="math/tex">t</script>-分布</li>
 <li>S: <strong>S</strong>tochastic 確率的</li>
 <li>N: <strong>N</strong>eigbor 隣接(隣人)</li>
 <li>E: <strong>E</strong>mbedding 埋め込み</li>
 <li>PCA, FA, 古典的 MDS (Torgerson) が固有値に基づくのに対して，t-SNE は多次元空間と低次元空有間への写像について確率的な仮定を考え，両者の分布が近づくように学習を行う。<ul>
-<li>ここで，2 つの分布の距離を考える。距離の定義には様々が提案がなされているが <strong>カルバック=ライブラー</strong> ダイバージェンス(あるいは KL 距離)が用いられる。<a href="https://www.cis.twcu.ac.jp/~asakawa/2019komazawa/lect06supp/">本日の付録</a>参照</li>
+<li>ここで，2 つの分布の距離を考える。距離の定義には様々が提案がなされているが <strong>カルバック=ライブラー</strong> ダイバージェンス(あるいは KL 距離)が用いられる。<a href="../information_theory/" target="_blank">情報理論</a> をみてください。 </li>
 </ul>
 </li>
-<li>以下は van der Maaten and Hinton (2008) のオリジナル論文に掲載された結果である</li>
+<li>以下は van der Maaten and Hinton (2008) のオリジナル論文に掲載された結果</li>
 </ul>
 <p><center>
 <img src='../assets/2008vanderMaaten_tSNE_Fig2.svg' style="width:74%"><br>
-van der Maaten and Hinton (2008) Fig.2 </p>
-<p><img src='../assets/2008vanderMaaten_tSNE_Fig3.svg' style="width:74%">
-van der Maaten and Hinton (2008) Fig.3 
+van der Maaten and Hinton (2008) Fig.2 
 </center></p>
+<!--
+<img src='../assets/2008vanderMaaten_tSNE_Fig3.svg' style="width:74%">
+van der Maaten and Hinton (2008) Fig.3 
+-->
+
 <p><center>
 <img src='../assets/t-and-norm-dists.svg' style='width:49%'></br>
 t 分布(<script type="math/tex">\nu=1</script>)と標準正規分布の確率密度分布 pdf
 </center></p>
 <ul>
-<li><a href="https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_pca_tsne_fashion_mnist.ipynb">PCA と t-SNE の比較実験</a></li>
-<li>スチューデントの <script type="math/tex">t</script> 分布
-<a href="https://en.wikipedia.org/wiki/Student%27s_t-distribution"><script type="math/tex">t</script> 分布</a> の確率密度関数 pdf は以下のとおり: <font size='+2' color='green'>数学愛好者<strike><font color='red' style='bold'>数学恐怖症 For all math-phobia</font></strike>の皆様へ</font></li>
+<li><a href="https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_pca_tsne_fashion_mnist.ipynb">PCA と t-SNE の比較実験 colab 版</a></li>
 </ul>
+<h3 id="math-phobia"><strike> <font color='red' style='bold'> 数学恐怖症 (math-phobia) </font>  </strike>  数学愛好者 の皆様へ<a class="headerlink" href="#math-phobia" title="Permanent link">&para;</a></h3>
+<p><a href="https://en.wikipedia.org/wiki/Student%27s_t-distribution" target="_blank">スチューデントの <script type="math/tex">t</script> 分布</a> の確率密度関数 pdf は以下のとおり: </p>
 <p>
 <script type="math/tex; mode=display">\begin{equation}
 p(x,\nu)=\frac{\Gamma\left(\frac{\nu+1}{2}\right)}{\sqrt{\nu\pi}\,\Gamma\left(\frac{\nu}{2}\right)}\left(1+\frac{x^2}{\nu}\right)^{-\frac{\nu+1}{2}}.
@@ -281,7 +313,7 @@ p(x,\nu)=\frac{\Gamma\left(\frac{\nu+1}{2}\right)}{\sqrt{\nu\pi}\,\Gamma\left(\f
 <script type="math/tex">\nu</script> (「にゅう」と読むギリシャアルファベット)は自由でデータ数 <script type="math/tex">-1</script> です。</li>
 <li>
 <p>
-<script type="math/tex">\Gamma</script> は<a href="https://simple.wikipedia.org/wiki/Gamma_function">ガンマ関数</a>であり，
+<script type="math/tex">\Gamma</script> は<a href="https://simple.wikipedia.org/wiki/Gamma_function" target="_blank">ガンマ関数</a> であり，
 階乗の連続量への拡張とみなすことができます。</p>
 </li>
 <li>
@@ -307,7 +339,7 @@ p(x,\nu=1)=\frac{1}{\pi}\frac{1}{1+x^2},
 <script type="math/tex">\pi</script> は円周率で定数ですから，グラフの形を考えるときには無視して構いません。従って <script type="math/tex">t</script> 分布の本質は <script type="math/tex">\displaystyle\frac{1}{1+x^2}</script> であることになります。</p>
 </li>
 <li>
-<p><a href="https://colab.research.google.com/notebook?hl=ja#create=true&language=python3" target="_blank">codolab</a> で確認してみましょう。</p>
+<p>以下のコードを <a href="https://colab.research.google.com/notebook?hl=ja#create=true&amp;language=python3" target="_blank">colab</a> で確認してみましょう。</p>
 </li>
 </ul>
 <div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
@@ -319,23 +351,15 @@ p(x,\nu=1)=\frac{1}{\pi}\frac{1}{1+x^2},
     <span style="color: #658b00">print</span>(i, math.gamma(i))
 
 math.sqrt(math.pi) == math.gamma(<span style="color: #B452CD">1</span>/<span style="color: #B452CD">2</span>)
-</pre></div>
 
-
-<ul>
-<li>ガンマ関数の概形を描いてみましょう</li>
-</ul>
-<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
+<span style="color: #228B22"># ガンマ関数の概形を描いてみましょう</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
 x = np.linspace(<span style="color: #B452CD">0.25</span>,<span style="color: #B452CD">4</span>)
 y = [math.gamma(xi) <span style="color: #8B008B; font-weight: bold">for</span> xi <span style="color: #8B008B">in</span> x] 
 plt.plot(x,y)
-</pre></div>
 
-
-<ul>
-<li>つづいて正規分布と <script type="math/tex">t</script>-分布とを比較してみましょう</li>
-</ul>
-<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">scipy.stats</span> <span style="color: #8B008B; font-weight: bold">import</span> norm
+<span style="color: #228B22"># つづいて正規分布と $t$-分布とを比較してみましょう</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">scipy.stats</span> <span style="color: #8B008B; font-weight: bold">import</span> norm
 
 x = np.linspace(norm.ppf(<span style="color: #B452CD">0.001</span>), norm.ppf(<span style="color: #B452CD">0.999</span>), <span style="color: #B452CD">100</span>)
 nu = <span style="color: #B452CD">1</span>
@@ -346,11 +370,15 @@ plt.legend()
 </pre></div>
 
 
+<h4 id="_2">参考資料<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
 <ul>
-<li><a href="https://lvdmaaten.github.io/drtoolbox/">t-SNE</a></li>
-<li><a href="https://cs.stanford.edu/people/karpathy/tsnejs/">tSNEJS demo</a>, <a href="http://karpathy.github.io/2014/07/02/visualizing-top-tweeps-with-t-sne-in-Javascript/">blog</a></li>
-<li><a href="https://harveyslash.github.io/TSNE-Embedding-Visualisation">Embedding Projector</a></li>
-<li><a href="https://distill.pub/2016/misread-tsne/">How to Use t-SNE Effectively</a></li>
+<li><a href="https://lvdmaaten.github.io/drtoolbox/">t-SNE</a>  オリジナル作者 Van Maaten のページ</li>
+<li><a href="https://cs.stanford.edu/people/karpathy/tsnejs/" target="_blank">tSNEJS demo</a> Karpathy による解説記事, <ul>
+<li><a href="http://karpathy.github.io/2014/07/02/visualizing-top-tweeps-with-t-sne-in-Javascript/" target="_blank">blog</a></li>
+</ul>
+</li>
+<li><a href="https://harveyslash.github.io/TSNE-Embedding-Visualisation" target="_blank">Embedding Projector</a></li>
+<li><a href="https://distill.pub/2016/misread-tsne/" target="_blank">How to Use t-SNE Effectively</a> distill の記事論文</li>
 </ul>
               
             </div>
@@ -359,10 +387,10 @@ plt.legend()
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../data_science/" class="btn btn-neutral float-right" title="データサイエンス小史">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../information_theory/" class="btn btn-neutral float-right" title="情報理論">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../Hinton_Maxwell_award/" class="btn btn-neutral" title="ジェフェリー・ヒントンのマクセル賞受賞記念講演(2016)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../activation_functions/" class="btn btn-neutral" title="活性化関数"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -390,10 +418,10 @@ plt.legend()
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../Hinton_Maxwell_award/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../activation_functions/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../data_science/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../information_theory/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
