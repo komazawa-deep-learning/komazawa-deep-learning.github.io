@@ -8,7 +8,7 @@
   
   <meta name="author" content="Shin Asakawa">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>第 7 回 - 2020駒澤大学心理学特講IIIA</title>
+  <title>活性化関数 - 2020駒澤大学心理学特講IIIA</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -20,8 +20,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "\u7b2c 7 \u56de";
-    var mkdocs_page_input_path = "lect07.md";
+    var mkdocs_page_name = "\u6d3b\u6027\u5316\u95a2\u6570";
+    var mkdocs_page_input_path = "activation_functions.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -91,15 +91,9 @@
     <a class="" href="../lect06/">第 6 回</a>
 	    </li>
           
-            <li class="toctree-l1 current">
+            <li class="toctree-l1">
 		
-    <a class="current" href="./">第 7 回</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l2"><a href="#iiia">ディープラーニングの心理学的解釈 (心理学特講IIIA)</a></li>
-    
-
-    </ul>
+    <a class="" href="../lect07/">第 7 回</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -144,9 +138,15 @@
                     
     <a class="" href="../Hinton_Maxwell_award/">ジェフェリー・ヒントンのマクセル賞受賞記念講演(2016)</a>
                 </li>
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href="../activation_functions/">活性化関数</a>
+    <a class="current" href="./">活性化関数</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#activation-functions">活性化関数 activation functions</a></li>
+    
+
+    </ul>
                 </li>
                 <li class="">
                     
@@ -188,8 +188,12 @@
     <li><a href="..">Docs</a> &raquo;</li>
     
       
+        
+          <li>付録 &raquo;</li>
+        
+      
     
-    <li>第 7 回</li>
+    <li>活性化関数</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -199,16 +203,59 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="iiia"><a href="https://komazawa-deep-learning.github.io/">ディープラーニングの心理学的解釈 (心理学特講IIIA)</a><a class="headerlink" href="#iiia" title="Permanent link">&para;</a></h1>
-<div align='right'>
-<a href='mailto:educ0233@komazawa-u.ac.jp'>Shin Aasakawa</a>, all rights reserved.<br>
-Date: XX/XX/2020<br/>
-Appache 2.0 license<br/>
-</div>
+                <h2 id="activation-functions">活性化関数 activation functions<a class="headerlink" href="#activation-functions" title="Permanent link">&para;</a></h2>
+<ul>
+<li>以下のコードを <a href="https://colab.research.google.com/notebook?hl=ja#create=true&amp;language=python3" target="_blank">colab</a> で確認してみましょう。</li>
+</ul>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
+%matplotlib inline
 
-<p>
-<script type="math/tex">\ldots</script> 工事中 <script type="math/tex">\ldots</script>
-</p>
+<span style="color: #228B22"># Original: https://github.com/alrojo/tensorflow-tutorial/blob/master/lab1_FFN/lab1_FFN.ipynb</span>
+
+<span style="color: #228B22"># PLOT OF DIFFERENT OUTPUT USNITS</span>
+x = np.linspace(-<span style="color: #B452CD">3</span>, <span style="color: #B452CD">4</span>, <span style="color: #B452CD">100</span>)
+relu = <span style="color: #8B008B; font-weight: bold">lambda</span> x: np.maximum(<span style="color: #B452CD">0</span>, x)
+leaky_relu = <span style="color: #8B008B; font-weight: bold">lambda</span> x: np.maximum(<span style="color: #B452CD">0</span>, x) + <span style="color: #B452CD">0.1</span> * np.minimum(<span style="color: #B452CD">0</span>, x) 
+elu = <span style="color: #8B008B; font-weight: bold">lambda</span> x: (x &gt; <span style="color: #B452CD">0</span>)*x + (<span style="color: #B452CD">1</span> - (x &gt; <span style="color: #B452CD">0</span>)) * (np.exp(x) - <span style="color: #B452CD">1</span>) 
+sigmoid = <span style="color: #8B008B; font-weight: bold">lambda</span> x: (<span style="color: #B452CD">1</span>+np.exp(-x))**(-<span style="color: #B452CD">1</span>)
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">softmax</span>(w, t = <span style="color: #B452CD">1.0</span>):
+    e = np.exp(w)
+    dist = e / np.sum(e)
+    <span style="color: #8B008B; font-weight: bold">return</span> dist
+x_softmax = softmax(x)
+
+plt.figure(figsize=(<span style="color: #B452CD">8</span>,<span style="color: #B452CD">6</span>))
+plt.plot(x, relu(x), label=<span style="color: #CD5555">&#39;ReLU&#39;</span>, lw=<span style="color: #B452CD">2</span>)
+plt.plot(x, leaky_relu(x), label=<span style="color: #CD5555">&#39;Leaky ReLU&#39;</span>,lw=<span style="color: #B452CD">2</span>)
+plt.plot(x, elu(x), label=<span style="color: #CD5555">&#39;Elu&#39;</span>, lw=<span style="color: #B452CD">2</span>)
+plt.plot(x, sigmoid(x), label=<span style="color: #CD5555">&#39;Sigmoid&#39;</span>,lw=<span style="color: #B452CD">2</span>)
+plt.legend(loc=<span style="color: #B452CD">2</span>, fontsize=<span style="color: #B452CD">16</span>)
+plt.title(<span style="color: #CD5555">&#39;Non-linearities&#39;</span>, fontsize=<span style="color: #B452CD">20</span>)
+plt.ylim([-<span style="color: #B452CD">2</span>, <span style="color: #B452CD">4</span>])
+plt.xlim([-<span style="color: #B452CD">3</span>, <span style="color: #B452CD">3</span>])
+
+<span style="color: #228B22"># softmax</span>
+<span style="color: #228B22"># assert that all class probablities sum to one</span>
+<span style="color: #658b00">print</span>(np.sum(x_softmax))
+<span style="color: #8B008B; font-weight: bold">assert</span> <span style="color: #658b00">abs</span>(<span style="color: #B452CD">1.0</span> - x_softmax.sum()) &lt; <span style="color: #B452CD">1e-8</span>
+</pre></div>
+
+
+<!--
+[デモファイル 2019komazawa_activation_functions.ipynb](https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_activaton_functions.ipynb)
+-->
+
+<p><center>
+<img src="../assets/2012AlexNet_ReLU.svg" style="width:49%"><br>
+アレックスネットの収束の様子
+</center></p>
+<!--
+## 最終層（あるいは最終２層）は全結合層
+
+ドット積を実行し、得られた結果に非線形活性化関数により出力を計算<br>
+ネットワーク全体は、一方の生画像ピクセルから他方のクラススコアまで、単一の微分可能なスコア関数を依然として表現している。 最上位層の全結合層には損失関数（SVM/Softmax）がある。通常のニューラルネットワークの学習と同じ手法を用いる
+-->
               
             </div>
           </div>
@@ -216,10 +263,10 @@ Appache 2.0 license<br/>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../lect08/" class="btn btn-neutral float-right" title="第 8 回">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../t-SNE/" class="btn btn-neutral float-right" title="次元圧縮 t-SNE">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../lect06/" class="btn btn-neutral" title="第 6 回"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Hinton_Maxwell_award/" class="btn btn-neutral" title="ジェフェリー・ヒントンのマクセル賞受賞記念講演(2016)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -247,10 +294,10 @@ Appache 2.0 license<br/>
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../lect06/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../Hinton_Maxwell_award/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../lect08/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../t-SNE/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
