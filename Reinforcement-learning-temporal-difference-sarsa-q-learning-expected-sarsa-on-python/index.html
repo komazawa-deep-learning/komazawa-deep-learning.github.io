@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Shin Asakawa">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>強化学習 TD,Q学習,SARSA - 2020駒澤大学心理学特講IIIA</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="//fonts.googleapis.com/earlyaccess/notosansjp.css" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:600,800" rel="stylesheet">
+  <link href="../css/specific.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u5f37\u5316\u5b66\u7fd2 TD,Q\u5b66\u7fd2,SARSA";
+    var mkdocs_page_input_path = "Reinforcement-learning-temporal-difference-sarsa-q-learning-expected-sarsa-on-python.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> 2020駒澤大学心理学特講IIIA</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect00check_meet/">第 0 回 事前確認</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect00guidance/">第 0 回 ガイダンス</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect01/">第 1 回 05 月 08 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect02/">第 2 回 05 月 15 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect03/">第 3 回 05 月 22 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect04/">第 4 回</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect05/">第 5 回</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect06/">第 6 回</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect07/">第 7 回</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect08/">第 8 回</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect09/">第 9 回</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">付録</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../colaboratory_intro/">Colab 事始め</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../colaboratory_faq/">Colaboratory FAQ</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../eco/">エコシステム</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../python_numpy_intro_ja/">Python の基礎</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../python_modules/">Python modules</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../2020-0510how_to_save_and_share_colab_files/">2020-0510 課題提出の方法</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Hinton_Maxwell_award/">ジェフェリー・ヒントンのマクセル賞受賞記念講演(2016)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../activation_functions/">活性化関数</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../t-SNE/">次元圧縮 t-SNE</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../information_theory/">情報理論</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../data_science/">データサイエンス小史</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../how_to_read_math/">数式の読み方</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">強化学習 TD,Q学習,SARSA</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#td-sarsa-sarsa-q-python">TD (時間差)学習, SARSA, 期待 SARSA, Q 学習 と Python 実装</a></li>
+    
+
+    <li class="toctree-l3"><a href="#_1">前提知識</a></li>
+    
+
+    <li class="toctree-l3"><a href="#_2">強化学習におけるモデル依存学習とモデル自由学習</a></li>
+    
+
+    <li class="toctree-l3"><a href="#td">TD 学習 (時差学習)</a></li>
+    
+
+    <li class="toctree-l3"><a href="#_3">環境</a></li>
+    
+
+    <li class="toctree-l3"><a href="#sarsa">SARSA</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#epsilon">イプシロン (\epsilon) 貪欲(欲張り) 方策</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#q">Q 学習</a></li>
+    
+
+    <li class="toctree-l3"><a href="#sarsa_1">期待 SARSA</a></li>
+    
+
+    <li class="toctree-l3"><a href="#_4">比較</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#_5">収束</a></li>
+        
+            <li><a class="toctree-l4" href="#_6">成績</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#_7">結語</a></li>
+    
+
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">2020駒澤大学心理学特講IIIA</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>付録 &raquo;</li>
+        
+      
+    
+    <li>強化学習 TD,Q学習,SARSA</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="td-sarsa-sarsa-q-python">TD (時間差)学習, SARSA, 期待 SARSA, Q 学習 と Python 実装<a class="headerlink" href="#td-sarsa-sarsa-q-python" title="Permanent link">&para;</a></h1>
+<!-- date: 2020-0519-->
+
+<ul>
+<li>title: Reinforcement learning: Temporal-Difference, SARSA, Q-Learning &amp; Expected SARSA in python</li>
+<li>author: Vaibhav Kumar</li>
+<li>Date: May 9, 2019</li>
+<li>Original: <a href="https://towardsdatascience.com/reinforcement-learning-temporal-difference-sarsa-q-learning-expected-sarsa-on-python-9fecfda7467e">https://towardsdatascience.com/reinforcement-learning-temporal-difference-sarsa-q-learning-expected-sarsa-on-python-9fecfda7467e</a></li>
+</ul>
+<!-- 
+# TD, SARSA, Q-Learning and Expected SARSA along with their python implementation and comparison
+-->
+
+<!--
+> If one had to identify one idea as central and novel to reinforcement learning, it would undoubtedly be temporal-difference (TD) learning. — Andrew Barto and Richard S. Sutton
+-->
+
+<blockquote>
+<p>強化学習の中心的で斬新なアイデアを一つ挙げるとすれば、それは間違いなく時間差（TD）学習であろう。
+   -- アンドリュー・バルト， リチャード・S・サットン</p>
+</blockquote>
+<!-- # Pre-requisites
+- Basics of Reinforcement learning
+- Markov chains, Markov Decision Process (MDPs)
+- Bellman equation
+- Value, policy functions and iterations
+ -->
+
+<h1 id="_1">前提知識<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<ul>
+<li>強化学習の基本</li>
+<li>マルコフ連鎖, マルコフ決定プロセス(MDP)</li>
+<li>ベルマン方程式</li>
+<li>価値，方策関数，反復</li>
+</ul>
+<!-- # Model-dependent and model-free reinforcement learning
+Model-dependent RL algorithms (namely value and policy iterations) work with the help of a transition table. A transition table can be thought of as a life hack book which has all the knowledge the agent needs to be successful in the world it exists in. Naturally, writing such a book is very tedious and impossible in most cases which is why model dependent learning algorithms have little practical use.
+
+Temporal Difference is a model-free reinforcement learning algorithm. This means that the agent learns through actual experience rather than through a readily available all-knowing-hack-book (transition table). This enables us to introduce stochastic elements and large sequences of state-action pairs. The agent has no idea about the reward and transition systems. It does not know what will happen on taking an arbitrary action at an arbitrary state. The agent has to interact with “world” or “environment” and find out for itself.-->
+
+<h1 id="_2">強化学習におけるモデル依存学習とモデル自由学習<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h1>
+<p>モデル依存 RLアルゴリズム（すなわち、値と方策反復）は，遷移表の助けを借りて動作します。
+遷移表は、エージェントが存在する世界で成功するために必要なすべての知識が書かれたライフハック本と考えることができます。
+当然のことながら、そのような本を書くのは非常に面倒で、ほとんどの場合不可能です。</p>
+<p>Temporal Difference はモデル自由型の強化学習アルゴリズムです。
+これは、エージェントがすぐに入手可能な全知全能のハックブック（遷移表）ではなく、実際の経験を通して学習することを意味します。
+これにより、確率的な要素と状態-行為ペアの大規模な系列を導入することが可能になります。
+エージェントは、報酬システムと遷移システムについては何も知りません。
+エージェントは、任意の状態で任意の行動をとった場合に何が起こるかを知りません。
+エージェントは、「世界」や「環境」と相互作用し、自分自身で見つけ出さなければなりません。</p>
+<!-- # Temporal Difference Learning
+Temporal Difference algorithms enable the agent to learn through every single action it takes. TD updates the knowledge of the agent on every timestep (action) rather than on every episode (reaching the goal or end state).-->
+
+<h1 id="td">TD 学習 (時差学習)<a class="headerlink" href="#td" title="Permanent link">&para;</a></h1>
+<p>TD 時間差学習アルゴリズムは、エージェントが取る一つ一つの行動を通して学習することを可能にします。
+TD 学習では、エピソード（ゴールや終了状態に到達する）ごとではなく、タイムステップ（行動）ごとにエージェントの知識を更新します。</p>
+<!-- 
+\[
+NewEstimates \leftarrow OldEstimate + StepSize[Target - OldEstimate]
+\]-->
+
+<p>
+<script type="math/tex; mode=display">
+\text{新しい状態評価} \leftarrow \text{古い状態評価} + \text{ステップサイズ}\left[\text{目標} - \text{古い状態評価}\right]
+</script>
+</p>
+<!-- The value Target-OldEstimate is called the target error. StepSize is usually denoted by α is also called the learning rate. Its value lies between 0 and 1.
+
+The equation above helps us achieve **Target** by making updates at every timestep. 
+Target is the utility of a state. 
+Higher utility means a better state for the agent to transition into. For the sake of brevity of this post, I have assumed the readers know about the [Bellman equation](https://en.wikipedia.org/wiki/Bellman_equation). According to it, the utility of a state is the expected value of the discounted reward as follows:-->
+
+<p>上式の 目標-古い状態評価 を目標誤差と呼びます。
+ステップサイズ は 通常 <script type="math/tex">\alpha</script> で表され、学習率と呼ばれます。<script type="math/tex">\alpha</script> の値は 0 から 1 の間になります。</p>
+<p>上式は、タイムステップごとに更新を行うことで、<strong>Target</strong> を達成するのに役立ちます。
+目標とは状態の効用(関数)です。
+効用が高ければ、エージェントが移行しやすい状態になることを意味します。
+ここでは <a href="https://en.wikipedia.org/wiki/Bellman_equation">Bellman 方程式</a> を知っている と仮定しています。
+ベルマン方程式から，ある状態の効用は、以下の割引報酬の期待値です。 </p>
+<!-- 
+\[
+Target=E_\pi\left[\sum_{k=0}^{\infty}\gamma^k r_{t+k+1}\right]
+\] -->
+
+<p>
+<script type="math/tex; mode=display">
+\text{目標}=\mathbb{E}_{\pi}\left[\sum_{k=0}^{\infty}\gamma^k r_{t+k+1}\right]
+</script>
+</p>
+<!-- In layman terms, we are letting an agent run free into a world. The agent has no knowledge of the state, the rewards and transitions. It interacts with the environment (make random or informed actions) and learns new estimates (values of state-action pairs) by updating it’s existing knowledge continuously after taking every action.
+
+The discussion till now shall give rise to several questions such as — What is an environment? How will the agent interact with the environment? How will the agent choose actions i.e what action will the agent take in a particular state (policy)?
+
+This is where SARSA and Q-Learning come in. These are the two control policies that will guide our agent in an environment and enable it to learn interesting things. But before that, we shall discuss what is the environment.-->
+
+<p>平たく言えば、我々はエージェントを世界に自由に走らせます。
+エージェントは、状態、報酬、遷移についての知識を持っていません。
+エージェントは環境と相互作用し（ランダムな行動や情報に基づいた行動をとる）、すべての行動をとった後に既存の知識を継続的に更新することで、 新たな推定値（状態と行動のペアの値）を学習します。</p>
+<p>これまでの議論では、次のようないくつかの疑問が出てきます。
+エージェントはどのように環境と相互作用するのか？
+エージェントはどのように行動を選択するのか、すなわち 特定の状態（ポリシー） でどのような行動をとるのか？</p>
+<p>これが SARSA と Q-学習 の出番です。
+これらは、環境の中でエージェントを誘導し、興味深いことを学ぶことを可能にする ２ つの 制御ポリシーです。
+これらを説明する前に、環境とは何かを議論しなければなりません。</p>
+<h1 id="_3">環境<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h1>
+<!--
+An environment can be thought of as a mini-world where an agent can observe discrete states, take actions and observe rewards by taking those actions. Think of a video game as an environment and yourself as the agent. In the game Doom, you as an agent will observe the states (screen frames) and take actions (press keys like Forward, backward, jump, shoot etc) and observe rewards. Killing an enemy would yield you pleasure (utility) and a positive reward while moving ahead won’t yield you much reward but you would still want to do that to get future rewards (find and then kill the enemy). Creating such environments can be tedious and hard (<a href="https://en.wikipedia.org/wiki/Development_of_Doom">a team of 7 people worked for more than a year to develop Doom</a>).-->
+
+<p>環境は、エージェントが離散的な状態を観察し、行動をとり、その行動をとることで報酬を観察することができるミニ世界と考えることができます。
+ビデオゲームは環境であり、自分自身がエージェントであると考えてください。
+ゲーム「ドゥーム」では、エージェントであるあなたは、状態（画面のフレーム）を観察し、アクション（前進、後退、ジャンプ、シュートなどのキーを押す）を行い、報酬を観察します。
+敵を殺せば喜び (効用) が得られ、前進している間はプラスの報酬が得られ、あまり報酬は得られませんが、将来の報酬(敵を見つけて殺す) を得るために ゲームをしたいと思うでしょう。
+このような環境を作るのは面倒で大変な作業です (<a href="https://en.wikipedia.org/wiki/Development_of_Doom">7人のチームが1年以上かけて Doom を開発</a>)。</p>
+<!-- 
+OpenAI gym comes to the rescue! gym is a python library that has several in-built environments on which you can test various reinforcement learning algorithms. It has established itself as an academic standard to share, analyze and compare results. Gym is very well [documented](https://gym.openai.com/docs/) and super easy to use. You must read the documents and familiarize yourself with it before proceeding further.
+
+For novel applications of reinforcement learning, you will have to create your own environments. It’s advised to always refer and write gym compatible environments and release them publicly so that everyone can use them. Reading the gym’s source code will help you do that. It is tedious but fun!-->
+
+<p>OpenAI gym が登場したことは福音です。
+gym は 様々な強化学習アルゴリズムをテストできる環境が組み込まれている Python ライブラリ です。
+結果を共有したり、分析したり、比較したりするための学術的な標準環境としての地位を確立しています。
+Gym は <a href="https://gym.openai.com/docs/">ドキュメント</a>が整備されていて、使いやすいです。
+ドキュメントを読んで慣れておく必要があります。</p>
+<p>強化学習の応用のためには、自分で環境を作る必要があります。
+常に gym 互換の環境を参考にして書いて、誰もが使えるように公開しておくことをお勧めします。
+Gym の ソースコードを読めば、公開ができるようになります。
+面倒だけど楽しい！ と思っている人にはおすすめです。</p>
+<h1 id="sarsa">SARSA<a class="headerlink" href="#sarsa" title="Permanent link">&para;</a></h1>
+<!-- > SARSA is acronym for State-Action-Reward-State-Action-->
+
+<blockquote>
+<p>SARSA とは，State-Action-Reward-State-Action の省略形です</p>
+</blockquote>
+<!-- SARSA is an on-policy TD control method. A policy is a state-action pair tuple. In python, you can think of it as a dictionary with keys as the state and values as the action. Policy maps the action to be taken at each state. An on-policy control method chooses the action for each state during learning by following a certain policy (mostly the one it is evaluating itself, like in policy iteration). Our aim is to estimate $QQ\pi(s,a)$ for the current policy $\pi$ and all state-action $(s-a)$ pairs. We do this using TD update rule applied at every timestep by letting the agent transition from one state-action pair to another state-action pair (unlike model dependent RL techniques where the agent transitions from a state to another state).-->
+
+<p>SARSA とははオンポリシーな 時間差制御方式 です。
+ポリシー (方策) とは 状態 と 動作(行動) とのペアのことです。
+python では 状態 を キー、動作(行動) を 値 とする 辞書 dict と考えることができます。
+ポリシー(方策) は各状態 で取るべき 動作（行動） をマッピングします。
+オンポリシー制御では、学習中にある ポリシー (大抵はポリシー反復 のように自分自身で評価しているもの) に従うことで、 状態ごとに 動作 (行動) を選択します。
+我々の目的は、現在の 方策 <script type="math/tex">pi</script> と全ての 状態行動 <script type="math/tex">(s-a)</script> のペアについて、 <script type="math/tex">Q \pi(s,a)</script> を推定することです。
+これは、ある 状態-動作(行動) の対 から 別の 状態-動作(行動)  のペア に エージェント を遷移させることで、 タイムステップ ごとに 適用される TD 更新規則 を用いて行う (状態 から 別の 状態に エージェントを遷移させる モデル依存型 強化学習技法とは異なります)。 </p>
+<!-- **Q-value** You must be already familiar with the utility value of a state, Q-value is the same with the only difference of being defined over the state-action pair rather than just the state. It’s a mapping between state-action pair and a real number denoting its utility. Q-learning and SARSA are both policy control methods which work on evaluating the optimal Q-value for all action-state pairs.-->
+
+<p><strong>Q-値</strong> 状態の効用値についてはすでにお馴染みでしょうが、Q-値 も同じです。
+Q-値 は、状態と行動のペアとその効用を表す実数とのマッピングです。
+Q-学習 と SARSA とは、すべての 行動-状態 のペアに対して 最適な Q-値 を評価する 方策制御手法です。</p>
+<!-- The update rule for SARSA is:-->
+
+<p>SARSA の更新則は:</p>
+<p>
+<script type="math/tex; mode=display">
+Q(S_t,A_t) \leftarrow Q(S_t,A_t) + \alpha\left[ R_{t+1}+\gamma Q(S_{t+1},A_{t+1}-Q(S_t,A_t)\right]
+</script>
+<!--
+<img alt="Source: Introduction to Reinforcement learning by Sutton and Barto — 6.7" src="https://cdn-images-1.medium.com/max/1280/1*3Ul422CbPyIDJI0XJVun3Q.png" /> 
+--></p>
+<!-- 
+If a state $S$ is terminal (goal state or end state) then, $Q(S,a)=0\forall a\in A$ where A is the set of all possible actions
+-->
+
+<p>ある状態 <script type="math/tex">S</script> が終了した場合 (ゴールに達したり，終了状態に陥った場合)， <script type="math/tex">Q(S,a)=0\forall a\in A</script> となります。
+ここで，<script type="math/tex">A</script> は全行動レパートリーを表します。</p>
+<p><img alt="Source: Introduction to Reinforcement learning by Sutton and Barto —Chapter 6" src="https://cdn-images-1.medium.com/max/1280/1*fYuXsaJoyCWuIZu49vx_GA.png" /></p>
+<!--## ε-greedy policy-->
+
+<h2 id="epsilon">イプシロン (<script type="math/tex">\epsilon</script>) 貪欲(欲張り) 方策<a class="headerlink" href="#epsilon" title="Permanent link">&para;</a></h2>
+<!-- Epsilon-greedy policy is this: -->
+
+<p>イプシロン貪欲な方策とは以下のことを言います:</p>
+<!-- 
+1. Generate a random number $r\in[0,1]$
+2. If $r>\epsilon$ choose a random action
+3. Else choose an action derived from the $Q$ values (which yields the maximum utility)-->
+
+<ol>
+<li>0 から 1 の範囲 (<script type="math/tex">r\in[0,1]</script>) の乱数 <script type="math/tex">r</script> を一つ発生させます</li>
+<li>もし <script type="math/tex">r>\epsilon</script> であれあば，ランダムにある行動を選択します</li>
+<li>そうでなければ (すなわち <script type="math/tex">r\le\epsilon</script>) <script type="math/tex">Q</script> 値 (最大効用をあたえる) 行動を選択します</li>
+</ol>
+<!-- It shall become more clear after reading the python code.-->
+
+<!--It shall become more clear after reading the python code.-->
+
+<p>以下に Python コードを示します:</p>
+<!-- > epsilon-greedy.py-->
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">epsilon_greedy</span>(Q, epsilon, n_actions, s, train=<span style="color: #8B008B; font-weight: bold">False</span>):
+    <span style="color: #CD5555">&quot;&quot;&quot;</span>
+<span style="color: #CD5555">    @param Q Q values state x action -&gt; value</span>
+<span style="color: #CD5555">    @param epsilon for exploration</span>
+<span style="color: #CD5555">    @param s number of states</span>
+<span style="color: #CD5555">    @param train if true then no random actions selected</span>
+<span style="color: #CD5555">    &quot;&quot;&quot;</span>
+    <span style="color: #8B008B; font-weight: bold">if</span> train <span style="color: #8B008B">or</span> np.random.rand() &lt; epsilon:
+        action = np.argmax(Q[s, :])
+    <span style="color: #8B008B; font-weight: bold">else</span>:
+        action = np.random.randint(<span style="color: #B452CD">0</span>, n_actions)
+    <span style="color: #8B008B; font-weight: bold">return</span> action
+</pre></div>
+
+
+<p>Source: https://gist.githubusercontent.com/TimeTraveller-San/40a7a2655743bf6230706d45d1201b49/raw/25ddaaf54e946d33576e27e6bab45a40f22864a9/epsilon_greedy.py</p>
+<!-- The value of **$\epsilon$ determines the exploration-exploitation of the agent**. -->
+
+<p>
+<script type="math/tex">\epsilon</script> の値は <strong>探索 = 知識利用 のジレンマ</strong> を決定します。英語では exploration-exploitatoin dilemma と呼びます。綴が似ているために英語で覚えた方が良いでしょう。</p>
+<!-- 
+If $\epsilon$ is large, the random number $r$ will hardly ever be larger than $\epsilon$ and a random action will hardly ever be taken (less exploration, more exploitation)
+
+If $\epsilon$ is small, the random number $r$ will often be larger than $\epsilon$ which will cause the agent to choose more random actions. This stochastic characteristic will allow the agent to explore the environment even more.
+
+As a rule of thumb, ε is usually chosen to be 0.9 but can be varied depending upon the type of environment. In some cases, ε is annealed over time to allow higher exploration followed by higher exploitation.
+
+Here’s a quick and simple python implementation of SARSA applied on the Taxi-v2 gym environment
+-->
+
+<ul>
+<li>
+<script type="math/tex">\epsilon</script> が大きければ、乱数 <script type="math/tex">r</script> が <script type="math/tex">\epsilon</script> より大きくなることはほとんどなく、 ランダムな行動はほとんど起こらない (探索が少なく、知識利用 が多くなる)。</li>
+<li>
+<script type="math/tex">\epsilon</script> が小さければ、乱数 <script type="math/tex">r</script> は <script type="math/tex">\epsilon</script> よりも大きくなることが多いので、 エージェント は より 多く の ランダム な 行動 を 選択 する こと に なる。</li>
+</ul>
+<p>このような確率的な性質を利用して、エージェントは環境をより探索することができるようになります。</p>
+<p>経験則として、<script type="math/tex">\epsilon</script> は通常 <script type="math/tex">0.9</script> に選ばれます。
+ですが <script type="math/tex">\epsilon</script> は 環境タイプに応じて変化させることができます。
+いくつかのケースでは、より高い探索に続いてより高い知識利用 を可能にするために、時間の経過とともに <script type="math/tex">\epsilon</script> は 緩和 漸減 されます。</p>
+<p>以下2 Taxi-v2 の gym 環境に適用された SARSA のシンプルな Python コードを示します。</p>
+<!--- > SARSA.py -->
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">gym</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">time</span>
+
+<span style="color: #CD5555">&quot;&quot;&quot;</span>
+<span style="color: #CD5555">SARSA on policy learning python implementation.</span>
+<span style="color: #CD5555">This is a python implementation of the SARSA algorithm in the Sutton and Barto&#39;s book on</span>
+<span style="color: #CD5555">RL. It&#39;s called SARSA because - (state, action, reward, state, action). The only difference</span>
+<span style="color: #CD5555">between SARSA and Qlearning is that SARSA takes the next action based on the current policy</span>
+<span style="color: #CD5555">while qlearning takes the action with maximum utility of next state.</span>
+<span style="color: #CD5555">Using the simplest gym environment for brevity: https://gym.openai.com/envs/FrozenLake-v0/</span>
+<span style="color: #CD5555">&quot;&quot;&quot;</span>
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">init_q</span>(s, a, <span style="color: #658b00">type</span>=<span style="color: #CD5555">&quot;ones&quot;</span>):
+    <span style="color: #CD5555">&quot;&quot;&quot;</span>
+<span style="color: #CD5555">    @param s the number of states</span>
+<span style="color: #CD5555">    @param a the number of actions</span>
+<span style="color: #CD5555">    @param type random, ones or zeros for the initialization</span>
+<span style="color: #CD5555">    &quot;&quot;&quot;</span>
+    <span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #658b00">type</span> == <span style="color: #CD5555">&quot;ones&quot;</span>:
+        <span style="color: #8B008B; font-weight: bold">return</span> np.ones((s, a))
+    <span style="color: #8B008B; font-weight: bold">elif</span> <span style="color: #658b00">type</span> == <span style="color: #CD5555">&quot;random&quot;</span>:
+        <span style="color: #8B008B; font-weight: bold">return</span> np.random.random((s, a))
+    <span style="color: #8B008B; font-weight: bold">elif</span> <span style="color: #658b00">type</span> == <span style="color: #CD5555">&quot;zeros&quot;</span>:
+        <span style="color: #8B008B; font-weight: bold">return</span> np.zeros((s, a))
+
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">epsilon_greedy</span>(Q, epsilon, n_actions, s, train=<span style="color: #8B008B; font-weight: bold">False</span>):
+    <span style="color: #CD5555">&quot;&quot;&quot;</span>
+<span style="color: #CD5555">    @param Q Q values state x action -&gt; value</span>
+<span style="color: #CD5555">    @param epsilon for exploration</span>
+<span style="color: #CD5555">    @param s number of states</span>
+<span style="color: #CD5555">    @param train if true then no random actions selected</span>
+<span style="color: #CD5555">    &quot;&quot;&quot;</span>
+    <span style="color: #8B008B; font-weight: bold">if</span> train <span style="color: #8B008B">or</span> np.random.rand() &lt; epsilon:
+        action = np.argmax(Q[s, :])
+    <span style="color: #8B008B; font-weight: bold">else</span>:
+        action = np.random.randint(<span style="color: #B452CD">0</span>, n_actions)
+    <span style="color: #8B008B; font-weight: bold">return</span> action
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">sarsa</span>(alpha, gamma, epsilon, episodes, max_steps, n_tests, render = <span style="color: #8B008B; font-weight: bold">False</span>, test=<span style="color: #8B008B; font-weight: bold">False</span>):
+    <span style="color: #CD5555">&quot;&quot;&quot;</span>
+<span style="color: #CD5555">    @param alpha learning rate</span>
+<span style="color: #CD5555">    @param gamma decay factor</span>
+<span style="color: #CD5555">    @param epsilon for exploration</span>
+<span style="color: #CD5555">    @param max_steps for max step in each episode</span>
+<span style="color: #CD5555">    @param n_tests number of test episodes</span>
+<span style="color: #CD5555">    &quot;&quot;&quot;</span>
+    env = gym.make(<span style="color: #CD5555">&#39;Taxi-v2&#39;</span>)
+    n_states, n_actions = env.observation_space.n, env.action_space.n
+    Q = init_q(n_states, n_actions, <span style="color: #658b00">type</span>=<span style="color: #CD5555">&quot;ones&quot;</span>)
+    timestep_reward = []
+    <span style="color: #8B008B; font-weight: bold">for</span> episode <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(episodes):
+        <span style="color: #658b00">print</span>(<span style="color: #CD5555">f&quot;Episode: {</span>episode<span style="color: #CD5555">}&quot;</span>)
+        total_reward = <span style="color: #B452CD">0</span>
+        s = env.reset()
+        a = epsilon_greedy(Q, epsilon, n_actions, s)
+        t = <span style="color: #B452CD">0</span>
+        done = <span style="color: #8B008B; font-weight: bold">False</span>
+        <span style="color: #8B008B; font-weight: bold">while</span> t &lt; max_steps:
+            <span style="color: #8B008B; font-weight: bold">if</span> render:
+                env.render()
+            t += <span style="color: #B452CD">1</span>
+            s_, reward, done, info = env.step(a)
+            total_reward += reward
+            a_ = epsilon_greedy(Q, epsilon, n_actions, s_)
+            <span style="color: #8B008B; font-weight: bold">if</span> done:
+                Q[s, a] += alpha * ( reward  - Q[s, a] )
+            <span style="color: #8B008B; font-weight: bold">else</span>:
+                Q[s, a] += alpha * ( reward + (gamma * Q[s_, a_] ) - Q[s, a] )
+            s, a = s_, a_
+            <span style="color: #8B008B; font-weight: bold">if</span> done:
+                <span style="color: #8B008B; font-weight: bold">if</span> render:
+                    <span style="color: #658b00">print</span>(<span style="color: #CD5555">f&quot;This episode took {</span>t<span style="color: #CD5555">} timesteps and reward {</span>total_reward<span style="color: #CD5555">}&quot;</span>)
+                timestep_reward.append(total_reward)
+                <span style="color: #8B008B; font-weight: bold">break</span>
+    <span style="color: #8B008B; font-weight: bold">if</span> render:
+        <span style="color: #658b00">print</span>(<span style="color: #CD5555">f&quot;Here are the Q values:\n{</span>Q<span style="color: #CD5555">}\nTesting now:&quot;</span>)
+    <span style="color: #8B008B; font-weight: bold">if</span> test:
+        test_agent(Q, env, n_tests, n_actions)
+    <span style="color: #8B008B; font-weight: bold">return</span> timestep_reward
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">test_agent</span>(Q, env, n_tests, n_actions, delay=<span style="color: #B452CD">0.1</span>):
+    <span style="color: #8B008B; font-weight: bold">for</span> test <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(n_tests):
+        <span style="color: #658b00">print</span>(<span style="color: #CD5555">f&quot;Test #{</span>test<span style="color: #CD5555">}&quot;</span>)
+        s = env.reset()
+        done = <span style="color: #8B008B; font-weight: bold">False</span>
+        epsilon = <span style="color: #B452CD">0</span>
+        total_reward = <span style="color: #B452CD">0</span>
+        <span style="color: #8B008B; font-weight: bold">while</span> <span style="color: #8B008B; font-weight: bold">True</span>:
+            time.sleep(delay)
+            env.render()
+            a = epsilon_greedy(Q, epsilon, n_actions, s, train=<span style="color: #8B008B; font-weight: bold">True</span>)
+            <span style="color: #658b00">print</span>(<span style="color: #CD5555">f&quot;Chose action {</span>a<span style="color: #CD5555">} for state {</span>s<span style="color: #CD5555">}&quot;</span>)
+            s, reward, done, info = env.step(a)
+            total_reward += reward
+            <span style="color: #8B008B; font-weight: bold">if</span> done:
+                <span style="color: #658b00">print</span>(<span style="color: #CD5555">f&quot;Episode reward: {</span>total_reward<span style="color: #CD5555">}&quot;</span>)
+                time.sleep(<span style="color: #B452CD">1</span>)
+                <span style="color: #8B008B; font-weight: bold">break</span>
+
+
+<span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #00688B">__name__</span> ==<span style="color: #CD5555">&quot;__main__&quot;</span>:
+    alpha = <span style="color: #B452CD">0.4</span>
+    gamma = <span style="color: #B452CD">0.999</span>
+    epsilon = <span style="color: #B452CD">0.9</span>
+    episodes = <span style="color: #B452CD">3000</span>
+    max_steps = <span style="color: #B452CD">2500</span>
+    n_tests = <span style="color: #B452CD">20</span>
+    timestep_reward = sarsa(alpha, gamma, epsilon, episodes, max_steps, n_tests)
+    <span style="color: #658b00">print</span>(timestep_reward)
+</pre></div>
+
+
+<p>source: https://gist.github.com/TimeTraveller-San/4aa1ed2d0644ad05d84348dd4fb797f3#file-sarsa-py</p>
+<!-- # Q-Learning -->
+
+<h1 id="q">Q 学習<a class="headerlink" href="#q" title="Permanent link">&para;</a></h1>
+<!-- Q-Learning is an off-policy TD control policy. 
+It’s exactly like SARSA with the only difference being — it doesn’t follow a policy to find the next action A’ but rather chooses the action in a greedy fashion. Similar to SARSA its aim is to evaluate the Q values and its update rule is:-->
+
+<p>Q-学習 は、方策によらない TD 制御です。
+SARSA とほぼ同じです。唯一の違いは、次の 動作(行動) <script type="math/tex">A</script> を見つけるための 方策に従うのではなく、 貪欲に 動作(行動)  を選択することです。 
+SARSA と同様に Q値 を評価することを目的としており、更新則 は次のようになります:</p>
+<!--![Source: Introduction to Reinforcement learning by Sutton and Barto — 6.8](https://cdn-images-1.medium.com/max/1280/1*5zVUC42FKx_PXizelaleyw.png)-->
+
+<p>
+<script type="math/tex; mode=display">
+Q(S_t,A_t)\leftarrow Q(S_t,A_t)+\alpha\left[R_{t+1}+\gamma\max_{alpha} Q(S_{t+1},a)-Q(S_t,A_t)\right]
+</script>
+</p>
+<!-- Observe: Unlike SARSA where an action $\mathbf{A}’$ was chosen by following a certain policy, here the action $\mathbf{A}'$ (a in this case) is chosen in a greedy fashion by simply taking the max of Q over it.-->
+
+<p>SARSA では、ある方策 に従って 行動 <script type="math/tex">A'</script> を選択していました。
+これに対し、上式 Q 学習 では 行動 <script type="math/tex">A'</script> (<script type="math/tex">a</script>) は、 <script type="math/tex">Q</script> の最大値を取るだけの 欲張り(貪欲, グリーディ)な 方法で選択されます。</p>
+<!--Here’s the Q-learning algorithm-->
+
+<p>Q 学習のアルゴリズムを以下に示します:</p>
+<p><img alt="Source: Introduction to Reinforcement learning by Sutton and Barto — Chapter 6" src="https://cdn-images-1.medium.com/max/1280/1*Rf_H0YXhSPPm-iyBY2Gnjg.png" /></p>
+<p>Python コードは以下になります:
+<!-- Here’s the python implementation of Q-learning:--></p>
+<!-- > qlearning.py  -->
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">gym</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">time</span>
+
+<span style="color: #CD5555">&quot;&quot;&quot;</span>
+<span style="color: #CD5555">Qlearning is an off policy learning python implementation.</span>
+<span style="color: #CD5555">This is a python implementation of the qlearning algorithm in the Sutton and</span>
+<span style="color: #CD5555">Barto&#39;s book on RL. It&#39;s called SARSA because - (state, action, reward, state,</span>
+<span style="color: #CD5555">action). The only difference between SARSA and Qlearning is that SARSA takes the</span>
+<span style="color: #CD5555">next action based on the current policy while qlearning takes the action with</span>
+<span style="color: #CD5555">maximum utility of next state.</span>
+<span style="color: #CD5555">Using the simplest gym environment for brevity: https://gym.openai.com/envs/FrozenLake-v0/</span>
+<span style="color: #CD5555">&quot;&quot;&quot;</span>
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">init_q</span>(s, a, <span style="color: #658b00">type</span>=<span style="color: #CD5555">&quot;ones&quot;</span>):
+    <span style="color: #CD5555">&quot;&quot;&quot;</span>
+<span style="color: #CD5555">    @param s the number of states</span>
+<span style="color: #CD5555">    @param a the number of actions</span>
+<span style="color: #CD5555">    @param type random, ones or zeros for the initialization</span>
+<span style="color: #CD5555">    &quot;&quot;&quot;</span>
+    <span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #658b00">type</span> == <span style="color: #CD5555">&quot;ones&quot;</span>:
+        <span style="color: #8B008B; font-weight: bold">return</span> np.ones((s, a))
+    <span style="color: #8B008B; font-weight: bold">elif</span> <span style="color: #658b00">type</span> == <span style="color: #CD5555">&quot;random&quot;</span>:
+        <span style="color: #8B008B; font-weight: bold">return</span> np.random.random((s, a))
+    <span style="color: #8B008B; font-weight: bold">elif</span> <span style="color: #658b00">type</span> == <span style="color: #CD5555">&quot;zeros&quot;</span>:
+        <span style="color: #8B008B; font-weight: bold">return</span> np.zeros((s, a))
+
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">epsilon_greedy</span>(Q, epsilon, n_actions, s, train=<span style="color: #8B008B; font-weight: bold">False</span>):
+    <span style="color: #CD5555">&quot;&quot;&quot;</span>
+<span style="color: #CD5555">    @param Q Q values state x action -&gt; value</span>
+<span style="color: #CD5555">    @param epsilon for exploration</span>
+<span style="color: #CD5555">    @param s number of states</span>
+<span style="color: #CD5555">    @param train if true then no random actions selected</span>
+<span style="color: #CD5555">    &quot;&quot;&quot;</span>
+    <span style="color: #8B008B; font-weight: bold">if</span> train <span style="color: #8B008B">or</span> np.random.rand() &lt; epsilon:
+        action = np.argmax(Q[s, :])
+    <span style="color: #8B008B; font-weight: bold">else</span>:
+        action = np.random.randint(<span style="color: #B452CD">0</span>, n_actions)
+    <span style="color: #8B008B; font-weight: bold">return</span> action
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">qlearning</span>(alpha, gamma, epsilon, episodes, max_steps, n_tests, render = <span style="color: #8B008B; font-weight: bold">False</span>, test=<span style="color: #8B008B; font-weight: bold">False</span>):
+    <span style="color: #CD5555">&quot;&quot;&quot;</span>
+<span style="color: #CD5555">    @param alpha learning rate</span>
+<span style="color: #CD5555">    @param gamma decay factor</span>
+<span style="color: #CD5555">    @param epsilon for exploration</span>
+<span style="color: #CD5555">    @param max_steps for max step in each episode</span>
+<span style="color: #CD5555">    @param n_tests number of test episodes</span>
+<span style="color: #CD5555">    &quot;&quot;&quot;</span>
+    env = gym.make(<span style="color: #CD5555">&#39;Taxi-v2&#39;</span>)
+    n_states, n_actions = env.observation_space.n, env.action_space.n
+    Q = init_q(n_states, n_actions, <span style="color: #658b00">type</span>=<span style="color: #CD5555">&quot;ones&quot;</span>)
+    timestep_reward = []
+    <span style="color: #8B008B; font-weight: bold">for</span> episode <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(episodes):
+        <span style="color: #658b00">print</span>(<span style="color: #CD5555">f&quot;Episode: {</span>episode<span style="color: #CD5555">}&quot;</span>)
+        s = env.reset()
+        a = epsilon_greedy(Q, epsilon, n_actions, s)
+        t = <span style="color: #B452CD">0</span>
+        total_reward = <span style="color: #B452CD">0</span>
+        done = <span style="color: #8B008B; font-weight: bold">False</span>
+        <span style="color: #8B008B; font-weight: bold">while</span> t &lt; max_steps:
+            <span style="color: #8B008B; font-weight: bold">if</span> render:
+                env.render()
+            t += <span style="color: #B452CD">1</span>
+            s_, reward, done, info = env.step(a)
+            total_reward += reward
+            a_ = np.argmax(Q[s_, :])
+            <span style="color: #8B008B; font-weight: bold">if</span> done:
+                Q[s, a] += alpha * ( reward  - Q[s, a] )
+            <span style="color: #8B008B; font-weight: bold">else</span>:
+                Q[s, a] += alpha * ( reward + (gamma * Q[s_, a_]) - Q[s, a] )
+            s, a = s_, a_
+            <span style="color: #8B008B; font-weight: bold">if</span> done:
+                <span style="color: #8B008B; font-weight: bold">if</span> render:
+                    <span style="color: #658b00">print</span>(<span style="color: #CD5555">f&quot;This episode took {</span>t<span style="color: #CD5555">} timesteps and reward: {</span>total_reward<span style="color: #CD5555">}&quot;</span>)
+                timestep_reward.append(total_reward)
+                <span style="color: #8B008B; font-weight: bold">break</span>
+    <span style="color: #8B008B; font-weight: bold">if</span> render:
+        <span style="color: #658b00">print</span>(<span style="color: #CD5555">f&quot;Here are the Q values:\n{</span>Q<span style="color: #CD5555">}\nTesting now:&quot;</span>)
+    <span style="color: #8B008B; font-weight: bold">if</span> test:
+        test_agent(Q, env, n_tests, n_actions)
+    <span style="color: #8B008B; font-weight: bold">return</span> timestep_reward
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">test_agent</span>(Q, env, n_tests, n_actions, delay=<span style="color: #B452CD">1</span>):
+    <span style="color: #8B008B; font-weight: bold">for</span> test <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(n_tests):
+        <span style="color: #658b00">print</span>(<span style="color: #CD5555">f&quot;Test #{</span>test<span style="color: #CD5555">}&quot;</span>)
+        s = env.reset()
+        done = <span style="color: #8B008B; font-weight: bold">False</span>
+        epsilon = <span style="color: #B452CD">0</span>
+        <span style="color: #8B008B; font-weight: bold">while</span> <span style="color: #8B008B; font-weight: bold">True</span>:
+            time.sleep(delay)
+            env.render()
+            a = epsilon_greedy(Q, epsilon, n_actions, s, train=<span style="color: #8B008B; font-weight: bold">True</span>)
+            <span style="color: #658b00">print</span>(<span style="color: #CD5555">f&quot;Chose action {</span>a<span style="color: #CD5555">} for state {</span>s<span style="color: #CD5555">}&quot;</span>)
+            s, reward, done, info = env.step(a)
+            <span style="color: #8B008B; font-weight: bold">if</span> done:
+                <span style="color: #8B008B; font-weight: bold">if</span> reward &gt; <span style="color: #B452CD">0</span>:
+                    <span style="color: #658b00">print</span>(<span style="color: #CD5555">&quot;Reached goal!&quot;</span>)
+                <span style="color: #8B008B; font-weight: bold">else</span>:
+                    <span style="color: #658b00">print</span>(<span style="color: #CD5555">&quot;Shit! dead x_x&quot;</span>)
+                time.sleep(<span style="color: #B452CD">3</span>)
+                <span style="color: #8B008B; font-weight: bold">break</span>
+
+
+<span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #00688B">__name__</span> ==<span style="color: #CD5555">&quot;__main__&quot;</span>:
+    alpha = <span style="color: #B452CD">0.4</span>
+    gamma = <span style="color: #B452CD">0.999</span>
+    epsilon = <span style="color: #B452CD">0.9</span>
+    episodes = <span style="color: #B452CD">10000</span>
+    max_steps = <span style="color: #B452CD">2500</span>
+    n_tests = <span style="color: #B452CD">2</span>
+    timestep_reward = qlearning(alpha, gamma, epsilon, episodes, max_steps, n_tests, test = <span style="color: #8B008B; font-weight: bold">True</span>)
+    <span style="color: #658b00">print</span>(timestep_reward)
+</pre></div>
+
+
+<p>source: https://gist.github.com/TimeTraveller-San/9e56f9d09be7d50b795ef2f83be2ba72#file-qlearning-py</p>
+<!-- # Expected SARSA-->
+
+<h1 id="sarsa_1">期待 SARSA<a class="headerlink" href="#sarsa_1" title="Permanent link">&para;</a></h1>
+<!-- Expected SARSA, as the name suggest takes the expectation (mean) of Q values for every possible action in the current state. The target update rule shall make things more clear:-->
+
+<p>期待 SARSA とは、その名が示すように、現在の状態で起こりうるすべての行動についての Q値 の期待値(平均値)を取ります。
+ターゲットの更新則を使うと、より明確になります。</p>
+<!-- ![Source: Introduction to Reinforcement learning by Sutton and Barto —6.9](https://cdn-images-1.medium.com/max/1280/1*04P6VvjaGK2eiV0afZemPg.png)-->
+
+<p>
+<script type="math/tex; mode=display">
+Q(S_t,A_t)\leftarrow Q(S_t,A_t) + \alpha\left[R_{t+1}+\gamma\mathbb{E}\left[Q(S_{t+1},A_{t+1}\vert S_{t+1}\right]-Q(S_t,A_t)\right]\\ \\
+\hspace{6em}\leftarrow Q(S_t,A_t)+\alpha\left[
+R_{t+1}+\gamma\sum_{\alpha}\pi(a\vert S_{t+1}) Q(S_{t+1},a) - Q(S_t,A_t)
+\right]
+</script>
+</p>
+<!-- And here’s the python implementation:-->
+
+<p>Python コードを以下に示します:</p>
+<!-- > expectedsarsa.py -->
+
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">gym</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">time</span>
+
+<span style="color: #CD5555">&quot;&quot;&quot;</span>
+<span style="color: #CD5555">SARSA on policy learning python implementation.</span>
+<span style="color: #CD5555">This is a python implementation of the SARSA algorithm in the Sutton and Barto&#39;s book on</span>
+<span style="color: #CD5555">RL. It&#39;s called SARSA because - (state, action, reward, state, action). The only difference</span>
+<span style="color: #CD5555">between SARSA and Qlearning is that SARSA takes the next action based on the current policy</span>
+<span style="color: #CD5555">while qlearning takes the action with maximum utility of next state.</span>
+<span style="color: #CD5555">Using the simplest gym environment for brevity: https://gym.openai.com/envs/FrozenLake-v0/</span>
+<span style="color: #CD5555">&quot;&quot;&quot;</span>
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">init_q</span>(s, a, <span style="color: #658b00">type</span>=<span style="color: #CD5555">&quot;ones&quot;</span>):
+    <span style="color: #CD5555">&quot;&quot;&quot;</span>
+<span style="color: #CD5555">    @param s the number of states</span>
+<span style="color: #CD5555">    @param a the number of actions</span>
+<span style="color: #CD5555">    @param type random, ones or zeros for the initialization</span>
+<span style="color: #CD5555">    &quot;&quot;&quot;</span>
+    <span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #658b00">type</span> == <span style="color: #CD5555">&quot;ones&quot;</span>:
+        <span style="color: #8B008B; font-weight: bold">return</span> np.ones((s, a))
+    <span style="color: #8B008B; font-weight: bold">elif</span> <span style="color: #658b00">type</span> == <span style="color: #CD5555">&quot;random&quot;</span>:
+        <span style="color: #8B008B; font-weight: bold">return</span> np.random.random((s, a))
+    <span style="color: #8B008B; font-weight: bold">elif</span> <span style="color: #658b00">type</span> == <span style="color: #CD5555">&quot;zeros&quot;</span>:
+        <span style="color: #8B008B; font-weight: bold">return</span> np.zeros((s, a))
+
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">epsilon_greedy</span>(Q, epsilon, n_actions, s, train=<span style="color: #8B008B; font-weight: bold">False</span>):
+    <span style="color: #CD5555">&quot;&quot;&quot;</span>
+<span style="color: #CD5555">    @param Q Q values state x action -&gt; value</span>
+<span style="color: #CD5555">    @param epsilon for exploration</span>
+<span style="color: #CD5555">    @param s number of states</span>
+<span style="color: #CD5555">    @param train if true then no random actions selected</span>
+<span style="color: #CD5555">    &quot;&quot;&quot;</span>
+    <span style="color: #8B008B; font-weight: bold">if</span> train <span style="color: #8B008B">or</span> np.random.rand() &lt; epsilon:
+        action = np.argmax(Q[s, :])
+    <span style="color: #8B008B; font-weight: bold">else</span>:
+        action = np.random.randint(<span style="color: #B452CD">0</span>, n_actions)
+    <span style="color: #8B008B; font-weight: bold">return</span> action
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">expected_sarsa</span>(alpha, gamma, epsilon, episodes, max_steps, n_tests, render = <span style="color: #8B008B; font-weight: bold">False</span>, test=<span style="color: #8B008B; font-weight: bold">False</span>):
+    <span style="color: #CD5555">&quot;&quot;&quot;</span>
+<span style="color: #CD5555">    @param alpha learning rate</span>
+<span style="color: #CD5555">    @param gamma decay factor</span>
+<span style="color: #CD5555">    @param epsilon for exploration</span>
+<span style="color: #CD5555">    @param max_steps for max step in each episode</span>
+<span style="color: #CD5555">    @param n_tests number of test episodes</span>
+<span style="color: #CD5555">    &quot;&quot;&quot;</span>
+    env = gym.make(<span style="color: #CD5555">&#39;Taxi-v2&#39;</span>)
+    n_states, n_actions = env.observation_space.n, env.action_space.n
+    Q = init_q(n_states, n_actions, <span style="color: #658b00">type</span>=<span style="color: #CD5555">&quot;ones&quot;</span>)
+    timestep_reward = []
+    <span style="color: #8B008B; font-weight: bold">for</span> episode <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(episodes):
+        <span style="color: #658b00">print</span>(<span style="color: #CD5555">f&quot;Episode: {</span>episode<span style="color: #CD5555">}&quot;</span>)
+        total_reward = <span style="color: #B452CD">0</span>
+        s = env.reset()
+        t = <span style="color: #B452CD">0</span>
+        done = <span style="color: #8B008B; font-weight: bold">False</span>
+        <span style="color: #8B008B; font-weight: bold">while</span> t &lt; max_steps:
+            <span style="color: #8B008B; font-weight: bold">if</span> render:
+                env.render()
+            t += <span style="color: #B452CD">1</span>
+            a = epsilon_greedy(Q, epsilon, n_actions, s)
+            s_, reward, done, info = env.step(a)
+            total_reward += reward
+            <span style="color: #8B008B; font-weight: bold">if</span> done:
+                Q[s, a] += alpha * ( reward  - Q[s, a] )
+            <span style="color: #8B008B; font-weight: bold">else</span>:
+                expected_value = np.mean(Q[s_,:])
+                <span style="color: #228B22"># print(Q[s,:], sum(Q[s,:]), len(Q[s,:]), expected_value)</span>
+                Q[s, a] += alpha * (reward + (gamma * expected_value) - Q[s, a])
+            s = s_
+            <span style="color: #8B008B; font-weight: bold">if</span> done:
+                <span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #8B008B; font-weight: bold">True</span>:
+                    <span style="color: #658b00">print</span>(<span style="color: #CD5555">f&quot;This episode took {</span>t<span style="color: #CD5555">} timesteps and reward {</span>total_reward<span style="color: #CD5555">}&quot;</span>)
+                timestep_reward.append(total_reward)
+                <span style="color: #8B008B; font-weight: bold">break</span>
+    <span style="color: #8B008B; font-weight: bold">if</span> render:
+        <span style="color: #658b00">print</span>(<span style="color: #CD5555">f&quot;Here are the Q values:\n{</span>Q<span style="color: #CD5555">}\nTesting now:&quot;</span>)
+    <span style="color: #8B008B; font-weight: bold">if</span> test:
+        test_agent(Q, env, n_tests, n_actions)
+    <span style="color: #8B008B; font-weight: bold">return</span> timestep_reward
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">test_agent</span>(Q, env, n_tests, n_actions, delay=<span style="color: #B452CD">0.1</span>):
+    <span style="color: #8B008B; font-weight: bold">for</span> test <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(n_tests):
+        <span style="color: #658b00">print</span>(<span style="color: #CD5555">f&quot;Test #{</span>test<span style="color: #CD5555">}&quot;</span>)
+        s = env.reset()
+        done = <span style="color: #8B008B; font-weight: bold">False</span>
+        epsilon = <span style="color: #B452CD">0</span>
+        total_reward = <span style="color: #B452CD">0</span>
+        <span style="color: #8B008B; font-weight: bold">while</span> <span style="color: #8B008B; font-weight: bold">True</span>:
+            time.sleep(delay)
+            env.render()
+            a = epsilon_greedy(Q, epsilon, n_actions, s, train=<span style="color: #8B008B; font-weight: bold">True</span>)
+            <span style="color: #658b00">print</span>(<span style="color: #CD5555">f&quot;Chose action {</span>a<span style="color: #CD5555">} for state {</span>s<span style="color: #CD5555">}&quot;</span>)
+            s, reward, done, info = env.step(a)
+            total_reward += reward
+            <span style="color: #8B008B; font-weight: bold">if</span> done:
+                <span style="color: #658b00">print</span>(<span style="color: #CD5555">f&quot;Episode reward: {</span>total_reward<span style="color: #CD5555">}&quot;</span>)
+                time.sleep(<span style="color: #B452CD">1</span>)
+                <span style="color: #8B008B; font-weight: bold">break</span>
+
+
+<span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #00688B">__name__</span> ==<span style="color: #CD5555">&quot;__main__&quot;</span>:
+    alpha = <span style="color: #B452CD">0.1</span>
+    gamma = <span style="color: #B452CD">0.9</span>
+    epsilon = <span style="color: #B452CD">0.9</span>
+    episodes = <span style="color: #B452CD">1000</span>
+    max_steps = <span style="color: #B452CD">2500</span>
+    n_tests = <span style="color: #B452CD">20</span>
+    timestep_reward = expected_sarsa(alpha, gamma, epsilon,
+                                     episodes, max_steps, n_tests,
+                                     render=<span style="color: #8B008B; font-weight: bold">False</span>, test=<span style="color: #8B008B; font-weight: bold">True</span>
+                                     )
+    <span style="color: #658b00">print</span>(timestep_reward)
+</pre></div>
+
+
+<p>source: https://gist.github.com/TimeTraveller-San/5bd93710e118633e0793dc5d0b92b19a#file-expectedsarsa-py</p>
+<!-- # Comparison-->
+
+<h1 id="_4">比較<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h1>
+<!--I’ve used the following parameters to test the three algorithms in Taxi-v2 gym environment-->
+
+<p>以下のパラメータで 3 つのアルゴリズムを比較しました</p>
+<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>lpha = <span style="color: #B452CD">0.4</span>
+gamma = <span style="color: #B452CD">0.999</span>
+epsilon = <span style="color: #B452CD">0.9</span>
+episodes = <span style="color: #B452CD">2000</span>
+max_steps = <span style="color: #B452CD">2500</span> <span style="color: #228B22"># (max number of time steps possible in a single episode)</span>
+</pre></div>
+
+
+<!-- Here are the plots showcasing the comparison between the above three policy control methods:-->
+
+<p>ここでは、上記の 3 つの方策制御方法の比較 をプロットします。</p>
+<!-- ## Convergence:
+
+Clearly, by the following plots, Q learning (green) converges before both SARSA (orange) and expected SARSA (Blue)
+ -->
+
+<h2 id="_5">収束<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>以下のプロットが示すように、Q 学習 (緑) は SARSA(オレンジ) と 期待 SARSA(青) の両者より先に収束しました。</p>
+<p><img alt="SARSA, Q-learning &amp; Expected SARSA — Convergence comparison" src="https://cdn-images-1.medium.com/max/1280/1*0LpFOud2FUKciZ9jPd1ZBA.png" /></p>
+<!--
+## Performance:-->
+
+<h2 id="_6">成績<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<!-- For my implementation of the three algorithms, Q-learning seems to perform the best and Expected SARSA performs the worst.
+ -->
+
+<p>実装した 3 つのアルゴリズムでは、Q-学習 が最も良く、期待 SARSA が最も悪い性能のようです。</p>
+<p><img alt="SARSA, Q-learning &amp; Expected SARSA — performance comparison!" src="https://cdn-images-1.medium.com/max/1280/1*IC0L25IzedYZ_TujMHpRKg.png" /></p>
+<!-- # Conclusion -->
+
+<h1 id="_7">結語<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h1>
+<!-- Temporal Difference learning is the most important reinforcement learning concept. It’s further derivatives like DQN and double DQN (I may discuss them later in another post) have achieved groundbreaking results renowned in the field of AI. Google’s alpha go used DQN algorithm along with CNNs to defeat the go world champion. You are now equipped with the theoretical and practical knowledge of basic TD, go out and explore!
+ -->
+
+<p>時間差学習 は 最も重要な強化学習の概念です。 DQN や ダブルDQN のような、さらに派生したもの<!--（後で別の記事で説明するかもしれません）-->
+は、AI の分野で有名な画期的な結果を達成しています。
+Google の アルファ碁は、囲碁の世界チャンピオンを倒すために、CNN と DQN アルゴリズムを使用しました。
+<!--これで、基本的な TD の理論と実践的な知識が身につきました。--></p>
+<!-- 
+    > In case I made some errors please mention them in the responses. Thanks for reading.
+-->
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../how_to_read_math/" class="btn btn-neutral" title="数式の読み方"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright (c) 2020</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../how_to_read_math/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
