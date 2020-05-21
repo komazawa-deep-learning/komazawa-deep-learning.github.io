@@ -142,6 +142,8 @@
         
             <li><a class="toctree-l3" href="#hubel-and-wiesel-blackmore">生理学との対応 (Hubel and Wiesel のネコとサル, Blackmore のネコ, ヴァンエッセン)</a></li>
         
+            <li><a class="toctree-l3" href="#marr-and-poggio-1976">Marr and Poggio (1976)</a></li>
+        
             <li><a class="toctree-l3" href="#_9">現代的ニューラルネットワークモデルと生理学との対応</a></li>
         
         </ul>
@@ -297,13 +299,15 @@ Appache 2.0 license<br/>
 <li>訓練データ，テストデータ，検証データ</li>
 <li>ニューラルネットワーク neural networks</li>
 <li>パーセプトロン perceptron </li>
-<li>畳み込みニューラルネットワーク convolutional neural netoworks</li>
-<li><font color="lightgray">誤差逆伝播法 back propagation </li>
+<li>畳み込みニューラルネットワーク convolutional neural netoworks
+<font color="lightgray"></li>
+<li>誤差逆伝播法 error back propagation </li>
+<li>損失関数 loss functions, 誤差関数 error functions, 目的関数 objective functions, 目標関数 target functions</li>
 <li>勾配降下法 gradient descent methods</li>
-<li>ソフトマックス関数 softmax function</font>
-<font color="gray"></li>
+<li>ソフトマックス関数 softmax function</li>
 <li>交差エントロピー cross entropy</li>
-<li>確率的勾配降下法 stochastic gradient descent</font></li>
+<li>確率的勾配降下法 stochastic gradient descent methods
+</font></li>
 </ul>
 <h1 id="_2">クイズの答え:<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h1>
 <ul>
@@ -320,7 +324,11 @@ Appache 2.0 license<br/>
 CNN はケーブルニュースネットワークだったりします。 DNN は市民権を得てきた感があるので ディープニューラルネットワークで良いでしょう</p>
 </li>
 <li>
-<p>colab に自分のためののコメントを書くために markdown の書式を覚えておいた方が良いです。</p>
+<p>colab に自分のためののコメントを書くために markdown の書式を覚えておいた方が良いです。(補講で少し取り上げました)</p>
+</li>
+<li>
+<p>最先端の話をしています。画像処理が人間を超える性能を示すようになったから，最近の AI ブームがあります。
+これは，第二回の授業でも取り上げました。だからこそ，この授業があります。干からびた化石のような知識を教えるつもりはありません。</p>
 </li>
 <li>
 <p><a href="../Hinton_Maxwell_award/" target="_blank">ジェフェリー・ヒントンのマクセル賞受賞記念講演(2016)</a></p>
@@ -346,19 +354,27 @@ CNN はケーブルニュースネットワークだったりします。 DNN �
 <h1 id="_4">実習<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h1>
 <ul>
 <li><a href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0515komazawa_step_by_step_CNN_Pytorch.ipynb" target="_blank">もう少し詳しくステップバイステップで画像認識</a></li>
-<li>
-<p><a href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0514komazawa_visualise_first_layers.ipynb" target="_blank">第一層目の視覚化</a> - 視覚特徴の視覚化。ガボールフィルタとか，色ブロッブとか。</p>
-</li>
-<li>
-<p><a href="https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_miniumXOR_exercise00.ipynb">XOR</a></p>
-</li>
-<li><a href="https://drive.google.com/open?id=1aIXgVtd2CCE5tMpXD2J9fbX1j8xgk1Kf">畳込みニューラルネットワークによる日本語古典籍くずし字 kminst の認識実習</a></li>
+<li><a href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0514komazawa_visualise_first_layers.ipynb" target="_blank">第一層目の視覚化</a> - 視覚特徴の視覚化。ガボールフィルタとか，色ブロッブとか。</li>
+</ul>
+<div align="center">
+  <img src="../assets/1946Gabor_fig1_9.svg" style="width:59%">
+  <img src="../assets/1946Gabor_fig1_6.jpg" style="width:39%"><br/>
+</div>
+
+<ul>
+<li><a href="https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_miniumXOR_exercise00.ipynb">XOR</a></li>
+<li><a href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2019cnps_01kmnist.ipynb" target="_blank">畳込みニューラルネットワークによる日本語古典籍くずし字 kminst の認識実習</a> <!--(https://drive.google.com/open?id=1aIXgVtd2CCE5tMpXD2J9fbX1j8xgk1Kf)--></li>
 </ul>
 <!--
 - [○☓分類器](./2019OX_classifier.html)
 - [pose](https://storage.googleapis.com/tfjs-models/demos/posenet/camera.html)
 - [nothotdog](../nothotdog/)
 -->
+
+<div align="center">
+  <img src="https://miro.medium.com/max/2812/1*bD_DMBtKwveuzIkQTwjKQQ.png" style="width:74%"><br/>
+  from https://towardsdatascience.com/the-w3h-of-alexnet-vggnet-resnet-and-inception-7baaaecccc96
+</div>
 
 <hr />
 <h1 id="_5">デモ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h1>
@@ -671,20 +687,57 @@ Julesz (1981) Fig. 2 より
 </ul>
 </li>
 </ul>
+<h2 id="marr-and-poggio-1976">Marr and Poggio (1976)<a class="headerlink" href="#marr-and-poggio-1976" title="Permanent link">&para;</a></h2>
+<p>中枢神経系は 4 つのほぼ独立したレベルの記述で理解される必要がある。
+1. 計算の性質が表現されるレベル、
+2. 計算を実装するアルゴリズムが特徴づけられるレベル、
+3. アルゴリズムが特定のメカニズムにコミットされるレベル、
+4. メカニズムがハードウェアで実現されるレベル</p>
+<p>である。
+一般的に、計算の性質は解決すべき問題によって決定され、使用されるメカニズムは利用可能なハードウェアに依存し、選択される特定のアルゴリズムは問題と利用可能なメカニズムに依存する。</p>
+<p>のちに 3 つにまとめられ，それが有名になりました。ですが，出始めは 4 つでした。他の授業では Marr の 3 水準と呼ばれるかも知れません。
+その有名になった Marr の 3 水準とは
+1. 計算論
+2. アルゴリズム
+3. 実装
+にあたります。脳を理解する上で，3 つを区別して考えましょうというスローガンです。</p>
 <h2 id="_9">現代的ニューラルネットワークモデルと生理学との対応<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <p><center>
-<img src='../assets/2016Yamins_Fig1.svg' style='width:94%'>
-<img src='../assets/2016Yamins_Fig2.svg' style='width:94%'>
-<img src='../assets/2016Yamins_Fig3.svg' style='width:94%'></p>
-<p><img src='../assets/2014Yamins_Fig2.svg' style='width:74%'>
-<img src='../assets/2014Yamins_FigS2.svg' style='width:74%'></p>
-<p><img src="../assets/2020Schrimpf_fig1.svg" style="width:84%">
+<img src='../assets/2016Yamins_fig1s_ja.svg' style='width:94%'>
+<!--<img src='../assets/2016Yamins_Fig1.svg' style='width:94%'>-->
+<img src='../assets/2016Yamins_fig2ja.svg' style='width:94%'>
 </center></p>
-<p><a href="../assets/2018asakawa_jdlaGtestChapt7.pdf">G 検定公式テキスト7章より</a></p>
 <p><center>
-<img src='../assets/2012Zeiler_Deconvolution.png' style='width:49%'></br>
+<img src='../assets/2016Yamins_fig3s_ja.svg' style='width:84%'><br/>
+<div align="left" style="width:84%">
+目標駆動型モデリングの構成要素。
+内側の円は、与えられた数のレイヤーのモデルを含む完全なモデルクラスの部分空間を表す。
+目標駆動モデルは、特に最適なモデルを発見するために、モデル・クラス内の軌道（実線）に沿ってシステムを駆動する学習アルゴリズム（黒の点線矢印）を使用して構築される。
+各ゴールは、そのゴールを解くのに特に適したパラメータを含むモデルクラス（太い黒の等高線）内の引き寄せの盆地に対応していると考えることができる。
+計算結果は、課題がモデルのパラメータ設定に強い制約を与えることを示す。
+すなわち、与えられた課題の最適化パラメータのセットは、元の空間に比べて非常に小さいということである。
+これらの目標駆動モデルは、与えられた課題領域での行動の根底にあると考えられている脳領域のニューロンの応答特性をどの程度予測できるかについて評価することができる。
+例えば、単語認識のために最適化されたモデルのユニット、聴覚皮質の一次領域、ベルト領域、パラベルト領域の応答特性と比較することができる。
+また、モデルを互いに比較して、異なるタイプの課題がどの程度の神経構造の共有につながるかを判断することもできる。
+また、様々な構成要素のルール（教師あり、教師なし、半教師あり）を研究して、それらが生後の発達や専門知識学習の間にどのように異なるダイナミクスにつながるかを判断することもできる（緑の破線のパス）。
+</div>
+</center></p>
+<p><center>
+<!--<img src='../assets/2014Yamins_fig2Aja.svg' style='width:74%'>-->
+<!--<img src='../assets/2014Yamins_FigS2.svg' style='width:74%'>-->
+<img src="../assets/2020Schrimpf_fig1.svg" style="width:84%">
+</center></p>
+<!--<a href="../assets/2018asakawa_jdlaGtestChapt7.pdf">G 検定公式テキスト7章より</a>-->
+
+<p><center>
+<img src='../assets/2012Zeiler_Deconvolution.png' style='width:77%'></br>
 <br>Zeiller 2012 より
 </center></p>
+<div align="center">
+<img src="../assets/2010ZeilerKrishnanTaylorFerguss_fig.svg" style="width:88%"><br/>
+Zeiler et. al. (2010) Fig. 7, and 8
+</div>
+
 <hr />
 <h1 id="3-cnn">3. 畳込みニューラルネット(CNN)<a class="headerlink" href="#3-cnn" title="Permanent link">&para;</a></h1>
 <p>深層学習 (ディープラーニング) の中で <strong>畳み込みニューラルネットワーク</strong> CNN と呼ばれるニューラルネットワークについて解説します。</p>
@@ -956,7 +1009,7 @@ We now describe the individual layers and the details of their hyperparameters a
 <ul>
 <li>入力層[32x32x3]: 信号は画像の生データ（画素値）幅w(32)，高さh(32)、色チャネル3(R, G, B)</li>
 <li>畳込み層: 下位層の限局された小領域のニューロンの出力の荷重付き総和を計算(内積，ドット積）。12個のフィルタを使用すると[32x32x12]となる。</li>
-<li>ReLU層の活性化関数は ReLU (Recutified Linear Unit) \(max(0,x)\)<!--入力範囲は変更されない([32x32x12])。--></li>
+<li>ReLU層の活性化関数は ReLU (Recutified Linear Unit) <script type="math/tex">max(0,x)</script><!--入力範囲は変更されない([32x32x12])。--></li>
 <li>プーリング層: 空間次元（幅,高さ）に沿ってダウンサンプリングを実行。[16x16x12]のようになる。</li>
 <li>全結合層はクラスに属する確率を計算: 10 の数字のそれぞれが CIFAR-10 の 10 カテゴリーの分類確率に対応するサイズ[1x1x10]に変換。通常のニューラルネットワーク同様、全結合層のニューロンは前層の全ニューロンと結合する。</li>
 </ul>
@@ -1034,35 +1087,40 @@ LeNet5 (LeCun, 1998)<br></p>
 <p><strong>ゼロパディング</strong></p>
 </li>
 <li>
-<p>出力層ニューロン数のことを出力層の <strong>深さ</strong> 数と呼ぶハイパーパラメータである。深さ数とはフィルタ数（カーネル数）とも呼ばれる。第 1 畳込み層が生画像であれば，奥行き次元を構成する各ニューロンによって種々の方位を持つ線分(エッジ検出細胞)や色ブロッブのような特徴表現を獲得可能となる。入力の同じ領域を <strong>深さ列</strong> とするニューロン集団を <strong>ファイバ</strong> ともいう。</p>
+<p>1 出力層ニューロン数のことを出力層の <strong>深さ</strong> 数と呼ぶハイパーパラメータである。深さ数とはフィルタ数（カーネル数）とも呼ばれる。第 1 畳込み層が生画像であれば，奥行き次元を構成する各ニューロンによって種々の方位を持つ線分(エッジ検出細胞)や色ブロッブのような特徴表現を獲得可能となる。入力の同じ領域を <strong>深さ列</strong> とするニューロン集団を <strong>ファイバ</strong> ともいう。</p>
 </li>
 <li>
-<p>フィルタを上下左右にずらす幅を <strong>ストライド幅</strong> と呼ぶ。ストライド幅が 1 ならフィルタを 1 画素ずつ移動することを意味する。ストライドが 2ならフィルタは一度に 2 画素ずつジャンプさせる。ストライド幅が大きければ入力信号のサンプリング間隔が大きく広がることを意味する。ストライド幅が大きくなれば上位層のニューロン数は減少する。</p>
+<p>2 フィルタを上下左右にずらす幅を <strong>ストライド幅</strong> と呼ぶ。ストライド幅が 1 ならフィルタを 1 画素ずつ移動することを意味する。ストライドが 2ならフィルタは一度に 2 画素ずつジャンプさせる。ストライド幅が大きければ入力信号のサンプリング間隔が大きく広がることを意味する。ストライド幅が大きくなれば上位層のニューロン数は減少する。</p>
 </li>
 <li>
-<p>入力の境界上の値をゼロで埋め込むことがある。これを <strong>ゼロパディング</strong> という。ゼロパディングの量はハイパーパラメータである。ゼロパディングにより出力層ニューロンの数を制御できる。下位層の空間情報を正確に保存するには入力と出力の幅，高さは同じである必要がある。</p>
+<p>3 入力の境界上の値をゼロで埋め込むことがある。これを <strong>ゼロパディング</strong> という。ゼロパディングの量はハイパーパラメータである。ゼロパディングにより出力層ニューロンの数を制御できる。下位層の空間情報を正確に保存するには入力と出力の幅，高さは同じである必要がある。</p>
 </li>
 </ol>
-<p>入力層のニューロン数を\(W\)，上位にある畳込み層のニューロン数を\(F\)，とすれば出力層に必要なニューロン数\(S\)は，周辺のゼロパディング を\(P\)とすれば \((W-F+2P)/S+1\) で算出できる。たとえば下図でストライド 1 とゼロパディング 0 であれば入力 7x7 でフィルタサイズが 3x3 であれば 5x5(=S=(7-3+2x0)/1+1=5) の出力である。ストライド 2 ならば 3x3=(S=(7-3+2x0)/2+1=3) となる。</p>
+<p>入力層のニューロン数を <script type="math/tex">W</script>，上位にある畳込み層のニューロン数を <script type="math/tex">F</script>，とすれば出力層に必要なニューロン数 <script type="math/tex">S</script> は，周辺のゼロパディング を <script type="math/tex">P</script> とすれば <script type="math/tex">(W-F+2P)/S+1</script> で算出できる。
+  たとえば下図でストライド <script type="math/tex">1</script> とゼロパディング <script type="math/tex">0</script> であれば入力 <script type="math/tex">7\times7</script> でフィルタサイズが <script type="math/tex">3\times3</script> であれば 5x5(=S=(7-3+2x0)/1+1=5) の出力である。
+  ストライド <script type="math/tex">2</script> ならば <script type="math/tex">3\times 3=(S=(7-3+2x\times )/2+1=3)</script> となる。</p>
 <!--
-We can compute the spatial size of the output volume as a function of the input volume size (\\(W\\)), the receptive field size of the Conv Layer neurons (\\(F\\)), the stride with which they are applied (\\(S\\)), and the amount of zero padding used (\\(P\\)) on the border. You can convince yourself that the correct formula for calculating how many neurons "fit" is given by \\((W - F + 2P)/S + 1\\). For example for a 7x7 input and a 3x3 filter with stride 1 and pad 0 we would get a 5x5 output. With stride 2 we would get a 3x3 output. Lets also see one more graphical example:
+We can compute the spatial size of the output volume as a function of the input volume size ($W$), the receptive field size of the Conv Layer neurons ($F$), the stride with which they are applied ($S$), and the amount of zero padding used ($P$) on the border. You can convince yourself that the correct formula for calculating how many neurons "fit" is given by $(W - F + 2P)/S + 1$. For example for a 7x7 input and a 3x3 filter with stride 1 and pad 0 we would get a 5x5 output. With stride 2 we would get a 3x3 output. Lets also see one more graphical example:
 -->
 
-<div>
-  <img src="../assets/cnn/stride.jpeg">
-  <div>
+<div align="center" style="width:94%">
+  <img src="../assets/cnn/stride.jpeg"><br/>
+  <div align="left" sytle="width:88%">
 空間配置の例：入力空間の次元（x軸）が1つで受容野サイズ F=3 の場合，入力サイズ W=5, ゼロパディング P=1 であれば，<br>
 <b>左図：</b>出力層ニューロン数は (5-3+2)/1+1=5 の出力層ニューロン数となる。ストライド数 S=1 の場合。<br>
-<b>右図：</b>s=2，出力層ニューロン数 (5-3+2)/2+1=3 となる。ストライド S=3 ならばボリューム全体にきちんと収まらない場合もでてくる。数式で表現すれば  \\((5-3+2)=4\\) は 3 で割り切れないので、整数の値として一意に決定はできない。<br>
+<b>右図：</b>s=2，出力層ニューロン数 (5-3+2)/2+1=3 となる。ストライド S=3 ならばボリューム全体にきちんと収まらない場合もでてくる。数式で表現すれば  $(5-3+2)=4$ は 3 で割り切れないので、整数の値として一意に決定はできない。<br>
 ニューロン結合係数は（右端に示されている）[1,0,-1]でありバイアスはゼロ。この重みはすべての黄色ニューロンで共有される。
-</div>
+  </div>
 </div>
 
-<hr />
-<p><em>ゼロパディング</em>: 上例では入力次元が 5，出力次元が 5 であった。これは受容野が 3 でゼロ埋め込みを1としたためである。ゼロ埋め込みが使用されていない場合、出力ボリュームは、どれだけの数のニューロンが元の入力に「フィット」するのであろうかという理由で、空間次元がわずか3であったであろう。ストライドが \(S=1\) のとき、ゼロ埋め込みを \(P=(F-1)/2\) に設定すると、入力ボリュームと出力ボリュームが空間的に同じサイズになる。このようにゼロパディングを使用することは一般的である。CNNについて詳しく説明している完全な理由について説明する。</p>
-<p><em>ストライドの制約</em>: 空間配置ハイパーパラメータには相互の制約があることに注意。たとえば入力に\(W=10\)というサイズがあり、ゼロパディングは\(P=0\) ではなく、フィルタサイズは\(F=3\), \((W-F+2P)/S+1=(10-3+0)/2+1=4.5\)よりストライド \(S=2\) を使用することは不可能である。すなわち整数ではなくニューロンが入力にわたってきれいにかつ対称的に "適合" しないことを示す。</p>
-<p><em>AlexNet</em> の論文では，第一畳込層は受容野サイズ \(F=11\)，ストライド\(S=4\)，ゼロパディングなし\(P=0\)。<br>
-畳込層 \(K=96\) の深さ \((227-11)/4+1=55\)。畳込層の出力サイズは [55x55x96]。55x55x96 ニューロンは入力領域 [11x11x3] と連結。全深度列 96 個のニューロンは同じ入力領域[11×11×3]に繋がる。論文中には(224-11)/4+1 となっている。パディングについての記載はない。</p>
+<p><em>ゼロパディング</em>: 上例では入力次元が 5，出力次元が 5 であった。
+これは受容野が 3 でゼロ埋め込みを1としたためである。ゼロ埋め込みが使用されていない場合、出力ボリュームは、どれだけの数のニューロンが元の入力に「フィット」するのであろうかという理由で、空間次元がわずか 3 であったであろう。
+ストライドが <script type="math/tex">S=1</script> のとき、ゼロ埋め込みを <script type="math/tex">P=(F-1)/2</script> に設定すると、入力ボリュームと出力ボリュームが空間的に同じサイズになる。
+このようにゼロパディングを使用することは一般的である。CNNについて詳しく説明している完全な理由について説明する。</p>
+<p><em>ストライドの制約</em>: 空間配置ハイパーパラメータには相互の制約があることに注意。たとえば入力に <script type="math/tex">W=10</script> というサイズがあり、ゼロパディングは <script type="math/tex">P=0</script> ではなく、フィルタサイズは<script type="math/tex">F=3</script>, <script type="math/tex">(W-F+2P)/S+1=(10-3+0)/2+1=4.5</script> よりストライド <script type="math/tex">S=2</script> を使用することは不可能である。
+すなわち整数ではなくニューロンが入力にわたってきれいにかつ対称的に "適合" しないことを示す。</p>
+<p><em>AlexNet</em> の論文では，第一畳込層は受容野サイズ <script type="math/tex">F=11</script>，ストライド<script type="math/tex">S=4</script>，ゼロパディングなし<script type="math/tex">P=0</script>。<br>
+畳込層 <script type="math/tex">K=96</script> の深さ <script type="math/tex">(227-11)/4+1=55</script>。畳込層の出力サイズは [55x55x96]。55x55x96 ニューロンは入力領域 [11x11x3] と連結。全深度列 96 個のニューロンは同じ入力領域[11×11×3]に繋がる。論文中には(224-11)/4+1 となっている。パディングについての記載はない。</p>
 <p><strong>パラメータ共有</strong> パラメータ数を制御するために畳み込み層で使用される。上記の実世界の例を使用すると、最初の畳故意層には 55x55x96=290,400のニューロンがあり、それぞれ 11x11x3=363 の重みと1のバイアスがある。これにより CNN 単独の第 1 層に最大 290400x364=105,705,600 のパラメータが追加される。<!--この数は非常に高いです。--></p>
 <!--
 **Parameter Sharing.** Parameter sharing scheme is used in Convolutional Layers to control the number of parameters. Using the real-world example above, we see that there are 55\*55\*96 = 290,400 neurons in the first Conv Layer, and each has 11\*11\*3 = 363 weights and 1 bias. Together, this adds up to 290400 * 364 = 105,705,600 parameters on the first layer of the ConvNet alone. Clearly, this number is very high.
@@ -1080,38 +1138,39 @@ It turns out that we can dramatically reduce the number of parameters by making 
 Notice that if all neurons in a single depth slice are using the same weight vector, then the forward pass of the CONV layer can in each depth slice be computed as a **convolution** of the neuron's weights with the input volume (Hence the name: Convolutional Layer). This is why it is common to refer to the sets of weights as a **filter** (or a **kernel**), that is convolved with the input.
 -->
 
-<p><center>
-<div>
-  <img src="../assets/cnn/weights.jpeg" style="width:94%">
-<div>
-AlexNet の学習済フィルタ例：図の 96 個のフィルタは サイズ[11x11x3]。それぞれが 1 つの深さ内の 55×55 ニューロンで共有されている。画像の任意の位置で水平エッジ検出が必要な場合，画像の並進不変構造 translationall-invariant structure 仮定により画像中の他の場所でも有効である。 畳込み層の出力ニューロン数は 55x55 個の異なる位置すべてで水平エッジの検出を再学習する必要はない。
+<div align="center" style="width:88%">
+  <img src="../assets/cnn/weights.jpeg" style="width:94%"><br/>
+<div align="left" style="width:88%">
+AlexNet の学習済フィルタ例: 図の 96 個のフィルタは サイズ [11x11x3]。
+それぞれが 1 つの深さ内の $55\times55$ ニューロンで共有されている。
+画像の任意の位置で水平エッジ検出が必要な場合，画像の並進不変構造 translationall-invariant structure 仮定により画像中の他の場所でも有効である。
+畳込み層の出力ニューロン数は $55\times55$ 個の異なる位置すべてで水平エッジの検出を再学習する必要はない。
 <!--
 Example filters learned by Krizhevsky et al. Each of the 96 filters shown here is of size [11x11x3], and each one is shared by the 55*55 neurons in one depth slice. Notice that the parameter sharing assumption is relatively reasonable: If detecting a horizontal edge is important at some location in the image, it should intuitively be useful at some other location as well due to the translationally-invariant structure of images. There is therefore no need to relearn to detect a horizontal edge at every one of the 55*55 distinct locations in the Conv layer output volume.
 -->
-  </div>
 </div>
-</center></p>
+</div>
+
 <h3 id="3">3. プーリング層<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
 <p>CNN では，連続する畳込み層間にプーリング層を挿入するのが一般的。プーリング層の役割は，空間次元の大きさに減少させることである。パラメータ，すなわち計算量を減らし，過学習を制御できる。プーリング層は入力の各深さ毎に独立して動作する。最大値のみをとり他の値を捨てることを <strong>マックスプーリング</strong> と呼ぶ。サイズが 2x2 のフィルタによるプーリング層では，入力の深さごとに <script type="math/tex">2</script> つのダウンサンプルを適用し、幅と高さに沿って2ずつ増やして75％の情報を破棄する。この場合 4 つの数値のうち最大値を採用することになる。</p>
 <!--
 It is common to periodically insert a Pooling layer in-between successive Conv layers in a ConvNet architecture. Its function is to progressively reduce the spatial size of the representation to reduce the amount of parameters and computation in the network, and hence to also control overfitting. The Pooling Layer operates independently on every depth slice of the input and resizes it spatially, using the MAX operation. The most common form is a pooling layer with filters of size 2x2 applied with a stride of 2 downsamples every depth slice in the input by 2 along both width and height, discarding 75% of the activations. Every MAX operation would in this case be taking a max over 4 numbers (little 2x2 region in some depth slice). The depth dimension remains unchanged. More generally, the pooling layer:
 -->
 
-<p><center>
-<div>
-  <img src="../assets/cnn/maxpool.jpeg" width="74%">
-<div>
+<div align="center">
+  <img src="../assets/cnn/maxpool.jpeg" width="74%"><br/>
+<div align="left">
 一般的なダウンサンプリング演算は <b>マックスプーリング</b> である。図では ストライド 2 すなわち 4 つの数値の中の最大値
 <!--
 The most common downsampling operation is max, giving rise to <b>max pooling</b>, here shown with a stride of 2. That is, each max is taken over 4 numbers (little 2x2 square).
 -->
 </div>
 </div>
-</center>
-<strong>平均プーリング</strong>. マックスプーリングではなく <em>L2正則化プーリング</em> を行う場合もある。平均プーリングは歴史的な意味あいがあるがマックスプーリングの方が性能が良いとの報告がある。ある画像位置には物理的に一つの値だけが存在するという視覚情報処理が仮定すべき外界の物理的制約を反映していると文学的に解釈することも可能である。</p>
+
+<p><strong>平均プーリング</strong>. マックスプーリングではなく <em>L2正則化プーリング</em> を行う場合もある。平均プーリングは歴史的な意味あいがあるがマックスプーリングの方が性能が良いとの報告がある。ある画像位置には物理的に一つの値だけが存在するという視覚情報処理が仮定すべき外界の物理的制約を反映していると文学的に解釈することも可能である。</p>
 <p><center>
 <div>
-  <img src="../assets/cnn/pool.jpeg" width="74%">
+  <img src="../assets/cnn/pool.jpeg" width="74%"><br/>
 <div>
 プーリング層では，入力層ニューロン数の各深さについて空間的ダウンサンプリングを行う。この例は サイズ[224x224x64]の入力層ニューロン数がフィルタサイズ 2 でプールされ，サイズ 2 の出力ニューロン数 [112x112x64] は 2 倍である。奥行き数が保持されている。
 <!--
@@ -1135,6 +1194,11 @@ Pooling layer downsamples the volume spatially, independently in each depth slic
 [3x3] が好まれる理由はど真ん中がある奇関数を暗黙に仮定しているためだと思われる（浅川の妄想）。
 その代わり多段にすれば [3x3] が２層で ［5x5]，３層で[7x7]の受容野を形成できるから受容野の広さを層の深さとして実装しているとも解釈できる。１層で[7x7]の受容野より３層で[7x7]の受容野を実現した方が the simpler, the better の原則に沿っているとも（文学的）解釈が可能である（またしても浅川妄想）。</p>
 <p>バックプロパゲーションの計算時に広い受容野を作るより層を分けた方が GPU のメモリに乗せやすいと言う計算上の利点もある。</p>
+<div align="center">
+<img src="../assets/2020Lillicrap_fig7.svg" style="width:94%"><br/>
+Lillicrap et al. (2020) Fig. 7 を改変
+</div>
+
 <hr />
 <h3 id="_11"><a href="../activation_functions/">活性化関数</a><a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h2 id="tensorflow-hub"><a href="https://www.tensorflow.org/hub">TensorFlow HUB</a><a class="headerlink" href="#tensorflow-hub" title="Permanent link">&para;</a></h2>
@@ -1142,9 +1206,9 @@ Pooling layer downsamples the volume spatially, independently in each depth slic
 <ul>
 <li>what and where routes</li>
 <li>心理学的対応物(？)</li>
-<li>/2015documents/2014Cadieu_Deep_Neural_Networks_Rival_the_Representation_of_Primate_IT_Cortex_for_Core_Visual_Object_Recognition.pdf</li>
-<li>/2019documents/2019NasrViswanathanNieder_Number_detectors_spontaneously_emerge_in_a_deep_neural_network_designed_for_visual_object_recognition.pdf</li>
-<li>/2018documents/2018Marcus_Deep_Learning_A_Critical_Appraisal.pdf</li>
+<li>Cadieu (2014) Deep Neural Networks Rival the Representation of Primate IT Cortex for Core Visual Object Recognition</li>
+<li>Nasr, Viswanathan, Nieder (2019) Number detectors spontaneously emerge in a deep neural network designed for visual object recognition</li>
+<li>Marcus (2018) Deep Learning A Critical Appraisal</li>
 <li>転移学習</li>
 </ul>
 <h3 id="notebooks">Notebooks<a class="headerlink" href="#notebooks" title="Permanent link">&para;</a></h3>
