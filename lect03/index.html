@@ -93,32 +93,23 @@
 
     <li class="toctree-l2"><a href="#_5">デモ</a></li>
     
-        <ul>
-        
-            <li><a class="toctree-l3" href="#_6">領域切り出し</a></li>
-        
-        </ul>
-    
 
     <li class="toctree-l2"><a href="#cnn">CNN の特徴</a></li>
     
         <ul>
         
-            <li><a class="toctree-l3" href="#_7">ディープラーニングの特徴</a></li>
+            <li><a class="toctree-l3" href="#_6">ディープラーニングの特徴</a></li>
         
         </ul>
-    
-
-    <li class="toctree-l2"><a href="#cognitive-computational-neuroscience">認知計算論的神経科学 Cognitive computational neuroscience</a></li>
     
 
     <li class="toctree-l2"><a href="#1">1. 生理学</a></li>
     
         <ul>
         
-            <li><a class="toctree-l3" href="#hubel-and-wiesel-1969">Hubel and Wiesel (1969)</a></li>
+            <li><a class="toctree-l3" href="#hubel-and-wiesel-1969">ヒューベルとウィーゼル Hubel and Wiesel (1969)</a></li>
         
-            <li><a class="toctree-l3" href="#blackmore-and-cooper-1970">Blackmore and Cooper (1970)</a></li>
+            <li><a class="toctree-l3" href="#blackmore-and-cooper-1970">ブレイクモア と クーパー Blackmore and Cooper (1970)</a></li>
         
             <li><a class="toctree-l3" href="#one-algorithm-hypothesis">一アルゴリズム仮説 One algorithm hypothesis</a></li>
         
@@ -134,7 +125,7 @@
         </ul>
     
 
-    <li class="toctree-l2"><a href="#_8">生理学，視覚心理学との対応</a></li>
+    <li class="toctree-l2"><a href="#_7">生理学，視覚心理学との対応</a></li>
     
         <ul>
         
@@ -144,7 +135,7 @@
         
             <li><a class="toctree-l3" href="#marr-and-poggio-1976">Marr and Poggio (1976)</a></li>
         
-            <li><a class="toctree-l3" href="#_9">現代的ニューラルネットワークモデルと生理学との対応</a></li>
+            <li><a class="toctree-l3" href="#_8">現代的ニューラルネットワークモデルと生理学との対応</a></li>
         
         </ul>
     
@@ -153,14 +144,20 @@
     
         <ul>
         
-            <li><a class="toctree-l3" href="#cnn_1">CNN の詳細</a></li>
+            <li><a class="toctree-l3" href="#_9">領域切り出し</a></li>
         
-            <li><a class="toctree-l3" href="#tensorflow-hub">TensorFlow HUB</a></li>
+            <li><a class="toctree-l3" href="#_10">画像処理と言語処理との融合</a></li>
         
         </ul>
     
 
-    <li class="toctree-l2"><a href="#_12">さらなる情報</a></li>
+    <li class="toctree-l2"><a href="#cognitive-computational-neuroscience">認知計算論的神経科学 Cognitive computational neuroscience</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#cnn_1">CNN の詳細</a></li>
+        
+        </ul>
     
 
     </ul>
@@ -299,8 +296,10 @@ Appache 2.0 license<br/>
 <li>訓練データ，テストデータ，検証データ</li>
 <li>ニューラルネットワーク neural networks</li>
 <li>パーセプトロン perceptron </li>
-<li>畳み込みニューラルネットワーク convolutional neural netoworks
-<font color="lightgray"></li>
+<li>畳み込みニューラルネットワーク convolutional neural netoworks</li>
+<li>レティノトピー retinotopy, トノトピー tonotopy, ソマトピー somatopy, 
+<font color="lightgray">
+  色を薄くしてあるのは，ここまで進まないだろうという予想しているからです。</li>
 <li>誤差逆伝播法 error back propagation </li>
 <li>損失関数 loss functions, 誤差関数 error functions, 目的関数 objective functions, 目標関数 target functions</li>
 <li>勾配降下法 gradient descent methods</li>
@@ -309,6 +308,11 @@ Appache 2.0 license<br/>
 <li>確率的勾配降下法 stochastic gradient descent methods
 </font></li>
 </ul>
+<hr />
+<ul>
+<li><a href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0522komazawa_homework.ipynb" target="_blank">本日の課題</a></li>
+</ul>
+<hr />
 <h1 id="_2">クイズの答え:<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h1>
 <ul>
 <li>ANN: <font color="black">人工ニューラルネットワーク Artificial Neural Networks</font></li>
@@ -354,16 +358,8 @@ CNN はケーブルニュースネットワークだったりします。 DNN �
 <h1 id="_4">実習<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h1>
 <ul>
 <li><a href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0515komazawa_step_by_step_CNN_Pytorch.ipynb" target="_blank">もう少し詳しくステップバイステップで画像認識</a></li>
-<li><a href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0514komazawa_visualise_first_layers.ipynb" target="_blank">第一層目の視覚化</a> - 視覚特徴の視覚化。ガボールフィルタとか，色ブロッブとか。</li>
-</ul>
-<div align="center">
-  <img src="../assets/1946Gabor_fig1_9.svg" style="width:59%">
-  <img src="../assets/1946Gabor_fig1_6.jpg" style="width:39%"><br/>
-</div>
-
-<ul>
-<li><a href="https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_miniumXOR_exercise00.ipynb">XOR</a></li>
-<li><a href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2019cnps_01kmnist.ipynb" target="_blank">畳込みニューラルネットワークによる日本語古典籍くずし字 kminst の認識実習</a> <!--(https://drive.google.com/open?id=1aIXgVtd2CCE5tMpXD2J9fbX1j8xgk1Kf)--></li>
+<li><a href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0514komazawa_visualise_first_layers.ipynb" target="_blank">第一層目の視覚化</a> - 視覚特徴の視覚化。
+<a href="../gabor_filter/" target="_blank">ガボールフィルタ</a> とか，色ブロッブとか。</li>
 </ul>
 <!--
 - [○☓分類器](./2019OX_classifier.html)
@@ -385,11 +381,6 @@ CNN はケーブルニュースネットワークだったりします。 DNN �
 <li><a href="https://storage.googleapis.com/tfjs-models/demos/posenet/camera.html" target="_blank">姿勢推定デモ</a>
 <!-- <a href="https://youtu.be/kSLJriaOumA">Style-based GAN</a>--></li>
 </ul>
-<h2 id="_6">領域切り出し<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<div align="center">
-<img src="../assets/HistoryOfObjectRecognition_head.svg" style="wdith:94%">
-</div>
-
 <h1 id="cnn">CNN の特徴<a class="headerlink" href="#cnn" title="Permanent link">&para;</a></h1>
 <ul>
 <li>
@@ -455,7 +446,7 @@ n-->
 </center>
 -->
 
-<h2 id="_7">ディープラーニングの特徴<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h2 id="_6">ディープラーニングの特徴<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <p>from Democratize AI slides</p>
 <ul>
 <li>データハングリー data hungry</li>
@@ -535,16 +526,6 @@ Nvidia のサイトより
 
 -->
 
-<h1 id="cognitive-computational-neuroscience">認知計算論的神経科学 Cognitive computational neuroscience<a class="headerlink" href="#cognitive-computational-neuroscience" title="Permanent link">&para;</a></h1>
-<p><center>
-<img src="../assets/2018Kriegeskorte_Fig2.jpg" style="width:84%"><br>
-<strong>Kriegeskorte and Doglas (2018) Fig. 2より</strong>
-</center></p>
-<p>脳の機能を理解することはどういうことか？ 認知計算神経科学の目的は実世界の認知課題を遂行可能で，生物学的妥当性を持つ計算モデルを用いて動物や人間の神経活動と行動の多くの観測結果を説明することである。
-歴史的には各分野（円）はこれら課題の回問題（白ラベル）に取り組んできた。<!--認知計算神経科学は、同時にすべての基準を満たすよう努めるています。-->
-<!--
-Figure 2 | What does it mean to understand how the brain works? The goal of cognitive computational neuroscience is to explain rich measurements of neuronal activity and behavior in animals and humans by means of biologically plausible computational models that perform real-world cognitive tasks. Historically, each of the disciplines (circles) has tackled a subset of these challenges (white labels). Cognitive computational neuroscience strives to meet all the criteria simultaneously.
---></p>
 <hr />
 <h1 id="1">1. 生理学<a class="headerlink" href="#1" title="Permanent link">&para;</a></h1>
 <p><center>
@@ -554,14 +535,33 @@ Figure 2 | What does it mean to understand how the brain works? The goal of cogn
 <img src='../assets/1991Felleman_VanEssen_Fig4.svg' style='width:49%'></br>
 <strong>Left: Thorpe et al.(2001), Right: Felleman &amp; Van Essen (1992)</strong>
 </center></p>
-<h2 id="hubel-and-wiesel-1969">Hubel and Wiesel (1969)<a class="headerlink" href="#hubel-and-wiesel-1969" title="Permanent link">&para;</a></h2>
+<div align="center" style="width:88%">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/d/d2/Retinotopic_English.jpg" style="width:74%"><br/>
+  <div align="left">
+    source: https://en.wikipedia.org/wiki/Retinotopy
+  </div>
+</div>
+
+<h2 id="hubel-and-wiesel-1969">ヒューベルとウィーゼル Hubel and Wiesel (1969)<a class="headerlink" href="#hubel-and-wiesel-1969" title="Permanent link">&para;</a></h2>
 <p><center>
 <iframe width="450" height="300" src="https://www.youtube.com/embed/4nwpU7GFYe8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <br/> source: https://youtu.be/4nwpU7GFYe8
 <!--<iframe width="901" height="676" src="https://www.youtube.com/embed/4nwpU7GFYe8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
 </center></p>
+<ul>
+<li>トポグラフックマッピング topographic mappings (地形図):  網膜や皮膚などの体制感覚，筋肉系のような効果器系を、中枢神経系の 1 つ以上の構造物に整然と投影した地図。
+地形図は、すべての感覚系と多くの運動系で観察される。</li>
+<li>トノトピー tonotopy（ギリシャ語のtono=周波数、topos=場所）とは、異なる周波数の音が脳内で処理される場所の空間的配置のこと。
+周波数が近い音は、脳内の場所的に隣接する領域で表現される。トノトピック地図とも呼ばれる <!--は 視覚系のレチノトピーに似た地形的な組織の特殊な例である。--></li>
+<li>ソマトピー somatopy: 中枢神経系上の特定の点へ身体領域の照射，投影のこと。 身体領域は 第一次体性感覚皮質 (後腹回) に投影される。 典型的には 特定の身体部位と そのそれぞれの位置を ホムンクルス homunclus (小人) 
+ 上に配置する 感覚ホムンクルスとして表現される。
+細かく制御されている部位 (指，舌) は体性感覚野の面積が大きい。一方 粗く制御されている部位 (体幹) は面積が小さい。内臓のような領域は体性感覚野の位置を持たない。</li>
+<li>レティノトピー retinotopy: 網膜からの視覚入力を神経細胞 にマッピングすること。哺乳類の脳に多く見られる。この地図の大きさ、数、空間的配置は種間で異なる。
+視野の隣接する点 が 同じ領域 の 隣接する 領域で 表現される とは限らないという意味で、複雑な地図となる。
+例えば 第 2 次視覚野 (V2) での視覚地図は 視野の上半分に応答する網膜の部分が 視野の下半分に応答する部分から分離されて表現されている。第３次視覚野 (V3) や 第4次視覚野 (V4) では下位の視覚野に比べて より複雑な表現がなされている</li>
+</ul>
 <hr />
-<h2 id="blackmore-and-cooper-1970">Blackmore and Cooper (1970)<a class="headerlink" href="#blackmore-and-cooper-1970" title="Permanent link">&para;</a></h2>
+<h2 id="blackmore-and-cooper-1970">ブレイクモア と クーパー Blackmore and Cooper (1970)<a class="headerlink" href="#blackmore-and-cooper-1970" title="Permanent link">&para;</a></h2>
 <p><center>
 <iframe width="450" height="300" src="https://www.youtube.com/embed/QzkMo45pcUo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <!--<iframe width="845" height="676" src="https://www.youtube.com/embed/QzkMo45pcUo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
@@ -630,7 +630,7 @@ reference="fig:2014Szegedy"}
 <img src='../assets/1958Selfridge_fig6.svg' style='width:49%'><br>
 セルフリッジ (1958) ``Mechanisation of Thought Processes'' より
 </center></p>
-<h1 id="_8">生理学，視覚心理学との対応<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h1>
+<h1 id="_7">生理学，視覚心理学との対応<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h1>
 <ul>
 <li>Julesz</li>
 <li>Julesz (1981) Textons, the elements of texture perception, and their interactions, Nature</li>
@@ -701,7 +701,17 @@ Julesz (1981) Fig. 2 より
 2. アルゴリズム
 3. 実装
 にあたります。脳を理解する上で，3 つを区別して考えましょうというスローガンです。</p>
-<h2 id="_9">現代的ニューラルネットワークモデルと生理学との対応<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h2 id="_8">現代的ニューラルネットワークモデルと生理学との対応<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<div align="center">
+<img src='../assets/2012Zeiler_Deconvolution.png' style='width:77%'></br>
+<br>Zeiller 2012 より
+</div>
+
+<div align="center">
+<img src="../assets/2010ZeilerKrishnanTaylorFerguss_fig.svg" style="width:88%"><br/>
+Zeiler et. al. (2010) Fig. 7, and 8
+</div>
+
 <p><center>
 <img src='../assets/2016Yamins_fig1s_ja.svg' style='width:94%'>
 <!--<img src='../assets/2016Yamins_Fig1.svg' style='width:94%'>-->
@@ -722,21 +732,13 @@ Julesz (1981) Fig. 2 より
 また、様々な構成要素のルール（教師あり、教師なし、半教師あり）を研究して、それらが生後の発達や専門知識学習の間にどのように異なるダイナミクスにつながるかを判断することもできる（緑の破線のパス）。
 </div>
 </center></p>
-<p><center>
+<div align="center">
 <!--<img src='../assets/2014Yamins_fig2Aja.svg' style='width:74%'>-->
 <!--<img src='../assets/2014Yamins_FigS2.svg' style='width:74%'>-->
-<img src="../assets/2020Schrimpf_fig1.svg" style="width:84%">
-</center></p>
-<!--<a href="../assets/2018asakawa_jdlaGtestChapt7.pdf">G 検定公式テキスト7章より</a>-->
-
-<p><center>
-<img src='../assets/2012Zeiler_Deconvolution.png' style='width:77%'></br>
-<br>Zeiller 2012 より
-</center></p>
-<div align="center">
-<img src="../assets/2010ZeilerKrishnanTaylorFerguss_fig.svg" style="width:88%"><br/>
-Zeiler et. al. (2010) Fig. 7, and 8
+<img src="../assets/2020Schrimpf_fig1.svg" style="width:84%"><br/>
 </div>
+
+<!--<a href="../assets/2018asakawa_jdlaGtestChapt7.pdf">G 検定公式テキスト7章より</a>-->
 
 <hr />
 <h1 id="3-cnn">3. 畳込みニューラルネット(CNN)<a class="headerlink" href="#3-cnn" title="Permanent link">&para;</a></h1>
@@ -859,6 +861,12 @@ reference="fig:2013LeCun_10"}-->)。</p>
 <img src="../assets/2012Ng_ML_and_AI_08.png" style="width:94%">
 -->
 
+<h2 id="_9">領域切り出し<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<div align="center">
+<img src="../assets/HistoryOfObjectRecognition_head.svg" style="wdith:94%">
+</div>
+
+<h2 id="_10">画像処理と言語処理との融合<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
 <p><center>
 <img src='../assets/2015Xu_Show_Attend_and_Tell.svg' style="width:84%"></br>
 </center></p>
@@ -876,13 +884,16 @@ reference="fig:GAN"})-->。</p>
 すなわち，人間の脳を模したニューラルネットワークである CNN が大規模化像認識チャレンジにおいて人間の認識性能を越えたと報道されました。
 ですが，人間の視覚認識を完全に実現したと考えるのは早計で，解くべき課題は未だ多数あるということです。
 この状況は，音声認識や言語情報処理でも同様であると言えます。</p>
-<ul>
-<li>ドロップアウト，データ拡張，各種正規化: cnn.md</li>
-<li>有名なモデル LeNet，Alex Net，Inception，VGG，ResNet</li>
-<li>R-CNN，ハイウェイネット，YOLO，SSD</li>
-<li>セマンティックセグメンテーション</li>
-<li>転移学習，事前学習，ファインチューニング</li>
-</ul>
+<h1 id="cognitive-computational-neuroscience">認知計算論的神経科学 Cognitive computational neuroscience<a class="headerlink" href="#cognitive-computational-neuroscience" title="Permanent link">&para;</a></h1>
+<p><center>
+<img src="../assets/2018Kriegeskorte_Fig2.jpg" style="width:84%"><br>
+<strong>Kriegeskorte and Doglas (2018) Fig. 2より</strong>
+</center></p>
+<p>脳の機能を理解することはどういうことか？ 認知計算神経科学の目的は実世界の認知課題を遂行可能で，生物学的妥当性を持つ計算モデルを用いて動物や人間の神経活動と行動の多くの観測結果を説明することである。
+歴史的には各分野（円）はこれら課題の回問題（白ラベル）に取り組んできた。<!--認知計算神経科学は、同時にすべての基準を満たすよう努めるています。-->
+<!--
+Figure 2 | What does it mean to understand how the brain works? The goal of cognitive computational neuroscience is to explain rich measurements of neuronal activity and behavior in animals and humans by means of biologically plausible computational models that perform real-world cognitive tasks. Historically, each of the disciplines (circles) has tackled a subset of these challenges (white labels). Cognitive computational neuroscience strives to meet all the criteria simultaneously.
+--></p>
 <!--
 ---
 
@@ -968,7 +979,7 @@ e^{x}-1 & \hspace{3em}otherwise
 <p>入力信号はパラメータの値が異なる活性化関数によって非線形変換される。
 畳込み層とプーリング層と複数積み重ねることで多層化を実現し，深層ニューラルネットワークとなる。</p>
 <hr />
-<h4 id="_10">例：<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<h4 id="_11">例：<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <ul>
 <li><!--CNNの最も単純な場合。--> 画像データを出力信号へ変換</li>
 <li>各層は別々の役割（畳込み，全結合，ReLU, プーリング）</li>
@@ -1198,251 +1209,6 @@ Pooling layer downsamples the volume spatially, independently in each depth slic
 <img src="../assets/2020Lillicrap_fig7.svg" style="width:94%"><br/>
 Lillicrap et al. (2020) Fig. 7 を改変
 </div>
-
-<hr />
-<h3 id="_11"><a href="../activation_functions/">活性化関数</a><a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
-<h2 id="tensorflow-hub"><a href="https://www.tensorflow.org/hub">TensorFlow HUB</a><a class="headerlink" href="#tensorflow-hub" title="Permanent link">&para;</a></h2>
-<h3 id="inception-resnet-r-cnn-regional-convolutional-neural-networks">インセプション Inception，残渣ネット ResNet，領域 R-CNN (Regional Convolutional Neural Networks)<a class="headerlink" href="#inception-resnet-r-cnn-regional-convolutional-neural-networks" title="Permanent link">&para;</a></h3>
-<ul>
-<li>what and where routes</li>
-<li>心理学的対応物(？)</li>
-<li>Cadieu (2014) Deep Neural Networks Rival the Representation of Primate IT Cortex for Core Visual Object Recognition</li>
-<li>Nasr, Viswanathan, Nieder (2019) Number detectors spontaneously emerge in a deep neural network designed for visual object recognition</li>
-<li>Marcus (2018) Deep Learning A Critical Appraisal</li>
-<li>転移学習</li>
-</ul>
-<h3 id="notebooks">Notebooks<a class="headerlink" href="#notebooks" title="Permanent link">&para;</a></h3>
-<ul>
-<li><a href="https://github.com/tensorflow/hub/blob/master/examples/colab/text_classification_with_tf_hub_on_kaggle.ipynb">colab/text_classification_with_tf_hub_on_kaggle.ipynb</a>
-Shows how to solve a problem on Kaggle with TF-Hub.</li>
-<li><a href="https://github.com/tensorflow/hub/blob/master/examples/colab/semantic_similarity_with_tf_hub_universal_encoder.ipynb">colab/semantic_similarity_with_tf_hub_universal_encoder.ipynb</a>
-Explores text semantic similarity with the <a href="https://tfhub.dev/google/universal-sentence-encoder/2">Universal Encoder Module</a>.</li>
-<li><a href="https://github.com/tensorflow/hub/blob/master/examples/colab/tf_hub_generative_image_module.ipynb">colab/tf_hub_generative_image_module.ipynb</a>
-Explores a generative image module.</li>
-<li><a href="https://github.com/tensorflow/hub/blob/master/examples/colab/action_recognition_with_tf_hub.ipynb">colab/action_recognition_with_tf_hub.ipynb</a>
-Explores action recognition from video.</li>
-<li><a href="https://github.com/tensorflow/hub/blob/master/examples/colab/tf_hub_delf_module.ipynb">colab/tf_hub_delf_module.ipynb</a>
-Exemplifies use of the <a href="https://tfhub.dev/google/delf/1">DELF Module</a> for landmark recognition and matching.</li>
-<li><a href="https://github.com/tensorflow/hub/blob/master/examples/colab/object_detection.ipynb">colab/object_detection.ipynb</a> 
-Explores object detection with the use of the  <a href="https://github.com/tensorflow/hub/blob/master/examples/colab/object_detection.ipynb">Faster R-CNN module trained on Open Images v4</a>.</li>
-</ul>
-<hr />
-<!--
-<center>
-<img src='https://cdn-images-1.medium.com/max/1280/1*sS_WZM4GLS88XlnDLKcZ-g.png' style='width:94%'><br>
-from [A guide to Face Detection in Python](https://towardsdatascience.com/a-guide-to-face-detection-in-python-3eab0f6b9fc1)
-</center>
-
--->
-
-<ul>
-<li>
-<p><a href="https://towardsdatascience.com/wtf-is-image-classification-8e78a8235acb">The Complete Beginner’s Guide to Deep Learning: Convolutional Neural Networks and Image Classification</a>, Anne Bonner Feb. 02</p>
-</li>
-<li>
-<p>畳込みニューラルネットワーク (Convlutional Neural Networks:CNN) とは画像認識におけるゲームチェンジャー(以後，画像認識，ビデオ分類，自動運転，ドローン，ゲームなどへの応用多数)</p>
-</li>
-<li><a href="http://image-net.org/challenges/LSVRC/">イメージネット画像コンテスト</a>では，分類 (classification) 課題と位置 (locallization) 課題とからなる。</li>
-<li>コンテストは 2010 年から Li Fei-Fei さん中心となって <a href="https://www.mturk.com/">AMT</a> で画像のアノテーションを行って 画像を2012 年の優勝チームが CNN を使った。通称<a href="https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf">アレックスネット</a></li>
-<li><a href="http://cs231n.stanford.edu/index.html">スタンフォード大学の授業 CS231n: Convolutional Neural Networks for Visual Recognition</a>. スライド](http://cs231n.stanford.edu/slides/2019/cs231n_2019_lecture05.pdf)</li>
-</ul>
-<h1 id="_12">さらなる情報<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h1>
-<ul>
-<li>Math? <a href="https://web.stanford.edu/class/cs231a/lectures/intro_cnn.pdf">Introduction to Convolutional Neural Networks</a> by Jianxin Wu</li>
-<li>C.-C. Jay Kuo <a href="https://arxiv.org/abs/1609.04112">Understanding Convolutional Neural Networks With a Mathematical Model</a>.</li>
-<li><a href="https://towardsdatascience.com/simply-deep-learning-an-effortless-introduction-45591a1c4abb">the absolute basics of activation functions, you can find that here</a></li>
-<li>[Artificial neural networks? <a href="https://towardsdatascience.com/simply-deep-learning-an-effortless-introduction-45591a1c4abb">You can learn about them here</a></li>
-</ul>
-<!--
-#### ReLU layer
-The **ReLU** (rectified linear unit) layer is another step to our convolution layer. 
-You’re applying an activation function onto your feature maps to increase non-linearity in the network. 
-This is because images themselves are highly non-linear! 
-It removes negative values from an activation map by setting them to zero.
-
-Convolution is a linear operation with things like element wise matrix
-multiplication and addition. 
-The real-world data we want our CNN to learn will be non-linear. 
-We can account for that with an operation like ReLU. 
-You can use other operations like tanh or sigmoid. ReLU, however, is a popular choice because it can train the network faster without any major penalty to generalization accuracy.
--->
-
-<!--
-Want to dig deeper? Try Kaiming He, et al. [Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification](https://arxiv.org/abs/1502.01852).
-
-If you need a little more info about [the absolute basics of activation functions, you can find that here](https://towardsdatascience.com/simply-deep-learning-an-effortless-introduction-45591a1c4abb)!
--->
-
-<!--
-Here’s how our little buddy is looking after a ReLU activation function
-turns all of the negative pixel values black
-
-
-
-wzxhzdk:1
-
-
-<center>
-<img src="../assets/output2.jpg" style="width:84%">
-</center>
-
-
-#### Pooling
-The last thing you want is for your network to look for one specific feature in an exact shade in an exact location. 
-That’s useless for a good CNN! 
-You want images that are flipped, rotated, squashed, and so on. 
-You want lots of pictures of the same thing so that your network can recognize an object (say, a leopard) in all the images. No matter what the size or location. 
-No matter what the lighting or the number of spots,or whether that leopard is fast asleep or crushing prey. 
-You want **spatial variance**! You want flexibility. 
-That’s what pooling is all about.
-
-Pooling progressively reduces the size of the input representation. 
-It makes it possible to detect objects in an image no matter where they’re located. 
-Pooling helps to reduce the number of required parameters and the amount of computation required. 
-It also helps control **overfitting**.
-
-Overfitting can be kind of like when you memorize super specific details before a test without understanding the information. 
-When you memorize details, you can do a great job with your flashcards at home.
-You’ll fail a real test, though, if you’re presented with new information.
-
-(Another example: if all of the dogs in your training data have spots and dark eyes, your network will believe that for an image to be classified as a dog, it must have spots and dark eyes. 
-If you test your data with that same training data, it will do an amazing job of
-classifying dogs correctly! But if your outputs are only “dog” and “cat,” and your network is presented with new images containing, say, a Rottweiler and a Husky, it will probably wind up classifying both the Rottweiler and the Husky as cats. You can see the problem!)
-
-
-Without variance, your network will be useless with images that don’t exactly match the training data. 
-**Always, always, always keep your training and testing data separate**! 
-If you test with the data you trained on, your network has the information memorized! 
-It will do a terrible job when it’s introduced to any new data.
-
-#### Overfitting is not cool.
-So for this step, you take the **feature map**, apply a **pooling layer**, and the result is the **pooled feature map**.
-
-The most common example of pooling is **max pooling**. 
-In max pooling, the input image is partitioned into a set of areas that don’t overlap. 
-The outputs of each area are the maximum value in each area. 
-This makes a smaller size with fewer parameters.
-
-Max pooling is all about grabbing the maximum value at each spot in the image. 
-This gets rid of 75% of the information that is not the feature. 
-By taking the maximum value of the pixels, you’re accounting for distortion. 
-If the feature rotates a little to the left or right or whatever, the pooled feature will be the same. You’re reducing the size and parameters. 
-This is great because it means that the model won’t overfit on that information.
-
-You could use **average pooling or sum pooling**, but they aren’t common choices. 
-Max pooling tends to perform better than both in practice. 
-In max pooling, you’re taking the largest pixel value. 
-In average pooling, you take the average of all the pixel values at that spot in the image. 
-(Actually, there’s a trend now towards using smaller filters or discarding pooling layers entirely. 
-This is in response to an aggressive reduction in representation size.)
-
-__Want to look a little more at why you might want to choose max pooling
-and why you might prefer a stride of two pixels? Check out Dominik
-Scherer et. al, [Evaluation of Pooling Operations in Convolutional
-Architectures for Object Recognition](http://ais.uni-bonn.de/papers/icann2010_maxpool.pdf).__
-
-If you go [here](http://scs.ryerson.ca/~aharley/vis/conv/flat.html) you can check out a really interesting 2D visualization of a convolutional layer. 
-Draw a number in the box on the left-hand side of the screen and then really go through the output. 
-You can see the  convolved and pooled layers as well as the guesses. 
-Try hovering over a single pixel so you can see where the filter was applied.
-
-
-So now we have an input image, an applied convolutional layer, and an applied pooling layer.
-
-Let’s visualize the output of the pooling layer!
-
-We were here:
-
-<center>
-<img src="../assets/output3.jpg" style="width:94%">
-</center>
-
-The pooling layer takes as input the feature maps pictured above and reduces the dimensionality of those maps. 
-It does this by constructing a new, smaller image of only the maximum (brightest) values in a given kernel area.
-
-See how the image has changed size?
-
-<center>
-<img src="../assets/output4.jpg" style="width:94%">
-</center>
-
-Cool, right?
-
-#### Flattening
-
-This is a pretty simple step. You flatten the pooled feature map into a sequential column of numbers (a long vector). 
-This allows that information to become the input layer of an artificial neural network for further processing.
-
-
-#### Fully connected layer
-At this step, we add an **artificial neural network** to our convolutional neural network. 
-(Not sure about artificial neural networks? [You can learn about them here](https://towardsdatascience.com/simply-deep-learning-an-effortless-introduction-45591a1c4abb)!)
--->
-
-<!--
-The main purpose of the artificial neural network is to combine our features into more attributes. 
-These will predict the classes with greater accuracy. This combines features and attributes that can predict classes better.
-
-At this step, the error is calculated and then backpropagated. 
-The weights and feature detectors are adjusted to help optimize the performance of the model. 
-Then the process happens again and again and again. 
-This is how our network trains on the data! 
-
-How do the output neurons work when there’s more than one?
-
-First, we have to understand what weights to apply to the synapses that connect to the output. 
-We want to know which of the previous neurons are important for the output.
-
-If, for example, you have two output classes, one for a cat and one for a dog, a neuron that reads “0” is absolutely uncertain that the feature belongs to a cat. A neuron that reads “1 is absolutely certain that the feature belongs to a cat. 
-In the final fully connected layer, the neurons will read values between 0 and 1. 
-This signifies different levels of certainty. 
-A value of 0.9 would signify a certainty of 90%. 
-The cat neurons that are certain when a feature is identified know that the image is a cat. 
-They say the mathematical equivalent of, “These are my neurons! I should be triggered!” If this happens many times, the network learns that when certain features fire up, the image is a cat.
-
-
-Through lots of iterations, the cat neuron learns that when certain features fire up, the image is a cat. 
-The dog (for example) neuron learns that when certain other features fire up, the image is a dog. 
-The dog neuron learns that for example again, the “big wet nose” neuron and the “floppy ear” neuron contribute with a great deal of certainty to the dog neuron.
-It gives greater weight to the “big wet nose” neuron and the “floppy ear” neuron. 
-The dog neuron learns to more or less ignore the “whiskers” neuron and the “cat-iris” neuron. 
-The cat neuron learns to give greater weight to neurons like “whiskers” and “cat-iris.”
-(Okay, there aren’t actually “big wet nose” or “whiskers” neurons. 
-But the detected features do have distinctive features of the specific class.)
-
-
-Once the network has been trained, you can pass in an image and the neural network will be able to determine the image class probability for that image with a great deal of certainty.
-
-The fully connected layer is a traditional Multi-Layer Perceptron. 
-It uses a classifier in the output layer. 
-The classifier is usually a softmax activation function. 
-Fully connected means every neuron in the previous layer connects to every neuron in the next layer. 
-What’s the purpose of this layer? To use the features from the output of the previous layer to classify the input image based on the training data.
-
-Once your network is up and running you can see, for example, that you have a 95% probability that your image is a dog and a 5% probability that your image is a cat.
-
-
-Why do these numbers add up to 1.0? (0.95 + 0.05)
-
-There isn’t anything that says that these two outputs are connected to each other. 
-What is it that makes them relate to each other? 
-Essentially, they wouldn’t, but they do when we introduce the **softmax function**.
-This brings the values between 0 and 1 and makes them add up to 1 (100%). 
-(You can read all about this on Wikipedia.) 
-The softmax function takes a vector of scores and squashes it to a vector of values between 0 and 1 that add up to 1.
-
-After you apply a softmax function, you can apply the loss function.
-Cross entropy often goes hand in hand with softmax. 
-We want to minimize the loss function so we can maximize the performance of our
-network.
-
-At the beginning of backpropagation, your output values would be tiny.
-That’s why you might choose cross entropy loss. 
-The gradient would be very low and it would be hard for the neural network to start adjusting in the right direction. 
-Using cross entropy helps the network assess even a tiny error and get to the optimal state faster.
-
-#### Want more? Check out
--->
 
 <ul>
 <li><a href="https://www.youtube.com/watch?v=mlaLLQofmR8">video by Geoffrey Hinton</a> on the softmax function</li>
