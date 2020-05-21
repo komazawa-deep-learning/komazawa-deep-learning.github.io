@@ -412,6 +412,18 @@ If a state $S$ is terminal (goal state or end state) then, $Q(S,a)=0\forall a\in
 <p>ある状態 <script type="math/tex">S</script> が終了した場合 (ゴールに達したり，終了状態に陥った場合)， <script type="math/tex">Q(S,a)=0\forall a\in A</script> となります。
 ここで，<script type="math/tex">A</script> は全行動レパートリーを表します。</p>
 <p><img alt="Source: Introduction to Reinforcement learning by Sutton and Barto —Chapter 6" src="https://cdn-images-1.medium.com/max/1280/1*fYuXsaJoyCWuIZu49vx_GA.png" /></p>
+<div style="background-color:lightgray">
+
+- $Q(s,a)$ を全状態 $s$ と 全動作 $a$ について初期化，$Q(\text{終了状態},\cdot)=0$ とする
+- 各エピソードを繰り返す:
+    - $S$ を初期化する
+    - $S$ の中から Q 関数に従って $A$ を選ぶ
+    - $Q(S,A)\leftarrow Q(S,A)+\alpha\left[R+\gamma Q(S',S')-Q(S,A)\right]$
+    - $S\leftarrow S'$, $A\leftarrow A'$ 
+- $S$ が収束するまで繰り返す
+
+</div>
+
 <!--## ε-greedy policy-->
 
 <h2 id="epsilon">イプシロン (<script type="math/tex">\epsilon</script>) 貪欲(欲張り) 方策<a class="headerlink" href="#epsilon" title="Permanent link">&para;</a></h2>
