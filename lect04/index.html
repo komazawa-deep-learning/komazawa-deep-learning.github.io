@@ -83,24 +83,27 @@
             
     <li class="toctree-l2"><a href="#iiia">ディープラーニングの心理学的解釈 (心理学特講IIIA)</a></li>
     
+
+    <li class="toctree-l2"><a href="#_1">注意</a></li>
+    
         <ul>
         
-            <li><a class="toctree-l3" href="#_1">前回の復習</a></li>
+            <li><a class="toctree-l3" href="#_2">前回の復習</a></li>
         
         </ul>
     
 
-    <li class="toctree-l2"><a href="#_2">本日の目標</a></li>
+    <li class="toctree-l2"><a href="#_3">本日の目標</a></li>
     
 
-    <li class="toctree-l2"><a href="#_3">本日の実習</a></li>
+    <li class="toctree-l2"><a href="#_4">本日の実習</a></li>
     
 
-    <li class="toctree-l2"><a href="#_4">デモ</a></li>
+    <li class="toctree-l2"><a href="#_5">デモ</a></li>
     
         <ul>
         
-            <li><a class="toctree-l3" href="#_5">畳み込み演算を利用したニューラルネットワーク</a></li>
+            <li><a class="toctree-l3" href="#_6">畳み込み演算を利用したニューラルネットワーク</a></li>
         
             <li><a class="toctree-l3" href="#lenet5-lecun-1998">LeNet5 (LeCun, 1998)</a></li>
         
@@ -111,7 +114,7 @@
         </ul>
     
 
-    <li class="toctree-l2"><a href="#_8">転移学習</a></li>
+    <li class="toctree-l2"><a href="#_9">転移学習</a></li>
     
         <ul>
         
@@ -120,7 +123,7 @@
         </ul>
     
 
-    <li class="toctree-l2"><a href="#_9">標準正則化理論と条件付き最適化</a></li>
+    <li class="toctree-l2"><a href="#_10">標準正則化理論と条件付き最適化</a></li>
     
 
     </ul>
@@ -249,12 +252,18 @@ Date: 29/May/2020<br/>
 Appache 2.0 license<br/>
 </div>
 
+<h1 id="_1">注意<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<ol>
+<li>ブラウザは Chrome です。実習に不都合が生じます。</li>
+<li>最低一度は質問，発言をしてください。</li>
+<li>こまめに反応を返してください。顔出しもお願いします。</li>
+</ol>
 <hr />
 <ul>
 <li><a href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0529komazawa_homework.ipynb" target="_blank">本日の課題</a></li>
 </ul>
 <hr />
-<h2 id="_1">前回の復習<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h2 id="_2">前回の復習<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>ディープラーニング</strong> 深層学習, <!--deep learning とは **信用割当問題** credit assignment problem を回避するために **畳込み** convolution 演算(処理)を用いて多層にしたニューラルネットワークのこと--><ul>
 <li>畳込み演算って何？</li>
@@ -272,7 +281,7 @@ Appache 2.0 license<br/>
 </li>
 </ul>
 <hr />
-<h1 id="_2">本日の目標<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h1>
+<h1 id="_3">本日の目標<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h1>
 <ul>
 <li>最小二乗法から誤差逆伝播法へ。誤差関数，損失関数，目的関数，勾配降下法 (ブラインド ハイカー アナロジー)。 信用割当問題。勾配消失問題。</li>
 <li>標準正則化理論。制約付き最適化。変分原理。<a href="https://ja.wikipedia.org/wiki/%E3%82%AA%E3%82%A4%E3%83%A9%E3%83%BC%EF%BC%9D%E3%83%A9%E3%82%B0%E3%83%A9%E3%83%B3%E3%82%B8%E3%83%A5%E6%96%B9%E7%A8%8B%E5%BC%8F" target="_blank">オイラー=ラグランジェ方程式</a> </li>
@@ -284,7 +293,7 @@ Appache 2.0 license<br/>
 - だがそうではないことを理解することが目的
 -->
 
-<h1 id="_3">本日の実習<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h1>
+<h1 id="_4">本日の実習<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h1>
 <ul>
 <li><a href="https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019keras_kmnist_demo.ipynb">kminst による CNN</a></li>
 <li><a href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0529transfer_learning.ipynb">転移学習</a></li>
@@ -292,7 +301,7 @@ Appache 2.0 license<br/>
 <li><a href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0529Semantic_segmantation_DeepLab_Demo.ipynb">Deeplab のデモによる画像の意味的画像切り分け</a></li>
 </ul>
 <hr />
-<h1 id="_4">デモ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h1>
+<h1 id="_5">デモ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h1>
 <ul>
 <li><a href="https://playground.tensorflow.org/">Google Neural Networks Playground</a></li>
 </ul>
@@ -304,7 +313,7 @@ Appache 2.0 license<br/>
 - [foodly による唐揚げもりつけロボット](https://rt-net.jp/service/foodly/), [YouTube](https://youtu.be/KiT_DrDjdDE)
 -->
 
-<h2 id="_5">畳み込み演算を利用したニューラルネットワーク<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="_6">畳み込み演算を利用したニューラルネットワーク<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <div align="center">
 <!--<img src="../assets/2012AlexNet.svg" style="width:94%">-->
 <img src="../assets/Neocognitron.svg" style="width:74%">
@@ -368,7 +377,7 @@ Krzensky et al (2012) より
 </div>
 -->
 
-<h3 id="_6">イメージネットコンテスト，アレックスネットの出力にみる問題点<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h3 id="_7">イメージネットコンテスト，アレックスネットの出力にみる問題点<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <div align="center" style="width:89%">
     <img src="../assets/2012AlexNetResult0.svg" style="width:33%">
     <img src="../assets/2012AlexNetResult.svg" style="width:33%">
@@ -379,7 +388,7 @@ Krzensky et al (2012) より
 </div>
 </div>
 
-<h3 id="_7">画像切り出し<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h3 id="_8">画像切り出し<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <ol>
 <li>物体位置</li>
 <li>物体認識 object recognition</li>
@@ -393,7 +402,7 @@ Krzensky et al (2012) より
     Dang and Ha (2017) より
 </div>
 
-<h1 id="_8">転移学習<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h1>
+<h1 id="_9">転移学習<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h1>
 <div align="center" style="width:99%">
 <img src="../assets/2017Li_Deeper_Broader_fig1ja.svg" style="width:84%"><br/>
 </div>
@@ -431,11 +440,14 @@ Inception モジュール
 </center>
 -->
 
-<h1 id="_9">標準正則化理論と条件付き最適化<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h1>
+<h1 id="_10">標準正則化理論と条件付き最適化<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h1>
 <div align="center" style="width:94%">
     <img src="../assets/1985Poggio_2.svg" style="width:98%">
 </div>
 
+<ul>
+<li><a href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0529Poggios_standard_regularization_translation.ipynb" target="_balnk">上を訳してみました。github.io だと数式が表示されない場合があるため colab にしています</a></li>
+</ul>
 <div align="center" style="width:94%">
     <img src="../assets/1985Poggio_1.svg" style="width:44%">
     <img src="../assets/1985Poggio_3math.svg" style="width:44%">
