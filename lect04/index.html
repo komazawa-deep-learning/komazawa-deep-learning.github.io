@@ -8,7 +8,7 @@
   
   <meta name="author" content="Shin Asakawa">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>第 4 回 - 2020駒澤大学心理学特講IIIA</title>
+  <title>第 4 回 05 月 29 日 - 2020駒澤大学心理学特講IIIA</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -20,7 +20,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "\u7b2c 4 \u56de";
+    var mkdocs_page_name = "\u7b2c 4 \u56de 05 \u6708 29 \u65e5";
     var mkdocs_page_input_path = "lect04.md";
     var mkdocs_page_url = null;
   </script>
@@ -78,7 +78,7 @@
           
             <li class="toctree-l1 current">
 		
-    <a class="current" href="./">第 4 回</a>
+    <a class="current" href="./">第 4 回 05 月 29 日</a>
     <ul class="subnav">
             
     <li class="toctree-l2"><a href="#iiia">ディープラーニングの心理学的解釈 (心理学特講IIIA)</a></li>
@@ -90,52 +90,37 @@
         </ul>
     
 
-    <li class="toctree-l2"><a href="#_2">本日のお品書き，あるいは目標，ねらい</a></li>
+    <li class="toctree-l2"><a href="#_2">本日の目標</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_3">本日の実習</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_4">デモ</a></li>
     
         <ul>
         
-            <li><a class="toctree-l3" href="#_3">活性化関数</a></li>
+            <li><a class="toctree-l3" href="#_5">畳み込み演算を利用したニューラルネットワーク</a></li>
         
-            <li><a class="toctree-l3" href="#tensorflow-hub">TensorFlow HUB</a></li>
+            <li><a class="toctree-l3" href="#lenet5-lecun-1998">LeNet5 (LeCun, 1998)</a></li>
+        
+            <li><a class="toctree-l3" href="#alexnet-krizensky-et-al-2012">AlexNet (Krizensky, et al., 2012)</a></li>
+        
+            <li><a class="toctree-l3" href="#goolenet-inception-szegedy-et-al-2014">GooLeNet (Inception) (Szegedy et. al, 2014)</a></li>
         
         </ul>
     
 
-    <li class="toctree-l2"><a href="#_4">さらなる情報</a></li>
-    
-
-    <li class="toctree-l2"><a href="#_5">本日の実習</a></li>
-    
-
-    <li class="toctree-l2"><a href="#_6">用語集</a></li>
+    <li class="toctree-l2"><a href="#_8">転移学習</a></li>
     
         <ul>
         
-            <li><a class="toctree-l3" href="#_7">非線形性</a></li>
-        
-            <li><a class="toctree-l3" href="#_8">最適化</a></li>
-        
-            <li><a class="toctree-l3" href="#_9">結合パターン</a></li>
-        
-            <li><a class="toctree-l3" href="#_10">損失関数</a></li>
-        
-            <li><a class="toctree-l3" href="#_11">ハイパーパラメータ</a></li>
+            <li><a class="toctree-l3" href="#-">- 活性化関数</a></li>
         
         </ul>
     
 
-    <li class="toctree-l2"><a href="#_12">アレックスネット以降の流れ</a></li>
-    
-
-    <li class="toctree-l2"><a href="#_13">高精度化，高速化への努力</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l3" href="#_14">用語の整理</a></li>
-        
-            <li><a class="toctree-l3" href="#_15">正規化，正則化，標準化，白色化，二重中心化</a></li>
-        
-        </ul>
+    <li class="toctree-l2"><a href="#_9">標準正則化理論と条件付き最適化</a></li>
     
 
     </ul>
@@ -216,11 +201,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../how_to_read_math/">数式の読み方</a>
+    <a class="" href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020komazawa_how_to_read_math_equations.ipynb">数式の読み方</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../Reinforcement-learning-temporal-difference-sarsa-q-learning-expected-sarsa-on-python/">強化学習 TD,Q学習,SARSA</a>
+    <a class="" href="../Reinforcement-learning-temporal-difference-sarsa-q-learning-expected-sarsa-on-python/">強化学習 TD,Q学習, SARSA</a>
                 </li>
     </ul>
 	    </li>
@@ -247,7 +232,7 @@
     
       
     
-    <li>第 4 回</li>
+    <li>第 4 回 05 月 29 日</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -260,398 +245,220 @@
                 <h1 id="iiia"><a href="https://komazawa-deep-learning.github.io/">ディープラーニングの心理学的解釈 (心理学特講IIIA)</a><a class="headerlink" href="#iiia" title="Permanent link">&para;</a></h1>
 <div align='right'>
 <a href='mailto:educ0233@komazawa-u.ac.jp'>Shin Aasakawa</a>, all rights reserved.<br>
-Date: XX/XX/2020<br/>
+Date: 29/May/2020<br/>
 Appache 2.0 license<br/>
 </div>
 
-<p>
-<script type="math/tex">\ldots</script> 工事中 <script type="math/tex">\ldots</script>
-</p>
+<hr />
 <ul>
-<li><a href="https://emojiscavengerhunt.withgoogle.com/">Scavenger hunt</a></li>
-<li><a href="https://teachablemachine.withgoogle.com/">https://teachablemachine.withgoogle.com/</a></li>
-<li><a href="https://storage.googleapis.com/tfjs-models/demos/posenet/camera.html">姿勢推定デモ</a></li>
-<li><a href="https://youtu.be/kSLJriaOumA">Style-based GAN</a></li>
+<li><a href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0529komazawa_homework.ipynb" target="_blank">本日の課題</a></li>
 </ul>
+<hr />
 <h2 id="_1">前回の復習<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>ディープラーニング</strong> 深層学習, deep learning とは <strong>信用割当問題</strong> credit assignment problem を回避するために <strong>畳込み</strong> convolution 演算(処理)を用いて多層にしたニューラルネットワークのこと</li>
-<li>畳込み演算の概念</li>
-</ul>
-<p>
-<script type="math/tex; mode=display">\begin{equation}
-\left[\mbox{畳込み}\left(\ge1\right) \rightarrow \mbox{プーリング}\left(\ge0\right)\right]
-\times \left(\ge1\right)\rightarrow\mbox{全結合層}\left(\ge1\right)
-\end{equation}</script>
-</p>
-<ul>
+<li><strong>ディープラーニング</strong> 深層学習, <!--deep learning とは **信用割当問題** credit assignment problem を回避するために **畳込み** convolution 演算(処理)を用いて多層にしたニューラルネットワークのこと--><ul>
+<li>畳込み演算って何？</li>
 <li>カーネルサイズ</li>
 <li>プーリング</li>
 <li>ストライド</li>
-<li>パディング</li>
-<li>ハイパーパラメータとしてのカーネル(特徴)サイズ，ストライド，パディング</li>
+<li>パディング
+<!-- ハイパーパラメータとしてのカーネル(特徴)サイズ，ストライド，パディング
+<script type="math/tex; mode=display">
+\left[\text{畳込み}\left(\ge1\right) \rightarrow \text{プーリング}\left(\ge0\right)\right]
+\times \left(\ge1\right)\rightarrow\text{全結合層}\left(\ge1\right)
+</script>
+--></li>
+</ul>
+</li>
 </ul>
 <hr />
-<h1 id="_2">本日のお品書き，あるいは目標，ねらい<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h1>
+<h1 id="_2">本日の目標<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h1>
 <ul>
-<li>ニューラルネットワーク，機械学習の分野で頻繁に用いられている性能向上のための技法を紹介</li>
-<li>この授業の目標は深層学習の心理学的な意味付けを考えることであるので，紹介する上記の技法は無関係のように思われる</li>
-<li>だがそうではないことを理解することが目的</li>
-</ul>
-<hr />
-<h3 id="_3"><a href="../activation_functions/">活性化関数</a><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<h2 id="tensorflow-hub"><a href="https://www.tensorflow.org/hub">TensorFlow HUB</a><a class="headerlink" href="#tensorflow-hub" title="Permanent link">&para;</a></h2>
-<ul>
-<li>ドロップアウト，データ拡張，各種正規化: cnn.md</li>
-<li>有名なモデル LeNet，Alex Net，Inception，VGG，ResNet</li>
-<li>R-CNN，ハイウェイネット，YOLO，SSD</li>
-<li>セマンティックセグメンテーション</li>
-<li>転移学習，事前学習，ファインチューニング</li>
-</ul>
-<h3 id="inception-resnet-r-cnn-regional-convolutional-neural-networks">インセプション Inception，残渣ネット ResNet，領域 R-CNN (Regional Convolutional Neural Networks)<a class="headerlink" href="#inception-resnet-r-cnn-regional-convolutional-neural-networks" title="Permanent link">&para;</a></h3>
-<ul>
-<li>what and where routes</li>
-<li>心理学的対応物(？)</li>
-<li>Cadieu (2014) Deep Neural Networks Rival the Representation of Primate IT Cortex for Core Visual Object Recognition</li>
-<li>Nasr, Viswanathan, Nieder (2019) Number detectors spontaneously emerge in a deep neural network designed for visual object recognition</li>
-<li>Marcus (2018) Deep Learning A Critical Appraisal</li>
+<li>最小二乗法から誤差逆伝播法へ。誤差関数，損失関数，目的関数，勾配降下法 (ブラインド ハイカー アナロジー)。 信用割当問題。勾配消失問題。</li>
+<li>標準正則化理論。制約付き最適化。変分原理。<a href="https://ja.wikipedia.org/wiki/%E3%82%AA%E3%82%A4%E3%83%A9%E3%83%BC%EF%BC%9D%E3%83%A9%E3%82%B0%E3%83%A9%E3%83%B3%E3%82%B8%E3%83%A5%E6%96%B9%E7%A8%8B%E5%BC%8F" target="_blank">オイラー=ラグランジェ方程式</a> </li>
 <li>転移学習</li>
+<li>画像切り分け</li>
 </ul>
-<h3 id="notebooks">Notebooks<a class="headerlink" href="#notebooks" title="Permanent link">&para;</a></h3>
+<!--- 画像切り分け
+- ニューラルネットワーク，機械学習の分野で頻繁に用いられている性能向上のための技法を紹介
+- この授業の目標は深層学習の心理学的な意味付けを考えることであるので，紹介する上記の技法は無関係のように思われる
+- だがそうではないことを理解することが目的
+-->
+
+<h1 id="_3">本日の実習<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h1>
 <ul>
-<li><a href="https://github.com/tensorflow/hub/blob/master/examples/colab/text_classification_with_tf_hub_on_kaggle.ipynb">colab/text_classification_with_tf_hub_on_kaggle.ipynb</a>
-Shows how to solve a problem on Kaggle with TF-Hub.</li>
-<li><a href="https://github.com/tensorflow/hub/blob/master/examples/colab/semantic_similarity_with_tf_hub_universal_encoder.ipynb">colab/semantic_similarity_with_tf_hub_universal_encoder.ipynb</a>
-Explores text semantic similarity with the <a href="https://tfhub.dev/google/universal-sentence-encoder/2">Universal Encoder Module</a>.</li>
-<li><a href="https://github.com/tensorflow/hub/blob/master/examples/colab/tf_hub_generative_image_module.ipynb">colab/tf_hub_generative_image_module.ipynb</a>
-Explores a generative image module.</li>
-<li><a href="https://github.com/tensorflow/hub/blob/master/examples/colab/action_recognition_with_tf_hub.ipynb">colab/action_recognition_with_tf_hub.ipynb</a>
-Explores action recognition from video.</li>
-<li><a href="https://github.com/tensorflow/hub/blob/master/examples/colab/tf_hub_delf_module.ipynb">colab/tf_hub_delf_module.ipynb</a>
-Exemplifies use of the <a href="https://tfhub.dev/google/delf/1">DELF Module</a> for landmark recognition and matching.</li>
-<li><a href="https://github.com/tensorflow/hub/blob/master/examples/colab/object_detection.ipynb">colab/object_detection.ipynb</a> 
-Explores object detection with the use of the  <a href="https://github.com/tensorflow/hub/blob/master/examples/colab/object_detection.ipynb">Faster R-CNN module trained on Open Images v4</a>.</li>
-</ul>
-<hr />
-<!--
-<center>
-<img src='https://cdn-images-1.medium.com/max/1280/1*sS_WZM4GLS88XlnDLKcZ-g.png' style='width:94%'><br>
-from [A guide to Face Detection in Python](https://towardsdatascience.com/a-guide-to-face-detection-in-python-3eab0f6b9fc1)
-</center>
-
--->
-
-<ul>
-<li>
-<p><a href="https://towardsdatascience.com/wtf-is-image-classification-8e78a8235acb">The Complete Beginner’s Guide to Deep Learning: Convolutional Neural Networks and Image Classification</a>, Anne Bonner Feb. 02</p>
-</li>
-<li>
-<p>畳込みニューラルネットワーク (Convlutional Neural Networks:CNN) とは画像認識におけるゲームチェンジャー(以後，画像認識，ビデオ分類，自動運転，ドローン，ゲームなどへの応用多数)</p>
-</li>
-<li><a href="http://image-net.org/challenges/LSVRC/">イメージネット画像コンテスト</a>では，分類 (classification) 課題と位置 (locallization) 課題とからなる。</li>
-<li>コンテストは 2010 年から Li Fei-Fei さん中心となって <a href="https://www.mturk.com/">AMT</a> で画像のアノテーションを行って 画像を2012 年の優勝チームが CNN を使った。通称<a href="https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf">アレックスネット</a></li>
-<li><a href="http://cs231n.stanford.edu/index.html">スタンフォード大学の授業 CS231n: Convolutional Neural Networks for Visual Recognition</a>. スライド](http://cs231n.stanford.edu/slides/2019/cs231n_2019_lecture05.pdf)</li>
-</ul>
-<h1 id="_4">さらなる情報<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h1>
-<ul>
-<li>Math? <a href="https://web.stanford.edu/class/cs231a/lectures/intro_cnn.pdf">Introduction to Convolutional Neural Networks</a> by Jianxin Wu</li>
-<li>C.-C. Jay Kuo <a href="https://arxiv.org/abs/1609.04112">Understanding Convolutional Neural Networks With a Mathematical Model</a>.</li>
-<li><a href="https://towardsdatascience.com/simply-deep-learning-an-effortless-introduction-45591a1c4abb">the absolute basics of activation functions, you can find that here</a></li>
-<li>[Artificial neural networks? <a href="https://towardsdatascience.com/simply-deep-learning-an-effortless-introduction-45591a1c4abb">You can learn about them here</a></li>
-</ul>
-<!--
-#### ReLU layer
-The **ReLU** (rectified linear unit) layer is another step to our convolution layer. 
-You’re applying an activation function onto your feature maps to increase non-linearity in the network. 
-This is because images themselves are highly non-linear! 
-It removes negative values from an activation map by setting them to zero.
-
-Convolution is a linear operation with things like element wise matrix
-multiplication and addition. 
-The real-world data we want our CNN to learn will be non-linear. 
-We can account for that with an operation like ReLU. 
-You can use other operations like tanh or sigmoid. ReLU, however, is a popular choice because it can train the network faster without any major penalty to generalization accuracy.
--->
-
-<!--
-Want to dig deeper? Try Kaiming He, et al. [Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification](https://arxiv.org/abs/1502.01852).
-
-If you need a little more info about [the absolute basics of activation functions, you can find that here](https://towardsdatascience.com/simply-deep-learning-an-effortless-introduction-45591a1c4abb)!
--->
-
-<!--
-Here’s how our little buddy is looking after a ReLU activation function
-turns all of the negative pixel values black
-
-
-
-wzxhzdk:0
-
-
-<center>
-<img src="../assets/output2.jpg" style="width:84%">
-</center>
-
-
-#### Pooling
-The last thing you want is for your network to look for one specific feature in an exact shade in an exact location. 
-That’s useless for a good CNN! 
-You want images that are flipped, rotated, squashed, and so on. 
-You want lots of pictures of the same thing so that your network can recognize an object (say, a leopard) in all the images. No matter what the size or location. 
-No matter what the lighting or the number of spots,or whether that leopard is fast asleep or crushing prey. 
-You want **spatial variance**! You want flexibility. 
-That’s what pooling is all about.
-
-Pooling progressively reduces the size of the input representation. 
-It makes it possible to detect objects in an image no matter where they’re located. 
-Pooling helps to reduce the number of required parameters and the amount of computation required. 
-It also helps control **overfitting**.
-
-Overfitting can be kind of like when you memorize super specific details before a test without understanding the information. 
-When you memorize details, you can do a great job with your flashcards at home.
-You’ll fail a real test, though, if you’re presented with new information.
-
-(Another example: if all of the dogs in your training data have spots and dark eyes, your network will believe that for an image to be classified as a dog, it must have spots and dark eyes. 
-If you test your data with that same training data, it will do an amazing job of
-classifying dogs correctly! But if your outputs are only “dog” and “cat,” and your network is presented with new images containing, say, a Rottweiler and a Husky, it will probably wind up classifying both the Rottweiler and the Husky as cats. You can see the problem!)
-
-
-Without variance, your network will be useless with images that don’t exactly match the training data. 
-**Always, always, always keep your training and testing data separate**! 
-If you test with the data you trained on, your network has the information memorized! 
-It will do a terrible job when it’s introduced to any new data.
-
-#### Overfitting is not cool.
-So for this step, you take the **feature map**, apply a **pooling layer**, and the result is the **pooled feature map**.
-
-The most common example of pooling is **max pooling**. 
-In max pooling, the input image is partitioned into a set of areas that don’t overlap. 
-The outputs of each area are the maximum value in each area. 
-This makes a smaller size with fewer parameters.
-
-Max pooling is all about grabbing the maximum value at each spot in the image. 
-This gets rid of 75% of the information that is not the feature. 
-By taking the maximum value of the pixels, you’re accounting for distortion. 
-If the feature rotates a little to the left or right or whatever, the pooled feature will be the same. You’re reducing the size and parameters. 
-This is great because it means that the model won’t overfit on that information.
-
-You could use **average pooling or sum pooling**, but they aren’t common choices. 
-Max pooling tends to perform better than both in practice. 
-In max pooling, you’re taking the largest pixel value. 
-In average pooling, you take the average of all the pixel values at that spot in the image. 
-(Actually, there’s a trend now towards using smaller filters or discarding pooling layers entirely. 
-This is in response to an aggressive reduction in representation size.)
-
-__Want to look a little more at why you might want to choose max pooling
-and why you might prefer a stride of two pixels? Check out Dominik
-Scherer et. al, [Evaluation of Pooling Operations in Convolutional
-Architectures for Object Recognition](http://ais.uni-bonn.de/papers/icann2010_maxpool.pdf).__
-
-If you go [here](http://scs.ryerson.ca/~aharley/vis/conv/flat.html) you can check out a really interesting 2D visualization of a convolutional layer. 
-Draw a number in the box on the left-hand side of the screen and then really go through the output. 
-You can see the  convolved and pooled layers as well as the guesses. 
-Try hovering over a single pixel so you can see where the filter was applied.
-
-
-So now we have an input image, an applied convolutional layer, and an applied pooling layer.
-
-Let’s visualize the output of the pooling layer!
-
-We were here:
-
-<center>
-<img src="../assets/output3.jpg" style="width:94%">
-</center>
-
-The pooling layer takes as input the feature maps pictured above and reduces the dimensionality of those maps. 
-It does this by constructing a new, smaller image of only the maximum (brightest) values in a given kernel area.
-
-See how the image has changed size?
-
-<center>
-<img src="../assets/output4.jpg" style="width:94%">
-</center>
-
-Cool, right?
-
-#### Flattening
-
-This is a pretty simple step. You flatten the pooled feature map into a sequential column of numbers (a long vector). 
-This allows that information to become the input layer of an artificial neural network for further processing.
-
-
-#### Fully connected layer
-At this step, we add an **artificial neural network** to our convolutional neural network. 
-(Not sure about artificial neural networks? [You can learn about them here](https://towardsdatascience.com/simply-deep-learning-an-effortless-introduction-45591a1c4abb)!)
--->
-
-<!--
-The main purpose of the artificial neural network is to combine our features into more attributes. 
-These will predict the classes with greater accuracy. This combines features and attributes that can predict classes better.
-
-At this step, the error is calculated and then backpropagated. 
-The weights and feature detectors are adjusted to help optimize the performance of the model. 
-Then the process happens again and again and again. 
-This is how our network trains on the data! 
-
-How do the output neurons work when there’s more than one?
-
-First, we have to understand what weights to apply to the synapses that connect to the output. 
-We want to know which of the previous neurons are important for the output.
-
-If, for example, you have two output classes, one for a cat and one for a dog, a neuron that reads “0” is absolutely uncertain that the feature belongs to a cat. A neuron that reads “1 is absolutely certain that the feature belongs to a cat. 
-In the final fully connected layer, the neurons will read values between 0 and 1. 
-This signifies different levels of certainty. 
-A value of 0.9 would signify a certainty of 90%. 
-The cat neurons that are certain when a feature is identified know that the image is a cat. 
-They say the mathematical equivalent of, “These are my neurons! I should be triggered!” If this happens many times, the network learns that when certain features fire up, the image is a cat.
-
-
-Through lots of iterations, the cat neuron learns that when certain features fire up, the image is a cat. 
-The dog (for example) neuron learns that when certain other features fire up, the image is a dog. 
-The dog neuron learns that for example again, the “big wet nose” neuron and the “floppy ear” neuron contribute with a great deal of certainty to the dog neuron.
-It gives greater weight to the “big wet nose” neuron and the “floppy ear” neuron. 
-The dog neuron learns to more or less ignore the “whiskers” neuron and the “cat-iris” neuron. 
-The cat neuron learns to give greater weight to neurons like “whiskers” and “cat-iris.”
-(Okay, there aren’t actually “big wet nose” or “whiskers” neurons. 
-But the detected features do have distinctive features of the specific class.)
-
-
-Once the network has been trained, you can pass in an image and the neural network will be able to determine the image class probability for that image with a great deal of certainty.
-
-The fully connected layer is a traditional Multi-Layer Perceptron. 
-It uses a classifier in the output layer. 
-The classifier is usually a softmax activation function. 
-Fully connected means every neuron in the previous layer connects to every neuron in the next layer. 
-What’s the purpose of this layer? To use the features from the output of the previous layer to classify the input image based on the training data.
-
-Once your network is up and running you can see, for example, that you have a 95% probability that your image is a dog and a 5% probability that your image is a cat.
-
-
-Why do these numbers add up to 1.0? (0.95 + 0.05)
-
-There isn’t anything that says that these two outputs are connected to each other. 
-What is it that makes them relate to each other? 
-Essentially, they wouldn’t, but they do when we introduce the **softmax function**.
-This brings the values between 0 and 1 and makes them add up to 1 (100%). 
-(You can read all about this on Wikipedia.) 
-The softmax function takes a vector of scores and squashes it to a vector of values between 0 and 1 that add up to 1.
-
-After you apply a softmax function, you can apply the loss function.
-Cross entropy often goes hand in hand with softmax. 
-We want to minimize the loss function so we can maximize the performance of our
-network.
-
-At the beginning of backpropagation, your output values would be tiny.
-That’s why you might choose cross entropy loss. 
-The gradient would be very low and it would be hard for the neural network to start adjusting in the right direction. 
-Using cross entropy helps the network assess even a tiny error and get to the optimal state faster.
-
-#### Want more? Check out
--->
-
-<hr />
-<h1 id="_5">本日の実習<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h1>
-<ul>
+<li><a href="https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019keras_kmnist_demo.ipynb">kminst による CNN 実習</a></li>
+<li><a href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0529transfer_learning.ipynb">転移学習</a></li>
 <li><a href="https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_face_detection_demo.ipynb">顔領域の検出</a></li>
 <li><a href="https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019Google_Demo_Mask_R_CNN_Image_Segmentation_Demo.ipynb">TensorFlow Hub による領域分割</a></li>
-<li><a href="https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019google_DeepLab_Demo.ipynb">Deeplab のデモによる画像の意味分割</a></li>
-<li><a href="https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019keras_kmnist_demo.ipynb">kminst による CNN 実習</a></li>
-<li>'*.ipynb' を提出</li>
+<li><a href="https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019google_DeepLab_Demo.ipynb">Deeplab のデモによる画像の意味的画像切り分け</a></li>
 </ul>
 <hr />
-<h1 id="_6">用語集<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h1>
-<h2 id="_7">非線形性<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h1 id="_4">デモ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h1>
 <ul>
-<li>ReLU</li>
-<li>Sigmoid</li>
-<li>Tanh</li>
-<li>GRU</li>
-<li>LSTM</li>
+<li><a href="https://playground.tensorflow.org/">Google Neural Networks Playground</a></li>
 </ul>
-<h2 id="_8">最適化<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<ul>
-<li>SGD</li>
-<li>Momentum</li>
-<li>RMSProp</li>
-<li>Adagrad</li>
-<li>Adam</li>
-<li>KFac</li>
-</ul>
-<h2 id="_9">結合パターン<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<ul>
-<li>完全結合</li>
-<li>畳込み</li>
-<li>Dilated</li>
-<li>再帰結合</li>
-<li>スキップコネクト，残渣</li>
-</ul>
-<h2 id="_10">損失関数<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
-<ul>
-<li>交差エントロピー</li>
-<li>敵対学習</li>
-<li>変分原理</li>
-<li>最尤法</li>
-<li>L2</li>
-</ul>
-<h2 id="_11">ハイパーパラメータ<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
-<ul>
-<li>学習率</li>
-<li>層数</li>
-<li>バッチサイズ</li>
-<li>ドロップアウト率</li>
-<li>初期化</li>
-<li>データ拡張</li>
-<li>勾配クリップ</li>
-<li>モーメント</li>
-</ul>
-<hr />
-<h1 id="_12">アレックスネット以降の流れ<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h1>
-<ul>
-<li>2013年 ZF ネット</li>
-<li>2014年 GoogLeNet (インセプション)，VGG，Very Deep,  GAN, VAE</li>
-<li>2015年 残渣ネット (ResNet) この時点で，人間超え</li>
-<li>2016年 YOLO, SSD, Segmentation (Semantics/Instance)</li>
-<li>2017年 Mask R-CNN</li>
-<li>2018年 モバイルネット</li>
-</ul>
-<h1 id="_13">高精度化，高速化への努力<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h1>
-<ul>
-<li>確率的勾配降下法，オンライン学習，バッチ学習</li>
-<li>データ拡張</li>
-<li>正則化</li>
-<li>ドロップアウト</li>
-<li>非線形活性化関数</li>
-<li>最適化手法</li>
-</ul>
+<!--
+- [Scavenger hunt](https://emojiscavengerhunt.withgoogle.com/){target="_blank"}
+- [https://teachablemachine.withgoogle.com/](https://teachablemachine.withgoogle.com/){target="_blank"}
+- [姿勢推定デモ](https://storage.googleapis.com/tfjs-models/demos/posenet/camera.html){target="_blank"}
+- [Style-based GAN](https://youtu.be/kSLJriaOumA)
+- [foodly による唐揚げもりつけロボット](https://rt-net.jp/service/foodly/), [YouTube](https://youtu.be/KiT_DrDjdDE)
+-->
+
+<h2 id="_5">畳み込み演算を利用したニューラルネットワーク<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<div align="center">
+<!--<img src="../assets/2012AlexNet.svg" style="width:94%">-->
+<img src="../assets/Neocognitron.svg" style="width:74%">
+<img src="../assets/Fukushima.jpeg" style="width:24%"><br>
+ネオコグニトロンの概略図(Fukushima, 1979)<br>
+</div>
+
+<h2 id="lenet5-lecun-1998">LeNet5 (LeCun, 1998)<a class="headerlink" href="#lenet5-lecun-1998" title="Permanent link">&para;</a></h2>
 <p><center>
-<img src='../assets/2019Inception_screenshot.png' style='width:84%'><br>
-映画インセプションのスクリーンショット。Special thanks to <a href="https://www.netflix.com/watch/70131314?trackId=14170286&amp;tctx=3%2C0%2C9a10a321-9c1f-4396-b5df-00b5b84e6917-23965358%2C3d0e40f0-b286-48eb-afb3-2c7c501c86fc_86910893X3XX1558568676167%2C3d0e40f0-b286-48eb-afb3-2c7c501c86fc_ROOT">Netflix</a><br></p>
-<p><a href="https://www.netflix.com/watch/70131314?trackId=14170286&amp;tctx=3%2C0%2C9a10a321-9c1f-4396-b5df-00b5b84e6917-23965358%2C3d0e40f0-b286-48eb-afb3-2c7c501c86fc_86910893X3XX1558568676167%2C3d0e40f0-b286-48eb-afb3-2c7c501c86fc_ROOT">https://www.netflix.com/watch/70131314?trackId=14170286&amp;tctx=3%2C0%2C9a10a321-9c1f-4396-b5df-00b5b84e6917-23965358%2C3d0e40f0-b286-48eb-afb3-2c7c501c86fc_86910893X3XX1558568676167%2C3d0e40f0-b286-48eb-afb3-2c7c501c86fc_ROOT</a></p>
-<p>『インセプション』（原題: Inception）は、クリストファー・ノーラン監督・脚本・製作による2010年のアメリカのSFアクション映画。第83回アカデミー賞では作品賞、脚本賞、撮影賞、視覚効果賞、美術賞、作曲賞、音響編集賞、録音賞の8部門にノミネートされ、撮影賞、視覚効果賞、音響編集賞、録音賞を受賞した。全米脚本家組合賞ではオリジナル脚本賞を受賞した。<a href="https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%B3%E3%82%BB%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3">日本語ウィキペデイアより</a></p>
-<p><center>
-<img src='../assets/Inception3.svg' style="width:94%"></br>
-<img src='../assets/2015GoogLeNet_Inception.svg' style="width:74%"></br>
-Inception モジュール
+<img src='../assets/1998LeCun_Fig2_CNN.svg' style='width:94%'><br>
+LeCun (1998) より
 </center></p>
-<p></center>
+<h2 id="alexnet-krizensky-et-al-2012">AlexNet (Krizensky, et al., 2012)<a class="headerlink" href="#alexnet-krizensky-et-al-2012" title="Permanent link">&para;</a></h2>
+<p><center>
+<img src='../assets/2012AlexNet.svg' style='width:94%'><br>
+Krzensky et al (2012) より
+</center></p>
+<h2 id="goolenet-inception-szegedy-et-al-2014">GooLeNet (Inception) (Szegedy et. al, 2014)<a class="headerlink" href="#goolenet-inception-szegedy-et-al-2014" title="Permanent link">&para;</a></h2>
+<p><center>
+<img src='../assets/2014Szegedy_GoogLeNet.svg' style='width:99%'><br>
+</center></p>
+<!-- <center>
+<img src='../assets/2013Uijings_Selective_Search_Fig1.svg' style='width:94%'><br>
+空間ピラミッド (2015) より
+</center>
+
+
+
+<div align="center" style="width:94%">
+    <img src="../assets/dmoulin_gif/full_padding_no_strides.gif" style="width:33%">
+    <img src="../assets/dmoulin_gif/same_padding_no_strides_transposed.gif" style="width:33%"><br/>
+    <div align="left" style="width:66%">
+        左:入力層 5x5青，出力層緑，カーネルサイズ3x3, フルパディング，ストライド=1.
+        右:入力層 5x5青，出力層緑，カーネルサイズ3x3, フルパディング，ストライド=1. トランスポーズド畳み込み
+    </div>
+    <img src="../assets/dmoulin_gif/numerical_max_pooling.gif" style="width:33%">
+    <img src="../assets/dmoulin_gif/numerical_average_pooling.gif" style="width:33%"><br/>
+    <div align="left" style="width:66%">
+        左: 最大値プーリング。
+        右: 平均値プーリング
+    </div>
+    <div align="left" style="width:66%">
+        Dmoulin and Visin (2020) より
+    </div>
+    <img src="../assets/dmoulin_gif/padding_strides.gif" style="width:33%">
+    <img src="../assets/dmoulin_gif/padding_strides_odd.gif" style="width:33%">
+    <img src="../assets/dmoulin_gif/padding_strides_odd_transposed.gif" style="width:33%"><br/>
+    <div align="left" style="width:66%">
+        左: padding_strides, 中:padding_strides_odd, 右:padding_stride_transposed
+    </div>
+    <img src="../assets/dmoulin_gif/same_padding_no_strides.gif" style="width:33%">
+    <img src="../assets/dmoulin_gif/same_padding_no_strides_transposed.gif" style="width:33%">
+    <div align="left" style="width:66%">
+     右:same_padding_no_strides, 左: same_padding_no_strides_transposed
+    </div>
+    <img src="../assets/dmoulin_gif/arbitrary_padding_no_strides.gif" style="width:33%">
+    <img src="../assets/dmoulin_gif/arbitrary_padding_no_strides_transposed.gif" style="width:33%">
+    <div align="left" style="width:66%">
+     右:arbitrary padding no strides, 左: artibtrary padding no stride transposed
+    </div>
+</div>
+-->
+
+<h3 id="_6">イメージネットコンテスト，アレックスネットの出力にみる問題点<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<div align="center" style="width:89%">
+    <img src="../assets/2012AlexNetResult0.svg" style="width:33%">
+    <img src="../assets/2012AlexNetResult.svg" style="width:33%">
+    <div align="left" style="width:66%">
+    アレックスネットの結果: 画像のすぐ下の英単語は正解ラベルを表す。Krizensky et. al (2012) Fig. 4 より。
+    ピンク色は正解ラベルの確率を表す。ブルーは不正解ラベル判断確率を表している。
+    チェリーが正解であるが，画像を見る限り，第一回答候補のダルマチアンを正解だと考えても問題は無いと考えられる。
+</div>
+</div>
+
+<h3 id="_7">画像切り出し<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<ol>
+<li>物体位置</li>
+<li>物体認識 object recognition</li>
+<li>意味的切り出し semantic segmentation</li>
+<li>対象切り出し instance segmentation</li>
+<li>特徴点抽出 keypoint</li>
+<li>パノプティック切り出し</li>
+</ol>
+<div align="center">
+    <img src="../assets/2017DangHa_History_Of_Object_Recognition_ja.svg" style="width:99%"><br/>
+    Dang and Ha (2017) より
+</div>
+
+<h1 id="_8">転移学習<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h1>
+<div align="center" style="width:99%">
+<img src="../assets/2017Li_Deeper_Broader_fig1ja.svg" style="width:84%"><br/>
+</div>
+
+<hr />
+<h2 id="-">- <a href="../activation_functions/">活性化関数</a><a class="headerlink" href="#-" title="Permanent link">&para;</a></h2>
+<!-- 
+<div align="center">
+<img src='../assets/2019Inception_screenshot.png' style='width:84%'><br>
+<div align="left"  style="width:69%">
+映画インセプションのスクリーンショット。
+
+[Netflix](https://www.netflix.com/watch/70131314?trackId=14170286&tctx=3%2C0%2C9a10a321-9c1f-4396-b5df-00b5b84e6917-23965358%2C3d0e40f0-b286-48eb-afb3-2c7c501c86fc_86910893X3XX1558568676167%2C3d0e40f0-b286-48eb-afb3-2c7c501c86fc_ROOT){target="_blank"} <br/>
+<https://www.netflix.com/watch/70131314?trackId=14170286&tctx=3%2C0%2C9a10a321-9c1f-4396-b5df-00b5b84e6917-23965358%2C3d0e40f0-b286-48eb-afb3-2c7c501c86fc_86910893X3XX1558568676167%2C3d0e40f0-b286-48eb-afb3-2c7c501c86fc_ROOT><br/>
+
+『インセプション』（原題: Inception）は、クリストファー・ノーラン監督・脚本・製作による2010年のアメリカのSFアクション映画。第83回アカデミー賞では作品賞、脚本賞、撮影賞、視覚効果賞、美術賞、作曲賞、音響編集賞、録音賞の8部門にノミネートされ、撮影賞、視覚効果賞、音響編集賞、録音賞を受賞した。全米脚本家組合賞ではオリジナル脚本賞を受賞した。
+[日本語ウィキペデイアより](https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%B3%E3%82%BB%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3){target="_blank"}
+
+</div>
+</div>
+
+<div align="center" style="width:94%">
+    <img src='../assets/Inception3.svg' style="width:94%"></br>
+    <img src='../assets/2015GoogLeNet_Inception.svg' style="width:74%"></br>
+    <div align="left">
+Inception モジュール
+</div>
+</div>
+ -->
+
+<!-- 
+</center>
 <center>
 <img src='../assets/2014Cadieu_Fig3.svg' style='width:74%'>
-</center></p>
-<ol>
-<li>Edge detection</li>
-<li>Spatio-temporal interpolation and approximation</li>
-<li>Computation of optical flow</li>
-<li>Computation of lightness and albedo</li>
-<li>Shape from contours</li>
-<li>Shape from texture</li>
-<li>Shape from shading</li>
-<li>Binocular stereo matching</li>
-<li>Structure from motion</li>
-<li>Structure from stereo</li>
-<li>Surface reconstruction</li>
-<li>Computation of surface colour</li>
-</ol>
+</center>
+-->
+
+<h1 id="_9">標準正則化理論と条件付き最適化<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h1>
+<div align="center" style="width:94%">
+    <img src="../assets/1985Poggio_2.svg" style="width:98%">
+</div>
+
+<div align="center" style="width:94%">
+    <img src="../assets/1985Poggio_1.svg" style="width:44%">
+    <img src="../assets/1985Poggio_3math.svg" style="width:44%">
+<!-- <div align="left" sytle="width:49%">
+
+1. Edge detection
+1. Spatio-temporal interpolation and approximation
+1. Computation of optical flow
+1. Computation of lightness and albedo
+1. Shape from contours
+1. Shape from texture
+1. Shape from shading
+1. Binocular stereo matching
+1. Structure from motion
+1. Structure from stereo
+1. Surface reconstruction
+1. Computation of surface colour
+</div>
+ -->
+</div>
+
 <!--
 The regularization of the ill-posed problem of finding $z$ from
 the 'data' $y$
@@ -671,44 +478,20 @@ data are noiseless
 |Pz|^{2} \;\;\;\;\;\;\;\;\;\;(2)
 \end{equation}
 
-(2) find $z$ minimizes
+p(2) find $z$ minimizes
 
 \begin{equation}
 |Az-y|^2+\lambda|Pz|^2 \;\;\;\;\;\;\;\;\;\;(3)
 \end{equation}
 
 where $\lambda$ is a so-call regualarization parameter.
+
+- Bridging the Gaps Between Residual Learning, Recurrent Neural Networks and Visual Cortex by Qianli Liao and Tomaso Poggio は注目すべき？ 
+- ResNet の解釈
+
+- Hinton, Deep Learning, (Rumelhart backprop also) は Sutton の Bitter lesson の具現化である。end-to-end 一気通貫学習は，特徴抽出(特徴分析)，表現学習(内部表象)，分類器(意思決定)を含む。
 -->
 
-<ul>
-<li>Bridging the Gaps Between Residual Learning, Recurrent Neural Networks and Visual Cortex by Qianli Liao and Tomaso Poggio は注目すべき？ ResNet の解釈
-&lt;!--</li>
-<li>Hinton, Deep Learning, (Rumelhart backprop also) は Sutton の Bitter lesson の具現化である。end-to-end 一気通貫学習は，特徴抽出(特徴分析)，表現学習(内部表象)，分類器(意思決定)を含む。
---&gt;</li>
-</ul>
-<h2 id="_14">用語の整理<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
-<ul>
-<li>SGD 確率的勾配降下法 stochastic gradient descent method<ul>
-<li>勾配消失問題 gradient decent problem</li>
-<li>責任割当問題 credit assignment problem</li>
-</ul>
-</li>
-<li>非線形変換 non lineaar transformation<ul>
-<li>ReLU 整流線形ユニット Recutified Linear Unit</li>
-<li>ソフトマックス関数 softmax function</li>
-<li>交差エントロピー cross entropy</li>
-</ul>
-</li>
-<li>オーバーフィッティング 過学習 overfitting の回避法<ul>
-<li>正則化 regularization</li>
-<li>ドロップアウト dropout</li>
-</ul>
-</li>
-<li>データ拡張 data augumentation</li>
-<li>penultimate layer</li>
-<li>{バッチ, 層, 重み} 正規化</li>
-<li>one algorithm hypothesis</li>
-</ul>
 <!--
 Roe et. al (1992) Visual Projections Routed to the Auditory Pathway in Ferrets: Receptive Fields of Visual Neurons in Primary Auditory Cortex
 -->
@@ -735,21 +518,12 @@ similar. These results have significant implications for possible
 commonalities in intracortical processing circuits between sensory
 cortices, and for the role of inputs in specifying intracortical circuitry.
 
-あるモダリティからの入力を通常処理する皮質は、異なるモダリティからの入力を
-与えられたときにどのように反応するのだろうか？網膜入力が西洋イタチ，フェレッ
-トの聴覚経路にルーティングされる実験でそのような状況を作り出した。新生児外
-科手術に続いて、網膜神経節細胞の特定の集団が聴覚視床を神経支配するように誘
-導し、聴覚皮質の細胞に視覚的な入力を提供した（Sur et al 1988）。今回、これ
-らの再配線された動物の一次聴覚皮質（A1）における単細胞の視覚反応特性を詳細
-に調べ、正常な動物の一次視覚皮質（V1）におけるそれらとの反応を比較した。再
-配線された動物の A1 細胞は、正常な V1 細胞とは異なっていた：それらはより大
-きい受容野の大きさと劣った視覚的反応性を示し、入力電気刺激に対してより長い
-潜時で反応した。だが、驚くほどの類似点も見つかった。正常な V1 の細胞と同様、
-再配線された動物の A1 細胞は、方向選択性と方位選択性を示し、単純型，複雑型
-の受容野組織を有していた。さらに、方位選択性および方向選択性、ならびに A1
-および V1 に見られる単純、複雑、および無配向のセルの割合は非常に類似してい
-た。これらの結果は、皮質内処理回路における知覚皮質間の可能な共通性、および
-皮質内回路の指定における入力の役割に対して重要な意味を持つ。
+あるモダリティからの入力を通常処理する皮質は、異なるモダリティからの入力を与えられたときにどのように反応するのだろうか？網膜入力が西洋イタチ，フェレットの聴覚経路にルーティングされる実験でそのような状況を作り出した。新生児外科手術に続いて、網膜神経節細胞の特定の集団が聴覚視床を神経支配するように誘導し、聴覚皮質の細胞に視覚的な入力を提供した（Sur et al 1988）。
+今回、これらの再配線された動物の一次聴覚皮質（A1）における単細胞の視覚反応特性を詳細に調べ、正常な動物の一次視覚皮質（V1）におけるそれらとの反応を比較した。
+再配線された動物の A1 細胞は、正常な V1 細胞とは異なっていた：それらはより大きい受容野の大きさと劣った視覚的反応性を示し、入力電気刺激に対してより長い潜時で反応した。
+だが、驚くほどの類似点も見つかった。正常な V1 の細胞と同様、再配線された動物の A1 細胞は、方向選択性と方位選択性を示し、単純型，複雑型の受容野組織を有していた。
+さらに、方位選択性および方向選択性、ならびに A1および V1 に見られる単純、複雑、および無配向のセルの割合は非常に類似していた。
+これらの結果は、皮質内処理回路における知覚皮質間の可能な共通性、および皮質内回路の指定における入力の役割に対して重要な意味を持つ。
 -->
 
 <!--
@@ -784,16 +558,6 @@ similar transformations on their inputs.
 同程度の。
 これらの結果は、視経路および体性感覚経路における対応するレベルの視床核または皮質領域がそれらの入力に対して同様の変換を実行することを示唆している。
 -->
-
-<h2 id="_15">正規化，正則化，標準化，白色化，二重中心化<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
-<ul>
-<li>
-<p>白色化については平井有三先生のパターン認識が参考文献で良いかな</p>
-</li>
-<li>
-<p><a href="https://maristie.com/blog/differences-between-normalization-standardization-and-regularization/">Differences between normalization, standardization and regularization</a></p>
-</li>
-</ul>
               
             </div>
           </div>
