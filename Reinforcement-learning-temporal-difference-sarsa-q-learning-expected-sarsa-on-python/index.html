@@ -8,7 +8,7 @@
   
   <meta name="author" content="Shin Asakawa">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>強化学習 TD,Q学習,SARSA - 2020駒澤大学心理学特講IIIA</title>
+  <title>強化学習 TD,Q学習, SARSA - 2020駒澤大学心理学特講IIIA</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -20,7 +20,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "\u5f37\u5316\u5b66\u7fd2 TD,Q\u5b66\u7fd2,SARSA";
+    var mkdocs_page_name = "\u5f37\u5316\u5b66\u7fd2 TD,Q\u5b66\u7fd2, SARSA";
     var mkdocs_page_input_path = "Reinforcement-learning-temporal-difference-sarsa-q-learning-expected-sarsa-on-python.md";
     var mkdocs_page_url = null;
   </script>
@@ -78,7 +78,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../lect04/">第 4 回</a>
+    <a class="" href="../lect04/">第 4 回 05 月 29 日</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -156,11 +156,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../how_to_read_math/">数式の読み方</a>
+    <a class="" href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020komazawa_how_to_read_math_equations.ipynb">数式の読み方</a>
                 </li>
                 <li class=" current">
                     
-    <a class="current" href="./">強化学習 TD,Q学習,SARSA</a>
+    <a class="current" href="./">強化学習 TD,Q学習, SARSA</a>
     <ul class="subnav">
             
     <li class="toctree-l3"><a href="#td-sarsa-sarsa-q-python">TD (時間差)学習, SARSA, 期待 SARSA, Q 学習 と Python 実装</a></li>
@@ -238,7 +238,7 @@
         
       
     
-    <li>強化学習 TD,Q学習,SARSA</li>
+    <li>強化学習 TD,Q学習, SARSA</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -447,7 +447,18 @@ If a state $S$ is terminal (goal state or end state) then, $Q(S,a)=0\forall a\in
 <p>以下に Python コードを示します:</p>
 <!-- > epsilon-greedy.py-->
 
-<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">epsilon_greedy</span>(Q, epsilon, n_actions, s, train=<span style="color: #8B008B; font-weight: bold">False</span>):
+<table class="codehilitetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">epsilon_greedy</span>(Q, epsilon, n_actions, s, train=<span style="color: #8B008B; font-weight: bold">False</span>):
     <span style="color: #CD5555">&quot;&quot;&quot;</span>
 <span style="color: #CD5555">    @param Q Q values state x action -&gt; value</span>
 <span style="color: #CD5555">    @param epsilon for exploration</span>
@@ -460,7 +471,7 @@ If a state $S$ is terminal (goal state or end state) then, $Q(S,a)=0\forall a\in
         action = np.random.randint(<span style="color: #B452CD">0</span>, n_actions)
     <span style="color: #8B008B; font-weight: bold">return</span> action
 </pre></div>
-
+</td></tr></table>
 
 <p>Source: https://gist.githubusercontent.com/TimeTraveller-San/40a7a2655743bf6230706d45d1201b49/raw/25ddaaf54e946d33576e27e6bab45a40f22864a9/epsilon_greedy.py</p>
 <!-- The value of **$\epsilon$ determines the exploration-exploitation of the agent**. -->
@@ -490,7 +501,117 @@ Here’s a quick and simple python implementation of SARSA applied on the Taxi-v
 <p>以下2 Taxi-v2 の gym 環境に適用された SARSA のシンプルな Python コードを示します。</p>
 <!--- > SARSA.py -->
 
-<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">gym</span>
+<table class="codehilitetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">gym</span>
 <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">time</span>
 
@@ -602,7 +723,7 @@ Here’s a quick and simple python implementation of SARSA applied on the Taxi-v
     timestep_reward = sarsa(alpha, gamma, epsilon, episodes, max_steps, n_tests)
     <span style="color: #658b00">print</span>(timestep_reward)
 </pre></div>
-
+</td></tr></table>
 
 <p>source: https://gist.github.com/TimeTraveller-San/4aa1ed2d0644ad05d84348dd4fb797f3#file-sarsa-py</p>
 <!-- # Q-Learning -->
@@ -633,7 +754,119 @@ Q(S_t,A_t)\leftarrow Q(S_t,A_t)+\alpha\left[R_{t+1}+\gamma\max_{alpha} Q(S_{t+1}
 <!-- Here’s the python implementation of Q-learning:--></p>
 <!-- > qlearning.py  -->
 
-<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">gym</span>
+<table class="codehilitetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">gym</span>
 <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">time</span>
 
@@ -747,7 +980,7 @@ Q(S_t,A_t)\leftarrow Q(S_t,A_t)+\alpha\left[R_{t+1}+\gamma\max_{alpha} Q(S_{t+1}
     timestep_reward = qlearning(alpha, gamma, epsilon, episodes, max_steps, n_tests, test = <span style="color: #8B008B; font-weight: bold">True</span>)
     <span style="color: #658b00">print</span>(timestep_reward)
 </pre></div>
-
+</td></tr></table>
 
 <p>source: https://gist.github.com/TimeTraveller-San/9e56f9d09be7d50b795ef2f83be2ba72#file-qlearning-py</p>
 <!-- # Expected SARSA-->
@@ -772,7 +1005,121 @@ R_{t+1}+\gamma\sum_{\alpha}\pi(a\vert S_{t+1}) Q(S_{t+1},a) - Q(S_t,A_t)
 <p>Python コードを以下に示します:</p>
 <!-- > expectedsarsa.py -->
 
-<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">gym</span>
+<table class="codehilitetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">gym</span>
 <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">time</span>
 
@@ -888,7 +1235,7 @@ R_{t+1}+\gamma\sum_{\alpha}\pi(a\vert S_{t+1}) Q(S_{t+1},a) - Q(S_t,A_t)
                                      )
     <span style="color: #658b00">print</span>(timestep_reward)
 </pre></div>
-
+</td></tr></table>
 
 <p>source: https://gist.github.com/TimeTraveller-San/5bd93710e118633e0793dc5d0b92b19a#file-expectedsarsa-py</p>
 <!-- # Comparison-->
@@ -897,13 +1244,17 @@ R_{t+1}+\gamma\sum_{\alpha}\pi(a\vert S_{t+1}) Q(S_{t+1},a) - Q(S_t,A_t)
 <!--I’ve used the following parameters to test the three algorithms in Taxi-v2 gym environment-->
 
 <p>以下のパラメータで 3 つのアルゴリズムを比較しました</p>
-<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>lpha = <span style="color: #B452CD">0.4</span>
+<table class="codehilitetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>lpha = <span style="color: #B452CD">0.4</span>
 gamma = <span style="color: #B452CD">0.999</span>
 epsilon = <span style="color: #B452CD">0.9</span>
 episodes = <span style="color: #B452CD">2000</span>
 max_steps = <span style="color: #B452CD">2500</span> <span style="color: #228B22"># (max number of time steps possible in a single episode)</span>
 </pre></div>
-
+</td></tr></table>
 
 <!-- Here are the plots showcasing the comparison between the above three policy control methods:-->
 
@@ -946,7 +1297,7 @@ Google の アルファ碁は、囲碁の世界チャンピオンを倒すため
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="../how_to_read_math/" class="btn btn-neutral" title="数式の読み方"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../data_science/" class="btn btn-neutral" title="データサイエンス小史"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -974,7 +1325,7 @@ Google の アルファ碁は、囲碁の世界チャンピオンを倒すため
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../how_to_read_math/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../data_science/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
     </span>

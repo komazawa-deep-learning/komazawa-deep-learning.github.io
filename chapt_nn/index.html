@@ -78,7 +78,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../lect04/">第 4 回</a>
+    <a class="" href="../lect04/">第 4 回 05 月 29 日</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -156,11 +156,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../how_to_read_math/">数式の読み方</a>
+    <a class="" href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020komazawa_how_to_read_math_equations.ipynb">数式の読み方</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../Reinforcement-learning-temporal-difference-sarsa-q-learning-expected-sarsa-on-python/">強化学習 TD,Q学習,SARSA</a>
+    <a class="" href="../Reinforcement-learning-temporal-difference-sarsa-q-learning-expected-sarsa-on-python/">強化学習 TD,Q学習, SARSA</a>
                 </li>
     </ul>
 	    </li>
@@ -203,10 +203,11 @@
 <li><a href="https://playground.tensorflow.org/">Google Playground デモ</a></li>
 </ul>
 <p>あるいは当日通信状態が悪かったときのための保険的意味合いで:</p>
-<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #658b00">cd</span> ~/study/2019tensorflow_playground.git
+<table class="codehilitetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #658b00">cd</span> ~/study/2019tensorflow_playground.git
 npm run serve
 </pre></div>
-
+</td></tr></table>
 
 <!--
 - [画像認識の超簡単なデモ](https://drive.google.com/open?id=1R5qyEhcz8OF_h4q8nTbA4NsazU8exrQM)
@@ -219,7 +220,19 @@ npm run serve
 <hr />
 <p>おそらく排他的論理和を解く最短の python コードを以下に示しました。
 <a href="https://drive.google.com/open?id=1dkeOF94Ra2-RKnZYh6ISmtS1-Bjnh11U">ソース</a></p>
-<div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+<table class="codehilitetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 X = np.array([ [<span style="color: #B452CD">0</span>,<span style="color: #B452CD">0</span>,<span style="color: #B452CD">1</span>],[<span style="color: #B452CD">0</span>,<span style="color: #B452CD">1</span>,<span style="color: #B452CD">1</span>],[<span style="color: #B452CD">1</span>,<span style="color: #B452CD">0</span>,<span style="color: #B452CD">1</span>],[<span style="color: #B452CD">1</span>,<span style="color: #B452CD">1</span>,<span style="color: #B452CD">1</span>] ])
 y = np.array([[<span style="color: #B452CD">0</span>,<span style="color: #B452CD">1</span>,<span style="color: #B452CD">1</span>,<span style="color: #B452CD">0</span>]]).T
 w0 = <span style="color: #B452CD">2</span> * np.random.random((<span style="color: #B452CD">3</span>,<span style="color: #B452CD">4</span>)) - <span style="color: #B452CD">1</span>
@@ -233,7 +246,7 @@ w1 = <span style="color: #B452CD">2</span> * np.random.random((<span style="colo
     w0 += np.dot(X.T, dl1)
     <span style="color: #658b00">print</span>(l2.T) <span style="color: #8B008B; font-weight: bold">if</span> i % <span style="color: #B452CD">100</span> == <span style="color: #B452CD">0</span> <span style="color: #8B008B; font-weight: bold">else</span> Noneimport numpy <span style="color: #8B008B; font-weight: bold">as</span> np
 </pre></div>
-
+</td></tr></table>
 
 <!--
 - [kmnist を用いた PCA, tSNE: 2019si_kmnist_exercise002.ipynb](https://colab.research.google.com/drive/1qSNIYI2X8qsiWCwnScbmNaQSVVdAf2Jc)
