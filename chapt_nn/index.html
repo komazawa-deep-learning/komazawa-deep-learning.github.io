@@ -83,7 +83,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../lect05/">第 5 回</a>
+    <a class="" href="../lect05/">第 5 回 06 月 05 日</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -204,9 +204,9 @@
 </ul>
 <p>あるいは当日通信状態が悪かったときのための保険的意味合いで:</p>
 <table class="codehilitetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
-2</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #658b00">cd</span> ~/study/2019tensorflow_playground.git
+2</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code><span style="color: #658b00">cd</span> ~/study/2019tensorflow_playground.git
 npm run serve
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <!--
@@ -232,7 +232,7 @@ npm run serve
 10
 11
 12
-13</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+13</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 X = np.array([ [<span style="color: #B452CD">0</span>,<span style="color: #B452CD">0</span>,<span style="color: #B452CD">1</span>],[<span style="color: #B452CD">0</span>,<span style="color: #B452CD">1</span>,<span style="color: #B452CD">1</span>],[<span style="color: #B452CD">1</span>,<span style="color: #B452CD">0</span>,<span style="color: #B452CD">1</span>],[<span style="color: #B452CD">1</span>,<span style="color: #B452CD">1</span>,<span style="color: #B452CD">1</span>] ])
 y = np.array([[<span style="color: #B452CD">0</span>,<span style="color: #B452CD">1</span>,<span style="color: #B452CD">1</span>,<span style="color: #B452CD">0</span>]]).T
 w0 = <span style="color: #B452CD">2</span> * np.random.random((<span style="color: #B452CD">3</span>,<span style="color: #B452CD">4</span>)) - <span style="color: #B452CD">1</span>
@@ -245,7 +245,7 @@ w1 = <span style="color: #B452CD">2</span> * np.random.random((<span style="colo
     w1 += np.dot(l1.T, dl2)
     w0 += np.dot(X.T, dl1)
     <span style="color: #658b00">print</span>(l2.T) <span style="color: #8B008B; font-weight: bold">if</span> i % <span style="color: #B452CD">100</span> == <span style="color: #B452CD">0</span> <span style="color: #8B008B; font-weight: bold">else</span> Noneimport numpy <span style="color: #8B008B; font-weight: bold">as</span> np
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <!--

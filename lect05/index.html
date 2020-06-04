@@ -8,7 +8,7 @@
   
   <meta name="author" content="Shin Asakawa">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>第 5 回 - 2020駒澤大学心理学特講IIIA</title>
+  <title>第 5 回 06 月 05 日 - 2020駒澤大学心理学特講IIIA</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -20,7 +20,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "\u7b2c 5 \u56de";
+    var mkdocs_page_name = "\u7b2c 5 \u56de 06 \u6708 05 \u65e5";
     var mkdocs_page_input_path = "lect05.md";
     var mkdocs_page_url = null;
   </script>
@@ -83,40 +83,55 @@
           
             <li class="toctree-l1 current">
 		
-    <a class="current" href="./">第 5 回</a>
+    <a class="current" href="./">第 5 回 06 月 05 日</a>
     <ul class="subnav">
             
     <li class="toctree-l2"><a href="#iiia">ディープラーニングの心理学的解釈 (心理学特講IIIA)</a></li>
     
 
-    <li class="toctree-l2"><a href="#_1">連絡事項</a></li>
+    <li class="toctree-l2"><a href="#_1">実習</a></li>
     
         <ul>
         
-            <li><a class="toctree-l3" href="#tensorflow-hub">TensorFlow HUB</a></li>
+            <li><a class="toctree-l3" href="#_2">先週の復習</a></li>
+        
+            <li><a class="toctree-l3" href="#_3">要点</a></li>
+        
+            <li><a class="toctree-l3" href="#2">2 経路仮説</a></li>
         
         </ul>
     
 
-    <li class="toctree-l2"><a href="#_2">さらなる情報</a></li>
+    <li class="toctree-l2"><a href="#_4">二段階モデル</a></li>
     
         <ul>
         
-            <li><a class="toctree-l3" href="#_3">用語の整理</a></li>
-        
-            <li><a class="toctree-l3" href="#_4">正規化，正則化，標準化，白色化，二重中心化</a></li>
-        
-            <li><a class="toctree-l3" href="#r-cnn-2015">R-CNN (2015)</a></li>
-        
-            <li><a class="toctree-l3" href="#he-et-al-2015">残渣ネット (He et. al, 2015)</a></li>
+            <li><a class="toctree-l3" href="#r-cnn">R-CNN </a></li>
         
             <li><a class="toctree-l3" href="#fast-r-cnn-faster-r-cnn-2014">Fast R-CNN と Faster R-CNN (2014)</a></li>
         
-            <li><a class="toctree-l3" href="#_5">セマンティックセグメンテーションとインスタンスセグメンテーション</a></li>
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#_5">一段階モデル</a></li>
+    
+
+    <li class="toctree-l2"><a href="#u-net">U-Net</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_6">背骨 （バックボーン）ネットワーク と 周辺ネット</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_7">転移学習</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_8">生成モデル</a></li>
+    
+        <ul>
         
-            <li><a class="toctree-l3" href="#_6">画像変換</a></li>
+            <li><a class="toctree-l3" href="#_9">画像変換</a></li>
         
-            <li><a class="toctree-l3" href="#_7">まんがの画風変換</a></li>
+            <li><a class="toctree-l3" href="#_10">まんがの画風変換</a></li>
         
         </ul>
     
@@ -225,7 +240,7 @@
     
       
     
-    <li>第 5 回</li>
+    <li>第 5 回 06 月 05 日</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -238,489 +253,257 @@
                 <h1 id="iiia"><a href="https://komazawa-deep-learning.github.io/">ディープラーニングの心理学的解釈 (心理学特講IIIA)</a><a class="headerlink" href="#iiia" title="Permanent link">&para;</a></h1>
 <div align='right'>
 <a href='mailto:educ0233@komazawa-u.ac.jp'>Shin Aasakawa</a>, all rights reserved.<br>
-Date: XX/XX/2020<br/>
+Date: Jun/05/2020<br/>
 Appache 2.0 license<br/>
 </div>
 
-<p>
-<script type="math/tex">\ldots</script> 工事中 <script type="math/tex">\ldots</script>
-</p>
-<h1 id="_1">連絡事項<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<!-- 
+# 連絡事項
+
+- 来週 6 月 12 日は休講とします。
+- 代わりに 6 月 15 日 (日曜日)に [connpass で募集している研究会](https://exawizards.connpass.com/event/176947/){target="_blank"} を視聴してください 
+- [Google classroom](https://classroom.google.com/){target="_blank"} に移行します。移行期間は 1 週間程度を見込んでいます。
+
+ -->
+
+<h1 id="_1">実習<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <ul>
-<li>
-<p>今回の資料の <a href="https://drive.google.com/drive/folders/1qEgY6JVXc9CeCvMmdMxGKWoWIeLFC4GD" target="_blank">PDF ファイル</a></p>
-</li>
-<li>
-<p>転移学習
-&lt;!--</p>
-</li>
-<li>ReLU, tanh に触れていない</li>
-<li>memo: バッチ正則化をやっていない</li>
-<li>本日の次元圧縮でも，SGD, dropout と同じく
---&gt;</li>
+<li><a href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0605Detectron2.ipynb" target="_blank">画像分割 detectron2 デモ</a></li>
+<li><a href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0604CAM_test.ipynb" target="_blank">CAM どこを見ているのか，どこを見て判断しているのか</a></li>
+<li><a href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0529transfer_learning.ipynb" target="_blank">転移学習</a></li>
+<li><a href="https://www.kaggle.com/summitkwan/tl-gan-demo" target="_blank">Kaggle 上での Interactive demo for TL-GAN (transparent latent-space GAN)</a></li>
 </ul>
-<!--- [顔領域の検出](https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0605face_detection_demo.ipynb)-->
+<!-- [顔領域の検出](https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0605face_detection_demo.ipynb)-->
 
-<h2 id="tensorflow-hub"><a href="https://www.tensorflow.org/hub">TensorFlow HUB</a><a class="headerlink" href="#tensorflow-hub" title="Permanent link">&para;</a></h2>
+<h2 id="_2">先週の復習<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <ul>
-<li>ドロップアウト，データ拡張，各種正規化: cnn.md</li>
-<li>有名なモデル LeNet，Alex Net，Inception，VGG，ResNet</li>
-<li>R-CNN，ハイウェイネット，YOLO，SSD</li>
-<li>セマンティックセグメンテーション</li>
-<li>転移学習，事前学習，ファインチューニング</li>
+<li>意味的分割 (セマンティック・セグメンテーション)</li>
+<li>物体（あるいは対象）分割 （オブジェクト・セグメンテーション）</li>
+<li>実体分割 (インスタンス・セグメンテーション)</li>
+<li>バウディングボックス 関心領域の切り出し</li>
 </ul>
-<h3 id="inception-resnet-r-cnn-regional-convolutional-neural-networks">インセプション Inception，残渣ネット ResNet，領域 R-CNN (Regional Convolutional Neural Networks)<a class="headerlink" href="#inception-resnet-r-cnn-regional-convolutional-neural-networks" title="Permanent link">&para;</a></h3>
+<p>詳しくは <a href="https://komazawa-deep-learning.github.io/lect04/#_8" target="_blank">先週の該当箇所</a> をご覧ください。</p>
+<p>どこ (where) に 何 (what) があるのかを認識するための努力が 2014 年から長足の進歩を遂げました。
+先週の課題ビデオにあった唐揚げロボットでは，意味的分割では対応不可能であることに注意</p>
+<h2 id="_3">要点<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ol>
+<li>外界の情報を受け取り，認識に至るために，哺乳類の視覚情報処理システムは少なくとも 2 つの経路を作り出して利用しているようである。</li>
+<li>視覚系では，腹側経路で「何」が処理され，背側経路で「どこ」が処理されているらしい</li>
+<li>ニューラルネットワークでも，入力画像中の，どこに，何が，写っているのかを認識させるモデルが存在する。</li>
+<li>認識性能の向上に伴い，この認識機能に立脚した発展が盛んである。</li>
+<li>転移学習と生成についてとりあげる</li>
+</ol>
+<h2 id="2">2 経路仮説<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
 <ul>
-<li>what and where routes</li>
-<li>心理学的対応物(？)</li>
-<li>Cadieu (2014) Deep Neural Networks Rival the Representation of Primate IT Cortex for Core Visual Object Recognition</li>
-<li>Nasr, Viswanathan, Nieder (2019) Number detectors spontaneously emerge in a deep neural network designed for visual object recognition</li>
-<li>Marcus (2018) Deep Learning A Critical Appraisal</li>
-<li>転移学習</li>
+<li>腹側経路 ventral pathways ("what" 経路)</li>
+<li>背側経路 dorsan pathways ("where" 経路)</li>
 </ul>
-<h3 id="notebooks">Notebooks<a class="headerlink" href="#notebooks" title="Permanent link">&para;</a></h3>
-<ul>
-<li><a href="https://github.com/tensorflow/hub/blob/master/examples/colab/text_classification_with_tf_hub_on_kaggle.ipynb">colab/text_classification_with_tf_hub_on_kaggle.ipynb</a>
-Shows how to solve a problem on Kaggle with TF-Hub.</li>
-<li><a href="https://github.com/tensorflow/hub/blob/master/examples/colab/semantic_similarity_with_tf_hub_universal_encoder.ipynb">colab/semantic_similarity_with_tf_hub_universal_encoder.ipynb</a>
-Explores text semantic similarity with the <a href="https://tfhub.dev/google/universal-sentence-encoder/2">Universal Encoder Module</a>.</li>
-<li><a href="https://github.com/tensorflow/hub/blob/master/examples/colab/tf_hub_generative_image_module.ipynb">colab/tf_hub_generative_image_module.ipynb</a>
-Explores a generative image module.</li>
-<li><a href="https://github.com/tensorflow/hub/blob/master/examples/colab/action_recognition_with_tf_hub.ipynb">colab/action_recognition_with_tf_hub.ipynb</a>
-Explores action recognition from video.</li>
-<li><a href="https://github.com/tensorflow/hub/blob/master/examples/colab/tf_hub_delf_module.ipynb">colab/tf_hub_delf_module.ipynb</a>
-Exemplifies use of the <a href="https://tfhub.dev/google/delf/1">DELF Module</a> for landmark recognition and matching.</li>
-<li><a href="https://github.com/tensorflow/hub/blob/master/examples/colab/object_detection.ipynb">colab/object_detection.ipynb</a> 
-Explores object detection with the use of the  <a href="https://github.com/tensorflow/hub/blob/master/examples/colab/object_detection.ipynb">Faster R-CNN module trained on Open Images v4</a></li>
-</ul>
-<!--
-<center>
-<img src='https://cdn-images-1.medium.com/max/1280/1*sS_WZM4GLS88XlnDLKcZ-g.png' style='width:94%'><br>
-from [A guide to Face Detection in Python](https://towardsdatascience.com/a-guide-to-face-detection-in-python-3eab0f6b9fc1)
-</center>
-
--->
-
-<ul>
-<li>
-<p><a href="https://towardsdatascience.com/wtf-is-image-classification-8e78a8235acb">The Complete Beginner’s Guide to Deep Learning: Convolutional Neural Networks and Image Classification</a>, Anne Bonner Feb. 02</p>
-</li>
-<li>
-<p>畳込みニューラルネットワーク (Convlutional Neural Networks:CNN) とは画像認識におけるゲームチェンジャー(以後，画像認識，ビデオ分類，自動運転，ドローン，ゲームなどへの応用多数)</p>
-</li>
-<li><a href="http://image-net.org/challenges/LSVRC/">イメージネット画像コンテスト</a>では，分類 (classification) 課題と位置 (locallization) 課題とからなる。</li>
-<li>コンテストは 2010 年から Li Fei-Fei さん中心となって <a href="https://www.mturk.com/">AMT</a> で画像のアノテーションを行って 画像を2012 年の優勝チームが CNN を使った。通称<a href="https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf">アレックスネット</a></li>
-<li><a href="http://cs231n.stanford.edu/index.html">スタンフォード大学の授業 CS231n: Convolutional Neural Networks for Visual Recognition</a>. スライド](http://cs231n.stanford.edu/slides/2019/cs231n_2019_lecture05.pdf)</li>
-</ul>
-<h1 id="_2">さらなる情報<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h1>
-<ul>
-<li>Math? <a href="https://web.stanford.edu/class/cs231a/lectures/intro_cnn.pdf">Introduction to Convolutional Neural Networks</a> by Jianxin Wu</li>
-<li>C.-C. Jay Kuo <a href="https://arxiv.org/abs/1609.04112">Understanding Convolutional Neural Networks With a Mathematical Model</a>.</li>
-<li><a href="https://towardsdatascience.com/simply-deep-learning-an-effortless-introduction-45591a1c4abb">the absolute basics of activation functions, you can find that here</a></li>
-<li>[Artificial neural networks? <a href="https://towardsdatascience.com/simply-deep-learning-an-effortless-introduction-45591a1c4abb">You can learn about them here</a></li>
-</ul>
-<!--
-#### ReLU layer
-The **ReLU** (rectified linear unit) layer is another step to our convolution layer. 
-You’re applying an activation function onto your feature maps to increase non-linearity in the network. 
-This is because images themselves are highly non-linear! 
-It removes negative values from an activation map by setting them to zero.
-
-Convolution is a linear operation with things like element wise matrix
-multiplication and addition. 
-The real-world data we want our CNN to learn will be non-linear. 
-We can account for that with an operation like ReLU. 
-You can use other operations like tanh or sigmoid. ReLU, however, is a popular choice because it can train the network faster without any major penalty to generalization accuracy.
--->
-
-<!--
-Want to dig deeper? Try Kaiming He, et al. [Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification](https://arxiv.org/abs/1502.01852).
-
-If you need a little more info about [the absolute basics of activation functions, you can find that here](https://towardsdatascience.com/simply-deep-learning-an-effortless-introduction-45591a1c4abb)!
--->
-
-<!--
-Here’s how our little buddy is looking after a ReLU activation function
-turns all of the negative pixel values black
-
-
-
-wzxhzdk:0
-
-
-<center>
-<img src="../assets/output2.jpg" style="width:84%">
-</center>
-
-
-#### Pooling
-The last thing you want is for your network to look for one specific feature in an exact shade in an exact location. 
-That’s useless for a good CNN! 
-You want images that are flipped, rotated, squashed, and so on. 
-You want lots of pictures of the same thing so that your network can recognize an object (say, a leopard) in all the images. No matter what the size or location. 
-No matter what the lighting or the number of spots,or whether that leopard is fast asleep or crushing prey. 
-You want **spatial variance**! You want flexibility. 
-That’s what pooling is all about.
-
-Pooling progressively reduces the size of the input representation. 
-It makes it possible to detect objects in an image no matter where they’re located. 
-Pooling helps to reduce the number of required parameters and the amount of computation required. 
-It also helps control **overfitting**.
-
-Overfitting can be kind of like when you memorize super specific details before a test without understanding the information. 
-When you memorize details, you can do a great job with your flashcards at home.
-You’ll fail a real test, though, if you’re presented with new information.
-
-(Another example: if all of the dogs in your training data have spots and dark eyes, your network will believe that for an image to be classified as a dog, it must have spots and dark eyes. 
-If you test your data with that same training data, it will do an amazing job of
-classifying dogs correctly! But if your outputs are only “dog” and “cat,” and your network is presented with new images containing, say, a Rottweiler and a Husky, it will probably wind up classifying both the Rottweiler and the Husky as cats. You can see the problem!)
-
-
-Without variance, your network will be useless with images that don’t exactly match the training data. 
-**Always, always, always keep your training and testing data separate**! 
-If you test with the data you trained on, your network has the information memorized! 
-It will do a terrible job when it’s introduced to any new data.
-
-#### Overfitting is not cool.
-So for this step, you take the **feature map**, apply a **pooling layer**, and the result is the **pooled feature map**.
-
-The most common example of pooling is **max pooling**. 
-In max pooling, the input image is partitioned into a set of areas that don’t overlap. 
-The outputs of each area are the maximum value in each area. 
-This makes a smaller size with fewer parameters.
-
-Max pooling is all about grabbing the maximum value at each spot in the image. 
-This gets rid of 75% of the information that is not the feature. 
-By taking the maximum value of the pixels, you’re accounting for distortion. 
-If the feature rotates a little to the left or right or whatever, the pooled feature will be the same. You’re reducing the size and parameters. 
-This is great because it means that the model won’t overfit on that information.
-
-You could use **average pooling or sum pooling**, but they aren’t common choices. 
-Max pooling tends to perform better than both in practice. 
-In max pooling, you’re taking the largest pixel value. 
-In average pooling, you take the average of all the pixel values at that spot in the image. 
-(Actually, there’s a trend now towards using smaller filters or discarding pooling layers entirely. 
-This is in response to an aggressive reduction in representation size.)
-
-__Want to look a little more at why you might want to choose max pooling
-and why you might prefer a stride of two pixels? Check out Dominik
-Scherer et. al, [Evaluation of Pooling Operations in Convolutional
-Architectures for Object Recognition](http://ais.uni-bonn.de/papers/icann2010_maxpool.pdf).__
-
-If you go [here](http://scs.ryerson.ca/~aharley/vis/conv/flat.html) you can check out a really interesting 2D visualization of a convolutional layer. 
-Draw a number in the box on the left-hand side of the screen and then really go through the output. 
-You can see the  convolved and pooled layers as well as the guesses. 
-Try hovering over a single pixel so you can see where the filter was applied.
-
-
-So now we have an input image, an applied convolutional layer, and an applied pooling layer.
-
-Let’s visualize the output of the pooling layer!
-
-We were here:
-
-<center>
-<img src="../assets/output3.jpg" style="width:94%">
-</center>
-
-The pooling layer takes as input the feature maps pictured above and reduces the dimensionality of those maps. 
-It does this by constructing a new, smaller image of only the maximum (brightest) values in a given kernel area.
-
-See how the image has changed size?
-
-<center>
-<img src="../assets/output4.jpg" style="width:94%">
-</center>
-
-Cool, right?
-
-#### Flattening
-
-This is a pretty simple step. You flatten the pooled feature map into a sequential column of numbers (a long vector). 
-This allows that information to become the input layer of an artificial neural network for further processing.
-
-
-#### Fully connected layer
-At this step, we add an **artificial neural network** to our convolutional neural network. 
-(Not sure about artificial neural networks? [You can learn about them here](https://towardsdatascience.com/simply-deep-learning-an-effortless-introduction-45591a1c4abb)!)
--->
-
-<!--
-The main purpose of the artificial neural network is to combine our features into more attributes. 
-These will predict the classes with greater accuracy. This combines features and attributes that can predict classes better.
-
-At this step, the error is calculated and then backpropagated. 
-The weights and feature detectors are adjusted to help optimize the performance of the model. 
-Then the process happens again and again and again. 
-This is how our network trains on the data! 
-
-How do the output neurons work when there’s more than one?
-
-First, we have to understand what weights to apply to the synapses that connect to the output. 
-We want to know which of the previous neurons are important for the output.
-
-If, for example, you have two output classes, one for a cat and one for a dog, a neuron that reads “0” is absolutely uncertain that the feature belongs to a cat. A neuron that reads “1 is absolutely certain that the feature belongs to a cat. 
-In the final fully connected layer, the neurons will read values between 0 and 1. 
-This signifies different levels of certainty. 
-A value of 0.9 would signify a certainty of 90%. 
-The cat neurons that are certain when a feature is identified know that the image is a cat. 
-They say the mathematical equivalent of, “These are my neurons! I should be triggered!” If this happens many times, the network learns that when certain features fire up, the image is a cat.
-
-
-Through lots of iterations, the cat neuron learns that when certain features fire up, the image is a cat. 
-The dog (for example) neuron learns that when certain other features fire up, the image is a dog. 
-The dog neuron learns that for example again, the “big wet nose” neuron and the “floppy ear” neuron contribute with a great deal of certainty to the dog neuron.
-It gives greater weight to the “big wet nose” neuron and the “floppy ear” neuron. 
-The dog neuron learns to more or less ignore the “whiskers” neuron and the “cat-iris” neuron. 
-The cat neuron learns to give greater weight to neurons like “whiskers” and “cat-iris.”
-(Okay, there aren’t actually “big wet nose” or “whiskers” neurons. 
-But the detected features do have distinctive features of the specific class.)
-
-
-Once the network has been trained, you can pass in an image and the neural network will be able to determine the image class probability for that image with a great deal of certainty.
-
-The fully connected layer is a traditional Multi-Layer Perceptron. 
-It uses a classifier in the output layer. 
-The classifier is usually a softmax activation function. 
-Fully connected means every neuron in the previous layer connects to every neuron in the next layer. 
-What’s the purpose of this layer? To use the features from the output of the previous layer to classify the input image based on the training data.
-
-Once your network is up and running you can see, for example, that you have a 95% probability that your image is a dog and a 5% probability that your image is a cat.
-
-
-Why do these numbers add up to 1.0? (0.95 + 0.05)
-
-There isn’t anything that says that these two outputs are connected to each other. 
-What is it that makes them relate to each other? 
-Essentially, they wouldn’t, but they do when we introduce the **softmax function**.
-This brings the values between 0 and 1 and makes them add up to 1 (100%). 
-(You can read all about this on Wikipedia.) 
-The softmax function takes a vector of scores and squashes it to a vector of values between 0 and 1 that add up to 1.
-
-After you apply a softmax function, you can apply the loss function.
-Cross entropy often goes hand in hand with softmax. 
-We want to minimize the loss function so we can maximize the performance of our
-network.
-
-At the beginning of backpropagation, your output values would be tiny.
-That’s why you might choose cross entropy loss. 
-The gradient would be very low and it would be hard for the neural network to start adjusting in the right direction. 
-Using cross entropy helps the network assess even a tiny error and get to the optimal state faster.
-
-#### Want more? Check out
--->
-
-<!--
-# 用語集
-
-## 非線形性
-- ReLU
-- Sigmoid
-- Tanh
-- GRU
-- LSTM
-
-## 最適化
-- SGD
-- Momentum
-- RMSProp
-- Adagrad
-- Adam
-- KFac
-
-## 結合パターン
-- 完全結合
-- 畳込み
-- Dilated
-- 再帰結合
-- スキップコネクト，残渣
-
-## 損失関数
-- 交差エントロピー
-- 敵対学習
-- 変分原理
-- 最尤法
-- L2
-
-## ハイパーパラメータ
-- 学習率
-- 層数
-- バッチサイズ
-- ドロップアウト率
-- 初期化
-- データ拡張
-- 勾配クリップ
-- モーメント
-
----
-
-# アレックスネット以降の流れ
-
-- 2013年 ZF ネット
-- 2014年 GoogLeNet (インセプション)，VGG，Very Deep,  GAN, VAE
-- 2015年 残渣ネット (ResNet) この時点で，人間超え
-- 2016年 YOLO, SSD, Segmentation (Semantics/Instance)
-- 2017年 Mask R-CNN
-- 2018年 モバイルネット
-
-# 高精度化，高速化への努力
-
-- 確率的勾配降下法，オンライン学習，バッチ学習
-- データ拡張
-- 正則化
-- ドロップアウト
-- 非線形活性化関数
-- 最適化手法
--->
+<div align="center" style="width:74%">
+  <img src="../assets/1982Ungerleider_Mishkin.jpg"><br/>
+  <div align="left">
+    Ungerleider and Mishkin (1982) より
+  </div>
+</div>
+
+<div align="center" style="width:74%">
+<img src="../assets/LNCS2766_Chapter_2_fig2_4.jpg"><br/>
+Behnke (2003) より
+</div>
 
 <hr />
-<hr />
-<h2 id="_3">用語の整理<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<ul>
-<li>SGD 確率的勾配降下法 stochastic gradient descent method<ul>
-<li>勾配消失問題 gradient decent problem</li>
-<li>責任割当問題 credit assignment problem</li>
-</ul>
-</li>
-<li>非線形変換 non lineaar transformation<ul>
-<li>ReLU 整流線形ユニット Recutified Linear Unit</li>
-<li>ソフトマックス関数 softmax function</li>
-<li>交差エントロピー cross entropy</li>
-</ul>
-</li>
-<li>オーバーフィッティング 過学習 overfitting の回避法<ul>
-<li>正則化 regularization</li>
-<li>ドロップアウト dropout</li>
-</ul>
-</li>
-<li>データ拡張 data augumentation</li>
-<li>penultimate layer</li>
-<li>{バッチ, 層, 重み} 正規化</li>
-<li>one algorithm hypothesis</li>
-</ul>
-<hr />
-<h2 id="_4">正規化，正則化，標準化，白色化，二重中心化<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<ul>
-<li>
-<p>白色化については平井有三先生のパターン認識が参考文献で良いかな</p>
-</li>
-<li>
-<p><a href="https://maristie.com/blog/differences-between-normalization-standardization-and-regularization/">Differences between normalization, standardization and regularization</a></p>
-</li>
-</ul>
-<hr />
-<h2 id="r-cnn-2015">R-CNN (2015)<a class="headerlink" href="#r-cnn-2015" title="Permanent link">&para;</a></h2>
+<p>同様の 2 経路による処理は 聴覚 (Romanski et al., 1999) や 触覚(Reed et al., 2005)でも発見されています。</p>
+<div style="color:lightgray">
+
+発展的な話題としては，このような 2 種類の処理経路は，
+処理される情報の種類の問題ではないくて，機能に関与した区別であるとの仮説もあります。すなわち
+
+* 腹側経路は物体に関する情報の知覚 (知覚のための視覚) 
+* 背側経路は行動を導くための情報処理 (行動のための視覚) 
+
+さらに、背側経路 は背外側経路 dorsolateral と背中側経路 dorsomedial に細分化できることが示唆されています（Binkofski and Buxbaum, 2013, Grafton, 2010, Rizzolatti and Matelli, 2003）。
+
+* 背外側側経路 前頭頂内溝（aIPS）と前頭前皮質の腹側部分（PMv）, 古典的に到達運動の計画に寄与 （Davareら、2015、Davareら、2012、Vesia and Crawford、2012）
+* 背中側経路は V6A と内側頭頂内溝 を介して背側前頭前皮質（PMd）へ. 把持に関連する情報を統合する（Davareら、2007、Davareら、2010、Tunikら、2005）
+
+最近では、これら2つの 副回路が 行動によって要求されるオンライン制御の程度に応じて相互作用することも発見されている(Grol et al., 2007, Verhagen et al., 2013)。
+
+</div>
+
+<h1 id="_4">二段階モデル<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h1>
+<h3 id="r-cnn">R-CNN <!-- (2015) --><a class="headerlink" href="#r-cnn" title="Permanent link">&para;</a></h3>
 <p><center>
 <img src='../assets/2013Girshick_RCNN_Fig1.svg' style='width:74%'><br>
-Girshick (2013) より</p>
-<p><img src='../assets/2014SPP.svg' style='width:74%'><br>
 Girshick (2013) より
+<!-- 
+<img src='../assets/2014SPP.svg' style='width:74%'><br>
+Girshick (2013) より
+-->
 </center></p>
-<hr />
-<h2 id="he-et-al-2015">残渣ネット (He et. al, 2015)<a class="headerlink" href="#he-et-al-2015" title="Permanent link">&para;</a></h2>
-<p><center>
+<!-- ---
+
+## 残渣ネット (He et. al, 2015)
+
+<center>
 <img src='../assets/ResNet_Fig2.svg' style='width:39%'><br>
 <img src='../assets/2015ResNet30.svg' style='width:94%'><br>
 He (2015) より
-</center></p>
-<hr />
-<h2 id="fast-r-cnn-faster-r-cnn-2014">Fast R-CNN と Faster R-CNN (2014)<a class="headerlink" href="#fast-r-cnn-faster-r-cnn-2014" title="Permanent link">&para;</a></h2>
+</center>
+-->
+
+<h3 id="fast-r-cnn-faster-r-cnn-2014">Fast R-CNN と Faster R-CNN (2014)<a class="headerlink" href="#fast-r-cnn-faster-r-cnn-2014" title="Permanent link">&para;</a></h3>
 <p><center>
 <img src='../assets/2015Fast_R-CNN_Fig1.svg' style='width:74%'><br>
 Fast R-CNN</p>
-<p><img src='../assets/2015Faster_RCNN_RPN.svg' style='width:74%'><br>
+<!-- <img src='../assets/2015Faster_RCNN_RPN.svg' style='width:74%'><br>
 Faster R-CNN
-</center></p>
-<hr />
-<h2 id="_5">セマンティックセグメンテーションとインスタンスセグメンテーション<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<ul>
-<li>完全畳み込みネットワーク(Fully Convolutional Network:FCN) と呼ばれるセマンティックセグメンテー
-ションを実現するネットワーク</li>
-<li>FCN とは文字通り全ての層が畳込み層であるモデル</li>
-</ul>
-<p><center>
+-->
+
+<p></center></p>
+<!-- 
+---
+
+## セマンティックセグメンテーションとインスタンスセグメンテーション
+
+- 完全畳み込みネットワーク(Fully Convolutional Network:FCN) と呼ばれるセマンティックセグメンテー
+ションを実現するネットワーク
+- FCN とは文字通り全ての層が畳込み層であるモデル
+
+<center>
 <img src='../assets/2015Long_FCN.svg' style='width:94%'></br>
 Long (2017) FCN
-</center></p>
-<ul>
-<li>通常のCNN は，出力層のユニット数が識別すべきカテゴリー数であった。一方 FCN では入力画像の画素数だけ
-出力層が必要になる。</li>
-<li>すなわち各画素がそれぞれどのカテゴリーに属するのかを出力する必要があるため出力層には，縦画素数 <script type="math/tex">\times</script> 横画素数 <script type="math/tex">\times</script> カテゴリー数の出力ニューロンが用意される。</li>
-<li>
-<p>図 では，識別すべきカテゴリー数 が 20 であったたま，どのカテゴリーにも属さない，すなわち背景を指示するもう1 つのカテゴリーを加えた計 21 カテゴリーの分類を行うことになる。</p>
-</li>
-<li>
-<p>CNN では畳込演算によって畳込みのカーネル幅(受容野) だけ近傍の入力刺激を加えて計算することになるため，
-上位層では下位層に比べて受容野が大きくなることの影響で画像サイズは小さく(あるいは粗く) なってしまう</p>
-</li>
-<li>このため，最終出力層に入力層と同じ解像度の画素数を得るためには，畳込みと反対方向の解像度を細かくする工夫が必要となる。</li>
-<li>これを解決する一つの方法がアンサンプリング(unsampling) と呼ばれる方法</li>
-<li>下位のプーリング層の情報を用いて詳細な解像度を得る</li>
-<li>図 はアンサンプリングにより詳細な画像，すなわち最終的には入力画像と等解像度の出力を得る仕組みを示している。</li>
-</ul>
-<p><center>
+</center>
+
+- 通常のCNN は，出力層のユニット数が識別すべきカテゴリー数であった。一方 FCN では入力画像の画素数だけ
+出力層が必要になる。
+- すなわち各画素がそれぞれどのカテゴリーに属するのかを出力する必要があるため出力層には，縦画素数 $\times$ 横画素数 $\times$ カテゴリー数の出力ニューロンが用意される。
+- 図 では，識別すべきカテゴリー数 が 20 であったたま，どのカテゴリーにも属さない，すなわち背景を指示するもう1 つのカテゴリーを加えた計 21 カテゴリーの分類を行うことになる。
+
+- CNN では畳込演算によって畳込みのカーネル幅(受容野) だけ近傍の入力刺激を加えて計算することになるため，
+上位層では下位層に比べて受容野が大きくなることの影響で画像サイズは小さく(あるいは粗く) なってしまう
+- このため，最終出力層に入力層と同じ解像度の画素数を得るためには，畳込みと反対方向の解像度を細かくする工夫が必要となる。
+- これを解決する一つの方法がアンサンプリング(unsampling) と呼ばれる方法
+- 下位のプーリング層の情報を用いて詳細な解像度を得る
+- 図 はアンサンプリングにより詳細な画像，すなわち最終的には入力画像と等解像度の出力を得る仕組みを示している。
+
+<center>
 <img src='../assets/2015Long_FCN2J.svg' style='width:94%'><br>
-</center></p>
-<ul>
-<li>同様の仕組みがセグネット Segnet でも取り入れられている</li>
-</ul>
-<p><center>
+</center>
+
+- 同様の仕組みがセグネット Segnet でも取り入れられている
+
+<center>
 <img src='../assets/SegNet.svg' style='width:94%'><br>
-</center></p>
-<p><center>
+</center>
+
+<center>
 <img src='../assets/2016Radford_deconv.svg' style='width:94%'><br>
-</center></p>
-<hr />
-<p><center>
+</center>
+
+---
+
+<center>
 <img src='../assets/2017He_MaskRCNN_02Oject.svg' style='width:74%'><br>
 <img src='../assets/2017He_MaskRCNN_02SemSeg.svg' style='width:74%'><br>
 <img src='../assets/2017He_MaskRCNN_08.svg' style='width:94%'><br>
 <img src='../assets/2017He_MaskRCNN_41.svg' style='width:94%'><br>
-</center></p>
+</center>
+-->
+
+<h1 id="_5">一段階モデル<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h1>
 <p><center>
 <img src='../assets/yolo-and-ssd.jpg' style='width:94%'><br>
 </center></p>
-<p>— <a href="https://arxiv.org/abs/1506.02640">You Only Look Once: Unified, Real-Time Object Detection</a>, 2015.</p>
-<blockquote>
-<p>A single neural network predicts bounding boxes and class probabilities directly from full images in one evaluation. Since the whole detection pipeline is a single network, it can be optimized end-to-end directly on detection performance.</p>
-</blockquote>
+<!-—
+ [You Only Look Once: Unified, Real-Time Object Detection](https://arxiv.org/abs/1506.02640), 2015. 
+-->
+<!--
+> A single neural network predicts bounding boxes and class probabilities directly from full images in one evaluation. Since the whole detection pipeline is a single network, it can be optimized end-to-end directly on detection performance.
+-->
+
 <p><center>
 <iframe width="600" height="300" src="https://www.youtube.com/embed/lxLyLIL7OsU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </center></p>
+<h1 id="u-net">U-Net<a class="headerlink" href="#u-net" title="Permanent link">&para;</a></h1>
+<p>画像分割の SOTA</p>
+<div align="center" style="width:98%">
+  <img src="../assets/2015Ronneberger_U-Net_Fig1_ja.svg" style="width:99%"><br/>
+  Ronnenberger et. al (2015) Fig. 1 より
+</div>
+
+<div align="center" style="width:88%">
+  <img src="../assets/2014Friston_Fig1.svg" style="width:99%"><br/>
+<!--   <img src="../assets/2009Friston_box3.svg" style="width:99%"><br/> -->
+</div>
+
+<h1 id="_6">背骨 （バックボーン）ネットワーク と 周辺ネット<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h1>
+<div align="center" style="width:99%">
+  <img src="../assets/2017Lin_FPN_teaser_ja_b.svg" style="width:33%">
+  <img src="../assets/2017Lin_FPN_teaser_ja_c.svg" style="width:39%">
+  <img src="../assets/2017Lin_FPN_teaser_ja_d.svg" style="width:66%">
+</div>
+
+<p>detectron2 の実習をしてみましょう。</p>
+<p><center>
+<iframe width="600" height="300" src="https://www.youtube.com/embed/pW6nZXeWlGM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+Realtime Multi-Person 2D Human Pose Estimation using Part Affinity Fields, CVPR 2017 Oral
+</center></p>
+<p><center>
+<iframe width="600" height="300" src="https://www.youtube.com/embed/PCBTZh41Ris" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+Paper: <a href="https://arxiv.org/pdf/1808.07371.pdf">https://arxiv.org/pdf/1808.07371.pdf</a><br>
+Web site: <a href="https://carolineec.github.io/everybody_dance_now/">https://carolineec.github.io/everybody_dance_now/</a>
+</center></p>
 <hr />
-<h2 id="_6">画像変換<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h1 id="_7">転移学習<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h1>
+<p><strong>転移学習</strong> transfer learning は機械学習分野のみならず，ロボット工学や実応用の分野でも応用が考えられます。
+シミュレーションと現実との間隙をどのように埋めるのかという大きな問題に関連します。
+一方で，転移学習と <em>ファインチューニング</em><em> や </em><em>領域適応</em>* domain adaptation の区別がなされています。</p>
+<p>転移学習とは 課題 A を用いて訓練したモデルに対して，別の課題 B に適用することを言います。
+DNN では転移学習は頻用されます。
+イメージネットで画像分類を学習したネットワークに対して，例えば顔認識を学習させるような場合です。</p>
+<p>PyTorch のチュートリアルなどでは，学習済のネットワークに対して，最終直下層を入れ替えて別の課題を訓練することを転移学習と呼びます。
+このとき，最終直下層と出力層との結合を学習させ，その他の下位層の結合は固定し，訓練しません。
+一方で，下位層まで含めて全結合を訓練させる場合をファインチューニングと呼び，区別しています。</p>
+<div align="center" style="width:99%">
+<img src="../assets/2019Ruder_hard_parameter_sharing_p48.jpg" style="width:44%">
+<img src="../assets/2019Ruder_soft_parameter_sharing_p49.jpg" style="width:44%"><br/>
+左: ハードパラメータ共有: 転移学習,  右: ソフトパラメータ共有: ファインチューニング
+</div>
+
+<hr />
+<h1 id="_8">生成モデル<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h1>
+<p>認識の反対の操作をすれば，生成が可能です。<strong>生成敵対ネットワーク</strong> Generative Adversarial Networks: GAN になります。</p>
+<p>GAN では 2 つのニューラルネットワークが用いられ，<strong>識別器</strong> descriminator と <strong>生成器</strong> generator と呼びます(Goodfellow,2014)。
+識別器も生成器も多層ニューラルネットワークです。
+通常の画像分類課題では，最上位層において推論，すなわち入力画像が何であるかを計算するためにソフトマックスる関数などが用いられます。
+これに対して GAN の識別器では，0 か 1 かの出力をします。入力画像が通常の画像であれば 1 を，生成器によって生成 された画像であれあば 0 を出力します。
+生成器は，識別器の最終直下層で得られたような画像表現に雑音を加えた値から画像を生成します。
+生成器は，識別器が入力データから画像を推論するのと逆方法に推論から画像を生成します。
+すなわち GAN は入力が実在するか，偽造品，すなわちフェイクかを見破る訓練がなされることになります。</p>
+<p>このようにして，生成器は識別器の学習成果であるデータの内部表現を模倣し，生成器を欺こうします。
+このようにして識別器と生成器との間で  <strong>ゲーム理論</strong>でいう <strong>ナッシュ均衡</strong> Nash's equilibrium が成り立ちます (Heusel, 2017)。
+GAN の模式的な流れを下図 に示しました。</p>
+<div align="center" style="width:88%">
+  <img src="../assets/2016Goodfellow_fig12ja.svg" style="width:99%"><br/>
+</div>
+
+<h2 id="_9">画像変換<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <p><center>
 <img src='../assets/2017Taigman_fig.svg' style='width:94%'><br>
 </center></p>
-<h3 id="1">1<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
-<p><center>
-<img src='../assets/2017Reed_tmp_1.svg' style='width:94%'>
-</center></p>
-<h3 id="2">2<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
-<p><center>
-<img src='../assets/2017Reed_tmp_2.svg' style='width:94%'>
-</center></p>
-<h3 id="3">3<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
-<p><center>
-<img src='../assets/2017Reed_tmp_3.svg' style='width:94%'>
-</center></p>
-<h3 id="4">4<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
-<p><center>
-<img src='../assets/2017Reed_tmp_4.svg' style='width:94%'>
-</center></p>
-<h3 id="5">5<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
 <p><center>
 <img src='../assets/2017Reed_tmp_5.svg' style='width:94%'>
 </center></p>
-<h3 id="6">6<a class="headerlink" href="#6" title="Permanent link">&para;</a></h3>
+<p><center>
+<img src='../assets/2017Reed_tmp_1.svg' style='width:94%'>
+</center></p>
 <p><center>
 <img src='../assets/2017Reed_tmp_6.svg' style='width:94%'>
 </center></p>
-<h3 id="7">7<a class="headerlink" href="#7" title="Permanent link">&para;</a></h3>
+<h3 id="gan">サイクル GAN<a class="headerlink" href="#gan" title="Permanent link">&para;</a></h3>
 <p><center>
 <img src='../assets/2017Reed_tmp_7.svg' style='width:94%'>
 </center></p>
-<h3 id="8">8<a class="headerlink" href="#8" title="Permanent link">&para;</a></h3>
+<h3 id="gan_1">サイクル GAN による領域変換<a class="headerlink" href="#gan_1" title="Permanent link">&para;</a></h3>
 <p><center>
 <img src='../assets/2017Reed_tmp8.svg' style='width:94%'>
 </center></p>
@@ -730,7 +513,7 @@ Long (2017) FCN
 <img src='../assets/2017Zhu_cycleGAN3.svg' style='width:94%'><br>
 </center></p>
 <hr />
-<h2 id="_7">まんがの画風変換<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h2 id="_10">まんがの画風変換<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
 <p><center>
 <img src='../assets/2018Chen_CartoonGAN.svg' style="width:94%"></br>
 ``CartoonGAN: Generative Adversarial Networks for Photo Cartoonization'' CVPR 2018 (Conference on Computer Vision and Pattern Recognition)
@@ -743,21 +526,6 @@ Long (2017) FCN
 </center></p>
 </blockquote>
 <hr />
-<p><center>
-<iframe width="600" height="300" src="https://www.youtube.com/embed/pW6nZXeWlGM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
-Realtime Multi-Person 2D Human Pose Estimation using Part Affinity Fields, CVPR 2017 Oral
-</center></p>
-<p><center>
-<iframe width="600" height="300" src="https://www.youtube.com/embed/PCBTZh41Ris" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
-Paper: <a href="https://arxiv.org/pdf/1808.07371.pdf">https://arxiv.org/pdf/1808.07371.pdf</a><br>
-Web site: <a href="https://carolineec.github.io/everybody_dance_now/">https://carolineec.github.io/everybody_dance_now/</a>
-</center></p>
-<hr />
-<p><center>
-<img src='../assets/2014Imgur_Saddle_point.gif' style='width:74%'><br>
-<img src='../assets/2014Imgur_Beales_function.gif' style='width:74%'><br>
-<img src='../assets/2014Imgur_Long_Valley.gif' style='width:74%'><br>
-</center></p>
               
             </div>
           </div>

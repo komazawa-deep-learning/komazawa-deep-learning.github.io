@@ -83,7 +83,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../lect05/">第 5 回</a>
+    <a class="" href="../lect05/">第 5 回 06 月 05 日</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -341,7 +341,7 @@ Python のコードは強力なアイデアを数行で表現できる擬似言�
  7
  8
  9
-10</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">quicksort</span>(arr):
+10</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">quicksort</span>(arr):
     <span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #658b00">len</span>(arr) &lt;= <span style="color: #B452CD">1</span>:
         <span style="color: #8B008B; font-weight: bold">return</span> arr
     pivot = arr[<span style="color: #658b00">int</span>(<span style="color: #658b00">len</span>(arr) / <span style="color: #B452CD">2</span>)]
@@ -351,7 +351,7 @@ Python のコードは強力なアイデアを数行で表現できる擬似言�
     <span style="color: #8B008B; font-weight: bold">return</span> quicksort(left) + middle + quicksort(right)
 
 <span style="color: #658b00">print</span>(quicksort([<span style="color: #B452CD">3</span>,<span style="color: #B452CD">6</span>,<span style="color: #B452CD">8</span>,<span style="color: #B452CD">10</span>,<span style="color: #B452CD">1</span>,<span style="color: #B452CD">2</span>,<span style="color: #B452CD">1</span>])) <span style="color: #228B22"># 印字( &quot;[1, 1, 2, 3, 6, 8, 10]&quot;)</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <h2 id="python_1">Python のバージョン<a class="headerlink" href="#python_1" title="Permanent link">&para;</a></h2>
@@ -378,7 +378,7 @@ Python 3.0 以来，前方互換性が廃棄されて 2.7 系 と 3 系では互
 11
 12
 13
-14</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>x = <span style="color: #B452CD">3</span>
+14</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code>x = <span style="color: #B452CD">3</span>
 <span style="color: #658b00">print</span>(<span style="color: #658b00">type</span>(x)) <span style="color: #228B22"># 印字 &quot;&lt;type &#39;int&#39;&gt;&quot;</span>
 <span style="color: #658b00">print</span>(x)       <span style="color: #228B22"># 印字&quot;3&quot;</span>
 <span style="color: #658b00">print</span>(x + <span style="color: #B452CD">1</span>)   <span style="color: #228B22"># 加算; 印字 &quot;4&quot;</span>
@@ -392,7 +392,7 @@ x *= (<span style="color: #B452CD">2</span>)
 y = <span style="color: #B452CD">2.5</span>
 <span style="color: #658b00">print</span>(<span style="color: #658b00">type</span>(y)) <span style="color: #228B22"># 印字 &quot;&lt;type &#39;float&#39;&gt;&quot;</span>
 <span style="color: #658b00">print</span>(y, y + <span style="color: #B452CD">1</span>, y * <span style="color: #B452CD">2</span>, y ** <span style="color: #B452CD">2</span>) <span style="color: #228B22"># 印字 &quot;2.5 3.5 5.0 6.25&quot;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>他言語と異なりPythonには増分<code>x++</code>，減分<code>x–</code>を行う単項演算子は ない。</p>
@@ -406,14 +406,14 @@ y = <span style="color: #B452CD">2.5</span>
 4
 5
 6
-7</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>t = <span style="color: #8B008B; font-weight: bold">True</span>
+7</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code>t = <span style="color: #8B008B; font-weight: bold">True</span>
 f = <span style="color: #8B008B; font-weight: bold">False</span>
 <span style="color: #658b00">print</span>(<span style="color: #658b00">type</span>(t)) <span style="color: #228B22"># 印字 &quot;&lt;type &#39;bool&#39;&gt;&quot;</span>
 <span style="color: #658b00">print</span>(t <span style="color: #8B008B">and</span> f) <span style="color: #228B22"># 論理積 AND; 印字 &quot;False&quot;</span>
 <span style="color: #658b00">print</span>(t <span style="color: #8B008B">or</span> f)  <span style="color: #228B22"># 論理和 OR; 印字 &quot;True&quot;</span>
 <span style="color: #658b00">print</span>(<span style="color: #8B008B">not</span> t)   <span style="color: #228B22"># 論理否定 NOT; 印字 &quot;False&quot;</span>
 <span style="color: #658b00">print</span>(t != f)  <span style="color: #228B22"># 排他的論理和 XOR; 印字 &quot;True&quot; </span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <h4 id="_3">文字列<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
@@ -425,7 +425,7 @@ f = <span style="color: #8B008B; font-weight: bold">False</span>
 5
 6
 7
-8</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>hello = <span style="color: #CD5555">&#39;hello&#39;</span>              <span style="color: #228B22"># 文字列リテラルはシングルクォート</span>
+8</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code>hello = <span style="color: #CD5555">&#39;hello&#39;</span>              <span style="color: #228B22"># 文字列リテラルはシングルクォート</span>
 world = <span style="color: #CD5555">&quot;world&quot;</span>              <span style="color: #228B22"># あるいはダブルクォート。両方可能</span>
 <span style="color: #658b00">print</span>(hello)                 <span style="color: #228B22"># 印字 &quot;hello&quot;</span>
 <span style="color: #658b00">print</span>(<span style="color: #658b00">len</span>(hello))            <span style="color: #228B22"># 文字列長の印字; 印字 &quot;5&quot;</span>
@@ -433,7 +433,7 @@ hw = hello + <span style="color: #CD5555">&#39; &#39;</span> + world     <span s
 <span style="color: #658b00">print</span>(hw)                    <span style="color: #228B22"># 印字 &quot;hello world&quot;</span>
 hw12 = <span style="color: #CD5555">&#39;%s %s %d&#39;</span> % (hello, world, <span style="color: #B452CD">12</span>)  <span style="color: #228B22"># sprintf 形式のフォーマット</span>
 <span style="color: #658b00">print</span>(hw12)                  <span style="color: #228B22"># 印字 &quot;hello world 12&quot;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>文字列オブジェクトは有益なメソッド群である。</p>
@@ -443,14 +443,14 @@ hw12 = <span style="color: #CD5555">&#39;%s %s %d&#39;</span> % (hello, world, <
 4
 5
 6
-7</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>s = <span style="color: #CD5555">&quot;hello&quot;</span>
+7</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code>s = <span style="color: #CD5555">&quot;hello&quot;</span>
 <span style="color: #658b00">print</span>(s.capitalize())      <span style="color: #228B22"># 文字列の語頭の大文字化; 印字 &quot;Hello&quot;</span>
 <span style="color: #658b00">print</span>(s.upper())           <span style="color: #228B22"># 文字列の大文字化; 印字 &quot;HELLO&quot;</span>
 <span style="color: #658b00">print</span>(s.rjust(<span style="color: #B452CD">7</span>))          <span style="color: #228B22"># 文字列の右寄せ, 空白で埋まる; 印字 &quot;  hello&quot;</span>
 <span style="color: #658b00">print</span>(s.center(<span style="color: #B452CD">7</span>))         <span style="color: #228B22"># 文字列のセンタリング，空白で埋める; 印字 &quot; hello &quot;</span>
 <span style="color: #658b00">print</span>(s.replace(<span style="color: #CD5555">&#39;l&#39;</span>, <span style="color: #CD5555">&#39;(ell)&#39;</span>))  <span style="color: #228B22"># 部分文字列の置換; 印字 &quot;he(ell)(ell)o&quot;</span>
 <span style="color: #658b00">print</span>(<span style="color: #CD5555">&#39;  world &#39;</span>.strip())  <span style="color: #228B22"># 空白の除去; 印字 &quot;world&quot;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>全文字列メソッドは <a href="https://docs.python.org/2/library/stdtypes.html#string-methods">https://docs.python.org/2/library/stdtypes.html#string-methods</a> に記載されている。</p>
@@ -467,7 +467,7 @@ hw12 = <span style="color: #CD5555">&#39;%s %s %d&#39;</span> % (hello, world, <
 6
 7
 8
-9</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>xs = [<span style="color: #B452CD">3</span>, <span style="color: #B452CD">1</span>, <span style="color: #B452CD">2</span>]      <span style="color: #228B22"># リストの作成</span>
+9</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code>xs = [<span style="color: #B452CD">3</span>, <span style="color: #B452CD">1</span>, <span style="color: #B452CD">2</span>]      <span style="color: #228B22"># リストの作成</span>
 <span style="color: #658b00">print</span>(xs, xs[<span style="color: #B452CD">2</span>])    <span style="color: #228B22"># 印字 &quot;[3, 1, 2] 2&quot;</span>
 <span style="color: #658b00">print</span>(xs[-<span style="color: #B452CD">1</span>])       <span style="color: #228B22"># 負の指定子はリスト末端からの計数; 印字 &quot;2&quot;</span>
 xs[<span style="color: #B452CD">2</span>] = <span style="color: #CD5555">&#39;foo&#39;</span>       <span style="color: #228B22"># リストには異なる要素を含むことができる</span>
@@ -476,7 +476,7 @@ xs.append(<span style="color: #CD5555">&#39;bar&#39;</span>)    <span style="col
 <span style="color: #658b00">print</span>(xs)           <span style="color: #228B22"># 印字</span>
 x = xs.pop()        <span style="color: #228B22"># リストの最終要素取り除きその値を返す</span>
 <span style="color: #658b00">print</span>(x, xs)        <span style="color: #228B22"># 印字 &quot;bar [3, 1, &#39;foo&#39;]&quot;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>上と同様に血みどろの全リストの詳細が <a href="https://docs.python.org/2/tutorial/datastructures.html#more-on-lists">https://docs.python.org/2/tutorial/datastructures.html#more-on-lists</a> に記載されている。</p>
@@ -490,7 +490,7 @@ x = xs.pop()        <span style="color: #228B22"># リストの最終要素取�
 6
 7
 8
-9</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>nums = <span style="color: #658b00">list</span>(<span style="color: #658b00">range</span>(<span style="color: #B452CD">5</span>)) <span style="color: #228B22"># range は組み込み関数で整数からなるリストを生成する</span>
+9</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code>nums = <span style="color: #658b00">list</span>(<span style="color: #658b00">range</span>(<span style="color: #B452CD">5</span>)) <span style="color: #228B22"># range は組み込み関数で整数からなるリストを生成する</span>
 <span style="color: #658b00">print</span>(nums)           <span style="color: #228B22"># 印字 &quot;[0, 1, 2, 3, 4]&quot;</span>
 <span style="color: #658b00">print</span>(nums[<span style="color: #B452CD">2</span>:<span style="color: #B452CD">4</span>])      <span style="color: #228B22"># 2番目の要素から4番目未満のスライス; 印字 &quot;[2, 3]&quot;</span>
 <span style="color: #658b00">print</span>(nums[<span style="color: #B452CD">2</span>:])       <span style="color: #228B22"># 2番目から最後までのスライス; 印字 &quot;[2, 3, 4]&quot;</span>
@@ -499,7 +499,7 @@ x = xs.pop()        <span style="color: #228B22"># リストの最終要素取�
 <span style="color: #658b00">print</span>(nums[:-<span style="color: #B452CD">1</span>])      <span style="color: #228B22"># スライス指定子には負値もとることができる; 印字 &quot;[0, 1, 2, 3]&quot;</span>
 nums[<span style="color: #B452CD">2</span>:<span style="color: #B452CD">4</span>] = [<span style="color: #B452CD">8</span>, <span style="color: #B452CD">9</span>]    <span style="color: #228B22"># スライスして新しい値を割り当てる</span>
 <span style="color: #658b00">print</span>(nums)           <span style="color: #228B22"># 印字 &quot;[0, 1, 8, 8, 4]&quot;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>NumPyの配列の項においてスライシングについて再び触れることとする。</p>
@@ -508,11 +508,11 @@ nums[<span style="color: #B452CD">2</span>:<span style="color: #B452CD">4</span>
 <table class="codehilitetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
-4</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>animals = [<span style="color: #CD5555">&#39;cat&#39;</span>, <span style="color: #CD5555">&#39;dog&#39;</span>, <span style="color: #CD5555">&#39;monkey&#39;</span>]
+4</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code>animals = [<span style="color: #CD5555">&#39;cat&#39;</span>, <span style="color: #CD5555">&#39;dog&#39;</span>, <span style="color: #CD5555">&#39;monkey&#39;</span>]
 <span style="color: #8B008B; font-weight: bold">for</span> animal <span style="color: #8B008B">in</span> animals:
     <span style="color: #658b00">print</span>(animal)
     <span style="color: #228B22"># 各行に印字 &quot;cat&quot;, &quot;dog&quot;, &quot;monkey&quot;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>あるループ内で各要素のインデックスを参照したければ，繰り返し内部で組み込み
@@ -520,11 +520,11 @@ nums[<span style="color: #B452CD">2</span>:<span style="color: #B452CD">4</span>
 <table class="codehilitetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
-4</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>animals = [<span style="color: #CD5555">&#39;cat&#39;</span>, <span style="color: #CD5555">&#39;dog&#39;</span>, <span style="color: #CD5555">&#39;monkey&#39;</span>]
+4</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code>animals = [<span style="color: #CD5555">&#39;cat&#39;</span>, <span style="color: #CD5555">&#39;dog&#39;</span>, <span style="color: #CD5555">&#39;monkey&#39;</span>]
 <span style="color: #8B008B; font-weight: bold">for</span> idx, animal <span style="color: #8B008B">in</span> <span style="color: #658b00">enumerate</span>(animals):
     <span style="color: #658b00">print</span>(<span style="color: #CD5555">&#39;#%d: %s&#39;</span> % (idx + <span style="color: #B452CD">1</span>, animal))
     <span style="color: #228B22"># 印字行毎に &quot;#1: cat&quot;, &quot;#2: dog&quot;, &quot;#3: monkey&quot;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <h4 id="_8">リスト内包表記:<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
@@ -534,21 +534,21 @@ nums[<span style="color: #B452CD">2</span>:<span style="color: #B452CD">4</span>
 2
 3
 4
-5</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>nums = [<span style="color: #B452CD">0</span>, <span style="color: #B452CD">1</span>, <span style="color: #B452CD">2</span>, <span style="color: #B452CD">3</span>, <span style="color: #B452CD">4</span>]
+5</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code>nums = [<span style="color: #B452CD">0</span>, <span style="color: #B452CD">1</span>, <span style="color: #B452CD">2</span>, <span style="color: #B452CD">3</span>, <span style="color: #B452CD">4</span>]
 squares = []
 <span style="color: #8B008B; font-weight: bold">for</span> x <span style="color: #8B008B">in</span> nums:
     squares.append(x ** <span style="color: #B452CD">2</span>)
 <span style="color: #658b00">print</span>(squares)   <span style="color: #228B22"># 印字 [0, 1, 4, 9, 16]</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p><strong>リスト内包表記</strong> を使えばより簡単なコードが書ける:</p>
 <table class="codehilitetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
-3</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>nums = [<span style="color: #B452CD">0</span>, <span style="color: #B452CD">1</span>, <span style="color: #B452CD">2</span>, <span style="color: #B452CD">3</span>, <span style="color: #B452CD">4</span>]
+3</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code>nums = [<span style="color: #B452CD">0</span>, <span style="color: #B452CD">1</span>, <span style="color: #B452CD">2</span>, <span style="color: #B452CD">3</span>, <span style="color: #B452CD">4</span>]
 squares = [x ** <span style="color: #B452CD">2</span> <span style="color: #8B008B; font-weight: bold">for</span> x <span style="color: #8B008B">in</span> nums]
 <span style="color: #658b00">print</span>(squares)   <span style="color: #228B22"># 印字 [0, 1, 4, 9, 16]</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <h4 id="_9">辞書:<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
@@ -562,7 +562,7 @@ squares = [x ** <span style="color: #B452CD">2</span> <span style="color: #8B008
  7
  8
  9
-10</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>d = {<span style="color: #CD5555">&#39;cat&#39;</span>: <span style="color: #CD5555">&#39;cute&#39;</span>, <span style="color: #CD5555">&#39;dog&#39;</span>: <span style="color: #CD5555">&#39;furry&#39;</span>}  <span style="color: #228B22"># データから辞書を作成</span>
+10</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code>d = {<span style="color: #CD5555">&#39;cat&#39;</span>: <span style="color: #CD5555">&#39;cute&#39;</span>, <span style="color: #CD5555">&#39;dog&#39;</span>: <span style="color: #CD5555">&#39;furry&#39;</span>}  <span style="color: #228B22"># データから辞書を作成</span>
 <span style="color: #658b00">print</span>(d[<span style="color: #CD5555">&#39;cat&#39;</span>])           <span style="color: #228B22"># 辞書の項目から内容を表示; 印字 &quot;cute&quot;</span>
 <span style="color: #658b00">print</span>(<span style="color: #CD5555">&#39;cat&#39;</span> <span style="color: #8B008B">in</span> d)         <span style="color: #228B22"># 辞書内を検索しキーの存在を返す; 印字 &quot;True&quot;</span>
 d[<span style="color: #CD5555">&#39;fish&#39;</span>] = <span style="color: #CD5555">&#39;wet&#39;</span>         <span style="color: #228B22"># 新項目を追加</span>
@@ -572,7 +572,7 @@ d[<span style="color: #CD5555">&#39;fish&#39;</span>] = <span style="color: #CD5
 <span style="color: #658b00">print</span>(d.get(<span style="color: #CD5555">&#39;fish&#39;</span>, <span style="color: #CD5555">&#39;N/A&#39;</span>))    <span style="color: #228B22"># 辞書の検索デフォルト値付き; 印字 &quot;wet&quot;</span>
 <span style="color: #8B008B; font-weight: bold">del</span>(d[<span style="color: #CD5555">&#39;fish&#39;</span>])                 <span style="color: #228B22"># 辞書内の項目を削除</span>
 <span style="color: #658b00">print</span>(d.get(<span style="color: #CD5555">&#39;fish&#39;</span>, <span style="color: #CD5555">&#39;N/A&#39;</span>))    <span style="color: #228B22"># &quot;fish&quot; は辞書にないので &quot;N/A&quot;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>辞書についてもウェブ上に文書が掲載されている。</p>
@@ -582,33 +582,33 @@ d[<span style="color: #CD5555">&#39;fish&#39;</span>] = <span style="color: #CD5
 2
 3
 4
-5</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>d = {<span style="color: #CD5555">&#39;person&#39;</span>: <span style="color: #B452CD">2</span>, <span style="color: #CD5555">&#39;cat&#39;</span>: <span style="color: #B452CD">4</span>, <span style="color: #CD5555">&#39;spider&#39;</span>: <span style="color: #B452CD">8</span>}
+5</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code>d = {<span style="color: #CD5555">&#39;person&#39;</span>: <span style="color: #B452CD">2</span>, <span style="color: #CD5555">&#39;cat&#39;</span>: <span style="color: #B452CD">4</span>, <span style="color: #CD5555">&#39;spider&#39;</span>: <span style="color: #B452CD">8</span>}
 <span style="color: #8B008B; font-weight: bold">for</span> animal <span style="color: #8B008B">in</span> d:
     legs = d[animal]
     <span style="color: #658b00">print</span>(<span style="color: #CD5555">&#39;A %s has %d legs&#39;</span> % (animal, legs))
     <span style="color: #228B22"># 印字 &quot;A person has 2 legs&quot;, &quot;A spider has 8 legs&quot;, &quot;A cat has 4 legs&quot;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>辞書の各項目に対応する値を取り出すには <code>iteritems</code> メソッドを用いる:</p>
 <table class="codehilitetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
-4</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>d = {<span style="color: #CD5555">&#39;person&#39;</span>: <span style="color: #B452CD">2</span>, <span style="color: #CD5555">&#39;cat&#39;</span>: <span style="color: #B452CD">4</span>, <span style="color: #CD5555">&#39;spider&#39;</span>: <span style="color: #B452CD">8</span>}
+4</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code>d = {<span style="color: #CD5555">&#39;person&#39;</span>: <span style="color: #B452CD">2</span>, <span style="color: #CD5555">&#39;cat&#39;</span>: <span style="color: #B452CD">4</span>, <span style="color: #CD5555">&#39;spider&#39;</span>: <span style="color: #B452CD">8</span>}
 <span style="color: #8B008B; font-weight: bold">for</span> animal, legs <span style="color: #8B008B">in</span> d.items():
     <span style="color: #658b00">print</span>(<span style="color: #CD5555">&#39;A %s has %d legs&#39;</span> % (animal, legs))
     <span style="color: #228B22"># 印字 &quot;A person has 2 legs&quot;, &quot;A spider has 8 legs&quot;, &quot;A cat has 4 legs&quot;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <h4 id="_11">辞書内包表記:<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p>リスト内包表記と同様，辞書内包表記にも簡便な方法が存在する。以下の例のとおり:</p>
 <table class="codehilitetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
-3</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>nums = [<span style="color: #B452CD">0</span>, <span style="color: #B452CD">1</span>, <span style="color: #B452CD">2</span>, <span style="color: #B452CD">3</span>, <span style="color: #B452CD">4</span>]
+3</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code>nums = [<span style="color: #B452CD">0</span>, <span style="color: #B452CD">1</span>, <span style="color: #B452CD">2</span>, <span style="color: #B452CD">3</span>, <span style="color: #B452CD">4</span>]
 even_num_to_square = {x: x ** <span style="color: #B452CD">2</span> <span style="color: #8B008B; font-weight: bold">for</span> x <span style="color: #8B008B">in</span> nums <span style="color: #8B008B; font-weight: bold">if</span> x % <span style="color: #B452CD">2</span> == <span style="color: #B452CD">0</span>}
 <span style="color: #658b00">print</span>(even_num_to_square)  <span style="color: #228B22"># 印字 &quot;{0: 0, 2: 4, 4: 16}&quot;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <h4 id="_12">集合:<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
@@ -622,7 +622,7 @@ even_num_to_square = {x: x ** <span style="color: #B452CD">2</span> <span style=
  7
  8
  9
-10</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>animals = {<span style="color: #CD5555">&#39;cat&#39;</span>, <span style="color: #CD5555">&#39;dog&#39;</span>}
+10</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code>animals = {<span style="color: #CD5555">&#39;cat&#39;</span>, <span style="color: #CD5555">&#39;dog&#39;</span>}
 <span style="color: #658b00">print</span>(<span style="color: #CD5555">&#39;cat&#39;</span> <span style="color: #8B008B">in</span> animals)   <span style="color: #228B22"># 集合内の要素の存在の有無のチェック; 印字 &quot;True&quot;</span>
 <span style="color: #658b00">print</span>(<span style="color: #CD5555">&#39;fish&#39;</span> <span style="color: #8B008B">in</span> animals)  <span style="color: #228B22"># 印字 &quot;False&quot;</span>
 animals.add(<span style="color: #CD5555">&#39;fish&#39;</span>)       <span style="color: #228B22"># 集合に要素を追加</span>
@@ -632,7 +632,7 @@ animals.add(<span style="color: #CD5555">&#39;cat&#39;</span>)        <span styl
 <span style="color: #658b00">print</span>(<span style="color: #658b00">len</span>(animals))       <span style="color: #228B22"># 印字 &quot;3&quot;</span>
 animals.remove(<span style="color: #CD5555">&#39;cat&#39;</span>)     <span style="color: #228B22"># 集合から要素を削除</span>
 <span style="color: #658b00">print</span>(<span style="color: #658b00">len</span>(animals))       <span style="color: #228B22"># 印字 &quot;2&quot;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>今までと同じく，集合の全てについて記述した文書が上梓されている。</p>
@@ -642,21 +642,21 @@ animals.remove(<span style="color: #CD5555">&#39;cat&#39;</span>)     <span styl
 <table class="codehilitetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
-4</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>animals = {<span style="color: #CD5555">&#39;cat&#39;</span>, <span style="color: #CD5555">&#39;dog&#39;</span>, <span style="color: #CD5555">&#39;fish&#39;</span>}
+4</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code>animals = {<span style="color: #CD5555">&#39;cat&#39;</span>, <span style="color: #CD5555">&#39;dog&#39;</span>, <span style="color: #CD5555">&#39;fish&#39;</span>}
 <span style="color: #8B008B; font-weight: bold">for</span> idx, animal <span style="color: #8B008B">in</span> <span style="color: #658b00">enumerate</span>(animals):
     <span style="color: #658b00">print</span>(<span style="color: #CD5555">&#39;#%d: %s&#39;</span> % (idx + <span style="color: #B452CD">1</span>, animal))
     <span style="color: #228B22"># 印字 &quot;#1: fish&quot;, &quot;#2: dog&quot;, &quot;#3: cat&quot;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <h4 id="_14">集合内包表記:<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <p>リストや辞書と同様，集合内包にも簡易記法が存在する:</p>
 <table class="codehilitetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
-3</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">math</span> <span style="color: #8B008B; font-weight: bold">import</span> sqrt
+3</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">math</span> <span style="color: #8B008B; font-weight: bold">import</span> sqrt
 nums = {<span style="color: #658b00">int</span>(sqrt(x)) <span style="color: #8B008B; font-weight: bold">for</span> x <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">30</span>)}
 <span style="color: #658b00">print</span>(nums)  <span style="color: #228B22"># 印字 &quot;set([0, 1, 2, 3, 4, 5])&quot;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <h4 id="_15">タプル:<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
@@ -667,12 +667,12 @@ nums = {<span style="color: #658b00">int</span>(sqrt(x)) <span style="color: #8B
 2
 3
 4
-5</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>d = {(x, x + <span style="color: #B452CD">1</span>): x <span style="color: #8B008B; font-weight: bold">for</span> x <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">10</span>)} <span style="color: #228B22"># タプルキーを持つ辞書の生成</span>
+5</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code>d = {(x, x + <span style="color: #B452CD">1</span>): x <span style="color: #8B008B; font-weight: bold">for</span> x <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">10</span>)} <span style="color: #228B22"># タプルキーを持つ辞書の生成</span>
 t = (<span style="color: #B452CD">5</span>, <span style="color: #B452CD">6</span>)        <span style="color: #228B22"># タプルの生成</span>
 <span style="color: #658b00">print</span>(<span style="color: #658b00">type</span>(t))    <span style="color: #228B22"># 印字 &quot;&lt;type &#39;tuple&#39;&gt;&quot;</span>
 <span style="color: #658b00">print</span>(d[t])       <span style="color: #228B22"># 印字 &quot;5&quot;</span>
 <span style="color: #658b00">print</span>(d[(<span style="color: #B452CD">1</span>, <span style="color: #B452CD">2</span>)])  <span style="color: #228B22"># 印字 &quot;1&quot;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p><a href="https://docs.python.org/2/tutorial/datastructures.html#tuples-and-sequences">https://docs.python.org/2/tutorial/datastructures.html#tuples-and-sequences</a>
@@ -689,7 +689,7 @@ t = (<span style="color: #B452CD">5</span>, <span style="color: #B452CD">6</span
  8
  9
 10
-11</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">sign</span>(x):
+11</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">sign</span>(x):
     <span style="color: #8B008B; font-weight: bold">if</span> x &gt; <span style="color: #B452CD">0</span>:
         <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #CD5555">&#39;positive&#39;</span>
     <span style="color: #8B008B; font-weight: bold">elif</span> x &lt; <span style="color: #B452CD">0</span>:
@@ -700,7 +700,7 @@ t = (<span style="color: #B452CD">5</span>, <span style="color: #B452CD">6</span
 <span style="color: #8B008B; font-weight: bold">for</span> x <span style="color: #8B008B">in</span> [-<span style="color: #B452CD">1</span>, <span style="color: #B452CD">0</span>, <span style="color: #B452CD">1</span>]:
     <span style="color: #658b00">print</span>(sign(x))
 <span style="color: #228B22"># 印字 &quot;negative&quot;, &quot;zero&quot;, &quot;positive&quot;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>関数は以下のようにオプションキーワード付きで定義可能である:</p>
@@ -711,7 +711,7 @@ t = (<span style="color: #B452CD">5</span>, <span style="color: #B452CD">6</span
 5
 6
 7
-8</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>def hello(name, loud=<span style="color: #8B008B; font-weight: bold">False</span>):
+8</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code>def hello(name, loud=<span style="color: #8B008B; font-weight: bold">False</span>):
     <span style="color: #8B008B; font-weight: bold">if</span> loud:
         print(<span style="color: #CD5555">&#39;HELLO, %s&#39;</span> % name.<span style="color: #8B008B; font-weight: bold">upper</span>())
     <span style="color: #8B008B; font-weight: bold">else</span>:
@@ -719,7 +719,7 @@ t = (<span style="color: #B452CD">5</span>, <span style="color: #B452CD">6</span
 
 hello(<span style="color: #CD5555">&#39;Bob&#39;</span>)              # <span style="color: #a61717; background-color: #e3d2d2">印字</span> <span style="color: #CD5555">&quot;Hello, Bob&quot;</span>
 hello(<span style="color: #CD5555">&#39;Fred&#39;</span>, loud=<span style="color: #8B008B; font-weight: bold">True</span>)  # <span style="color: #a61717; background-color: #e3d2d2">印字</span> <span style="color: #CD5555">&quot;HELLO, FRED!&quot;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Python のクラス情報は <a href="https://docs.python.org/2/tutorial/controlflow.html#defining-functions">https://docs.python.org/2/tutorial/controlflow.html#defining-functions</a>を参照のこと</p>
@@ -740,7 +740,7 @@ hello(<span style="color: #CD5555">&#39;Fred&#39;</span>, loud=<span style="colo
 13
 14
 15
-16</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Greeter</span>:
+16</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Greeter</span>:
 
     <span style="color: #228B22"># Constructor</span>
     <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, name):
@@ -756,7 +756,7 @@ hello(<span style="color: #CD5555">&#39;Fred&#39;</span>, loud=<span style="colo
 g = Greeter(<span style="color: #CD5555">&#39;Fred&#39;</span>)  <span style="color: #228B22"># Greeter クラスのインスタンスを生成</span>
 g.greet()            <span style="color: #228B22"># インスタンスメソッドの呼び出し; 印字 &quot;Hello, Fred&quot;</span>
 g.greet(loud=<span style="color: #8B008B; font-weight: bold">True</span>)   <span style="color: #228B22"># インスタンスメソッドの呼び出し; 印字 &quot;HELLO, FRED!&quot;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>クラスについての詳細は以下である
@@ -778,7 +778,7 @@ g.greet(loud=<span style="color: #8B008B; font-weight: bold">True</span>)   <spa
  9
 10
 11
-12</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+12</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 
 a = np.array([<span style="color: #B452CD">1</span>, <span style="color: #B452CD">2</span>, <span style="color: #B452CD">3</span>])           <span style="color: #228B22"># 次元数 1 の配列の作成</span>
 <span style="color: #658b00">print</span>(<span style="color: #658b00">type</span>(a))                     <span style="color: #228B22"># 印字 &quot;&lt;type &#39;numpy.ndarray&#39;&gt;&quot;</span>
@@ -790,7 +790,7 @@ a[<span style="color: #B452CD">0</span>] = <span style="color: #B452CD">5</span>
 b = np.array([[<span style="color: #B452CD">1</span>,<span style="color: #B452CD">2</span>,<span style="color: #B452CD">3</span>],[<span style="color: #B452CD">4</span>,<span style="color: #B452CD">5</span>,<span style="color: #B452CD">6</span>]])   <span style="color: #228B22"># 次元数が 2 の配列の作成</span>
 <span style="color: #658b00">print</span>(b.shape)                     <span style="color: #228B22"># 印字 &quot;(2, 3)&quot;</span>
 <span style="color: #658b00">print</span>(b[<span style="color: #B452CD">0</span>, <span style="color: #B452CD">0</span>], b[<span style="color: #B452CD">0</span>, <span style="color: #B452CD">1</span>], b[<span style="color: #B452CD">1</span>, <span style="color: #B452CD">0</span>])   <span style="color: #228B22"># 印字 &quot;1 2 4&quot;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>NumPy には配列を生成する関数が用意されている:</p>
@@ -813,7 +813,7 @@ b = np.array([[<span style="color: #B452CD">1</span>,<span style="color: #B452CD
 17
 18
 19
-20</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+20</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 
 a = np.zeros((<span style="color: #B452CD">2</span>,<span style="color: #B452CD">2</span>))   <span style="color: #228B22"># 全要素がゼロの配列の作成</span>
 <span style="color: #658b00">print</span>(a)              <span style="color: #228B22"># 印字 &quot;[[ 0.  0.]</span>
@@ -833,7 +833,7 @@ d = np.eye(<span style="color: #B452CD">2</span>)         <span style="color: #2
 e = np.random.random((<span style="color: #B452CD">2</span>,<span style="color: #B452CD">2</span>)) <span style="color: #228B22"># 乱数で初期化した配列の作成</span>
 <span style="color: #658b00">print</span>(e)                    <span style="color: #228B22"># 印字例 &quot;[[ 0.91940167  0.08143941]</span>
                             <span style="color: #228B22">#          [ 0.68744134  0.87236687]]&quot;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>配列を作成する他の方法は<a href="http://docs.scipy.org/doc/numpy/user/basics.creation.html#arrays-creation">http://docs.scipy.org/doc/numpy/user/basics.creation.html#arrays-creation</a>で読むことができる。</p>
@@ -858,7 +858,7 @@ e = np.random.random((<span style="color: #B452CD">2</span>,<span style="color: 
 14
 15
 16
-17</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+17</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 
 <span style="color: #228B22"># 3行4列で階数が2の行列の作成</span>
 <span style="color: #228B22"># [[ 1  2  3  4]</span>
@@ -875,7 +875,7 @@ b = a[:<span style="color: #B452CD">2</span>, <span style="color: #B452CD">1</sp
 <span style="color: #658b00">print</span>(a[<span style="color: #B452CD">0</span>,<span style="color: #B452CD">1</span>])   <span style="color: #228B22"># 印字 &quot;2&quot;</span>
 b[<span style="color: #B452CD">0</span>, <span style="color: #B452CD">0</span>] = <span style="color: #B452CD">77</span>    <span style="color: #228B22"># b[0, 0] は a[0, 1] と等価</span>
 <span style="color: #658b00">print</span>(a[<span style="color: #B452CD">0</span>,<span style="color: #B452CD">1</span>])   <span style="color: #228B22"># 印字 &quot;77&quot;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>整数指定子とスライス指定子を混在させることができる。
@@ -903,7 +903,7 @@ MATLAB における行列スライスとは異なることに注意せよ。</p>
 20
 21
 22
-23</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+23</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 
 <span style="color: #228B22"># 3行4列の2次の行列を作成</span>
 <span style="color: #228B22"># [[ 1  2  3  5]</span>
@@ -926,7 +926,7 @@ col_r2 = a[:, <span style="color: #B452CD">1</span>:<span style="color: #B452CD"
 <span style="color: #658b00">print</span>(col_r2, col_r2.shape)  <span style="color: #228B22"># 印字 &quot;[[ 2]</span>
                              <span style="color: #228B22">#        [ 6]</span>
                              <span style="color: #228B22">#        [10]] (3, 1)&quot;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <h4 id="_21">整数型配列指定子:<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
@@ -948,7 +948,7 @@ col_r2 = a[:, <span style="color: #B452CD">1</span>:<span style="color: #B452CD"
 13
 14
 15
-16</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+16</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 
 a = np.array([[<span style="color: #B452CD">1</span>,<span style="color: #B452CD">2</span>], [<span style="color: #B452CD">3</span>, <span style="color: #B452CD">4</span>], [<span style="color: #B452CD">5</span>, <span style="color: #B452CD">6</span>]])
 
@@ -964,7 +964,7 @@ a = np.array([[<span style="color: #B452CD">1</span>,<span style="color: #B452CD
 <span style="color: #228B22"># 先の整数型の配列指定子に等しい</span>
 <span style="color: #658b00">print</span>(np.array([a[<span style="color: #B452CD">0</span>, <span style="color: #B452CD">1</span>], a[<span style="color: #B452CD">0</span>, <span style="color: #B452CD">1</span>]])) <span style="color: #228B22"># 印字 &quot;[2 2]&quot;</span>
 <span style="color: #658b00">print</span>(np.array([a[<span style="color: #B452CD">0</span>, <span style="color: #B452CD">1</span>], a[<span style="color: #B452CD">0</span>, <span style="color: #B452CD">1</span>]]))  <span style="color: #228B22"># 印字 &quot;[2 2]&quot;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <h4 id="_22">ブーリアン配列指定子:<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
@@ -987,7 +987,7 @@ a = np.array([[<span style="color: #B452CD">1</span>,<span style="color: #B452CD
 14
 15
 16
-17</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+17</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 
 a = np.array([[<span style="color: #B452CD">1</span>,<span style="color: #B452CD">2</span>], [<span style="color: #B452CD">3</span>, <span style="color: #B452CD">4</span>], [<span style="color: #B452CD">5</span>, <span style="color: #B452CD">6</span>]])
 bool_idx = (a &gt; <span style="color: #B452CD">2</span>)  <span style="color: #228B22"># 2　より大きい配列の要素を探す</span>
@@ -1004,7 +1004,7 @@ bool_idx = (a &gt; <span style="color: #B452CD">2</span>)  <span style="color: #
 
 <span style="color: #228B22"># 上例を簡潔に表記可能である</span>
 <span style="color: #658b00">print</span>(a[a &gt; <span style="color: #B452CD">2</span>])     <span style="color: #228B22"># 印字 &quot;[3 4 5 6]&quot;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>本稿の簡潔性ゆえNumPyの配列指定子の詳細については多くを記載していない。
@@ -1023,7 +1023,7 @@ NumPyは配列のデータ型が何であるかを類推しようとする。
  7
  8
  9
-10</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+10</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 
 x = np.array([<span style="color: #B452CD">1</span>,<span style="color: #B452CD">2</span>])        <span style="color: #228B22"># numpy にデータ型を選択させる</span>
 <span style="color: #658b00">print</span>(x.dtype)             <span style="color: #228B22"># 印字 &quot;int64&quot;</span>
@@ -1033,7 +1033,7 @@ x = np.array([<span style="color: #B452CD">1.0</span>, <span style="color: #B452
 
 x = np.array([<span style="color: #B452CD">1</span>, <span style="color: #B452CD">2</span>], dtype=np.int64)  <span style="color: #228B22"># データ型の強制指定</span>
 <span style="color: #658b00">print</span>(x.dtype)             <span style="color: #228B22"># 印字 &quot;int64&quot;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>NumPy の全データ型については<a href="http://docs.scipy.org/doc/numpy/reference/arrays.dtypes.html">http://docs.scipy.org/doc/numpy/reference/arrays.dtypes.html</a>を参照のこと。</p>
@@ -1072,7 +1072,7 @@ NumPy モジュールの関数として演算子を上書き可能である．</
 30
 31
 32
-33</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+33</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 
 x = np.array([[<span style="color: #B452CD">1</span>,<span style="color: #B452CD">2</span>],[<span style="color: #B452CD">3</span>,<span style="color: #B452CD">4</span>]], dtype=np.float64)
 y = np.array([[<span style="color: #B452CD">5</span>,<span style="color: #B452CD">6</span>],[<span style="color: #B452CD">7</span>,<span style="color: #B452CD">8</span>]], dtype=np.float64)
@@ -1105,7 +1105,7 @@ y = np.array([[<span style="color: #B452CD">5</span>,<span style="color: #B452CD
 <span style="color: #228B22"># [[ 1.          1.41421356]</span>
 <span style="color: #228B22">#  [ 1.73205081  2.        ]]</span>
 <span style="color: #658b00">print</span>(np.sqrt(x))
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>MATLAB と異なり，[<code>*</code>]
@@ -1133,7 +1133,7 @@ y = np.array([[<span style="color: #B452CD">5</span>,<span style="color: #B452CD
 18
 19
 20
-21</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+21</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 
 x = np.array([[<span style="color: #B452CD">1</span>,<span style="color: #B452CD">2</span>],[<span style="color: #B452CD">3</span>,<span style="color: #B452CD">4</span>]])
 y = np.array([[<span style="color: #B452CD">5</span>,<span style="color: #B452CD">6</span>],[<span style="color: #B452CD">7</span>,<span style="color: #B452CD">8</span>]])
@@ -1154,7 +1154,7 @@ w = np.array([<span style="color: #B452CD">11</span>, <span style="color: #B452C
 <span style="color: #228B22">#  [43 50]]</span>
 <span style="color: #658b00">print</span>(x.dot(y))
 <span style="color: #658b00">print</span>(np.dot(x, y))
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>NumPy は行列操作遂行に有役な関数を数多く提供している。[<code>sum</code>]
@@ -1165,14 +1165,14 @@ w = np.array([<span style="color: #B452CD">11</span>, <span style="color: #B452C
 4
 5
 6
-7</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+7</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 
 x = np.array([[<span style="color: #B452CD">1</span>,<span style="color: #B452CD">2</span>],[<span style="color: #B452CD">3</span>,<span style="color: #B452CD">4</span>]])
 
 <span style="color: #658b00">print</span>(np.sum(x))          <span style="color: #228B22"># 総和を計算 10と印字</span>
 <span style="color: #658b00">print</span>(np.sum(x, axis=<span style="color: #B452CD">0</span>))  <span style="color: #228B22"># 各列の総和を計算: &quot;[4 6]&quot; と印字</span>
 <span style="color: #658b00">print</span>(np.sum(x, axis=<span style="color: #B452CD">1</span>))  <span style="color: #228B22"># 各行の総和を計算: &quot;[3 7]&quot; と印字</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>NumPyの全数学関数リストは
@@ -1193,7 +1193,7 @@ x = np.array([[<span style="color: #B452CD">1</span>,<span style="color: #B452CD
  9
 10
 11
-12</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+12</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 
 x = np.array([[<span style="color: #B452CD">1</span>,<span style="color: #B452CD">2</span>], [<span style="color: #B452CD">3</span>,<span style="color: #B452CD">4</span>]])
 <span style="color: #658b00">print</span>(x)    <span style="color: #228B22"># 印字 &quot;[[1 2]</span>
@@ -1205,7 +1205,7 @@ x = np.array([[<span style="color: #B452CD">1</span>,<span style="color: #B452CD
 v = np.array([<span style="color: #B452CD">1</span>,<span style="color: #B452CD">2</span>,<span style="color: #B452CD">3</span>])
 <span style="color: #658b00">print</span>(v)    <span style="color: #228B22"># 印字 &quot;[1 2 3]&quot;</span>
 <span style="color: #658b00">print</span>(v.T)  <span style="color: #228B22"># 印字 &quot;[1 2 3]&quot;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>NumPy は配列操作関数が多い。<a href="http://docs.scipy.org/doc/numpy/reference/routines.array-manipulation.html">http://docs.scipy.org/doc/numpy/reference/routines.array-manipulation.html</a>を参照されたい。</p>
@@ -1229,7 +1229,7 @@ v = np.array([<span style="color: #B452CD">1</span>,<span style="color: #B452CD"
 14
 15
 16
-17</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+17</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 
 <span style="color: #228B22"># 行列 x の各行に対してベクトル v を加え結果を y に格納</span>
 x = np.array([[<span style="color: #B452CD">1</span>,<span style="color: #B452CD">2</span>,<span style="color: #B452CD">3</span>], [<span style="color: #B452CD">4</span>,<span style="color: #B452CD">5</span>,<span style="color: #B452CD">6</span>], [<span style="color: #B452CD">7</span>,<span style="color: #B452CD">8</span>,<span style="color: #B452CD">9</span>], [<span style="color: #B452CD">10</span>, <span style="color: #B452CD">11</span>, <span style="color: #B452CD">12</span>]])
@@ -1246,7 +1246,7 @@ y = np.empty_like(x)   <span style="color: #228B22"># x と同じ shape を持�
 <span style="color: #228B22">#  [ 8  8 10]</span>
 <span style="color: #228B22">#  [11 11 13]]</span>
 <span style="color: #658b00">print</span>(y)
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>行列 <code>x</code> が巨大な場合Pythonの明示的なループは遅い。行列<code>x</code>の各行
@@ -1267,7 +1267,7 @@ y = np.empty_like(x)   <span style="color: #228B22"># x と同じ shape を持�
 13
 14
 15
-16</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+16</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 
 <span style="color: #228B22"># 行列 x の各要素にベクトル v を加える</span>
 <span style="color: #228B22"># 行列 y に結果を格納</span>
@@ -1283,7 +1283,7 @@ y = x + vv <span style="color: #228B22"># x と vv の各要素を加える</spa
            <span style="color: #228B22">#        [ 5  5  7]</span>
            <span style="color: #228B22">#        [ 8  8 10]</span>
            <span style="color: #228B22">#        [11 11 13]]&quot;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>NumPy のブロードキャストは<code>y</code>の多重コピーを作成することなく計算を
@@ -1298,7 +1298,7 @@ y = x + vv <span style="color: #228B22"># x と vv の各要素を加える</spa
  8
  9
 10
-11</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+11</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 
 <span style="color: #228B22"># 行列 x の各行にベクトル v を加える</span>
 <span style="color: #228B22"># 結果を行列 y に格納する</span>
@@ -1309,7 +1309,7 @@ y = x + v  <span style="color: #228B22"># ブロードキャストを使って x
            <span style="color: #228B22">#        [ 5  5  7]</span>
            <span style="color: #228B22">#        [ 8  8 10]</span>
            <span style="color: #228B22">#        [11 11 13]]&quot;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p><code>y = x + v</code>の行は，<code>x</code>は<code>(4,3)</code>の次数を持ち，<code>v</code>は
@@ -1369,7 +1369,7 @@ y = x + v  <span style="color: #228B22"># ブロードキャストを使って x
 36
 37
 38
-39</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+39</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 
 <span style="color: #228B22"># ベクトルの外積を計算</span>
 v = np.array([<span style="color: #B452CD">1</span>,<span style="color: #B452CD">2</span>,<span style="color: #B452CD">3</span>])  <span style="color: #228B22"># v の次数 (3,)</span>
@@ -1408,7 +1408,7 @@ x = np.array([[<span style="color: #B452CD">1</span>,<span style="color: #B452CD
 <span style="color: #228B22"># [[ 2  4  6]</span>
 <span style="color: #228B22">#  [ 8 10 12]]</span>
 <span style="color: #658b00">print</span>(x * <span style="color: #B452CD">2</span>)
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>ブロードキャストによりコードは簡潔になり，高速化する。
@@ -1447,7 +1447,7 @@ NumPy の配列を画像としてディスクに書き込み，
 16
 17
 18
-19</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">scipy.misc</span> <span style="color: #8B008B; font-weight: bold">import</span> imread, imsave, imresize
+19</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">scipy.misc</span> <span style="color: #8B008B; font-weight: bold">import</span> imread, imsave, imresize
 
 <span style="color: #228B22"># JPEG 画像を\NumPy 配列に読み込む</span>
 img = imread(<span style="color: #CD5555">&#39;assets/cat.jpg&#39;</span>)
@@ -1466,7 +1466,7 @@ img_tinted = imresize(img_tinted, (<span style="color: #B452CD">300</span>, <spa
 <span style="color: #228B22"># 変更した画像をディスクに書き出す</span>
 
 imsave(<span style="color: #CD5555">&#39;assets/cat_tinted.jpg&#39;</span>, img_tinted)
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <h3 id="distance-between-points">Distance between points<a class="headerlink" href="#distance-between-points" title="Permanent link">&para;</a></h3>
@@ -1489,7 +1489,7 @@ imsave(<span style="color: #CD5555">&#39;assets/cat_tinted.jpg&#39;</span>, img_
 14
 15
 16
-17</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+17</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">scipy.spatial.distance</span> <span style="color: #8B008B; font-weight: bold">import</span> pdist, squareform
 
 <span style="color: #228B22"># 2次の行からなる以下の配列を定義する:</span>
@@ -1506,7 +1506,7 @@ x = np.array([[<span style="color: #B452CD">0</span>, <span style="color: #B452C
 <span style="color: #228B22">#  [ 2.23606798  1.          0.        ]]</span>
 d = squareform(pdist(x, <span style="color: #CD5555">&#39;euclidean&#39;</span>))
 <span style="color: #658b00">print</span>(d)
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>詳細は<a href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.pdist.html">http://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.pdist.html</a>に記されている。</p>
@@ -1527,7 +1527,7 @@ d = squareform(pdist(x, <span style="color: #CD5555">&#39;euclidean&#39;</span>)
  7
  8
  9
-10</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+10</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
 
 <span style="color: #228B22"># x, y 座標に正弦波を描く</span>
@@ -1537,7 +1537,7 @@ y = np.sin(x)
 <span style="color: #228B22"># matplotlib の plot 関数で描画</span>
 plt.plot(x, y)
 plt.show()  <span style="color: #228B22"># 画面に表示するために plt.show() を使う</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>上記のコードを実行することで以下の画像を得る。</p>
@@ -1560,7 +1560,7 @@ plt.show()  <span style="color: #228B22"># 画面に表示するために plt.sh
 13
 14
 15
-16</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+16</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
 
 <span style="color: #228B22"># x, y 座標上に正弦波と余弦波の曲線をプロットする</span>
@@ -1576,7 +1576,7 @@ plt.ylabel(<span style="color: #CD5555">&#39;y axis label&#39;</span>)
 plt.title(<span style="color: #CD5555">&#39;Sine and Cosine&#39;</span>)
 plt.legend([<span style="color: #CD5555">&#39;Sine&#39;</span>, <span style="color: #CD5555">&#39;Cosine&#39;</span>])
 plt.show()
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p><center>
@@ -1608,7 +1608,7 @@ plt.show()
 20
 21
 22
-23</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+23</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
 
 <span style="color: #228B22"># x, y 座標上で正弦波と余弦波をプロット</span>
@@ -1631,7 +1631,7 @@ plt.title(<span style="color: #CD5555">&#39;Cosine&#39;</span>)
 
 <span style="color: #228B22"># 図の画面表示</span>
 plt.show()
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p><center>
@@ -1654,7 +1654,7 @@ plt.show()
 12
 13
 14
-15</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+15</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">scipy.misc</span> <span style="color: #8B008B; font-weight: bold">import</span> imread, imresize
 <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
 
@@ -1669,23 +1669,23 @@ plt.imshow(img)
 plt.subplot(<span style="color: #B452CD">1</span>, <span style="color: #B452CD">2</span>, <span style="color: #B452CD">2</span>)
 plt.imshow(img_tinted)
 plt.show()
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p><center>
 <img src="../assets/cat_tinted_imshow.png" style="width:49%">
 </center>
 <!--cs231n cs231n karpathy\@cs.stanford.edu--></p>
-<table class="codehilitetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #a61717; background-color: #e3d2d2">2.7 系と 3.4 系の相違についてはセバスチャン・ラシュカ(Sebastian Raschk) のブログ記事が参考になった(&lt;http://sebastianraschka.com/Articles/2014_python_2_3_key_diff.html&gt;)。邦訳も存在する(&lt;http://postd.cc/the-key-differences-between-python-2-7-x-and-python-3-x-with-examples/&gt;)</span>
-</pre></div>
+<table class="codehilitetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code><span style="color: #a61717; background-color: #e3d2d2">2.7 系と 3.4 系の相違についてはセバスチャン・ラシュカ(Sebastian Raschk) のブログ記事が参考になった(&lt;http://sebastianraschka.com/Articles/2014_python_2_3_key_diff.html&gt;)。邦訳も存在する(&lt;http://postd.cc/the-key-differences-between-python-2-7-x-and-python-3-x-with-examples/&gt;)</span>
+</code></pre></div>
 </td></tr></table>
 
 <p>[^2]: 訳注: 現行では[<code>python3</code>]コマン ドで 3 系の Python が動作するパッケージが散見される(Anaconda&lt;, Ubuntu, Homebrew, MacPorts, など)</p>
 <p>[^3]: 訳注:ドキュメントは URL　直下の数字が 2 か 3
     かの違いにより，バージョンごとに文書が整備されているので <script type="math/tex">3</script> 系の
     URL を逐次紹介することは避ける</p>
-<table class="codehilitetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #a61717; background-color: #e3d2d2">だからと言って日本語文字ファイル名問題が解決した訳ではない。もちろんそれはPythonの責任ではない</span>
-</pre></div>
+<table class="codehilitetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code><span style="color: #a61717; background-color: #e3d2d2">だからと言って日本語文字ファイル名問題が解決した訳ではない。もちろんそれはPythonの責任ではない</span>
+</code></pre></div>
 </td></tr></table>
 
 <p>[^6]: Python, NumPy 用語で
