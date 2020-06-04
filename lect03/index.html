@@ -167,7 +167,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../lect05/">第 5 回</a>
+    <a class="" href="../lect05/">第 5 回 06 月 05 日</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -921,7 +921,21 @@ y_i=x_i^{(2)}&=f\left(\sum_{j}w_{j}^{(1)}x_{j}^{(1)}+b_{i}^{(2)}\right)\\
 \end{align}
 
 
-wzxhzdk:0
+<table class="codehilitetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code><span style="color: #228B22"># Define the neural network function y = x * w + b</span>
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">total_input</span>(x, w, b):
+    <span style="color: #8B008B; font-weight: bold">return</span> x * w + b
+
+<span style="color: #228B22"># Define the cost function</span>
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">cost</span>(y, t): 
+    <span style="color: #8B008B; font-weight: bold">return</span> ((t - y)**<span style="color: #B452CD">2</span>).sum()
+</code></pre></div>
+</td></tr></table>
 
 
 -->
