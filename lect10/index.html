@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Shin Asakawa">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>第 10 回 07月 10 日 - 2020駒澤大学心理学特講IIIA</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="//fonts.googleapis.com/earlyaccess/notosansjp.css" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:600,800" rel="stylesheet">
+  <link href="../css/specific.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u7b2c 10 \u56de 07\u6708 10 \u65e5";
+    var mkdocs_page_input_path = "lect10.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> 2020駒澤大学心理学特講IIIA</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect00check_meet/">第 0 回 事前確認</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect00guidance/">第 0 回 ガイダンス</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect01/">第 1 回 05 月 08 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect02/">第 2 回 05 月 15 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect03/">第 3 回 05 月 22 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect04/">第 4 回 05 月 29 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect05/">第 5 回 06 月 05 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="https://github.com/ShinAsakawa/ShinAsakawa.github.io/blob/master/2020-0614exawizards_attention.pdf">第 6 回 06 月 14 日 ICLR読み会</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect07/">第 7 回 06月 19 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect08/">第 8 回 06月 26 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect09/">第 9 回 07月 03 日</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">第 10 回 07月 10 日</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#iiia">ディープラーニングの心理学的解釈 (心理学特講IIIA)</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_1">本日の実習ファイル</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_2">強化学習，条件付けの古典</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_3">強化学習とは何か？</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#_4">複雑な状況をどう理解して解決するのか？</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#deep-q-network">Deep Q Network</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#_5">人間にはできて強化学習には難しいこと</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect11/">第 11 回 07月 17 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect12/">第 12 回 07月 24 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">付録</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../colaboratory_intro/">Colab 事始め</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../colaboratory_faq/">Colaboratory FAQ</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../eco/">エコシステム</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../python_numpy_intro_ja/">Python の基礎</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../python_modules/">Python modules</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../2020-0510how_to_save_and_share_colab_files/">2020-0510 課題提出の方法</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Hinton_Maxwell_award/">ジェフェリー・ヒントンのマクセル賞受賞記念講演(2016)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../activation_functions/">活性化関数</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../t-SNE/">次元圧縮 t-SNE</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../information_theory/">情報理論</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../data_science/">データサイエンス小史</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020komazawa_how_to_read_math_equations.ipynb">数式の読み方</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Reinforcement-learning-temporal-difference-sarsa-q-learning-expected-sarsa-on-python/">強化学習 TD,Q学習, SARSA</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">2020駒澤大学心理学特講IIIA</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>第 10 回 07月 10 日</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="iiia">ディープラーニングの心理学的解釈 (心理学特講IIIA)<a class="headerlink" href="#iiia" title="Permanent link">&para;</a></h1>
+<div align='right'>
+<a href='mailto:educ0233@komazawa-u.ac.jp'>Shin Aasakawa</a>, all rights reserved.<br>
+Date: 10/Jul/2020<br/>
+Appache 2.0 license<br/>
+</div>
+
+<p>第 10 回 強化学習, 予測報酬誤差, ゲームAI, 経済学</p>
+<!--
+<https://medium.com/tensorflow/deep-reinforcement-learning-playing-cartpole-through-asynchronous-advantage-actor-critic-a3c-7eab2eea5296>
+
+<https://gist.github.com/ruippeixotog/cde7cae770e72916e209b915521bb18f>
+
+- 強化学習のデモ
+
+<table class="codehilitetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code><span style="color: #228B22"># for Reinforcement Learning</span>
+<span style="color: #658b00">cd</span> ~/study/2018karpathy_reinforcejs.git
+open index.html
+</code></pre></div>
+</td></tr></table>
+
+-->
+
+<h1 id="_1">本日の実習ファイル<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<ul>
+<li><a href="https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_rl_ogawa_2_2_maze_random.ipynb">ランダム探索</a></li>
+<li><a href="https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_rl_ogawa_2_3_policygradient.ipynb">方策勾配法</a></li>
+<li><a href="https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_rl_ogawa_2_5_Sarsa.ipynb">SARSA</a></li>
+<li><a href="https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_rl_ogawa_2_6_Qlearning.ipynb">Q学習</a></li>
+</ul>
+<p><a href="https://openai.com/">OpenAI</a> 提供の強化学習環境 <a href="https://gym.openai.com/">gym</a>
+を用いています。</p>
+<!--
+使うと環境構築は楽です。ただし colaboratory 上で動作させるためには [StarAI の開発したレンダリング環境](https://star-ai.github.io/Rendering-OpenAi-Gym-in-Colaboratory/)
+が必要です。-->
+
+<!--
+
+<table class="codehilitetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">gym</span>
+env = gym.make(<span style="color: #CD5555">&#39;CartPole-v0&#39;</span>)
+env.reset()
+<span style="color: #8B008B; font-weight: bold">for</span> _ <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">1000</span>):
+    env.render()
+    env.step(env.action_space.sample()) <span style="color: #228B22"># take a random action</span>
+</code></pre></div>
+</td></tr></table>
+
+
+[cartpole 問題](https://www.youtube.com/watch?v=J7E6_my3CHk)を解いてみました
+
+
+<table class="codehilitetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code><span style="color: #658b00">cd</span> ~/study/2019tensorflow_models.git/research/a3c_blogpost
+<span style="color: #228B22"># python a3c_cartpole.py --train</span>
+python a3c_cartpole.py --algorithm=random --max-eps=<span style="color: #B452CD">4000</span>
+</code></pre></div>
+</td></tr></table>
+
+## The Animal-AI Olympics
+
+<http://animalaiolympics.com/>
+
+<div>
+<video style="width:84%" src='./assets/Animal-AI Olympics Preview.mp4' controls >
+</div>
+
+## Unity Obstacle Tower Challenge
+
+<https://www.aicrowd.com/challenges/unity-obstacle-tower-challenge>
+
+<div>
+<video style="width:84%" src='./assets/Unity Obstacle Tower Challenge.mp4' controls >
+</div>
+
+-->
+
+<h1 id="_2">強化学習，条件付けの古典<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h1>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Ivan_Pavlov">パブロフ</a> (Ivan Petrovich Pavlov; 1849/Sep/14-1936/Feb/27)古典的条件づけ 1904 年ノーベル医学生理学賞</li>
+<li><a href="https://en.wikipedia.org/wiki/B._F._Skinner">スキナー</a> (Burrhus Frederic Skinner; 1904/Mar/20-1990/Aug/18) 道具的条件付け， オペラント条件づけ，<a href="../assets/1938Skinner_Fig1_skinnerBOX.jpg">スキナー箱, Skinner(1938) Fig.1, page 39 より</a></li>
+<li><a href="http://incompleteideas.net/">Sutton</a> and <a href="http://www-anw.cs.umass.edu/~barto/">Barto</a> の強化学習 <a href="http://incompleteideas.net/book/first/the-book.html">初版 1998年</a>, <a href="http://incompleteideas.net/book/the-book-2nd.html">第2版 2018年</a>, <a href="https://www.amazon.co.jp/dp/4627826613/">初版は翻訳あり</a>，第2版は pdf ファイルで<a href="http://incompleteideas.net/book/bookdraft2017nov5.pdf">ダウンロード可能</a></li>
+</ul>
+<h1 id="_3">強化学習とは何か？<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h1>
+<p><center></p>
+<p><img src="../assets/2018Sutton_Fig3j.svg" style="width:74%"><br>
+<p align="center" style="width:74%">
+Sutton &amp; Barto (2018) Fig. 3.2 を改変
+</p>
+</center></p>
+<p>強化学習という言葉は古い言葉ですが機械学習の文脈では，
+環境とその環境におかれた動作主（エージェントと言ったり，ロボットシステムだったりします）が，
+環境と相互作用しながらより良い行動を形成するためのモデルです。
+動作主は，環境から受け取った現在の状態を分析して，
+次にとるべき行動を選択します。このとき将来に渡って報酬が最大となるような行動を学習する手法の一つです。</p>
+<p>2015 年には，Google傘下のデープマインドというスタートアップチームが開発した囲碁プログラムAlphaGoがプロ棋士のイ・セドル氏に勝利し話題になりました。
+AlphaGo は強化学習を基本技術の一つとして用いています。</p>
+<ol>
+<li><a href="../rl01_elements.pdf">強化学習(1): 基礎</a></li>
+<li><a href="../rl02_agentAndEnv.pdf">強化学習(2): エージェントと環境</a></li>
+<li><a href="../rl03_goalAndReward.pdf">強化学習(3): 目標と報酬</a></li>
+<li><a href="../rl04_mdp.pdf">強化学習(4): マルコフ決定過程</a></li>
+<li><a href="../rl05_vi.pdf">強化学習(5): 価値反復，方策反復</a></li>
+<li><a href="../rl06_advanced.pdf">強化学習(6): </a></li>
+<li>
+<p><a href="../rl06_advanced.pdf">強化学習(7): </a></p>
+</li>
+<li>
+<p>エージェントと環境，マルコフ決定過程 MDP，POMDP，効用関数，ベルマン方程式，探索と利用のジレンマ，SARSA:</p>
+</li>
+<li>価値，方策，Q 学習，モデルベース対モデルフリー，アクター=クリティック:</li>
+<li>
+<p>深層 Q 学習:</p>
+</li>
+<li>
+<p>ゲーム AI へ (AlphaGo，AlphaGoZero，OpenAI five):</p>
+</li>
+<li>セルフプレイ:</li>
+<li>最近の発展 A3C，Rainbow，RDT，World model:</li>
+</ol>
+<!--
+### 方策，報酬，価値観数，(環境)モデル
+
+- $s,s'$: 状態 state
+- $a$: 行動，行為 action
+- $r$: 報酬 reward
+- $t$: 時間 (離散時間 $t=1,2,\ldots,T$)
+- $p(s',r\vert s, a)$: 状態 $s$ で行為 $a$ を行ったとき，報酬 $r$ を受け取って 状態 $s'$ に遷移する確率
+- $p(s'\vert s, a)$: 状態 $s$ で行為 $a$ を行った場合，状態 $s'$ へ遷移する確率
+- $r(s,a)$: 状態 $s$ で行為 $a$ を行った場合の即時報酬 immediate reward の期待値
+- $r(s,a,s')$: 行為 $a$ を行った場合状態が $s$ から $s'$ へ変化したときの即時報酬の期待値
+- $v_\pi(s)$: 方策 $\pi$ での状態 $s$ の価値 (期待報酬)
+- $v_*(s)$: 最適方策化での状態 $s$ の価値
+- $q_\pi(s,a)$: 方策 $\pi$ のもとで状態 $s$ で行為 $a$ をおこなた場合の価値
+- $q_*(a)$: 行動 $a$ を行った場合の期待報酬(真の報酬) <!-- true value (expected reward) of action $a$-->
+
+<!--
+- $Q_t(a)$: 時刻 $t$ での $q_*(a)$ の期待値 <!-- qestimate at time $t$ of $q_*(a)$
+- $N_t(a)$: 時刻 $t$ で行為 $a$ を行った回数 <!-- number of times action $a$ has been selected up prior to time $t$
+- $H_t(a$) 時刻 $t$ で行為 $a$ を行う傾向(選好 preference) <!--learned preference for selecting action a at time $t$
+- $\pi_t(a)$: 時刻 $t$ で行為 $a$ を選択する確率 <!-- probability of selecting action a at time $t$
+- $R_t$: $\pi_t$ が与えられた場合，時刻 $t$ における の期待報酬 <!--estimate at time $t$ of the expected reward given $\pi_t$
+--->
+
+<h2 id="_4">複雑な状況をどう理解して解決するのか？<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ul>
+<li>強化学習というニューラルネットワークモデルがあるわけではない</li>
+<li>
+<p>動的で複雑な環境に対処 <script type="math/tex">\rightarrow</script>
+<strong>強化学習</strong> + DL <script type="math/tex">\rightarrow</script> 一般人工知能への礎</p>
+</li>
+<li>
+<p>DQN ATARIのビデオゲーム, <a href="https://www.nature.com/articles/nature14236">https://www.nature.com/articles/nature14236</a></p>
+</li>
+<li>AlphaGo 囲碁, <a href="https://www.nature.com/articles/nature16961">https://www.nature.com/articles/nature16961</a></li>
+<li>AlphaGoZero 囲碁, <a href="https://www.nature.com/articles/nature24270">https://www.nature.com/articles/nature24270</a></li>
+</ul>
+<h1 id="deep-q-network">Deep Q Network<a class="headerlink" href="#deep-q-network" title="Permanent link">&para;</a></h1>
+<ul>
+<li><a href="../assets/2015DQNFig1.svg">DQNの模式図</a></li>
+<li><a href="../assets/MOV_0013.mp4">ギャラガ1</a></li>
+<li>
+<p><a href="../assets/MOV_0071.mp4">ギャラガ2</a></p>
+</li>
+<li>
+<p><strong>Q 学習</strong> Q learning に DNN を採用</p>
+</li>
+<li>CNN が LeNet, @1998LeCun そうであったように，強化学習 RL も昔からの技術 @Sutton_and_Barto1998</li>
+<li>ではなぜ，今になって囲碁や自動運転に応用できるようになったのか？ </li>
+<li>
+<script type="math/tex">\Rightarrow</script> コンピュータの能力, データ規模，アルゴリズムの改良, エコシステム(ArXiv, Linux, Git, ROS, AMT, TensorFlow) </li>
+</ul>
+<!--
+# 強化学習
+
+- 強化学習 $\Rightarrow$ 意思決定
+  - **エージェント** agent が **行動**(行為) action をする
+  - 行動によって **状態** が変化する
+  - **環境** から与えられる **報酬** によって**目標**が決定
+- 深層学習: $\Rightarrow$ 表現，表象
+  - 教師信号として目標が与えられる
+  - 目標を達成するために外部状況の **表現** を獲得
+
+<center>
+<font size="+2" color="Green">強化学習 + 深層学習 = 人工知能</font>
+</center>
+
+  - 強化学習 $\Rightarrow$ 目標の設定
+  - 深層学習 $\Rightarrow$ 内部表象の獲得機構を提供
+
+# 用語の整理
+
+- 教師信号なし **報酬信号** reward signal
+- 遅延フィードバック
+
+- **価値** Value
+- **行為** Action
+- **状態** State
+- TD 学習
+  - **Sarsa**
+  - **Q 学習**
+  - **アクタークリティック**
+- 報酬 $R_t$: **スカラ値**
+  - 時刻 $t$ でエージェントのとった行動を評価する指標
+  - エージェントは**累積報酬** cumulative reward の最大化する
+  - 報酬仮説: **目標は累積期待報酬の最大化として記述可能**
+
+
+## デモ
+- ブロック崩し: [https://www.youtube.com/watch?v=V1eYniJ0Rnk](https://www.youtube.com/watch?v=V1eYniJ0Rnk)
+- スペースインベーダー: [https://www.youtube.com/watch?v=W2CAghUiofY](https://www.youtube.com/watch?v=W2CAghUiofY)
+<!--- packman: [https://www.youtube.com/watch?v=r3pb-ZDEKVg](https://www.youtube.com/watch?v=r3pb-ZDEKVg)
+- OpenMind selfplay: [https://www.youtube.com/watch?v=OBcjhp4KSgQ](https://www.youtube.com/watch?v=OBcjhp4KSgQ)
+- DQN の動画 スペースインベーダー
+<center>
+<div>
+<video style="width:33%" controls src="../assets/2015Mnih_DQN-Nature_Video1.mp4" type="video/mp4" ><br>
+</div>
+</center>
+- DQN の動画 ブロック崩し
+<center>
+<div>
+<video style="width:33%" controls src="../assets/2015Mnih_DQN-Nature_Video2.mp4" type="video/mp4" >
+</div>
+</center>
+
+## DQN 結果
+
+<center>
+<div>
+<img src="../assets/2015DQNFig3.svg" style="width:94%"></br>
+</div>
+</center>
+
+## なぜ DQN には難しいのか？
+
+<center>
+<div>
+<video style="width:74%" controls src="../assets/Montezuma.mp4" type="video/mp4" /></br>
+**Montezuma**
+</div>
+</center>
+
+<center>
+<video style="width:74%" controls src="../assets/PrivateEye.mp4" type="video/mp4" /></br>
+**Private Eye**
+</center>
+
+<center>
+<video width="39%" autoplay loop markdown="0" controls muted>
+  <source src="./assets/Montezuma.mp4">
+</video>
+<video width="39%" autoplay loop markdown="0" controls muted>
+  <source src="./assets/privateEye.mp4">
+</video>
+-->
+
+<h2 id="_5">人間にはできて強化学習には難しいこと<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Montenzuma's Revenge の動画 <a href="https://www.youtube.com/watch?v=Klxxg9JM5tY">https://www.youtube.com/watch?v=Klxxg9JM5tY</a></li>
+<li>Private Eys の動画 <a href="https://www.youtube.com/watch?v=OfyS-Wj1M78">https://www.youtube.com/watch?v=OfyS-Wj1M78</a></li>
+</ul>
+<!---
+
+## エージェントと環境
+
+
+<!--
+- At each step $t$ the agent:
+  - Executes action $A_t$
+  - Receives observation $O_t$
+  - Receives scalar reward $R_t$
+- The environment:
+  - Receives action $A_t$
+  - Emits observation $O_{t+1}$
+  - Emits scalar reward $R_{t+1}$
+- $t$ increments at env. step
+-->
+
+<!--
+- **エージェント**: 学習と意思決定を行う主体
+  1. **行動** action **$A_t$** を行い
+  1. 環境の **観察** observation **$O_t$** を行う
+  1. 環境からスカラ値の **報酬** reward **$R_t$** を受け取る
+- **環境**: エージェント外部の全て
+  1. エージェントから **行為** $A_t$ を受け取り
+  1. エージェントに **観察** $O_{t+1}$ を与え
+  1. エージェントへ **報酬** $R_{t+1}$ を与える
+
+## エージェントの要素
+
+- **方策** Policy
+- **価値関数** Value function
+- **モデル** エージェントが持つ環境の表象
+
+## 方策 policy
+
+- **方策** : エージェントの行為
+- 決定論的方策: $a=\pi(S)$
+- 確率論的方策: $\pi(a|s)=p(A_{t=a}|S_{t=s})$
+
+## 価値関数
+- 将来の報酬予測
+- 状態評価(良/悪)
+- 行為の選択
+$$
+v_\pi(S)=\mathbb{E}_\pi\left\{R_{t+1}+\gamma R_{t+2} + \gamma^2R_{t+3}+\ldots|S_{t=s}\right\}
+$$
+
+## 強化学習のモデル
+- 価値ベース
+  - 方策:なし
+  - 価値関数:あり
+- 方策ベース
+  - 方策:あり
+  - 価値関数:なし
+- アクター=クリティック Actor Critic
+  - 方策: あり
+  - 価値関数: あり
+
+- モデルフリー
+  - 方策，価値関数: あり
+  - モデル: なし
+- モデルベース
+  - 方策，価値関数: あり
+  - モデル: あり
+
+## 探索と利用のジレンマ Exploration and exploitaion dilemma
+- 過去の経験から，一番良いと思う行動ばかりをしていると，さらに良い選択肢を見つけ出すことができない **探索不足**
+- 更に良い選択肢ばかり探していると過去の経験が活かせない **過去の経験の利用不足**
+
+## 目標，収益，報酬
+
+- エージェントの目標は累積報酬を最大化すること (報酬仮説)
+  - **報酬仮説** Reward Hypothesis
+  - 目標: 期待報酬の最大化
+
+- 時刻 $t$ における報酬 $R_t$ : **スカラ値**
+- 時刻 $t$ におけるエージェント行為の評価
+
+## 逐次的意思決定 Sequential Decision Making
+- 目標 Goal: 総収益を最大化する行動を選択すること
+- 行為，行動 Actions は長期的結果
+- 収益は遅延することも有る
+- 直近の報酬を選ぶよりも，長期的な報酬を考えた方が良い場合がある 
+
+
+## 収益 Return
+- **収益** return $G_t$: 割引付き収益 
+$$
+G_t=R_{t+1}+\gamma R_{t+2}+\ldots=\sum_{k=0}^{\infty}\gamma^k R_{t+k+1} 
+$$
+
+- 割引率 The discount $\gamma\in\left\{0,1\right\}$ : 現時点から見た将来の報酬を計算するため
+
+- **遅延報酬** delayed reward の評価
+- $0$ に近ければ __近視眼的__ 評価
+- $1$ に近ければ __将来を見通した__ 評価
+
+## 価値関数 Value Function
+
+- **状態価値関数 $v$ ** と **行動価値関数 $q$ **
+
+- **価値関数** $v(s)$: gives the long-term value of state $s$
+- **状態価値関数** $v(s)$ of an MRP is the expected return starting from state $s$
+$$
+v(s)=\mathbb{E}\left\{G_t|S_{t=2}\right\}
+$$
+
+- **状態価値関数** state-value function: 
+$$
+v_\pi(s)=\mathbb{E}_\pi\left\{G_t|S_{t=s}\right\}
+$$
+
+# ベルマン期待期待 Bellman Expectation Equation
+- **状態価値関数** : 即時報酬と後続状態の割引付き報酬の和に分解できる
+
+$$
+v_\pi(s)=\mathbb{E}_\pi\left\{R_{t+1}+\gamma v_\pi(S_{t+1}|S_t=s)\right\}
+$$
+
+- **行動価値関数** action-value function:
+$$
+q_\pi(s,a)=\mathbb{E}_\pi\left\{G_t|S_{t}=s,A_{t}=a\right\}
+$$
+
+- **行動価値関数** 同じく分解可能 The action-value function can similarly be decomposed,
+$$
+q_\pi(s,a)=\mathbb{E}_\pi\left\{R_{t+1}+\gamma q_\pi(S_{t+1},A_{t+1})|S_{t}=s,A_{t}=a\right\}
+$$
+
+
+## 最適価値関数 Optimal Value Function
+- 最適状態価値関数 
+$$
+v_{*}(s) = \max_{\pi} v_{\pi}(s)
+$$
+- 最適行動価値関数
+$$
+q_{*}(s,a)=\max q_{\pi}(s,a)
+$$
+
+- ベルマン方程式 一般に非線形になるので難しい
+-->
+
+<!--
+- No closed form solution (in general)
+- Many iterative solution methods
+- 幾つかの解法:
+  - 価値反復
+  - 方策反復
+  - Q 学習
+  - sarsa
+-->
+
+<!--
+  - Value Iteration
+  - Policy Iteration
+  - Q-learning
+  - Sarsa
+-->
+
+<!--
+# Markov Reward Process
+A Markov reward process is a Markov chain with values.
+
+- A Markov Reward Process is a tuple $<S,P,R,\gamma>$
+  - $S$ is a finite set of states
+  - $P$ is a state transition probability matrix,
+  - $P_{ss'}=P\of{S_{t+1}=s'\given{S_t=s}}$
+  - $R$ is a reward function, $R_s=\mathbb{E}\BRc{R_{t+1}\given{S_t=s}}$
+  - $\gamma$ is a discount factor
+
+# Bellman Equation for MRPs
+The value function can be decomposed into two parts:
+  - immediate reward $R_{t+1}$
+  - discounted value of successor state $\gamma v\of{S_{t+1}}$
+
+$$
+\begin{array}{lll}
+v\of{s}&=&\mathbb{E}\BRc{G_t\given{S_t=s}}\\
+&=&\mathbb{E}\BRc{R_{t+1}+\gamma R_{t+2}+\gamma^2R_{t+3}+\ldots\given{S_{t}=s}}\\
+&=&\mathbb{E}\BRc{R_{t+1}+\gamma\Brc{R_{t+2}+\gamma R_{t+3}+\ldots}\given{S_{t}=s}}\\
+&=&\mathbb{E}\BRc{R_{t+1}+\gamma G_{t+1}\given{S_{t}=s}}\\
+&=&\mathbb{E}\BRc{R_{t+1}+\gamma v\of{S_{t+1}\given{S_{t}=s}}}
+\end{array}
+$$
+
+# Bellman Equation for MRPs
+
+$$
+v\of{s}=\mathbb{E}\BRc{R_{t+1}+\gamma v\of{S_{t+1}}\given{S_t=s}}
+$$
+
+
+$$
+v\of{s}=R_s +\gamma\sum_{s'\in S} P_{ss'}v\of{s'}
+$$
+
+# Solving the Bellman Equation
+- The Bellman equation is a linear equation
+- It can be solved directly:
+$$
+\begin{array}{lll}
+v &=& R +\gamma Pv\\ 
+\Brc{I - \gamma P}v &=& R\\
+v &=& \Brc{I-\gamma P}^{-1}R
+\end{array}
+$$
+
+- Computational complexity is $O(n^3)$ for $n$ states
+- Direct solution only possible for small MRPs
+- There are many iterative methods for large MRPs, e.g.
+  - Dynamic programming
+  - Monte-Carlo evaluation
+  - Temporal-Difference learning
+-->
+
+<!-- # 価値関数 Value Function -->
+
+<!-- - 将来の報酬予測の関数 -->
+
+<!--   - ある状態である行動を起こすとどれほどの報酬が得られるか -->
+
+<!-- - **Q-値関数** Q-value function : 総期待報酬を得る関数<\!--gives expected total reward-\-> -->
+
+<!--   - 方策 $\pi$ のもとで -->
+
+<!--   - 状態 $s$ で行動 $a$ を行ったとき -->
+
+<!-- $$ -->
+
+<!--   Q^\pi\of{s,a}=\mathbb{E}\BRc{r_{t+1}+\gamma r_{t+2}+\gamma^2 r_{t+3}+\ldots\given{s,a}} -->
+
+<!-- $$   -->
+
+<!--
+# 最適価値関数 Optimal Value Functions
+- 最大の価値を与える関数
+$$
+Q^*(s,a)=\max_{\pi}Q^\pi(s,a)=Q^{\pi^*}(s,a)
+$$
+- 最適価値関数 $Q^*$ が得られれば最適方策 $\pi^*$ を求めることができる
+$$
+\pi^*(s)=\operatorname{argmax}_aQ^*(s,a)
+$$
+
+- 全ての意思決定における最適価値:
+$$
+\begin{array}{lll}
+Q^*(s,a)&=&r_{t+1}+\gamma\max_{a_{t+1}}r_{t+2}+\gamma^2\max_{a_{t+2}}r_{t+3}+\ldots\\
+           &=&r_{t+1}+\gamma\max_{a_{t+1}}Q^*(s_{t+1},a_{t+1})
+\end{array}
+$$
+-->
+
+<!-- from sliver (2016) icml lecture -->
+
+<!--
+- **ベルマン方程式** Bellman equation:
+$$
+Q^*(s,a)=\mathbb{E}_{s'}\left\{r+\gamma\max_{a'}Q^*(s',a')|s,a\right\}.
+$$
+-->
+
+<!--
+# 報酬(収益) Rewards
+- 時刻 $t$ における報酬 $R_t$ : **スカラ値**
+- 時刻 $t$ におけるエージェント行為の評価Indicates how well agent is doing at step $t$
+
+# Sequential Decision Making
+- 目標 Goal: select actions to maximise total future reward
+- 行為 Actions はmay have long term consequences
+- 収益は遅延することも有る
+- 直近の報酬を選ぶよりも，長期的な報酬を考えた方が良い場合がある <!--It may be better to sacrifice immediate reward to gain more long-term reward-
+- Examples:
+  - A financial investment (may take months to mature)
+  - Refuelling a helicopter (might prevent a crash in several hours)
+  - Blocking opponent moves (might help winning chances many moves from now)
+-->
+
+<hr />
+<p><center>
+<div>
+<img src="../assets/2017Hassel_RainbowFig1.svg" style="width:74%"><br>
+<strong>すでに結果が古いのですが Rainbow の性能</strong></p>
+<p><img src="../assets/2017Hassel_RainbowRes1.svg" style="width:94%"><br>
+<strong>すでに結果が古いのですが Rainbow の性能</strong>
+</div>
+</center></p>
+<hr />
+<ul>
+<li>カルパシーのブログ <a href="http://karpathy.github.io/2016/05/31/rl/">http://karpathy.github.io/2016/05/31/rl/</a><ul>
+<li>REINFORCE.js <a href="https://cs.stanford.edu/people/karpathy/reinforcejs/index.html">https://cs.stanford.edu/people/karpathy/reinforcejs/index.html</a></li>
+</ul>
+</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../lect11/" class="btn btn-neutral float-right" title="第 11 回 07月 17 日">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../lect09/" class="btn btn-neutral" title="第 9 回 07月 03 日"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright (c) 2020</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../lect09/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../lect11/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
