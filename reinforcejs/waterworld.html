@@ -51,7 +51,7 @@
 
   <style>
   #wrap {
-    width:800px;
+    width:900px; 
     margin-left: auto;
     margin-right: auto;
   }
@@ -398,10 +398,9 @@
  </head>
  <body onload="start();">
 
-  <a href="https://github.com/karpathy/reinforcejs"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+<!--  <a href="https://github.com/karpathy/reinforcejs"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>-->
   
    <div id="wrap">
-
 
    <div id="mynav" style="border-bottom:1px solid #999; padding-bottom: 10px; margin-bottom:50px;">
     <div>
@@ -410,18 +409,23 @@
     </div>
     <ul class="nav nav-pills">
       <li role="presentation"><a href="index.html">About</a></li>
-      <li role="presentation"><a href="gridworld_dp.html">GridWorld: DP</a></li>
+      <li role="presentation"><a href="gridworld_dp.html">グリッドワールド:DP</a></li>
+      <li role="presentation"><a href="gridworld_td.html">グリッドワールド:TD</a></li>
+      <li role="presentation"><a href="puckworld.html">パックマンワールド:DQN</a></li>
+      <li role="presentation"><a href="waterworld.html">ウォーターワールド:DQN</a></li>
+<!--  <li role="presentation"><a href="gridworld_dp.html">GridWorld: DP</a></li>
       <li role="presentation"><a href="gridworld_td.html">GridWorld: TD</a></li>
       <li role="presentation"><a href="puckworld.html">PuckWorld: DQN</a></li>
       <li role="presentation" class="active"><a href="waterworld.html">WaterWorld: DQN</a></li>
+-->    
     </ul>
    </div>
 
 <textarea id="agentspec" style="width:100%;height:250px;">
 // agent parameter spec to play with (this gets eval()'d on Agent reset)
 var spec = {}
-spec.update = 'qlearn'; // qlearn | sarsa
-spec.gamma = 0.9; // discount factor, [0, 1)
+spec.update = 'qlearn'; // qlearn または sarsa
+spec.gamma = 0.9; // 割引率 [0, 1)
 spec.epsilon = 0.2; // initial epsilon for epsilon-greedy policy, [0, 1)
 spec.alpha = 0.005; // value function learning rate
 spec.experience_add_every = 5; // number of time steps before we add another experience to replay memory
@@ -432,13 +436,13 @@ spec.num_hidden_units = 100 // number of neurons in hidden layer
 </textarea>
 
 <div style="text-align:center;">
-<button class="btn btn-danger" onclick="resetAgent()" style="width:150px;height:50px;margin-bottom:5px;">Reinit agent</button>
-<button class="btn btn-success" onclick="goveryfast()" style="width:150px;height:50px;margin-bottom:5px;">Go very fast</button>
-<button class="btn btn-success" onclick="gofast()" style="width:150px;height:50px;margin-bottom:5px;">Go fast</button>
-<button class="btn btn-success" onclick="gonormal()" style="width:150px;height:50px;margin-bottom:5px;">Go normal</button>
-<button class="btn btn-success" onclick="goslow()" style="width:150px;height:50px;margin-bottom:5px;">Go slow</button>
-<button class="btn btn-danger" onclick="toggleAgentView()" style="width:150px;height:50px;margin-bottom:5px;">Toggle Agent View</button>
-<button class="btn btn-danger" onclick="enableHuman()" style="width:150px;height:50px;margin-bottom:5px;">Start playing (use arrow keys)</button>
+<button class="btn btn-danger" onclick="resetAgent()" style="width:180px;height:50px;margin-bottom:5px;">エージェントの再初期化</button>
+<button class="btn btn-success" onclick="goveryfast()" style="width:80px;height:50px;margin-bottom:5px;">最速</button>
+<button class="btn btn-success" onclick="gofast()" style="width:80px;height:50px;margin-bottom:5px;">速</button>
+<button class="btn btn-success" onclick="gonormal()" style="width:80px;height:50px;margin-bottom:5px;">普通速</button>
+<button class="btn btn-success" onclick="goslow()" style="width:80px;height:50px;margin-bottom:5px;">遅</button>
+<button class="btn btn-danger" onclick="toggleAgentView()" style="width:190px;height:50px;margin-bottom:5px;">エージェントビューの変更</button>
+<button class="btn btn-danger" onclick="enableHuman()" style="width:150px;height:50px;margin-bottom:5px;">開始 (矢印キーを使う)</button>
 
 <canvas id="canvas" width="700" height="500"></canvas>
 </div>

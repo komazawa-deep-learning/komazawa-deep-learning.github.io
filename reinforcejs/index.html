@@ -114,19 +114,33 @@ SARSA と Q-学習 の両方が含まれています。
 
 ### 方策勾配法 Policy Gradients
 
-The implementation includes a stochastic policy gradient Agent that uses REINFORCE and LSTMs that learn both the actor policy and the value function baseline, and also an implementation of recent Deterministic Policy Gradients by [Silver et al](http://www0.cs.ucl.ac.uk/staff/d.silver/web/Publications_files/deterministic-policy-gradients.pdf). To make a lot of this happen (e.g. LSTMs in particular), the library includes a fork of my previous project [recurrentjs](https://github.com/karpathy/recurrentjs), which allows one to set up graphs of computations over matrices and perform automatic backprop. 
+<!-- The implementation includes a stochastic policy gradient Agent that uses REINFORCE and LSTMs that learn both the actor policy and the value function baseline, and also an implementation of recent Deterministic Policy Gradients by [Silver et al](http://www0.cs.ucl.ac.uk/staff/d.silver/web/Publications_files/deterministic-policy-gradients.pdf). To make a lot of this happen (e.g. LSTMs in particular), the library includes a fork of my previous project [recurrentjs](https://github.com/karpathy/recurrentjs), which allows one to set up graphs of computations over matrices and perform automatic backprop. 
 
 I do not include the demo for policy gradient methods because the current implementations are unfortunately finicky and unstable (both stochastic and deterministic). I still include the code in the library in case someone wants to poke around. I suspect that either there are bugs (It's proving difficult to know for sure), or I'm missing some tips/tricks needed to get them to work reliably.
+ -->
 
-# Example Library Usage
+実装には 価値のベースラインと REINFORCE と LSTM を用いた確率的方策勾配法を使った エージェント と [Silver et al](http://www0.cs.ucl.ac.uk/staff/d.silver/web/Publications_files/deterministic-policy-gradients.pdf) による最近の 決定論的方策勾配法 (deterministic Policy Gradients の実装が含まれています。 これらの多くを実現するために（特に LSTM など） このライブラリには 私の以前のプロジェクト[recurrentjs](https://github.com/karpathy/recurrentjs) の フォークが含まれています。
 
-Including the library (currently there is no nodejs support out of the box):
+方策勾配法 の デモは含まれていません。ですが 現在の実装は 残念ながら（確率論的、決定論的なものの両方とも）不安定です。
+誰かが詮索したい場合に備えて、 私はライブラリにコードが含まれています。
+私は、バグがあるか (確かに知ることが難しいことを証明しています) あるいは、 それらを確実に動作させるために必要なヒントやコツが不足しているのではないかと疑っています。
+
+## ライブラリの使用例
+
+このライブラリをインクルードするには以下のようにしてください: 
+
+<!-- Including the library (currently there is no nodejs support out of the box): -->
 
 ```javascript
 <script type="text/javascript" src="lib/rl.js"></script>
 ```
 
-For most applications (e.g. simple games), the DQN algorithm is a safe bet to use. If your project has a finite state space that is not too large, the DP or tabular TD methods are more appropriate. As an example, the DQN Agent satisfies a very simple API:
+<!-- For most applications (e.g. simple games), the DQN algorithm is a safe bet to use. If your project has a finite state space that is not too large, the DP or tabular TD methods are more appropriate. As an example, the DQN Agent satisfies a very simple API:
+-->
+
+ほとんどのアプリケーション（単純なゲームなど）では 深層 Q ネットワーク (DQN) アルゴリズムを使用するのが安全です。
+プロジェクトの状態空間が有限で大きすぎない場合には 動的プログラミング (DP) や 表形式 の TD メソッド がより適切です。
+例として DQN エージェント は 非常にシンプルな API を満たしています。
 
 <pre><code class="js">
 // create an environment object
@@ -145,10 +159,16 @@ setInterval(function(){ // start the learning loop
 }, 0);
 </code></pre>
 
-In other words, you pass the agent some vector and it gives you an action. Then you reward or punish its behavior with the `reward` signal. The agent will over time tune its parameters to maximize the rewards it obtains.
+<!-- In other words, you pass the agent some vector and it gives you an action. Then you reward or punish its behavior with the `reward` signal. The agent will over time tune its parameters to maximize the rewards it obtains.
+-->
 
-The full source code is on <a href="https://github.com/karpathy/reinforcejs">Github</a> under the MIT license.
+言い換えれば エージェントに何らかの ベクトル を渡して行動を与え， そして，報酬信号 `reward` シグナル でその行動 に 報酬を与えたり、 罰を与えたりします。
+エージェントは、 報酬を最大にするように 時間をかけて パラメータ を調整します。
 
+
+全体のソースコードは， <a href="https://github.com/karpathy/reinforcejs">Github</a> から入手できます。MIT ライセンスに従います。
+
+<!-- The full source code is on <a href="https://github.com/karpathy/reinforcejs">Github</a> under the MIT license. -->
 
 <br><br><br><!-- <br><br><br><br>-->
 </div>

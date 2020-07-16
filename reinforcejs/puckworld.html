@@ -455,7 +455,7 @@
  </head>
  <body onload="start();">
 
-  <a href="https://github.com/karpathy/reinforcejs"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+<!--   <a href="https://github.com/karpathy/reinforcejs"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a> -->
   
    <div id="wrap">
    
@@ -466,122 +466,214 @@
     </div>
     <ul class="nav nav-pills">
       <li role="presentation"><a href="index.html">About</a></li>
-      <li role="presentation"><a href="gridworld_dp.html">GridWorld: DP</a></li>
-      <li role="presentation"><a href="gridworld_td.html">GridWorld: TD</a></li>
-      <li role="presentation" class="active"><a href="puckworld.html">PuckWorld: DQN</a></li>
-      <li role="presentation"><a href="waterworld.html">WaterWorld: DQN</a></li>
+      <li role="presentation"><a href="gridworld_dp.html">グリッドワールド:DP</a></li>
+      <li role="presentation"><a href="gridworld_td.html">グリッドワールド:TD</a></li>
+      <li role="presentation"><a href="puckworld.html">パックマンワールド:DQN</a></li>
+      <li role="presentation"><a href="waterworld.html">ウォーターワールド:DQN</a></li>
     </ul>
    </div>
    
-   <h2>PuckWorld: Deep Q Learning</h2>
+   <h2>パックマンワールド: ディープ Q 学習</h2>
 
-<textarea id="agentspec" style="width:100%;height:230px;">
+<textarea id="agentspec" style="width:100%;height:270px;">
 // agent parameter spec to play with (this gets eval()'d on Agent reset)
 var spec = {}
-spec.update = 'qlearn'; // qlearn | sarsa
-spec.gamma = 0.9; // discount factor, [0, 1)
-spec.epsilon = 0.2; // initial epsilon for epsilon-greedy policy, [0, 1)
-spec.alpha = 0.01; // value function learning rate
-spec.experience_add_every = 10; // number of time steps before we add another experience to replay memory
-spec.experience_size = 5000; // size of experience replay memory
+spec.update = 'qlearn'; // qlearn または sarsa
+spec.gamma = 0.9; // 割引率, [0, 1) 0 から 1 まで
+spec.epsilon = 0.2; // イプシロン貪欲探索に用いるイプシロンの初期値, [0, 1)
+spec.alpha = 0.01; // 価値関数の学習率
+spec.experience_add_every = 10; // 記憶を再生するために，別の経験を追加する時間ステップ数<!-- number of time steps before we add another experience to replay memory -->
+spec.experience_size = 5000; // 経験を記憶再生するためのサイズ<!--size of experience replay memory-->
 spec.learning_steps_per_iteration = 20;
-spec.tderror_clamp = 1.0; // for robustness
-spec.num_hidden_units = 100 // number of neurons in hidden layer
+spec.tderror_clamp = 1.0; // 頑健性のための <!--for robustness-->
+spec.num_hidden_units = 100 // 中間層のニューロン数
 </textarea>
 
-<button class="btn btn-danger" onclick="resetAgent()" style="width:150px;height:50px;margin-bottom:5px;">Reinit agent</button>
-<button class="btn btn-primary" onclick="togglelearn()" style="width:150px;height:50px;margin-bottom:5px;">Toggle Run</button>
-<button class="btn btn-success" onclick="gofast()" style="width:150px;height:50px;margin-bottom:5px;">Go fast</button>
-<button class="btn btn-success" onclick="gonormal()" style="width:150px;height:50px;margin-bottom:5px;">Go normal</button>
-<button class="btn btn-success" onclick="goslow()" style="width:150px;height:50px;margin-bottom:5px;">Go slow</button>
+<br/>
+<center>
+  <button class="btn btn-danger" onclick="resetAgent()" style="width:180px;height:50px;margin-bottom:5px;">エージェントの再初期化</button>
+<button class="btn btn-primary" onclick="togglelearn()" style="width:130px;height:50px;margin-bottom:5px;">実行の切替</button>
+<button class="btn btn-success" onclick="gofast()" style="width:80px;height:50px;margin-bottom:5px;">速</button>
+<button class="btn btn-success" onclick="gonormal()" style="width:80px;height:50px;margin-bottom:5px;">普通</button>
+<button class="btn btn-success" onclick="goslow()" style="width:80px;height:50px;margin-bottom:5px;">遅い</button>
+</center>
 
 <br>
-Exploration epsilon: <span id="eps">0.15</span> <div id="slider"></div>
+探索イプシロン: <span id="eps">0.15</span> <div id="slider"></div>
 <br>
 
 <div id="draw"></div>
-   
 
 <br>
 <div style="float:right;">
-  <button class="btn btn-primary" onclick="loadAgent()" style="width:200px;height:35px;margin-bottom:5px;margin-right:20px;">Load a Pretrained Agent</button>
+  <button class="btn btn-primary" onclick="loadAgent()" style="width:240px;height:35px;margin-bottom:5px;margin-right:20px;">訓練済エージェントの読み込み</button>
 </div>
 <textarea id="mysterybox" style="width:100%;display:none;">mystery text box</textarea>
 
 <div> Experience write pointer: <div id="expi" style="display:inline-block;"></div> </div>
-<div> Latest TD error: <div id="tde" style="display:inline-block;"></div> </div>
+<div> 現在の TD 誤差: <div id="tde" style="display:inline-block;"></div> </div>
 <div id="tdest"></div>
 
 <div>
-<div style="text-align:center">Average reward graph (high is good)</div>
+<div style="text-align:center">平均報酬 (高いほど良い)</div>
 <div id="flotreward" style="width:800px; height: 400px;"></div>
 </div>
 
 <div id="exp" class="md">
 
-### Setup
+### セットアップ Setup
 
-This demo is a modification of **PuckWorld**:
+このデモは，**パックマンワールド** の修正版です
 
-- The **state space** is now large and continuous: The agent observes its own location (x,y), velocity (vx,vy), the locations of the green target, and the red target (total of 8 numbers).
-- There are 4 **actions** available to the agent: To apply thrusters to the left, right, up and down. This gives the agent control over its velocity.
-- The PuckWorld **dynamics** integrate the velocity of the agent to change its position. The green target moves once in a while to a random location. The red target always slowly follows the agent.
-- The **reward** awarded to the agent is based on its distance to the green target (low is good). However, if the agent is in the vicinity of the red target (inside the disk), the agent gets a negative reward proportional to its distance to the red target.
+<!-- This demo is a modification of **PuckWorld**:-->
 
-The optimal strategy for the agent is to always go towards the green target (this is the regular PuckWorld), but to also avoid the red target's area of effect. This makes things more interesting because the agent has to learn to avoid it. Also, sometimes it's fun to watch the red target corner the agent. In this case, the optimal thing to do is to temporarily pay the price to zoom by quickly and away, rather than getting cornered and paying much more reward price when that happens.
+- **状態空間** は拡張され，連続値になっています。
+エージェントは自分の位置 (x,y) , 速度 (vx, vy) を観察します。緑色のターゲットと赤のターゲットの場所，全部で 8 つです。
+<!-- The **state space** is now large and continuous: The agent observes its own location (x,y), velocity (vx,vy), the locations of the green target, and the red target (total of 8 numbers). -->
+- エージェントは 4 つの行動を撮ることができます。 <!-- There are 4 **actions** available to the agent: To apply thrusters to the left, right, up and down. This gives the agent control over its velocity. -->
+- パックマンワールドの **ダイナミクス** では エージェントの位置を変更するための速度を統合します。
+緑のターゲットは，時々ランダムな場所に移動します。
+赤のターゲットは常にエージェントにゆっくりと追従します。<!-- The PuckWorld **dynamics** integrate the velocity of the agent to change its position. The green target moves once in a while to a random location. The red target always slowly follows the agent. -->
+- **報酬 reward** は緑のターゲットまでの距離です。緑との距離は低いほど良いと評価されます。
+一方，エージェントが赤いターゲットの近く（ディスクの内側）にいる場合，エージェントと赤いターゲットまでの距離に比例して負の報酬を得ます。<!-- The **reward** awarded to the agent is based on its distance to the green target (low is good). However, if the agent is in the vicinity of the red target (inside the disk), the agent gets a negative reward proportional to its distance to the red target. -->
 
-**Interface**: The current reward experienced by the agent is shown as its color (green = high, red = low). The action taken by the agent (the medium-sized circle moving around) is shown by the arrow.
+<!-- The optimal strategy for the agent is to always go towards the green target (this is the regular PuckWorld), but to also avoid the red target's area of effect. This makes things more interesting because the agent has to learn to avoid it. Also, sometimes it's fun to watch the red target corner the agent. In this case, the optimal thing to do is to temporarily pay the price to zoom by quickly and away, rather than getting cornered and paying much more reward price when that happens. -->
 
-### Deep Q Learning
+エージェントにとっての最適な戦略は，常に緑のターゲット (これは通常のパックマンワールドです)に向かって行くことです。
+ですが，赤のターゲットの効果範囲を避けることが必要です。
+これにより，エージェントは赤ターゲットを避けることを学ばなければならないので，ゲームをより面白くしています。
+また、赤いターゲットがエージェントを追い詰めるのを見るのも楽しいです。
+この場合に最適なのは，追い詰められたときに多くの報酬を支払うより，一時的に素早くズームして離れていくための代償を支払うことです。
 
-We're going to extend the Temporal Difference Learning (Q-Learning) to continuous state spaces. In the previos demo we've estimated the Q learning function \\(Q(s,a)\\) as a lookup table. Now, we are going to use a function approximator to model \\(Q(s,a) = f\_{\theta}(s,a)\\), where \\(\theta\\) are some parameters (e.g. weights and biases of a neurons in a network). However, as we will see everything else remains exactly the same. The first paper that showed impressive results with this approach was [Playing Atari with Deep Reinforcement Learning](http://arxiv.org/abs/1312.5602) at NIPS workshop in 2013, and more recently the Nature paper [Human-level control through deep reinforcement learning](http://www.nature.com/nature/journal/v518/n7540/full/nature14236.html), both by Mnih et al. However, more impressive than what we'll develop here, their function \\(f\_{\theta,a}\\) was an entire Convolutional Neural Network that looked at the raw pixels of Atari game console. It's hard to get all that to work in JS :(
 
-Recall that in Q-Learning we had training data that is a single chain of \\(s\_t, a\_t, r\_t, s\_{t+1}, a\_{t+1}, r\_{t+1}, s\_{t+2}, \ldots \\) where the states \\(s\\) and the rewards \\(r\\) are samples from the environment dynamics, and the actions \\(a\\) are sampled from the agent's policy \\(a\_t \sim \pi(a \mid s\_t)\\). The agent's policy in Q-learning is to execute the action that is currently estimated to have the highest value (\\( \pi(a \mid s) = \arg\max\_a Q(s,a) \\)), or with a probability \\(\epsilon\\) to take a random action to ensure some exploration. The Q-Learning update at each time step then had the following form:
+**インターフェイス**: エージェントが経験した現在の報酬は 色  (緑＝高，赤＝低) で示されています。エージェントが取った行動 (中程度の大きさの円が動き回っている) が矢印で示されています。<!--The current reward experienced by the agent is shown as its color (green = high, red = low). The action taken by the agent (the medium-sized circle moving around) is shown by the arrow.-->
+
+### 深層 Q 学習 (Deep Q Learning)
+
+<!-- We're going to extend the Temporal Difference Learning (Q-Learning) to continuous state spaces. In the previos demo we've estimated the Q learning function \\(Q(s,a)\\) as a lookup table. Now, we are going to use a function approximator to model \\(Q(s,a) = f\_{\theta}(s,a)\\), where \\(\theta\\) are some parameters (e.g. weights and biases of a neurons in a network). However, as we will see everything else remains exactly the same. The first paper that showed impressive results with this approach was [Playing Atari with Deep Reinforcement Learning](http://arxiv.org/abs/1312.5602) at NIPS workshop in 2013, and more recently the Nature paper [Human-level control through deep reinforcement learning](http://www.nature.com/nature/journal/v518/n7540/full/nature14236.html), both by Mnih et al. However, more impressive than what we'll develop here, their function \\(f\_{\theta,a}\\) was an entire Convolutional Neural Network that looked at the raw pixels of Atari game console. It's hard to get all that to work in JS :( -->
+
+
+TD 学習 (Q-学習) を連続状態空間に拡張してみます。
+先のデモでは，Q 学習 関数 \\Q(s,a)\\) をルックアップテーブルとして推定しました。
+ここで \\(Q(s,a) = f\_{\theta}(s,a)\\), をモデル化するために関数近似器を使用しようとしていますが、\\(\theta\\) はいくつかのパラメータ (例えば ネットワーク内のニューロンの重みやバイアス）です。
+しかし，これから見るように，他のすべてのことはまったく同じです。
+このアプローチで印象的な結果を示した最初の論文は，2013 年の NIPSワークショップ での [Playing Atari with Deep Reinforcement Learning](http://arxiv.org/abs/1312.5602) です。
+さらに最近では Nature 論文 [Human-level control through deep reinforcement learning](http://www.nature.com/nature/journal/v518/n7540/full/nature14236.html) です。
+両方とも Mnih らによるものでした。これをすべてJSで動作させるのは難しい。
+
+<!-- Recall that in Q-Learning we had training data that is a single chain of \\(s\_t, a\_t, r\_t, s\_{t+1}, a\_{t+1}, r\_{t+1}, s\_{t+2}, \ldots \\) where the states \\(s\\) and the rewards \\(r\\) are samples from the environment dynamics, and the actions \\(a\\) are sampled from the agent's policy \\(a\_t \sim \pi(a \mid s\_t)\\). The agent's policy in Q-learning is to execute the action that is currently estimated to have the highest value (\\( \pi(a \mid s) = \arg\max\_a Q(s,a) \\)), or with a probability \\(\epsilon\\) to take a random action to ensure some exploration. The Q-Learning update at each time step then had the following form: -->
+
+Q 学習では，学習データは \\(s\_t, a\_t, r\_t, s\_{t+1}, a\_{t+1}, r\_{t+1}, s\_{t+2}, \ldots \\)  の単一連鎖です。
+状態 \\(s\\) と報酬 \\(r\\) は環境ダイナミクスからのサンプルです。
+行動 \\(a\\) はエージェントのポリシー \\(a\_t \sim \pi(a \mid s\_t)\\) からのサンプルであることを想起してください。
+Q 学習におけるエージェントの方策は，現在最も高い値を持つと推定される行動
+(\\( \pi(a \mid s) = \arg\max\_a Q(s,a) \\)) を実行するか，または 確率 \\(\epsilon\\) でランダムな行動をとって何らかの探索を確実に行うことです。
+そして、各時間ステップにおける Q 学習 の更新は、以下のような形式です:
 
 $$
 Q(s\_t, a\_t) \leftarrow Q(s\_t, a\_t) + \alpha \left[ r\_t + \gamma \max\_a Q(s\_{t+1}, a) - Q(s\_t, a\_t) \right]
 $$
 
-As mentioned, this equation is describing a regular Stochastic Gradient Descent update with learning rate \\(\alpha\\) and the loss function at time \\(t\\):
+上式は，学習率 \\(\alpha\\) で確率的勾配降下法を用いて更新される，時刻 \\(t\)) での次式の損失関数が用いられます:
+<!-- As mentioned, this equation is describing a regular Stochastic Gradient Descent update with learning rate \\(\alpha\\) and the loss function at time \\(t\\): -->
 
 $$
 L\_t = (r\_t + \gamma \max\_a Q(s\_{t+1}, a) - Q(s\_t, a\_t))^2
 $$
 
-Here \\(y = r\_t + \gamma \max\_a Q(s\_{t+1}, a)\\) is thought of as a scalar-valued fixed target, while we backpropagate through the neural network that produced the prediction \\(f\_{\theta} = Q(s\_t,a\_t)\\). Note that the loss has a standard L2 norm regression form, and that we nudge the parameter vector \\(\theta\\) in a way that makes the computed \\(Q(s,a)\\) slightly closer to what it should be (i.e. to satisfy the Bellman equation). This softly encourages the constraint that the reward should be properly diffused, in expectation, backwards through the environment dynamics and the agent's policy.
+ここで \\(y = r\_t + \gamma \max\_a Q(s\_{t+1}, a)\\) は，スカラ値です。この値で誤差逆伝播法により学習します。
+損失関数は標準的な L2ノルム回帰の形をしていることに注意してください。
+\\(\theta\\) のパラメータベクトルを 計算された \\(Q(s,a)\\) の値が、あるべき姿に少しだけ近づくように，(ベルマン方程式を満たすように） 調整されます。
+これは，報酬が適切に拡散されるべきであるという制約を，環境ダイナミクスとエージェントの方策を介して，期待して，後方へ伝播するものです。
+<!-- Here \\(y = r\_t + \gamma \max\_a Q(s\_{t+1}, a)\\) is thought of as a scalar-valued fixed target, while we backpropagate through the neural network that produced the prediction \\(f\_{\theta} = Q(s\_t,a\_t)\\). Note that the loss has a standard L2 norm regression form, and that we nudge the parameter vector \\(\theta\\) in a way that makes the computed \\(Q(s,a)\\) slightly closer to what it should be (i.e. to satisfy the Bellman equation). This softly encourages the constraint that the reward should be properly diffused, in expectation, backwards through the environment dynamics and the agent's policy.
+ -->
 
 In other words, Deep Q Learning is a 1-dimensional regression problem with a vanilla neural network, solved with vanilla stochastic gradient descent, except our training data is not fixed but generated by interacting with the environment.
 
-### Bells and Whistles
+言い換えれば，ディープ Q 学習は 素のニューラルネットワークを用いた 1次元回帰問題です。
+学習データが固定ではなく，環境との相互作用によって生成されることを除いては、素の確率的勾配降下法で解くことができます。
 
-There are several bells and whistles that make Q Learning with function approximation tracktable in practical problems:
+### ベルとホイッスル (Bells and Whistles)
 
-**Modeling Q(s,a)**. First, as mentioned we are using a function approximator to model the Q function: \\(Q(s,a) = f\_{\theta}(s,a)\\). The natural approach to take is to perhaps have a neural network that takes as inputs the state vector \\(s\\) and an action vector \\(a\\) (e.g. encoded with a 1-of-k indicator vector), and output a single number that gives \\(Q(s,a)\\). However, this approach leads to a practical problem because the policy of the agent is to take an action that maximizes Q, that is: \\( \pi(a \mid s) = \arg\max\_a Q(s,a) \\). Therefore, with this naive approach, when the agent wants to produce an action we'd have to iterate over all actions, evaluate Q for each one and take the action that gave the highest Q.
+<!-- There are several bells and whistles that make Q Learning with function approximation tracktable in practical problems: -->
+実践的な問題で関数近似をトラックテーブルにした Q 学習をするためのいくつかのベルとホイッスルがあります。
 
-A better idea is to instead predict the value \\(Q(s,a)\\) as a neural network that only takes the state \\(s\\), and produces multiple output, each interpreted as the Q value of taking that action in the given state. This way, deciding what action to take reduces to performing a single forward pass of the network and finding the argmax action. A diagram may help get the idea across:
+**Modeling Q(s,a)**. 前述したように Q 関数  \\(Q(s,a) = f\_{\theta}(s,a)\\) をモデル化するために関数近似器を使用しています。
+取るべき自然なアプローチは，おそらく状態ベクトル \\(s\\) と行動ベクトル \\(a\\) 例えば ワンホットベクトルでエンコードされた入力を受け取り，
+\\(Q(s,a)\\) を与える単一の数値を出力するニューラルネットワークを作る持つことです。
+しかし，この方法では，エージェントの方策は Q 値を最大化する行動をとること，
+すなわち \\( \pi(a \mid s) = \arg\max\_a Q(s,a) \\) です。
+このため，実用的な問題が発生します。
+この素朴な方法アプローチでは，エージェントが行動を生成しようとすると，すべての行動を反復処理し，それぞれの行動について Q 値を評価し，
+最も高い Q を与えた行動をとらなければなりません。
+
+<!-- First, as mentioned we are using a function approximator to model the Q function: \\(Q(s,a) = f\_{\theta}(s,a)\\). The natural approach to take is to perhaps have a neural network that takes as inputs the state vector \\(s\\) and an action vector \\(a\\) (e.g. encoded with a 1-of-k indicator vector), and output a single number that gives \\(Q(s,a)\\). However, this approach leads to a practical problem because the policy of the agent is to take an action that maximizes Q, that is: \\( \pi(a \mid s) = \arg\max\_a Q(s,a) \\). Therefore, with this naive approach, when the agent wants to produce an action we'd have to iterate over all actions, evaluate Q for each one and take the action that gave the highest Q.-->
+
+<!-- A better idea is to instead predict the value \\(Q(s,a)\\) as a neural network that only takes the state \\(s\\), and produces multiple output, each interpreted as the Q value of taking that action in the given state. This way, deciding what action to take reduces to performing a single forward pass of the network and finding the argmax action. A diagram may help get the idea across: -->
+
+それよりより良いアイデアは，状態 \\(s\\) だけを取り，複数の出力を生成するニューラルネットワークとして
+値 \\(Q(s,a)\\) を予測するかわりに，複数の出力を生成することです。
+これらの値は，それぞれが与えられた状態でその行動を取る際の Q 値として解釈されます。
+このようにして，どのようなアクションを取るかを決定することは，ネットワークの一回のフォワードパスを実行して 最大値を与える行動を見つけることに縮約されます。
+図を見ていただければ理解していただけると思います。
 
 <div style="text-align:center; margin: 20px;">
 <img src="img/qsa.jpeg" style="max-width:500px;"><br>
-Simple example with 3-dimensional state space (blue) and 2 possible actions (red). Green nodes are neurons of a neural network f. Left: A naive approach in which it takes multiple forward passes to find the argmax action. Right: A more efficient approach where the Q(s,a) computation is effectively shared among the neurons in the network. Only a single forward pass is required to find the best action to take in any given state.
+3 次元の状態空間（青）と 2 つの行動（赤）の単純な例。緑のノードはニューラルネットワーク f のニューロン。
+左: 最大値を与える行動を見つけるために複数回の前向きパスを取る素朴ななアプローチ。
+右: より効率的なアプローチ。
+Q(s,a) の計算がネットワーク内のニューロン間で効果的に共有される。
+与えられた状態で取るべき最良の行動を見つけるためには 1 回の前向きパスのみが必要。
+<!-- Simple example with 3-dimensional state space (blue) and 2 possible actions (red). Green nodes are neurons of a neural network f. Left: A naive approach in which it takes multiple forward passes to find the argmax action. Right: A more efficient approach where the Q(s,a) computation is effectively shared among the neurons in the network. Only a single forward pass is required to find the best action to take in any given state. -->
 </div>
 
-Formulated in this way, the update algorithm becomes:
+
+このように定式化すると、更新アルゴリズムは次のようになります。
+
+1. 環境中で \\(s\t, a\_t, r\_t, s\_{t+1}\\) の遷移を経験する
+2. 前向きパス \\(s\_{t+1}\\) で (固定の)目標 \\(y = r\_t + \gamma \max\_a f\_{\theta}(s\_{t+1})\\) を評価する。
+3. 前向き  \\(f\_{\theta}(s\_t)\\) で 次元 \\(a\_t\\) に L2 損失を適用する。 L2 損失のため 勾配は単純な形をしており，予測値は単純に \\(y\\) から減算される。
+4. 勾配を逆伝播し，パラメータを更新する
+
+<!-- Formulated in this way, the update algorithm becomes:
 
 1. Experience a \\(s\_t, a\_t, r\_t, s\_{t+1}\\) transition in the environment.
 2. Forward \\(s\_{t+1}\\) to evaluate the (fixed) target \\(y = r\_t + \gamma \max\_a f\_{\theta}(s\_{t+1})\\).
 3. Forward \\(f\_{\theta}(s\_t)\\) and apply L2 regression loss on the dimension \\(a\_t\\) of the output which we want to equal to \\(y\\). Due to the L2 loss, the gradient has a simple form where the predicted value is simply subtracted from \\(y\\). The output dimensions corresponding to the other actions have zero gradient. 
 4. Backpropagate the gradient and perform a parameter update.
+-->
 
-**Experience Replay Memory**. An important contribution of the Mnih et al. papers was to suggest an experience replay memory. This is loosely inspired by the brain, and in particular the way it syncs memory traces in the hippocampus with the cortex. What this amounts to is that instead of performing an update and then throwing away the experience tuple \\(s\_t, a\_t, r\_t, s\_{t+1}\\), we keep it around and effectively build up a training set of experiences. Then, we don't learn based on the new experience that comes in at time \\(t\\), but instead sample random expriences from the replay memory and perform an update on each sample. Again, this is exactly as if we were training a Neural Net with SGD on a dataset in a regular Machine Learning setup, except here the dataset is a result of agent interaction. This feature has the effect of removing correlations in the observed state,action,reward sequence and reduces gradual drift and forgetting. The algorihm hence becomes:
+**Experience Replay Memory**. Mnih らの論文の重要な貢献は，経験のリプレイ記憶を示唆することでした。
+これは 脳、特に海馬の記憶痕跡を大脳皮質と同期させる方法から着想を得たものです。
+これは，更新してから経験を捨てるのではなく，経験を残しておいて，効果的に経験の訓練セットを作り上げるということです。
+そうすると，その時に入ってきた経験を元に学習するのではなく，リプレイメモリからランダムに経験をサンプリングして，それぞれのサンプルを更新してきます。
+繰り返しになりますが，これは，通常の機械学習のセットアップでデータセット上で 確率的勾配降下法 (SGD) を使ってニューラルネットを学習する場合と全く同じです.
+違いはデータセットがエージェントの相互作用の結果であることだけです。
+この機能は，観察された状態，行動，報酬の順序の相関関係を除去する効果があり，段階的なドリフトと忘却を減少させます。
+アルゴリズムは以下の通り:
 
-1. Experience \\(s\_t, a\_t, r\_t, s\_{t+1}\\) in the environment and add it to the training dataset \\(\mathcal{D}\\). If the size of \\(\mathcal{D}\\) is greater than some threshold, start replacing old experiences.
-2. Sample **N** experiences from \\(\mathcal{D}\\) at random and update the Q function.
+<!-- An important contribution of the Mnih et al. papers was to suggest an experience replay memory. This is loosely inspired by the brain, and in particular the way it syncs memory traces in the hippocampus with the cortex. What this amounts to is that instead of performing an update and then throwing away the experience tuple \\(s\_t, a\_t, r\_t, s\_{t+1}\\), we keep it around and effectively build up a training set of experiences. Then, we don't learn based on the new experience that comes in at time \\(t\\), but instead sample random expriences from the replay memory and perform an update on each sample. Again, this is exactly as if we were training a Neural Net with SGD on a dataset in a regular Machine Learning setup, except here the dataset is a result of agent interaction. This feature has the effect of removing correlations in the observed state,action,reward sequence and reduces gradual drift and forgetting. The algorihm hence becomes: -->
 
-**Clamping TD Error**. Another interesting feature is to clamp the TD Error gradient at some fixed maximum value. That is, if the TD Error \\(r\_t + \gamma \max\_a Q(s\_{t+1}, a) - Q(s\_t, a\_t)\\) is greater in magnitude then some threshold `spec.tderror_clamp`, then we cap it at that value. This makes the learning more robust to outliers and has the interpretation of using Huber loss, which is an L2 penalty in a small region around the target value and an L1 penalty further away.
+1. ある環境で \\(s\_t, a\_t, r\_t, s\_{t+1}\\) を経験し，訓練データセットに加える。もし閾値よりも大きければ，過去の経験を置き換える
+<!-- in the environment and add it to the training dataset \\(\mathcal{D}\\). If the size of \\(\mathcal{D}\\) is greater than some threshold, start replacing old experiences. -->
+2. **N** このサンプルを \\(\mathcal{D}\\) から取得し，Q 関数を更新する<!-- Sample **N** experiences from \\(\mathcal{D}\\) at random and update the Q function. -->
 
-**Periodic Target Q Value Updates**. The last modification suggested in Mnih et al. also aims to reduce correlations between updates and the immediately undertaken behavior. The idea is to freeze the Q network once in a while into a frozen, copied network \\(\hat{Q}\\) which is used to only compute the targets. This target network is once in a while updated to the actual current \\(Q\\) network. That is, we use the target network \\(r\_t + \gamma \max\_a \hat{Q}(s\_{t+1},a)\\) to compute the target, and \\(Q\\) to evaluate the \\(Q(s\_t, a\_t)\\) part. In terms of the implementation, this requires one additional line of code where we every now and then we sync \\(\hat{Q} \leftarrow Q\\). I played around with this idea but at least on my simple toy examples I did not find it to give a substantial benefit, so I took it out of REINFORCEjs in the current implementation for sake of brevity.
+**Clamping TD Error**. もう一つの興味深い特徴は TD 誤差勾配を一定の最大値でクランプすることです。
+つまり TD 誤差 \\(r\_t + \gamma \max\_a Q(s\_{t+1}, a) - Q(s\_t, a\_t)\\) が大きければ その最大値でクランプ（その最大値にしてしまう）する。
+これにより，外れ値に対してより頑健な学習が可能になり Huber 損失を利用するという解釈もできます。
 
-### REINFORCEjs API use of DQN
+<!-- Another interesting feature is to clamp the TD Error gradient at some fixed maximum value. That is, if the TD Error \\(r\_t + \gamma \max\_a Q(s\_{t+1}, a) - Q(s\_t, a\_t)\\) is greater in magnitude then some threshold `spec.tderror_clamp`, then we cap it at that value. This makes the learning more robust to outliers and has the interpretation of using Huber loss, which is an L2 penalty in a small region around the target value and an L1 penalty further away. -->
+
+**Periodic Target Q Value Updates**.  Mnih ら で提案された最後の修正もまた，更新とすぐに実行される動作の間の相関を減らすことを目的としています。
+そのアイデアは Q ネットワーク を時々凍結させ，凍結されたコピーされたネットワーク \\(\hat{Q}\\) にして，ターゲットのみを計算するために使用することです。
+このターゲットネットワークは，時々，実際の現在のQネットワークに更新されます。
+つまり，ターゲットの計算にはターゲットネットワーク \\(r\_t + \gamma \max\_a \hat{Q}(s\_{t+1},a)\\)  を使用し，\\(Q(s\_t, a\_t)\\) の部分の評価には Q を使用します。
+実装では \\(\hat{Q} \leftarrow Q\\) を同期させるためのコードを 1 行追加する必要があります。
+このアイデアで遊んでみましたが，少なくともこの単純なおもちゃの例では，実質的な利益を与えるとは思えなかったので，簡潔にするために現在の実装では REINFORCEjs から外してあります。
+
+<!-- The last modification suggested in Mnih et al. also aims to reduce correlations between updates and the immediately undertaken behavior. The idea is to freeze the Q network once in a while into a frozen, copied network \\(\hat{Q}\\) which is used to only compute the targets. This target network is once in a while updated to the actual current \\(Q\\) network. That is, we use the target network \\(r\_t + \gamma \max\_a \hat{Q}(s\_{t+1},a)\\) to compute the target, and \\(Q\\) to evaluate the \\(Q(s\_t, a\_t)\\) part. In terms of the implementation, this requires one additional line of code where we every now and then we sync \\(\hat{Q} \leftarrow Q\\). I played around with this idea but at least on my simple toy examples I did not find it to give a substantial benefit, so I took it out of REINFORCEjs in the current implementation for sake of brevity. -->
+
+### DQN に用いられる REINFORCEjs API
 
 If you'd like to use REINFORCEjs DQN in your application, define an `env` object that has the following methods:
 
@@ -618,15 +710,31 @@ As for the available parameters in the DQN agent `spec`:
 - `spec.learning_steps_per_iteration`: the more the better, but slower. Default = 20
 - `spec.tderror_clamp`: for robustness, clamp the TD Errror gradient at this value.
 
-### Pros and Cons
+### 長所と短所 (Pros and Cons)
 
-The very nice property of DQN agents is that the I/O interface is quite generic and very simple: The agent accepts state vectors, produces discrete actions, and learns from relatively arbitrary agents. However, there are several things to keep in mind when applying this agent in practice:
+DQN エージェントの非常に優れた特性は I/O インターフェースが非常に汎用的で非常にシンプルであることです。
+エージェントは状態ベクトルを取り，離散的な行動を生成します。
+任意のエージェントを使って学習できます。
+しかし 実際にこのエージェントを適用する際には いくつか注意すべき点があります。
+
+- 報酬が非常に疎な環境であれば，エージェントは学習に苦労するでしょう。
+今のところ優先度スイープのサポートはありません。
+TD 誤差が大きいオーバーサンプリングの経験を想像するかもしれません。
+これがどのようにして最も原理的な方法でできるかは明らかではありません。
+同様に、現在は適格性のトレースはありません。これは将来のバージョンで少し修正して追加される可能性があります。
+- 探索はたまにランダムに行われるので，かなり素朴なものになっています。
+環境が報酬を得るために、より長い正確な行動系列を必要とする場合，エージェントは，これらを偶然に見つけ出し，そこから十分に学習するのに多くの困難を伴うかもしれません。
+- DQN は離散的な行動の集合数しかサポートしておらず，どのようにして (高次元の) 連続行動空間を取り入れることができるのかは明らかではありません。
+
+高次元の連続アクション空間といえば、これこそがポリシー勾配アクター批判法の得意とするところです。Policy Gradient (PG) のデモを見てみましょう。<!--(おっと、もうすぐです。)-->
+
+<!-- The very nice property of DQN agents is that the I/O interface is quite generic and very simple: The agent accepts state vectors, produces discrete actions, and learns from relatively arbitrary agents. However, there are several things to keep in mind when applying this agent in practice:
 
 - If the rewards are very sparse in the environment the agent will have trouble learning. Right now there is no priority sweeping support, but one might imagine oversampling experience that have high TD errors. It's not clear how this can be done in most principled way. Similarly, there are no eligibility traces right now though this could be added with a few modifications in future versions.
 - The exploration is rather naive, since a random action is taken once in a while. If the environment requires longer sequences of precise actions to get a reward, the agent might have a lot of difficulty finding these by chance, and then also learning from them sufficiently.
 - DQN only supports a set number of discrete actions and it is not obvious how one can incorporate (high-dimensional) continuous action spaces.
 
-Speaking of high-dimensional continuous action spaces, this is what Policy Gradient Actor Critic methods are quite good at! Head over to the Policy Gradient (PG) demo. (Oops, coming soon...)
+Speaking of high-dimensional continuous action spaces, this is what Policy Gradient Actor Critic methods are quite good at! Head over to the Policy Gradient (PG) demo. (Oops, coming soon...) -->
 
 </div>
    </div>
