@@ -8,7 +8,7 @@
   
   <meta name="author" content="Shin Asakawa">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>第 10 回 07月 10 日 - 2020駒澤大学心理学特講IIIA</title>
+  <title>第 10 回 07月 17 日 - 2020駒澤大学心理学特講IIIA</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -20,7 +20,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "\u7b2c 10 \u56de 07\u6708 10 \u65e5";
+    var mkdocs_page_name = "\u7b2c 10 \u56de 07\u6708 17 \u65e5";
     var mkdocs_page_input_path = "lect10.md";
     var mkdocs_page_url = null;
   </script>
@@ -108,13 +108,19 @@
           
             <li class="toctree-l1 current">
 		
-    <a class="current" href="./">第 10 回 07月 10 日</a>
+    <a class="current" href="./">第 10 回 07月 17 日</a>
     <ul class="subnav">
             
     <li class="toctree-l2"><a href="#iiia">ディープラーニングの心理学的解釈 (心理学特講IIIA)</a></li>
     
 
-    <li class="toctree-l2"><a href="#_1">本日の実習ファイル</a></li>
+    <li class="toctree-l2"><a href="#10-ai">第 10 回 強化学習, 予測報酬誤差, ゲームAI, 経済学</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#_1">実習ファイル</a></li>
+        
+        </ul>
     
 
     <li class="toctree-l2"><a href="#_2">強化学習，条件付けの古典</a></li>
@@ -133,6 +139,10 @@
     
         <ul>
         
+            <li><a class="toctree-l3" href="#youtube">YouTube 上でのデモ動画</a></li>
+        
+            <li><a class="toctree-l3" href="#dqn">DQN 結果</a></li>
+        
             <li><a class="toctree-l3" href="#_5">人間にはできて強化学習には難しいこと</a></li>
         
         </ul>
@@ -143,12 +153,12 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../lect11/">第 11 回 07月 17 日</a>
+    <a class="" href="../lect11/">第 11 回 07月 24 日</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../lect12/">第 12 回 07月 24 日</a>
+    <a class="" href="../lect12/">第 12 回 07月 ?? 日</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -232,7 +242,7 @@
     
       
     
-    <li>第 10 回 07月 10 日</li>
+    <li>第 10 回 07月 17 日</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -249,7 +259,14 @@ Date: 10/Jul/2020<br/>
 Appache 2.0 license<br/>
 </div>
 
-<p>第 10 回 強化学習, 予測報酬誤差, ゲームAI, 経済学</p>
+<h1 id="10-ai">第 10 回 強化学習, 予測報酬誤差, ゲームAI, 経済学<a class="headerlink" href="#10-ai" title="Permanent link">&para;</a></h1>
+<p><center></p>
+<p><img src="../assets/2016AlphaGo_Fig1a.svg">
+<img src="../assets/2016AlphaGo_Fig1b.svg"><br/>
+AlphaGo の模式図，原著論文より</p>
+<p><img src="../assets/AlphaGoZeroFig2.png"><br/>
+AlphaGoZero のセルフプレイ，原著論文より
+</center></p>
 <!--
 <https://medium.com/tensorflow/deep-reinforcement-learning-playing-cartpole-through-asynchronous-advantage-actor-critic-a3c-7eab2eea5296>
 
@@ -267,18 +284,31 @@ open index.html
 
 -->
 
-<h1 id="_1">本日の実習ファイル<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_1">実習ファイル<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_rl_ogawa_2_2_maze_random.ipynb">ランダム探索</a></li>
-<li><a href="https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_rl_ogawa_2_3_policygradient.ipynb">方策勾配法</a></li>
-<li><a href="https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_rl_ogawa_2_5_Sarsa.ipynb">SARSA</a></li>
-<li><a href="https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_rl_ogawa_2_6_Qlearning.ipynb">Q学習</a></li>
+<li><a href="https://colab.research.google.com/github/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_rl_ogawa_2_2_maze_random.ipynb" target="_blank">ランダム探索  <img src="../assets/colab_icon.svg"></a> </li>
+<li><a href="https://colab.research.google.com/github/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_rl_ogawa_2_3_policygradient.ipynb" target="_blank">方策勾配法  <img src="../assets/colab_icon.svg"></a> </li>
+<li><a href="https://colab.research.google.com/github/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_rl_ogawa_2_5_Sarsa.ipynb" target="_blank">SARSA  <img src="../assets/colab_icon.svg"></a> </li>
+<li><a href="https://colab.research.google.com/github/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_rl_ogawa_2_6_Qlearning.ipynb" target="_blank">Q学習  <img src="../assets/colab_icon.svg"></a> </li>
+<li><a href="../reinforcejs/" target="_blank">REINFORCE.js</a></li>
 </ul>
-<p><a href="https://openai.com/">OpenAI</a> 提供の強化学習環境 <a href="https://gym.openai.com/">gym</a>
+<!-- https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_rl_ogawa_2_2_maze_random.ipynb)-->
+
+<!--(https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_rl_ogawa_2_3_policygradient.ipynb)-->
+
+<!--(https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_rl_ogawa_2_5_Sarsa.ipynb)-->
+
+<!--(https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_rl_ogawa_2_6_Qlearning.ipynb)-->
+
+<p>以下のデモは，<a href="https://openai.com/">OpenAI</a> 提供の強化学習環境 <a href="https://gym.openai.com/">gym</a>
 を用いています。</p>
+<ul>
+<li><a href="https://colab.research.google.com/github/ShinAsakawa/2019komazawa/blob/master/notebooks/2020_0716Gym_cartpole_rendering.ipynb" target="_blank">倒立振子 (cartpole) <img src="../assets/colab_icon.svg"></a></li>
+</ul>
+<p>Colaboratory 上で gym を 動作させるためには <a href="https://star-ai.github.io/Rendering-OpenAi-Gym-in-Colaboratory/">StarAI の開発したレンダリング環境</a>
+が必要です。</p>
 <!--
-使うと環境構築は楽です。ただし colaboratory 上で動作させるためには [StarAI の開発したレンダリング環境](https://star-ai.github.io/Rendering-OpenAi-Gym-in-Colaboratory/)
-が必要です。-->
+使うと環境構築は楽です。ただし -->
 
 <!--
 
@@ -332,6 +362,16 @@ python a3c_cartpole.py --algorithm=random --max-eps=<span style="color: #B452C
 <li><a href="https://en.wikipedia.org/wiki/B._F._Skinner">スキナー</a> (Burrhus Frederic Skinner; 1904/Mar/20-1990/Aug/18) 道具的条件付け， オペラント条件づけ，<a href="../assets/1938Skinner_Fig1_skinnerBOX.jpg">スキナー箱, Skinner(1938) Fig.1, page 39 より</a></li>
 <li><a href="http://incompleteideas.net/">Sutton</a> and <a href="http://www-anw.cs.umass.edu/~barto/">Barto</a> の強化学習 <a href="http://incompleteideas.net/book/first/the-book.html">初版 1998年</a>, <a href="http://incompleteideas.net/book/the-book-2nd.html">第2版 2018年</a>, <a href="https://www.amazon.co.jp/dp/4627826613/">初版は翻訳あり</a>，第2版は pdf ファイルで<a href="http://incompleteideas.net/book/bookdraft2017nov5.pdf">ダウンロード可能</a></li>
 </ul>
+<p><center></p>
+<p><img src="https://www.nobelprize.org/images/pavlov-12840-content-portrait-mobile-tiny.jpg" width="24%">
+<a href="https://www.nobelprize.org/prizes/medicine/1904/pavlov/biographical/">Ian Pavlov</a>&nbsp;&nbsp;
+<img src="https://www.bfskinner.org/wp-content/gallery/1970s-1990/BFS-IN-THE-OFFICE.jpg" width="24%">
+<a href="https://www.bfskinner.org/archives/photos/">Burrhus Frederic Skinner</a>&nbsp;&nbsp;
+<img src="http://incompleteideas.net/sutton-head5.jpg" width="24%">
+<a href="http://incompleteideas.net/">Richard S. Sutton,</a>&nbsp;&nbsp;
+<img src="https://people.cs.umass.edu/~barto/barto2006-lowres.jpg" width="24%">
+<a href="https://people.cs.umass.edu/~barto/">Andrew G. Barto</a>
+</center></p>
 <h1 id="_3">強化学習とは何か？<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h1>
 <p><center></p>
 <p><img src="../assets/2018Sutton_Fig3j.svg" style="width:74%"><br>
@@ -407,8 +447,11 @@ AlphaGo は強化学習を基本技術の一つとして用いています。</p
 <li>AlphaGoZero 囲碁, <a href="https://www.nature.com/articles/nature24270">https://www.nature.com/articles/nature24270</a></li>
 </ul>
 <h1 id="deep-q-network">Deep Q Network<a class="headerlink" href="#deep-q-network" title="Permanent link">&para;</a></h1>
-<!--
-- [DQNの模式図](../assets/2015DQNFig1.svg)
+<p><center>
+  <img src="../assets/2015DQNFig1.svg" width="74%"><br/>
+DQNの模式図, 原著論文より
+</center></p>
+<!-- 
 - [ギャラガ1](../assets/MOV_0013s.mp4)
 - [ギャラガ2](../assets/MOV_0071s.mp4)
 -->
@@ -454,35 +497,41 @@ AlphaGo は強化学習を基本技術の一つとして用いています。</p
   - 時刻 $t$ でエージェントのとった行動を評価する指標
   - エージェントは**累積報酬** cumulative reward の最大化する
   - 報酬仮説: **目標は累積期待報酬の最大化として記述可能**
+-->
 
-
-## デモ
-- ブロック崩し: [https://www.youtube.com/watch?v=V1eYniJ0Rnk](https://www.youtube.com/watch?v=V1eYniJ0Rnk)
-- スペースインベーダー: [https://www.youtube.com/watch?v=W2CAghUiofY](https://www.youtube.com/watch?v=W2CAghUiofY)
-<!--- packman: [https://www.youtube.com/watch?v=r3pb-ZDEKVg](https://www.youtube.com/watch?v=r3pb-ZDEKVg)
-- OpenMind selfplay: [https://www.youtube.com/watch?v=OBcjhp4KSgQ](https://www.youtube.com/watch?v=OBcjhp4KSgQ)
-- DQN の動画 スペースインベーダー
-<center>
+<h2 id="youtube">YouTube 上でのデモ動画<a class="headerlink" href="#youtube" title="Permanent link">&para;</a></h2>
+<ul>
+<li>ブロック崩し: <a href="https://www.youtube.com/watch?v=V1eYniJ0Rnk" target="_blank">https://www.youtube.com/watch?v=V1eYniJ0Rnk</a></li>
+<li>スペースインベーダー: <a href="https://www.youtube.com/watch?v=W2CAghUiofY" target="_blank">https://www.youtube.com/watch?v=W2CAghUiofY</a>
+&lt;!--- packman: <a href="https://www.youtube.com/watch?v=r3pb-ZDEKVg">https://www.youtube.com/watch?v=r3pb-ZDEKVg</a></li>
+<li>
+<p>OpenMind selfplay: <a href="https://www.youtube.com/watch?v=OBcjhp4KSgQ">https://www.youtube.com/watch?v=OBcjhp4KSgQ</a>
+--&gt;</p>
+</li>
+<li>
+<p>DQN の動画 スペースインベーダー</p>
+</li>
+</ul>
+<p><center>
 <div>
 <video style="width:33%" controls src="../assets/2015Mnih_DQN-Nature_Video1.mp4" type="video/mp4" ><br>
 </div>
-</center>
-- DQN の動画 ブロック崩し
+</center></p>
+<ul>
+<li>DQN の動画 ブロック崩し
 <center>
 <div>
 <video style="width:33%" controls src="../assets/2015Mnih_DQN-Nature_Video2.mp4" type="video/mp4" >
 </div>
-</center>
-
-## DQN 結果
-
-<center>
+</center></li>
+</ul>
+<h2 id="dqn">DQN 結果<a class="headerlink" href="#dqn" title="Permanent link">&para;</a></h2>
+<p><center>
 <div>
 <img src="../assets/2015DQNFig3.svg" style="width:94%"></br>
 </div>
-</center>
-
-## なぜ DQN には難しいのか？
+</center></p>
+<!-- ## なぜ DQN には難しいのか？
 
 <center>
 <div>
@@ -503,19 +552,16 @@ AlphaGo は強化学習を基本技術の一つとして用いています。</p
 <video width="39%" autoplay loop markdown="0" controls muted>
   <source src="./assets/privateEye.mp4">
 </video>
--->
+ -->
 
 <h2 id="_5">人間にはできて強化学習には難しいこと<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Montenzuma's Revenge の動画 <a href="https://www.youtube.com/watch?v=Klxxg9JM5tY">https://www.youtube.com/watch?v=Klxxg9JM5tY</a></li>
-<li>Private Eys の動画 <a href="https://www.youtube.com/watch?v=OfyS-Wj1M78">https://www.youtube.com/watch?v=OfyS-Wj1M78</a></li>
+<li>Montenzuma's Revenge の動画 <a href="https://www.youtube.com/watch?v=Klxxg9JM5tY" target="_blank">https://www.youtube.com/watch?v=Klxxg9JM5tY</a></li>
+<li>Private Eys の動画 <a href="https://www.youtube.com/watch?v=OfyS-Wj1M78" target="_blank">https://www.youtube.com/watch?v=OfyS-Wj1M78</a></li>
 </ul>
 <!---
-
 ## エージェントと環境
 
-
-<!--
 - At each step $t$ the agent:
   - Executes action $A_t$
   - Receives observation $O_t$
@@ -800,10 +846,7 @@ $$
 </center></p>
 <hr />
 <ul>
-<li>カルパシーのブログ <a href="http://karpathy.github.io/2016/05/31/rl/">http://karpathy.github.io/2016/05/31/rl/</a><ul>
-<li>REINFORCE.js <a href="https://cs.stanford.edu/people/karpathy/reinforcejs/index.html">https://cs.stanford.edu/people/karpathy/reinforcejs/index.html</a></li>
-</ul>
-</li>
+<li>カルパシーのブログ <a href="http://karpathy.github.io/2016/05/31/rl/">http://karpathy.github.io/2016/05/31/rl/</a></li>
 </ul>
               
             </div>
@@ -812,7 +855,7 @@ $$
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../lect11/" class="btn btn-neutral float-right" title="第 11 回 07月 17 日">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../lect11/" class="btn btn-neutral float-right" title="第 11 回 07月 24 日">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../lect09/" class="btn btn-neutral" title="第 9 回 07月 03 日"><span class="icon icon-circle-arrow-left"></span> Previous</a>
