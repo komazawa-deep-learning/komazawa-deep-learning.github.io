@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Shin Asakawa">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>RL FAQ - 2020駒澤大学心理学特講IIIA</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="//fonts.googleapis.com/earlyaccess/notosansjp.css" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:600,800" rel="stylesheet">
+  <link href="../css/specific.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "RL FAQ";
+    var mkdocs_page_input_path = "RL-FAQ.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> 2020駒澤大学心理学特講IIIA</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect00check_meet/">第 0 回 事前確認</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect00guidance/">第 0 回 ガイダンス</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect01/">第 1 回 05 月 08 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect02/">第 2 回 05 月 15 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect03/">第 3 回 05 月 22 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect04/">第 4 回 05 月 29 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect05/">第 5 回 06 月 05 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="https://github.com/ShinAsakawa/ShinAsakawa.github.io/blob/master/2020-0614exawizards_attention.pdf">第 6 回 06 月 14 日 ICLR読み会</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect07/">第 7 回 06月 19 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect08/">第 8 回 06月 26 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect09/">第 9 回 07月 03 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect10/">第 10 回 07月 17 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect11/">第 11 回 07月 24 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect12/">第 12 回 07月 ?? 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">付録</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../colaboratory_intro/">Colab 事始め</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../colaboratory_faq/">Colaboratory FAQ</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../eco/">エコシステム</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../python_numpy_intro_ja/">Python の基礎</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../python_modules/">Python modules</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../2020-0510how_to_save_and_share_colab_files/">2020-0510 課題提出の方法</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Hinton_Maxwell_award/">ジェフェリー・ヒントンのマクセル賞受賞記念講演(2016)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../activation_functions/">活性化関数</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../t-SNE/">次元圧縮 t-SNE</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../information_theory/">情報理論</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../data_science/">データサイエンス小史</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020komazawa_how_to_read_math_equations.ipynb">数式の読み方</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Reinforcement-learning-temporal-difference-sarsa-q-learning-expected-sarsa-on-python/">強化学習 TD,Q学習, SARSA</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">2020駒澤大学心理学特講IIIA</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>RL FAQ</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="reinforcement-learning-faq-frequently-asked-questions-about-reinforcement-learning">Reinforcement Learning FAQ: Frequently Asked Questions about Reinforcement Learning<a class="headerlink" href="#reinforcement-learning-faq-frequently-asked-questions-about-reinforcement-learning" title="Permanent link">&para;</a></h1>
+<h2 id="edited-by-rich-sutton">Edited by Rich Sutton<a class="headerlink" href="#edited-by-rich-sutton" title="Permanent link">&para;</a></h2>
+<p>Initiated 8/13/01\
+Last updated 2/4/04</p>
+<p>I get many questions about reinforcement learning - how to think about it and how do it successfully in practice. 
+This FAQ is an attempt to pull together in one place some of the more common questions and answers. I have been free with my opinions, 
+but I would also welcome the opinions of others for inclusion here. In you have anything to add to my comments, including whole new questions or totally different answers, please send me a note at rich\@richsutton.com.</p>
+<ul>
+<li><a href="#General%20Questions">General Questions</a><ul>
+<li><a href="#What%20is%20RL">What is Reinforcement Learning?</a></li>
+<li><a href="#just%20trial-and-error">Is RL just trial-and-error learning, or does it include planning?</a></li>
+<li><a href="#RL%20and%20NDP">How does RL relate to Neuro-Dynamic Programming?</a></li>
+<li><a href="#Operations%20Research">What advantages does RL offer on Operations Research problems?</a></li>
+<li><a href="#brain">How does RL relate to Neuroscience?</a></li>
+<li><a href="#animal%20behavior">How does RL relate to the psychology of animal behavior?</a></li>
+<li><a href="#behaviorism">How does RL relate to behaviorism?</a></li>
+<li><a href="#GAs">How does RL relate to genetic algorithms?</a></li>
+<li><a href="#Who%20invented%20RL">Who invented RL?</a></li>
+</ul>
+</li>
+<li><a href="#studying%20and%20teaching%20RL">Questions about studying and teaching
+    RL</a><ul>
+<li><a href="#What%20sources">What sources do you recommend for an introduction to RL?</a></li>
+<li><a href="#online%20book">Where can I find an online version of the Sutton and Barto textbook?</a></li>
+<li><a href="#postscript%20book">Where can I find an electronic version of the book suitable for printing?</a></li>
+<li><a href="#answers">Where can I find the answers to the exercises?</a></li>
+<li><a href="#error%20in%20the%20book">I have found an apparent error in the book. What should I do about it?</a></li>
+<li><a href="#evaluation%20copy">How can I obtain an evaluation copy of the book?</a></li>
+</ul>
+</li>
+<li><a href="#NutsBolts">Nuts and Bolts of RL</a><ul>
+<li><a href="#huge%20spaces">My state and/or action space is huge! Can I still apply RL?</a></li>
+<li><a href="#continuous%20actions">Most RL work assumes the action space is discrete; what about continuous actions?</a></li>
+<li><a href="#continuous%20time">What about continuous time?</a></li>
+<li><a href="#curse%20of%20dimensionality">What is the curse of dimensionality?</a></li>
+<li><a href="#tile-coding%20just%20grids">Isn\'t tile-coding just grids, and thus subject to the curse of dimensionality?</a></li>
+<li><a href="#CMACs">Why do you call it \"tile coding\" instead of \"CMACs\"?</a></li>
+<li><a href="#Are%20RL%20methods%20stable%20with%20function%20approximation">Are RL methods stable with function approximation?</a></li>
+</ul>
+</li>
+<li><a href="#Advice%20and%20Opinions">Advice and Opinions</a><ul>
+<li><a href="#backpropagation">I am doing RL with a backpropagation neural network and it doesn\'t work; what should I do?</a></li>
+<li><a href="#best%20algorithm">What is the best algorithm to use?</a></li>
+<li><a href="#Q-value">Why do you disparage the term Q-value?</a></li>
+</ul>
+</li>
+<li><a href="#Miscellaneous">Miscellaneous Questions</a><ul>
+<li><a href="#project%20help">I am working on a project due soon. Can you help me?</a></li>
+<li><a href="#code%20trouble">I am having trouble with your code. Can you help me get it to work?</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="general-questions">General Questions<a class="headerlink" href="#general-questions" title="Permanent link">&para;</a></h2>
+<h3 id="what-is-reinforcement-learning">What is Reinforcement Learning?<a class="headerlink" href="#what-is-reinforcement-learning" title="Permanent link">&para;</a></h3>
+<!-- Reinforcement learning (RL) is learning from interaction with an environment, from the consequences of action, rather than from explicit teaching. 
+RL become popular in the 1990s within machine learning and artificial intelligence, but also within operations research and with offshoots in psychology and neuroscience.
+
+Most RL research is conducted within the mathematical framework of Markov decision processes (MDPs). MDPs involve a decision-making *agent* interacting with its *environment* so as to maximize the cumulative *reward* it receives over time. The agent perceives aspects of the environment\'s *state* and selects *actions*. The agent may estimate a *value function* and use it to construct better and better decision-making *policies* over time.
+
+RL algorithms are methods for solving this kind of problem, that is, problems involving sequences of decisions in which each decision affects what opportunities are available later, in which the effects need not be deterministic, and in which there are long-term goals. RL methods are intended to address the kind of learning and decision making problems that people and animals face in their normal, everyday lives.
+-->
+
+<p>強化学習(RL)は、環境との相互作用からの学習であり、明示的な教育からの学習ではなく、行動の結果からの学習である。
+RL は 1990 年代に機械学習や人工知能の分野で人気が出てきたが、オペレーションズリサーチ や 心理学 や 神経科学の分野でも応用されている。</p>
+<p>ほとんどの RL 研究は、マルコフ決定過程 (MDP) の数学的枠組みの中で行われる。
+MDP は時間の間に受け取る累積的な <em>報酬を最大化</em> にするために <em>環境</em> と相互作用する 意思決定 <em>エージェント</em> を含む。
+エージェントは、環境の状態の側面を知覚し、行為を選択します。
+エージェントは、<em>価値</em> を推定し、価値を使用して、より良い、より良い意思決定の <em>方策(ポリシー)</em> を時間をかけて構築することができる。</p>
+<p>RL アルゴリズムは、この種の問題を解くための方法である。
+すなわち、各決定が後に利用可能な機会に影響を与える決定の連続を含む問題であり、その影響は決定論的である必要はなく、長期的な目標がある。
+RL は、人間や動物が通常の日常生活の中で直面する学習や意思決定の問題に対処することを目的としている。</p>
+<!-- For more information, see the [sources recommended for an introduction to RL](#What%20sources).
+
+### Is RL just trial-and-error learning, or does it include planning? 
+
+Modern reinforcement learning concerns both trial-and-error learning without a model of the environment, and deliberative planning with a model. By \"a model\" here we mean a model of the dynamics of the environment. 
+In the simplest case, this means just an estimate of the state-transition probabilities and expected immediate rewards of the environment. 
+In general it means any predictions about the environment\'s future behavior conditional on the agent\'s behavior.
+-->
+
+<h3 id="rl">RL は試行錯誤学習だけなのか それとも計画を含むのか？<a class="headerlink" href="#rl" title="Permanent link">&para;</a></h3>
+<p>現代の強化学習は 環境のモデルを持たない試行錯誤学習と モデルを用いた意図的な計画の両方に関係する。
+ここでいう 「モデル」とは 環境のダイナミクスのモデルを意味する。
+最も単純な場合は、環境の状態遷移確率と期待即時報酬の推定値を意味する。
+一般に、モデルとは エージェントの行動に対して 条件付きの将来の環境の元での，行動についての予測を意味する。</p>
+<!-- ### How does RL relate to Neuro-Dynamic Programming?
+
+To a first approximation, Reinforcement Learning and Neuro-Dynamic Programming are synonomous. 
+The name \"reinforcement learning\" came from psychology (although psychologists rarely use exactly this term) and dates back to the eary days of cybernetics. 
+For example, Marvin Minsky used this term in his 1954 thesis, and Barto and Sutton revived it in the early 1980\'s. 
+The name \"neuro-dynamic programming\" was coined by Bertsekas and Tsitsiklis in 1996 to capture the idea of the field as a combination of neural networks and dynamic programming.
+
+In fact, neither name is very descriptive of the subject, and I recommend you use neither when you want to be technically precise. 
+Names such as this are useful when referring to a general body of research, but not for carefully distinguishing ideas from one another. 
+In that sense, there is no point in trying to draw a careful distinction between the referents of these two names.
+
+The problem with \"reinforcement learning\" is that it is dated. Much of the field does not concern learning at all, but just planning from complete knowledge of the problem (a model of the environment). 
+Almost the same methods are used for planning and learning, and it seems off-point to emphasize learning in the name of the field. 
+\"Reinforcement\" does not seem particularly pertinent either.
+
+The problem with \"neuro-dynamic programming\" is similar in that neither neural networks nor dynamic programming are critical to the field. 
+Many of the methods, such as \"Monte Carlo\", or \"rollout\" methods, are completely unrelated to dynamic programming, and neural networks are just one choice among many for method of function approximation. Moreover, one could argue that the component names, \"neural networks\" and \"dynamic programming\", are each not very descriptive of their respective methods.
+ -->
+
+<h3 id="rl_1">RL と ニューロ・ダイナミック・プログラミングの関係<a class="headerlink" href="#rl_1" title="Permanent link">&para;</a></h3>
+<p>最初の概算では、強化学習とニューロ・ダイナミック・プログラミングは同調している。
+強化学習という名前は、心理学から来ており（心理学者がこの用語を正確に使うことはほとんどない）、サイバネティックスの一昔前までさかのぼる。
+例えば マービン・ミンスキー は 1954 年の論文でこの言葉を使っていた。バルトとサットンは 1980 年代初頭にこの言葉を復活させた。
+Neuro-dynamic programming という名前は 1996 年に Bertsekas と Tsitsiklis によって ニューラルネットワーク と ダイナミックプログラミング を組み合わせたものとして、この分野の概念を捕らえるために作られた。 </p>
+<p>実際には どちらの名前もこの分野のことをあまり説明していない。技術的に正確にしたい場合にはどちらの名前も使わないことをお勧めする。
+このような名前は 一般的な研究を参照するときには便利である。だが アイデアを注意深く区別するためには使わない。
+その意味では この 2 つの名前の参照先を注意深く区別しようとしても意味がない。</p>
+<p>強化学習の問題は それが日付であることである。
+この分野の多くは、学習とは全く関係なく、問題の完全な知識(環境のモデル)からの計画に過ぎません。
+計画と学習の方法はほとんど同じで、学習を強調するのは的外れな気がします。
+Reinforcement も特に意味があるようには思えません。</p>
+<p>neuro-dynamic programming の問題も ニューラルネットワーク も 動的計画法も、この分野では重要ではないという点では似ています。
+モンテカルロ法 やロールアウト法 など 動的計画法とは全く無関係なものが多く ニューラルネットワーク は関数近似法の一つの選択肢に過ぎない。
+また "neural networks" と "dynamic programming" という構成要素の名前は，それぞれの手法の説明になっていないとも言えます．</p>
+<h3 id="what-advantages-does-rl-offer-in-operations-research-problems">What advantages does RL offer in Operations Research problems?<a class="headerlink" href="#what-advantages-does-rl-offer-in-operations-research-problems" title="Permanent link">&para;</a></h3>
+<p>Using function approximation, RL can apply to much larger state spaces than classical sequential optimization techniques such as dynamic programming. In addition, using simulations (sampling), RL can apply to systems that are too large or complicated to explicitly enumerate the next-state transition probabilities.</p>
+<h3 id="how-does-rl-relate-to-neuroscience">How does RL relate to Neuroscience?<a class="headerlink" href="#how-does-rl-relate-to-neuroscience" title="Permanent link">&para;</a></h3>
+<p>Ideally, the ideas of reinforcement learning could constitute part of a <em>computational theory</em> of what the brain is doing and why. 
+A number of links have been drawn between reinforcement learning and neuroscience, beginning with early models of classical conditioning based on temporal-difference learning (see <a href="../sutton_publications.html#sutton-barto-82">Barto and Sutton, 1982</a>; <a href="../sutton_publications.html#sutton-barto-81-PsychRev">Sutton and Barto, 1981</a>, <a href="../sutton_publications.html#sutton-barto-90">1990</a>; <a href="../sutton_publications.html#Moore-et-al">Moore et al., 1986</a>), and continuing through work on foraging and prediction learning (see <a href="http://www.gatsby.ucl.ac.uk/%7Edayan/papers/mdps95.html">Montague et al., 1995</a>, <a href="http://www.gatsby.ucl.ac.uk/%7Edayan/papers/mds96.html">1996</a>), and on dopamine neurons in monkeys as a temporal-difference-error distribution system. A good <a href="http://www.gatsby.ucl.ac.uk/%7Edayan/papers/sdm97.html">survey paper</a> is available. 
+See also <a href="http://www.sloan.salk.edu/%7Esuri/#td">Suri, submitted</a>. 
+A  <a href="http://www.amazon.com/exec/obidos/ASIN/0444819312/qid=996981931/sr=1-4/ref=sc_b_4/103-8914416-7879060">book</a> collects a number of relevant papers. Doya has extensively developed <a href="http://www.isd.atr.co.jp/%7Edoya/papers_new01.html#basalganglia">RL models of the basal ganglia</a>. 
+Many of these areas are very active at present and changing rapidly.</p>
+<h3 id="how-does-rl-relate-to-the-psychology-of-animal-behavior">How does RL relate to the psychology of animal behavior?<a class="headerlink" href="#how-does-rl-relate-to-the-psychology-of-animal-behavior" title="Permanent link">&para;</a></h3>
+<p>Broadly speaking, RL works as a pretty good model of instrumental learning, though a detailed argument for this has never been publically made (the closest to this is probably <a href="../sutton_publications.html#BSW">Barto, Sutton and Watkins, 1990</a>). On the other hand, the links between classical (or Pavlovian) conditioning and temporal-difference (TD) learning (one of the central elements of RL) are close and widely acknowledged (see <a href="../sutton_publications.html#sutton-barto-90">Sutton and Barto, 1990</a>).</p>
+<p><a href="http://www.cecs.missouri.edu/%7Ersun">Ron Sun</a> has developed hybrid models combining high-level and low-level skill learning, based in part on RL, which make contact with psychological data (see <a href="http://www.cecs.missouri.edu/%7Ersun/sun.cs01.pdf">Sun, Merrill, and Peterson, 2001</a>).</p>
+<h3 id="how-does-rl-relate-to-behaviorism">How does RL relate to behaviorism?<a class="headerlink" href="#how-does-rl-relate-to-behaviorism" title="Permanent link">&para;</a></h3>
+<p>Formally, RL is unrelated to behaviorism, or at least to the aspects of behaviorism that are widely viewed as undesireable. Behaviorism has been disparaged for focusing exclusively on behavior, refusing to consider what was going on inside the head of the subject. RL of course is all about the algorithms and processes going on inside the agent. 
+For example, we often consider the construction of internal models of the environment within the agent, which is far outside the scope of behaviorism.</p>
+<p>Nevertheless, RL shares with behaviorism its origins in animal learning theory, and in its focus on the interface with the environment. 
+RL's states and actions are essentially animal learning theory's stimuli and responses. 
+Part of RL's point is that these are the essential common final path for all that goes on in the agent's head. In the end it all comes down to the actions taken and the states perceived.</p>
+<h3 id="how-does-rl-relate-to-genetic-algorithms">How does RL relate to genetic algorithms?<a class="headerlink" href="#how-does-rl-relate-to-genetic-algorithms" title="Permanent link">&para;</a></h3>
+<p>Most work with genetic algorithms simulates evolution, not learning during an individual\'s life, and because of this is very different from work in RL. That having been said, there are two provisos. 
+First, there  is a large body of work on classifier systems that uses or is closely related to genetic algorithms. This work is concerned with learning during a single agent's lifetime (using GAs to organize the components of the agent's mind) and is in fact RL research. 
+The second proviso is that GA work is often related to RL by virtue of being applied to the same <em>problems</em>. 
+For example, GA methods can be applied to <em>evolve</em> a backgammon player and that player can be compared with a player learned by RL methods. 
+In fact, a large portion of systems evolved by GAs are controllers that could alternatively be learned by RL methods. 
+It is tempting here to make a blanket statement about which class of methods is more appropriate or performs better. 
+A crucial distinction is that between problems in which state information is available and those in which it is not. 
+In backgammon, for example, the state of the board is available. 
+In problems like these RL methods seem to have a distinct advantage over evolutionary methods such as GAs. 
+On other problems there is little state information. Suppose you wish to learn a golf swing, or some other ballistic motion that is generally over before useful sensory feedback is available. 
+Then the system is far from Markov and there is little or no advantage provided by addressing the state information during a single swing. 
+In these cases RL methods would not be expected to have an advantage over evolutionary methods. 
+In fact, if they insisted on trying to treat sensory information as state, as in using temporal-difference methods, they may well do worse.</p>
+<h3 id="who-invented-rl">Who invented RL?<a class="headerlink" href="#who-invented-rl" title="Permanent link">&para;</a></h3>
+<p>There is plenty of blame here to go around. Minsky, Bellman, Howard, Andreae, Werbos, Barto, Sutton, Watkins... 
+All played important or early roles. 
+See the <a href="../sutton_book_1_node7.html#SECTION00160000000000000000">history from the Sutton and Barto text</a>.</p>
+<h1 id="questions-about-studying-and-teaching-rl">Questions about studying and teaching RL<a class="headerlink" href="#questions-about-studying-and-teaching-rl" title="Permanent link">&para;</a></h1>
+<h3 id="what-sources-do-you-recommend-for-an-introduction-to-reinforcement-learning">What sources do you recommend for an introduction to reinforcement learning?<a class="headerlink" href="#what-sources-do-you-recommend-for-an-introduction-to-reinforcement-learning" title="Permanent link">&para;</a></h3>
+<p>For a general introduction, I recommend my book with Prof. Barto:</p>
+<p>Reinforcement Learning: An Introduction, by Richard S. Sutton and Andrew
+G. Barto. MIT Press 1998. <a href="http://richsutton.com/book/the-book.html">Online version</a>. There is
+also a Japanese translation available.</p>
+<p>For a more formal treatment, including rigorous proofs, I recommend the
+text by Bertsekas and Tsitsiklis:</p>
+<p><a href="http://www.amazon.com/exec/obidos/ASIN/1886529108/ref=sim_books/002-2252285-1455243">Neuro-dynamic
+Programming</a>,
+by Dimitri P. Bersekas and John N. Tsitsiklis. Athena Press, 1996.</p>
+<p>If you don\'t have time for a textbook-length treatment, your best bet
+is one or both of these two papers:</p>
+<p><a href="http://www.jair.org/abstracts/kaelbling96a.html">Reinforcement learning: A
+survey</a>, by Kaelbling,
+L.P., Littman, M.L., and Moore, A.W., in the <em>Journal of Artificial
+Intelligence Research</em>, 4:237--285, 1996.</p>
+<p><a href="../sutton_publications.html#BSW">Learning and sequential decision making</a>, by
+Barto, A.G., Sutton, R.S., &amp; Watkins, C.J.C.H., in <em>Learning and
+Computational Neuroscience</em>, M. Gabriel and J.W. Moore (Eds.), pp.
+539--602, 1990, MIT Press.</p>
+<h2 id="nuts-and-bolts-of-rl">Nuts and Bolts of RL<a class="headerlink" href="#nuts-and-bolts-of-rl" title="Permanent link">&para;</a></h2>
+<h3 id="my-state-andor-action-space-is-huge-can-i-still-apply-rl">My state and/or action space is huge! Can I still apply RL?<a class="headerlink" href="#my-state-andor-action-space-is-huge-can-i-still-apply-rl" title="Permanent link">&para;</a></h3>
+<p>Yes, but you can\'t get by with simple tables; you will need some kind
+of function approximation.</p>
+<p>\"Function approximation\" refers to the use of a parameterized
+functional form to represent the value function (and/or the policy), as
+opposed to a simple table. A table is able to represent the value of
+each state separately, without confusion, interaction, or generalization
+with the value of any other state. In typical problems, however, there
+are far too many states to learn or represent their values individually;
+instead we have to generalize from observed to states to new, unobserved
+ones. In principle, this need not be a problem. There are a host of
+supervised learning methods that can used to approximate functions.
+However, there are both theoretical and practical pitfalls, and some
+care is needed. See Chapter 8 of the Sutton and Barto text.</p>
+<p>For the most part, the theoretical foundation that RL adopts from
+dynamic programming is no longer valid in the case of function
+approximation. For example, Q-learning with linear function
+approximation is known to be unsound. The strongest positive result is
+for on-policy prediction with linear function approximators (
+<a href="http://web.mit.edu/jnt/www/Papers/td.ps">Tsitsiklis and Van Roy, 1997</a>;
+Tadic, 2001). This is an area of active current research (e.g., see
+<a href="http://nips.djvuzone.org/djvu/nips13/Gordon.djvu">Gordon, 2001</a>;
+<a href="../sutton_publications.html#offpolicy">Precup, Sutton &amp; Dasgupta, 2001</a>).</p>
+<h3 id="most-rl-work-assumes-the-action-space-is-discrete-what-about-continuous-actions">Most RL work assumes the action space is discrete; what about continuous actions?<a class="headerlink" href="#most-rl-work-assumes-the-action-space-is-discrete-what-about-continuous-actions" title="Permanent link">&para;</a></h3>
+<p>It is true that most RL work has considered discrete action spaces, but this was usually done for convenience, not as an essential limitation of
+the ideas; and there are exceptions. 
+Nevertheless, it is often not obvious how to extend RL methods to continuous, or even large discrete, action spaces. 
+The key problem is that RL methods typically involve a max or sum over elements of the action space, which is not feasible if the space is large or infinite. 
+The natural approach is to replace the enumeration of actions with a sample of them, and average (just as we replace the enumeration of possible next states with a sample of the, and average). 
+This requires either a very special structure for the action-value function, or else a stored representation of the best known policy. 
+Actor-critic methods are one approach. </p>
+<p>With no attempt to be exhaustive, some of the earlier RL research with continuous actions includes:</p>
+<ul>
+<li>Williams, R.J. (1992). Simple statistical gradient-following algorithms for connectionist reinforcement learning. <em>Machine
+    Learning</em>, 8:229-256.</li>
+<li>Millington, P.J. (1991). Associative Reinforcement Learning for Optimal Control, M.S. Thesis, Massachusetts Institute of Technology,  Technical Report CSDL-T-1070.</li>
+<li>Baird, L. C., &amp; Klopf, A. H. (1993). <a href="http://www.leemon.com/papers/wirefit/wirefit.html#RTFToC1">Reinforcement learning with high-dimensional, continuous actions</a>.<br />
+Technical Report WL-TR-93-1147. Wright-Patterson Air Force Base Ohio: Wright Laboratory.</li>
+<li>Santamaria, J.C., Sutton, R.S., Ram, A. (1998). <a href="../sutton_publications.html#santamaria">Experiments with reinforcement learning in problems with continuous state and action spaces</a>, Adaptive Behavior 6(2):163-218.</li>
+<li>Yamada, S., Nakashima, M., and Shiono, S. (1998). Reinforcement learning to train a cooperative network with both discrete and continuous output neurons, IEEE Trans. on Neural Networks 9(6):1502-1508.</li>
+</ul>
+<p>See also:</p>
+<ul>
+<li><a href="http://www.dai.ed.ac.uk/homes/andys/PAGE_PAPERS/papers.html">The papers and thesis of Andrew Smith</a></li>
+</ul>
+<p>I would be glad to include new or other work in this list as well. Please send me pointers!</p>
+<h3 id="what-about-continuous-time">What about continuous time?<a class="headerlink" href="#what-about-continuous-time" title="Permanent link">&para;</a></h3>
+<p>Although the ideas of RL extend naturally, in principle, to continuous
+time, there has been relatively little work here. The best work on this
+so far is probably that by <a href="http://www.isd.atr.co.jp/%7Edoya/papers_new01.html#reinforcement">Kenji
+Doya</a>.</p>
+<h3 id="what-is-the-curse-of-dimensionality">What is the curse of dimensionality?<a class="headerlink" href="#what-is-the-curse-of-dimensionality" title="Permanent link">&para;</a></h3>
+<p>The curse of dimensionality refers to the tendency of a state space to
+grow exponentially in its dimension, that is, in the number of state
+variables. This is of course a problem for methods such as dynamic
+programming and other table-based RL methods whose complexity scales
+linearly with the number of states. Many RL methods are able to
+partially escape the curse by sampling and by function approximation.</p>
+<p>Curiously, the key step in the tile-coding approach to function
+approximation is expanding the original state representation into a
+vastly <em>higher dimensional</em> space. This makes many complex nonlinear
+relationships in the original representation simpler and linear in the
+expanded representation. The more dimensions in the expanded
+representation, the more functions can be learned easily and quickly. I
+call this the <em>blessing of dimensionality</em>. It is one of the ideas
+behind modern support vector machines, but in fact it goes back at least
+as far as the perceptron.</p>
+<h3 id="isnt-tile-coding-just-grids-and-thus-subject-to-the-curse-of-dimensionality">Isn\'t tile-coding just grids, and thus subject to the curse of dimensionality?<a class="headerlink" href="#isnt-tile-coding-just-grids-and-thus-subject-to-the-curse-of-dimensionality" title="Permanent link">&para;</a></h3>
+<p>Basically, no. Tile coding is a quite general idea and many of the ways
+it can be used avoid the curse of dimensionality. There are at least
+three common tricks: 1) you can consider subsets of the state variables
+in separate tilings, 2) you can use overlapping tilings to get vastly
+higher resolution in high dimensional spaces than would be possible with
+a simple grid using the same amount of memory, and 3) you can hash down
+to a smaller space so as only to devote memory to the portions of state
+space that actually occur.</p>
+<h3 id="why-do-you-call-it-tile-coding-instead-of-the-conventional-name-cmacs">Why do you call it \"tile coding\" instead of the conventional name, \"CMACs\"?<a class="headerlink" href="#why-do-you-call-it-tile-coding-instead-of-the-conventional-name-cmacs" title="Permanent link">&para;</a></h3>
+<p>The idea of tile coding is essentially the same as that underlying
+CMACs. Without in any way intending to detract from the credit due the
+pioneers of CMACs (e.g, Albus, Marr, Miller...), sometimes it is better
+to switch to a new name. The name CMAC stands for, among other things,
+\"Cerebellar Model Articulatory Controller,\" which seems pretty
+inappropriate for the current usage. The original CMAC also used a
+slightly different algorithm -- a correlation rule rather than an error
+correction rule. The use in reinforcement learning steps it even farther
+away from its original use. What remains is not so much a learning
+system (much less a cerebellar model), but a way of coding states for
+use by a learning system. The key features of the coding is that it is
+based on multiple exhaustive partitions (tilings!) of the state space,
+and that it is particularly suited for implementation on serial, digital
+computers.</p>
+<h3 id="are-rl-methods-stable-with-function-approximation">Are RL methods stable with function approximation?<a class="headerlink" href="#are-rl-methods-stable-with-function-approximation" title="Permanent link">&para;</a></h3>
+<p>The situation is a bit complicated and in flux at present. Stability
+guarantees depend on the specific algorithm and function approximator,
+and on the way it is used. This is what we knew as of August 2001:</p>
+<ul>
+<li>For some nonlinear parameterized function approximators (FA), any temporal-difference (TD) learning method (including Q-learning and  Sarsa) can become unstable (parameters and estimates going to infinity). <script type="math/tex; mode=display">Tsitsiklis & Van Roy 1996</script>
+</li>
+<li>TD(lambda) with linear FA converges near the best linear solution when trained on-policy... <script type="math/tex; mode=display">[Tsitsiklis & Van Roy 1997](http://web.mit.edu/jnt/www/Papers/td.ps)</script>
+</li>
+<li>...but may become unstable when trained off-policy (updating states with a different distribution than that seen when following the policy). <script type="math/tex; mode=display"> [Baird
+    1995](http://www.leemon.com/papers/residual/res.html#RTFToC1)</script>
+</li>
+<li>From which it follows that Q-learning with linear FA can also be unstable. <script type="math/tex; mode=display"> [Baird 1995](http://www.leemon.com/papers/residual/res.html#RTFToC1)</script>
+</li>
+<li>Sarsa(lambda), on the other hand, is guaranteed stable, although only the weakest of error bounds has been shown. <script type="math/tex; mode=display">[Gordon 2001](http://nips.djvuzone.org/djvu/nips13/Gordon.djvu)</script>
+</li>
+<li>New linear TD algorithms for the off-policy case have been shown convergent near the best solution. <script type="math/tex; mode=display">[Precup, Sutton & Dasgupta 2001](sutton_publications.html#offpolicy)</script>
+</li>
+</ul>
+<p>Since then, the new <a href="http://www.mcb.mcgill.ca/%7Eperkins/publications/PerPreNIPS02.pdf">Perkins and Precup result from NIPS 2002</a> has appeared, which may at last have resolved the question positively by proving the convergence of Sarsa(0) with linear function approximation and an appropriate exploration regime.</p>
+<h2 id="advice-and-opinions">Advice and Opinions<a class="headerlink" href="#advice-and-opinions" title="Permanent link">&para;</a></h2>
+<h3 id="i-am-doing-rl-with-a-backpropagation-neural-network-and-it-doesnt-work-what-should-i-do">I am doing RL with a backpropagation neural network and it doesn\'t work; what should I do?<a class="headerlink" href="#i-am-doing-rl-with-a-backpropagation-neural-network-and-it-doesnt-work-what-should-i-do" title="Permanent link">&para;</a></h3>
+<p>It is a common error to use a backpropagation neural network as the
+function approximator in one\'s first experiments with reinforcement
+learning, which almost always leads to an unsatisfying failure. The
+primary reason for the failure is that backpropation is fairly tricky to
+use effectively, doubly so in an online application like reinforcement
+learning. It is true that Tesauro used this approach in his strikingly
+successful backgammon application, but note that at the time of his work
+with TDgammon, Tesauro was already an expert in applying backprop
+networks to backgammon. He had already built the world\'s best computer
+player of backgammon using backprop networks. He had already learned all
+the tricks and tweaks and parameter settings to make backprop networks
+learn well. Unless you have a similarly extensive background of
+experience, you are likely to be very frustrated using a backprop
+network as your function approximator in reinforcement learning.</p>
+<p>The solution is to step back and accept you can only innovate in one
+area at a time. First make sure you understand RL ideas in the tabular
+case, and the general principles of function approximation in RL. Then
+proceed to a better understood function approximator, such as a linear
+one. In my own work I never go beyond linear function approximators. I
+just augment them with larger and larger feature vectors, using coarse
+tile-coding (see e.g., Chapter 8 of the book, Sutton, 1996; Stone and
+Sutton, 2001). It may be that this approach would always be superior to
+backpropagation nets, but that remains to be seen. But someone new to
+learning and RL algorithms certainly should <em>not</em> start with backprop
+nets.</p>
+<p>Also see
+<a href="http://www.cs.ualberta.ca/%7Esutton/sutton_publications.html#TDlambda_details">here</a>
+for some of the details  for using TD methods with backprop nets.</p>
+<h3 id="what-is-the-best-algorithm-to-use">What is the best algorithm to use?<a class="headerlink" href="#what-is-the-best-algorithm-to-use" title="Permanent link">&para;</a></h3>
+<p>The true answer, of course, is that we don\'t know, and that it probably
+hasn\'t been invented yet. Each algorithm has strengths and weaknesses,
+and the current favorite changes every few years. In the 1980s
+actor-critic methods were very popular, but in the 1990s they were
+largely superceded by value-function methods such as Q-learning and
+Sarsa. Q-learning is probably still the most widely used, but its
+instability with function approximation, discovered in 1995, probably
+rules it out for the long run. Recently policy-based methods such as
+actor-critic and value-function-less methods, including some of those
+from the 1980s, have become popular again.</p>
+<p>So, it seems we must keep our minds and options open as RL moves
+forward.</p>
+<h3 id="why-do-you-disparage-the-term-q-value">Why do you disparage the term Q-value?<a class="headerlink" href="#why-do-you-disparage-the-term-q-value" title="Permanent link">&para;</a></h3>
+<p>RL researchers often talk about Q-values, Q-tables, and Q-functions, but
+to me such usage almost always seems like jargon---that is, like
+apparently precise technical terms that are off-putting to newcomers but
+really add nothing. In this case the Q- prefix means only that the
+values, tables, or functions pertain to state-action pairs. There are
+several pertinent functions that take state-action pairs, for example,
+that returning the optimal values, that returning the true values for
+some policy, and those returning the approximation of one of these two
+values. In most cases, we give these functions different notations, all
+of which involve the letter Q. That is why I consider the name
+Q-function to be apparently technical, but in fact imprecise, and thus
+undesireable, off-putting jargon. If you are just talking in general
+about the value of an action at a state, then the term I prefer is
+simply \"action value\".</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright (c) 2020</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
