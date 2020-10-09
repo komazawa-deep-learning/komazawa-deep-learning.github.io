@@ -609,7 +609,7 @@ evaluatePolicy: function() {
 \begin{align}
 V^\pi(s) & = E_\pi \left\{ r_t + \\gamma r_{t+1} +  \gamma^2 r_{t+2} + \ldots \mid s_t = s  \right\} \\
 & = E_\pi \left\{ r_t + \gamma V^\pi(s_{t+1}) \mid s_t = s  \left\} \\
-& = \sum_a \pi(s,a) \sum_{s'} \mathcal{P}_{ss'}^a \left[ \mathcal{R}_{ss'}^a + \\gamma V(s') \right]
+& = \sum_a \pi(s,a) \sum_{s'} \mathcal{P}_{ss'}^a \left[ \mathcal{R}_{ss'}^a + \gamma V(s') \right]
 \end{align}
 
 <!-- However, note that in the code we only took expectation over the policy actions (the first sum above), while the second sum above was not evaluated because this Gridworld is deterministic (i.e. `ns` in the code is just a single integer indicating the next state). Hence, the entire probability mass is on a single next state and no expectation is needed.
@@ -622,7 +622,7 @@ Once the Value function was re-estimated, we can perform a **Policy Update**, ma
 すなわち、コード中の `ns` は次の状態を示す単一の整数です。
 したがって 全確率量 は単一の次の状態にあり、期待値は不要です。
 
-価値関数 が再推定されると ***方策更新 (policy update)** を実行して、各状態での推定値に対して方策を貪欲にすることができます。
+価値関数 が再推定されると **方策更新 (policy update)** を実行して、各状態での推定値に対して方策を貪欲にすることができます。
 これは非常に簡単なプロセスです。
 以下のコードは少し拡張しています。
 これは、アクション間の結びつきを慎重に処理し、
@@ -667,7 +667,7 @@ Q 関数は以下のようになります:
 
 \begin{align}
 Q^\pi (s,a) &= E_\pi \left\{ r_t + \gamma V^\pi(s_{t+1}) \mid s_t = s, a_t = a \left\} \\
-&= \sum_{s'} \mathcal{P}_{ss'}^a \left[ \mathcal{R}\_{ss'}^a + \gamma V^\pi(s') \right]
+            &= \sum_{s'} \mathcal{P}_{ss'}^a \left[\mathcal{R}_{ss'}^a + \gamma V^\pi(s') \right]
 \end{align}
 
 <!-- In our Gridworld example, we are looping over all states and evaluating the Q function for each of the (up to) four possible actions. Then we update the policy to take the argmaxy actions at each state. That is, 
