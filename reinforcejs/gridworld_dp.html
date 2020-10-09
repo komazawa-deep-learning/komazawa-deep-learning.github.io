@@ -512,24 +512,24 @@ In other words, this is a deterministic, finite Markov Decision Process (MDP) an
 
 興味のある方は **リチャード=スットン Richard Sutton** の 強化学習の教科書 （オンライン版は無料）の
 [第 4 章](http://webdocs.cs.ualberta.ca/~sutton/book/ebook/node40.html) を参考にしてください。
-簡潔に言うと エージェントは その 方策(policy) \\(\pi(a \mid s)\\) に基づいて 環境と対話します。
-方策とは 状態 \\(s\\\) から 行為 \\(a\\) を導く関数です。
-ある行為が行われた後 えージェーンとは 環境から報酬 \\(r\\) を受取ります。
-それゆえ エージェントと環境との相互作用は \\(s\_t, a\_t, r\_t, s\_{t+1}, a\_{t+1}, r\_{t+1}, s\_{t+2} \dots \\) ここで t(時間) を指標とした形になります。
-動的プログラミング (DP) のアプローチでは 方策 \\(\pi^\*\\) とは「価値関数」\\(\pi\\) に従って，環境と相互作用し，状態  \\(s\\) から始まって期待報酬の最適値
+簡潔に言うと エージェントは その 方策(policy) $\pi(a \mid s)$ に基づいて 環境と対話します。
+方策とは 状態 $s$ から 行為 $a$ を導く関数です。
+ある行為が行われた後 えージェーンとは 環境から報酬 $r$ を受取ります。
+それゆえ エージェントと環境との相互作用は $s\_t, a\_t, r\_t, s\_{t+1}, a\_{t+1}, r\_{t+1}, s\_{t+2} \dots$ ここで  $t$ (時刻) を指標とした形になります。
+動的プログラミング (DP) のアプローチでは 方策  $\pi^*$ とは「価値関数」 $\pi$ に従って，環境と相互作用し，状態  $s$ から始まって期待報酬の最適値
 時間を指標とした最大値を与え得る最適方略です。
 
 $$
-V^\pi(s) = E \\{ r\_t + \gamma r\_{t+1} + \gamma^2 r\_{t+2} + \ldots \mid s\_t = s \\}
+V^\pi(s) = E \left\{ r_t + \gamma r_{t+1} + \gamma^2 r_{t+2} + \ldots \mid s_t = s \right\}
 $$
 
 <!-- Note that the expectation is over both 1. the agent's (in general) stochastic policy and 2. the environment dynamics; That is, how the environment evolves when the agent takes an action \\(a\\) in state \\(s\\) and what the obtained reward is in that case. The constant \\(\gamma\\) is a discount factor that gives more weight to earlier rewards than the later ones. We can start writing out the expectation. To get the value of state \\(s\\) we sum over all the actions the agent would take, then over all ways the environment could respond, and so on back and forth. When you do this, you'll find that:
  -->
 
 期待値は 1. 確率的な方策と 2. 環境のダイナミクスの両方を超えていることに注意してください。
-定数 \\(Gamma\\) は 早い方の報酬の方が 重視される割引係数です。
-状態 \\(s\\) で行動 \\(a\\) を起こしたときに 環境がどのように変化し そのときに得られる報酬がどのようなものになるのか ということです。
-定数(\gamma)は、後のものよりも先の報酬に重みを与える割引係数です。
+定数 $\Gamma$ は 早い方の報酬の方が 重視される割引係数です。
+状態 $s$ で行動 $a$ を起こしたときに 環境がどのように変化し そのときに得られる報酬がどのようなものになるのか ということです。
+定数 ($\gamma$) は、後のものよりも先の報酬に重みを与える割引係数です。
 
 では、期待値を書き出してみましょう。状態を得るために  
 期待値を書き出してみると，
@@ -537,11 +537,11 @@ $$
 そうすると、次のようなことがわかります。
 
 $$
-V^\pi(s) = \sum\_{a} \pi(s,a) \sum\_{s'} \mathcal{P}\_{ss'}^{a} \left[ \mathcal{R}\_{ss'}^{a} + \gamma V^\pi(s') \right]
+\pi(s) = \sum\_{a} \pi(s,a) \sum\_{s'} \mathcal{P}_{ss'}^{a} \left[ \mathcal{R}_{ss'}^{a} + \gamma V^\pi(s') \right]
 $$
 
-上式  \\(\mathcal{P}\_{ss'}^{a}, \mathcal{R}\_{ss'}^{a} \\) は特定の環境については定数です。
-次の状態 \\(s'\\) は，状態 \\(s\\) で行動 \\(a\\) をとることで繰り返し与えられます。
+上式  $\mathcal{P}_{ss'}^{a}, \mathcal{R}_{ss'}^{a}$ は特定の環境については定数です。
+次の状態 $s'$ は，状態 $s$ で行動 $a$ をとることで繰り返し与えられます。
 この方程式は **ベルマン方程式** と呼ばれ、与えられた方策の価値関数が満たすべき再帰的な関係を記述しています。
 
 <!-- 
@@ -607,9 +607,9 @@ evaluatePolicy: function() {
 
 
 \begin{align}
-V^\pi(s) & = E\_\pi \\{ r\_t + \\gamma r\_{t+1} + \\gamma^2 r\_{t+2} + \\ldots \\mid s\_t = s  \\} \\\\
-& = E\_\pi \\{ r\_t + \\gamma V^\pi(s\_{t+1}) \\mid s\_t = s  \\} \\\\
-& = \sum\_a \pi(s,a) \sum\_{s'} \mathcal{P}\_{ss'}^a \left[ \mathcal{R}\_{ss'}^a + \\gamma V(s') \right]
+V^\pi(s) & = E_\pi \left\{ r_t + \\gamma r_{t+1} +  \gamma^2 r_{t+2} + \ldots \mid s_t = s  \right\} \\
+& = E_\pi \left\{ r_t + \gamma V^\pi(s_{t+1}) \mid s_t = s  \left\} \\
+& = \sum_a \pi(s,a) \sum_{s'} \mathcal{P}_{ss'}^a \left[ \mathcal{R}_{ss'}^a + \\gamma V(s') \right]
 \end{align}
 
 <!-- However, note that in the code we only took expectation over the policy actions (the first sum above), while the second sum above was not evaluated because this Gridworld is deterministic (i.e. `ns` in the code is just a single integer indicating the next state). Hence, the entire probability mass is on a single next state and no expectation is needed.
@@ -661,13 +661,13 @@ updatePolicy: function() {
 <!-- Here, we are computing the action value function at each state \\(Q(s,a)\\), which measures how much expected reward we would get by taking the action \\(a\\) in the state \\(s\\). The function has the form:
  -->
 
-ここでは、各状態 \\(Q(s,a)\\) での行動価値関数を 計算しています。
-Q とは，ある行動 \\(a\\) をとることで，どの程度期待報酬が得られるかを表す関数です。
+ここでは、各状態 $Q(s,a)$ での行動価値関数を 計算しています。
+Q とは，ある行動 $a$ をとることで，どの程度期待報酬が得られるかを表す関数です。
 Q 関数は以下のようになります:
 
 \begin{align}
-Q^\pi (s,a) &= E\_\pi \\{ r\_t + \\gamma V^\pi(s\_{t+1}) \\mid s\_t = s, a\_t = a \\} \\\\
-&= \sum\_{s'} \mathcal{P}\_{ss'}^a \left[ \mathcal{R}\_{ss'}^a + \\gamma V^\pi(s') \right]
+Q^\pi (s,a) &= E_\pi \left\{ r_t + \gamma V^\pi(s_{t+1}) \mid s_t = s, a_t = a \left\} \\
+&= \sum_{s'} \mathcal{P}_{ss'}^a \left[ \mathcal{R}\_{ss'}^a + \gamma V^\pi(s') \right]
 \end{align}
 
 <!-- In our Gridworld example, we are looping over all states and evaluating the Q function for each of the (up to) four possible actions. Then we update the policy to take the argmaxy actions at each state. That is, 
