@@ -1,0 +1,715 @@
+---
+title: 第1回 人工知能の歴史
+author: 浅川 伸一
+layout: home
+---
+
+# 人工知能の歴史
+
+## 実習
+
+- [感染症の拡大はどう計算されているのだろうか](https://github.com/ShinAsakawa/ShinAsakawa.github.io/blob/master/2020komazawa/2020covid19_propagation.ipynb){target="_blank"}
+- [感染症のモデル](https://github.com/ShinAsakawa/ShinAsakawa.github.io/blob/master/2020chuo/2020Kermack_McKendrick_model.ipynb){target="_blank"}
+- [画像認識のデモ](https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/nothotdog.ipynb){target="_blank"}
+---
+
+## 余談
+- [Python](https://www.python.org/){target="_blank"} って何？
+    - AI や 機械学習 分野の共同体で使われることが多いコンピュータ言語のことです。下記に示すように高等学校の情報で採択されます。
+    - [StackOverFlow におけるコンピュータ言語のトレンド](https://insights.stackoverflow.com/trends?tags=r%2Cpython%2Cjavascript%2Cjava%2Cc%2B%2B%2Cc%23){target="_blank"}
+    - [文部科学省 高等学校情報科「情報Ⅰ」教員研修用教材（本編）](https://www.mext.go.jp/a_menu/shotou/zyouhou/detail/1416756.htm){target="_blnak"}
+    - [上サイト第3章コンピュータとプログラミング](https://www.mext.go.jp/component/a_menu/education/micro_detail/__icsFiles/afieldfile/2019/10/09/1416758_005.pdf){target="_blank"}
+- [Jupyter](https://jupyter.org/){target="_blank"} notebook って何？
+    - Python をブラウザ上で動かすシステム，あるいはその環境を指します。
+    - 木星を表す ジュピター jupiter とは綴りが異なります。ですが由来は 木星 から来て言います。
+- [Google Colab](https://colab.research.google.com/notebooks/intro.ipynb){target="_blank"} って何？
+    - Jupyter notebook をクラウド上で実行する環境です
+
+
+### 人工知能とは何か
+<!--- [【AI研究者 浅川伸一先生①】浅川先生とは何者?｜資格スクエア大学・独学部 vol.357](https://www.youtube.com/watch?v=Ey01neBKFhQ)-->
+    - [【AI研究者 浅川伸一先生②】AI＝人工知能の定義｜資格スクエア大学・独学部 vol.358](https://www.youtube.com/watch?v=uIi9pA5oRZA){target="_blank"}
+
+### 人工知能の歴史
+1. 第 1 次，第 2 次 ブーム
+    - [【AI研究者 浅川伸一先生③】第1次・第2次AIブーム｜資格スクエア大学・独学部 vol.359)](https://www.youtube.com/watch?v=3TYPKGKhT-A){target="_blank"}
+2. 第 3 次ブーム
+    - [【AI研究者 浅川伸一先生④】現在の第3次AIブーム｜資格スクエア大学・独学部 vol.360](https://www.youtube.com/watch?v=cofokoZJsA8){target="_blank"}
+3. AI 脅威論
+    - [【AI研究者 浅川伸一先生⑤】AIは人類の脅威か?｜資格スクエア大学・独学部 vol.361](https://www.youtube.com/watch?v=H0d_OnOOomE){target="_blank"}
+4. 現状
+    - [【AI研究者 浅川伸一先生⑥】日本におけるAI研究の現状｜資格スクエア大学・独学部 vol.362](https://www.youtube.com/watch?v=Cra4wIqYcsA){target="_blank"}
+    <!--- [【AI研究者 浅川伸一先生⑦】ディープラーニング協会とは?｜資格スクエア大学・独学部 vol.363](https://www.youtube.com/watch?v=1i05qTGRMYI&t=2s)-->
+    - [【AI研究者 浅川伸一先生⑧】AIの将来を語る!｜資格スクエア大学・独学部 vol.364](https://www.youtube.com/watch?v=g0zoL--iuM4){target="_blank"}
+
+
+### 考え方，背景，キーワード
+
+- 構成論的アプローチ vs 分析的アプローチ （人工知能と心理学との関係）
+- 神は細部に宿る God is in the detail.  あるいは 悪魔は細部に宿る (The devil is in the detail)
+- Carbon chauvinism 日本語で炭素排外主義と訳します。これは本当だろうか？
+- [p-値廃止の影響](/ban-of-p-values/)
+- 計算論モデル
+
+#### 数学とモデル
+数学的知識の詳細は不要だが，その精神は理解しておく必要がある。
+
+- 万物は数なり --- ピタゴラス
+- 宇宙は数学語で書かれている。数学なしでは迷宮を理解できない --- ガリレイ
+- 作れなければ理解できたと言えない --- ファインマン
+
+<!--
+    - All things are number. --- Pythagras
+    - (The universe) is written in mathematical language,%%and its characters are triangles, circles and other geometric figures, ... without which it is impossible to humanly understand a word; without these one is wandering in a dark labyrinth. --- Galileo Galilei
+    - What I cannot create, I do not understand. --- [Richard Feynman](https://en.wikiquote.org/wiki/Richard_Feynman)
+-->
+
+<center>
+<img src="https://archives.caltech.edu/pictures/1.10-29.jpg" style="width:84%"><br>
+今際の際に黒板に書いてあったファインマンの言葉，[カリフォルニア工科大学アーカイブ写真](http://archives.caltech.edu/pictures/1.10-29.jpg)
+</center>
+
+- 若者よ，数学は理解するものではない，ただ慣れるだけだ --- フォン・ノイマン
+- 科学は説明しないし，解釈もしない。ただモデルを作るだけである。この場合モデルとは観察された現象を説明する数学(的構成物)である。そのモデルは，ひとえに期待どおり正確であることで正当化される。 --- フォン・ノイマン
+- われわれの宇宙はただ単に数学で記述されているだけではない。宇宙は数学である，我々は皆，大きな数学的実態の一部なのだ。--- テグマーク
+<!-- ...Our universe isn't just described by math, but that it is math in the sense that we're all parts of a giant mathematical object... --- Max Tegmark -->
+
+<!--
+Neumann
+  The sciences do not try to explain, they hardly even try to interpret, they mainly make models. By a model is meant a mathematical construct which, with the addition of certain verbal interpretations, describes observed phenomena. The justification of such a mathematical construct is solely and precisely that it is expected to work.
+
+  Young man, in mathematics you don't understand things. You just get used to them. [von Neumann](https://en.wikiquote.org/wiki/John_von_Neumann)
+
+  any discussion of the nature of intellectual effort in any field is difficult, unless it presupposes an easy, routine familiarity with that field. In mathematics this limitation becomes very severe. ---[von Neumann](https://en.wikiquote.org/wiki/John_von_Neumann)
+
+Neumann
+  If one has really technically penetrated a subject, things that previously seemed in complete contrast, might be purely mathematical transformations of each other.
+
+[There's no sense in being precise when you don't even know what you're talking about](https://www.brainyquote.com/quotes/john_von_neumann_137953)
+- John von Neumann.
+
+Neumann
+  I think that it is a relatively good approximation to truth — which is much too complicated to allow anything but approximations — that mathematical ideas originate in empirics. [John von Neumann](https://en.wikiquote.org/wiki/John_von_Neumann)
+-->
+
+---
+
+<center>
+<img src="../assets/2019GrandSchema.svg" style="width:79%">
+</center>
+
+<!--
+- 素粒子 Subatomic Particles
+- 原子 Atom
+- 分子 Molecules
+- 遺伝子 Genes
+- 細胞 Cells
+- 神経回路 Circuits
+- 生理学 Physiology
+- 行動 Behavior
+- 社会 Society
+
+Morris and Cuthbert, (2012) Research Domain Criteria: cognitive systems,
+neural circuits, and dimensions of behavior. Dialogues Clin Neurosci. 2012;14:29-37.
+を一部改変
+
+- Self-reports 
+- Paradigms
+-->
+
+---
+
+<center>
+<img src='../assets/imagenet_result2017.png' style='width:74%'>
+</center>
+
+
+---
+
+<!--
+- <https://openai.com/blog/language-unsupervised/>
+
+- [ELMo](../ELMo_tab/)
+- [BERT](../BERT/)
+
+- <https://gluebenchmark.com/leaderboard>
+- <http://www.msmarco.org/leaders.aspx>
+- <https://paperswithcode.com/sota>
+-->
+
+<!--
+- \citep{2018KriegesKorte}, 
+- \citep{2001DayanAbbott}, 
+- \citep{Poggio1985},
+- \citep{1963Hubel,1959Hubel_Wiesel,1962HubelWiesel,1968HubelWiesel,LivingstoneHubel1988},
+- \citep{1954Hartline,1957Hartline,1958Hartline},
+- \citep{Poggio1985},
+- \citep{1997Edelman}
+
+<center>
+<img src="../assets/2017Marcus_CoverPage.png" style="width:49%"><br>
+**Marcus (2017)より**
+</center>
+-->
+
+---
+
+# ニューラルネットワークの歴史
+
+## 第 1 次ニューロブーム
+
+### 1950年代: 
+- ウォーレン・マッカロックとワイルダー・ピッツによる **形式ニューロン** の提案
+(サイバネティクスの創始者ノーバート・ウィーナーの集めた研究者集団)
+
+<center>
+<img src='../assets/mcculloch.jpg' style="width:38%">
+<img src='../assets/pitts.jpg' style='width:50%'><br>
+ウォーレン・マッカロック と ワイルダー・ピッツ<br>
+<!--img src='../assets/mcculloch.jpg' style="width:19%">
+<img src='../assets/pitts.jpg' style='width:25%'><br>-->
+</center>
+
+形式ニューロンは，シナプス結合荷重ベクトルと出力を決定するための伝達関数とで構成される(次式)
+
+$$
+y_i=\phi\left(\sum_jw_{ij}x_j\right),\label{eq:formal_neuron}
+$$ 
+
+ここで $y_i$ は $i$ 番目のニューロンの出力，$x_j$ は $j$ 番目のニューロンの出力，$w_{ij}$ はニューロン $i$ と $j$ との間の **シナプス結合荷重**。
+$\phi$ は活性化関数。
+
+<center>
+<img src='../assets/Formal_r.svg' style="width:84%"><br>
+形式ニューロン
+</center>
+
+---
+
+## ローゼンブラット Rosenblatt のパーセプトロン
+
+<center>
+<img src='../assets/rosenblatt.jpg' style="width:49%"><br>
+フランク・ローゼンブラット
+</center>
+
+<!--
+$$
+\mathbf{w}\leftarrow\mathbf{w}+\left(y-\hat{y}\right)\mathbf{x}
+$$
+-->
+
+<center>
+<img src='../assets/perceptron.png' style="width:74%"></br>
+パーセプトロンの模式図 ミンスキーとパパート「パーセプトロン」より
+</center>
+
+
+<center>
+<img src="../assets/Neuron_Hand-tuned.png" style="width:69%"></br>
+ニューロンの模式図 wikipedia より
+</center>
+
+<!--
+##  人工ニューロン
+
+<center>
+<img src="/assets/neuron.png" style="width:49%"><br>
+
+<img src="/assets/neuron_model.jpeg" style="width:49%"<br>
+</center>
+-->
+
+<!--
+## パーセプトロンの学習
+
+$$
+\mathbf{w}\leftarrow\mathbf{w}+\left(y-\hat{y}\right)\mathbf{x}
+$$
+パーセプトロン perceptron は 3 層の階層型ネットワークでそれぞれ
+S(sensory layer), A(associative layer), R(response layer) と呼ぶ。
+$S\rightarrow A \rightarrow R$ のうち パーセプトロンの本質的な部分は
+$A\rightarrow R$ の間の学習にある。
+
+入力パターンに $P^+$ と $P^-$ とがある。
+パーセプトロンは $P^+$ が入力されたとき $1$, $P^-$ のとき $0$ を出力する
+機械である。
+出力層($R$) の $i$ 番目のニューロンへの入力(膜電位の変化) $u_i$は
+\begin{equation}
+ u_i = \sum_j w_{ij}x_j - \theta_i = \left(w\right)_i\cdot\left(x\right)_i-\theta_i.\label{eq1}
+\end{equation}
+ここで中間層($A$)の $j$ 番目のニューロンの出力 $y_i$とこのニューロンとの
+結合係数を$w_{ij}$、しきい値を$\theta_i$ とした。
+このニューロンの出力$y_i$(活動電位、スパイク)は、
+
+\begin{equation}
+y_i = \lceil u_i\rceil
+\qquad\left\{
+\begin{array}{ll}
+ 1 & \mbox{if $u_i \ge 0$,}\\
+ 0 & \mbox{otherwize}
+\end{array} \right.
+\end{equation}
+
+と表される。
+-->
+
+<!--
+式(\ref{eq1})の意味を理解するために以下の図を参照
+
+%
+\footnote{
+Minsky and Papert はパーセプトロンのベクトル表示について
+悲観的な考え方を持っているようですが、ここでは理解のしやすさを
+優先します。}%
+$$
+\mathbf{w}\rightarrow\mathbf{w}+\left(y-\hat{y}\right)\mathbf{x}
+$$
+-->
+
+---
+
+- 1960 年，ミンスキーとパパートの批判
+- 第一次氷河期の到来
+
+---
+
+## 第 2 次ニューロブーム
+- 1986 年，PDP ブック，俗に言うバイブル，発表
+- 1989 年，バプニック，サポートベクターマシン発表
+- 第二次氷河期の到来
+
+<!--
+Authors:    J.A. Anderson, A. Pellionisz, E. Rosenfeld (eds.)
+Title:      Neurocomputing 2: Directions for Research
+Reference:  MIT Press, Cambridge (1990), Massachusetts
+
+### ANNs are some kind of non-linear statistics for amateurs
+-->
+
+---
+
+## 第 3 次ニューロブーム
+
+<!--
+![大規模画像認識チャレンジの結果](./assets/ilsvrc2015.svg){#fig:ilsvrc2015 style="width:49%"}
+-->
+
+- 2013 ICLR スタート arXiv.org に予め論文を投稿，誰でも読める，誰でも批判できる。著者はそれに答えなければならない。あっという間にトップカンファレンスとなる
+- 2013 Mikolov word2vec を発表
+
+<center>
+<img src='../assets/Mikolov_analogy.png' style='width:94%'><br>
+Mikolovの類推課題
+</center>
+
+- 2013 DeepMind DQN を発表
+
+<!--
+<center>
+<div class="row post-image-bg" markdown="0">
+<video width="49%" autoplay loop markdown="0"> 
+<source src="../assets/2015Mnih_DQN-Nature_Video1.mp4" type="video/mp4" markdown="0">
+</video>
+</div>
+
+<video width="24%" markdown="0">
+<source src="../assets/2015Mnih_DQN-Nature_Video2.mp4" type="video/mp4" markdown="0">
+</video>
+</div>
+</center>
+-->
+
+<center>
+<iframe width="320" height="400" src="../assets/2015Mnih_DQN-Nature_Video1.mp4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="320" height="400" src="../assets/2015Mnih_DQN-Nature_Video2.mp4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+</center>
+
+
+---
+
+<center>
+<img src='../assets/2015Mnih_DQNFig.png' style='width:84%'><br>
+DQNの結果
+</center>
+
+<!--
+<center>
+<div class="row post-image-bg" markdown="0">
+<video width="49%" markdown="0">
+<source src="/assets/MOV_0013.mp4" type="video/mp4" markdown="0">
+</video>
+</center>
+
+<video width="49%" markdown="0">
+<source src="/assets/MOV_0071.mp4" type="video/mp4" markdown="0">
+</video>
+<video width="49%" markdown="0">
+<source src="/assets/MOV_0072.mp4" type="video/mp4" markdown="0">
+</video>
+-->
+
+<!--- <a href="../assets/MOV_0013.mp4" target="_blank">ギャラガ 1</a>-->
+- <a href="../assets/MOV_0071.mp4" target="_blank">ギャラガのデモ</a>
+<!--- <a href="../assets/MOV_0013.mp4" target="_blank">ギャラガ 3</a>-->
+
+<!--
+<iframe width="640" height="400" src="../assets/MOV_0013.mp4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+
+<iframe width="640" height="400" src="../assets/MOV_0071.mp4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+
+<iframe width="640" height="400" src="../assets/MOV_0072.mp4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+-->
+
+---
+
+- 2014 Neural Image Captioning が注目を集める。
+
+<center>
+<img src="../assets/17VISIOn-slide-WBE2-jumbo.jpg" style="width:84%"><br>
+</center>
+
+- Human: A group of men playing Frisbee in the park.
+- Machine: A group of young people playing a game of Frisbee.
+
+<!--
+![Vinyals et. al (2014) より](./assets/2014Vinyals_Fig5_left.jpg){#fig:NIC2 style="width:49%"}<br>
+
+![Vinyals et. al (2014) より](./assets/2014Vinyals_Fig5_right.jpg){#fig:NIC3 style="width:49%"}
+-->
+
+---
+
+- 2015 画像生成技術が注目を浴びる
+
+![天安門前広場の夢(撮影は自民解放軍の兵士に依頼した)](./assets/Tenn_deepdream.jpg){#fig:deep_dream style="width:49%"}
+
+<!-- 
+- 2015 ディープラーニング，機械学習，ビッグデータ あるいはその心理学，発刊
+-->
+
+- 2015 人工知能学会が日本では「<span style="Color:Lime">深層学習</span>」と呼ぶことに決定する
+
+---
+
+- 2016 GAN が注目を浴びる
+
+<center>
+<img src="../assets/2016Reed_GAN_Text2Image1.svg" style="width:84%"><br>
+Generative Adversarial Text to Image Synthesis <arXiv:1605.05396v2>
+</center>
+
+<center>
+<img src="../assets/2016Reed_GAN_Text2Image.svg" style="width:84%"><br>
+Generative Adversarial Text to Image Synthesis arXiv:1605.05396v2
+</center>
+
+---
+
+- 2016 アメリカ合州国大統領候補の一人の発言を模倣する「ディープトランプ」がツィッター上で注目を集める
+
+<center>
+<img src="../assets/DeepTrumpf.jpg" style="width:39%">
+<img src="../assets/DeepTrumpf2.png" style="width:59%"><br>
+<img src="../assets/DeepTrumpfTweet.png" style="width:99%"></br>
+</center>
+
+- 2016 アルファ碁がイ・セドルを破る
+
+<center>
+<img src="../assets/2016AlphaGo_Fig1a.svg" style="width:84%"></br>
+アルファ碁 Natureより
+</center>
+
+---
+
+<!--- [○☓分類器](./2019OX_classifier.html)
+- [pose](https://storage.googleapis.com/tfjs-models/demos/posenet/camera.html)
+- [nothotdog](../nothotdog/)
+-->
+- [nothotdog 体感デモ](https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/nothotdog.ipynb)
+- [シリーズ心理学と仕事9巻 第2章人工知能](https://kaiin.hanmoto.com/bd/isbn/9784762830655) [](./2019_02_02kitaohji.pdf)
+
+---
+
+## 危惧
+
+- [ＡＩ戦略（有識者提案）及び人間中心のＡＩ社会原則（案）について](https://www.kantei.go.jp/jp/singi/tougou-innovation/dai4/siryo1-1.pdf)
+    - [ソサイエティ 5.0](https://www.gov-online.go.jp/cam/s5/) これ自体がドイツの[インダストリー 4.0](https://en.wikipedia.org/wiki/Industry_4.0) のパクリ
+  <center>
+  <img src='https://upload.wikimedia.org/wikipedia/commons/c/c8/Industry_4.0.png' style='width:74%'>
+  </center>
+    - [Ban Lethal Autonomous Weapons](https://autonomousweapons.org/)
+  <center>
+    <iframe width="640" height="480" src="https://www.youtube.com/embed/LVwD-IZosJE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </center>
+- [アシロマ原理](https://futureoflife.org/ai-principles-japanese/)
+
+<center>
+<iframe width="640" height="360" src="https://www.youtube.com/embed/E5KAb86U780" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</center>
+
+<!--
+<center>
+    <iframe width="480" height="300" src="https://www.youtube.com/embed/LVwD-IZosJE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </center>
+-->
+
+<!--
+<center>
+<video controls loop>
+  <source src="../assets/A Style-Based Generator Architecture for Generative Adversarial Networks.mp4" type="video/mp4" style="width:64%">
+</video>
+</center>
+-->
+
+<center>
+<img src="../assets/Myths_1_Japanese.jpg" style="width:84%"><br>
+**<https://futureoflife.org/background/aimyths/>**
+</center>
+
+<!--
+<iframe width="805" height="453" src="https://www.youtube.com/embed/WcbGRBPkrps" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+-->
+
+<!--<iframe width="805" height="453" src="https://www.youtube.com/embed/G06dEcZ-QTg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+
+<iframe width="640" height="400" src="https://www.youtube.com/embed/G06dEcZ-QTg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+source: <https://youtu.be/G06dEcZ-QTg>
+
+---
+
+<!--<iframe width="200" height="120" src="https://www.youtube.com/embed/fRj34o4hN4I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+
+<iframe width="400" height="300" src="https://www.youtube.com/embed/rVlhMGQgDkY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<iframe width="400" height="300" src="https://www.youtube.com/embed/tf7IEVTDjng" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+---
+
+<iframe width="640" height="400" src="https://www.youtube.com/embed/8vIT2da6N_o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+source: <https://www.youtube.com/embed/8vIT2da6N_o>
+
+
+<center>
+<img src="/assets/2018Chen_CartoonGAN.svg' style="width:94%">
+</center>
+
+---
+
+# 認知計算論的神経科学 Cognitive computational neuroscience
+
+<center>
+<img src="../assets/2018Kriegeskorte_Fig2.jpg" style="width:84%"><br>
+**Kriegeskorte and Doglas (2018) Fig. 2より**
+</center>
+
+脳の機能を理解することはどういうことか？ 認知計算神経科学の目的は実世界の認知課題を遂行可能で，生物学的妥当性を持つ計算モデルを用いて動物や人間の神経活動と行動の多くの観測結果を説明することである。
+歴史的には各分野（円）はこれら課題の回問題（白ラベル）に取り組んできた。<!--認知計算神経科学は、同時にすべての基準を満たすよう努めるています。-->
+<!--
+Figure 2 | What does it mean to understand how the brain works? The goal of cognitive computational neuroscience is to explain rich measurements of neuronal activity and behavior in animals and humans by means of biologically plausible computational models that perform real-world cognitive tasks. Historically, each of the disciplines (circles) has tackled a subset of these challenges (white labels). Cognitive computational neuroscience strives to meet all the criteria simultaneously.
+-->
+
+<center>
+<iframe width="640" height="480" src="https://www.youtube.com/embed/o46fcRl2yxE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</center>
+
+<center>
+<iframe width="640" height="480" src="https://www.youtube.com/embed/fRj34o4hN4I" <!--https://www.youtube.com/embed/WcbGRBPkrps"--> frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+source: <https://www.youtube.com/embed/fRj34o4hN4I>
+</center>
+
+<!--
+<center>
+<iframe width="635" height="358" src="../assets/A Style-Based Generator Architecture for Generative Adversarial Networks.mp4"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</center>
+-->
+
+
+
+---
+
+<center>
+<img src="../assets/2018Kriegeskorte_Fig3.jpg" style="width:84%"><br>
+**Kriegeskorte and Doglas (2018) Fig. 2より**
+</center>
+
+<!--Figure 3 | The space of process models. Models of the processes taking place in the brain can be defined at different levels of description and can vary in their parametric complexity (dot size) and in their biological (horizontal axis) and cognitive (vertical axis) fidelity. -->
+
+処理モデル空間におけるモデルの布置。脳内で行われている処理モデルは，異なる記述レベルと計量的複雑度で変動する。モデルの複雑度を黒マルの大きさで表現し，認知的忠実性(縦軸)と生物学的忠実性(横軸)とにプロットした図。
+
+理論家は、さまざまな主要目標を使用してモデリングに取り組みます。 モデリングへのボトムアップアプローチ（青い矢印）は、活動電位や単一ニューロンの複数のコンパートメント間の相互作用など、生物学的ニューラルネットワークの特性を最初に捉えることを目的としています。
+
+このアプローチは、皮質の柱や領域などの脳の小さな部分の創発的なダイナミクスの理解に焦点を当て、振動などの生物学的ネットワーク現象を再現するために、認知機能を無視します。
+
+
+トップダウンアプローチ（赤い矢印）は、最初に認知機能をアルゴリズムレベルでとらえることを目的としています。 この手法は、タスク性能の基礎をなす情報処理をそのアルゴリズムの構成要素に分解することに焦点を合わせるために、生物学的実装を無視する。
+
+
+この 2 つのアプローチは、私たちの脳がどのようにして私たちの心を生み出すかを説明するための共通の目標に向けた一連の道筋の極値を形成します。 全体的に、認知と生物学的忠実度の間にはトレードオフ（負の相関）があります。
+
+しかし、認知の制約が生物学的機能を明らかにするとき、そして生物学が認知の特技を説明するモデルを刺激するとき、そのトレードオフは相乗効果（正の相関）に変わることができます。
+
+
+知能は豊かな世界の知識を必要とするので、人間の脳情報処理のモデルは高いパラメトリックな複雑さ（右上隅の大きな点）を持つでしょう。 たとえ生物学的詳細から抽象化するモデルが課題遂行を説明することができるとしても、生物学的詳細モデルは神経生物学的実施を説明するために依然として必要とされるであろう。
+
+
+この図は、モデル間の関係を理解し、それらの補完的な貢献を理解するのに役立つ概念的な漫画です。 ただし、それは認知忠実度、生物学的忠実度、およびモデルの複雑さの定量的尺度には基づいていません。 3つの変数のそれぞれを測定するための決定的な方法はまだ開発されていません。 
+
+<!--
+Theoreticians approach modeling with a range of primary goals. The bottom-up approach to modeling (blue arrow) aims first to capture characteristics of biological neural networks, such as action potentials and interactions among multiple compartments of single neurons.
+
+This approach disregards cognitive function, so as to focus on understanding the emergent dynamics of small parts of the brain, such as cortical columns and areas, and to reproduce biological network phenomena, such as oscillations. 
+
+The top-down approach (red arrow) aims first to capture cognitive functions at the algorithmic level. This approach disregards the biological implementation, so as to focus on decomposing the information processing underlying task performance into its algorithmic components. 
+
+The two approaches form the extremes of a continuum of paths toward the common goal to explain how our brains give rise to our minds. Overall there is tradeoff (negative correlation) between cognitive and biological fidelity. 
+
+However, the tradeoff can turn into a synergy (positive correlation) when cognitive constraints illuminate biological function, and when biology inspires models that explain cognitive feats. 
+
+Because intelligence requires rich world knowledge, models of human brain information processing will have high parametric complexity (large dot in the upper right corner). Even if models that abstract from biological details can explain task performance, biologically detailed models will still be needed to explain the neurobiological implementation. 
+
+This diagram is a conceptual cartoon that can help us understand the relationships between models and appreciate their complementary contributions. However, it is not based on quantitative measures of cognitive fidelity, biological fidelity, and model complexity. Definitive ways to measure each of the three variables have yet to be developed. Figure inspired by 192
+-->
+
+
+---
+
+# model って何？
+
+現象の抽象化。現実とは異なるが取扱が簡単な喩え，言い換え，抽象化。
+
+
+- 認知心理学，認知科学
+- 神経科学
+- 人工知能
+
+のそれぞれにおいて
+**生物学的妥当性**  biological plausibility を持つ**計算論モデル** computational modeling
+が求められる。
+- [全脳アーキテクチャ勉強会第25回 計算論的精神医学](https://wba-initiative.org/ja/events/wba_seminars/)
+
+天文学や物理学などの分野での意味と計算論の意味が異なる
+
+- Data-analysis models
+- box-and-arrow model: In cognitive psychology, such models provided
+  useful, albeit ill-defined, sketches for theories of brain computation
+- word model 
+- oracle model
+- brain-computational model (BCM)
+  - image-computable model
+  - Reinforcement learning models
+  - sensory encoding model
+  - internal-transformation model
+  - behavioral decoding model
+- Psychophysical models
+- cognitive models
+- biophysical models
+- brain-dynamical and causal-interaction models,
+- model-based reinforcement learning and model-based cognition.
+
+---
+
+# Neural network models
+
+<!--
+Neural network models (Box 2) have a long history with interwoven strands in multiple disciplines. In computational neuroscience, neural network models, at various levels of biological detail, have been essential to understanding dynamics in biological neural networks and elementary computational functions.[40,41]  In cognitive science, they defined a new paradigm for understanding cognitive functions called parallel distributed processing in the 1980s,[6,104] which brought the field closer to neuroscience. In AI, they have recently brought substantial advances in a number of applications,[55,103] ranging from perceptual tasks (such as vision and speech recognition) to symbolic processing challenges (such as language translation), and on to motor tasks (including speech synthesis and robotic control). Neural network models provide a common language for building task-performing models that meet the combined criteria for success of the three disciplines (Figure 2).
+
+Like brains, neural network models can perform feedforward as well as recurrent computations.[50,106]  The models driving the recent advances are deep in the sense that they comprise multiple stages of linear-nonlinear signal transformation. Models typically have millions of parameters (the connection weights), which are set so as to optimize task performance. One successful paradigm is supervised learning, where a desired mapping from inputs to outputs learned from a training set of inputs (e.g. images) and associated outputs (e.g. category labels). However, neural network models can also be trained without supervision and can learn complex statistical structure inherent to their experiential data.
+
+The large number of parameters creates unease among researchers who are used to simple models with small numbers of interpretable parameters. However, simple models will never enable us to explain complex feats of intelligence. The history of AI has shown that intelligence requires ample world knowledge, and sufficient parametric complexity to store it. We therefore must engage complex models (Figure 3) and the challenges they pose. One challenge is that the high parameter count renders the models difficult to understand. Because the models are entirely transparent, they can be probed cheaply with millions of input patterns to understand the internal representations, an approach sometimes called “synthetic neurophysiology”. To address the concern of overfitting, models are evaluated in terms of their generalization performance. A vision model, for example, will be evaluated in terms of its ability to predict neural activity and behavioral responses for images it has not been trained on.
+
+Several recent studies have begun to test neural network models as models of brain information processing.[50,51] These studies used deep convolutional neural network models trained to recognize objects in images to predict brain representations of images in the primate ventral visual stream. Results have shown that the internal representations of deep convolutional neural networks provide the best current models of representations of visual images in inferior temporal (IT) cortex in humans and monkeys.[^119,^120,^121]  When comparing large numbers of models, those that were optimized to perform the task of object classification better explained the IT representation.[^119,^120]
+
+Early layers of deep neural networks trained to recognize objects contain representations resembling early visual cortex.[^120,^122] As we move gradually along the ventral visual stream, higher layers of the neural networks gradually come to provide a better basis for explaining the representations.[^122,^123,^124] Higher layers of deep convolutional neural networks also resemble the IT cortical representation in that both enable the decoding of object position, size, and pose, along with the category of the object.[^125] In addition to testing these models by predicting brain-activity data, the field has begun to test them by predicting behavioral responses reflecting perceived shape[^126] and object similarity.[^127]
+
+
+- [^119]: Yamins, D. L. K. et al. Performance-optimized hierarchical models predict neural responses in higher visual cortex. Proceedings of the National Academy of Sciences 111, 8619–8624 (2014).
+- [^120]: Khaligh-Razavi, S.-M. & Kriegeskorte, N. Deep Supervised, but Not Unsupervised, Models May Explain IT Cortical Representation. PLoS Computational Biology 10, e1003915 (2014).
+- [^121]: Cadieu, C. F. et al. Deep Neural Networks Rival the Representation of Primate IT Cortex for Core Visual Object Recognition. PLoS Computational Biology 10, e1003963 (2014).
+- [^122]: Guclu, U. & van Gerven, M. A. J. Deep Neural Networks Reveal a Gradient in the Complexity of Neural Representations across the Ventral Stream. Journal of Neuroscience 35, 10005–10014 (2015).
+- [^123]: Eickenberg, M., Gramfort, A., Varoquaux, G. & Thirion, B. Seeing it all: Convolutional network layers map the function of the human visual system. NeuroImage (2016). doi:10.1016/j.neuroimage.2016.10.001
+- [^124]: Cichy, R. M., Khosla, A., Pantazis, D., Torralba, A. & Oliva, A. Comparison of deep neural networks to spatio-temporal cortical dynamics of human visual object recognition reveals hierarchical correspondence. Scientific Reports 6, (2016).
+- [^125]: Hong, H., Yamins, D. L. K., Majaj, N. J. & DiCarlo, J. J. Explicit information for category-orthogonal object properties increases along the ventral stream. Nature Neuroscience 19, 613–622 (2016).
+- [^126]: Kubilius, J., Bracci, S. & Op de Beeck, H. P. Deep Neural Networks as a Computational Model for Human Shape Sensitivity. PLOS Computational Biology 12, e1004896 (2016).
+- [^127]: Jozwik, K. M., Kriegeskorte, N., Storrs, K. R. & Mur, M. Deep Convolutional Neural Networks Outperform Feature-Based But Not
+
+
+# Box 2: Neural network models 
+The term neural network model has come to be associated with a class of model that is inspired by biological neural networks in that each unit combines many inputs and information is processed in parallel through a network. In contrast to biologically detailed models, which may capture action potentials and dynamics in multiple compartments of each neuron, these models abstract from the biological details. However, they can explain certain cognitive functions, such as visual object recognition, and therefore provide an attractive framework for linking cognition to the brain. 
+
+
+A typical unit computes a linear combination of its inputs and passes the result through a static nonlinearity. The output is sometimes interpreted as analogous to the firing rate of a neuron. Even shallow networks (those with a single layer of hidden units between inputs and outputs) can approximate arbitrary functions.[^105] However, deep networks (those with multiple hidden layers) can more efficiently capture many of the complex functions needed in real-world tasks. Many applications, e.g. in computer vision, use feedforward architectures. However, recurrent neural networks, which reprocess the outputs of their units and generate complex dynamics, have brought additional engineering advances[106] and better capture the recurrent signaling in brains.[^107,^108,^48,^109]  Whereas feedforward networks are universal function approximators, recurrent networks are universal approximators of dynamical systems.[^110]  Recurrent processing enables a network to recycle its limited computational resources through time, so as to perform more complex sequences of computations. Recurrent networks can represent the recent stimulus history in a dynamically compressed format, providing the temporal context information needed for current processing. As a result, recurrent networks can recognize, predict, and generate dynamical patterns. 
+
+
+Neural network models learn their parameters. Both feedforward and recurrent networks are defined by their architecture and the setting of the connection weights. One way to set the weights is through iterative small adjustments that bring the output closer to some desired output (supervised learning). Each weight is adjusted in proportion to the reduction in the error that a small change to it would yield. This method is called gradient descent, because it produces steps in the space of weights along which the error declines most steeply. Gradient descent can be implemented using backpropagation, an efficient algorithm for computing the derivative of the error function with respect to each weight. 
+
+
+Whether the brain uses an algorithm like backpropagation for learning is controversial. Several biologically plausible implementations of backpropagation or closely related forms of supervised learning have been suggested.[^111,^112,^113]  Supervision signals might be generated internally[^114] on the basis of the context provided by multiple sensory modalities, on the basis of the dynamic refinement of representations over time, as more evidence becomes available from the senses and from memory[^115], and on the basis of internal and external reinforcement signals arising in interaction with the environment.[^116] Reinforcement learning[54] and unsupervised learning of neural network parameters[^117,^118] are areas of rapid current progress. 
+
+- [^112]: Whittington, J. C. R. & Bogacz, R. An Approximation of the Error Backpropagation Algorithm in a Predictive Coding Network with Local Hebbian Synaptic Plasticity. Neural Computation 29, 1229–1262 (2017).
+- [^113]: Schiess, M., Urbanczik, R. & Senn, W. Somato-dendritic Synaptic Plasticity and Error-backpropagation in Active Dendrites. PLOS Computational Biology 12, e1004638 (2016).
+- [^114]: Marblestone, A. H., Wayne, G. & Kording, K. P. Towards an integration of deep learning and neuroscience. Frontiers in computational neuroscience, 10, 94 (2016).
+
+Neural network models have demonstrated that taking inspiration from biology can yield breakthroughs in AI. It seems likely that the quest for models that can match human cognitive abilities will draw us deeper into the biology.[185]  The abstract neural network models currently most successful in engineering could be implemented with biological hardware. However, they only use a small subset of the dynamical components of brains. Neuroscience has described a rich repertoire of dynamical components, including action potentials,[165] canonical microcircuits[186], dendritic dynamics,[187,111,113] and network phenomena,[40] such as oscillations,[188] which may have computational functions. Integrating these dynamical components into computational models designed to perform meaningful tasks promises to reveal their computational function in the brain and may drive further advances in AI.
+
+
+---
+
+
+# Box 4: Why do cognitive science, computational neuroscience, and AI need each other? 
+**Cognitive science** needs computational neuroscience, not merely to explain the implementation of cognitive models in the brain, but also to discover the algorithms. For example, the dominant models of sensory processing and object recognition are brain-inspired neural networks, whose computations are not easily captured at a cognitive level. Recent successes with Bayesian nonparametric models do not yet in general scale to real-world cognition. Explaining the computational efficiency of human cognition and predicting detailed cognitive dynamics and behavior could benefit from studying brain-activity dynamics. Explaining behavior is essential, but behavioral data alone provide insufficient constraints for complex models. Brain data can provide rich constraints for cognitive algorithms if leveraged appropriately. Cognitive science has always progressed in close interaction with artificial intelligence. The disciplines share the goal of building task-performing models and thus rely on common mathematical theory and technologies. 
+
+**Computational neuroscience** needs cognitive science to challenge it to engage higher-level cognition. At the experimental level, the tasks of cognitive science enable computational neuroscience to bring cognition into the lab. At the level of theory, cognitive science challenges computational neuroscience to explain how the neurobiological dynamical components it studies contribute to cognition and behavior. Computational neuroscience needs AI, and in particular machine learning, to provide the theoretical and technological basis for modeling cognitive functions with biologically plausible dynamical components. 
+
+**Artificial intelligence** needs cognitive science to guide the engineering of intelligence. Cognitive science’s tasks can serve as benchmarks for AI systems, building up from elementary cognitive abilities to artificial general intelligence. The literatures on human development and learning provide an essential guide to what is possible for a learner to achieve and what kinds of interaction with the world can support the acquisition of intelligence. AI needs computational neuroscience for algorithmic inspiration. Neural network models are an example of a brain-inspired technology that is unrivalled in several domains of AI. Taking further inspiration from the neurobiological dynamical components (e.g. spiking neurons, dendritic dynamics, the canonical cortical microcircuit, oscillations, neuromodulatory processes) and the global functional layout of the human brain (e.g. subsystems specialized for distinct functions, including sensory modalities, memory, planning, motor control) might lead to additional AI breakthroughs. Machine learning draws from separate traditions in statistics and computer science, which have optimized statistical and computational efficiency, respectively. The integration of computational and statistical efficiency is an essential challenge in the age of big data. The brain appears to combine computational and statistical efficiency and understanding its algorithm might boost machine learning.
+
+-->
+
+---
+
+# マー(Marr)のレベル
+
+<!--
+# Integrating Marr’s levels
+
+Deep neural network models provide a biologically plausible account of the rapid recognition of the elements of the visual experience (people, steps, oblique upward motion, handrail). They can explain the computationally efficient pattern recognition component.[55] However, they cannot explain yet how the child understands the relationships among the elements, the physical interactions of the objects, the people’s goal to go up, and the function of the escalator, or how she can imagine the experience and instantly form a new concept.
+
+Bayesian nonparametric models explain how deep inferences and concept formation from single experiences are even possible. They may explain the brain’s stunning statistical efficiency, its ability to infer so much from little data by building generative models that provide abstract prior knowledge.[145]  However, current inference algorithms require large amounts of computation and, as a result, do not yet scale to real-world challenges like forming the new concept “escalator” from a single visual experience.
+
+On a 20-Watt power budget, the brain’s algorithms combine statistical and computational efficiency in ways that are beyond current AI of either the Bayesian or the neural network variety. However, recent work in AI and machine learning has begun to explore the intersection between Bayesian inference and neural network models, combining the statistical strengths of the former (uncertainty representation, probabilistic inference, statistical efficiency) with the computational strengths of the latter (representational learning, universal function approximation, computational efficiency).[175,170,117]  In cognitive science, analysis-by-synthesis models of visual recognition, which use iterative fitting of a generative graphics model to the image, have been complemented with discriminative neural networks that provide rapid feedforward estimates.[27,176,177]  Generative neural network models are also a long-standing[^178],[^179],[^180] and now quickly growing area of research.[118,117] The intersection between probabilistic inference and neural network models seems poised for further breakthroughs that could impact brain and cognitive theory as well as AI.
+
+- [^172]: Krakauer, J. W., Ghazanfar, A. A., Gomez-Marin, A., MacIver, M. A. & Poeppel, D. Neuroscience Needs Behavior: Correcting a Reductionist Bias. Neuron 93, 480–490 (2017).
+- [^173]: Gomez-Marin, A., Paton, J. J., Kampff, A. R., Costa, R. M. & Mainen, Z. F. Big behavioral data: psychology, ethology and the foundations of neuroscience. Nature Neuroscience 17, 1455–1462 (2014).
+- [^176]: Wu, J., Yildirim, I., Lim, J., Freeman, B. & Tenenbaum, J. Galileo: Perceiving physical object properties by integrating a physics engine with deep learning. Annual conference of the cognitive science society 127–135 (2015).
+- [^177]: Kulkarni, T., Whitney, W., Kohli, P. & Tenebaum, J. Deep convolutional inverse graphics network. Advances in Neural Processing Systems 2539–2547 (2015).
+- [^178]: Dayan, P., Hinton, G. E., Neal, R. M. & Zemel, R. S. The Helmholtz Machine. Neural Computation 7, 889–904 (1995).
+- [^179]: Hinton, G., Sejnowski, T. & Ackley, D. Boltzmann machines: Constraint satisfaction networks that learn. (Carnegie-Mellon University, 1984).
+- [^180]: Hinton, G. E. Reducing the Dimensionality of Data with Neural Networks. Science 313, 504–507 (2006).
+-->
+
+
+---
+
+
+# モデル，データ，タスク
+
+<!--
+# Box 5: Shareable tasks, data, models, and tests – a new culture of multidisciplinary collaboration 
+
+Neurobiologically plausible models that explain cognition will have substantial parametric complexity. Building and evaluating such models will require machine learning, and big brain and behavioral data sets. Traditionally, each lab has developed its own tasks, data sets, models, and tests with a focus on the goals of its own discipline. To scale these efforts up to the challenge, we will need to develop tasks, data, models, and tests that are relevant across the three disciplines and shared among labs (Figure). A new culture of collaboration will assemble big data and big models by combining components from different labs. To meet the conjoined criteria for success of cognitive science, computational neuroscience, and artificial intelligence, the best division of labor might cut across the traditional disciplines.
+
+**Tasks**: By designing experimental tasks, we carve up cognition into components that can be quantitatively investigated. A task is a controlled environment for behavior. It defines the dynamics of a task “world” that provides sensory input (e.g. visual stimuli) and captures motor output (e.g. button press, joystick control, or higher-dimensional limb or whole-body control). Tasks drive the acquisition of brain and behavioral data and the development of AI models, providing well-defined challenges and quantitative performance benchmarks for comparing models. The ImageNet tasks,189 for example, have driven substantial progress in computer vision. Tasks should be designed and implemented such that they can readily be used in all three disciplines to drive data acquisition and model development (related developments include: OpenAI’s Gym, <https://gym.openai.com>, and Universe, <https://universe.openai.com>; and DeepMind’s Lab[^193]). The spectrum of useful tasks includes classical psychophysical tasks employing simple stimuli and responses as well as interactions in virtual realities. As we engage all aspects of the human mind, our tasks will need to simulate natural environments and will come to resemble computer games. This may bring the added benefit of mass participation and big behavioral data, especially when tasks are performed via the web.[^190] 
+
+**Data**: Behavioral data acquired during task performance provides overall performance estimates and detailed signatures of success and failure, of reaction times and movement trajectories. Brain-activity measurements characterize the dynamic computations underlying task performance. Anatomical data can characterize the structure and connectivity of the brain at multiple scales. Structural brain data, functional brain data, and behavioral data will all be essential for constraining computational models.
+
+**Models**: Task-performing computational models can take sensory inputs and produce motor outputs, so as to perform experimental tasks. AI-scale neurobiologically plausible models can be shared openly and tested in terms of their task performance and in terms of their ability to explain a variety of brain and behavioral data sets, including new data sets acquired after definition of the model. Initially, many models will be specific to small subsets of tasks. Ultimately, models must generalize across tasks. 
+
+**Tests**: To assess the extent to which a model can explain brain information processing during a particular task, we need tests that compare models and brains on the basis of brain and behavioral data. Every brain is idiosyncratic in its structure and function. Moreover, for a given brain, every act of perception, cognition, and action is unique in time and cannot be repeated precisely because it permanently changes the brain in question. These complications make it challenging to compare brains and models. We must define the summary statistics of interest and the correspondence mapping between model and brain in space and time at some level of abstraction. Developing appropriate tests for adjudicating among models and determining how close we are to understanding the brain is not merely a technical challenge of statistical inference. It is a conceptual challenge fundamental to theoretical neuroscience. The interaction among labs and disciplines can benefit from adversarial cooperation.[^118] Cognitive researchers who feel that current computational models fall short of explaining an important aspect of cognition are challenged to design shareable tasks and tests that quantify these shortcomings, and to provide human behavioral data to set the bar for AI models. Neuroscientists who feel that current models do not explain brain information processing are challenged to share brain-activity data acquired during task performance and tests comparing activity patterns between brains and models to quantify the shortcomings of the models. Although we will have a plurality of definitions of success, translating these into quantitative measures of the quality of a model is essential and could drive progress in cognitive computational neuroscience as well as engineering.
+-->
+
+<center>
+<img src="../assets/2018Kriegeskorte_FigBox5.jpg" style="width:74%"></br>
+**Kriegeskorte & Dogulas (2018) Fig. I**
+</center>
+  
