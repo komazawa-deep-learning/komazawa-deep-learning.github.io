@@ -6,6 +6,7 @@ layout: home
 
 # [ディープラーニングの心理学的解釈 (心理学特講IIIA)](https://komazawa-deep-learning.github.io/)
 
+<!--
 <div align='right'>
 <a href='mailto:educ0233@komazawa-u.ac.jp'>Shin Aasakawa</a>, all rights reserved.<br>
 Date: 08/May/2020<br/>
@@ -13,6 +14,7 @@ Appache 2.0 license<br/>
 </div>
 
 - [事前アンケート](https://forms.gle/sicj1RHCw5Zgs3s56){target="_blank"}
+-->
 
 
 ## Google Meet の事前確認テスト案内
