@@ -8,8 +8,10 @@ ARISA MIZUTANI <1nb8004a@komazawa-u.ac.jp>,
 1nb9049s@komazawa-u.ac.jp,
 TADAYOSHI MIYAWAKI <1nb9076t@komazawa-u.ac.jp>
 
+<!--
 - [計画](2021plan)
 - [情報](2021info)
+-->
 
 - [第01回 04月16日](2021lect01)
 - [第02回 04月23日](2021lect02)

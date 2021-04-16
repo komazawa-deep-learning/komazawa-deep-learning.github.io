@@ -48,388 +48,257 @@ MathJax.Hub.Config({
 </div>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <div class="home"><h1 class="page-heading">第1回 人工知能の歴史</h1><!-- # [ディープラーニングの心理学的解釈 (心理学特講IIIA)](https://komazawa-deep-learning.github.io/2021/){:target="_blank"} -->
+        <h1 id="ディープラーニング-deep-learning--と心理学との関連を探る">ディープラーニング deep learning  と心理学との関連を探る</h1>
 
-<p>下図は，心理学と神経科学と人工知能の 3 者関係を概念的に表しました。</p>
-<center>
-<img src="/assets/2019GrandSchema.svg" style="width:79%" />
-</center>
+<h2 id="todays-menu">Today’s Menu</h2>
 
-<p>歴史的には，心理学は実験認識学 experimental epistemology としての側面を持っています。
-すなわち，我々が認識すること，外界を受容し理解するとは何であるのか，という問いを思弁に頼ることなく明らかにしようとしてきました。
-その過程で，およそ 170 年前に 1879年（明治12年）にブントにより，近代的な意味での心理学が成立したとされます。</p>
-
-<p>ところが，哲学の意味での認識論にまで昇華させるには長い時間が必要でした。今でも実験心理学者の議論を哲学者が参照することはありません。
-むしろ，実験的認識論として心理学は，その基礎を生理学に求めます。上図右下の neuroscience</p>
-
-<!--
-同時代のジークムント・フロイト（1856–1939），ヘルムホルツ
-ヘルマン・ルートヴィヒ・フェルディナント・フォン・ヘルムホルツ（1821 - 1894）
-
-西洋哲学の根本的な問として，森羅万象の根源を探求するという姿勢がありました。
-そのためギリシャの哲学者たちは万物は，デモクリトス （アトムの提唱），
-デモクリトスの原子論は，万物の根元が分割不可能な原子（アトム）から成り立っていると考えることであり，
-今日的にデモクリトスを解釈するとすれば，物質の根元である物理学と，精神活動の根元であるニューロンの動作を
-還元主義的アプローチと見なすことができるでしょう。
-
-- ピタゴラスは万物は数なり，といった https://ja.wikipedia.org/wiki/%E3%83%94%E3%82%BF%E3%82%B4%E3%83%A9%E3%82%B9
-- ヘラクレイトス 万物は流転する https://ja.wikipedia.org/wiki/%E3%83%98%E3%83%A9%E3%82%AF%E3%83%AC%E3%82%A4%E3%83%88%E3%82%B9
-- エンペドクレス 物質のアルケーは火、水、土、空気の四つのリゾーマタ（rizomata：根）からなり、それらを結合する「ピリア（φιλια　愛）」と分離させる「ネイコス（憎)」がある。それにより四つのリゾーマタ（四大元素）は、集合離散をくり返す。この四つのリゾーマタは新たに生まれることはなく、消滅することもない。https://ja.wikipedia.org/wiki/%E3%82%A8%E3%83%B3%E3%83%9A%E3%83%89%E3%82%AF%E3%83%AC%E3%82%B9
--->
-
-<h2 id="人工知能の歴史">人工知能の歴史</h2>
-
-<ul>
-  <li><a href="https://kaiin.hanmoto.com/bd/isbn/9784762830655" target="_blank">シリーズ心理学と仕事9巻 第2章人工知能</a>  <a href="2019_02_02kitaohji.pdf" target="_blank">原稿 pdf</a></li>
-</ul>
+<ol>
+  <li>Intorduction</li>
+  <li>Math, and stats, and job seekings</li>
+  <li>Exercises</li>
+</ol>
 
 <h2 id="実習">実習</h2>
-
-<p>Colab の実習として，話題の感染症のモデルを例に解説します。</p>
-
+<!--     - [実習 画像認識 Keras 版<img src="../assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2021Kera_CNN_demo_with_wordnet_ja.ipynb) -->
+<!-- - [実習 Keras CNN](https://colab.research.google.com/github/ShinAsakawa/2019komazawa/blob/master/notebooks/nothotdog.ipynb){:target="_blank"} -->
 <ul>
-  <li><a href="https://drive.google.com/open?id=1daHRcQHEZ-b42QHACjUxBLIfWCzdW3po" target="_blank">鈴木知行さんのグラフ</a></li>
-  <li><a href="https://github.com/ShinAsakawa/ShinAsakawa.github.io/blob/master/2020komazawa/2020covid19_propagation.ipynb" target="_blank">感染症の拡大はどう計算されているのだろうか</a></li>
+  <li><a href="https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2021Kermack_McKendrick_model.ipynb" target="_blank">実習 Kermack McKendric model<img src="/assets/colab_icon.svg" /></a></li>
+  <li><a href="https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2021_0416PyTorch_CNN_demo.ipynb" target="_blank">実習 PyTorch CNN <img src="/assets/colab_icon.svg" /></a>
+<!--- [実習](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2021Kermack_McKendrick_model.ipynb#scrollTo=oD497lby40Fp)--></li>
 </ul>
 
-<p>ケルマック=マッケンドリック モデルは 1905 年，インドで流行ったペストのモデルです。詳しくは 下の colab ファイルを見てください。
-感染症の基本モデルがニューラルネットワークモデルと関連することは口頭で解説します。また常微分方程式の簡単な説明にもなっています。
-今回の武漢ウィルス禍も同様のモデルが使われているようです。</p>
-
+<h2 id="基本情報">基本情報</h2>
 <ul>
-  <li><a href="https://github.com/ShinAsakawa/ShinAsakawa.github.io/blob/master/2020chuo/2020Kermack_McKendrick_model.ipynb" target="_blank">感染症のモデル</a></li>
-  <li><a href="https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/nothotdog.ipynb" target="_blank">画像認識のデモ</a></li>
+  <li>授業名: 心理学特講IIIA</li>
+  <li>担当者名: 浅川 伸一 (アサカワ シンイチ)</li>
+  <li>電子メールアドレス: <a href="mailto:educ20233@komazawa-u.ac.jp">educ20233@komazawa-u.ac.jp</a>, <a href="mailto:asakawa@cis.twcu.a.jp">asakawa@cis.twcu.a.jp</a></li>
+  <li>開講年度・期:　2021年 前期</li>
+  <li>開講曜日・時限: 金曜日 1 限 09:00-10:30</li>
+  <li>教室: 1-507</li>
+  <li>単位数　2</li>
+  <li>オフィスアワー: なし，メールや SNS を活用してください。駒澤大学の専任ではありません。
+非常勤講師ですので，金曜日の 1 時限だけしか駒澤大学には居ません。</li>
 </ul>
 
-<!--
-**武漢ウィルスの我が国における数理モデルについては，以下の 2 つのサイトも参照してください**
-
-- [横浜市立大学 佐藤彰宏先生のCOVID-19情報共有](https://www.fttsus.jp/covinfo/){:target="_blank"}
-- [神戸大学 牧野淳一郎先生の新型ウィルスに関するメモ](http://jun-makino.sakuraweb.com/articles/corona/face.html){:target="_blank"}
-- [東京大学 大橋順先生の計算](http://www.bs.s.u-tokyo.ac.jp/content/files/covid/COVID-19_SEIRmodel_full_ver4.1.pdf){:target="_blank"}
-
-<font size="-2" color="teal">
-余談ですが，以下のような劣悪な記事には騙されないでください。この記事のなかで，西浦モデルは単純な線形モデルという記述はまったく，モデルを理解していません。
-西浦モデルの元になた，ケルマック=マッケンドリックモデルは常微分方程式です。8 割削減で，単純な計算にはなりません。
-[悪いのは「西浦モデル」ではない。何もしてこなかった安倍政権だ](https://webronza.asahi.com/politics/articles/2020050300004.html)
-おそらく，この論壇の解説文はケルマック=マッケンドリック モデルが理解できず，ひたすら基本再生産数 $R_o$ の次式しか理解できなかったのでしょう
-$$
-R_t = (1-q)R_0 < 1\\
-q > 1-\frac{1}{R_0}
-$$
-</font>
-
--->
-
-<h2 id="余談">余談</h2>
+<h3 id="授業情報">授業情報</h3>
 <ul>
-  <li><a href="https://www.nikkei.com/article/DGXMZO42932250W9A320C1SHA000/" target="_blank">政府、AI人材年25万人育成へ　全大学生に初級教育</a></li>
-  <li><a href="https://www.nikkei.com/article/DGXMZO46386930R20C19A6EAF000/" target="_blank">AI人材25万人目標達成へ 政府、統合イノベ戦略を閣議決定</a></li>
+  <li>授業は，状況が許す限り，対面を基本とします。ただし，毎回オンライン配信を行う予定です。</li>
+  <li>授業の Google meet URL は以下のとおりです: <a href="https://meet.google.com/oia-vgsd-cpb" target="_blank">https://meet.google.com/oia-vgsd-cpb</a></li>
+  <li>コンピュータ実習を予定しています。そのため，仮にオンラインで受講する際には，十分な回線速度を確保してください。</li>
+  <li>スマートフォンによる参加では不十分です。自宅からオンライン参加の場合には有効に活用してください。</li>
+  <li>必ず PC や Macintosh などでの履修をお願いします。</li>
+  <li>十分な授業参加環境が用意できない場合には，対面での参加を検討してください。</li>
+  <li>ブラウザは Chrome を仮定します。実習に必要な Google Colab が Chrome の使用を前提としているためです。</li>
+  <li>データ共有の必要性から，駒澤大学のアカウントでログインしてください。</li>
+  <li><a href="https://colab.research.google.com/notebooks/intro.ipynb#recent=true" target="_blank">Google colab</a> を用います。</li>
+  <li>プログラミング言語としては Python を使用します。ただし <strong>プログラミングの知識や技術は不要</strong> です。</li>
+</ul>
+
+<h3 id="要求される予備知識">要求される予備知識</h3>
+<ul>
+  <li>高等学校卒業程度の日本語の読解力</li>
+  <li>高校一年生程度の英語，数学の知識</li>
+  <li>基礎的なインターネットリテラシー</li>
+  <li>数学は用います。ですが，問題を解くような課題は行いません。
+説明の都合上数式が出てきます。ですが，<strong>数式を理解することは求めません</strong>。</li>
+  <li>毎回，一回程度（場合によっては 2 回）のコンピュータ実習を行います。ただし，プログラミングの実習は，作成を要求することはありません。</li>
+</ul>
+
+<ol>
+  <li>数式を忌み嫌わずに用います。ですが，問題演習はしません。数式を理解することを求めていません。</li>
+  <li>コンピュータ実習を行います。ですが，プログラム作成演習は行いません。プログラミングの技量があることを求めません。</li>
+</ol>
+
+<h3 id="必要な道具機材">必要な道具，機材</h3>
+
+<ol>
+  <li>実習に使用する Web ブラウザは Chrome にしてください。マイクロソフト Edge やアップルの Safari では動作しない場合があります。</li>
+  <li>駒澤大学のアカウントでログインしてください。</li>
+  <li>オンラインで受講する際には，実習が伴いますので，配信画面を閲覧するデバイスと実習のためのデバイスとの両方を準備すると効率的です。
+例えば，配信画面はスマートフォンで閲覧し，実習は PC のブラウザ上で行うことを想定しています。</li>
+</ol>
+
+<h3 id="得られるメリット">得られるメリット</h3>
+
+<ul>
+  <li>就職に役立つ資格: JDLA G 検定, 学生受験者 （全受験者中 15％程度）もかなりあります。最年少では小中学生，最高齢は８０代。</li>
+</ul>
+
+<h3 id="自己紹介">自己紹介</h3>
+<center>
+<p align="left" style="width:77%">
+浅川伸一 博士(文学) 東京女子大学情報処理センター勤務。早稲田大学在学時はピアジェの発生論敵認識論に心酔する。
+卒業後エルマンネットの考案者ジェフ・エルマンに師事，薫陶を受ける。
+以来人間の高次認知機能をシミュレートすることを通して知的であるとはどういうことかを考えていると思っていた。
+著書に「Python で体験する深層学習」(2016) コロナ社。
+「深層学習教科書 ディープラーニング G検定（ジェネラリスト）公式テキスト」(2017) 共著，翔泳社。
+「ディープラーニング，ビッグデータ，機械学習あるいはその心理学」(2015) 新曜社。
+「ニューラルネットワークの数理的基礎」「脳損傷とニューラルネットワークモデル，神経心理学への適用例」いずれも守一雄他編「コネクショニストモデルと心理学」(2001)北大路書房など
+</p>
+<center>
+    <img src="/assets/Elman_portrait.jpg" width="44%" /><br />
+</center>
+</center>
+
+<h3 id="キーワード">キーワード</h3>
+
+<p>数学，人工知能 (AI)，ニューラルネットワーク，ディープラーニング，モデル論，構成論的研究，計算論，機械学習，生成モデルと認識モデル，</p>
+
+<p>注意 attention, 記憶 memory, 認識論 epistemology, 認知 cogntion, 視覚・聴覚情報処理 visual/audio information processing, 
+発達 development, 好奇心 curiosity, 生成モデルと識別モデル generative and descriminative models, 運動制御 motor control, 予測誤差  prediction error,</p>
+
+<h2 id="q1">Q.1</h2>
+
+<p>関心のある分野を教えて下さい。</p>
+
+<p>認知，感覚・知覚，神経心理学，学習，発達，臨床・障害，社会・文化</p>
+
+<h1 id="関連用語">関連用語</h1>
+
+<ul>
+  <li>機械学習 Machine Learning</li>
+  <li>データサイエンス Data Science</li>
+  <li>AI</li>
+  <li>統計学 Statistics</li>
+  <li>数学
+    <ul>
+      <li>情報理論，通信理論</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="関連分野">関連分野</h1>
+
+<ul>
+  <li>心理学
+    <ul>
+      <li>知覚</li>
+      <li>精神物理学</li>
+      <li>認知心理学</li>
+      <li>神経心理学</li>
+      <li>学習</li>
+    </ul>
+  </li>
+  <li>認知科学</li>
+  <li>神経科学</li>
+  <li>精神医学</li>
+  <li>生物学</li>
+</ul>
+
+<h2 id="ai-人材不足という社会背景">AI 人材不足という社会背景</h2>
+
+<ul>
+  <li>AI 人材の不足。経済産業省の<a href="https://www.meti.go.jp/policy/it_policy/jinzai/houkokusyo.pdf">調査報告書</a> によれば，2030 年には最大で 79 万人の IT 人材不足との試算があります
+(同報告書 26 ページ)。</li>
+  <li>
+    <p>自分の強みを活かして，よりよい人生を送るための選択肢として，AI エンジニアという，あるいは AI 関連業界に身を置くという選択肢があります。
+− この授業の目的の一つは，そのような職業選択へ向けての道標を示すことも含まれます。</p>
+  </li>
+  <li><a href="https://www.nikkei.com/article/DGXMZO42932250W9A320C1SHA000/" target="_blank">政府、AI 人材年 25 万人育成へ　全大学生に初級教育</a></li>
+  <li><a href="https://www.nikkei.com/article/DGXMZO46386930R20C19A6EAF000/" target="_blank">AI 人材 25 万人目標達成へ 政府、統合イノベ戦略を閣議決定</a></li>
   <li><a href="https://www.nikkei.com/article/DGXMZO56107550X20C20A2000000/" target="_blank">東大など　学生が学ぶべき「AIリテラシー」を定義</a></li>
   <li><a href="https://style.nikkei.com/article/DGXMZO47952800Q9A730C1000000" target="_blank">引く手あまたのデータサイエンティスト 学生は及び腰?</a>
     <ul>
-      <li><a href="https://www.mext.go.jp/a_menu/shotou/zyouhou/detail/1416756.htm">文部科学省 高等学校情報科「情報Ⅰ」教員研修用教材（本編）</a>{target=”_blnak”}</li>
-      <li><a href="https://www.mext.go.jp/component/a_menu/education/micro_detail/__icsFiles/afieldfile/2019/10/09/1416758_005.pdf" target="_blank">上サイト第3章コンピュータとプログラミング</a> Python でサンプルコードが書かれている。</li>
-      <li><a href="http://www.mext.go.jp/component/a_menu/education/micro_detail/__icsFiles/afieldfile/2019/05/15/1416758_006.pdf" target="_blank">上サイト第4章情報通信ネットワークとデータの活用</a> テキストマイニングで R with Mecab 
-<!--- [日本ディープラーニング協会 次回７月４日G検定、受験料半額での実施を決定](https://www.jdla.org/news/20200424001/){target="_blank"}--></li>
+      <li><a href="https://www.mext.go.jp/a_menu/shotou/zyouhou/detail/1416756.htm" target="_blnak">文部科学省 高等学校情報科「情報Ⅰ」教員研修用教材（本編）</a></li>
+      <li><a href="https://www.mext.go.jp/component/a_menu/education/micro_detail/__icsFiles/afieldfile/2019/10/09/1416758_005.pdf" target="_blank">上サイト第 3 章コンピュータとプログラミング</a> Python でサンプルコードが書かれている
+。</li>
+      <li><a href="https://www.mext.go.jp/content/20200722-mxt_jogai02-100013300_006.pdf" target="_blank">上サイト第 4 章情報通信ネットワークとデータの活用</a> テキストマイニングで R with Mecab</li>
     </ul>
   </li>
 </ul>
 
-<h2 id="ビデオ閲覧">ビデオ閲覧</h2>
-<h2 id="人工知能とは何か">人工知能とは何か</h2>
-<!--- [【AI研究者 浅川伸一先生①】浅川先生とは何者?｜資格スクエア大学・独学部 vol.357](https://www.youtube.com/watch?v=Ey01neBKFhQ)-->
-<ul>
-  <li><a href="https://www.youtube.com/watch?v=uIi9pA5oRZA" target="_blank">【AI研究者 浅川伸一先生②】AI＝人工知能の定義｜資格スクエア大学・独学部 vol.358</a></li>
-</ul>
+<h2 id="数学">数学</h2>
 
-<h2 id="人工知能の歴史-1">人工知能の歴史</h2>
-<ol>
-  <li>第 1 次，第 2 次 ブーム
-    <ul>
-      <li><a href="https://www.youtube.com/watch?v=3TYPKGKhT-A" target="_blank">【AI研究者 浅川伸一先生③】第1次・第2次AIブーム｜資格スクエア大学・独学部 vol.359)</a></li>
-    </ul>
-  </li>
-  <li>第 3 次ブーム
-    <ul>
-      <li><a href="https://www.youtube.com/watch?v=cofokoZJsA8" target="_blank">【AI研究者 浅川伸一先生④】現在の第3次AIブーム｜資格スクエア大学・独学部 vol.360</a></li>
-    </ul>
-  </li>
-  <li>AI 脅威論
-    <ul>
-      <li><a href="https://www.youtube.com/watch?v=H0d_OnOOomE" target="_blank">【AI研究者 浅川伸一先生⑤】AIは人類の脅威か?｜資格スクエア大学・独学部 vol.361</a></li>
-    </ul>
-  </li>
-  <li>現状
-    <ul>
-      <li><a href="https://www.youtube.com/watch?v=Cra4wIqYcsA" target="_blank">【AI研究者 浅川伸一先生⑥】日本におけるAI研究の現状｜資格スクエア大学・独学部 vol.362</a>
- <!--- [【AI研究者 浅川伸一先生⑦】ディープラーニング協会とは?｜資格スクエア大学・独学部 vol.363](https://www.youtube.com/watch?v=1i05qTGRMYI&t=2s)--></li>
-      <li><a href="https://www.youtube.com/watch?v=g0zoL--iuM4" target="_blank">【AI研究者 浅川伸一先生⑧】AIの将来を語る!｜資格スクエア大学・独学部 vol.364</a></li>
-    </ul>
-  </li>
-</ol>
+<p>数学というと，心理学徒にとっては，心理統計が真っ先に思い浮かぶでしょう。
+ですが，統計的検定のためだけに数学があるわけではなく，むしろ逆だと思っています。</p>
 
-<h1 id="ai-についての素朴な疑問">AI についての素朴な疑問？</h1>
+<p>ガリレイは，宇宙は数学の言葉で書かれていると言いました。以来，数学は神の摂理を知るための道具であり続けています。</p>
 
 <ol>
-  <li>機械学習とニューラルネットワーク違うの？</li>
-  <li>機械学習と人工知能は違うの？</li>
-  <li>ニューラルネットワークと人工知能は違うの？</li>
-  <li>機械学習とニューラルネットワークと人工知能は関係は？</li>
-  <li>ディープラーニングとニューラルネットワークは違うの？</li>
+  <li>1960 Wigner “Unreasonable Effectiveness of Mathmatics and Natural Sciences”</li>
+  <li>1967 Hamming “The Unreasonable Effectiveness of Mathematics”</li>
+  <li>2009 Norvig “The Unreasonable Effectiveness of Data”</li>
+  <li>2015 Karpathy “TheUnreasonable Effectivenessof RecurrentNeural Networks”</li>
+  <li>2016 Bangu “On The Unreasonable Effectiveness of Mathematics_in_the_Natural_Sciences”</li>
+  <li>2018 Westhuizen “The_Unreasonable_Effectiveness of the Forget Gate”</li>
+  <li>2021 Gao “The Unreasonable Effectiveness Of Neural Network Embeddings”</li>
 </ol>
 
-<h1 id="人工知能-ai-とは何か">人工知能 AI とは何か</h1>
-
+<p>心理学の歴史を考えると，</p>
 <ul>
-  <li>「人工知能の基礎」（小林 一郎）
-    <ul>
-      <li>人の知能，つまり，人が行なう知的作業は，推論，記憶，認識，理解，学習，創造といった現実世界に適応するための能力を指す．人工の「知能」とは，人の「知能」のある部分を機械に行わせることによって創られる．</li>
-    </ul>
-  </li>
-  <li>デジタル大辞泉 《artificial intelligence》コンピューターで，記憶・推論・判断・学習など，人間の知的機能を代行できるようにモデル化されたソフトウエア・システム．AI．</li>
+  <li>1950年代 の認知革命，から認知科学が生まれ，</li>
+  <li>1980年代 の脳画像技術の進歩に伴って，神経科学との接点が強調されるようになりました。</li>
+  <li>2000年代以降の データサイエンスの流行に伴って，データを持って語ることが多くなりました。</li>
+  <li>2014年 ディープラーニングによる画像認識技術が注目を浴びるようになりました。</li>
+  <li>このような背景から，心理学とAI，データサイエンスとの融合が数多く試みられるようになっています。</li>
+  <li>2019 年以降，ディープラーニングと神経科学と認知科学との三者関係を論じる風潮が増えてます。</li>
 </ul>
 
-<p>シャピロ (Shapiro, Stuart C., 1992) は次の3つの分野だと書いています。</p>
-
-<ol>
-  <li>計算論的心理学 Computational Psychology
- <strong>人間の知的活動を理解するために人間のように振る舞うコンピュータプログラムを作ること</strong></li>
-  <li>計算論的哲学 Computational Philosophy
- <strong>人間レベルの知的活動を計算論的に理解すること。計算論的理解=コンピュータ上に実装可能なモデル</strong></li>
-  <li>計算機科学 Advanced Computer Science
- <strong>コンピュータ科学の拡張，発展。現在のコンピュータはプログラムされたことしか実行できないが，人間はプログラムされていなくても勝手に振る舞う。</strong></li>
-</ol>
+<p>だが，これでニューウェルの疑問に答えられるのだろうか？
+だが，人工知能 は知的機能をコンピュータで作ろうとする構成論的研究。浅川にはむしろ人工知能研究者の方が，人間の心を真摯に向き合っているようにも見える。</p>
 
 <ul>
-  <li>Shapiro, Stuart C. (1992), “Artificial Intelligence”, in Stuart C. Shapiro (ed.)E, ncyclopedia of Artificial Intelligence, 2nd edition (New York: John Wiley &amp; Sons)</li>
+  <li>心理学，人工知能，神経科学</li>
 </ul>
 
-<h1 id="大枠の関連分野の関係">大枠の関連分野の関係</h1>
+<h2 id="はじめに">はじめに</h2>
 
-<!--* 人工知能，機械学習，ニューラルネットワーク，ディープラーニング，データサイエンス，統計学，-->
-
-<ol>
-  <li>人工知能</li>
-  <li>機械学習</li>
-  <li>ニューラルネットワーク</li>
-  <li>ディープラーニング</li>
-  <li>データサイエンス</li>
-  <li>統計学</li>
-  <li>心理学</li>
-</ol>
-
-<p><strong>各領域の関係は？</strong></p>
-
-<h1 id="時代背景">時代背景</h1>
+<p>ディープラーニング(という AI 技術) を心理学的に解釈するという科目名になっています。
+確かにディープラーニングとは，世間一般的には AI 技術であるという認識が一般には広まっています。
+ところが，内容を考えてみると，人間の行う知的活動をコンピュータで再現するという意味です。
+そのようにしてできたモデルを応用してみると，工学的な応用が可能であることから，大いに注目されました。</p>
 
 <ul>
-  <li>18世紀 第 1 次産業革命: <spaln style="color:Blue">蒸気機関，都市部に大規模工場が出現</spaln></li>
-  <li>20世紀初頭 第2次産業革命: <spaln style="color:Blue">電気，オートメーション化，自動車，飛行機，電車による移動手段の変化</spaln></li>
-  <li>20世紀後半 第3次産業革命: <spaln style="color:Blue">情報化，コンピュータ化，グローバル化</spaln></li>
-  <li>21世紀から 第4次産業革命: <spaln style="color:Blue">AI 人間の能力を越える機械</spaln></li>
+  <li>ドローン (<a href="https://gendai.ismedia.jp/articles/-/76635?page=5" target="_blank">兵士が機械に殺される…現代の戦争で使われる「軍事ドローン」の驚くべき実態</a>)</li>
+  <li>顔認証(<a href="https://japanese.engadget.com/huawei-tested-facialrecognition-uyghurs-065011752.html" target="_blank">ファーウェイ、ウイグル人を顔認識して警察に通報するテストへの関与を認める</a>)</li>
+  <li>グーグル翻訳(<a href="https://slator.com/machine-translation/does-googles-bert-matter-in-machine-translation/" target="_blank">Does Google’s BERT Matter in Machine Translation?</a>)</li>
+  <li>アルファ碁ゼロ(<a href="https://deepmind.com/blog/article/alphago-zero-starting-scratch" target="_blank">AlphaGo Zero: Starting from scratch</a>)，</li>
 </ul>
 
-<!--
-from [http://bootcamp.lif.univ-mrs.fr:8080/mainpage](http://bootcamp.lif.univ-mrs.fr:8080/mainpage)-->
-
-<center>
-<img src="/assets/2009Gray_4th_paradigm.svg" style="width:94%" /><br />
-Gray (2009) The 4th paradigm より
-</center>
-
-<h1 id="おおまかな歴史">おおまかな歴史</h1>
+<p>上記で使われている技法が心理学にどのように関連しているのかを探ります。</p>
 
 <ul>
-  <li>1952-1956: 人工知能の誕生 <!-- The birth of artificial intelligence --></li>
-  <li>1956–1974: 第一次 AI ブーム <!-- The golden years --></li>
-  <li>1974–1980: 第一次 AI の冬 <!-- The first AI winter--></li>
-  <li>1980–1987: 第二次 AI ブーム <!--のBoom --></li>
-  <li>1987–1993: 第二次 AI の冬 <!-- Bust: the second AI winter --></li>
-  <li>1993–2001: AI の進展</li>
-  <li>2000–現在: 第三次 AI ブーム 深層学習，ビッグデータ，汎用人工知能 <!--Deep learning, big data and artificial general intelligence: --></li>
-  <li>近未来: 第四次産業革命</li>
+  <li>上の進歩を支えているのが 人工ニューラルネットワーク (ANN) です。</li>
+  <li>この ANN は 神経細胞 (ニューロン) に似た ノード (ニューロンとか，シナプスとか，ユニットとか様々な呼び名がありますが取り敢えず同じものだと考えます）で構成された幾重もの層から構成されています。</li>
+  <li>入力層のノードは ニューロン間のシナプスのような動作を模した数学的演算を経て、中間層 (隠れ層) のノードへ信号が伝達されます。</li>
+  <li>中間層 (隠れ層) では 同様の演算操作を繰り返し，その結果を，出力層へと伝達します。</li>
+  <li>顔認識などの課題では，ｌ入力データは 顔画像の各画素の値を 白から黒までの 100 点満点で表した数字からなる行列で表現します。カラー画像であれば，色の三原色である，赤，緑，青，の画素値からなる行列で表現します。</li>
+  <li>データが入力されると 各層のノード（ニューロン，あるいは，シナプス，あるいは，ユニット）は入力値とその入力に付随する重み係数 (結合係数) 掛け合わせて 答えを計算します。</li>
+  <li>正しい答えを出すようにシステムを訓練するには この出力を 入力に対して出力が完全に一致した場合の出力と比較して， その差分を用いてノード間の重みを調整します。</li>
+  <li>この処理をより複雑にしたものが ディープニューラルネットワーク (深層学習 あるいは DNN) と呼ばれるモデルです。この場合のディープとは，中間層が複数個存在することを意味します。</li>
+  <li>Google の親会社である Alphabet が所有するロンドンの AI 研究会社 ディープマインド テクノロジー社 (DeepMind Technologies) は この種のシステムを使って 2015 年に 囲碁のプロの人間を破ったコンピュータを開発しました。 これは機械知能の勝利として広く歓迎されています。</li>
+  <li>ですが ANN は 脳がどのように機能するかの大まかなしか捉えていません。</li>
+  <li>例えば 上記 ディープマインド の アルファ碁では シナプス (神経細胞間の結合) を 行列としてモデル化しています。 ですが， 実際には 化学的および電気的活動を利用して信号を送信または終了し 隣接するシナプスとダイナミックなパターンで相互作用する複雑な生物学的機械の一部です。</li>
+  <li>この意味で，現在のディープラーニングモデルは おおよそ現実の脳の行う計算とは異なっています。神経細胞のスパイク発火と 我々の認識とを結びつけるには，なお大きな溝があるという意味です。ですが，これは大きな一歩でもあり，心の働き，我々の活動を理解する上で大きな一里塚 (マイルストーン)  にはなっています。 <!--"あなたは シナプスとは何なのか、その真実からは遠く離れています。シナプスの正体は、行列の中のひとつの数字にすぎません。
+スシローは言う。--></li>
 </ul>
 
-<h1 id="人工知能の歴史-2">人工知能の歴史</h1>
-
-<h2 id="キーワード">キーワード:</h2>
+<h1 id="授業概要">授業概要</h1>
 <ul>
-  <li>GOFAI, symbolic AI, Enbodiment, Computational approach, neuveu AI, ata science, web ontology</li>
-  <li>記号処理的AI Russel lNovig(2003)</li>
-  <li>計算論的モデル (Marr, 1980)</li>
+  <li>本授業では，毎回オンライン配信を行う予定です。</li>
+  <li>授業の Google meet URL は以下のとおりです: <a href="https://meet.google.com/oia-vgsd-cpb">https://meet.google.com/oia-vgsd-cpb</a>
+コンピュータ実習を予定しています。そのため，仮にオンラインで受講する際には，十分な回線速度を確保してください。</li>
+  <li>スマートフォンによる参加では不十分です。</li>
+  <li>必ず PC や Macintosh などでの履修をお願いします。</li>
+  <li>十分な授業参加環境が用意できない場合には，対面での参加を検討してください。</li>
 </ul>
 
-<h2 id="1940-1950-early-days">1940-1950: Early days</h2>
-<ul>
-  <li>1943: McCulloch &amp; Pitts: Boolean circuit model of brainme</li>
-  <li>1950: Turing’s “Computing Machinery and Intelligence”</li>
-</ul>
+<p>この授業は，2021年度後期開講予定の 07445/心理学特講IIIB と連係し，連続した内容となります。
+履修者は両授業を履修することで完結した理解に至るようになります。
+前期のこの授業では，主として画像認識，視覚情報処理に関する話題を取り上げます。
+深層学習で採用されている技法を知ることで，如何にして人間を上回る認識性能を示すようになったのか，そこから人間の認識機構への示唆はどのようなものが感がられるのかについて考えます。</p>
 
-<h2 id="195070-excitement-look-ma-no-hands">1950—70: Excitement: Look, Ma, no hands!</h2>
-<ul>
-  <li>1950s: Early AI programs, including Samuel’s checkers program, Newell &amp; Simon’s Logic Theorist, Gelernter’s Geometry Engine</li>
-  <li>1956: Dartmouth meeting: “Artificial Intelligence” adopted</li>
-  <li>1965: Robinson’s complete algorithm for logical reasoning</li>
-</ul>
-
-<h2 id="197090-knowledge-based-approaches">1970—90: Knowledge-based approaches</h2>
-<ul>
-  <li>1969—79: Early development of knowledge-based systems</li>
-  <li>1980—88: Expert systems industry booms</li>
-  <li>1988—93: Expert systems industry busts: “AI Winter”</li>
-</ul>
-
-<h2 id="1990-2012-statistical-approaches--subfield-expertise">1990— 2012: Statistical approaches + subfield expertise</h2>
-<ul>
-  <li>Resurgence of probability, focus on uncertainty</li>
-  <li>General increase in technical depth</li>
-  <li>Agents and learning systems… “AI Spring”?</li>
-</ul>
-
-<h2 id="2012--excitement-look-ma-no-hands-again">2012— : Excitement: Look, Ma, no hands again?</h2>
-<ul>
-  <li>Big data, big compute, neural networks</li>
-  <li>Some re-unification of sub-fields</li>
-  <li>AI used in many industries</li>
-</ul>
-
-<!-- 
-# Topics today
-
-1. モデルとはなにか What's model
-2. AI の歴史 History of AI
-3. 人工知能，ニューラルネットワーク，ディープラーニング，機械学習，データサイエンス，統計学，の違い
-Difference among AI, neural networks, deep learning, machine learning, data science, satistics.
--->
-
-<hr />
-
-<h1 id="winograd-barrier-1972-複雑さの障壁">Winograd barrier (1972) 複雑さの障壁</h1>
-
-<!--
-> A number of people have suggested to me that large programs like the SHRDLU program for understanding natural language represent a kind of dead end in AI programming. Complex interactions between its components give the program much of its power, but at the same time they present a formidable obstacle to understanding and extending it. In order to grasp any part, it is necessary to understand how it fits with other parts, presents a dense mass, with no easy footholds. Even having written the program, I find it near the limit of what I can keep in mind at once.
--->
-
-<p>Winograd (1972) 曰く:</p>
-
-<blockquote>
-  <p>自然言語を理解するための SHRDLU プログラムのような大きなプログラムは、AI プログラミングのある種の行き止まりであると言われている。プログラムは各要素間の複雑な相互作用に対処しなければならず、同時にそれらを理解し，拡張するには大きな障害がある。どんな部分でも把握するためには、それが他の部分とどのように適合し、密な質量を示し、容易な足場がないかを理解する必要がある。プログラムを書いたとしても、すぐに頭に入れておくことができる限界に近づいている。</p>
-</blockquote>
-
-<ul>
-  <li>記号処理的，ルールベースアプローチの限界</li>
-  <li>Sutton の <a href="http://www.incompleteideas.net/IncIdeas/BitterLesson.html">Bitter Lessons</a></li>
-</ul>
-
-<h2 id="産業">産業</h2>
-<!--状，産業競争力，世界の現状，(1 min.)-->
-<!-- **keywords** 内閣府の資料，-->
-
-<center>
-<img src="/assets/2013Frey_EmploymentFig02.png" style="width:84%" />&lt;/br&gt;
-Frey and Osborne (2013) より
-<!--![](assets/2013Frey_EmploymentFig01.png){#fig:2003Frey01 style="width:29%"}-->
-アメリカ合衆国で 47%の仕事が自動化により消失すると予測
-</center>
-
-<ul>
-  <li>Automation, Skills Use and Training, <strong>Ljubica Nedelkoska and Glenda Quintini</strong>, OECD working paper (2018)</li>
-</ul>
-
-<h2 id="ai-に奪われない職業-frey-and-osborne-2013-より">AI に奪われない職業 (Frey and Osborne, 2013 より)</h2>
-
-<p>順位  職業
-—- ———————————————————</p>
-<ol>
-  <li>レクリエーションセラピスト (Recreational Therapists)</li>
-  <li>機械、インストーラ、修繕士の第一線の監督者(First-Line Supervisors of Mechanics, Installers, and Repairers)</li>
-  <li>緊急管理ディレクター(Emergency Management Directors)</li>
-  <li>メンタルヘルスおよび薬物乱用ソーシャルワーカー(Mental Health and Substance Abuse Social Workers)</li>
-  <li>聴覚医(Audiologists)</li>
-  <li>職業療法士(Occupational Therapists)</li>
-  <li>正教会と補綴学者(Orthotists and Prosthetists)</li>
-  <li>医療従事者ソーシャルワーカー(Healthcare Social Workers)</li>
-  <li>口腔および顎顔面外科医(Oral and Maxillofacial Surgeons)</li>
-  <li>消防職員の第一次監督者(First-Line Supervisors of Fire Fighting and Prevention Workers)</li>
-</ol>
-
-<h2 id="ai-に奪われそうな職業-frey-and-osborne-2013-より">AI に奪われそうな職業 (Frey and Osborne, 2013 より)</h2>
-
-<p>順位  職業
-—- ———————————————————</p>
-<ol>
-  <li>新規口座担当者(New Accounts Clerks)</li>
-  <li>写真プロセス労働者および加工機械オペレータ(Photographic Process Workers and Processing Machine Operators)</li>
-  <li>税務申告者(Tax Preparers)</li>
-  <li>貨物および貨物代理店(Cargo and Freight Agents)</li>
-  <li>時計修理業者(Watch Repairers)</li>
-  <li>保険引受人(Insurance Underwriters)</li>
-  <li>数学技術者(Mathematical Technicians)</li>
-  <li>下水道、手(Sewers, Hand)</li>
-  <li>タイトル審査官、抽象化者、および調査員(Title Examiners, Abstractors, and Searchers)</li>
-  <li>テレマーケティング担当者(Telemarketers)</li>
-</ol>
-
-<!-- 
-# クイズ
-Frey and Osbone (2013) で自動化によって失われる仕事の未来予測に用いられた機械学習の主な手法はどれか？
-
-1. ロジスティック回帰
-2. ディープラーニング
-3. リカレントニューラルネットワーク
-4. 強化学習
--->
-<hr />
-
-<h1 id="危惧">危惧</h1>
-
-<ul>
-  <li><a href="https://www.kantei.go.jp/jp/singi/tougou-innovation/dai4/siryo1-1.pdf">ＡＩ戦略（有識者提案）及び人間中心のＡＩ社会原則（案）について</a>
-    <ul>
-      <li><a href="https://www.gov-online.go.jp/cam/s5/">ソサイエティ 5.0</a> これ自体がドイツの<a href="https://en.wikipedia.org/wiki/Industry_4.0">インダストリー 4.0</a> のパクリ</li>
-    </ul>
-    <center>
-<img src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Industry_4.0.png" style="width:74%" />
-</center>
-  </li>
-</ul>
-
-<h2 id="自動殺戮兵器">自動殺戮兵器</h2>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- [Ban Lethal Autonomous Weapons](https://autonomousweapons.org/)
-</code></pre></div></div>
-<center>
-    <iframe width="640" height="480" src="https://www.youtube.com/embed/LVwD-IZosJE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-  </center>
-
-<h2 id="アシロマ原理"><a href="https://futureoflife.org/ai-principles-japanese/">アシロマ原理</a></h2>
-
-<center>
-<iframe width="640" height="360" src="https://www.youtube.com/embed/E5KAb86U780" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-</center>
-
-<!--
-<center>
-    <iframe width="480" height="300" src="https://www.youtube.com/embed/LVwD-IZosJE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </center>
--->
-
-<!--
-<center>
-<video controls loop>
-  <source src="../assets/A Style-Based Generator Architecture for Generative Adversarial Networks.mp4" type="video/mp4" style="width:64%">
-</video>
-</center>
--->
-
-<center>
-<img src="/assets/Myths_1_Japanese.jpg" style="width:84%" /><br />
-&lt;https://futureoflife.org/background/aimyths/&gt;
-</center>
-
-
-
-  </div>
+<p>本授業では人工知能に用いられる技術の詳細を検討しながら，その心理学的意味を考えます。
+自動運転が可能となり，
+囲碁の世界チャンピオンを破り，自動翻訳の精度が向上し，スマートスピーカーが普及するなど AI 技術は毎日のように報道されています。
+これらの技術はニューラルネットワークモデルに基づいています。
+とりわけディープラーニング (深層学習) 技術は現在の人工知能の根幹をなしています。
+現在は第 3 次ニューラルネットワークブームと呼ばれますが 3 度のブーム とも心理学者が火付け役でした。
+2014年 から始まった現在のブームも心理系出身の研究者が先導しました。
+加えてディープマインドの共同創設者デミス・ハサビスは認知科学出です。
+このように人工知能と心理学とは同じことを別の側面から理解しようとしているとさえ言えます。
+このような背景から，心理学と最近の人工知能技術の相互関係を考察する授業になります。
+昨今の人工知能技術と心理学との関係から理解することで，最新の技術についての背景となる考え方を解説します。</p>
 
       </div>
     </main><div class="footer">
