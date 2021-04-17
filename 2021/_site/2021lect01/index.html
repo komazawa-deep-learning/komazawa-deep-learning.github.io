@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>第01回 | ディープラーニングの心理学的解釈</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="第01回" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="2020年度駒澤大学心理学特講IIIA" />
+<meta property="og:description" content="2020年度駒澤大学心理学特講IIIA" />
+<link rel="canonical" href="http://localhost:4004/2021lect01/" />
+<meta property="og:url" content="http://localhost:4004/2021lect01/" />
+<meta property="og:site_name" content="ディープラーニングの心理学的解釈" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="第01回" />
+<script type="application/ld+json">
+{"url":"http://localhost:4004/2021lect01/","headline":"第01回","description":"2020年度駒澤大学心理学特講IIIA","@type":"WebPage","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4004/feed.xml" title="ディープラーニングの心理学的解釈" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">ディープラーニングの心理学的解釈</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/2020-0215abstract/">0215abstract</a><a class="page-link" href="/2021info/">2021info</a><a class="page-link" href="/2021lect01/">第01回</a><a class="page-link" href="/2021lect02/">第02回</a><a class="page-link" href="/2021lect03/">第03回</a><a class="page-link" href="/2021lect04/">第04回</a><a class="page-link" href="/2021lect05/">第05回</a><a class="page-link" href="/2021lect06/">第06回</a><a class="page-link" href="/2021lect07/">第07回</a><a class="page-link" href="/2021lect08/">第08回</a><a class="page-link" href="/2021lect09/">第09回</a><a class="page-link" href="/2021lect11/">第11回</a><a class="page-link" href="/2021lect12/">第12回</a><a class="page-link" href="/2021lect13/">第13回</a><a class="page-link" href="/2021lect14/">第14回</a><a class="page-link" href="/"></a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <h1 id="ディープラーニング-deep-learning--と心理学との関連を探る">ディープラーニング deep learning  と心理学との関連を探る</h1>
+
+<p>本日のメニュー</p>
+
+<ol>
+  <li>授業情報，自己紹介 :およそ30分を予定</li>
+  <li>企業紹介，就職情報 :およそ30分</li>
+  <li>実習 :およそ30分</li>
+</ol>
+
+<h2 id="実習">実習</h2>
+<!--     - [実習 画像認識 Keras 版<img src="https://komazawa-deep-learning.github.io/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2021Kera_CNN_demo_with_wordnet_ja.ipynb) -->
+<!-- - [実習 Keras CNN](https://colab.research.google.com/github/ShinAsakawa/2019komazawa/blob/master/notebooks/nothotdog.ipynb){:target="_blank"} -->
+<ul>
+  <li><a href="https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2021Kermack_McKendrick_model.ipynb" target="_blank">実習 Kermack McKendric model<img src="https://komazawa-deep-learning.github.io/assets/colab_icon.svg" /></a></li>
+  <li><a href="https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2021_0416PyTorch_CNN_demo.ipynb" target="_blank">実習 PyTorch CNN <img src="https://komazawa-deep-learning.github.io/assets/colab_icon.svg" /></a>
+<!--- [実習](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2021Kermack_McKendrick_model.ipynb#scrollTo=oD497lby40Fp)--></li>
+</ul>
+
+<!-- - [実習 画像認識 Keras 版](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2021Kera_CNN_demo_with_wordnet_ja.ipynb) -->
+<!-- - [実習 Keras CNN](https://colab.research.google.com/github/ShinAsakawa/2019komazawa/blob/master/notebooks/nothotdog.ipynb){:target="_blank"} -->
+<!-- - [実習 PyTorch CNN](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2021_0416PyTorch_CNN_demo.ipynb){:target="_blank"} -->
+<!-- - [実習 Kermack McKendric model](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2021Kermack_McKendrick_model.ipynb){:target="_blank"}-->
+<!--- [実習](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2021Kermack_McKendrick_model.ipynb#scrollTo=oD497lby40Fp)-->
+
+<h2 id="基本情報">基本情報</h2>
+<ul>
+  <li>授業名: 心理学特講IIIA</li>
+  <li>担当者名: 浅川 伸一 (アサカワ シンイチ)</li>
+  <li>電子メールアドレス: <a href="mailto:educ0233@komazawa-u.ac.jp">educ0233@komazawa-u.ac.jp</a>, <a href="mailto:asakawa@cis.twcu.ac.jp">asakawa@cis.twcu.ac.jp</a></li>
+  <li>開講年度・期:　2021年 前期</li>
+  <li>開講曜日・時限: 金曜日 1 限 09:00-10:30</li>
+  <li>教室: 1-507</li>
+  <li>単位数　2</li>
+  <li>オフィスアワー: なし，メールや SNS を活用してください。駒澤大学の専任ではありません。
+非常勤講師ですので，金曜日の 1 時限だけしか駒澤大学には居ません。</li>
+</ul>
+
+<h2 id="授業情報">授業情報</h2>
+<ul>
+  <li>授業は，状況が許す限り，対面を基本とします。ただし，毎回オンライン配信を行う予定です。</li>
+  <li>授業の Google meet URL は以下のとおりです: <a href="https://meet.google.com/oia-vgsd-cpb" target="_blank">https://meet.google.com/oia-vgsd-cpb</a></li>
+  <li>コンピュータ実習を予定しています。そのため，仮にオンラインで受講する際には，十分な回線速度を確保してください。</li>
+  <li>スマートフォンによる参加では不十分です。自宅からオンライン参加の場合には有効に活用してください。</li>
+  <li>必ず PC や Macintosh などでの履修をお願いします。</li>
+  <li>十分な授業参加環境が用意できない場合には，対面での参加を検討してください。</li>
+  <li>ブラウザは Chrome を仮定します。実習に必要な Google Colab が Chrome の使用を前提としているためです。</li>
+  <li>データ共有の必要性から，駒澤大学のアカウントでログインしてください。</li>
+  <li><a href="https://colab.research.google.com/notebooks/intro.ipynb#recent=true" target="_blank">Google colab</a> を用います。</li>
+  <li>プログラミング言語としては Python を使用します。ただし <strong>プログラミングの知識や技術は不要</strong> です。</li>
+</ul>
+
+<h2 id="要求される予備知識">要求される予備知識</h2>
+<ul>
+  <li>高等学校卒業程度の日本語の読解力</li>
+  <li>高校一年生程度の英語，数学の知識</li>
+  <li>基礎的なインターネットリテラシー</li>
+  <li>数学は用います。ですが，問題を解くような課題は行いません。
+説明の都合上数式が出てきます。ですが，<strong>数式を理解することは求めません</strong>。</li>
+  <li>毎回，一回程度（場合によっては 2 回）のコンピュータ実習を行います。ただし，プログラミングの実習は，作成を要求することはありません。</li>
+</ul>
+
+<ol>
+  <li>数式を忌み嫌わずに用います。ですが，問題演習はしません。数式を理解することを求めていません。</li>
+  <li>コンピュータ実習を行います。ですが，プログラム作成演習は行いません。プログラミングの技量があることを求めません。</li>
+</ol>
+
+<h2 id="必要な道具機材">必要な道具，機材</h2>
+
+<ol>
+  <li>実習に使用する Web ブラウザは Chrome にしてください。マイクロソフト Edge やアップルの Safari では動作しない場合があります。</li>
+  <li>駒澤大学のアカウントでログインしてください。</li>
+  <li>オンラインで受講する際には，実習が伴いますので，配信画面を閲覧するデバイスと実習のためのデバイスとの両方を準備すると効率的です。
+例えば，配信画面はスマートフォンで閲覧し，実習は PC のブラウザ上で行うことを想定しています。</li>
+</ol>
+
+<h2 id="得られるメリット">得られるメリット</h2>
+
+<ul>
+  <li>就職に役立つ資格: JDLA G 検定, 学生受験者 （全受験者中 15％程度）もかなりあります。最年少では小中学生，最高齢は８０代。</li>
+</ul>
+
+<h2 id="自己紹介">自己紹介</h2>
+<center>
+<p align="left" style="width:88%">
+浅川伸一 博士(文学) 東京女子大学情報処理センター勤務。早稲田大学在学時はピアジェの発生論敵認識論に心酔する。
+卒業後エルマンネットの考案者ジェフ・エルマンに師事，薫陶を受ける。
+以来人間の高次認知機能をシミュレートすることを通して知的であるとはどういうことかを考えていると思っていた。
+著書に「Python で体験する深層学習」(2016) コロナ社。
+「深層学習教科書 ディープラーニング G検定（ジェネラリスト）公式テキスト」(2017) 共著，翔泳社。
+「ディープラーニング，ビッグデータ，機械学習あるいはその心理学」(2015) 新曜社。
+「ニューラルネットワークの数理的基礎」「脳損傷とニューラルネットワークモデル，神経心理学への適用例」いずれも守一雄他編「コネクショニストモデルと心理学」(2001)北大路書房など
+</p>
+<center>
+    <img src="https://komazawa-deep-learning.github.io/assets/Elman_portrait.jpg" width="66%" /><br />
+</center>
+</center>
+
+<h3 id="キーワード">キーワード</h3>
+
+<p>数学，人工知能 (AI)，ニューラルネットワーク，ディープラーニング，モデル論，構成論的研究，計算論，機械学習，生成モデルと認識モデル，</p>
+
+<p>注意 attention, 記憶 memory, 認識論 epistemology, 認知 cogntion, 視覚・聴覚情報処理 visual/audio information processing, 
+発達 development, 好奇心 curiosity, 生成モデルと識別モデル generative and descriminative models, 運動制御 motor control, 予測誤差  prediction error,</p>
+
+<h2 id="q1">Q.1</h2>
+
+<p>関心のある分野を教えて下さい。</p>
+
+<p>認知，感覚・知覚，神経心理学，学習，発達，臨床・障害，社会・文化</p>
+
+<h2 id="ai-人材不足という社会背景">AI 人材不足という社会背景</h2>
+
+<ul>
+  <li>AI 人材の不足。経済産業省の<a href="https://www.meti.go.jp/policy/it_policy/jinzai/houkokusyo.pdf">調査報告書</a> によれば，2030 年には最大で 79 万人の IT 人材不足との試算があります
+(同報告書 26 ページ)。</li>
+  <li>
+    <p>自分の強みを活かして，よりよい人生を送るための選択肢として，AI エンジニアという，あるいは AI 関連業界に身を置くという選択肢があります。
+− この授業の目的の一つは，そのような職業選択へ向けての道標を示すことも含まれます。</p>
+  </li>
+  <li><a href="https://www.nikkei.com/article/DGXMZO42932250W9A320C1SHA000/" target="_blank">政府、AI 人材年 25 万人育成へ　全大学生に初級教育</a></li>
+  <li><a href="https://www.nikkei.com/article/DGXMZO46386930R20C19A6EAF000/" target="_blank">AI 人材 25 万人目標達成へ 政府、統合イノベ戦略を閣議決定</a></li>
+  <li><a href="https://www.nikkei.com/article/DGXMZO56107550X20C20A2000000/" target="_blank">東大など　学生が学ぶべき「AIリテラシー」を定義</a></li>
+  <li><a href="https://style.nikkei.com/article/DGXMZO47952800Q9A730C1000000" target="_blank">引く手あまたのデータサイエンティスト 学生は及び腰?</a>
+    <ul>
+      <li><a href="https://www.mext.go.jp/a_menu/shotou/zyouhou/detail/1416756.htm" target="_blnak">文部科学省 高等学校情報科「情報Ⅰ」教員研修用教材（本編）</a></li>
+      <li><a href="https://www.mext.go.jp/component/a_menu/education/micro_detail/__icsFiles/afieldfile/2019/10/09/1416758_005.pdf" target="_blank">上サイト第 3 章コンピュータとプログラミング</a> Python でサンプルコードが書かれている
+。</li>
+      <li><a href="https://www.mext.go.jp/content/20200722-mxt_jogai02-100013300_006.pdf" target="_blank">上サイト第 4 章情報通信ネットワークとデータの活用</a> テキストマイニングで R with Mecab</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="歴史的背景">歴史的背景</h2>
+
+<p>心理学の歴史を考えると，</p>
+<ul>
+  <li>1950年代 の認知革命，から認知科学が生まれ，</li>
+  <li>1980年代 の脳画像技術の進歩に伴って，神経科学との接点が強調されるようになりました。</li>
+  <li>2000年代以降の データサイエンスの流行に伴って，データを持って語ることが多くなりました。</li>
+  <li>2014年 ディープラーニングによる画像認識技術が注目を浴びるようになりました。</li>
+  <li>このような背景から，心理学とAI，データサイエンスとの融合が数多く試みられるようになっています。</li>
+  <li>2019 年以降，ディープラーニングと神経科学と認知科学との三者関係を論じる風潮が増えてます。</li>
+</ul>
+
+<h2 id="関連用語">関連用語</h2>
+
+<ul>
+  <li>機械学習 Machine Learning</li>
+  <li>データサイエンス Data Science</li>
+  <li>AI</li>
+  <li>統計学 Statistics</li>
+  <li>数学
+    <ul>
+      <li>情報理論，通信理論</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="関連分野">関連分野</h1>
+
+<ul>
+  <li>心理学
+    <ul>
+      <li>知覚</li>
+      <li>精神物理学</li>
+      <li>認知心理学</li>
+      <li>神経心理学</li>
+      <li>学習</li>
+    </ul>
+  </li>
+  <li>認知科学</li>
+  <li>神経科学</li>
+  <li>精神医学</li>
+  <li>生物学</li>
+</ul>
+
+<p>だが，これでニューウェルの疑問に答えられるのだろうか？
+だが，人工知能 は知的機能をコンピュータで作ろうとする構成論的研究。浅川にはむしろ人工知能研究者の方が，人間の心を真摯に向き合っているようにも見える。</p>
+
+<ul>
+  <li>心理学，人工知能，神経科学</li>
+</ul>
+
+<h1 id="関連企業団体">関連企業，団体</h1>
+<ul>
+  <li><a href="https://exawizards.com/" target="_blank">エクサウィザーズ</a></li>
+  <li><a href="https://sight-visit.com/" target="_blank">サイトビジット</a></li>
+  <li><a href="https://gauss-ai.jp/" target="_blank">Gauss</a></li>
+  <li><a href="https://kuno-corp.com/company" target="_blank">KUNO</a></li>
+  <li><a href="https://avilen.co.jp/" target="_blank">AVILEN</a></li>
+  <li><a href="https://standard-dx.com/" target="_blank">スタンダード</a></li>
+  <li><a href="https://www.jdla.org/" target="_blank">日本ディープラーニング協会</a></li>
+</ul>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">ディープラーニングの心理学的解釈</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">ディープラーニングの心理学的解釈</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>2020年度駒澤大学心理学特講IIIA</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
