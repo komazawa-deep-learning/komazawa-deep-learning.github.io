@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>第02回 | ディープラーニングの心理学的解釈</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="第02回" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Deep learning for psychology 駒澤大学文学部2021年度開講 心理学特講IIIA,B" />
+<meta property="og:description" content="Deep learning for psychology 駒澤大学文学部2021年度開講 心理学特講IIIA,B" />
+<link rel="canonical" href="http://localhost:4000/2021/2021lect02.html" />
+<meta property="og:url" content="http://localhost:4000/2021/2021lect02.html" />
+<meta property="og:site_name" content="ディープラーニングの心理学的解釈" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/2021/2021lect02.html","headline":"第02回","description":"Deep learning for psychology 駒澤大学文学部2021年度開講 心理学特講IIIA,B","@type":"WebPage","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="ディープラーニングの心理学的解釈" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">ディープラーニングの心理学的解釈</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/2021/2021lect01.html">第01回</a><a class="page-link" href="/2021/2021lect02.html">第02回</a><a class="page-link" href="/2021/2021lect03.html">第03回</a><a class="page-link" href="/2021/2021lect04.html">第04回</a><a class="page-link" href="/2021/2021lect05.html">第05回</a><a class="page-link" href="/2021/2021lect06.html">第06回</a><a class="page-link" href="/2021/2021lect07.html">第07回</a><a class="page-link" href="/2021/2021lect08.html">第08回</a><a class="page-link" href="/2021/2021lect09.html">第09回</a><a class="page-link" href="/2021/2021lect10.html">第10回</a><a class="page-link" href="/2021/2021lect11.html">第11回</a><a class="page-link" href="/2021/2021lect12.html">第13回</a><a class="page-link" href="/2021/2021lect13.html">第14回</a><a class="page-link" href="/2021/">2021年度 駒澤大学心理学特講IIIa</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="home"><h1 class="page-heading">第02回</h1><h1 id="ディープラーニングの心理学的解釈-心理学特講iiia">ディープラーニングの心理学的解釈 (心理学特講IIIA)</h1>
+
+<div align="right">
+<a href="mailto:educ0233@komazawa-u.ac.jp">Shin Aasakawa</a>, all rights reserved.<br />
+Date: 17/Apr/2020<br />
+Appache 2.0 license<br />
+</div>
+
+<h2 id="はじめに">はじめに</h2>
+
+<p>ディープラーニング(という AI 技術) を心理学的に解釈するという科目名になっています。
+確かにディープラーニングとは，世間一般的には AI 技術であるという認識が一般には広まっています。
+ところが，内容を考えてみると，人間の行う知的活動をコンピュータで再現するという意味です。
+そのようにしてできたモデルを応用してみると，工学的な応用が可能であることから，大いに注目されました。</p>
+
+<ul>
+  <li>ドローン (<a href="https://gendai.ismedia.jp/articles/-/76635?page=5" target="_blank">兵士が機械に殺される…現代の戦争で使われる「軍事ドローン」の驚くべき実態</a>)</li>
+  <li>顔認証(<a href="https://japanese.engadget.com/huawei-tested-facialrecognition-uyghurs-065011752.html" target="_blank">ファーウェイ、ウイグル人を顔認識して警察に通報するテストへの関与を認める</a>)</li>
+  <li>グーグル翻訳(<a href="https://slator.com/machine-translation/does-googles-bert-matter-in-machine-translation/" target="_blank">Does Google’s BERT Matter in Machine Translation?</a>)</li>
+  <li>アルファ碁ゼロ(<a href="https://deepmind.com/blog/article/alphago-zero-starting-scratch" target="_blank">AlphaGo Zero: Starting from scratch</a>)，</li>
+</ul>
+
+<p>上記で使われている技法が心理学にどのように関連しているのかを探ります。</p>
+
+<ul>
+  <li>上の進歩を支えているのが 人工ニューラルネットワーク (ANN) です。</li>
+  <li>この ANN は 神経細胞 (ニューロン) に似た ノード (ニューロンとか，シナプスとか，ユニットとか様々な呼び名がありますが取り敢えず同じものだと考えます）で構成された幾重もの層から構成されています。</li>
+  <li>入力層のノードは ニューロン間のシナプスのような動作を模した数学的演算を経て、中間層 (隠れ層) のノードへ信号が伝達されます。</li>
+  <li>中間層 (隠れ層) では 同様の演算操作を繰り返し，その結果を，出力層へと伝達します。</li>
+  <li>顔認識などの課題では，ｌ入力データは 顔画像の各画素の値を 白から黒までの 100 点満点で表した数字からなる行列で表現します。カラー画像であれば，色の三原色である，赤，緑，青，の画素値からなる行列で表現します。</li>
+  <li>データが入力されると 各層のノード（ニューロン，あるいは，シナプス，あるいは，ユニット）は入力値とその入力に付随する重み係数 (結合係数) 掛け合わせて 答えを計算します。</li>
+  <li>正しい答えを出すようにシステムを訓練するには この出力を 入力に対して出力が完全に一致した場合の出力と比較して， その差分を用いてノード間の重みを調整します。</li>
+  <li>この処理をより複雑にしたものが ディープニューラルネットワーク (深層学習 あるいは DNN) と呼ばれるモデルです。この場合のディープとは，中間層が複数個存在することを意味します。</li>
+  <li>Google の親会社である Alphabet が所有するロンドンの AI 研究会社 ディープマインド テクノロジー社 (DeepMind Technologies) は この種のシステムを使って 2015 年に 囲碁のプロの人間を破ったコンピュータを開発しました。 これは機械知能の勝利として広く歓迎されています。</li>
+  <li>ですが ANN は 脳がどのように機能するかの大まかなしか捉えていません。</li>
+  <li>例えば 上記 ディープマインド の アルファ碁では シナプス (神経細胞間の結合) を 行列としてモデル化しています。 ですが， 実際には 化学的および電気的活動を利用して信号を送信または終了し 隣接するシナプスとダイナミックなパターンで相互作用する複雑な生物学的機械の一部です。</li>
+  <li>この意味で，現在のディープラーニングモデルは おおよそ現実の脳の行う計算とは異なっています。神経細胞のスパイク発火と 我々の認識とを結びつけるには，なお大きな溝があるという意味です。ですが，これは大きな一歩でもあり，心の働き，我々の活動を理解する上で大きな一里塚 (マイルストーン)  にはなっています。 <!--"あなたは シナプスとは何なのか、その真実からは遠く離れています。シナプスの正体は、行列の中のひとつの数字にすぎません。
+スシローは言う。--></li>
+</ul>
+
+<h2 id="数学">数学</h2>
+
+<p>数学というと，心理学徒にとっては，心理統計が真っ先に思い浮かぶでしょう。
+ですが，統計的検定のためだけに数学があるわけではなく，むしろ逆だと思っています。</p>
+
+<p>ガリレイは，宇宙は数学の言葉で書かれていると言いました。以来，数学は神の摂理を知るための道具であり続けています。</p>
+
+<ol>
+  <li>1960 Wigner “Unreasonable Effectiveness of Mathmatics and Natural Sciences”</li>
+  <li>1967 Hamming “The Unreasonable Effectiveness of Mathematics”</li>
+  <li>2009 Norvig “The Unreasonable Effectiveness of Data”</li>
+  <li>2015 Karpathy “TheUnreasonable Effectivenessof RecurrentNeural Networks”</li>
+  <li>2016 Bangu “On The Unreasonable Effectiveness of Mathematics_in_the_Natural_Sciences”</li>
+  <li>2018 Westhuizen “The_Unreasonable_Effectiveness of the Forget Gate”</li>
+  <li>2021 Gao “The Unreasonable Effectiveness Of Neural Network Embeddings”</li>
+</ol>
+
+<h3 id="ビデオ閲覧">ビデオ閲覧</h3>
+<h4 id="人工知能とは何か">人工知能とは何か</h4>
+<!--- [【AI研究者 浅川伸一先生①】浅川先生とは何者?｜資格スクエア大学・独学部 vol.357](https://www.youtube.com/watch?v=Ey01neBKFhQ)-->
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=uIi9pA5oRZA" target="_blank">【AI研究者 浅川伸一先生②】AI＝人工知能の定義｜資格スクエア大学・独学部 vol.358</a></li>
+</ul>
+
+<h4 id="人工知能の歴史">人工知能の歴史</h4>
+<ol>
+  <li>第 1 次，第 2 次 ブーム
+    <ul>
+      <li><a href="https://www.youtube.com/watch?v=3TYPKGKhT-A" target="_blank">【AI研究者 浅川伸一先生③】第1次・第2次AIブーム｜資格スクエア大学・独学部 vol.359)</a></li>
+    </ul>
+  </li>
+  <li>第 3 次ブーム
+    <ul>
+      <li><a href="https://www.youtube.com/watch?v=cofokoZJsA8" target="_blank">【AI研究者 浅川伸一先生④】現在の第3次AIブーム｜資格スクエア大学・独学部 vol.360</a></li>
+    </ul>
+  </li>
+  <li>AI 脅威論
+    <ul>
+      <li><a href="https://www.youtube.com/watch?v=H0d_OnOOomE" target="_blank">【AI研究者 浅川伸一先生⑤】AIは人類の脅威か?｜資格スクエア大学・独学部 vol.361</a></li>
+    </ul>
+  </li>
+  <li>現状
+    <ul>
+      <li><a href="https://www.youtube.com/watch?v=Cra4wIqYcsA" target="_blank">【AI研究者 浅川伸一先生⑥】日本におけるAI研究の現状｜資格スクエア大学・独学部 vol.362</a>
+ <!--- [【AI研究者 浅川伸一先生⑦】ディープラーニング協会とは?｜資格スクエア大学・独学部 vol.363](https://www.youtube.com/watch?v=1i05qTGRMYI&t=2s)--></li>
+      <li><a href="https://www.youtube.com/watch?v=g0zoL--iuM4" target="_blank">【AI研究者 浅川伸一先生⑧】AIの将来を語る!｜資格スクエア大学・独学部 vol.364</a></li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="人工知能とは何か-1">人工知能とは何か</h3>
+<!--- [【AI研究者 浅川伸一先生①】浅川先生とは何者?｜資格スクエア大学・独学部 vol.357](https://www.youtube.com/watch?v=Ey01neBKFhQ)-->
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=uIi9pA5oRZA" target="_blank">【AI研究者 浅川伸一先生②】AI＝人工知能の定義｜資格スクエア大学・独学部 vol.358</a></li>
+</ul>
+
+<h3 id="人工知能の歴史-1">人工知能の歴史</h3>
+<ol>
+  <li>第 1 次，第 2 次 ブーム <a href="https://www.youtube.com/watch?v=3TYPKGKhT-A" target="_blank">【AI研究者 浅川伸一先生③】第1次・第2次AIブーム｜資格スクエア大学・独学部 vol.359)</a></li>
+  <li>第 3 次ブーム  <a href="https://www.youtube.com/watch?v=cofokoZJsA8" target="_blank">【AI研究者 浅川伸一先生④】現在の第3次AIブーム｜資格スクエア大学・独学部 vol.360</a></li>
+  <li>AI 脅威論  <a href="https://www.youtube.com/watch?v=H0d_OnOOomE" target="_blank">【AI研究者 浅川伸一先生⑤】AIは人類の脅威か?｜資格スクエア大学・独学部 vol.361</a></li>
+  <li>現状  <a href="https://www.youtube.com/watch?v=Cra4wIqYcsA" target="_blank">【AI研究者 浅川伸一先生⑥】日本におけるAI研究の現状｜資格スクエア大学・独学部 vol.362</a>
+<!--- [【AI研究者 浅川伸一先生⑦】ディープラーニング協会とは?｜資格スクエア大学・独学部 vol.363](https://www.youtube.com/watch?v=1i05qTGRMYI&t=2s)-->
+    <ul>
+      <li><a href="https://www.youtube.com/watch?v=g0zoL--iuM4" target="_blank">【AI研究者 浅川伸一先生⑧】AIの将来を語る!｜資格スクエア大学・独学部 vol.364</a></li>
+    </ul>
+  </li>
+</ol>
+
+<h1 id="キーワード">キーワード</h1>
+
+<p>数学，人工知能 (AI)，ニューラルネットワーク，ディープラーニング，モデル論，構成論的研究，計算論，機械学習，生成モデルと認識モデル，</p>
+
+<p>注意 attention, 記憶 memory, 認識論 epistemology, 認知 cogntion, 視覚・聴覚情報処理 visual/audio information processing, 
+発達 development, 好奇心 curiosity, 生成モデルと識別モデル generative and descriminative models, 運動制御 motor control, 予測誤差  prediction error,</p>
+
+<p>心理学の歴史を考えると，</p>
+<ul>
+  <li>1950年代 の認知革命，から認知科学が生まれ，</li>
+  <li>1980年代 の脳画像技術の進歩に伴って，神経科学との接点が強調されるようになりました。</li>
+  <li>2000年代以降の データサイエンスの流行に伴って，データを持って語ることが多くなりました。</li>
+  <li>2014年 ディープラーニングによる画像認識技術が注目を浴びるようになりました。</li>
+  <li>このような背景から，心理学とAI，データサイエンスとの融合が数多く試みられるようになっています。</li>
+  <li>2019 年以降，ディープラーニングと神経科学と認知科学との三者関係を論じる風潮が増えてます。</li>
+</ul>
+
+<p>だが，これでニューウェルの疑問に答えられるのだろうか？
+だが，人工知能 は知的機能をコンピュータで作ろうとする構成論的研究。浅川にはむしろ人工知能研究者の方が，人間の心を真摯に向き合っているようにも見える。</p>
+
+<ul>
+  <li>心理学，人工知能，神経科学</li>
+</ul>
+
+<h2 id="q1">Q.1</h2>
+
+<p>関心のある分野を教えて下さい。</p>
+
+<p>認知，感覚・知覚，神経心理学，学習，発達，臨床・障害，社会・文化</p>
+
+<h1 id="関連用語">関連用語</h1>
+
+<ul>
+  <li>機械学習 Machine Learning</li>
+  <li>データサイエンス Data Science</li>
+  <li>AI</li>
+  <li>統計学 Statistics</li>
+  <li>数学
+    <ul>
+      <li>情報理論，通信理論</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="関連分野">関連分野</h1>
+
+<ul>
+  <li>心理学
+    <ul>
+      <li>知覚</li>
+      <li>精神物理学</li>
+      <li>認知心理学</li>
+      <li>神経心理学</li>
+      <li>学習</li>
+    </ul>
+  </li>
+  <li>認知科学</li>
+  <li>神経科学</li>
+  <li>精神医学</li>
+  <li>生物学</li>
+</ul>
+
+<h2 id="数学-1">数学</h2>
+
+<p>数学というと，心理学徒にとっては，心理統計が真っ先に思い浮かぶでしょう。
+ですが，統計的検定のためだけに数学があるわけではなく，むしろ逆だと思っています。</p>
+
+<p>ガリレイは，宇宙は数学の言葉で書かれていると言いました。以来，数学は神の摂理を知るための道具であり続けています。</p>
+
+<ol>
+  <li>1960 Wigner “Unreasonable Effectiveness of Mathmatics and Natural Sciences”</li>
+  <li>1967 Hamming “The Unreasonable Effectiveness of Mathematics”</li>
+  <li>2009 Norvig “The Unreasonable Effectiveness of Data”</li>
+  <li>2015 Karpathy “TheUnreasonable Effectivenessof RecurrentNeural Networks”</li>
+  <li>2016 Bangu “On The Unreasonable Effectiveness of Mathematics_in_the_Natural_Sciences”</li>
+  <li>2018 Westhuizen “The_Unreasonable_Effectiveness of the Forget Gate”</li>
+  <li>2021 Gao “The Unreasonable Effectiveness Of Neural Network Embeddings”</li>
+</ol>
+
+<h1 id="ai-についての素朴な疑問">AI についての素朴な疑問？</h1>
+
+<ol>
+  <li>機械学習とニューラルネットワーク違うの？</li>
+  <li>機械学習と人工知能は違うの？</li>
+  <li>ニューラルネットワークと人工知能は違うの？</li>
+  <li>機械学習とニューラルネットワークと人工知能は関係は？</li>
+  <li>ディープラーニングとニューラルネットワークは違うの？</li>
+</ol>
+
+<h1 id="機械学習データサイエンス統計学ニューラルネットワークディープラーニング">機械学習，データサイエンス，統計学，ニューラルネットワーク，ディープラーニング</h1>
+
+<p>多くの意味で、機械学習は、データサイエンスがより広い世界にその姿を現すための主要な手段です。機械学習は、データサイエンスの計算・アルゴリズムスキルとデータサイエンスの統計学的思考が融合したものであり、その結果、効果的な理論ではなく、効果的な計算を行うための推論やデータ探索のアプローチの集合体となっています。</p>
+
+<h2 id="機械学習とは何か">機械学習とは何か</h2>
+
+<!-- source: *This notebook contains an excerpt from the [Python Data Science Handbook](http://shop.oreilly.com/product/0636920034919.do) by Jake VanderPlas; the content is available [on GitHub](https://github.com/jakevdp/PythonDataScienceHandbook).*
+
+*The text is released under the [CC-BY-NC-ND license](https://creativecommons.org/licenses/by-nc-nd/3.0/us/legalcode), and code is released under the [MIT license](https://opensource.org/licenses/MIT). If you find this content useful, please consider supporting the work by [buying the book](http://shop.oreilly.com/product/0636920034919.do)!*
+-->
+
+<!-- 
+### Categories of Machine Learning
+
+At the most fundamental level, machine learning can be categorized into two main types: supervised learning and unsupervised learning.
+
+*Supervised learning* involves somehow modeling the relationship between measured features of data and some label associated with the data; once this model is determined, it can be used to apply labels to new, unknown data.
+This is further subdivided into *classification* tasks and *regression* tasks: in classification, the labels are discrete categories, while in regression, the labels are continuous quantities.
+We will see examples of both types of supervised learning in the following section.
+
+*Unsupervised learning* involves modeling the features of a dataset without reference to any label, and is often described as "letting the dataset speak for itself."
+These models include tasks such as *clustering* and *dimensionality reduction.*
+Clustering algorithms identify distinct groups of data, while dimensionality reduction algorithms search for more succinct representations of the data.
+We will see examples of both types of unsupervised learning in the following section.
+
+In addition, there are so-called *semi-supervised learning* methods, which falls somewhere between supervised learning and unsupervised learning.
+Semi-supervised learning methods are often useful when only incomplete labels are available.
+-->
+
+<h3 id="機械学習の分類">機械学習の分類</h3>
+
+<ul>
+  <li>
+    <p>機械学習は、基本的には「教師あり学習」と「教師なし学習」の2種類に大別されます。</p>
+  </li>
+  <li><strong>教師付き学習</strong> では、データの特徴量とラベルの関係を何らかの方法でモデル化し、そのモデルが決まれば、未知のデータにラベルを適用することができます。
+これはさらに、<strong>分類</strong> と <strong>回帰</strong> に分けられます。
+    <ul>
+      <li>分類では、ラベルは離散的なカテゴリであり、</li>
+      <li>回帰では、ラベルは連続的な量です。</li>
+    </ul>
+  </li>
+  <li><strong>教師なし学習</strong>（Unsupervised Learning）は、ラベルを参照せずにデータセットの特徴をモデル化するもので、”データセットに語らせる “と表現されることもあります。
+これらのモデルには、 <strong>クラスタリング</strong> や <strong>次元削減</strong> などのタスクが含まれます。
+    <ul>
+      <li>クラスタリングアルゴリズムは、データの異なるグループを識別し、次元削減アルゴリズムは、データのより簡潔な表現を探します。</li>
+      <li>クラスタリングアルゴリズムはデータのグループを識別し、次元削減アルゴリズムはデータをより簡潔に表現することを目指します。</li>
+    </ul>
+  </li>
+</ul>
+
+<p>さらに、教師付き学習と教師なし学習の中間に位置する、いわゆる<em>半教師付き学習</em>の手法もあります。
+半教師付き学習法は，不完全なラベルしか得られない場合に有効であることが多い．</p>
+
+<!-- 
+### Qualitative Examples of Machine Learning Applications
+
+To make these ideas more concrete, let's take a look at a few very simple examples of a machine learning task.
+These examples are meant to give an intuitive, non-quantitative overview of the types of machine learning tasks we will be looking at in this chapter.
+In later sections, we will go into more depth regarding the particular models and how they are used.
+For a preview of these more technical aspects, you can find the Python source that generates the following figures in the [Appendix: Figure Code](06.00-Figure-Code.ipynb).
+-->
+
+<h3 id="機械学習の応用例の定性的な例">機械学習の応用例の定性的な例</h3>
+
+<p>これらの考え方をより具体的にするために、機械学習タスクの非常に簡単な例をいくつか見てみましょう。
+これらの例は、本章で検討する機械学習のタスクの種類について、直感的かつ定量的でない概要を示すことを目的としています。
+後のセクションでは、特定のモデルとその使用方法について、より深く掘り下げていきます。
+これらのより技術的な側面のプレビューとして、以下の図を生成するPythonソースを<a href="06.00-Figure-Code.ipynb">付録：図のコード</a>で見ることができます。</p>
+
+<ul>
+  <li>機械学習は、人工知能のサブフィールドとして分類されることが多い。</li>
+  <li>だが、これは誤解を招くことが多い</li>
+  <li>
+    <p>機械学習の研究は、確かにこの分野の研究から生まれたものですが、機械学習の手法をデータサイエンスに応用する際には、機械学習を「データのモデルを構築するための手段」と考える方がわかりやすいでしょう。</p>
+  </li>
+  <li>機械学習とは、基本的にはデータを理解するための数学的モデルを構築することです。</li>
+  <li>“観察されたデータに適合させることができる「調整可能なパラメータ」をモデルに与えることで、プログラムがデータから「学習」していると考えることができます。</li>
+  <li>このようにして、プログラムはデータから「学習」していると考えることができるのです。</li>
+  <li>
+    <p>このような数学的なモデルに基づく「学習」が、人間の脳の「学習」にどの程度似ているのか、という哲学的な話は読者の皆さんにお任せしたいと思います。</p>
+  </li>
+  <li>機械学習の問題設定を理解することは、機械学習のツールを効果的に使用するために不可欠であるため、ここで説明するアプローチのタイプを大まかに分類することから始めます。</li>
+</ul>
+
+<h2 id="用語集">用語集</h2>
+<!-- ALGORITHM A set of step-by-step instructions. Computer algorithms can be simple (if it’s 3 p.m., send a reminder) or complex (identify pedestrians). -->
+<!--BACKPROPAGATION The way many neural nets learn.
+They find the difference between their output and the desired output, then adjust the calculations in reverse order of execution.-->
+<!--BLACK BOX A description of some deep learning systems. They take an input and provide an output, but the calculations that occur in between are not easy for humans to interpret.-->
+
+<!-- - DEEP LEARNING How a neural network with multiple layers becomes sensitive to progressively more abstract patterns. In parsing a photo, layers might respond first to edges, then paws, then dogs.
+- EXPERT SYSTEM A form of AI that attempts to replicate a human’s expertise in an area, such as medical diagnosis. It combines a knowledge base with a set of hand-coded
+rules for applying that knowledge. Machine-learning techniques are increasingly replacing hand coding.
+- GENERATIVE ADVERSARIAL NETWORKS A pair of jointly trained neural networks that generates realistic new data and improves through competition. One net creates new examples (fake Picassos, say) as the other tries to detect the fakes. 
+- MACHINE LEARNING The use of algorithms that find patterns in data without explicit instruction. A system might learn how to associate features of inputs such as images with outputs such as labels.
+- NATURAL LANGUAGE PROCESSING A computer’s attempt to “understand” spoken or written language. It must parse vocabulary, grammar, and intent, and allow for variation in language use. The process often involves machine learning.
+- NEURAL NETWORK A highly abstracted and simplified model of the human brain used in machine learning. A set of units receives pieces of an input (pixels in a photo, say), performs simple computations on them, and passes them on to the next layer of units. The final layer represents the answer.
+- NEUROMORPHIC CHIP A computer chip designed to act as a neural network. It can be analog, digital, or a combination.
+- PERCEPTRON An early type of neural network, developed in the 1950s. It received great hype but was then shown to have limitations, suppressing interest in neural nets for years.
+- REINFORCEMENT LEARNING A type of machine learning in which the algorithm learns by acting toward an abstract goal, such as “earn a high video game score” or “manage a factory efficiently.” During training, each effort is evaluated based on its contribution toward the goal.
+- STRONG AI AI that is as smart and well-rounded as a human. Some say it’s impossible. Current AI is weak, or narrow. It can play chess or drive but not both, and lacks common sense. 
+- SUPERVISED LEARNING A type of machine learning in which the algorithm compares its outputs with the correct outputs during training. In unsupervised learning, the algorithm merely looks for patterns in a set of data.
+- TENSORFLOW A collection of software tools developed by Google for use in deep learning. It is open source, meaning anyone can use or improve it. Similar projects include Torch and Theano.
+- TRANSFER LEARNING A technique in machine learning in which an algorithm learns to perform one task, such as recognizing cars, and builds on that knowledge when learning a different but related task, such as recognizing cats.
+- TURING TEST A test of AI’s ability to pass as human. In Alan Turing’s original conception, an AI would be judged by its ability to converse through written text.
+-->
+<ul>
+  <li><strong>アルゴリズム</strong>: 計算手順，主にコンピュータに演算や操作を指示する目的で用いられる手順，算法。中世アラビアの算術家，アル フワーリズミ に因む。</li>
+  <li><strong>ブラックボックス</strong> : ディープラーニングの内部で何がどのように処理されているのかが不明であったり，解釈が難しいことを指す。</li>
+  <li><strong>深層学習 あるいは ディープラーニング</strong>: 複数の層で構成されたニューラルネットワークが、より抽象的なパターンに次第に敏感になっていく様子。写真を解析する場合、レイヤーはまずエッジに反応し、次に前足、そして犬に反応する。</li>
+  <li><strong>誤差逆伝播法 あるいは バックプロパゲーション</strong>: ニューラルネットワークを学習させる時に用いられる手法の一つ。入力信号は入力層から出力層へ向かって伝播されるのに対して，学習時の誤差信号は逆に，出力層から入力層へ向かって伝播する。</li>
+  <li><strong>敵対的生成ネットワーク</strong>: データを生成し、 競争を通じて改善する、共同で訓練されたニューラルネットワーク対のこと。 一方のニューラルネットワークが新しい例（例えば、偽のピカソ）を作成し、もう一方のニューラルネットワークが偽物の検出を試みる。</li>
+  <li><strong>機械学習 Machine Learning</strong>: 明示的な指示なしにデータのパターンを見つけるアルゴリズムの使用。画像などの入力の特徴をラベルなどの出力に関連付ける方法をシステムが学習することがある。</li>
+  <li><strong>自然言語処理 NLP</strong>: コンピュータが話し言葉や書き言葉を「理解」しようとすること。語彙、文法、意図を解析し、言語使用のバリエーションを許容する必要がある。このプロセスには、多くの場合、機械学習が含まれる。</li>
+  <li><strong>ニューラルネットワーク Neural Networks</strong>: 人間の脳を高度に抽象化・簡略化したモデル。一連のユニットは、入力の断片（写真のピクセルなど）を受け取り、それに対して簡単な計算を行い、次の層のユニットに渡す。最後の層は答えを表す。</li>
+  <li><strong>パーセプトロン Perceptron</strong>:  1950 年代に開発された初期のニューラルネットワーク。第一次ニューロブーム (AI ブーム) に開発され、大きな反響を呼んだ。後に、限界があることが明らかになった。 このため、ニューラルネットへの関心は数年間に渡って低迷した。</li>
+  <li><strong>強化学習 Reinforcemnt Learning</strong>: 心理学の強化学習とも関連するが，むしろ ゲーム AI あるいは経済学 などとの関連が深い。 「ゲームのハイスコアを出す」「工場を効率的に管理する」など、抽象的な目標に向かって行動することでアルゴリズムが学習する。学習の際には、目標に対する貢献度に応じて各行動が評価される。</li>
+  <li><strong>強い AI</strong>: 人間のように賢く、豊かな心を持ったAI。それは不可能だと言われています。現在の AI は 弱い AI あるいは 狭い AI と呼ばれる。チェスや車の運転はできても両方はできないし、常識もない。</li>
+  <li><strong>教師あり学習 Supervised learning</strong>: 学習時にアルゴリズムの出力を正しい出力と比較するもの。教師なし学習では、アルゴリズムは単に一連のデータのパターンを探すだけである。</li>
+  <li><strong>転移学習 Transer Learning</strong>: アルゴリズムが自動車の認識などのあるタスクの実行を学習し、その知識を基に猫の認識などの関連する別のタスクを学習すること。</li>
+  <li><strong>チューリングテスト Turing test</strong>: AIが人間として通用するかどうかのテスト。アラン・チューリングの当初の構想では、AI は文字による会話ができるかどうかで判断された。</li>
+</ul>
+
+<h1 id="機械学習と心理統計学の違い">機械学習と心理統計学の違い</h1>
+
+<p>仮説検定とパラメータチューニングの差異は，
+母集団の相違に期すのか，それとも選択しているモデルによるものなのか。
+心理統計では，データを説明する努力よりも，母集団の相違，すなわち，帰無仮説が棄却できるか採択されるかに興味がある。
+ところが，帰無仮説が正しいかどうかは，選択する統計モデルに依存する。
+持ちた統計モデルの精度が正しいのかどうかを問題にすることは少ない。
+だが，用いるモデルに依存して推論結果が変化するかも知れない。
+そうするとモデルの優劣が問題になるであろう。</p>
+
+<p>一方で，機械学習では，心理統計の母集団に相当する概念が，汎化性能である。
+所与のデータにだけ当てはまるモデルではなく，未知のデータにたいして性能の高いモデルが選択される。
+未知のデータ，未学習のデータに対する性能と母集団の差異を，一概に比較することは難しいが，
+予測精度を高くすることが，現実には用いられる実用性が高い。
+応用が可能で，実学として世の中の役に立つ成果を生み出すことができる。</p>
+
+<p>すなわち <strong>生殺与奪に権</strong> を自分に，就職に役立つ形でできるだろう。</p>
+
+<!--
+<div>
+<video style="width:84%" src='/assets/daemon_slayers_episode1.m4v' controls >
+</div>
+-->
+
+<p>一方で，心理統計で用いられる母集団に対する信頼性は，しばしば疑問が呈されている。
+アメリカ統計学会(ASA) では $p$ 値 を用いることに警告を発する宣言を出している。</p>
+
+<ul>
+  <li>$p$ 値はデータがある特定の統計モデルに適合していない度合いを示している</li>
+  <li>$p$ 値は研究している仮説が正しいことを測定しているわけではなく，データが偶然に生成された確率を示すものである</li>
+  <li>科学の結論，ビジネスや政策の決定は $p$ 値が特定のしいき値を越えたことだけに基いて行われるべきではない</li>
+  <li>適切は推論には完全な報告と透明性が必要である</li>
+  <li>ある特定の $p$ 値，すなわち統計的有意性は，効果量や結果の重要性を測定していない</li>
+  <li>$p$ 値それ自体では，ある特定のモデルや仮説に関する適切な証拠に関する測度を提供していない</li>
+</ul>
+
+<p>出典: <a href="https://amstat.tandfonline.com/doi/pdf/10.1080/00031305.2016.1154108" target="_blank">ASA Statement on Statistical Significance and P-values</a></p>
+
+<ul>
+  <li>
+    <p>佐藤 隆夫先生の<a href="https://youtu.be/1ha6-rafYLY">ビデオ</a> <a href="https://psych.or.jp/interest/lecture_hs/" target="_blank">高校生のための心理学講座 YouTube版</a></p>
+
+    <ul>
+      <li>心とはなにか，を問うことを諦めて，構成要素を機能の役割を調べることにした，らしい。</li>
+      <li>機能をまとめあげれば，心は分かるのではないか？と心理学者は考えた，らしい。</li>
+    </ul>
+  </li>
+</ul>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">ディープラーニングの心理学的解釈</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">ディープラーニングの心理学的解釈</li><li><a class="u-email" href="mailto:educ0233@komazawa-u.ac.jp">educ0233@komazawa-u.ac.jp</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Deep learning for psychology  駒澤大学文学部2021年度開講 心理学特講IIIA,B </p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

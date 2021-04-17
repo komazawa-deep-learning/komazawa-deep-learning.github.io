@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>第07回 | ディープラーニングの心理学的解釈</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="第07回" />
+<meta name="author" content="浅川 伸一" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Deep learning for psychology 駒澤大学文学部2021年度開講 心理学特講IIIA,B" />
+<meta property="og:description" content="Deep learning for psychology 駒澤大学文学部2021年度開講 心理学特講IIIA,B" />
+<link rel="canonical" href="http://localhost:4000/2021/2021lect07.html" />
+<meta property="og:url" content="http://localhost:4000/2021/2021lect07.html" />
+<meta property="og:site_name" content="ディープラーニングの心理学的解釈" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"浅川 伸一"},"url":"http://localhost:4000/2021/2021lect07.html","headline":"第07回","description":"Deep learning for psychology 駒澤大学文学部2021年度開講 心理学特講IIIA,B","@type":"WebPage","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="ディープラーニングの心理学的解釈" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">ディープラーニングの心理学的解釈</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/2021/2021lect01.html">第01回</a><a class="page-link" href="/2021/2021lect02.html">第02回</a><a class="page-link" href="/2021/2021lect03.html">第03回</a><a class="page-link" href="/2021/2021lect04.html">第04回</a><a class="page-link" href="/2021/2021lect05.html">第05回</a><a class="page-link" href="/2021/2021lect06.html">第06回</a><a class="page-link" href="/2021/2021lect07.html">第07回</a><a class="page-link" href="/2021/2021lect08.html">第08回</a><a class="page-link" href="/2021/2021lect09.html">第09回</a><a class="page-link" href="/2021/2021lect10.html">第10回</a><a class="page-link" href="/2021/2021lect11.html">第11回</a><a class="page-link" href="/2021/2021lect12.html">第13回</a><a class="page-link" href="/2021/2021lect13.html">第14回</a><a class="page-link" href="/2021/">2021年度 駒澤大学心理学特講IIIa</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="home"><h1 class="page-heading">第07回</h1><h1 id="ディープラーニングの心理学的解釈-心理学特講iiia">ディープラーニングの心理学的解釈 (心理学特講IIIA)</h1>
+
+<div align="right">
+<a href="mailto:educ0233@komazawa-u.ac.jp">Shin Aasakawa</a>, all rights reserved.<br />
+Date: 17/Apr/2020<br />
+Appache 2.0 license<br />
+</div>
+
+<!-- # [ディープラーニングの心理学的解釈 (心理学特講IIIA)](https://komazawa-deep-learning.github.io/)
+ -->
+<div align="right">
+<a href="mailto:educ0233@komazawa-u.ac.jp">Shin Aasakawa</a>, all rights reserved.<br />
+Date: XX/XX/2020<br />
+Appache 2.0 license<br />
+</div>
+
+<p>$\ldots$ 工事中 $\ldots$</p>
+
+<h1 id="高精度化高速化への努力">高精度化，高速化への努力</h1>
+
+<ul>
+  <li>確率的勾配降下法，オンライン学習，バッチ学習</li>
+  <li>データ拡張</li>
+  <li>正則化</li>
+  <li>ドロップアウト</li>
+  <li>非線形活性化関数</li>
+  <li>最適化手法</li>
+</ul>
+
+<hr />
+
+<h2 id="用語の整理">用語の整理</h2>
+
+<ul>
+  <li>SGD 確率的勾配降下法 stochastic gradient descent method
+    <ul>
+      <li>勾配消失問題 gradient decent problem</li>
+      <li>責任割当問題 credit assignment problem</li>
+    </ul>
+  </li>
+  <li>非線形変換 non lineaar transformation
+    <ul>
+      <li>ReLU 整流線形ユニット Recutified Linear Unit</li>
+      <li>ソフトマックス関数 softmax function</li>
+      <li>交差エントロピー cross entropy</li>
+    </ul>
+  </li>
+  <li>オーバーフィッティング 過学習 overfitting の回避法
+    <ul>
+      <li>正則化 regularization</li>
+      <li>ドロップアウト dropout</li>
+    </ul>
+  </li>
+  <li>データ拡張 data augumentation</li>
+  <li>penultimate layer</li>
+  <li>{バッチ, 層, 重み} 正規化</li>
+  <li>one algorithm hypothesis</li>
+</ul>
+
+<hr />
+<h2 id="tensorflow-hub"><a href="https://www.tensorflow.org/hub" target="_blank">TensorFlow HUB</a></h2>
+
+<ul>
+  <li>ドロップアウト，データ拡張，各種正規化: cnn.md</li>
+  <li>有名なモデル LeNet，Alex Net，Inception，VGG，ResNet</li>
+  <li>R-CNN，ハイウェイネット，YOLO，SSD</li>
+  <li>セマンティックセグメンテーション</li>
+  <li>転移学習，事前学習，ファインチューニング</li>
+  <li>GAN</li>
+</ul>
+
+<h3 id="インセプション-inception残渣ネット-resnet領域-r-cnn-regional-convolutional-neural-networks">インセプション Inception，残渣ネット ResNet，領域 R-CNN (Regional Convolutional Neural Networks)</h3>
+<ul>
+  <li>what and where routes</li>
+  <li>心理学的対応物(？)
+    <ul>
+      <li>Cadieu (2014) Deep Neural Networks Rival the Representation of Primate IT Cortex for Core Visual Object Recognition</li>
+      <li>Nasr, Viswanathan, Nieder (2019) Number detectors spontaneously emerge in a deep neural network designed for visual object recognition</li>
+      <li>Marcus (2018) Deep Learning A Critical Appraisal</li>
+    </ul>
+  </li>
+  <li>転移学習</li>
+</ul>
+
+<h3 id="notebooks">Notebooks</h3>
+
+<ul>
+  <li><a href="https://github.com/tensorflow/hub/blob/master/examples/colab/text_classification_with_tf_hub_on_kaggle.ipynb">colab/text_classification_with_tf_hub_on_kaggle.ipynb</a>
+Shows how to solve a problem on Kaggle with TF-Hub.</li>
+  <li><a href="https://github.com/tensorflow/hub/blob/master/examples/colab/semantic_similarity_with_tf_hub_universal_encoder.ipynb">colab/semantic_similarity_with_tf_hub_universal_encoder.ipynb</a>
+Explores text semantic similarity with the <a href="https://tfhub.dev/google/universal-sentence-encoder/2">Universal Encoder Module</a>.</li>
+  <li><a href="https://github.com/tensorflow/hub/blob/master/examples/colab/tf_hub_generative_image_module.ipynb">colab/tf_hub_generative_image_module.ipynb</a>
+Explores a generative image module.</li>
+  <li><a href="https://github.com/tensorflow/hub/blob/master/examples/colab/action_recognition_with_tf_hub.ipynb">colab/action_recognition_with_tf_hub.ipynb</a>
+Explores action recognition from video.</li>
+  <li><a href="https://github.com/tensorflow/hub/blob/master/examples/colab/tf_hub_delf_module.ipynb">colab/tf_hub_delf_module.ipynb</a>
+Exemplifies use of the <a href="https://tfhub.dev/google/delf/1">DELF Module</a> for landmark recognition and matching.</li>
+  <li><a href="https://github.com/tensorflow/hub/blob/master/examples/colab/object_detection.ipynb">colab/object_detection.ipynb</a> 
+Explores object detection with the use of the  <a href="https://github.com/tensorflow/hub/blob/master/examples/colab/object_detection.ipynb">Faster R-CNN module trained on Open Images v4</a></li>
+</ul>
+
+<!--
+<center>
+<img src='https://cdn-images-1.medium.com/max/1280/1*sS_WZM4GLS88XlnDLKcZ-g.png' style='width:94%'><br>
+from [A guide to Face Detection in Python](https://towardsdatascience.com/a-guide-to-face-detection-in-python-3eab0f6b9fc1)
+</center>
+
+-->
+
+<ul>
+  <li>
+    <p><a href="https://towardsdatascience.com/wtf-is-image-classification-8e78a8235acb">The Complete Beginner’s Guide to Deep Learning: Convolutional Neural Networks and Image Classification</a>, Anne Bonner Feb. 02</p>
+  </li>
+  <li>畳込みニューラルネットワーク (Convlutional Neural Networks:CNN) とは画像認識におけるゲームチェンジャー(以後，画像認識，ビデオ分類，自動運転，ドローン，ゲームなどへの応用多数)</li>
+  <li><a href="http://image-net.org/challenges/LSVRC/">イメージネット画像コンテスト</a>では，分類 (classification) 課題と位置 (locallization) 課題とからなる。</li>
+  <li>コンテストは 2010 年から Li Fei-Fei さん中心となって <a href="https://www.mturk.com/">AMT</a> で画像のアノテーションを行って 画像を2012 年の優勝チームが CNN を使った。通称<a href="https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf">アレックスネット</a></li>
+  <li><a href="http://cs231n.stanford.edu/index.html">スタンフォード大学の授業 CS231n: Convolutional Neural Networks for Visual Recognition</a>. スライド](http://cs231n.stanford.edu/slides/2019/cs231n_2019_lecture05.pdf)</li>
+</ul>
+
+<h1 id="さらなる情報">さらなる情報</h1>
+
+<ul>
+  <li>Math? <a href="https://web.stanford.edu/class/cs231a/lectures/intro_cnn.pdf">Introduction to Convolutional Neural Networks</a> by Jianxin Wu</li>
+  <li>C.-C. Jay Kuo <a href="https://arxiv.org/abs/1609.04112">Understanding Convolutional Neural Networks With a Mathematical Model</a>.</li>
+  <li><a href="https://towardsdatascience.com/simply-deep-learning-an-effortless-introduction-45591a1c4abb">the absolute basics of activation functions, you can find that here</a></li>
+  <li>[Artificial neural networks? <a href="https://towardsdatascience.com/simply-deep-learning-an-effortless-introduction-45591a1c4abb">You can learn about them here</a></li>
+</ul>
+
+<h2 id="正規化正則化標準化白色化二重中心化">正規化，正則化，標準化，白色化，二重中心化</h2>
+
+<ul>
+  <li>
+    <p>白色化については平井有三先生のパターン認識が参考文献で良いかな</p>
+  </li>
+  <li>
+    <p><a href="https://maristie.com/blog/differences-between-normalization-standardization-and-regularization/">Differences between normalization, standardization and regularization</a></p>
+  </li>
+</ul>
+
+<hr />
+
+<center>
+<img src="https://komazawa-deep-learning.github.io/assets/2014Imgur_Saddle_point.gif" style="width:74%" /><br />
+<img src="https://komazawa-deep-learning.github.io/assets/2014Imgur_Beales_function.gif" style="width:74%" /><br />
+<img src="https://komazawa-deep-learning.github.io/assets/2014Imgur_Long_Valley.gif" style="width:74%" /><br />
+</center>
+
+<h4 id="relu-layer">ReLU layer</h4>
+<p>The <strong>ReLU</strong> (rectified linear unit) layer is another step to our convolution layer. 
+You’re applying an activation function onto your feature maps to increase non-linearity in the network. 
+This is because images themselves are highly non-linear! 
+It removes negative values from an activation map by setting them to zero.</p>
+
+<p>Convolution is a linear operation with things like element wise matrix
+multiplication and addition. 
+The real-world data we want our CNN to learn will be non-linear. 
+We can account for that with an operation like ReLU. 
+You can use other operations like tanh or sigmoid. ReLU, however, is a popular choice because it can train the network faster without any major penalty to generalization accuracy.</p>
+
+<p>Want to dig deeper? Try Kaiming He, et al. <a href="https://arxiv.org/abs/1502.01852">Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification</a>.</p>
+
+<p>If you need a little more info about <a href="https://towardsdatascience.com/simply-deep-learning-an-effortless-introduction-45591a1c4abb">the absolute basics of activation functions, you can find that here</a>!</p>
+
+<p>Here’s how our little buddy is looking after a ReLU activation function
+turns all of the negative pixel values black</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">viz_layer</span><span class="p">(</span><span class="n">activated_layer</span><span class="p">)</span>
+</code></pre></div></div>
+
+<center>
+<img src="https://komazawa-deep-learning.github.io/assets/output2.jpg" style="width:84%" />
+</center>
+
+<h4 id="pooling">Pooling</h4>
+
+<p>The last thing you want is for your network to look for one specific feature in an exact shade in an exact location. 
+That’s useless for a good CNN! 
+You want images that are flipped, rotated, squashed, and so on. 
+You want lots of pictures of the same thing so that your network can recognize an object (say, a leopard) in all the images. No matter what the size or location. 
+No matter what the lighting or the number of spots,or whether that leopard is fast asleep or crushing prey. 
+You want <strong>spatial variance</strong>! You want flexibility. 
+That’s what pooling is all about.</p>
+
+<p>Pooling progressively reduces the size of the input representation. 
+It makes it possible to detect objects in an image no matter where they’re located. 
+Pooling helps to reduce the number of required parameters and the amount of computation required. 
+It also helps control <strong>overfitting</strong>.</p>
+
+<p>Overfitting can be kind of like when you memorize super specific details before a test without understanding the information. 
+When you memorize details, you can do a great job with your flashcards at home.
+You’ll fail a real test, though, if you’re presented with new information.</p>
+
+<p>(Another example: if all of the dogs in your training data have spots and dark eyes, your network will believe that for an image to be classified as a dog, it must have spots and dark eyes. 
+If you test your data with that same training data, it will do an amazing job of
+classifying dogs correctly! But if your outputs are only “dog” and “cat,” and your network is presented with new images containing, say, a Rottweiler and a Husky, it will probably wind up classifying both the Rottweiler and the Husky as cats. You can see the problem!)</p>
+
+<p>Without variance, your network will be useless with images that don’t exactly match the training data. 
+<strong>Always, always, always keep your training and testing data separate</strong>! 
+If you test with the data you trained on, your network has the information memorized! 
+It will do a terrible job when it’s introduced to any new data.</p>
+
+<h4 id="overfitting-is-not-cool">Overfitting is not cool.</h4>
+<p>So for this step, you take the <strong>feature map</strong>, apply a <strong>pooling layer</strong>, and the result is the <strong>pooled feature map</strong>.</p>
+
+<p>The most common example of pooling is <strong>max pooling</strong>. 
+In max pooling, the input image is partitioned into a set of areas that don’t overlap. 
+The outputs of each area are the maximum value in each area. 
+This makes a smaller size with fewer parameters.</p>
+
+<p>Max pooling is all about grabbing the maximum value at each spot in the image. 
+This gets rid of 75% of the information that is not the feature. 
+By taking the maximum value of the pixels, you’re accounting for distortion. 
+If the feature rotates a little to the left or right or whatever, the pooled feature will be the same. You’re reducing the size and parameters. 
+This is great because it means that the model won’t overfit on that information.</p>
+
+<p>You could use <strong>average pooling or sum pooling</strong>, but they aren’t common choices. 
+Max pooling tends to perform better than both in practice. 
+In max pooling, you’re taking the largest pixel value. 
+In average pooling, you take the average of all the pixel values at that spot in the image. 
+(Actually, there’s a trend now towards using smaller filters or discarding pooling layers entirely. 
+This is in response to an aggressive reduction in representation size.)</p>
+
+<p><strong>Want to look a little more at why you might want to choose max pooling
+and why you might prefer a stride of two pixels? Check out Dominik
+Scherer et. al, <a href="http://ais.uni-bonn.de/papers/icann2010_maxpool.pdf">Evaluation of Pooling Operations in Convolutional
+Architectures for Object Recognition</a>.</strong></p>
+
+<p>If you go <a href="http://scs.ryerson.ca/~aharley/vis/conv/flat.html">here</a> you can check out a really interesting 2D visualization of a convolutional layer. 
+Draw a number in the box on the left-hand side of the screen and then really go through the output. 
+You can see the  convolved and pooled layers as well as the guesses. 
+Try hovering over a single pixel so you can see where the filter was applied.</p>
+
+<p>So now we have an input image, an applied convolutional layer, and an applied pooling layer.</p>
+
+<p>Let’s visualize the output of the pooling layer!</p>
+
+<p>We were here:</p>
+
+<center>
+<img src="https://komazawa-deep-learning.github.io/assets/output3.jpg" style="width:94%" />
+</center>
+
+<p>The pooling layer takes as input the feature maps pictured above and reduces the dimensionality of those maps. 
+It does this by constructing a new, smaller image of only the maximum (brightest) values in a given kernel area.</p>
+
+<p>See how the image has changed size?</p>
+
+<center>
+<img src="https://komazawa-deep-learning.github.io/assets/output4.jpg" style="width:94%" />
+</center>
+
+<p>Cool, right?</p>
+
+<h4 id="flattening">Flattening</h4>
+
+<p>This is a pretty simple step. You flatten the pooled feature map into a sequential column of numbers (a long vector). 
+This allows that information to become the input layer of an artificial neural network for further processing.</p>
+
+<h4 id="fully-connected-layer">Fully connected layer</h4>
+<p>At this step, we add an <strong>artificial neural network</strong> to our convolutional neural network. 
+(Not sure about artificial neural networks? <a href="https://towardsdatascience.com/simply-deep-learning-an-effortless-introduction-45591a1c4abb">You can learn about them here</a>!)</p>
+
+<p>The main purpose of the artificial neural network is to combine our features into more attributes. 
+These will predict the classes with greater accuracy. This combines features and attributes that can predict classes better.</p>
+
+<p>At this step, the error is calculated and then backpropagated. 
+The weights and feature detectors are adjusted to help optimize the performance of the model. 
+Then the process happens again and again and again. 
+This is how our network trains on the data!</p>
+
+<p>How do the output neurons work when there’s more than one?</p>
+
+<p>First, we have to understand what weights to apply to the synapses that connect to the output. 
+We want to know which of the previous neurons are important for the output.</p>
+
+<p>If, for example, you have two output classes, one for a cat and one for a dog, a neuron that reads “0” is absolutely uncertain that the feature belongs to a cat. A neuron that reads “1 is absolutely certain that the feature belongs to a cat. 
+In the final fully connected layer, the neurons will read values between 0 and 1. 
+This signifies different levels of certainty. 
+A value of 0.9 would signify a certainty of 90%. 
+The cat neurons that are certain when a feature is identified know that the image is a cat. 
+They say the mathematical equivalent of, “These are my neurons! I should be triggered!” If this happens many times, the network learns that when certain features fire up, the image is a cat.</p>
+
+<p>Through lots of iterations, the cat neuron learns that when certain features fire up, the image is a cat. 
+The dog (for example) neuron learns that when certain other features fire up, the image is a dog. 
+The dog neuron learns that for example again, the “big wet nose” neuron and the “floppy ear” neuron contribute with a great deal of certainty to the dog neuron.
+It gives greater weight to the “big wet nose” neuron and the “floppy ear” neuron. 
+The dog neuron learns to more or less ignore the “whiskers” neuron and the “cat-iris” neuron. 
+The cat neuron learns to give greater weight to neurons like “whiskers” and “cat-iris.”
+(Okay, there aren’t actually “big wet nose” or “whiskers” neurons. 
+But the detected features do have distinctive features of the specific class.)</p>
+
+<p>Once the network has been trained, you can pass in an image and the neural network will be able to determine the image class probability for that image with a great deal of certainty.</p>
+
+<p>The fully connected layer is a traditional Multi-Layer Perceptron. 
+It uses a classifier in the output layer. 
+The classifier is usually a softmax activation function. 
+Fully connected means every neuron in the previous layer connects to every neuron in the next layer. 
+What’s the purpose of this layer? To use the features from the output of the previous layer to classify the input image based on the training data.</p>
+
+<p>Once your network is up and running you can see, for example, that you have a 95% probability that your image is a dog and a 5% probability that your image is a cat.</p>
+
+<p>Why do these numbers add up to 1.0? (0.95 + 0.05)</p>
+
+<p>There isn’t anything that says that these two outputs are connected to each other. 
+What is it that makes them relate to each other? 
+Essentially, they wouldn’t, but they do when we introduce the <strong>softmax function</strong>.
+This brings the values between 0 and 1 and makes them add up to 1 (100%). 
+(You can read all about this on Wikipedia.) 
+The softmax function takes a vector of scores and squashes it to a vector of values between 0 and 1 that add up to 1.</p>
+
+<p>After you apply a softmax function, you can apply the loss function.
+Cross entropy often goes hand in hand with softmax. 
+We want to minimize the loss function so we can maximize the performance of our
+network.</p>
+
+<p>At the beginning of backpropagation, your output values would be tiny.
+That’s why you might choose cross entropy loss. 
+The gradient would be very low and it would be hard for the neural network to start adjusting in the right direction. 
+Using cross entropy helps the network assess even a tiny error and get to the optimal state faster.</p>
+
+<h4 id="want-more-check-out">Want more? Check out</h4>
+
+<h1 id="用語集">用語集</h1>
+
+<h2 id="非線形性">非線形性</h2>
+<ul>
+  <li>ReLU</li>
+  <li>Sigmoid</li>
+  <li>Tanh</li>
+  <li>GRU</li>
+  <li>LSTM</li>
+</ul>
+
+<h2 id="最適化">最適化</h2>
+<ul>
+  <li>SGD</li>
+  <li>Momentum</li>
+  <li>RMSProp</li>
+  <li>Adagrad</li>
+  <li>Adam</li>
+  <li>KFac</li>
+</ul>
+
+<h2 id="結合パターン">結合パターン</h2>
+<ul>
+  <li>完全結合</li>
+  <li>畳込み</li>
+  <li>Dilated</li>
+  <li>再帰結合</li>
+  <li>スキップコネクト，残渣</li>
+</ul>
+
+<h2 id="損失関数">損失関数</h2>
+<ul>
+  <li>交差エントロピー</li>
+  <li>敵対学習</li>
+  <li>変分原理</li>
+  <li>最尤法</li>
+  <li>L2</li>
+</ul>
+
+<h2 id="ハイパーパラメータ">ハイパーパラメータ</h2>
+<ul>
+  <li>学習率</li>
+  <li>層数</li>
+  <li>バッチサイズ</li>
+  <li>ドロップアウト率</li>
+  <li>初期化</li>
+  <li>データ拡張</li>
+  <li>勾配クリップ</li>
+  <li>モーメント</li>
+</ul>
+
+<hr />
+
+<h1 id="アレックスネット以降の流れ">アレックスネット以降の流れ</h1>
+
+<ul>
+  <li>2013年 ZF ネット</li>
+  <li>2014年 GoogLeNet (インセプション)，VGG，Very Deep,  GAN, VAE</li>
+  <li>2015年 残渣ネット (ResNet) この時点で，人間超え</li>
+  <li>2016年 YOLO, SSD, Segmentation (Semantics/Instance)</li>
+  <li>2017年 Mask R-CNN</li>
+  <li>2018年 モバイルネット</li>
+</ul>
+
+<h1 id="高精度化高速化への努力-1">高精度化，高速化への努力</h1>
+
+<ul>
+  <li>確率的勾配降下法，オンライン学習，バッチ学習</li>
+  <li>データ拡張</li>
+  <li>正則化</li>
+  <li>ドロップアウト</li>
+  <li>非線形活性化関数</li>
+  <li>最適化手法</li>
+</ul>
+
+<hr />
+
+<center>
+<img src="https://komazawa-deep-learning.github.io/assets/2014Imgur_Saddle_point.gif" style="width:74%" /><br />
+<img src="https://komazawa-deep-learning.github.io/assets/2014Imgur_Beales_function.gif" style="width:74%" /><br />
+<img src="https://komazawa-deep-learning.github.io/assets/2014Imgur_Long_Valley.gif" style="width:74%" /><br />
+</center>
+
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">ディープラーニングの心理学的解釈</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">ディープラーニングの心理学的解釈</li><li><a class="u-email" href="mailto:educ0233@komazawa-u.ac.jp">educ0233@komazawa-u.ac.jp</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Deep learning for psychology  駒澤大学文学部2021年度開講 心理学特講IIIA,B </p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
