@@ -3,7 +3,6 @@ title: "Convolutional Neural Networks as a Model of the Visual System: Past, Pre
 author: "Grace W. Lindsay"
 ---
 
-# Convolutional Neural Networks as a Model of the Visual System: Past, Present, and Future
 - jornal: Journal of Cognitive Neuroscience
 - year: 2020
 
@@ -68,7 +67,7 @@ The second type — complex cells—has less strict response profiles; these cel
 Hubel と Wiesel は、 これらの複雑な細胞は、 好ましい方向は同じだが、 好ましい場所がわずかに異なる複数の単純細胞から入力を受けている可能性が高いと結論づけた（図1左）。
 
 <center>
-	<img src="assets/2020Lindsay_fig1.jpg" width="49%"><br/>
+	<img src="/assets/2020Lindsay_fig1.jpg" width="49%"><br/>
 	<p align="left" style="width:66%">
 <!-- Figure 1. The relationship between components of the visual system and the base operations of a CNN. 
 Hubel and Wiesel (1962) discovered that simple cells (left, blue) have preferred locations in the image (dashed ovals) wherein they respond most strongly to bars of particular orientation. 
@@ -136,7 +135,7 @@ After several iterations of this pattern, nonconvolutional fully connected layer
 このパターンを何度か繰り返した後、非畳み込み完全連結層を追加し、最後の層にはタスクのカテゴリー数と同じ数のユニットを入れて、画像のカテゴリーラベルを出力する (図2下)。
 
 <center>
-	<img src="assets/2020Lindsay_fig2.jpg" width="49%"><br/>
+<img src="/assets/2020Lindsay_fig2.jpg" width="49%"><br/>
 <p align="left" style="width:77%">
 <!-- Figure 2. Validating CNNs as a model by comparing their representations to those of the brain. 
 A CNN trained to perform object recognition (bottom) contains several convolutional layers (Conv-1 and Conv-2 shown here, each followed by max-pooling layers Pool-1 and Pool-2) and ends with a fully connected layer with a number of units equal to the number of categories. 
@@ -159,7 +158,7 @@ ImageNet のデータセットは 100 万枚以上の実世界の画像で構成
 このネットワークの成功は、神経科学者が発見した視覚システムの基本的な特徴が、適切な学習アルゴリズムとデータを必要とするだけで、実際に視覚をサポートできることを示している。
 
 <center>
-	<img src="assets/2020Lindsay_fig3.jpg" width="49%"><br/>
+<img src="/assets/2020Lindsay_fig3.jpg" width="49%"><br/>
 <p align="left" style="width:77%">
 <!-- Figure 3. Example architectures. 
 The standard architecture shown here is similar to the original AlexNet, where an red/green/blue image is taken as input and the activity at the final layer determines the category label. 
@@ -337,7 +336,7 @@ The fact that the resulting stimuli were indeed effective at driving the neuron 
 結果として得られた刺激は、ネットワークが学習した画像とは無関係の不自然なものであったにもかかわらず、実際にニューロンを通常のレート以上に駆動させる効果があったという事実は、CNN が視覚処理ストリームに関する基本的な何かを捉えているという考えをさらに裏付けるものである。
 
 <center>
-	<img src="assets/2020Lindsay_fig4.jpg" style="width:49%"><br/>
+	<img src="/assets/2020Lindsay_fig4.jpg" style="width:49%"><br/>
 <p align="left" style="width:77%">
 Figure 4. Visualizing preferences of different network components. 
 The general method for creating these images is shown at the top. 
@@ -632,7 +631,7 @@ Beyond this, having access to an “image computable” model of the visual syst
 
 
 <center>
-	<img src="assets/2020Lindsay_fig5.jpg" style="width:39%"><br/>
+<img src="/assets/2020Lindsay_fig5.jpg" style="width:39%"><br/>
 <p align="left" style="width:77%">
 Figure 5. A sampling of the many uses of visual information by the brain. 
 Much of the use of CNNs as a model of visual processing has focused on the ventral visual stream. 
