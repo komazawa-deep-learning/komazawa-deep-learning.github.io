@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/assets/css/style.css"></head>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    },
+    CommonHTML: { matchFontHeight: false },
+    displayAlign: "left",
+    displayIndent: "2em",
+    TeX: {
+      equationNumbers: { autoNumber: "AMS" },
+    }
+  });
+</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS_CHTML"></script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    processEscapes: true
+  }
+});
+</script>
+  <body>
+<div class="header">
+  <div class="wrap">
+    
+      <div class="header__inner header__inner--internal">
+    
+      <div class="header__content">
+        <h1 class="header__title">
+          
+        </h1>
+        <p class="header__tagline">
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="home"><h1 class="page-heading">第10回</h1><h1 id="ディープラーニングの心理学的解釈-心理学特講iiia">ディープラーニングの心理学的解釈 (心理学特講IIIA)</h1>
+
+<div align="right">
+<a href="mailto:educ0233@komazawa-u.ac.jp">Shin Aasakawa</a>, all rights reserved.<br />
+Date: 17/Apr/2021<br />
+Appache 2.0 license<br />
+</div>
+
+<div align="center">
+    <img src="../assets/2019mitchell-54_20.png" style="width:44%" />
+    <img src="../assets/2019mitchell_2.png" style="width:44%" /><br />
+    <img src="../assets/2019mitchell_3.png" style="width:44%" />
+    <img src="../assets/2019mitchell_4.png" style="width:44%" /><br />
+</div>
+
+<p>第 09 回 自動翻訳, 文章要約, 転移学習, マルチモーダル学習, マルチタスク学習</p>
+
+<!-- 
+VAE と MAML と転移学習の実際とをやろうと思う。
+
+以下は去年の 第11回
+-->
+
+<h1 id="マルチタスク学習転移学習">マルチタスク学習，転移学習</h1>
+
+<ul>
+  <li>学習したことがらを応用することは賢さの尺度でしょう</li>
+</ul>
+
+<p>たとえば，映画<a href="https://youtu.be/DsLk6hVBE6Y">カラテキッド</a>(1984)では，ミヤギ先生はダニエルさんに車のワックスがけや床掃除を教えました :-) ワックスがけや床磨きは空手の技術習得にとって必要な技能であったというオチです。</p>
+
+<h2 id="実習ファイル">実習ファイル</h2>
+
+<ul>
+  <li><a href="https://colab.research.google.com/github/komazawa-deep-
+learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0703four_in_one_network2.ipynb">マルチタスク学習2 <img src="../assets/colab_icon.svg" /></a>{target=”_blank”}</li>
+  <li>
+    <p><a href="https://colab.research.google.com/github/komazawa-deep-
+learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0703four_in_one_network3.ipynb">マルチタスク学習3 <img src="../assets/colab_icon.svg" /></a>{target=”_blank”}</p>
+
+    <ol>
+      <li>画像脚注付け<br />
+  <img src="https://twitter.com/paraschopra/status/1096710728092995584/photo/1" alt="" />{target=”_blank”}</li>
+      <li>類義語<br />
+  <img src="https://cdn-images-1.medium.com/max/1280/1*tWrGWKXwWMbuocw2nXBysA.png" alt="" />{target=”_blank”}</li>
+      <li>類義画像<br />
+  <img src="https://cdn-images-1.medium.com/max/1280/1*NZSJiMUMQi9u07oA6vI9cA.png" alt="" />{target=”_blank”}</li>
+      <li>文章からの画像検索
+        <ul>
+          <li>__犬__を検索<br />
+  <img src="https://cdn-images-1.medium.com/max/1280/1*VmIgBrrr-3XwGGwoXwiQMg.png" alt="犬" />{target=”_blank”}<br /></li>
+          <li><strong>笑顔の少年</strong> を検索<br />
+  <img src="https://cdn-images-1.medium.com/max/1280/1*4Km1YpfFbwhRF8Obu54EaA.png" alt="笑顔の少年" />{target=”_blank”}<br /></li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<hr />
+
+<ul>
+  <li><a href="http://m-mitchell.com/publications/multitask-blurb.html">マーガレット ミッチェルによるソーシャルメディアを用いたメンタルヘルスのマルチタスク学習</a>{target=”_blank”}
+    <ul>
+      <li><a href="https://arxiv.org/abs/1712.03538">arXiv 論文</a>{target=”_blank”}</li>
+    </ul>
+  </li>
+  <li><a href="https://towardsdatascience.com/one-neural-network-many-uses-image-captioning-image-search-similar-image-and-words-in-one-model-1e22080ce73d">One neural network, many uses</a>{target=”_blank”}
+    <ul>
+      <li><a href="https://github.com/paraschopra/one-network-many-uses">ソースコード</a>{target=”_blank”}</li>
+      <li><a href="http://ruder.io/multi-task/">An Overview of Multi-Task Learning in Deep Neural Networks</a>{target=”_blank”}</li>
+      <li><a href="https://arxiv.org/abs/1706.05098">上の arXiv</a>{target=”_blank”}</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="hard-parameter-sharing">Hard parameter sharing</h3>
+
+<center>
+<img src="http://ruder.io/content/images/2017/05/mtl_images-001-2.png" style="width:44%" />
+<img src="http://ruder.io/content/images/size/w2000/2019/03/transfer_learning_taxonomy-1.png" style="width:44%" /><br />
+左:マルチタスク学習, 右:転移学習, いずれも Sebastuan Ruder のブログより<br />
+</center>
+
+<hr />
+
+<h3 id="soft-parameter-sharing">Soft parameter sharing</h3>
+<p>In soft parameter sharing on the other hand, each task has its own model
+with its own parameters. The distance between the parameters of the model
+is then regularized in order to encourage the parameters to be similar. <a href="Duong, L., Cohn, T., Bird, S., &amp; Cook, P. (2015). Low Resource Dependency Parsing: Cross-lingual Parameter Sharing in a Neural Network Parser. Proceedings of the 53rd Annual Meeting of the Association for Computational Linguistics and the 7th International Joint Conference on Natural Language Processing (Short Papers), 845–850.">8</a>
+for instance use the $l2$ norm for regularization, while <a href="Yang, Y., &amp; Hospedales, T. M. (2017). Trace Norm Regularised Deep Multi-Task Learning. In Workshop track - ICLR 2017. Retrieved from http://arxiv.org/abs/1606.04038">9</a> use the trace
+norm.</p>
+
+<ul>
+  <li></li>
+  <li></li>
+</ul>
+
+<p><img src="http://ruder.io/content/images/size/w2000/2017/05/mtl_images-002-2.png" alt="" /></p>
+
+<hr />
+
+<h1 id="recent-work-on-mtl-for-deep-learning">Recent work on MTL for Deep Learning</h1>
+
+<h3 id="deep-relationship-networks">Deep Relationship Networks</h3>
+<p><img src="http://ruder.io/content/images/2017/05/relationship_networks.png" alt="" />
+<strong>A Deep Relationship Network with shared convolutional and task-specific fully connected layers with matrix priors (Long and Wang, 2015).</strong></p>
+
+<ul>
+  <li>Long, M., &amp; Wang, J. (2015). Learning Multiple Tasks with Deep Relationship Networks. arXiv Preprint arXiv:1506.02117. Retrieved from http://arxiv.org/abs/1506.02117 ↩︎</li>
+</ul>
+
+<hr />
+
+<h3 id="fully-adaptive-feature-sharing">Fully-Adaptive Feature Sharing</h3>
+<p><img src="http://ruder.io/content/images/2017/05/fully_adaptive_feature_sharing.png" alt="" /><br />
+<strong>The widening procedure for fully-adaptive feature sharing (Lu et al., 2016).</strong></p>
+
+<p>Lu, Y., Kumar, A., Zhai, S., Cheng, Y., Javidi, T., &amp; Feris, R. (2016). Fully-adaptive Feature Sharing in Multi-Task Networks with Applications in Person Attribute Classification. Retrieved from http://arxiv.org/abs/1611.05377</p>
+
+<hr />
+
+<h3 id="cross-stitch-networks">Cross-stitch Networks</h3>
+<p><img src="http://ruder.io/content/images/2017/05/cross-stitch_networks.png" alt="" /><br />
+<strong>Cross-stitch networks for two tasks (Misra et al., 2016).</strong></p>
+
+<p>Misra, I., Shrivastava, A., Gupta, A., &amp; Hebert, M. (2016). Cross-stitch Networks for Multi-task Learning. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. https://doi.org/10.1109/CVPR.2016.433</p>
+
+<!--
+### Low supervision
+
+Søgaard, A., & Goldberg, Y. (2016). Deep multi-task learning with low level tasks supervised at lower layers. Proceedings of the 54th Annual Meeting of the Association for Computational Linguistics, 231–235.
+-->
+
+<hr />
+
+<h2 id="a-joint-many-task-model">A Joint Many-Task Model</h2>
+<p><img src="http://ruder.io/content/images/2017/05/joint_many_task_model.png" alt="" /><br />
+<strong>A Joint Many-Task Model (Hashimoto et al., 2016).</strong></p>
+
+<hr />
+
+<h3 id="weighting-losses-with-uncertainty">Weighting losses with uncertainty</h3>
+<p><img src="http://ruder.io/content/images/2017/05/weighting_using_uncertainty.png" alt="" /><br />
+<strong>Uncertainty-based loss function weighting for multi-task learning (Kendall et al., 2017).</strong></p>
+
+<p>Kendall, A., Gal, Y., &amp; Cipolla, R. (2017). Multi-Task Learning Using Uncertainty to Weigh Losses for Scene Geometry and Semantics. Retrieved from http://arxiv.org/abs/1705.07115</p>
+
+<hr />
+
+<h3 id="sluice-networks">Sluice Networks</h3>
+<p><img src="http://ruder.io/content/images/2017/05/sluice_network-003.png" alt="" /><br />
+<strong>A sluice network for two tasks (Ruder et al., 2017).</strong></p>
+
+<p>Ruder, S., Bingel, J., Augenstein, I., &amp; Søgaard, A. (2017). Sluice networks: Learning what to share between loosely related tasks. Retrieved from http://arxiv.org/abs/1705.08142</p>
+
+
+
+
+  </div>
+
+      </div>
+    </main><div class="footer">
+  <div class="wrap">
+<!--
+Thanks to <a href="http://www.imdb.com/">IMDB</a> for all the serie informations!
+-->
+駒澤大学
+  </div>
+</div>
+<!---
+<script src="https://datocms-middleman-example.netlify.com/javascripts/all.js"></script>
+-->
+
+</body>
+
+</html>
