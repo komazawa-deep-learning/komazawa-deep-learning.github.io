@@ -56,22 +56,17 @@ Date: 07/May/2021<br />
 Appache 2.0 license<br />
 </div>
 
+<h1 id="目次">目次</h1>
 <ul>
-  <li>
-    <p>機械学習の実習</p>
+  <li><a href="#ml">機械学習</a>
+    <ul>
+      <li><a href="#実習">実習</a></li>
+      <li><a href="#mnist">3 つのデータセット: MNIST, Fashion MNIST, KMNIST</a></li>
+      <li><a href="#dataset">データセット</a></li>
+      <li><a href="#supervised_vs_unsupervised">教師あり学習と教師なし学習</a></li>
+      <li><a href="#回帰と分類">回帰と分類</a></li>
+    </ul>
   </li>
-  <li>3 つのデータセット: MNIST, Fashion MNIST, KMNIST</li>
-  <li>訓練データ，テストデータ，検証データ</li>
-  <li>回帰と分類</li>
-  <li>
-    <p>教師あり学習と教師なし学習</p>
-  </li>
-  <li>交差妥当性検証</li>
-  <li>重回帰，逆行列，線形代数</li>
-  <li>主成分分析，固有値，変分法，</li>
-  <li>tSNE</li>
-  <li>サポートベクトルマシン SVM</li>
-  <li>ロジスティック回帰</li>
 </ul>
 
 <!--
@@ -91,27 +86,45 @@ Appache 2.0 license<br/>
 6. ニューラルネットワークの歴史
 -->
 
-<h2 id="課題">課題</h2>
+<!-- ## 課題 -->
 
 <ul>
   <li><a href="https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0515komazawa_assignment000.ipynb" target="_blank">本日の課題 <img src="https://komazawa-deep-learning.github.io/assets/colab_icon.svg" /></a></li>
 </ul>
 
-<h1 id="課題総評と先週の補足">課題総評と先週の補足</h1>
+<h1 id="先週の補足">先週の補足</h1>
+
+<p>いわゆる，ニューラル インプラント (neural implant), あるいは，義神経回路</p>
 
 <ul>
-  <li>先週 第一回講義での話 <strong>AI 人材 25 万人必要</strong> は，大学生にとって絶好のチャンスだろう。
-    <ul>
-      <li>なぜならウィルス禍で，産業構造が変化することが予想されるからである。</li>
-      <li>今後必要とされる知識，技能をいち早く身につけることが求められる。</li>
-      <li>今年から高等学校の情報科目では Python が採用される。いわば常識，リテラシーの一部となる。</li>
-      <li>このような知識の習得に困難を覚える世代や集団は困難が予想される</li>
-      <li>
-        <font color="white" size="+2">You cannot teach an old dog new tricks.</font>
-      </li>
-    </ul>
-  </li>
-  <li>引用と自分の意見とを分けて記述してください</li>
+  <li>人工内耳のように単に脳の活動を刺激するだけのものとは異なり、シリコンチップ製のインプラントは、損傷した脳の一部と同じプロセスを実行します。</li>
+  <li>この人工器官は ラットの脳の組織でテストされました。次第に，人間に近い動物でのテストがなされています。</li>
+  <li>問題がなければ 脳卒中やてんかん，アルツハイマー病などで脳に損傷を受けた人の補助器具として実験が行われるでしょう。</li>
+  <li>ですが，脳を模倣したデバイスは <strong>倫理的な問題</strong> を引き起こします。困っている人を助ける器具としては，義肢は有効な道具でしょう。しかし，その延長線上に義脳を考えることには，慎重な議論が必要だと考えます。</li>
+</ul>
+
+<center>
+<img src="http://www.newscientist.com/wp-content/uploads/2003/03/dn3488-1_602.jpg" width="49%" /><br />
+</center>
+
+<p>あるいは，この授業により即した例を挙げれば Mitchell と Just の研究室で行われている研究があります。</p>
+
+<center>
+<img src="/assets/2008Mitchell_fig1ja.svg" style="width:77%" /><br />
+Mitchell et al (2008) Fig. 1 を改変
+</center>
+
+<!-- # 課題総評と先週の補足
+
+- 先週 第一回講義での話 **AI 人材 25 万人必要** は，大学生にとって絶好のチャンスだろう。
+    - なぜならウィルス禍で，産業構造が変化することが予想されるからである。
+    - 今後必要とされる知識，技能をいち早く身につけることが求められる。
+    - 今年から高等学校の情報科目では Python が採用される。いわば常識，リテラシーの一部となる。
+    - このような知識の習得に困難を覚える世代や集団は困難が予想される
+    - <font color="white" size="+2">You cannot teach an old dog new tricks.</font>
+- 引用と自分の意見とを分けて記述してください -->
+
+<ul>
   <li>統計学について，心理統計（推測統計学）だけが統計学ではない。むしろ統計学は 19 世紀に花開いた，統計力学，熱力学を礎にしている。</li>
   <li>一方で，<code class="language-plaintext highlighter-rouge">ニューラルネットワークは素人の非線形統計学である</code> との批判もあった(Anderson, 1990)。
     <ul>
@@ -124,6 +137,137 @@ Appache 2.0 license<br/>
 このことと同様にして，脳内の神経活動の表現である我々の活動も様々な表出形態を採る。</li>
 </ul>
 
+<h2 id="機械学習の実習"><a name="ml">機械学習の実習</a></h2>
+
+<p>または 伏線回収</p>
+
+<ul>
+  <li>先週の内容も参照のこと</li>
+</ul>
+
+<h3 id="機械学習の超簡単実習"><a name="実習">機械学習の超簡単実習</a></h3>
+
+<!-- - [番組 nothotdog について](https://komazawa-deep-learning.github.io/nothotdog/){:target="_blannk"}-->
+<!-- [nothotdog 体感デモ](https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/nothotdog.ipynb)-->
+
+<!-- - [初めての画像認識 <img src="https://raw.githubusercontent.com/komazawa-deep-learning/komazawa-deep-learning.github.io/4c5e1c665109926508b3fa505914b60b7237bf62/assets/colab_icon.svg">](https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0515komazawa_ResNet50_demo.ipynb){:target="_blank"}-->
+<ul>
+  <li><a href="https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2021_0507_3mnists_demo.ipynb" target="_blank">機械学習の超簡単デモ 伏線回収バージョン<img src="/assets/colab_icon.svg" /></a></li>
+</ul>
+
+<h3 id="3-つのデータセット-mnist-fashion-mnist-kmnist"><a name="mnist">3 つのデータセット: MNIST, Fashion MNIST, KMNIST</a></h3>
+<ul>
+  <li>機械学習分野で頻用されるデータセットとして，手書き数字認識データである MNIST があります。</li>
+  <li>MNIST は FAIR (フェイスブック人工知能研究所) 現所長 の Yan LeCun によって作成されました。
+NIST とは，アメリカ合衆国版の JIS です。すなわち，標準化機関の手書き数字認識用データセットを 修正した (modified) という意味から MNIST と呼ばれます。</li>
+  <li>MNIST は データ数が ７万で，訓練データ数 6 万，テストデータ １ 万からなります。
+データは，縦横それぞれ 28 画素からなっています。コンピュータで扱う際に，コンピュータにとってキリの良い 32 画素ではなく，
+周囲を切り取ったために，28 画素になっています。</li>
+  <li>Fasshion MNIST は， MNIST と同じ画像形式で，ファッション画像，具体的には 10 種類のアパレル画像データです。</li>
+  <li>kmnist は日本語のくずし字データセットです。形式は MNIST, Fashion MNIST と同じです。</li>
+</ul>
+
+<h3 id="訓練データテストデータ検証データ"><a name="dataset">訓練データ，テストデータ，検証データ</a></h3>
+<ul>
+  <li>機械学習では，心理統計で用いられるような 仮説検定を行うこともありますが，むしろ，行わない場合も多いです。</li>
+  <li>理由としては，仮説検定を行うことによりも，モデルの性能を向上させることに主眼があるからという意味合いであろうと考えられます。</li>
+  <li>ですが，考え方は母集団統計量の推定と同じような発想をします。すなわち，まだ見ぬ未知のデータに対して精度が良いモデルが優れているモデルと判断されます。</li>
+  <li>訓練データを使ってモデルを作成し，作成したモデルの評価をテストデータを使って評価します。</li>
+  <li>このとき，テストデータは訓練には使いません。未知のデータに対しての精度でモデルの性能の優劣を競います。従って，モデルの精度の良いモデルが良いモデルであり，かつ，良いモデルとは，未知のデータに対してより精度が高く動作するモデルとなります。</li>
+  <li>この点については，母集団の統計量の優劣を考える心理統計とは異なります。</li>
+  <li>真の母集団という，ありもしない曖昧 (かも知れない) 仮想集団について斟酌するよりも，実際のデータについて精度の優劣でモデルの性能を競うという意味では，実務的な発想と言えるでしょう。</li>
+  <li>機械学習におけるモデルの精度向上を目指したパラメータチューニングのことを <strong>学習</strong> と呼びます。</li>
+</ul>
+
+<h3 id="過学習"><a name="overfitting">過学習</a></h3>
+
+<ul>
+  <li>モデルのパラメータを学習するときに，同じデータを用いて性能を検証することは，方法論的に間違っていると言えます。</li>
+  <li>すでに見たことのある敵をたおせても，真の勇者とは言えません。何度でも生き返ることができる RPG とは違います。</li>
+  <li>見たことのあるデータ （遭遇した経験のあるモンスター）は倒せるでしょう。ですが，それでは 勇者 ではなく チキン です。</li>
+  <li>経験済のデータについては，完璧なスコアを示すことができるでしょう。ですが，まだ見ぬデータに対して有用な予測をすることはできません。</li>
+  <li>このような状況を 過学習 (over-learning) あるいは オーバーフィッティング (over-fitting) といいます。</li>
+  <li>これを避けるために、（教師あり）機械学習を行う際には，利用可能なデータの一部を テストデータセット <code class="language-plaintext highlighter-rouge">X_test</code>, <code class="language-plaintext highlighter-rouge">y_test</code> として用意しておくのが一般的です。</li>
+  <li>一般に k-hold out 法などと呼ばれる手法は，訓練データセットを ｋ 個に分割します。その上で，k 個に分割した 1 つのデータ群を除いた k-1 群の訓練データを用いてモデルの学習を行います。学習の都度，残しておいたデータを用いて性能を評価します。</li>
+  <li>この方法により，最終評価に用いるテストデータを使うこと無くチューニングを行います。</li>
+  <li><strong>なぜ全データを用いないで，データを分割するのか？</strong>
+    <ul>
+      <li>未知の母集団を仮定しないで，モデルの優劣を正当に評価するための方法であるとみなすことができます。</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="回帰と分類"><a name="回帰と分類">回帰と分類</a></h3>
+<ul>
+  <li>機械学習で頻用される手法の分類に <strong>回帰</strong> と <strong>分類</strong> があります。</li>
+  <li>予測すべきデータが連続量の場合は，回帰</li>
+  <li>予測すべきデータが離散量の場合は，分類 と呼ばれます。</li>
+  <li>身長や体重，あるいは，明日の東京都における COVID-19 の感染者数を予測するのであれば 回帰 です。</li>
+  <li>一方，手書き数字認識は，予測すべきデータが 10 分類された各クラスですので 分類 と呼ばれます。</li>
+  <li>$\mathbf{y} = \mathbf{Xw} +\mathbf{b}$ などは 線形回帰 と呼ばれます。これは中学校以来の 直線を表す 1次方程式 $y=ax+b$ と同じ形をしています。</li>
+  <li>$y$ を予測すべき量，$x$ を与えられたデータと考えます。</li>
+  <li>傾き slope:$a$ と 切片 intercept:$b$ とを推定する問題が 回帰 です。</li>
+  <li>中学校までの数学の知識では，2 点 $(x_1, y_1)$, $(x_2, y_2)$ が与えられたとき，$a$ と $b$ とは計算して求めることが可能でした。</li>
+  <li>では，N 個のデータ $(x_1,y_1),\cdots,(x_n,y_n)$ が与えられたとき，切片 と 傾き とはどう定めたら良いのでしょうか？</li>
+</ul>
+
+<center>
+<img src="assets/sklearn_map.svg" style="width:88%" /><br />
+scikit-learn の カンペ (cheat sheet) を改変
+</center>
+
+<h3 id="モデルの精度を測る指標"><a name="precision">モデルの精度を測る指標</a></h3>
+<ul>
+  <li>モデルの精度とは，何でしょうか。精度とは，正しく予測できることです。分類課題の場合，</li>
+  <li>正しい予測と誤った予測とには，詳細な検討が必要になります。</li>
+  <li>
+    <p>ここでは，精度 とは，英語で precision と accuracy と ２ つあります。日本語ではどちらも精度です。</p>
+  </li>
+  <li><strong>精度 precision</strong>: This computes the proportion of instances predicted as positives that were correctly evaluated (it measures how right our classifier is when it
+says that an instance is positive).</li>
+  <li><strong>再現率 recall</strong>: This counts the proportion of positive instances that were correctly evaluated (measuring how right our classifier is when faced with a positive instance).</li>
+  <li><strong>F1 値 F1-score</strong>: This is the harmonic mean of precision and recall, and tries to combine both in a single number</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>予測: +</th>
+      <th>予測: -</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>真の値: +</td>
+      <td>True Positive (ヒット Hit)</td>
+      <td>False  Negative (ミス Miss)</td>
+    </tr>
+    <tr>
+      <td>真の値: -</td>
+      <td>False Positive (虚報 False alarm)</td>
+      <td>True Negative (正しい棄却 Correect rejection)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><a name="supervised_vs_unsupervised"></a></p>
+<h2 id="教師あり学習と教師なし学習"><a href="#supervised_vs_unsupervised">教師あり学習と教師なし学習</a></h2>
+<ul>
+  <li>予測すべき数値に正解が与えられている場合，<strong>教師あり学習 supervised learning</strong> と呼びます。</li>
+  <li>一方，予測すべきデータが与えられていない場合を <strong>教師なし学習 unsupervised learning</strong> と呼びます。</li>
+  <li>手書き数字認識では，正解となるデータが与えられているので，教師あり学習となります。</li>
+  <li>
+    <p>一方で，正解データが与えられていない場合に，入力データを分類したりする場合を 教師なし学習と 呼びます。</p>
+  </li>
+  <li>交差妥当性検証</li>
+  <li>重回帰，逆行列，線形代数</li>
+  <li>主成分分析，固有値，変分法，</li>
+  <li>tSNE</li>
+  <li>サポートベクトルマシン SVM</li>
+  <li>ロジスティック回帰</li>
+</ul>
+
 <!--
 Authors:    J.A. Anderson, A. Pellionisz, E. Rosenfeld (eds.)
 Title:      Neurocomputing 2: Directions for Research
@@ -132,16 +276,16 @@ Reference:  MIT Press, Cambridge (1990), Massachusetts
 ### ANNs are some kind of non-linear statistics for amateurs
 -->
 
-<h2 id="次の語の示すサイトを訪れそれぞれどのようなサイトかを調べよ">次の語の示すサイトを訪れ，それぞれどのようなサイトかを調べよ。</h2>
-<p>いずれも現在のエコシステムとしての役割を果たしている。</p>
+<!-- 
+## 次の語の示すサイトを訪れ，それぞれどのようなサイトかを調べよ。
+いずれも現在のエコシステムとしての役割を果たしている。
 
-<ol>
-  <li>arXiv: <font color="white">論文置き場</font></li>
-  <li>Colab:</li>
-  <li>Github: <font color="white">プログラムのソースコード置き場</font></li>
-  <li>Stack Oerflow: <font color="white">掲示板，ノウハウ集</font></li>
-  <li>Reddit: <font color="white">掲示板，ただしビッグネーム本人が降臨することがある</font></li>
-</ol>
+1. arXiv: <font color="white">論文置き場</font>
+2. Colab: 
+3. Github: <font color="white">プログラムのソースコード置き場</font>
+4. Stack Oerflow: <font color="white">掲示板，ノウハウ集</font>
+5. Reddit: <font color="white">掲示板，ただしビッグネーム本人が降臨することがある</font>
+-->
 
 <!-- 
 # AI を学ぶ人間のための心構え
@@ -208,18 +352,6 @@ Reference:  MIT Press, Cambridge (1990), Massachusetts
 3. カレル・チャペック ロボット
 4. マリー・シェリー フランケンシュタイン
 -->
-
-<h1 id="実習">実習</h1>
-
-<ul>
-  <li>
-    <p><a href="https://komazawa-deep-learning.github.io/nothotdog/" target="_blannk">番組 nothotdog について</a>
-<!-- [nothotdog 体感デモ](https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/nothotdog.ipynb)--></p>
-  </li>
-  <li>
-    <p><a href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0515komazawa_ResNet50_demo.ipynb" target="_blank">初めての画像認識 <img src="https://raw.githubusercontent.com/komazawa-deep-learning/komazawa-deep-learning.github.io/4c5e1c665109926508b3fa505914b60b7237bf62/assets/colab_icon.svg" /></a></p>
-  </li>
-</ul>
 
 <h1 id="ニューラルネットワークの歴史">ニューラルネットワークの歴史</h1>
 
