@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Shin Asakawa">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>2020pytorch tutorail reinforcement q learning - 2020駒澤大学心理学特講IIIA</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="//fonts.googleapis.com/earlyaccess/notosansjp.css" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:600,800" rel="stylesheet">
+  <link href="../css/specific.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "2020pytorch tutorail reinforcement q learning";
+    var mkdocs_page_input_path = "2020pytorch_tutorail_reinforcement_q_learning.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> 2020駒澤大学心理学特講IIIA</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect00check_meet/">第 0 回 事前確認</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect00guidance/">第 0 回 ガイダンス</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect01/">第 1 回 05 月 08 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect02/">第 2 回 05 月 15 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect03/">第 3 回 05 月 22 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect04/">第 4 回 05 月 29 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect05/">第 5 回 06 月 05 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="https://github.com/ShinAsakawa/ShinAsakawa.github.io/blob/master/2020-0614exawizards_attention.pdf">第 6 回 06 月 14 日 ICLR読み会</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect07/">第 7 回 06月 19 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect08/">第 8 回 06月 26 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect09/">第 9 回 07月 03 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect10/">第 10 回 07月 17 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect11/">第 11 回 07月 24 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">付録</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../colaboratory_intro/">Colab 事始め</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../colaboratory_faq/">Colaboratory FAQ</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../eco/">エコシステム</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../python_numpy_intro_ja/">Python の基礎</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../python_modules/">Python modules</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../2020-0510how_to_save_and_share_colab_files/">2020-0510 課題提出の方法</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Hinton_Maxwell_award/">ジェフェリー・ヒントンのマクセル賞受賞記念講演(2016)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../activation_functions/">活性化関数</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../t-SNE/">次元圧縮 t-SNE</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../information_theory/">情報理論</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../data_science/">データサイエンス小史</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020komazawa_how_to_read_math_equations.ipynb">数式の読み方</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Reinforcement-learning-temporal-difference-sarsa-q-learning-expected-sarsa-on-python/">強化学習 TD,Q学習, SARSA</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">2020駒澤大学心理学特講IIIA</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>2020pytorch tutorail reinforcement q learning</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>Click here <sphx_glr_download_intermediate_reinforcement_q_learning.py> to download the full example code</p>
+<h1 id="reinforcement-learning-dqn-tutorial">Reinforcement Learning (DQN) Tutorial<a class="headerlink" href="#reinforcement-learning-dqn-tutorial" title="Permanent link">&para;</a></h1>
+<ul>
+<li>Author: <a href="https://github.com/apaszke">Adam Paszke</a></li>
+</ul>
+<p>This tutorial shows how to use PyTorch to train a Deep Q Learning (DQN) agent on the CartPole-v0 task from the <a href="https://gym.openai.com/">OpenAI Gym</a>.</p>
+<ul>
+<li>Task</li>
+</ul>
+<p>The agent has to decide between two actions - moving the cart left or right - so that the pole attached to it stays upright. 
+You can find an official leaderboard with various algorithms and visualizations at the <a href="https://gym.openai.com/envs/CartPole-v0">Gym website</a>.</p>
+<p><center></p>
+<p><img alt="cartpole" src="https://pytorch.org/tutorials/_images/cartpole.gif" />  <br />
+</center>
+<!--<img alt="cartpole" src="/_static/img/cartpole.gif" />--></p>
+<p>As the agent observes the current state of the environment and chooses an action, the environment <em>transitions</em> to a new state, and also
+returns a reward that indicates the consequences of the action. 
+In this task, rewards are +1 for every incremental timestep and the environment terminates if the pole falls over too far or the cart moves more then
+2.4 units away from center. This means better performing scenarios will run for longer duration, accumulating larger return.</p>
+<p>The CartPole task is designed so that the inputs to the agent are 4 real values representing the environment state (position, velocity, etc.).
+However, neural networks can solve the task purely by looking at the scene, so we\'ll use a patch of the screen centered on the cart as an
+input. Because of this, our results aren't directly comparable to the ones from the official leaderboard - our task is much harder.
+Unfortunately this does slow down the training, because we have to render all the frames.</p>
+<p>Strictly speaking, we will present the state as the difference between the current screen patch and the previous one. 
+This will allow the agent to take the velocity of the pole into account from one image.</p>
+<ul>
+<li>Packages</li>
+</ul>
+<p>First, let's import needed packages. Firstly, we need <a href="https://gym.openai.com/docs">gym</a> for the environment (Install using [pip install gym]. 
+We 'll also use the following from PyTorch:</p>
+<ul>
+<li>neural networks (<code>torch.nn</code>)</li>
+<li>optimization (<code>torch.optim</code>)</li>
+<li>automatic differentiation (<code>torch.autograd</code>)</li>
+<li>utilities for vision tasks (<code>torchvision</code> - <a href="https://github.com/pytorch/vision">a separate
+  package</a>).</li>
+</ul>
+<table class="codehilitetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">gym</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">math</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">random</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">collections</span> <span style="color: #8B008B; font-weight: bold">import</span> namedtuple
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">itertools</span> <span style="color: #8B008B; font-weight: bold">import</span> count
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">PIL</span> <span style="color: #8B008B; font-weight: bold">import</span> Image
+
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">torch</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">torch.nn</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">nn</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">torch.optim</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">optim</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">torch.nn.functional</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">F</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">torchvision.transforms</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">T</span>
+
+
+env = gym.make(<span style="color: #CD5555">&#39;CartPole-v0&#39;</span>).unwrapped
+
+<span style="color: #228B22"># set up matplotlib</span>
+is_ipython = <span style="color: #CD5555">&#39;inline&#39;</span> <span style="color: #8B008B">in</span> matplotlib.get_backend()
+<span style="color: #8B008B; font-weight: bold">if</span> is_ipython:
+    <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">IPython</span> <span style="color: #8B008B; font-weight: bold">import</span> display
+
+plt.ion()
+
+<span style="color: #228B22"># if gpu is to be used</span>
+device = torch.device(<span style="color: #CD5555">&quot;cuda&quot;</span> <span style="color: #8B008B; font-weight: bold">if</span> torch.cuda.is_available() <span style="color: #8B008B; font-weight: bold">else</span> <span style="color: #CD5555">&quot;cpu&quot;</span>)
+</code></pre></div>
+</td></tr></table>
+
+<h2 id="replay-memory">Replay Memory<a class="headerlink" href="#replay-memory" title="Permanent link">&para;</a></h2>
+<p>We'll be using experience replay memory for training our DQN. 
+It stores the transitions that the agent observes, allowing us to reuse this data later. 
+By sampling from it randomly, the transitions that build up a batch are decorrelated. 
+It has been shown that this greatly stabilizes and improves the DQN training procedure.</p>
+<p>For this, we're going to need two classses:</p>
+<ul>
+<li><code>Transition</code> - a named tuple representing a single transition in our environment. 
+It essentially maps (state, action) pairs to their  (next_state, reward) result, with the state being the screen  difference image as described later on.</li>
+<li><code>ReplayMemory</code> - a cyclic buffer of bounded size that holds the transitions observed recently. It also implements a <code>.sample()</code>  method for selecting a random batch of transitions for training.</li>
+</ul>
+<table class="codehilitetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code>Transition = namedtuple(<span style="color: #CD5555">&#39;Transition&#39;</span>,
+                        (<span style="color: #CD5555">&#39;state&#39;</span>, <span style="color: #CD5555">&#39;action&#39;</span>, <span style="color: #CD5555">&#39;next_state&#39;</span>, <span style="color: #CD5555">&#39;reward&#39;</span>))
+
+
+<span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">ReplayMemory</span>(<span style="color: #658b00">object</span>):
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, capacity):
+        <span style="color: #658b00">self</span>.capacity = capacity
+        <span style="color: #658b00">self</span>.memory = []
+        <span style="color: #658b00">self</span>.position = <span style="color: #B452CD">0</span>
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">push</span>(<span style="color: #658b00">self</span>, *args):
+        <span style="color: #CD5555">&quot;&quot;&quot;Saves a transition.&quot;&quot;&quot;</span>
+        <span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #658b00">len</span>(<span style="color: #658b00">self</span>.memory) &lt; <span style="color: #658b00">self</span>.capacity:
+            <span style="color: #658b00">self</span>.memory.append(<span style="color: #8B008B; font-weight: bold">None</span>)
+        <span style="color: #658b00">self</span>.memory[<span style="color: #658b00">self</span>.position] = Transition(*args)
+        <span style="color: #658b00">self</span>.position = (<span style="color: #658b00">self</span>.position + <span style="color: #B452CD">1</span>) % <span style="color: #658b00">self</span>.capacity
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">sample</span>(<span style="color: #658b00">self</span>, batch_size):
+        <span style="color: #8B008B; font-weight: bold">return</span> random.sample(<span style="color: #658b00">self</span>.memory, batch_size)
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__len__</span>(<span style="color: #658b00">self</span>):
+        <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #658b00">len</span>(<span style="color: #658b00">self</span>.memory)
+</code></pre></div>
+</td></tr></table>
+
+<p>Now, let's define our model. But first, let quickly recap what a DQN is.</p>
+<h2 id="dqn-algorithm">DQN algorithm<a class="headerlink" href="#dqn-algorithm" title="Permanent link">&para;</a></h2>
+<p>Our environment is deterministic, so all equations presented here are also formulated deterministically for the sake of simplicity. 
+In the reinforcement learning literature, they would also contain expectations over stochastic transitions in the environment.</p>
+<p>Our aim will be to train a policy that tries to maximize the discounted, cumulative reward <script type="math/tex">R_{t_0} = \sum_{t=t_0}^{\infty} \gamma^{t - t_0} r_t</script>, where <script type="math/tex">R_{t_0}</script> is also known as the <em>return</em>. The discount, <script type="math/tex">\gamma</script>, should be a constant between <script type="math/tex">0</script> and <script type="math/tex">1</script> that ensures the sum converges. 
+It makes rewards from the uncertain far future less important for our agent than the ones in the near future that it can be fairly confident about.</p>
+<p>The main idea behind Q-learning is that if we had a function <script type="math/tex">Q^*: \text{State} \times \text{Action} \rightarrow \mathbb{R}</script>, 
+that could tell us what our return would be, if we were to take an action in a given state, then we could easily construct a policy that maximizes our rewards:</p>
+<p>
+<script type="math/tex; mode=display">\pi^*(s) = \arg\!\max_a \ Q^*(s, a)</script>
+</p>
+<p>However, we don't know everything about the world, so we don't have access to <script type="math/tex">Q^*</script>. But, since neural networks are universal function approximators, we can simply create one and train it to resemble <script type="math/tex">Q^*</script>.</p>
+<p>For our training update rule, we\'ll use a fact that every <script type="math/tex">Q</script> function for some policy obeys the Bellman equation:</p>
+<p>
+<script type="math/tex; mode=display">Q^{\pi}(s, a) = r + \gamma Q^{\pi}(s', \pi(s'))</script>
+</p>
+<p>The difference between the two sides of the equality is known as the
+temporal difference error, <script type="math/tex">\delta</script>:</p>
+<p>
+<script type="math/tex; mode=display">\delta = Q(s, a) - (r + \gamma \max_a Q(s', a))</script>
+</p>
+<p>To minimise this error, we will use the <a href="https://en.wikipedia.org/wiki/Huber_loss">Huber loss</a>. 
+The Huber loss acts like the mean squared error when the error is small, but like the mean absolute error when the error is large - this makes it more robust to outliers when the estimates of <script type="math/tex">Q</script> are very noisy. 
+We calculate this over a batch of transitions, <script type="math/tex">B</script>, sampled from the replay memory:</p>
+<p>
+<script type="math/tex; mode=display">\mathcal{L} = \frac{1}{|B|}\sum_{(s, a, s', r) \ \in \ B} \mathcal{L}(\delta)</script>
+</p>
+<p>
+<script type="math/tex; mode=display">\begin{aligned}
+\text{where} \quad \mathcal{L}(\delta) = \begin{cases}
+  \frac{1}{2}{\delta^2}  & \text{for } |\delta| \le 1, \\
+  |\delta| - \frac{1}{2} & \text{otherwise.}
+\end{cases}
+\end{aligned}</script>
+</p>
+<h3 id="q-network">Q-network<a class="headerlink" href="#q-network" title="Permanent link">&para;</a></h3>
+<p>Our model will be a convolutional neural network that takes in the
+difference between the current and previous screen patches. It has two
+outputs, representing <script type="math/tex">Q(s, \mathrm{left})</script> and <script type="math/tex">Q(s, \mathrm{right})</script>
+(where <script type="math/tex">s</script> is the input to the network). In effect, the network is
+trying to predict the <em>expected return</em> of taking each action given the
+current input.</p>
+<table class="codehilitetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code><span style="color: #8B008B; font-weight: bold">class</span> DQN(nn.Module):
+
+    def __init__(<span style="color: #658b00">self</span>, h, <span style="color: #658b00">w</span>, outputs):
+        super(DQN, <span style="color: #658b00">self</span>).__init__()
+        <span style="color: #658b00">self</span>.conv1 = nn.Conv2d(<span style="color: #B452CD">3</span>, <span style="color: #B452CD">16</span>, kernel_size=<span style="color: #B452CD">5</span>, stride=<span style="color: #B452CD">2</span>)
+        <span style="color: #658b00">self</span>.bn1 = nn.BatchNorm2d(<span style="color: #B452CD">16</span>)
+        <span style="color: #658b00">self</span>.conv2 = nn.Conv2d(<span style="color: #B452CD">16</span>, <span style="color: #B452CD">32</span>, kernel_size=<span style="color: #B452CD">5</span>, stride=<span style="color: #B452CD">2</span>)
+        <span style="color: #658b00">self</span>.bn2 = nn.BatchNorm2d(<span style="color: #B452CD">32</span>)
+        <span style="color: #658b00">self</span>.conv3 = nn.Conv2d(<span style="color: #B452CD">32</span>, <span style="color: #B452CD">32</span>, kernel_size=<span style="color: #B452CD">5</span>, stride=<span style="color: #B452CD">2</span>)
+        <span style="color: #658b00">self</span>.bn3 = nn.BatchNorm2d(<span style="color: #B452CD">32</span>)
+
+        <span style="color: #228B22"># Number of Linear input connections depends on output of conv2d layers</span>
+        <span style="color: #228B22"># and therefore the input image size, so compute it.</span>
+        def conv2d_size_out(size, kernel_size = <span style="color: #B452CD">5</span>, stride = <span style="color: #B452CD">2</span>):
+            <span style="color: #8B008B; font-weight: bold">return</span> (size - (kernel_size - <span style="color: #B452CD">1</span>) - <span style="color: #B452CD">1</span>) // stride  + <span style="color: #B452CD">1</span>
+        convw = conv2d_size_out(conv2d_size_out(conv2d_size_out(<span style="color: #658b00">w</span>)))
+        convh = conv2d_size_out(conv2d_size_out(conv2d_size_out(h)))
+        linear_input_size = convw * convh * <span style="color: #B452CD">32</span>
+        <span style="color: #658b00">self</span>.<span style="color: #658b00">head</span> = nn.Linear(linear_input_size, outputs)
+
+    <span style="color: #228B22"># Called with either one element to determine next action, or a batch</span>
+    <span style="color: #228B22"># during optimization. Returns tensor([[left0exp,right0exp]...]).</span>
+    def forward(<span style="color: #658b00">self</span>, <span style="color: #658b00">x</span>):
+        <span style="color: #658b00">x</span> = F.relu(<span style="color: #658b00">self</span>.bn1(<span style="color: #658b00">self</span>.conv1(<span style="color: #658b00">x</span>)))
+        <span style="color: #658b00">x</span> = F.relu(<span style="color: #658b00">self</span>.bn2(<span style="color: #658b00">self</span>.conv2(<span style="color: #658b00">x</span>)))
+        <span style="color: #658b00">x</span> = F.relu(<span style="color: #658b00">self</span>.bn3(<span style="color: #658b00">self</span>.conv3(<span style="color: #658b00">x</span>)))
+        <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #658b00">self</span>.<span style="color: #658b00">head</span>(<span style="color: #658b00">x</span>.view(<span style="color: #658b00">x</span>.size(<span style="color: #B452CD">0</span>), -<span style="color: #B452CD">1</span>))
+</code></pre></div>
+</td></tr></table>
+
+<h3 id="input-extraction">Input extraction<a class="headerlink" href="#input-extraction" title="Permanent link">&para;</a></h3>
+<p>The code below are utilities for extracting and processing rendered
+images from the environment. It uses the <code>torchvision</code> package, which
+makes it easy to compose image transforms. Once you run the cell it will
+display an example patch that it extracted.</p>
+<table class="codehilitetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code>resize = T.Compose([T.ToPILImage(),
+                    T.Resize(<span style="color: #B452CD">40</span>, interpolation=Image.CUBIC),
+                    T.ToTensor()])
+
+
+def get_cart_location(screen_width):
+    world_width = env.x_threshold * <span style="color: #B452CD">2</span>
+    <span style="color: #8B008B; font-weight: bold">scale</span> = screen_width / world_width
+    <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #658b00">int</span>(env.<span style="color: #8B008B; font-weight: bold">state</span>[<span style="color: #B452CD">0</span>] * <span style="color: #8B008B; font-weight: bold">scale</span> + screen_width / <span style="color: #B452CD">2</span>.<span style="color: #B452CD">0</span>)  # MIDDLE <span style="color: #8B008B; font-weight: bold">OF</span> CART
+
+def get_screen():
+    # Returned screen requested <span style="color: #8B008B; font-weight: bold">by</span> gym <span style="color: #8B008B; font-weight: bold">is</span> <span style="color: #B452CD">400</span>x600x3, but <span style="color: #8B008B; font-weight: bold">is</span> sometimes larger
+    # such <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #B452CD">800</span>x1200x3. Transpose it <span style="color: #8B008B; font-weight: bold">into</span> torch <span style="color: #8B008B; font-weight: bold">order</span> (CHW).
+    screen = env.render(<span style="color: #8B008B; font-weight: bold">mode</span>=<span style="color: #CD5555">&#39;rgb_array&#39;</span>).transpose((<span style="color: #B452CD">2</span>, <span style="color: #B452CD">0</span>, <span style="color: #B452CD">1</span>))
+    # Cart <span style="color: #8B008B; font-weight: bold">is</span> <span style="color: #8B008B; font-weight: bold">in</span> the <span style="color: #8B008B; font-weight: bold">lower</span> half, so strip <span style="color: #8B008B; font-weight: bold">off</span> the top <span style="color: #8B008B; font-weight: bold">and</span> bottom <span style="color: #8B008B; font-weight: bold">of</span> the screen
+    _, screen_height, screen_width = screen.shape
+    screen = screen[:, <span style="color: #658b00">int</span>(screen_height*<span style="color: #B452CD">0</span>.<span style="color: #B452CD">4</span>):<span style="color: #658b00">int</span>(screen_height * <span style="color: #B452CD">0</span>.<span style="color: #B452CD">8</span>)]
+    view_width = <span style="color: #658b00">int</span>(screen_width * <span style="color: #B452CD">0</span>.<span style="color: #B452CD">6</span>)
+    cart_location = get_cart_location(screen_width)
+    <span style="color: #8B008B; font-weight: bold">if</span> cart_location &lt; view_width // <span style="color: #B452CD">2</span>:
+        slice_range = slice(view_width)
+    elif cart_location &gt; (screen_width - view_width // <span style="color: #B452CD">2</span>):
+        slice_range = slice(-view_width, <span style="color: #8B008B; font-weight: bold">None</span>)
+    <span style="color: #8B008B; font-weight: bold">else</span>:
+        slice_range = slice(cart_location - view_width // <span style="color: #B452CD">2</span>,
+                            cart_location + view_width // <span style="color: #B452CD">2</span>)
+    # Strip <span style="color: #8B008B; font-weight: bold">off</span> the edges, so that we have a square image centered <span style="color: #8B008B; font-weight: bold">on</span> a cart
+    screen = screen[:, :, slice_range]
+    # <span style="color: #8B008B; font-weight: bold">Convert</span> <span style="color: #8B008B; font-weight: bold">to</span> <span style="color: #658b00">float</span>, rescale, <span style="color: #8B008B; font-weight: bold">convert</span> <span style="color: #8B008B; font-weight: bold">to</span> torch tensor
+    # (this doesn<span style="color: #CD5555">&#39;t require a copy)</span>
+<span style="color: #CD5555">    screen = np.ascontiguousarray(screen, dtype=np.float32) / 255</span>
+<span style="color: #CD5555">    screen = torch.from_numpy(screen)</span>
+<span style="color: #CD5555">    # Resize, and add a batch dimension (BCHW)</span>
+<span style="color: #CD5555">    return resize(screen).unsqueeze(0).to(device)</span>
+
+
+<span style="color: #CD5555">env.reset()</span>
+<span style="color: #CD5555">plt.figure()</span>
+<span style="color: #CD5555">plt.imshow(get_screen().cpu().squeeze(0).permute(1, 2, 0).numpy(),</span>
+<span style="color: #CD5555">           interpolation=&#39;</span><span style="color: #8B008B; font-weight: bold">none</span><span style="color: #CD5555">&#39;)</span>
+<span style="color: #CD5555">plt.title(&#39;</span>Example extracted screen<span style="color: #a61717; background-color: #e3d2d2">&#39;</span>)
+plt.<span style="color: #8B008B; font-weight: bold">show</span>()
+</code></pre></div>
+</td></tr></table>
+
+<h2 id="training">Training<a class="headerlink" href="#training" title="Permanent link">&para;</a></h2>
+<h3 id="hyperparameters-and-utilities">Hyperparameters and utilities<a class="headerlink" href="#hyperparameters-and-utilities" title="Permanent link">&para;</a></h3>
+<p>This cell instantiates our model and its optimizer, and defines some
+utilities:</p>
+<ul>
+<li><code>select_action</code> - will select an action accordingly to an epsilon
+    greedy policy. Simply put, we\'ll sometimes use our model for
+    choosing the action, and sometimes we\'ll just sample one uniformly.
+    The probability of choosing a random action will start at
+    <code>EPS_START</code> and will decay exponentially towards <code>EPS_END</code>.
+    <code>EPS_DECAY</code> controls the rate of the decay.</li>
+<li><code>plot_durations</code> - a helper for plotting the durations of episodes,
+    along with an average over the last 100 episodes (the measure used
+    in the official evaluations). The plot will be underneath the cell
+    containing the main training loop, and will update after every
+    episode.</li>
+</ul>
+<table class="codehilitetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code>BATCH_SIZE = <span style="color: #B452CD">128</span>
+GAMMA = <span style="color: #B452CD">0</span>.<span style="color: #B452CD">999</span>
+EPS_START = <span style="color: #B452CD">0</span>.<span style="color: #B452CD">9</span>
+EPS_END = <span style="color: #B452CD">0</span>.<span style="color: #B452CD">05</span>
+EPS_DECAY = <span style="color: #B452CD">200</span>
+TARGET_UPDATE = <span style="color: #B452CD">10</span>
+
+# <span style="color: #8B008B; font-weight: bold">Get</span> screen <span style="color: #8B008B; font-weight: bold">size</span> so that we can <span style="color: #8B008B; font-weight: bold">initialize</span> layers correctly based <span style="color: #8B008B; font-weight: bold">on</span> shape
+# returned <span style="color: #8B008B; font-weight: bold">from</span> AI gym. Typical dimensions <span style="color: #8B008B; font-weight: bold">at</span> this point <span style="color: #8B008B; font-weight: bold">are</span> <span style="color: #8B008B; font-weight: bold">close</span> <span style="color: #8B008B; font-weight: bold">to</span> <span style="color: #B452CD">3</span>x40x90
+# which <span style="color: #8B008B; font-weight: bold">is</span> the <span style="color: #8B008B; font-weight: bold">result</span> <span style="color: #8B008B; font-weight: bold">of</span> a clamped <span style="color: #8B008B; font-weight: bold">and</span> down-scaled render buffer <span style="color: #8B008B; font-weight: bold">in</span> get_screen()
+init_screen = get_screen()
+_, _, screen_height, screen_width = init_screen.shape
+
+# <span style="color: #8B008B; font-weight: bold">Get</span> <span style="color: #658b00">number</span> <span style="color: #8B008B; font-weight: bold">of</span> actions <span style="color: #8B008B; font-weight: bold">from</span> gym action <span style="color: #8B008B; font-weight: bold">space</span>
+n_actions = env.action_space.n
+
+policy_net = DQN(screen_height, screen_width, n_actions).<span style="color: #8B008B; font-weight: bold">to</span>(device)
+target_net = DQN(screen_height, screen_width, n_actions).<span style="color: #8B008B; font-weight: bold">to</span>(device)
+target_net.load_state_dict(policy_net.state_dict())
+target_net.eval()
+
+optimizer = optim.RMSprop(policy_net.<span style="color: #8B008B; font-weight: bold">parameters</span>())
+memory = ReplayMemory(<span style="color: #B452CD">10000</span>)
+
+
+steps_done = <span style="color: #B452CD">0</span>
+
+
+def select_action(<span style="color: #8B008B; font-weight: bold">state</span>):
+    <span style="color: #8B008B; font-weight: bold">global</span> steps_done
+    sample = random.random()
+    eps_threshold = EPS_END + (EPS_START - EPS_END) * <span style="color: #a61717; background-color: #e3d2d2">\</span>
+        math.exp(-<span style="color: #B452CD">1</span>. * steps_done / EPS_DECAY)
+    steps_done += <span style="color: #B452CD">1</span>
+    <span style="color: #8B008B; font-weight: bold">if</span> sample &gt; eps_threshold:
+        <span style="color: #8B008B; font-weight: bold">with</span> torch.no_grad():
+            # t.<span style="color: #8B008B; font-weight: bold">max</span>(<span style="color: #B452CD">1</span>) will <span style="color: #8B008B; font-weight: bold">return</span> largest <span style="color: #8B008B; font-weight: bold">column</span> value <span style="color: #8B008B; font-weight: bold">of</span> <span style="color: #8B008B; font-weight: bold">each</span> <span style="color: #8B008B; font-weight: bold">row</span>.
+            # <span style="color: #8B008B; font-weight: bold">second</span> <span style="color: #8B008B; font-weight: bold">column</span> <span style="color: #8B008B; font-weight: bold">on</span> <span style="color: #8B008B; font-weight: bold">max</span> <span style="color: #8B008B; font-weight: bold">result</span> <span style="color: #8B008B; font-weight: bold">is</span> <span style="color: #8B008B; font-weight: bold">index</span> <span style="color: #8B008B; font-weight: bold">of</span> <span style="color: #8B008B; font-weight: bold">where</span> <span style="color: #8B008B; font-weight: bold">max</span> element was
+            # <span style="color: #8B008B; font-weight: bold">found</span>, so we pick action <span style="color: #8B008B; font-weight: bold">with</span> the larger expected reward.
+            <span style="color: #8B008B; font-weight: bold">return</span> policy_net(<span style="color: #8B008B; font-weight: bold">state</span>).<span style="color: #8B008B; font-weight: bold">max</span>(<span style="color: #B452CD">1</span>)[<span style="color: #B452CD">1</span>].<span style="color: #8B008B; font-weight: bold">view</span>(<span style="color: #B452CD">1</span>, <span style="color: #B452CD">1</span>)
+    <span style="color: #8B008B; font-weight: bold">else</span>:
+        <span style="color: #8B008B; font-weight: bold">return</span> torch.tensor([[random.randrange(n_actions)]], device=device, dtype=torch.long)
+
+
+episode_durations = []
+
+
+def plot_durations():
+    plt.figure(<span style="color: #B452CD">2</span>)
+    plt.clf()
+    durations_t = torch.tensor(episode_durations, dtype=torch.<span style="color: #658b00">float</span>)
+    plt.title(<span style="color: #CD5555">&#39;Training...&#39;</span>)
+    plt.xlabel(<span style="color: #CD5555">&#39;Episode&#39;</span>)
+    plt.ylabel(<span style="color: #CD5555">&#39;Duration&#39;</span>)
+    plt.plot(durations_t.numpy())
+    # Take <span style="color: #B452CD">100</span> episode averages <span style="color: #8B008B; font-weight: bold">and</span> plot them too
+    <span style="color: #8B008B; font-weight: bold">if</span> len(durations_t) &gt;= <span style="color: #B452CD">100</span>:
+        means = durations_t.unfold(<span style="color: #B452CD">0</span>, <span style="color: #B452CD">100</span>, <span style="color: #B452CD">1</span>).mean(<span style="color: #B452CD">1</span>).<span style="color: #8B008B; font-weight: bold">view</span>(-<span style="color: #B452CD">1</span>)
+        means = torch.cat((torch.zeros(<span style="color: #B452CD">99</span>), means))
+        plt.plot(means.numpy())
+
+    plt.pause(<span style="color: #B452CD">0</span>.<span style="color: #B452CD">001</span>)  # pause a <span style="color: #658b00">bit</span> so that plots <span style="color: #8B008B; font-weight: bold">are</span> updated
+    <span style="color: #8B008B; font-weight: bold">if</span> is_ipython:
+        display.clear_output(wait=<span style="color: #8B008B; font-weight: bold">True</span>)
+        display.display(plt.gcf())
+</code></pre></div>
+</td></tr></table>
+
+<h3 id="training-loop">Training loop<a class="headerlink" href="#training-loop" title="Permanent link">&para;</a></h3>
+<p>Finally, the code for training our model.</p>
+<p>Here, you can find an <code>optimize_model</code> function that performs a single
+step of the optimization. It first samples a batch, concatenates all the
+tensors into a single one, computes <script type="math/tex">Q(s_t, a_t)</script> and
+<script type="math/tex">V(s_{t+1}) = \max_a Q(s_{t+1}, a)</script>, and combines them into our loss. By
+defition we set <script type="math/tex">V(s) = 0</script> if <script type="math/tex">s</script> is a terminal state. We also use a
+target network to compute <script type="math/tex">V(s_{t+1})</script> for added stability. The target
+network has its weights kept frozen most of the time, but is updated
+with the policy network\'s weights every so often. This is usually a set
+number of steps but we shall use episodes for simplicity.</p>
+<table class="codehilitetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code>def<span style="color: #bbbbbb"> </span>optimize_model()<span style="color: #a61717; background-color: #e3d2d2">:</span><span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">    </span><span style="color: #8B008B; font-weight: bold">if</span><span style="color: #bbbbbb"> </span><span style="color: #008b45">len</span>(memory)<span style="color: #bbbbbb"> </span>&lt;<span style="color: #bbbbbb"> </span>BATCH_SIZE:<span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">        </span><span style="color: #8B008B; font-weight: bold">return</span><span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">    </span>transitions<span style="color: #bbbbbb"> </span>=<span style="color: #bbbbbb"> </span>memory.sample(BATCH_SIZE)<span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">    </span><span style="color: #a61717; background-color: #e3d2d2">#</span><span style="color: #bbbbbb"> </span>Transpose<span style="color: #bbbbbb"> </span>the<span style="color: #bbbbbb"> </span>batch<span style="color: #bbbbbb"> </span>(see<span style="color: #bbbbbb"> </span>https://stackoverflow.com/a/<span style="color: #B452CD">19343</span>/<span style="color: #B452CD">3343043</span><span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">for</span><span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">    </span><span style="color: #a61717; background-color: #e3d2d2">#</span><span style="color: #bbbbbb"> </span>detailed<span style="color: #bbbbbb"> </span>explanation).<span style="color: #bbbbbb"> </span>This<span style="color: #bbbbbb"> </span>converts<span style="color: #bbbbbb"> </span>batch-<span style="color: #8B008B; font-weight: bold">array</span><span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">of</span><span style="color: #bbbbbb"> </span>Transitions<span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">    </span><span style="color: #a61717; background-color: #e3d2d2">#</span><span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">to</span><span style="color: #bbbbbb"> </span>Transition<span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">of</span><span style="color: #bbbbbb"> </span>batch-arrays.<span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">    </span>batch<span style="color: #bbbbbb"> </span>=<span style="color: #bbbbbb"> </span>Transition(*zip(*transitions))<span style="color: #bbbbbb"></span>
+
+<span style="color: #bbbbbb">    </span><span style="color: #a61717; background-color: #e3d2d2">#</span><span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">Compute</span><span style="color: #bbbbbb"> </span>a<span style="color: #bbbbbb"> </span>mask<span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">of</span><span style="color: #bbbbbb"> </span>non-final<span style="color: #bbbbbb"> </span>states<span style="color: #bbbbbb"> </span><span style="color: #8B008B">and</span><span style="color: #bbbbbb"> </span>concatenate<span style="color: #bbbbbb"> </span>the<span style="color: #bbbbbb"> </span>batch<span style="color: #bbbbbb"> </span>elements<span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">    </span><span style="color: #a61717; background-color: #e3d2d2">#</span><span style="color: #bbbbbb"> </span>(a<span style="color: #bbbbbb"> </span>final<span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">state</span><span style="color: #bbbbbb"> </span>would<span style="color: #CD5555">&#39;ve been the one after which simulation ended)</span>
+<span style="color: #CD5555">    non_final_mask = torch.tensor(tuple(map(lambda s: s is not None,</span>
+<span style="color: #CD5555">                                          batch.next_state)), device=device, dtype=torch.bool)</span>
+<span style="color: #CD5555">    non_final_next_states = torch.cat([s for s in batch.next_state</span>
+<span style="color: #CD5555">                                                if s is not None])</span>
+<span style="color: #CD5555">    state_batch = torch.cat(batch.state)</span>
+<span style="color: #CD5555">    action_batch = torch.cat(batch.action)</span>
+<span style="color: #CD5555">    reward_batch = torch.cat(batch.reward)</span>
+
+<span style="color: #CD5555">    # Compute Q(s_t, a) - the model computes Q(s_t), then we select the</span>
+<span style="color: #CD5555">    # columns of actions taken. These are the actions which would&#39;</span>ve<span style="color: #bbbbbb"> </span>been<span style="color: #bbbbbb"> </span>taken<span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">    </span><span style="color: #a61717; background-color: #e3d2d2">#</span><span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">for</span><span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">each</span><span style="color: #bbbbbb"> </span>batch<span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">state</span><span style="color: #bbbbbb"> </span>according<span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">to</span><span style="color: #bbbbbb"> </span>policy_net<span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">    </span>state_action_values<span style="color: #bbbbbb"> </span>=<span style="color: #bbbbbb"> </span>policy_net(state_batch).gather(<span style="color: #B452CD">1</span>,<span style="color: #bbbbbb"> </span>action_batch)<span style="color: #bbbbbb"></span>
+
+<span style="color: #bbbbbb">    </span><span style="color: #a61717; background-color: #e3d2d2">#</span><span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">Compute</span><span style="color: #bbbbbb"> </span>V(s_<span style="color: #a61717; background-color: #e3d2d2">{</span>t+<span style="color: #B452CD">1</span><span style="color: #a61717; background-color: #e3d2d2">}</span>)<span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">for</span><span style="color: #bbbbbb"> </span><span style="color: #8B008B">all</span><span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">next</span><span style="color: #bbbbbb"> </span>states.<span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">    </span><span style="color: #a61717; background-color: #e3d2d2">#</span><span style="color: #bbbbbb"> </span>Expected<span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">values</span><span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">of</span><span style="color: #bbbbbb"> </span>actions<span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">for</span><span style="color: #bbbbbb"> </span>non_final_next_states<span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">are</span><span style="color: #bbbbbb"> </span>computed<span style="color: #bbbbbb"> </span>based<span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">    </span><span style="color: #a61717; background-color: #e3d2d2">#</span><span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">on</span><span style="color: #bbbbbb"> </span>the<span style="color: #bbbbbb"> </span><span style="color: #CD5555">&quot;older&quot;</span><span style="color: #bbbbbb"> </span>target_net;<span style="color: #bbbbbb"> </span>selecting<span style="color: #bbbbbb"> </span>their<span style="color: #bbbbbb"> </span>best<span style="color: #bbbbbb"> </span>reward<span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">with</span><span style="color: #bbbbbb"> </span><span style="color: #008b45">max</span>(<span style="color: #B452CD">1</span>)[0].<span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">    </span><span style="color: #a61717; background-color: #e3d2d2">#</span><span style="color: #bbbbbb"> </span>This<span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">is</span><span style="color: #bbbbbb"> </span>merged<span style="color: #bbbbbb"> </span>based<span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">on</span><span style="color: #bbbbbb"> </span>the<span style="color: #bbbbbb"> </span>mask,<span style="color: #bbbbbb"> </span>such<span style="color: #bbbbbb"> </span>that<span style="color: #bbbbbb"> </span>we<span style="color: #a61717; background-color: #e3d2d2">&#39;</span>ll<span style="color: #bbbbbb"> </span>have<span style="color: #bbbbbb"> </span>either<span style="color: #bbbbbb"> </span>the<span style="color: #bbbbbb"> </span>expected<span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">    </span><span style="color: #a61717; background-color: #e3d2d2">#</span><span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">state</span><span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">value</span><span style="color: #bbbbbb"> </span><span style="color: #8B008B">or</span><span style="color: #bbbbbb"> </span><span style="color: #B452CD">0</span><span style="color: #bbbbbb"> </span><span style="color: #8B008B">in</span><span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">case</span><span style="color: #bbbbbb"> </span>the<span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">state</span><span style="color: #bbbbbb"> </span>was<span style="color: #bbbbbb"> </span>final.<span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">    </span>next_state_values<span style="color: #bbbbbb"> </span>=<span style="color: #bbbbbb"> </span>torch.zeros(BATCH_SIZE,<span style="color: #bbbbbb"> </span>device=device)<span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">    </span>next_state_values[non_final_mask]<span style="color: #bbbbbb"> </span>=<span style="color: #bbbbbb"> </span>target_net(non_final_next_states).<span style="color: #008b45">max</span>(<span style="color: #B452CD">1</span>)[0].detach()<span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">    </span><span style="color: #a61717; background-color: #e3d2d2">#</span><span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">Compute</span><span style="color: #bbbbbb"> </span>the<span style="color: #bbbbbb"> </span>expected<span style="color: #bbbbbb"> </span>Q<span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">values</span><span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">    </span>expected_state_action_values<span style="color: #bbbbbb"> </span>=<span style="color: #bbbbbb"> </span>(next_state_values<span style="color: #bbbbbb"> </span>*<span style="color: #bbbbbb"> </span>GAMMA)<span style="color: #bbbbbb"> </span>+<span style="color: #bbbbbb"> </span>reward_batch<span style="color: #bbbbbb"></span>
+
+<span style="color: #bbbbbb">    </span><span style="color: #a61717; background-color: #e3d2d2">#</span><span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">Compute</span><span style="color: #bbbbbb"> </span>Huber<span style="color: #bbbbbb"> </span>loss<span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">    </span>loss<span style="color: #bbbbbb"> </span>=<span style="color: #bbbbbb"> </span>F.smooth_l1_loss(state_action_values,<span style="color: #bbbbbb"> </span>expected_state_action_values.unsqueeze(<span style="color: #B452CD">1</span>))<span style="color: #bbbbbb"></span>
+
+<span style="color: #bbbbbb">    </span><span style="color: #a61717; background-color: #e3d2d2">#</span><span style="color: #bbbbbb"> </span>Optimize<span style="color: #bbbbbb"> </span>the<span style="color: #bbbbbb"> </span>model<span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">    </span>optimizer.zero_grad()<span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">    </span>loss.backward()<span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">    </span><span style="color: #8B008B; font-weight: bold">for</span><span style="color: #bbbbbb"> </span>param<span style="color: #bbbbbb"> </span><span style="color: #8B008B">in</span><span style="color: #bbbbbb"> </span>policy_net.<span style="color: #8B008B; font-weight: bold">parameters</span>()<span style="color: #a61717; background-color: #e3d2d2">:</span><span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">        </span>param.grad.<span style="color: #8B008B; font-weight: bold">data</span>.clamp_(-<span style="color: #B452CD">1</span>,<span style="color: #bbbbbb"> </span><span style="color: #B452CD">1</span>)<span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">    </span>optimizer.step()<span style="color: #bbbbbb"></span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Below, you can find the main training loop. At the beginning we reset
+the environment and initialize the <code>state</code> Tensor. Then, we sample an
+action, execute it, observe the next screen and the reward (always 1),
+and optimize our model once. When the episode ends (our model fails), we
+restart the loop.</p>
+<p>Below, [num_episodes]{.title-ref} is set small. You should download the
+notebook and run lot more epsiodes, such as 300+ for meaningful duration
+improvements.</p>
+<table class="codehilitetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42</pre></div></td><td class="code"><div class="codehilite" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><code>num_episodes<span style="color: #bbbbbb"> </span>=<span style="color: #bbbbbb"> </span><span style="color: #B452CD">50</span><span style="color: #bbbbbb"></span>
+<span style="color: #8B008B; font-weight: bold">for</span><span style="color: #bbbbbb"> </span>i_episode<span style="color: #bbbbbb"> </span><span style="color: #8B008B">in</span><span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">range</span>(num_episodes)<span style="color: #a61717; background-color: #e3d2d2">:</span><span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">    </span><span style="color: #a61717; background-color: #e3d2d2">#</span><span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">Initialize</span><span style="color: #bbbbbb"> </span>the<span style="color: #bbbbbb"> </span>environment<span style="color: #bbbbbb"> </span><span style="color: #8B008B">and</span><span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">state</span><span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">    </span>env.reset()<span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">    </span>last_screen<span style="color: #bbbbbb"> </span>=<span style="color: #bbbbbb"> </span>get_screen()<span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">    </span>current_screen<span style="color: #bbbbbb"> </span>=<span style="color: #bbbbbb"> </span>get_screen()<span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">    </span><span style="color: #8B008B; font-weight: bold">state</span><span style="color: #bbbbbb"> </span>=<span style="color: #bbbbbb"> </span>current_screen<span style="color: #bbbbbb"> </span>-<span style="color: #bbbbbb"> </span>last_screen<span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">    </span><span style="color: #8B008B; font-weight: bold">for</span><span style="color: #bbbbbb"> </span>t<span style="color: #bbbbbb"> </span><span style="color: #8B008B">in</span><span style="color: #bbbbbb"> </span><span style="color: #008b45">count</span>()<span style="color: #a61717; background-color: #e3d2d2">:</span><span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">        </span><span style="color: #a61717; background-color: #e3d2d2">#</span><span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">Select</span><span style="color: #bbbbbb"> </span><span style="color: #8B008B">and</span><span style="color: #bbbbbb"> </span>perform<span style="color: #bbbbbb"> </span>an<span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">action</span><span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">        </span><span style="color: #8B008B; font-weight: bold">action</span><span style="color: #bbbbbb"> </span>=<span style="color: #bbbbbb"> </span>select_action(<span style="color: #8B008B; font-weight: bold">state</span>)<span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">        </span>_,<span style="color: #bbbbbb"> </span>reward,<span style="color: #bbbbbb"> </span>done,<span style="color: #bbbbbb"> </span>_<span style="color: #bbbbbb"> </span>=<span style="color: #bbbbbb"> </span>env.step(<span style="color: #8B008B; font-weight: bold">action</span>.item())<span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">        </span>reward<span style="color: #bbbbbb"> </span>=<span style="color: #bbbbbb"> </span>torch.tensor([reward],<span style="color: #bbbbbb"> </span>device=device)<span style="color: #bbbbbb"></span>
+
+<span style="color: #bbbbbb">        </span><span style="color: #a61717; background-color: #e3d2d2">#</span><span style="color: #bbbbbb"> </span>Observe<span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">new</span><span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">state</span><span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">        </span>last_screen<span style="color: #bbbbbb"> </span>=<span style="color: #bbbbbb"> </span>current_screen<span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">        </span>current_screen<span style="color: #bbbbbb"> </span>=<span style="color: #bbbbbb"> </span>get_screen()<span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">        </span><span style="color: #8B008B; font-weight: bold">if</span><span style="color: #bbbbbb"> </span><span style="color: #8B008B">not</span><span style="color: #bbbbbb"> </span>done:<span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">            </span>next_state<span style="color: #bbbbbb"> </span>=<span style="color: #bbbbbb"> </span>current_screen<span style="color: #bbbbbb"> </span>-<span style="color: #bbbbbb"> </span>last_screen<span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">        </span><span style="color: #8B008B; font-weight: bold">else</span><span style="color: #a61717; background-color: #e3d2d2">:</span><span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">            </span>next_state<span style="color: #bbbbbb"> </span>=<span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">None</span><span style="color: #bbbbbb"></span>
+
+<span style="color: #bbbbbb">        </span><span style="color: #a61717; background-color: #e3d2d2">#</span><span style="color: #bbbbbb"> </span>Store<span style="color: #bbbbbb"> </span>the<span style="color: #bbbbbb"> </span>transition<span style="color: #bbbbbb"> </span><span style="color: #8B008B">in</span><span style="color: #bbbbbb"> </span>memory<span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">        </span>memory.push(<span style="color: #8B008B; font-weight: bold">state</span>,<span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">action</span>,<span style="color: #bbbbbb"> </span>next_state,<span style="color: #bbbbbb"> </span>reward)<span style="color: #bbbbbb"></span>
+
+<span style="color: #bbbbbb">        </span><span style="color: #a61717; background-color: #e3d2d2">#</span><span style="color: #bbbbbb"> </span>Move<span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">to</span><span style="color: #bbbbbb"> </span>the<span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">next</span><span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">state</span><span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">        </span><span style="color: #8B008B; font-weight: bold">state</span><span style="color: #bbbbbb"> </span>=<span style="color: #bbbbbb"> </span>next_state<span style="color: #bbbbbb"></span>
+
+<span style="color: #bbbbbb">        </span><span style="color: #a61717; background-color: #e3d2d2">#</span><span style="color: #bbbbbb"> </span>Perform<span style="color: #bbbbbb"> </span>one<span style="color: #bbbbbb"> </span>step<span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">of</span><span style="color: #bbbbbb"> </span>the<span style="color: #bbbbbb"> </span>optimization<span style="color: #bbbbbb"> </span>(<span style="color: #8B008B; font-weight: bold">on</span><span style="color: #bbbbbb"> </span>the<span style="color: #bbbbbb"> </span>target<span style="color: #bbbbbb"> </span>network)<span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">        </span>optimize_model()<span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">        </span><span style="color: #8B008B; font-weight: bold">if</span><span style="color: #bbbbbb"> </span>done:<span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">            </span>episode_durations.append(t<span style="color: #bbbbbb"> </span>+<span style="color: #bbbbbb"> </span><span style="color: #B452CD">1</span>)<span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">            </span>plot_durations()<span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">            </span><span style="color: #8B008B; font-weight: bold">break</span><span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">    </span><span style="color: #a61717; background-color: #e3d2d2">#</span><span style="color: #bbbbbb"> </span><span style="color: #8B008B; font-weight: bold">Update</span><span style="color: #bbbbbb"> </span>the<span style="color: #bbbbbb"> </span>target<span style="color: #bbbbbb"> </span>network,<span style="color: #bbbbbb"> </span>copying<span style="color: #bbbbbb"> </span><span style="color: #8B008B">all</span><span style="color: #bbbbbb"> </span>weights<span style="color: #bbbbbb"> </span><span style="color: #8B008B">and</span><span style="color: #bbbbbb"> </span>biases<span style="color: #bbbbbb"> </span><span style="color: #8B008B">in</span><span style="color: #bbbbbb"> </span>DQN<span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">    </span><span style="color: #8B008B; font-weight: bold">if</span><span style="color: #bbbbbb"> </span>i_episode<span style="color: #bbbbbb"> </span>%<span style="color: #bbbbbb"> </span>TARGET_UPDATE<span style="color: #bbbbbb"> </span>==<span style="color: #bbbbbb"> </span><span style="color: #B452CD">0</span><span style="color: #a61717; background-color: #e3d2d2">:</span><span style="color: #bbbbbb"></span>
+<span style="color: #bbbbbb">        </span>target_net.load_state_dict(policy_net.state_dict())<span style="color: #bbbbbb"></span>
+
+<span style="color: #8B008B; font-weight: bold">print</span>(<span style="color: #CD5555">&#39;Complete&#39;</span>)<span style="color: #bbbbbb"></span>
+env.render()<span style="color: #bbbbbb"></span>
+env.<span style="color: #8B008B; font-weight: bold">close</span>()<span style="color: #bbbbbb"></span>
+plt.ioff()<span style="color: #bbbbbb"></span>
+plt.show()<span style="color: #bbbbbb"></span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Here is the diagram that illustrates the overall resulting data flow.</p>
+<p><center></p>
+<p><img src="https://pytorch.org/tutorials/_images/reinforcement_learning_diagram.jpg">
+</center>
+<!-- <img alt="" src="/_static/img/reinforcement_learning_diagram.jpg" />--></p>
+<p>Actions are chosen either randomly or based on a policy, getting the next step sample from the gym environment. 
+We record the results in the replay memory and also run optimization step on every iteration.
+Optimization picks a random batch from the replay memory to do training of the new policy. 
+"Older" target_net is also used in optimization to compute the expected Q values; it is updated occasionally to keep it current.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright (c) 2020</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

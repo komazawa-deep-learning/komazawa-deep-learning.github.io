@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Shin Asakawa">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>第 5 回 06 月 05 日 - 2020駒澤大学心理学特講IIIA</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="//fonts.googleapis.com/earlyaccess/notosansjp.css" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:600,800" rel="stylesheet">
+  <link href="../css/specific.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u7b2c 5 \u56de 06 \u6708 05 \u65e5";
+    var mkdocs_page_input_path = "lect05.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> 2020駒澤大学心理学特講IIIA</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect00check_meet/">第 0 回 事前確認</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect00guidance/">第 0 回 ガイダンス</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect01/">第 1 回 05 月 08 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect02/">第 2 回 05 月 15 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect03/">第 3 回 05 月 22 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect04/">第 4 回 05 月 29 日</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">第 5 回 06 月 05 日</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#iiia">ディープラーニングの心理学的解釈 (心理学特講IIIA)</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_1">実習</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#_2">先週の復習</a></li>
+        
+            <li><a class="toctree-l3" href="#_3">要点</a></li>
+        
+            <li><a class="toctree-l3" href="#2">2 経路仮説</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#_4">二段階モデル</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#r-cnn">R-CNN </a></li>
+        
+            <li><a class="toctree-l3" href="#fast-r-cnn-faster-r-cnn-2014">Fast R-CNN と Faster R-CNN (2014)</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#_5">一段階モデル</a></li>
+    
+
+    <li class="toctree-l2"><a href="#u-net">U-Net</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_6">背骨 （バックボーン）ネットワーク と 周辺ネット</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_7">転移学習</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_8">生成モデル</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#_9">画像変換</a></li>
+        
+            <li><a class="toctree-l3" href="#_10">まんがの画風変換</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="https://github.com/ShinAsakawa/ShinAsakawa.github.io/blob/master/2020-0614exawizards_attention.pdf">第 6 回 06 月 14 日 ICLR読み会</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect07/">第 7 回 06月 19 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect08/">第 8 回 06月 26 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect09/">第 9 回 07月 03 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect10/">第 10 回 07月 17 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect11/">第 11 回 07月 24 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">付録</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../colaboratory_intro/">Colab 事始め</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../colaboratory_faq/">Colaboratory FAQ</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../eco/">エコシステム</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../python_numpy_intro_ja/">Python の基礎</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../python_modules/">Python modules</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../2020-0510how_to_save_and_share_colab_files/">2020-0510 課題提出の方法</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Hinton_Maxwell_award/">ジェフェリー・ヒントンのマクセル賞受賞記念講演(2016)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../activation_functions/">活性化関数</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../t-SNE/">次元圧縮 t-SNE</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../information_theory/">情報理論</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../data_science/">データサイエンス小史</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020komazawa_how_to_read_math_equations.ipynb">数式の読み方</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Reinforcement-learning-temporal-difference-sarsa-q-learning-expected-sarsa-on-python/">強化学習 TD,Q学習, SARSA</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">2020駒澤大学心理学特講IIIA</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>第 5 回 06 月 05 日</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="iiia"><a href="https://komazawa-deep-learning.github.io/">ディープラーニングの心理学的解釈 (心理学特講IIIA)</a><a class="headerlink" href="#iiia" title="Permanent link">&para;</a></h1>
+<div align='right'>
+<a href='mailto:educ0233@komazawa-u.ac.jp'>Shin Aasakawa</a>, all rights reserved.<br>
+Date: Jun/05/2020<br/>
+Appache 2.0 license<br/>
+</div>
+
+<!-- 
+# 連絡事項
+
+- 来週 6 月 12 日は休講とします。
+- 代わりに 6 月 15 日 (日曜日)に [connpass で募集している研究会](https://exawizards.connpass.com/event/176947/){target="_blank"} を視聴してください 
+- [Google classroom](https://classroom.google.com/){target="_blank"} に移行します。移行期間は 1 週間程度を見込んでいます。
+
+ -->
+
+<h1 id="_1">実習<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<ul>
+<li><a href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0605Detectron2.ipynb" target="_blank">画像分割 detectron2 デモ</a></li>
+<li><a href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0604CAM_test.ipynb" target="_blank">CAM どこを見ているのか，どこを見て判断しているのか</a></li>
+<li><a href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0529transfer_learning.ipynb" target="_blank">転移学習</a></li>
+<li><a href="https://www.kaggle.com/summitkwan/tl-gan-demo" target="_blank">Kaggle 上での Interactive demo for TL-GAN (transparent latent-space GAN)</a></li>
+</ul>
+<!-- [顔領域の検出](https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0605face_detection_demo.ipynb)-->
+
+<h2 id="_2">先週の復習<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>意味的分割 (セマンティック・セグメンテーション)</li>
+<li>物体（あるいは対象）分割 （オブジェクト・セグメンテーション）</li>
+<li>実体分割 (インスタンス・セグメンテーション)</li>
+<li>バウディングボックス 関心領域の切り出し</li>
+</ul>
+<p>詳しくは <a href="https://komazawa-deep-learning.github.io/lect04/#_8" target="_blank">先週の該当箇所</a> をご覧ください。</p>
+<p>どこ (where) に 何 (what) があるのかを認識するための努力が 2014 年から長足の進歩を遂げました。
+先週の課題ビデオにあった唐揚げロボットでは，意味的分割では対応不可能であることに注意</p>
+<h2 id="_3">要点<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ol>
+<li>外界の情報を受け取り，認識に至るために，哺乳類の視覚情報処理システムは少なくとも 2 つの経路を作り出して利用しているようである。</li>
+<li>視覚系では，腹側経路で「何」が処理され，背側経路で「どこ」が処理されているらしい</li>
+<li>ニューラルネットワークでも，入力画像中の，どこに，何が，写っているのかを認識させるモデルが存在する。</li>
+<li>認識性能の向上に伴い，この認識機能に立脚した発展が盛んである。</li>
+<li>転移学習と生成についてとりあげる</li>
+</ol>
+<h2 id="2">2 経路仮説<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>腹側経路 ventral pathways ("what" 経路)</li>
+<li>背側経路 dorsan pathways ("where" 経路)</li>
+</ul>
+<div align="center" style="width:74%">
+  <img src="../assets/1982Ungerleider_Mishkin.jpg"><br/>
+  <div align="left">
+    Ungerleider and Mishkin (1982) より
+  </div>
+</div>
+
+<div align="center" style="width:74%">
+<img src="../assets/LNCS2766_Chapter_2_fig2_4.jpg"><br/>
+Behnke (2003) より
+</div>
+
+<hr />
+<p>同様の 2 経路による処理は 聴覚 (Romanski et al., 1999) や 触覚(Reed et al., 2005)でも発見されています。</p>
+<div style="color:lightgray">
+
+発展的な話題としては，このような 2 種類の処理経路は，
+処理される情報の種類の問題ではないくて，機能に関与した区別であるとの仮説もあります。すなわち
+
+* 腹側経路は物体に関する情報の知覚 (知覚のための視覚) 
+* 背側経路は行動を導くための情報処理 (行動のための視覚) 
+
+さらに、背側経路 は背外側経路 dorsolateral と背中側経路 dorsomedial に細分化できることが示唆されています（Binkofski and Buxbaum, 2013, Grafton, 2010, Rizzolatti and Matelli, 2003）。
+
+* 背外側側経路 前頭頂内溝（aIPS）と前頭前皮質の腹側部分（PMv）, 古典的に到達運動の計画に寄与 （Davareら、2015、Davareら、2012、Vesia and Crawford、2012）
+* 背中側経路は V6A と内側頭頂内溝 を介して背側前頭前皮質（PMd）へ. 把持に関連する情報を統合する（Davareら、2007、Davareら、2010、Tunikら、2005）
+
+最近では、これら2つの 副回路が 行動によって要求されるオンライン制御の程度に応じて相互作用することも発見されている(Grol et al., 2007, Verhagen et al., 2013)。
+
+</div>
+
+<h1 id="_4">二段階モデル<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h1>
+<h3 id="r-cnn">R-CNN <!-- (2015) --><a class="headerlink" href="#r-cnn" title="Permanent link">&para;</a></h3>
+<p><center>
+<img src='../assets/2013Girshick_RCNN_Fig1.svg' style='width:74%'><br>
+Girshick (2013) より
+<!-- 
+<img src='../assets/2014SPP.svg' style='width:74%'><br>
+Girshick (2013) より
+-->
+</center></p>
+<!-- ---
+
+## 残渣ネット (He et. al, 2015)
+
+<center>
+<img src='../assets/ResNet_Fig2.svg' style='width:39%'><br>
+<img src='../assets/2015ResNet30.svg' style='width:94%'><br>
+He (2015) より
+</center>
+-->
+
+<h3 id="fast-r-cnn-faster-r-cnn-2014">Fast R-CNN と Faster R-CNN (2014)<a class="headerlink" href="#fast-r-cnn-faster-r-cnn-2014" title="Permanent link">&para;</a></h3>
+<p><center>
+<img src='../assets/2015Fast_R-CNN_Fig1.svg' style='width:74%'><br>
+Fast R-CNN</p>
+<!-- <img src='../assets/2015Faster_RCNN_RPN.svg' style='width:74%'><br>
+Faster R-CNN
+-->
+
+<p></center></p>
+<!-- 
+---
+
+## セマンティックセグメンテーションとインスタンスセグメンテーション
+
+- 完全畳み込みネットワーク(Fully Convolutional Network:FCN) と呼ばれるセマンティックセグメンテー
+ションを実現するネットワーク
+- FCN とは文字通り全ての層が畳込み層であるモデル
+
+<center>
+<img src='../assets/2015Long_FCN.svg' style='width:94%'></br>
+Long (2017) FCN
+</center>
+
+- 通常のCNN は，出力層のユニット数が識別すべきカテゴリー数であった。一方 FCN では入力画像の画素数だけ
+出力層が必要になる。
+- すなわち各画素がそれぞれどのカテゴリーに属するのかを出力する必要があるため出力層には，縦画素数 $\times$ 横画素数 $\times$ カテゴリー数の出力ニューロンが用意される。
+- 図 では，識別すべきカテゴリー数 が 20 であったたま，どのカテゴリーにも属さない，すなわち背景を指示するもう1 つのカテゴリーを加えた計 21 カテゴリーの分類を行うことになる。
+
+- CNN では畳込演算によって畳込みのカーネル幅(受容野) だけ近傍の入力刺激を加えて計算することになるため，
+上位層では下位層に比べて受容野が大きくなることの影響で画像サイズは小さく(あるいは粗く) なってしまう
+- このため，最終出力層に入力層と同じ解像度の画素数を得るためには，畳込みと反対方向の解像度を細かくする工夫が必要となる。
+- これを解決する一つの方法がアンサンプリング(unsampling) と呼ばれる方法
+- 下位のプーリング層の情報を用いて詳細な解像度を得る
+- 図 はアンサンプリングにより詳細な画像，すなわち最終的には入力画像と等解像度の出力を得る仕組みを示している。
+
+<center>
+<img src='../assets/2015Long_FCN2J.svg' style='width:94%'><br>
+</center>
+
+- 同様の仕組みがセグネット Segnet でも取り入れられている
+
+<center>
+<img src='../assets/SegNet.svg' style='width:94%'><br>
+</center>
+
+<center>
+<img src='../assets/2016Radford_deconv.svg' style='width:94%'><br>
+</center>
+
+---
+
+<center>
+<img src='../assets/2017He_MaskRCNN_02Oject.svg' style='width:74%'><br>
+<img src='../assets/2017He_MaskRCNN_02SemSeg.svg' style='width:74%'><br>
+<img src='../assets/2017He_MaskRCNN_08.svg' style='width:94%'><br>
+<img src='../assets/2017He_MaskRCNN_41.svg' style='width:94%'><br>
+</center>
+-->
+
+<h1 id="_5">一段階モデル<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h1>
+<p><center>
+<img src='../assets/yolo-and-ssd.jpg' style='width:94%'><br>
+</center></p>
+<!-—
+ [You Only Look Once: Unified, Real-Time Object Detection](https://arxiv.org/abs/1506.02640), 2015. 
+-->
+<!--
+> A single neural network predicts bounding boxes and class probabilities directly from full images in one evaluation. Since the whole detection pipeline is a single network, it can be optimized end-to-end directly on detection performance.
+-->
+
+<p><center>
+<iframe width="600" height="300" src="https://www.youtube.com/embed/lxLyLIL7OsU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</center></p>
+<h1 id="u-net">U-Net<a class="headerlink" href="#u-net" title="Permanent link">&para;</a></h1>
+<p>画像分割の SOTA</p>
+<div align="center" style="width:98%">
+  <img src="../assets/2015Ronneberger_U-Net_Fig1_ja.svg" style="width:99%"><br/>
+  Ronnenberger et. al (2015) Fig. 1 より
+</div>
+
+<div align="center" style="width:88%">
+  <img src="../assets/2014Friston_Fig1.svg" style="width:99%"><br/>
+<!--   <img src="../assets/2009Friston_box3.svg" style="width:99%"><br/> -->
+</div>
+
+<h1 id="_6">背骨 （バックボーン）ネットワーク と 周辺ネット<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h1>
+<div align="center" style="width:99%">
+  <img src="../assets/2017Lin_FPN_teaser_ja_b.svg" style="width:33%">
+  <img src="../assets/2017Lin_FPN_teaser_ja_c.svg" style="width:39%">
+  <img src="../assets/2017Lin_FPN_teaser_ja_d.svg" style="width:66%">
+</div>
+
+<p>detectron2 の実習をしてみましょう。</p>
+<p><center>
+<iframe width="600" height="300" src="https://www.youtube.com/embed/pW6nZXeWlGM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+Realtime Multi-Person 2D Human Pose Estimation using Part Affinity Fields, CVPR 2017 Oral
+</center></p>
+<p><center>
+<iframe width="600" height="300" src="https://www.youtube.com/embed/PCBTZh41Ris" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+Paper: <a href="https://arxiv.org/pdf/1808.07371.pdf">https://arxiv.org/pdf/1808.07371.pdf</a><br>
+Web site: <a href="https://carolineec.github.io/everybody_dance_now/">https://carolineec.github.io/everybody_dance_now/</a>
+</center></p>
+<hr />
+<h1 id="_7">転移学習<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h1>
+<p><strong>転移学習</strong> transfer learning は機械学習分野のみならず，ロボット工学や実応用の分野でも応用が考えられます。
+シミュレーションと現実との間隙をどのように埋めるのかという大きな問題に関連します。
+一方で，転移学習と <em>ファインチューニング</em><em> や </em><em>領域適応</em>* domain adaptation の区別がなされています。</p>
+<p>転移学習とは 課題 A を用いて訓練したモデルに対して，別の課題 B に適用することを言います。
+DNN では転移学習は頻用されます。
+イメージネットで画像分類を学習したネットワークに対して，例えば顔認識を学習させるような場合です。</p>
+<p>PyTorch のチュートリアルなどでは，学習済のネットワークに対して，最終直下層を入れ替えて別の課題を訓練することを転移学習と呼びます。
+このとき，最終直下層と出力層との結合を学習させ，その他の下位層の結合は固定し，訓練しません。
+一方で，下位層まで含めて全結合を訓練させる場合をファインチューニングと呼び，区別しています。</p>
+<div align="center" style="width:99%">
+<img src="../assets/2019Ruder_hard_parameter_sharing_p48.jpg" style="width:44%">
+<img src="../assets/2019Ruder_soft_parameter_sharing_p49.jpg" style="width:44%"><br/>
+左: ハードパラメータ共有: 転移学習,  右: ソフトパラメータ共有: ファインチューニング
+</div>
+
+<hr />
+<h1 id="_8">生成モデル<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h1>
+<p>認識の反対の操作をすれば，生成が可能です。<strong>生成敵対ネットワーク</strong> Generative Adversarial Networks: GAN になります。</p>
+<p>GAN では 2 つのニューラルネットワークが用いられ，<strong>識別器</strong> descriminator と <strong>生成器</strong> generator と呼びます(Goodfellow,2014)。
+識別器も生成器も多層ニューラルネットワークです。
+通常の画像分類課題では，最上位層において推論，すなわち入力画像が何であるかを計算するためにソフトマックスる関数などが用いられます。
+これに対して GAN の識別器では，0 か 1 かの出力をします。入力画像が通常の画像であれば 1 を，生成器によって生成 された画像であれあば 0 を出力します。
+生成器は，識別器の最終直下層で得られたような画像表現に雑音を加えた値から画像を生成します。
+生成器は，識別器が入力データから画像を推論するのと逆方法に推論から画像を生成します。
+すなわち GAN は入力が実在するか，偽造品，すなわちフェイクかを見破る訓練がなされることになります。</p>
+<p>このようにして，生成器は識別器の学習成果であるデータの内部表現を模倣し，生成器を欺こうします。
+このようにして識別器と生成器との間で  <strong>ゲーム理論</strong>でいう <strong>ナッシュ均衡</strong> Nash's equilibrium が成り立ちます (Heusel, 2017)。
+GAN の模式的な流れを下図 に示しました。</p>
+<div align="center" style="width:88%">
+  <img src="../assets/2016Goodfellow_fig12ja.svg" style="width:99%"><br/>
+</div>
+
+<h2 id="_9">画像変換<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<p><center>
+<img src='../assets/2017Taigman_fig.svg' style='width:94%'><br>
+</center></p>
+<p><center>
+<img src='../assets/2017Reed_tmp_5.svg' style='width:94%'>
+</center></p>
+<p><center>
+<img src='../assets/2017Reed_tmp_1.svg' style='width:94%'>
+</center></p>
+<p><center>
+<img src='../assets/2017Reed_tmp_6.svg' style='width:94%'>
+</center></p>
+<h3 id="gan">サイクル GAN<a class="headerlink" href="#gan" title="Permanent link">&para;</a></h3>
+<p><center>
+<img src='../assets/2017Reed_tmp_7.svg' style='width:94%'>
+</center></p>
+<h3 id="gan_1">サイクル GAN による領域変換<a class="headerlink" href="#gan_1" title="Permanent link">&para;</a></h3>
+<p><center>
+<img src='../assets/2017Reed_tmp8.svg' style='width:94%'>
+</center></p>
+<p><center>
+<img src='../assets/2017Zhu_cycleGAN1.svg' style='width:94%'><br>
+<img src='../assets/2017Zhu_cycleGAN2.svg' style='width:94%'><br>
+<img src='../assets/2017Zhu_cycleGAN3.svg' style='width:94%'><br>
+</center></p>
+<hr />
+<h2 id="_10">まんがの画風変換<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p><center>
+<img src='../assets/2018Chen_CartoonGAN.svg' style="width:94%"></br>
+``CartoonGAN: Generative Adversarial Networks for Photo Cartoonization'' CVPR 2018 (Conference on Computer Vision and Pattern Recognition)
+</center></p>
+<p><center>
+<img src='https://cdn-images-1.medium.com/max/1800/1*GS5_bEgpy00cotNRFvAPyA.png' style='width:46%'>
+<img src="https://d2l930y2yx77uc.cloudfront.net/production/uploads/images/7291694/rectangle_large_type_2_86d2e2a52336624f98ed8aa3163a1865.jpg" style='width:49%'><br></p>
+<blockquote>
+<p>左: 君の名は。右: 風の谷のナウシカ，より
+</center></p>
+</blockquote>
+<hr />
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../lect07/" class="btn btn-neutral float-right" title="第 7 回 06月 19 日">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../lect04/" class="btn btn-neutral" title="第 4 回 05 月 29 日"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright (c) 2020</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../lect04/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../lect07/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
