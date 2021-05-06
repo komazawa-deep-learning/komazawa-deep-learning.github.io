@@ -56,6 +56,8 @@ Date: 07/May/2021<br />
 Appache 2.0 license<br />
 </div>
 
+<p>工事中</p>
+
 <h1 id="目次">目次</h1>
 <ul>
   <li><a href="#ml">機械学習</a>
@@ -137,7 +139,7 @@ Mitchell et al (2008) Fig. 1 を改変
 このことと同様にして，脳内の神経活動の表現である我々の活動も様々な表出形態を採る。</li>
 </ul>
 
-<h2 id="機械学習の実習"><a name="ml">機械学習の実習</a></h2>
+<h2 id="1-機械学習の実習">1. <a name="ml">機械学習の実習</a></h2>
 
 <p>または 伏線回収</p>
 
@@ -147,15 +149,25 @@ Mitchell et al (2008) Fig. 1 を改変
 
 <h3 id="機械学習の超簡単実習"><a name="実習">機械学習の超簡単実習</a></h3>
 
+<p>今回取り上げる話題は以下のとおりです:
+<!-- - 交差妥当性検証 --></p>
+
+<ul>
+  <li>重回帰，逆行列，線形代数</li>
+  <li>主成分分析，固有値，変分法，</li>
+  <li>tSNE</li>
+  <li>ロジスティック回帰</li>
+  <li>サポートベクトルマシン SVM
 <!-- - [番組 nothotdog について](https://komazawa-deep-learning.github.io/nothotdog/){:target="_blannk"}-->
-<!-- [nothotdog 体感デモ](https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/nothotdog.ipynb)-->
+<!-- [nothotdog 体感デモ](https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/nothotdog.ipynb)--></li>
+</ul>
 
 <!-- - [初めての画像認識 <img src="https://raw.githubusercontent.com/komazawa-deep-learning/komazawa-deep-learning.github.io/4c5e1c665109926508b3fa505914b60b7237bf62/assets/colab_icon.svg">](https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0515komazawa_ResNet50_demo.ipynb){:target="_blank"}-->
 <ul>
   <li><a href="https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2021_0507_3mnists_demo.ipynb" target="_blank">機械学習の超簡単デモ 伏線回収バージョン<img src="/assets/colab_icon.svg" /></a></li>
 </ul>
 
-<h3 id="3-つのデータセット-mnist-fashion-mnist-kmnist"><a name="mnist">3 つのデータセット: MNIST, Fashion MNIST, KMNIST</a></h3>
+<h3 id="11-3-つのデータセット-mnist-fashion-mnist-kmnist">1.1. <a name="mnist">3 つのデータセット: MNIST, Fashion MNIST, KMNIST</a></h3>
 <ul>
   <li>機械学習分野で頻用されるデータセットとして，手書き数字認識データである MNIST があります。</li>
   <li>MNIST は FAIR (フェイスブック人工知能研究所) 現所長 の Yan LeCun によって作成されました。
@@ -167,7 +179,7 @@ NIST とは，アメリカ合衆国版の JIS です。すなわち，標準化�
   <li>kmnist は日本語のくずし字データセットです。形式は MNIST, Fashion MNIST と同じです。</li>
 </ul>
 
-<h3 id="訓練データテストデータ検証データ"><a name="dataset">訓練データ，テストデータ，検証データ</a></h3>
+<h3 id="12-訓練データテストデータ検証データ">1.2. <a name="dataset">訓練データ，テストデータ，検証データ</a></h3>
 <ul>
   <li>機械学習では，心理統計で用いられるような 仮説検定を行うこともありますが，むしろ，行わない場合も多いです。</li>
   <li>理由としては，仮説検定を行うことによりも，モデルの性能を向上させることに主眼があるからという意味合いであろうと考えられます。</li>
@@ -179,7 +191,7 @@ NIST とは，アメリカ合衆国版の JIS です。すなわち，標準化�
   <li>機械学習におけるモデルの精度向上を目指したパラメータチューニングのことを <strong>学習</strong> と呼びます。</li>
 </ul>
 
-<h3 id="過学習"><a name="overfitting">過学習</a></h3>
+<h3 id="13-過学習">1.3. <a name="overfitting">過学習</a></h3>
 
 <ul>
   <li>モデルのパラメータを学習するときに，同じデータを用いて性能を検証することは，方法論的に間違っていると言えます。</li>
@@ -197,7 +209,7 @@ NIST とは，アメリカ合衆国版の JIS です。すなわち，標準化�
   </li>
 </ul>
 
-<h3 id="回帰と分類"><a name="回帰と分類">回帰と分類</a></h3>
+<h3 id="14-回帰と分類">1.4. <a name="回帰と分類">回帰と分類</a></h3>
 <ul>
   <li>機械学習で頻用される手法の分類に <strong>回帰</strong> と <strong>分類</strong> があります。</li>
   <li>予測すべきデータが連続量の場合は，回帰</li>
@@ -216,7 +228,7 @@ NIST とは，アメリカ合衆国版の JIS です。すなわち，標準化�
 scikit-learn の カンペ (cheat sheet) を改変
 </center>
 
-<h3 id="モデルの精度を測る指標"><a name="precision">モデルの精度を測る指標</a></h3>
+<h3 id="15-モデルの精度を測る指標">1.5. <a name="precision">モデルの精度を測る指標</a></h3>
 <ul>
   <li>モデルの精度とは，何でしょうか。精度とは，正しく予測できることです。分類課題の場合，</li>
   <li>正しい予測と誤った予測とには，詳細な検討が必要になります。</li>
@@ -251,22 +263,86 @@ says that an instance is positive).</li>
   </tbody>
 </table>
 
-<p><a name="supervised_vs_unsupervised"></a></p>
-<h2 id="教師あり学習と教師なし学習"><a href="#supervised_vs_unsupervised">教師あり学習と教師なし学習</a></h2>
+<h2 id="16-教師あり学習と教師なし学習">1.6 <a name="supervised_vs_unsupervised">教師あり学習と教師なし学習</a></h2>
 <ul>
   <li>予測すべき数値に正解が与えられている場合，<strong>教師あり学習 supervised learning</strong> と呼びます。</li>
   <li>一方，予測すべきデータが与えられていない場合を <strong>教師なし学習 unsupervised learning</strong> と呼びます。</li>
   <li>手書き数字認識では，正解となるデータが与えられているので，教師あり学習となります。</li>
-  <li>
-    <p>一方で，正解データが与えられていない場合に，入力データを分類したりする場合を 教師なし学習と 呼びます。</p>
-  </li>
-  <li>交差妥当性検証</li>
-  <li>重回帰，逆行列，線形代数</li>
-  <li>主成分分析，固有値，変分法，</li>
-  <li>tSNE</li>
-  <li>サポートベクトルマシン SVM</li>
-  <li>ロジスティック回帰</li>
+  <li>一方で，正解データが与えられていない場合に，入力データを分類したりする場合を 教師なし学習と 呼びます。</li>
 </ul>
+
+<p>以下はすぐに知る必要がない知識です</p>
+
+<h3 id="重回帰">重回帰</h3>
+
+<p>中学校以来の直線の方程式 $y = ax + b$ を一般化します。
+データ行列を $\mathbf{X}$，予測すべき値を $\mathbf{y}$ とし，推定すべきパラーメータを $\mathbf{W}$ で表します。
+重回帰 multiple regression は次式で表されます:</p>
+
+<p>\(\mathbf{y}=\mathbf{Xw} +\mathbf{b}\)
+ここで $\mathbf{b}$ はバイアス項，中学数学で言えば切片にあたります。</p>
+
+<h3 id="主成分分析">主成分分析</h3>
+
+<p>データ $\mathbf{X}$ の次元圧縮 dimensionality reduction の方法です。
+$\mathbf{X}$ を 係数行列 $\mathbf{w}$ によって変換したデータを $\mathbf{y}$ とします。
+$\mathbf{y}$ の分散を最大化する方法として，次のような目的関数を最大化することを考えます:</p>
+
+\[\mathbf{w}^\top\mathbf{X}^\top\mathbf{Xw} - \lambda\left(\mathbf{w}^\top\mathbf{w}-1\right)\]
+
+<p>ここで $\lambda$ はラグランジェ Lagrange の未定定数 Lagrange’s multiplier と呼ばれます。
+すなわち，主成分分析とは，目的関数である $\mathbf{w}^\top\mathbf{w}$ を最小化する代わりに，制約付き最小化問題を解くことに相当します。
+目的とする関数を最小化する代わりに，新たな目的関数を設定して，その新しい目的関数を最小化することで，制約付き最初化を実現する方法です。</p>
+
+<p>この方法を一般化して <strong>変分法</strong> variational methods と呼びます。</p>
+
+<p>また，上式を解くことは，$\left|\mathbf{X}-\lambda\mathbf{I}\right|=0$ なる固有方程式を解くことになります。
+すなわち，主成分分析とは，データ行列の固有値問題を解くことと同義です。</p>
+
+<p>固有値問題，および 変分法，変分問題は，古くは，オイラーやニュートンによって始められました。
+すなわち，惑星の運行を記述する運動方程式の解法として考案されました。
+この方法を洗練させたのが，ラグランジェ で解析力学として定式化されました。</p>
+
+<h3 id="ロジスティック回帰">ロジスティック回帰</h3>
+
+<p>ロジスティック回帰とは 回帰の名前がついていますが，分類 問題を解くための手法です。
+ある事象が生起する確率を $p$ とすれば，生起市内確率は $(1-p)$ と表せます。この確率比のことを <strong>ロジット比</strong> と呼びます。
+ロジット比の対数が次式に従うことを仮定するのが，ロジスティック回帰です。</p>
+
+\[\log\left(\frac{p}{1-p}\right) = e^{x}\]
+
+<p>上式を解けば，</p>
+
+\[p(x) = \frac{1}{1+e^{-x}}\]
+
+<p>この式を <strong>シグモイド関数</strong> sigmoid function と呼びます。</p>
+
+<h4 id="伏線回収">伏線回収</h4>
+
+<p>初回の授業で，COVID-19 の感染者数の変動を記述するモデルを紹介しました。
+Kermack McKendrick モデルのポイントは 時刻 $t$ における感染者の増加率 $dp/dt$ は その時の感染者の比率と非感染者の比率 の積に比例する
+と仮定することでした。</p>
+
+\[\frac{dp}{dt} = \beta p(t)\left(1-p(t)\right)\]
+
+<p>上式を高等学校数学風味に書き換えると次式のようになります。</p>
+
+\[y' = \beta y(1-y)\]
+
+<p>ここでは $p$ を $y$ と書き換えました。また微分を表す記号を プライム (‘) にしました。
+この式は，高校学校2年生の知識で解くことができます。</p>
+
+<h3 id="勾配降下法">勾配降下法</h3>
+
+<p>重回帰では解析解が存在しました。一方，非線形問題は一般に解析解が存在しません。
+その際に，目的関数を繰り返しによって求める方法があります。
+<strong>勾配降下法</strong> gradient descent methods はその一つです。
+任意の点 $x$ における関数 $f(x)$ の微分が定義されていれば，求める関数の最小値は次式:</p>
+
+\[\Delta\theta = \eta\frac{\partial f}{\partial\theta}\]
+
+<p>を逐次計算することで求めることができると仮定します。
+ここで $\theta$  はモデルのパラメータ，$f$ は目的関数，$\eta$ は学習率，$\partial$ は <strong>偏微分</strong> partial differential を表します。</p>
 
 <!--
 Authors:    J.A. Anderson, A. Pellionisz, E. Rosenfeld (eds.)
