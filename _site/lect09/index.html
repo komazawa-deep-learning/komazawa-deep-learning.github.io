@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Shin Asakawa">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>第 9 回 07月 03 日 - 2020駒澤大学心理学特講IIIA</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="//fonts.googleapis.com/earlyaccess/notosansjp.css" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:600,800" rel="stylesheet">
+  <link href="../css/specific.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u7b2c 9 \u56de 07\u6708 03 \u65e5";
+    var mkdocs_page_input_path = "lect09.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> 2020駒澤大学心理学特講IIIA</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect00check_meet/">第 0 回 事前確認</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect00guidance/">第 0 回 ガイダンス</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect01/">第 1 回 05 月 08 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect02/">第 2 回 05 月 15 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect03/">第 3 回 05 月 22 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect04/">第 4 回 05 月 29 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect05/">第 5 回 06 月 05 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="https://github.com/ShinAsakawa/ShinAsakawa.github.io/blob/master/2020-0614exawizards_attention.pdf">第 6 回 06 月 14 日 ICLR読み会</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect07/">第 7 回 06月 19 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect08/">第 8 回 06月 26 日</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">第 9 回 07月 03 日</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#iiia">ディープラーニングの心理学的解釈 (心理学特講IIIA)</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_1">マルチタスク学習，転移学習</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#_2">実習ファイル</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#recent-work-on-mtl-for-deep-learning">Recent work on MTL for Deep Learning</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#deep-relationship-networks">Deep Relationship Networks</a></li>
+        
+            <li><a class="toctree-l3" href="#fully-adaptive-feature-sharing">Fully-Adaptive Feature Sharing</a></li>
+        
+            <li><a class="toctree-l3" href="#cross-stitch-networks">Cross-stitch Networks</a></li>
+        
+            <li><a class="toctree-l3" href="#a-joint-many-task-model">A Joint Many-Task Model</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect10/">第 10 回 07月 17 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect11/">第 11 回 07月 24 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">付録</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../colaboratory_intro/">Colab 事始め</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../colaboratory_faq/">Colaboratory FAQ</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../eco/">エコシステム</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../python_numpy_intro_ja/">Python の基礎</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../python_modules/">Python modules</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../2020-0510how_to_save_and_share_colab_files/">2020-0510 課題提出の方法</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Hinton_Maxwell_award/">ジェフェリー・ヒントンのマクセル賞受賞記念講演(2016)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../activation_functions/">活性化関数</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../t-SNE/">次元圧縮 t-SNE</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../information_theory/">情報理論</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../data_science/">データサイエンス小史</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020komazawa_how_to_read_math_equations.ipynb">数式の読み方</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Reinforcement-learning-temporal-difference-sarsa-q-learning-expected-sarsa-on-python/">強化学習 TD,Q学習, SARSA</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">2020駒澤大学心理学特講IIIA</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>第 9 回 07月 03 日</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="iiia">ディープラーニングの心理学的解釈 (心理学特講IIIA)<a class="headerlink" href="#iiia" title="Permanent link">&para;</a></h1>
+<div align='right'>
+<a href='mailto:educ0233@komazawa-u.ac.jp'>Shin Aasakawa</a>, all rights reserved.<br>
+Date: 03/Jul/2020<br/>
+Appache 2.0 license<br/>
+</div>
+
+<div align="center">
+    <img src="../assets/2019mitchell-54_20.png" style="width:44%">
+    <img src="../assets/2019mitchell_2.png" style="width:44%"><br/>
+    <img src="../assets/2019mitchell_3.png" style="width:44%">
+    <img src="../assets/2019mitchell_4.png" style="width:44%"><br/>
+</div>
+
+<p>第 09 回 自動翻訳, 文章要約, 転移学習, マルチモーダル学習, マルチタスク学習</p>
+<!-- 
+VAE と MAML と転移学習の実際とをやろうと思う。
+
+以下は去年の 第11回
+-->
+
+<h1 id="_1">マルチタスク学習，転移学習<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<ul>
+<li>学習したことがらを応用することは賢さの尺度でしょう</li>
+</ul>
+<p>たとえば，映画<a href="https://youtu.be/DsLk6hVBE6Y">カラテキッド</a>(1984)では，ミヤギ先生はダニエルさんに車のワックスがけや床掃除を教えました :-) ワックスがけや床磨きは空手の技術習得にとって必要な技能であったというオチです。</p>
+<h2 id="_2">実習ファイル<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://colab.research.google.com/github/komazawa-deep-
+learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0703four_in_one_network2.ipynb" target="_blank">マルチタスク学習2 <img src="../assets/colab_icon.svg"></a></li>
+<li>
+<p><a href="https://colab.research.google.com/github/komazawa-deep-
+learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0703four_in_one_network3.ipynb" target="_blank">マルチタスク学習3 <img src="../assets/colab_icon.svg"></a></p>
+<ol>
+<li>画像脚注付け<br>
+<img alt="" src="https://twitter.com/paraschopra/status/1096710728092995584/photo/1" target="_blank" /></li>
+<li>類義語<br>
+<img alt="" src="https://cdn-images-1.medium.com/max/1280/1*tWrGWKXwWMbuocw2nXBysA.png" target="_blank" /></li>
+<li>類義画像<br>
+<img alt="" src="https://cdn-images-1.medium.com/max/1280/1*NZSJiMUMQi9u07oA6vI9cA.png" target="_blank" /></li>
+<li>文章からの画像検索<ul>
+<li>__犬__を検索<br>
+<img alt="犬" src="https://cdn-images-1.medium.com/max/1280/1*VmIgBrrr-3XwGGwoXwiQMg.png" target="_blank" /><br></li>
+<li><strong>笑顔の少年</strong> を検索<br>
+<img alt="笑顔の少年" src="https://cdn-images-1.medium.com/max/1280/1*4Km1YpfFbwhRF8Obu54EaA.png" target="_blank" /><br></li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<hr />
+<ul>
+<li><a href="http://m-mitchell.com/publications/multitask-blurb.html" target="_blank">マーガレット ミッチェルによるソーシャルメディアを用いたメンタルヘルスのマルチタスク学習</a><ul>
+<li><a href="https://arxiv.org/abs/1712.03538" target="_blank">arXiv 論文</a></li>
+</ul>
+</li>
+<li><a href="https://towardsdatascience.com/one-neural-network-many-uses-image-captioning-image-search-similar-image-and-words-in-one-model-1e22080ce73d" target="_blank">One neural network, many uses</a><ul>
+<li><a href="https://github.com/paraschopra/one-network-many-uses" target="_blank">ソースコード</a></li>
+<li><a href="http://ruder.io/multi-task/" target="_blank">An Overview of Multi-Task Learning in Deep Neural Networks</a></li>
+<li><a href="https://arxiv.org/abs/1706.05098" target="_blank">上の arXiv</a></li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="hard-parameter-sharing">Hard parameter sharing<a class="headerlink" href="#hard-parameter-sharing" title="Permanent link">&para;</a></h3>
+<p><center>
+<img src="http://ruder.io/content/images/2017/05/mtl_images-001-2.png" style="width:44%">
+<img src="http://ruder.io/content/images/size/w2000/2019/03/transfer_learning_taxonomy-1.png" style="width:44%"><br>
+左:マルチタスク学習, 右:転移学習, いずれも Sebastuan Ruder のブログより<br>
+</center></p>
+<hr />
+<h3 id="soft-parameter-sharing">Soft parameter sharing<a class="headerlink" href="#soft-parameter-sharing" title="Permanent link">&para;</a></h3>
+<p>In soft parameter sharing on the other hand, each task has its own model
+with its own parameters. The distance between the parameters of the model
+is then regularized in order to encourage the parameters to be similar. [8]
+for instance use the <script type="math/tex">l2</script> norm for regularization, while [9] use the trace
+norm.</p>
+<ul>
+<li>[8]: Duong, L., Cohn, T., Bird, S., &amp; Cook, P. (2015). Low Resource Dependency Parsing: Cross-lingual Parameter Sharing in a Neural Network Parser. Proceedings of the 53rd Annual Meeting of the Association for Computational Linguistics and the 7th International Joint Conference on Natural Language Processing (Short Papers), 845–850.</li>
+<li>[9]: Yang, Y., &amp; Hospedales, T. M. (2017). Trace Norm Regularised Deep Multi-Task Learning. In Workshop track - ICLR 2017. Retrieved from http://arxiv.org/abs/1606.04038</li>
+</ul>
+<p><img alt="" src="http://ruder.io/content/images/size/w2000/2017/05/mtl_images-002-2.png" /></p>
+<hr />
+<h1 id="recent-work-on-mtl-for-deep-learning">Recent work on MTL for Deep Learning<a class="headerlink" href="#recent-work-on-mtl-for-deep-learning" title="Permanent link">&para;</a></h1>
+<h3 id="deep-relationship-networks">Deep Relationship Networks<a class="headerlink" href="#deep-relationship-networks" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="http://ruder.io/content/images/2017/05/relationship_networks.png" />
+<strong>A Deep Relationship Network with shared convolutional and task-specific fully connected layers with matrix priors (Long and Wang, 2015).</strong></p>
+<ul>
+<li>Long, M., &amp; Wang, J. (2015). Learning Multiple Tasks with Deep Relationship Networks. arXiv Preprint arXiv:1506.02117. Retrieved from http://arxiv.org/abs/1506.02117 ↩︎</li>
+</ul>
+<hr />
+<h3 id="fully-adaptive-feature-sharing">Fully-Adaptive Feature Sharing<a class="headerlink" href="#fully-adaptive-feature-sharing" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="http://ruder.io/content/images/2017/05/fully_adaptive_feature_sharing.png" /><br>
+<strong>The widening procedure for fully-adaptive feature sharing (Lu et al., 2016).</strong></p>
+<p>Lu, Y., Kumar, A., Zhai, S., Cheng, Y., Javidi, T., &amp; Feris, R. (2016). Fully-adaptive Feature Sharing in Multi-Task Networks with Applications in Person Attribute Classification. Retrieved from http://arxiv.org/abs/1611.05377 </p>
+<hr />
+<h3 id="cross-stitch-networks">Cross-stitch Networks<a class="headerlink" href="#cross-stitch-networks" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="http://ruder.io/content/images/2017/05/cross-stitch_networks.png" /><br>
+<strong>Cross-stitch networks for two tasks (Misra et al., 2016).</strong></p>
+<p>Misra, I., Shrivastava, A., Gupta, A., &amp; Hebert, M. (2016). Cross-stitch Networks for Multi-task Learning. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. https://doi.org/10.1109/CVPR.2016.433 </p>
+<!--
+### Low supervision
+
+Søgaard, A., & Goldberg, Y. (2016). Deep multi-task learning with low level tasks supervised at lower layers. Proceedings of the 54th Annual Meeting of the Association for Computational Linguistics, 231–235.
+-->
+
+<hr />
+<h2 id="a-joint-many-task-model">A Joint Many-Task Model<a class="headerlink" href="#a-joint-many-task-model" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="http://ruder.io/content/images/2017/05/joint_many_task_model.png" /><br>
+<strong>A Joint Many-Task Model (Hashimoto et al., 2016).</strong></p>
+<hr />
+<h3 id="weighting-losses-with-uncertainty">Weighting losses with uncertainty<a class="headerlink" href="#weighting-losses-with-uncertainty" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="http://ruder.io/content/images/2017/05/weighting_using_uncertainty.png" /><br>
+<strong>Uncertainty-based loss function weighting for multi-task learning (Kendall et al., 2017).</strong></p>
+<p>Kendall, A., Gal, Y., &amp; Cipolla, R. (2017). Multi-Task Learning Using Uncertainty to Weigh Losses for Scene Geometry and Semantics. Retrieved from http://arxiv.org/abs/1705.07115</p>
+<hr />
+<h3 id="sluice-networks">Sluice Networks<a class="headerlink" href="#sluice-networks" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="http://ruder.io/content/images/2017/05/sluice_network-003.png" /><br>
+<strong>A sluice network for two tasks (Ruder et al., 2017).</strong></p>
+<p>Ruder, S., Bingel, J., Augenstein, I., &amp; Søgaard, A. (2017). Sluice networks: Learning what to share between loosely related tasks. Retrieved from http://arxiv.org/abs/1705.08142 </p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../lect10/" class="btn btn-neutral float-right" title="第 10 回 07月 17 日">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../lect08/" class="btn btn-neutral" title="第 8 回 06月 26 日"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright (c) 2020</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../lect08/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../lect10/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

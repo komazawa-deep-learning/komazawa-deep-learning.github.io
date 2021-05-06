@@ -1,0 +1,897 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>REINFORCEjs: Gridworld with Dynamic Programming</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- jquery and jqueryui -->
+  <script src="./jquery-2.1.3.min.js"></script>
+  <link href="./external/jquery-ui.min.css" rel="stylesheet">
+  <script src="./external/jquery-ui.min.js"></script>
+
+  <!-- bootstrap -->
+  <script src="./bootstrap.min.js"></script>
+  <link href="./bootstrap.min.css" rel="stylesheet">
+
+  <!-- d3js -->
+  <script type="text/javascript" src="./external/d3.min.js"></script>
+
+  <!-- markdown -->
+  <script type="text/javascript" src="./external/marked.js"></script>
+  <script type="text/javascript" src="./external/highlight.pack.js"></script>
+  <link rel="stylesheet" href="./external/highlight_default.css">
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- mathjax : nvm now loading dynamically
+  <script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+   -->
+
+  <!-- rljs -->
+  <script type="text/javascript" src="./lib/rl.js"></script>
+
+  <!-- flotjs -->
+  <script src="./external/jquery.flot.min.js"></script>
+
+  <!-- GA -->
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-3698471-24', 'auto');
+  ga('send', 'pageview');
+  </script>
+  
+  <style>
+  #wrap {
+    width:800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  body {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  }
+  #draw {
+    margin-left: 100px;
+  }
+  #exp {
+    margin-top: 20px;
+    font-size: 16px;
+  }
+  h2 {
+    text-align: center;
+    font-size: 30px;
+  }
+  svg {
+    cursor: pointer;
+  }
+  </style>
+  
+  <script type="application/javascript">
+
+    // Gridworld
+    var Gridworld = function(){
+      this.Rarr = null; // reward array
+      this.T = null; // cell types, 0 = normal, 1 = cliff
+      this.reset()
+    }
+    Gridworld.prototype = {
+      reset: function() {
+
+        // hardcoding one gridworld for now
+        this.gh = 10;
+        this.gw = 10;
+        this.gs = this.gh * this.gw; // number of states
+
+        // specify some rewards
+        var Rarr = R.zeros(this.gs);
+        var T = R.zeros(this.gs);
+        Rarr[55] = 1;
+
+        Rarr[54] = -1;
+        //Rarr[63] = -1;
+        Rarr[64] = -1;
+        Rarr[65] = -1;
+        Rarr[85] = -1;
+        Rarr[86] = -1;
+
+        Rarr[37] = -1;
+        Rarr[33] = -1;
+        //Rarr[77] = -1;
+        Rarr[67] = -1;
+        Rarr[57] = -1;
+
+        // make some cliffs
+        for(q=0;q<8;q++) { var off = (q+1)*this.gh+2; T[off] = 1; Rarr[off] = 0; }
+        for(q=0;q<6;q++) { var off = 4*this.gh+q+2; T[off] = 1; Rarr[off] = 0; }
+        T[5*this.gh+2] = 0; Rarr[5*this.gh+2] = 0; // make a hole
+        this.Rarr = Rarr;
+        this.T = T;
+      },
+      reward: function(s,a,ns) {
+        // reward of being in s, taking action a, and ending up in ns
+        return this.Rarr[s];
+      },
+      nextStateDistribution: function(s,a) {
+        // given (s,a) return distribution over s' (in sparse form)
+        if(this.T[s] === 1) {
+          // cliff! oh no!
+          // var ns = 0; // reset to state zero (start)
+        } else if(s === 55) {
+          // agent wins! teleport to start
+          var ns = this.startState();
+          while(this.T[ns] === 1) {
+            var ns = this.randomState();
+          }
+        } else {
+          // ordinary space
+          var nx, ny;
+          var x = this.stox(s);
+          var y = this.stoy(s);
+          if(a === 0) {nx=x-1; ny=y;}
+          if(a === 1) {nx=x; ny=y-1;}
+          if(a === 2) {nx=x; ny=y+1;}
+          if(a === 3) {nx=x+1; ny=y;}
+          var ns = nx*this.gh+ny;
+          if(this.T[ns] === 1) {
+            // actually never mind, this is a wall. reset the agent
+            var ns = s;
+          }
+        }
+        // gridworld is deterministic, so return only a single next state
+        return ns;
+      },
+      sampleNextState: function(s,a) {
+        // gridworld is deterministic, so this is easy
+        var ns = this.nextStateDistribution(s,a);
+        var r = this.Rarr[s]; // observe the raw reward of being in s, taking a, and ending up in ns
+        r -= 0.01; // every step takes a bit of negative reward
+        var out = {'ns':ns, 'r':r};
+        if(s === 55 && ns === 0) {
+          // episode is over
+          out.reset_episode = true;
+        }
+        return out;
+      },
+      allowedActions: function(s) {
+        var x = this.stox(s);
+        var y = this.stoy(s);
+        var as = [];
+        if(x > 0) { as.push(0); }
+        if(y > 0) { as.push(1); }
+        if(y < this.gh-1) { as.push(2); }
+        if(x < this.gw-1) { as.push(3); }
+        return as;
+      },
+      randomState: function() { return Math.floor(Math.random()*this.gs); },
+      startState: function() { return 0; },
+      getNumStates: function() { return this.gs; },
+      getMaxNumActions: function() { return 4; },
+
+      // private functions
+      stox: function(s) { return Math.floor(s/this.gh); },
+      stoy: function(s) { return s % this.gh; },
+      xytos: function(x,y) { return x*this.gh + y; },
+    }
+
+    // ------
+    // UI
+    // ------
+    var rs = {};
+    var trs = {};
+    var tvs = {};
+    var pas = {};
+    var cs = 60;  // cell size
+    var initGrid = function() {
+      var d3elt = d3.select('#draw');
+      d3elt.html('');
+      rs = {};
+      trs = {};
+      tvs = {};
+      pas = {};
+
+      var gh= env.gh; // height in cells
+      var gw = env.gw; // width in cells
+      var gs = env.gs; // total number of cells
+
+      var w = 600;
+      var h = 600;
+      svg = d3elt.append('svg').attr('width', w).attr('height', h)
+        .append('g').attr('transform', 'scale(1)');
+
+      // define a marker for drawing arrowheads
+      svg.append("defs").append("marker")
+        .attr("id", "arrowhead")
+        .attr("refX", 3)
+        .attr("refY", 2)
+        .attr("markerWidth", 3)
+        .attr("markerHeight", 4)
+        .attr("orient", "auto")
+        .append("path")
+          .attr("d", "M 0,0 V 4 L3,2 Z");
+
+      for(var y=0;y<gh;y++) {
+        for(var x=0;x<gw;x++) {
+          var xcoord = x*cs;
+          var ycoord = y*cs;
+          var s = env.xytos(x,y);
+
+          var g = svg.append('g');
+          // click callbackfor group
+          g.on('click', function(ss) {
+            return function() { cellClicked(ss); } // close over s
+          }(s));
+
+          // set up cell rectangles
+          var r = g.append('rect')
+            .attr('x', xcoord)
+            .attr('y', ycoord)
+            .attr('height', cs)
+            .attr('width', cs)
+            .attr('fill', '#FFF')
+            .attr('stroke', 'black')
+            .attr('stroke-width', 2);
+          rs[s] = r;
+
+          // reward text
+          var tr = g.append('text')
+            .attr('x', xcoord + 5)
+            .attr('y', ycoord + 55)
+            .attr('font-size', 10)
+            .text('');
+          trs[s] = tr;
+
+          // skip rest for cliffs
+          if(env.T[s] === 1) { continue; }
+
+          // value text
+          var tv = g.append('text')
+            .attr('x', xcoord + 5)
+            .attr('y', ycoord + 20)
+            .text('');
+          tvs[s] = tv;
+        
+          // policy arrows
+          pas[s] = []
+          for(var a=0;a<4;a++) {
+            var pa = g.append('line')
+              .attr('x1', xcoord)
+              .attr('y1', ycoord)
+              .attr('x2', xcoord)
+              .attr('y2', ycoord)
+              .attr('stroke', 'black')
+              .attr('stroke-width', '2')
+              .attr("marker-end", "url(#arrowhead)");
+            pas[s].push(pa);
+          }
+        }
+      }
+
+      // append agent position circle
+      svg.append('circle')
+        .attr('cx', -100)
+        .attr('cy', -100)
+        .attr('r', 15)
+        .attr('fill', '#FF0')
+        .attr('stroke', '#000')
+        .attr('id', 'cpos');
+
+    }
+
+    var drawGrid = function() {
+      var gh= env.gh; // height in cells
+      var gw = env.gw; // width in cells
+      var gs = env.gs; // total number of cells
+
+      var sx = env.stox(state);
+      var sy = env.stoy(state);      
+      d3.select('#cpos')
+        .attr('cx', sx*cs+cs/2)
+        .attr('cy', sy*cs+cs/2);
+
+      // updates the grid with current state of world/agent
+      for(var y=0;y<gh;y++) {
+        for(var x=0;x<gw;x++) {
+          var xcoord = x*cs;
+          var ycoord = y*cs;
+          var r=255,g=255,b=255;
+          var s = env.xytos(x,y);
+          
+          // get value of state s under agent policy
+          if(typeof agent.V !== 'undefined') {
+            var vv = agent.V[s];
+          } else if(typeof agent.Q !== 'undefined'){
+            var poss = env.allowedActions(s);
+            var vv = -1;
+            for(var i=0,n=poss.length;i<n;i++) {
+              var qsa = agent.Q[poss[i]*gs+s];
+              if(i === 0 || qsa > vv) { vv = qsa; }
+            }
+          }
+          
+          // var poss = env.allowedActions(s);
+          // var vv = -1;
+          // for(var i=0,n=poss.length;i<n;i++) {
+          //   var qsa = agent.e[poss[i]*gs+s];
+          //   if(i === 0 || qsa > vv) { vv = qsa; }
+          // }
+
+          var ms = 100;
+          if(vv > 0) { g = 255; r = 255 - vv*ms; b = 255 - vv*ms; }
+          if(vv < 0) { g = 255 + vv*ms; r = 255; b = 255 + vv*ms; }
+          var vcol = 'rgb('+Math.floor(r)+','+Math.floor(g)+','+Math.floor(b)+')';
+          if(env.T[s] === 1) { vcol = "#AAA"; rcol = "#AAA"; }
+
+          // update colors of rectangles based on value
+          var r = rs[s];
+          if(s === selected) {
+            // highlight selected cell
+            r.attr('fill', '#FF0');
+          } else {
+            r.attr('fill', vcol); 
+          }
+
+          // write reward texts
+          var rv = env.Rarr[s];
+          var tr = trs[s];
+          if(rv !== 0) {
+            tr.text('R ' + rv.toFixed(1))
+          }
+
+          // skip rest for cliff
+          if(env.T[s] === 1) continue; 
+
+          // write value
+          var tv = tvs[s];
+          tv.text(vv.toFixed(2));
+          
+          // update policy arrows
+          var paa = pas[s];
+          for(var a=0;a<4;a++) {
+            var pa = paa[a];
+            var prob = agent.P[a*gs+s];
+            if(prob < 0.01) { pa.attr('visibility', 'hidden'); }
+            else { pa.attr('visibility', 'visible'); }
+            var ss = cs/2 * prob * 0.9;
+            if(a === 0) {nx=-ss; ny=0;}
+            if(a === 1) {nx=0; ny=-ss;}
+            if(a === 2) {nx=0; ny=ss;}
+            if(a === 3) {nx=ss; ny=0;}
+            pa.attr('x1', xcoord+cs/2)
+              .attr('y1', ycoord+cs/2)
+              .attr('x2', xcoord+cs/2+nx)
+              .attr('y2', ycoord+cs/2+ny);
+          }
+        }
+      }
+    }
+
+    var selected = -1;
+    var cellClicked = function(s) {
+      if(s === selected) {
+        selected = -1; // toggle off
+        $("#creward").html('(select a cell)');
+      } else {
+        selected = s;
+        $("#creward").html(env.Rarr[s].toFixed(2));
+        $("#rewardslider").slider('value', env.Rarr[s]);
+      }
+      drawGrid(); // redraw
+    }
+
+    var goslow = function() {
+      steps_per_tick = 1;
+    }
+    var gonormal = function(){
+      steps_per_tick = 10;
+    }
+    var gofast = function() {
+      steps_per_tick = 25;
+    }
+    var steps_per_tick = 1;
+    var sid = -1;
+    var nsteps_history = [];
+    var nsteps_counter = 0;
+    var nflot = 1000;
+    var tdlearn = function() {
+      if(sid === -1) {
+        sid = setInterval(function(){
+          for(var k=0;k<steps_per_tick;k++) {
+
+            var a = agent.act(state); // ask agent for an action
+            var obs = env.sampleNextState(state, a); // run it through environment dynamics
+            agent.learn(obs.r); // allow opportunity for the agent to learn
+            state = obs.ns; // evolve environment to next state
+            nsteps_counter += 1;
+            if(typeof obs.reset_episode !== 'undefined') {
+              agent.resetEpisode();
+              // record the reward achieved
+              if(nsteps_history.length >= nflot) {
+                nsteps_history = nsteps_history.slice(1);
+              }
+              nsteps_history.push(nsteps_counter);
+              nsteps_counter = 0;
+            }
+          }
+          // keep track of reward history
+          drawGrid(); // draw
+        }, 20);
+      } else { 
+        clearInterval(sid); 
+        sid = -1;
+      }
+    }
+
+    function resetAgent() {
+      eval($("#agentspec").val())
+      agent = new RL.TDAgent(env, spec);
+      $("#slider").slider('value', agent.epsilon);
+      $("#eps").html(agent.epsilon.toFixed(2));
+      state = env.startState(); // move state to beginning too
+      drawGrid();
+    }
+
+    function resetAll() {
+      env.reset();
+      agent.reset();
+      drawGrid();
+    }
+
+    function initGraph() {
+      var container = $("#flotreward");
+      var res = getFlotRewards();
+      series = [{
+        data: res,
+        lines: {fill: true}
+      }];
+      var plot = $.plot(container, series, {
+        grid: {
+          borderWidth: 1,
+          minBorderMargin: 20,
+          labelMargin: 10,
+          backgroundColor: {
+            colors: ["#FFF", "#e4f4f4"]
+          },
+          margin: {
+            top: 10,
+            bottom: 10,
+            left: 10,
+          }
+        },
+        xaxis: {
+          min: 0,
+          max: nflot
+        },
+        yaxis: {
+          min: 0,
+          max: 1000
+        }
+      });
+
+      setInterval(function(){
+        series[0].data = getFlotRewards();
+        plot.setData(series);
+        plot.draw();
+      }, 100);
+    }
+    function getFlotRewards() {
+      // zip rewards into flot data
+      var res = [];
+      for(var i=0,n=nsteps_history.length;i<n;i++) {
+        res.push([i, nsteps_history[i]]);
+      }
+      return res;
+    }
+
+    var state;
+    var agent, env;
+    function start() {
+      env = new Gridworld(); // create environment
+      state = env.startState();
+      eval($("#agentspec").val())
+      agent = new RL.TDAgent(env, spec);
+      //agent = new RL.ActorCriticAgent(env, {'gamma':0.9, 'epsilon':0.2});
+
+      // slider sets agent epsilon
+      $( "#slider" ).slider({
+        min: 0,
+        max: 1,
+        value: agent.epsilon,
+        step: 0.01,
+        slide: function(event, ui) {
+          agent.epsilon = ui.value;
+          $("#eps").html(ui.value.toFixed(2));
+        }
+      });
+
+      $("#rewardslider").slider({
+        min: -5,
+        max: 5.1,
+        value: 0,
+        step: 0.1,
+        slide: function(event, ui) {
+          if(selected >= 0) {
+            env.Rarr[selected] = ui.value;
+            $("#creward").html(ui.value.toFixed(2));
+            drawGrid();
+          } else {
+            $("#creward").html('(select a cell)');
+          }
+        }
+      });
+
+      $("#eps").html(agent.epsilon.toFixed(2));
+      $("#slider").slider('value', agent.epsilon);
+
+      // render markdown
+      $(".md").each(function(){
+        $(this).html(marked($(this).html()));
+      });
+      renderJax();
+
+      initGrid();
+      drawGrid();
+      initGraph();
+    }
+
+    var jaxrendered = false;
+    function renderJax() {
+      if(jaxrendered) { return; }
+      (function () {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src  = "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+        document.getElementsByTagName("head")[0].appendChild(script);
+        jaxrendered = true;
+      })();
+    }
+
+  </script>
+
+ </head>
+<body onload="start();">
+
+  <!--<a href="https://github.com/karpathy/reinforcejs"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>-->
+  
+ <div id="wrap">
+   
+   <div id="mynav" style="border-bottom:1px solid #999; padding-bottom: 10px; margin-bottom:50px;">
+    <div>
+      <img src="loop.svg" style="width:50px;height:50px;float:left;">
+      <h1 style="font-size:50px;">REINFORCE <span style="color:#058;">js</span></h1>
+    </div>
+    <ul class="nav nav-pills">
+      <li role="presentation" class="active"><a href="index.html">About</a></li>
+      <li role="presentation"><a href="gridworld_dp.html">グリッドワールド:DP</a></li>
+      <li role="presentation"><a href="gridworld_td.html">グリッドワールド:TD</a></li>
+      <li role="presentation"><a href="puckworld.html">パックマンワールド:DQN</a></li>
+      <li role="presentation"><a href="waterworld.html">ウォーターワールド:DQN</a></li>
+    </ul>
+   </div>
+
+
+<!--     <div id="mynav" style="border-bottom:1px solid #999; padding-bottom: 10px; margin-bottom:50px;">
+      <div>
+        <img src="loop.svg" style="width:50px;height:50px;float:left;">
+        <h1 style="font-size:50px;">REINFORCE<span style="color:#058;">js</span></h1>
+      </div>
+      <ul class="nav nav-pills">
+        <li role="presentation"><a href="index.html">About</a></li>
+        <li role="presentation"><a href="gridworld_dp.html">GridWorld: DP</a></li>
+        <li role="presentation" class="active"><a href="gridworld_td.html">GridWorld: TD</a></li>
+        <li role="presentation"><a href="puckworld.html">PuckWorld: DQN</a></li>
+        <li role="presentation"><a href="waterworld.html">WaterWorld: DQN</a></li>
+      </ul>
+     </div>
+-->
+
+
+   <h2>TD 学習によるグリッドワールドのデモ <!--Temporal Difference Learning Gridworld Demo--></h2>
+   <br>
+
+<textarea id="agentspec" style="width:100%;height:270px;">
+// エージェントのパラメータ設定 (エージェントのリセット時に読み込まれます)
+var spec = {}
+spec.update = 'qlearn'; // 'qlearn' または 'sarsa'
+spec.gamma = 0.9; // 割引率  [0, 1)
+spec.epsilon = 0.2; // イプシロン貪欲方策のためのイプシロンの初期値 [0, 1)
+spec.alpha = 0.1; // 価値関数の学習率
+spec.lambda = 0; // 妥当性の痕跡の減衰率  [0,1). 0 = 妥当性の痕跡なし
+spec.replacing_traces = true; // トレースを累積するか，置き換えるかの設定
+spec.planN = 50; // 繰り返し毎のプランニングステップ数 0 は プランニングなし 
+
+spec.smooth_policy_update = true; // non-standard, updates policy smoothly to follow max_a Q
+spec.beta = 0.1; // スムーズ方策更新の学習率
+</textarea>
+   <button class="btn btn-danger" onclick="resetAgent()" style="width:180px;height:50px;margin-bottom:5px;">エージェントの再初期化</button>
+   <button class="btn btn-primary" onclick="tdlearn()" style="width:170px;height:50px;margin-bottom:5px;">TD 学習 切り替え</button>
+   <button class="btn btn-success" onclick="gofast()" style="width:120px;height:50px;margin-bottom:5px;">速</button>
+   <button class="btn btn-success" onclick="gonormal()" style="width:120px;height:50px;margin-bottom:5px;">普通速</button>
+   <button class="btn btn-success" onclick="goslow()" style="width:120px;height:50px;margin-bottom:5px;">遅</button>
+   
+   
+   <br/><br/>
+   探索イプシロン: <span id="eps">0.15</span> <div id="slider"></div>
+
+   <br><br>
+
+   <div id="draw"></div>
+   <br/>
+   <div id="rewardui">
+   セルの報酬変更: <span id="creward">(セルを選択してから下のスライダーを左右に動かす)</span> <div id="rewardslider"></div>
+   </div>
+<br/>
+   <div>
+      ゴールに到達するまでの行動数 小さいほど良い:
+     <div id="flotreward" style="width:800px; height: 400px;"></div>
+   </div>
+
+   <div id="exp" class="md">
+
+### セットアップ
+
+このページ (*動的プログラミン法のコピペです*) は 強化学習の文献では 「おもちゃモデル」 としてしばしば使用される **グリッドワールド** という おもちゃの仮想環境です。
+ここでは以下のような仮定が置かれます:
+
+- **状態空間** グリッドワールド には 10x10=100 の状態があります。開始状態は左上のセルです。 灰色のセルは壁です。壁を突き抜けて移動することはできません。
+- **行為** エージェントは 最大 4 つの行為 を選択することができます。上例では エージェントは最大 4 つの行為から一つの行為を選択して移動することができます。 
+- **環境ダイナミクス**  グリッドワールド は 決定論的です 各状態と行動が与えられるごとに，同じ新しい状態になります。
+- **報酬** エージェントは 中央のマス （R 1.0を示すマス） にいるときに +1 の報酬を受け取ります。 いくつかの状態では -1 の報酬を受け取ります（R -1.0 と表示）。 報酬が +1.0 の状態が ゴール状態です。ゴールするとエージェントをスタート状態に戻してリセットします。
+
+この例は 決定論的有限マルコフ決定過程 (MDP) です。
+エージェントの目標は常に 将来の割引された報酬 を最大化する エージェントの方策 (矢印で示されている)を見つけることです。
+私のお気に入りの部分は 価値反復を収束させ、 セルの報酬を変更して、方策が調整されるのを見ることです。
+
+**インターフェース** セルの色（最初はすべて白）は 現在の方策で その状態の 価値（割引報酬）の現在の推定値を示しています。
+任意のセルを選択して **セルの報酬変更** スライダーを使って報酬を変更することができます。
+
+<!-- (*Copy-pasted from Dynamic Programming demo*). This is a toy environment called **Gridworld** that is often used as a toy model in the Reinforcement Learning literature. In this particular case:
+
+- **State space**: GridWorld has 10x10 = 100 distinct states. The start state is the top left cell. The gray cells are walls and cannot be moved to.
+- **Actions**: The agent can choose from up to 4 actions to move around. In this example 
+- **Environment Dynamics**: GridWorld is deterministic, leading to the same new state given each state and action
+- **Rewards**: The agent receives +1 reward when it is in the center square (the one that shows R 1.0), and -1 reward in a few states (R -1.0 is shown for these). The state with +1.0 reward is the goal state and resets the agent back to start.
+
+In other words, this is a deterministic, finite Markov Decision Process (MDP) and as always the goal is to find an agent policy (shown here by arrows) that maximizes the future discounted reward. My favorite part is letting the agent find the optimal path, then suddenly change the reward of some cell with the slider and watch it struggle to reroute its policy.
+
+**Interface**. The color of the cells (initially all white) shows the current estimate of the Value (discounted reward) of that state, with the current policy. Note that you can select any cell and change its reward with the *Cell reward* slider.
+-->
+
+### TD 学習 (Temporal Difference Learning)
+
+TD 法 （有限状態マルコフ決定過程 MDP）は **リチャード サットン Richard Sutton のオンライン教科書** の [第6章](http://webdocs.cs.ualberta.ca/~sutton/book/ebook/node60.html)
+に解説があります。
+本 REINFORCEjs では 第 7, 9, 8 章 にある数多くの ベルとホイッスル を実装しています。7 章は 適格性トレース (eligibility traces), 8 章は，プランニング, 9 章は関数近似，一般ディープ Q 学習 が記載されています。
+
+<!-- TD methods (for finite MDPs) are covered very nicely in **Richard Sutton's Free Online Book on Reinforcement Learning**, in this particular case [Chapter 6](http://webdocs.cs.ualberta.ca/~sutton/book/ebook/node60.html), but REINFORCEjs also implements many of the bells and whistles described in Chapters 7 (Eligibility Traces), Chapter 9 (Planning), and Chapter 8 (Function approximation and more generally Deep Q Learning).-->
+
+重要な概念としては，行動価値関数の推定が挙げられます。
+行動価値関数とは，エージェントが受け取る 割引済み期待報酬です。
+これは 行動 \\(a\\) を状態 \\(s\\) で行って，任意の方策 \\(\pi(a\\vert s)\\) に従う場合の関数で，次式のとおりです:
+
+<!-- Briefly, the core idea is to estimate the action value function \\(Q^\pi(s,a)\\), which is the expected discounted reward obtained by the agent by taking action \\(a\\) in state \\(s\\) and then following some particular policy \\(\pi(a \\mid s)\\):-->
+
+$$
+Q^\pi (s,a) = E\_\pi \\{ r\_t + \\gamma r\_{t+1} + \\gamma^2 r\_{t+2} + \\ldots \\mid s\_t = s, a\_t = a \\}
+$$
+
+
+上の期待値は，2 つの確率変動するソース，すなわち (1) 環境， (2) エージェントの方策 から成り立っています。
+動的プログラミング法とは異なり，TD 学習では，環境と相互作用するエージェントの視点で価値関数を推定します。経験を重ねるたびにその都度方策を更新します。
+時刻 t で付番された長い訓練系列 \\(s\_t, a\_t, r\_t, s\_{t+1}, a\_{t+1}, r\_{t+1}, s\_{t+2}, \ldots \\) からエージェントは環境と相互作用します。
+
+<!-- The expectation above is really over two stochastic sources: 1. the environment and 2. the agent policy which in the general case is also stochastic. Unlike Dynamic Programming, Temporal Difference Learning estimates the value functions from the point of view of an agent who is interacting with the environment, collecting experience about its dynamics and adjusting its policy online. That is, the agent's interaction with the environment (which forms our training set) is a long sequence of \\(s\_t, a\_t, r\_t, s\_{t+1}, a\_{t+1}, r\_{t+1}, s\_{t+2}, \ldots \\), indexed by t (time): -->
+
+<div style="text-align:center; margin: 20px;">
+<img src="img/sarsa.png">
+</div>
+
+駄菓子菓子，通常の機械学習の設定とは違って，エージェントが採る行動によってその訓練集合が変動します。
+知っておくべき重要な概念としては，Q 関数はベルマン方程式を満たしている，ということが挙げられます。
+Q 関数とは，一つの行動ノード \\((s\_t, a\_t)\\) から次のノード \\((s\_{t+1}, a\_{t+1})\\) への状態遷移に関係する関数です。以下を見てください:
+
+<!-- However, unlike a standard Machine Learning setting the agent picks the actions, and hence influences its own training set. Fun! The core idea is to notice that the Q function satisfies the Bellman equation, which is a recurrence relation that relates the Q function at one action node \\((s\_t, a\_t)\\) to the next one \\((s\_{t+1}, a\_{t+1})\\). In particular, looking at the above diagram the agent: -->
+
+1. ある状態 \\(s\_t\\) でエージェントは行動 \\(a\_t\\) を採る <!--The agent picked some action \\(a\_t\\) in state \\(s\_t\\)-->
+2. エージェントは環境から報酬 \\(r\_t\\) を受け取り，状態 \\(s\_{t+1}\\) が更新される <!--The environment responded with some reward \\(r\_t\\) and new state \\(s\_{t+1}\\)-->
+3. エージェントは現在の方策 \\(\pi\\) に従って行動 \\(a\_{t+1}\\) を採る <!--The agent then picks some new action \\(a\_{t+1}\\) from its current policy \\(\pi\\).-->
+
+この行動の元での期待報酬を漸化式を用いて書き表すことができます:
+
+<!--We can explicitly write out the expect reward of this behavior and express Q recursively based on itself:-->
+
+$$
+Q(s,a) = \sum\_{s'} \mathcal{P}\_{ss'}^a \left[ \mathcal{R}\_{ss'}^a + \\gamma \sum\_{a'} \pi(s',a') Q(s',a') \right]
+$$
+
+ここで，2 つのランダムなソースが足し合わされています。この 2 つとは次の状態とエージェントの現在の方策です。
+上式は \\(Q\\) はある数 (すべて 0 とか) で初期化されていて，繰り返し更新されます。
+環境のダイナミクス \\(\mathcal{P}\\) を参照することはできません。それでも，エージェントは経験に基づいて環境と相互作用して，未知の分布からサンプルを入手できます。
+環境とは違って，方策 \\(\pi\\) は参照可能です。実際には簡単なサンプリングを行う次式で定義される サルサ (SARSA) アルゴリズムが考えられます:
+
+<!-- Where we see the two sources of randomness explicitly summed over (first over the next state, and then over the agent's current policy). Since this equation is expected to hold, our strategy is to initialize \\(Q\\) with some numbers (e.g. all zeros) and then turn this recurrence relation into an update. Of course, we don't have access to the environment dynamics \\(\mathcal{P}\\), but we can base the update on the agent's experience from interacting with the environment, which is at least a sample from this unknown distribution. Notice that we do have access to the policy \\(\pi\\) so we could in principle evaluate the second sum exactly, but in practice it is simpler (especially if your actions were continuous) to sample this part as well, giving rise to the **SARSA** (short for s,a,r,s',a', get it?) algorithm: -->
+
+$$
+Q(s\_t, a\_t) \leftarrow Q(s\_t, a\_t) + \alpha \left[ \underbrace{r\_t + \gamma Q(s\_{t+1}, a\_{t+1})}\_{target} - \underbrace{Q(s\_t, a\_t)}\_{current} \right]
+$$
+
+上式で \\(\alpha\\) は学習率です。カッコ内の量は **TD 誤差 (TD errors)** と呼ばれています。
+すなわち，任意の初期値 \\(Q\\) から出発して 方策 \\(\pi\\) を用いて環境と相互作用し，状態と行動と報酬の連鎖 (s, a, r,...) を繰り返すことになります。
+この連鎖を訓練データとみなして，その都度確率勾配法によって損失関数，この場合 ベルマンの漸化式 を最小化します。
+Q 関数を更新するたびに，方策も貪欲に (greedy) 更新します。サットン本では， **方策反復 policy iteration** が繰り返されます(下図)。
+
+<!-- Here the parameter \\( \alpha \\) is the learning rate, and the quantity inside the bracket is called the **TD Error**. In other words the idea is to interact with the environment by starting with some initial \\(Q\\), using some policy \\(\\pi\\), and keeping track of a chain of (s,a,r,...). We then simply treat this as training data, and use online stochastic gradient descent to minimize the loss function, which in this case is the Bellman recurrence relation. Each time we perform the update to the Q function, we can also update our policy to be greedy with respect to our new belief about Q. That is, in each state the policy becomes to take the action that maximizes Q. This approach of starting with some value function and policy and iteratively updating one based on the other is the **policy iteration** scheme described in Sutton's book: -->
+
+<div style="text-align:center; margin: 20px;">
+<img src="img/policyiter.png">
+</div>
+
+**SARA** は **オン ポリシー** 法と呼ばれます。これは，ある特定の方策から Q 関数を評価するために，オン(ポリシー) と呼ばれるからです。
+複数の方策から Q 関数をコントロールするような場合の方が良い場合があります。
+これは **Q 学習** と呼ばれ，次式で定義されます。
+
+<!-- Now, **SARSA** is called an **on-policy** method because it's evaluating the Q function for a particular policy. It turns out that if you're interested in control rather than estimating Q for some policy, in practice there is an update that works much better. It's called **Q-Learning** and it has the form: -->
+
+$$
+Q(s\_t, a\_t) \leftarrow Q(s\_t, a\_t) + \alpha \left[ r\_t + \gamma \max\_a Q(s\_{t+1}, a) - Q(s\_t, a\_t) \right]
+$$
+
+Q 学習は **オフ ポリシー** と呼ばれます。最適な 行動価値関数 \\(Q^\*\\) と 実際の Q 関数が近似する方策とが一致しないからです。
+直感的には，このような更新方法は **楽観的** に見えます。
+最適な行動に基づく Q 関数の方針が
+
+なぜなら 現在の行動方針でたまたまサンプリングした行動に基づくのではなく， 状態 \\(s_\{t+1}\\) で取りうる最善の行動の推定値に基づいて Q 関数を更新するからです。
+この グリッドワールドのデモでも SARSA よりも Q 学習の更新の方がはるかに速く収束します。
+
+<!-- This is an **off-policy** update because the behavior policy does not match the policy whose Q function is being approximated, in this case the optimal action-value function \\(Q^\*\\). Intuitively, the update looks *optimistic*, since it updates the Q function based on its estimate of the value of the best action it can take at state \\(s\_{t+1}\\), not based on the action it happened to sample with its current behavior policy. With this Gridworld demo as well, the Q-Learning update converges much faster than SARSA.-->
+
+**探索 Exploration**.  TD 学習をうまく動作させるために必要な最後の構成要素は，ある程度の **探索** を明示的に確保することです。
+もしエージェントが常に現在の方策に意固地に従うのならば，最適化中に局所最小値に陥ることが起きるでしょう。これと同様にして，探索に行き詰まる危険性があります。
+ある程度の (ランダムに) 探索を保証する (かつ，すべての収束保証を担保する) ため，一般的で簡単な方法を使います。
+これが **イプシロン貪欲 epsilon greedy** な探索と呼ばれる方法です。
+つまり、確率 イプシロン \\(\epsilon\\) でエージェントはランダムな行動をとり，残りは現在のポリシーに従います。
+このイプシロンの値通常 0.1, 0.2, くらい，訓練中は，非常に小さな値 (例えば 0.05 や 0.01 など) に緩徐 (アニーリング) されます。
+
+<!-- The last necessary component to get TD Learning to work well is to explicitly ensure some amount of exploration. If the agent always follows its current policy, the danger is that it can get stuck exploiting, somewhat similar to getting stuck in local minima during optimization. One common and perhaps simplest way to ensure some exploration (and make all converge proofs work) is to make the agent's policy **epsilon-greedy**. That is, with probability \\(\epsilon\\) the agent takes a random action, and the remainder of the time it follows its current policy. Some usual settings for this parameter are 0.1, 0.2, or so, and this is usually annealed over the duration of the trianing time to very small numbers (e.g. 0.05 or 0.01, etc). -->
+
+### TD の ベルとホイッスル (Bells and Whistles)
+
+(訳注: ベルとホイッスルとは，本質ではないけど魅力的なオマケ的な意味です)
+
+上のデモのオプションを見てみると 'qlearn' か 'sarsa' だけでなく， 割引率 `spec.gamma`， 探索パラメータイプシロン `spec.epsilon`， 学習率 `spec.alpha` があります。他には次のものあります。
+
+**妥当性の痕跡 eligibility traces** 妥当性の痕跡の背後にあるアイデアは，TD 更新 を より局所的なものにせず， 過去の経験の一部を介して 後方に拡散させることです。
+言い換えれば，エージェントが以前どこにいたかの (減衰する) 痕跡(トレース) を保持しておくことです。
+減衰率は ハイパーパラメータ \\(\lambda\\) で制御します。
+Q 値の更新は s,a,r,s,a,r,s,a,s,a,r... チェーンの 1 つのリンクだけでなく，最近の行動履歴に沿って実行します。
+これは Q 値がある状態 (s,a) について変化するとき，その直前の他のすべての状態も，再帰的依存性のために影響を受けるという事実から正当化さます。
+例えば あるグリッドワールドで 報酬を発見した場合 エージェントは 直前の状態の Q 値 を更新するだけでなく，その状態に至るまでに見てきた状態の Q 値 も更新することになります。
+この場合 0 値は トレースを使用しないことを意味します (デフォルト)。
+
+<!-- Looking at the options available to you in the spec for the demo, there are some usual suspects (whether we are using 'qlearn', or 'sarsa'), the discount factor `spec.gamma`, the exploration parameter `spec.epsilon`, and the learning rate `spec.alpha`. What is all the other stuff?
+
+**Eligibility Traces**. The idea behind eligibility traces is to make the TD updates less local and diffuse them backwards through some part of the past experience. In other words, we're keeping a (decaying) trace of where the agent has been previously (the decay strength is controlled by a hyperparameter \\(\lambda\\)), and performing Q value updates not only on one link of the s,a,r,s,a,s,a,r.... chain, but along some recent history of it. This is justified by the fact that when the Q value changes for some state (s,a), then all the other states immediately before it are also influenced due to their recursive dependence. For example, if the agent discovers a reward on some Gridworld square, it would not only update the Q of the immediately previous state, but also several several states it has seen leading up to this state. Use `spec.lambda` to control the decay of the eligibility trace, where 0 means no traces should be used (default). -->
+
+<div style="text-align:center; margin: 20px;">
+<img src="img/lambda.png"><br>
+図はサットン本より，妥当性の痕跡の基本概念を示している<!--Image taken from Sutton's book, showing the basic idea of eligibility traces.-->
+</div>
+
+さらに `spec.replacement_traces` (デフォルトはtrue) で制御可能なオプションがあります。
+このオプションは，痕跡を置き換えるか，痕跡を蓄積するかのどちらかを指定します。
+このオプションの設定の違いは，同じ状態が複数回訪れたときに痕跡ががどのように蓄積されるを決めます。
+毎回更新するか，定められた最大値にリセットするかです。
+繰り返しになりますが サットン本の素晴らしい図は 1 つの状態が繰り返し訪れたときのトレースの強さを示していてポイントをうまく伝えています。
+
+<!-- Additionally, there is one more option to either use replacing, or accumulating traces which can be controlled with `spec.replacing_traces` (default is true). The difference is only with how the trace is accumulated when the same state is visited multiple times (incremented each time, or reset to a fixed maximum value). Again, a nice diagram from Sutton's book shows the strength of the trace for a single state as it is repeatedly visited, and gets the point across nicely:-->
+
+<div style="text-align:center; margin: 20px;">
+<img src="img/traces.png"><br>
+</div>
+
+**プランニング Planning** TD 法は，環境モデルを推定する必要がありません。
+このため，デフォルトでは モデルフリーと呼ばれています。
+つまり，エージェントは，遷移確率や環境がエージェントに与える報酬を知る必要はありません。
+エージェントは，これらの値のサンプルを観察して，行動値関数 Q の中にそれらの十分な統計量を抽出することを行います。
+プランニングにおける基本的な考え方は，環境がどのように機能するかのモデルを明示的に維持することです。
+すなわちエージェントは，観測データから訓練されるという意味で，どのような状態や行動がどのような他の状態につながり，どのように報酬が割り当てられるかを経験するということです。
+言い換えればエージェントは，学習データの痕跡 \\(s\_t, a\_t, r\_t, s\_{t+1}, a\_{t+1}, r\_{t+1}, s\_{t+2}, \ldots\\) に基づいて，環境モデルを追従します。
+
+<!-- TD methods are by default called **model-free**, because they do not need to estimate the environment model. That is, we do not need to know the transition probabilities \\(\mathcal{P}\\), or the rewards assigned by the environment to the agent \\(\mathcal{R}\\). We only observe samples of these values and distil their sufficient statistics in the action value function \\(Q\\). However, a model of the environment can still prove extremely useful. The basic idea in planning is that we will explicitly maintain a model of how the environment works (trained again, from observation data). That is, what states and actions lead to what other states, and how the rewards are assigned. In other words, based on our training data trace \\(s\_t, a\_t, r\_t, s\_{t+1}, a\_{t+1}, r\_{t+1}, s\_{t+2}, \ldots \\) , the agent keeps track of the environment model: -->
+
+$$
+Model(s,a) \leftarrow s', r
+$$
+
+<!-- In this Gridworld demo for example, it's just a simple array lookup for all pairs of \\(s,a\\). The fact that this Gridworld is deterministic helps, because these are all just fixed, unchanging values that are easy to observe once and then remember. This model is very useful because it can help us hallucinate experiences, and perform updates based on these *fake* experiences: -->
+
+例えば このグリッドワールドのデモでは，簡単なルックアップ表で \\(s,a\\) のすべての対を探しています。
+このグリッドワールドが決定論的であるという事実は，ルックアップ表がすべて固定された不変の値であり，観察して覚えておくのが簡単だからです。
+このモデルは、体験を仮想的に実現させたものです。これは以下のような *フェイク* 体験に基づいて更新を行ったりするのに役立ちます。
+
+1. 実世界の行動 \\(a\\) を実行する <!--Perform some action \\(a\\) in the real world-->
+2. 環境から 新しい状態 \\(s'\\) と報酬 \\(r\\) とを受け取る <!--Get the new state \\(s'\\) and reward \\(r\\) from the environment-->
+3. TD 更新 (Q 学習による更新など) を実施する <!--Perform a regular TD update (e.g. Q-Learning update)-->
+4. 環境モデルを更新する <!--Update the environment model with-->  \\(\text{Model}(s,a) \leftarrow s', r\\)
+5. これを **N回** 繰り返す。いくつかの \\(s,a\\) をサンプルし，モデルを用いて \\(s′,r\\) を予測し，この仮想体験について Q学習 の更新を実行する
+<!--．Repeat **N** times: Sample some \\(s,a\\), use the Model to predict \\(s',r\\), perform the Q learning update on this hallucinated experience.-->
+
+<!-- Notice that we're performing many more value function updates per step using our model of the environment. In practice (and in this demo as well), this can help convergence by a large amount. You can control the number of planning steps (fake experience updates) per iteration with `spec.planN` (0 = no planning). Intuitively, the reason this works so well is that when the agent discovers the high reward state, its environment model also *knows* how to get to it, so as the hallucinated experiences end up updating all the states globally backwards through the modeled transitions. In this demo, the arrows will start to "magically" point in the right direction the very first time the high reward state is discovered. -->
+
+
+環境モデルを使用して，ステップごとに多くの値関数の更新を行っていることに注目してください。
+実際には (このデモでも) これはかなりの量の収束を助けることができます。
+ `spec.planN` (0 = 計画なし)では，反復あたりの計画ステップ数 (偽の経験値更新)を制御することができます。
+直感的には，これがこれほどうまく機能する理由は，エージェントが高報酬の状態を発見したときに，環境モデルがその状態に到達する方法を知っているからです。
+このデモでは，最初に高報酬状態が発見されたときに，矢印が「魔法のように」正しい方向を指し始めます。
+
+**拘束更新スケジュールのための優先キュー (Priority queue for faster update schedule)**. REINFORCEjs によって実装されている追加のホイッスルがあります。
+ランダムな **N個の状態** をサンプリングして更新を実行するのではなく，最も更新を必要とする状態を追跡し，優先的にキュー（待ち行列）から取り出します。
+直感的には，各更新中の TD 誤差は，その更新がどれだけ驚くべきものであるかを教えてくれます。
+ある状態 \\(s\\) の Q 値を大きな TD 誤差で更新したとします。
+このとき \\(s\\) につながると予測されるすべての状態についてモデルを照会し，TD 誤差の大きさを優先して優先度キューに配置することができます。
+このようにして，どこか遠くにあって更新がほとんど必要ない状態をサンプリングして時間を無駄にしないようにしています。
+このグリッドワールドのデモでは，エージェントが最初に報酬状態を発見したときに，大きな正の TD 誤差が発生し，すぐに報酬状態に至るまでのすべての状態が優先度の高い優先度キューに配置されます。
+それゆえ，Q 値は Q 関数全体を通して可能な限り最速の方法で拡散し，同期します。
+これはデフォルトでオンになっています（設定はありません）。
+
+<!-- There is one additional whistle that is implemented by REINFORCEjs, which is the use of a **priority queue** to speed things up. We don't just sample random **N** states to perform an update in, but keep track of the states that most need updating, and pop those from the queue with preferential treatment. Intuitively, the TD Error during each update tells us how *surprising* the update is. Say we've updated the Q value of some state \\(s\\) with a large TD error. We can query the model for all states that are predicted to lead to \\(s\\), and place those in the priority queue with priority of the magnitude of the TD error, since we expect their updates to be large as well. This way we don't waste our time sampling states that are somewhere far away and barely need any update. In this Gridworld demo, when the agent discovers the reward state the first time this causes a large positive TD error, which immediately places all the states leading up to the reward state in the priority queue with high priorities. Hence, the Q values diffuse and sync in the fastest possible ways through the entire Q function. This is turned on by default (not a setting). -->
+
+**スムーズ Q 関数更新 (Smooth Q function updates)**. 最後の REINFORCEjs の設定は `spec.smooth_policy_update` と `spec.beta` です。
+この 2 つは非標準です。
+より良い可視化のために追加しました。
+これら設定では，確率的な方策を使っています。
+ですが，最大値を取る行動にゆっくりと収束するようにスムーズに方策を更新しています。
+これにより，方策の矢印がより良く，より滑らかに可視化されます。
+<!--The last REINFORCEjs settings are `spec.smooth_policy_update` and `spec.beta`. This is non-standard and something I added for nicer visualizations. Normally you update the policy to always take the action that lead to highest Q. With this setting, I am using stochastic policy but smoothly updating the policy to converge slowly to the argmaxy action. This makes for nicer, smoother visualizations of the policy arrows.-->
+
+
+### TD 法で用いられる REINFORCEjs の API
+
+<!--
+Similar to the DP classes, if you'd like to use the REINFORCEjs TD learning you have to define an environment object `env` that has a few methods that the TD agent will need:
+-->
+
+動的プログラミング DP 法と同様，REINFORCEjs の TD 法を使う場合には，環境用オブジェクト `env` を定義します。
+`env` は TD エージェントに必要なメソッドが用意されています.
+
+- `env.getNumStates()` 総状態数を返す <!--returns an integer of total number of states-->
+- `env.getMaxNumActions()` 任意の状態での行動の最大値 (整数) を返す 
+- `env.allowedActions(s)` 引数 `s` (整数) をとり，可能な行動のリストを返す。戻り値は 0 から `maxNumActions` までの整数 <!--takes an integer `s` and returns a list of available actions, which should be integers from zero to `maxNumActions`-->
+
+<!-- See the GridWorld environment in this demo's source code for an example. The `TDAgent` class assumes a finite MDP (so discrete, finite number of states and actions), and works through a very simple `action = agent.act(state)` and `agent.learn(reward)` interface:-->
+
+このデモのソースコードの GridWorld 環境を参照してください。
+クラス `TDAgent` は有限の マルコフ決定過程 MDP (離散的な有限状態と行動) を想定しています。
+単純な `action = agent.act(state)` と `agent.learn(reward)` というインタフェースを介して動作します。
+
+<pre><code class="js">
+// 環境を作成
+env = new Gridworld(); 
+// エージェントを作成
+var spec = { alpha: 0.01 } // このページ上部の全オプションを参照してください
+agent = new RL.TDAgent(env, spec); 
+
+setInterval(function(){ // 学習ループ開始
+  var action = agent.act(s); // s は整数，行動 (action) も整数
+  // ある環境で行動を一度実行し，報酬を得る
+  agent.learn(reward); // エージェントが Q，方策，モデルなどを更新
+}, 0);
+</code></pre>
+
+<!-- If you have a problem that doesn't have a discrete number of states but some very large state space and some state features, **DQN** (Deep Q Learning) is for you. Head over to the next section.-->
+
+解くべき問題の状態数が離散的ではない場合，例えば 大きな状態空間 と 複数の状態特徴 で構成されるような問題を解く場合には **DQN** (ディープラーニング Q 学習 Deep Q Learning) を用います。
+次節で紹介します。
+
+   </div>
+   </div>
+   <br><br><br><br><br>
+ </body>
+</html>

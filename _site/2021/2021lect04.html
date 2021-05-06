@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/assets/css/style.css"></head>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    },
+    CommonHTML: { matchFontHeight: false },
+    displayAlign: "left",
+    displayIndent: "2em",
+    TeX: {
+      equationNumbers: { autoNumber: "AMS" },
+    }
+  });
+</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS_CHTML"></script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    processEscapes: true
+  }
+});
+</script>
+  <body>
+<div class="header">
+  <div class="wrap">
+    
+      <div class="header__inner header__inner--internal">
+    
+      <div class="header__content">
+        <h1 class="header__title">
+          
+        </h1>
+        <p class="header__tagline">
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="home"><h1 class="page-heading">第04回</h1><h1 id="ディープラーニングの心理学的解釈-心理学特講iiia">ディープラーニングの心理学的解釈 (心理学特講IIIA)</h1>
+
+<div align="right">
+<a href="mailto:educ0233@komazawa-u.ac.jp">Shin Aasakawa</a>, all rights reserved.<br />
+Date: 07/May/2021<br />
+Appache 2.0 license<br />
+</div>
+
+\[E=mc^2\]
+
+<ul>
+  <li>
+    <p>機械学習の実習</p>
+  </li>
+  <li>3 つのデータセット: MNIST, Fashion MNIST, KMNIST</li>
+  <li>訓練データ，テストデータ，検証データ</li>
+  <li>回帰と分類</li>
+  <li>
+    <p>教師あり学習と教師なし学習</p>
+  </li>
+  <li>交差妥当性検証</li>
+  <li>重回帰，逆行列，線形代数</li>
+  <li>主成分分析，固有値，変分法，</li>
+  <li>tSNE</li>
+  <li>サポートベクトルマシン SVM</li>
+  <li>ロジスティック回帰</li>
+</ul>
+
+<!--
+# [ディープラーニングの心理学的解釈 (心理学特講IIIA)](https://komazawa-deep-learning.github.io/)
+
+<div align='right'>
+<a href='mailto:educ0233@komazawa-u.ac.jp'>Shin Aasakawa</a>, all rights reserved.<br>
+Date: 15/May/2020<br/>
+Appache 2.0 license<br/>
+</div>
+
+## 本日の学習目標
+1. 課題総評と先週の補足
+2. 先週の復習 [colab](https://colab.research.google.com/notebooks/welcome.ipynb?hl=ja){target="_blank"}
+4. 用語の理解と区別:
+5. 実習
+6. ニューラルネットワークの歴史
+-->
+
+<!-- ## 課題 -->
+
+<ul>
+  <li><a href="https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0515komazawa_assignment000.ipynb" target="_blank">本日の課題 <img src="https://komazawa-deep-learning.github.io/assets/colab_icon.svg" /></a></li>
+</ul>
+
+<h1 id="先週の補足">先週の補足</h1>
+
+<p>いわゆる，ニューラル インプラント (neural implant), あるいは，義神経回路</p>
+
+<ul>
+  <li>人工内耳のように単に脳の活動を刺激するだけのものとは異なり、シリコンチップ製のインプラントは、損傷した脳の一部と同じプロセスを実行します。</li>
+  <li>この人工器官は ラットの脳の組織でテストされました。次第に，人間に近い動物でのテストがなされています。</li>
+  <li>問題がなければ 脳卒中やてんかん，アルツハイマー病などで脳に損傷を受けた人の補助器具として実験が行われるでしょう。</li>
+  <li>ですが，脳を模倣したデバイスは <strong>倫理的な問題</strong> を引き起こします。困っている人を助ける器具としては，義肢は有効な道具でしょう。しかし，その延長線上に義脳を考えることには，慎重な議論が必要だと考えます。</li>
+</ul>
+
+<center>
+<img src="http://www.newscientist.com/wp-content/uploads/2003/03/dn3488-1_602.jpg" width="49%" /><br />
+</center>
+
+<p>あるいは，この授業により即した例を挙げれば Mitchell と Just の研究室で行われている研究があります。</p>
+
+<center>
+<img src="/assets/2008Mitchell_fig1ja.svg" style="width:77%" /><br />
+Mitchell et al (2008) Fig. 1 を改変
+</center>
+
+<!-- # 課題総評と先週の補足
+
+- 先週 第一回講義での話 **AI 人材 25 万人必要** は，大学生にとって絶好のチャンスだろう。
+    - なぜならウィルス禍で，産業構造が変化することが予想されるからである。
+    - 今後必要とされる知識，技能をいち早く身につけることが求められる。
+    - 今年から高等学校の情報科目では Python が採用される。いわば常識，リテラシーの一部となる。
+    - このような知識の習得に困難を覚える世代や集団は困難が予想される
+    - <font color="white" size="+2">You cannot teach an old dog new tricks.</font>
+- 引用と自分の意見とを分けて記述してください -->
+
+<ul>
+  <li>統計学について，心理統計（推測統計学）だけが統計学ではない。むしろ統計学は 19 世紀に花開いた，統計力学，熱力学を礎にしている。</li>
+  <li>一方で，<code class="language-plaintext highlighter-rouge">ニューラルネットワークは素人の非線形統計学である</code> との批判もあった(Anderson, 1990)。
+    <ul>
+      <li>物理学用語の <strong>熱力学の第2法則</strong> すなわち <strong>エントロピー</strong> や <strong>エネルギー</strong> は ニューラルネットワークで頻用される概念である。</li>
+      <li>ニューラルネットワークでは <strong>ボルツマン</strong>, <strong>ラプラス</strong>, <strong>ヘルムホルツ</strong>, <strong>ガウス</strong>, <strong>ラプラス</strong>, <strong>ラグランジェ</strong>  などの物理学者の名前を冠したモデルや手法が提案されている。</li>
+    </ul>
+  </li>
+  <li>実際に，我々の活動は須く神経活動に起因する。これはある系における分子の運動測度が異なるにもかかわらず，この系の温度は一つに定義されることと類似する。
+個々の分子は速度で定義される運動エネルギーを持つが，運動エネルギーは温度だけでなく，圧力，電気，その他へと変換できる。
+このことと同様にして，脳内の神経活動の表現である我々の活動も様々な表出形態を採る。</li>
+</ul>
+
+<!--
+Authors:    J.A. Anderson, A. Pellionisz, E. Rosenfeld (eds.)
+Title:      Neurocomputing 2: Directions for Research
+Reference:  MIT Press, Cambridge (1990), Massachusetts
+
+### ANNs are some kind of non-linear statistics for amateurs
+-->
+
+<!-- 
+## 次の語の示すサイトを訪れ，それぞれどのようなサイトかを調べよ。
+いずれも現在のエコシステムとしての役割を果たしている。
+
+1. arXiv: <font color="white">論文置き場</font>
+2. Colab: 
+3. Github: <font color="white">プログラムのソースコード置き場</font>
+4. Stack Oerflow: <font color="white">掲示板，ノウハウ集</font>
+5. Reddit: <font color="white">掲示板，ただしビッグネーム本人が降臨することがある</font>
+-->
+
+<!-- 
+# AI を学ぶ人間のための心構え
+- 無知蒙昧から来るブラックボックス的な恐怖を払拭するよう務める(現時点での技術的な裏付けに基づく啓蒙活動)
+- 現在の技術から予測できる近未来の展望を語ることを忌避しない(謙遜は美徳ではない)
+
+<center>
+<img src="https://blogs-images.forbes.com/markhughes/files/2016/01/Terminator-2-1200x873.jpg" style="width:32%"> 
+<img src="http://zatugaku1128.com/wp-content/uploads/2016/09/%E3%83%89%E3%83%A9%E3%81%88%E3%82%82%E3%82%93.png" style="width:20%"></br>
+</center>
+
+未来はどっち？ **It will depend on you.**
+
+# クイズ
+* 次の語の組み合わせのうち不適切なものを指摘せよ
+
+1. IBM - Watson - Joapady
+2. DeepMind - AlphaGo - 囲碁
+3. Google 翻訳 - ペッパー
+4. Uber - 自動運転
+-->
+
+<hr />
+
+<h2 id="文献">文献</h2>
+
+<ul>
+  <li><a href="https://github.com/ShinAsakawa/2019komazawa/blob/master/master/2019laborNews.pdf" target="_blank">労働新聞平成31年2月25日号 知識を拡張する道具 人類の歴史の延長線上に</a></li>
+  <li><a href="https://www.amazon.co.jp/gp/product/4061538233/">イラストで学ぶ 人工知能概論</a> (KS情報科学専門書) (<a href="http://ai.tanichu.com/">谷口</a>, 2014)
+<!--https://www.amazon.co.jp/gp/product/4061538233/ --></li>
+</ul>
+
+<!--
+- [Cognitive computational neuroscience](https://www.nature.com/articles/s41593-018-0210-5){target="_blank"}
+-->
+<!--- [Cognitive computational neuroscience](https://arxiv.org/abs/1807.11819)-->
+
+<!--
+## 小説，戯曲の中に現れた AI
+
+- マリー・ウォルストンクラフト・シェリー　Mary Wallstoncraft Shelley，
+  - フランケンシュタイン Frankenstein, or The Modern Prometheus 
+  - [https://www.aozora.gr.jp/cards/001176/files/44904_35865.html](https://www.aozora.gr.jp/cards/001176/files/44904_35865.html){target="_blank"}
+- カレル・チャペック　Karel Capek, 
+  - ＲＵＲ ―ロッサム世界ロボット製作所 R.U.R. (Rossum's Universal Robots) 
+  - [https://www.aozora.gr.jp/cards/001236/files/46345_23174.html](https://www.aozora.gr.jp/cards/001236/files/46345_23174.html){target="_blank"}
+- アイザック・アシモフ Issac Asimov, 
+  - われはロボット I, Robot 
+  - [https://www.amazon.co.jp/dp/4150105359](https://www.amazon.co.jp/dp/4150105359){target="_blank"}
+- アーサー・クラーク Arthur C. Clarke, 
+  - 2001年宇宙の旅 2001: a Space Odyssey 
+  - [https://www.amazon.co.jp/dp/415011000X](https://www.amazon.co.jp/dp/415011000X){target="_blank"}
+
+## 映画 AI 
+  - Matrix, Star Wars, Surrogate, ...
+
+## TV anime
+  - 鉄腕アトム，がんばれロボコン, ..., ガンダム，エヴァ，
+
+# クイズ
+* 小説，戯曲，に現れたロボット，人工知能を年代順に並べよ
+1. アーサー・クラーク 2001 年宇宙の旅
+2. アイザック・アシモフ われはロボット
+3. カレル・チャペック ロボット
+4. マリー・シェリー フランケンシュタイン
+-->
+
+<h1 id="実習">実習</h1>
+
+<ul>
+  <li>
+    <p><a href="https://komazawa-deep-learning.github.io/nothotdog/" target="_blannk">番組 nothotdog について</a>
+<!-- [nothotdog 体感デモ](https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/nothotdog.ipynb)--></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0515komazawa_ResNet50_demo.ipynb" target="_blank">初めての画像認識 <img src="https://raw.githubusercontent.com/komazawa-deep-learning/komazawa-deep-learning.github.io/4c5e1c665109926508b3fa505914b60b7237bf62/assets/colab_icon.svg" /></a></p>
+  </li>
+</ul>
+
+<h1 id="ニューラルネットワークの歴史">ニューラルネットワークの歴史</h1>
+
+<center>
+<img src="https://komazawa-deep-learning.github.io/assets//imagenet_result2017.png" style="width:74%" /><br />
+画像認識の進歩
+</center>
+
+<center>
+	<img src="https://komazawa-deep-learning.github.io/assets//2019Jat_Mitchell_fig1.svg" style="width:74%" /><br />
+	<img src="https://komazawa-deep-learning.github.io/assets//2019Jat_Mitchell_fig4.svg" style="width:84%" /><br />
+</center>
+
+<h2 id="第-1-次ニューロブーム">第 1 次ニューロブーム</h2>
+
+<h3 id="1950年代">1950年代:</h3>
+<ul>
+  <li>ウォーレン・マッカロックとワイルダー・ピッツによる <strong>形式ニューロン</strong> の提案
+(サイバネティクスの創始者ノーバート・ウィーナーの集めた研究者集団)</li>
+</ul>
+
+<center>
+<img src="https://komazawa-deep-learning.github.io/assets//mcculloch.jpg" style="width:38%" />
+<img src="https://komazawa-deep-learning.github.io/assets//pitts.jpg" style="width:50%" /><br />
+ウォーレン・マッカロック と ワイルダー・ピッツ<br />
+<!--img src='../assets/mcculloch.jpg' style="width:19%">
+<img src='../assets/pitts.jpg' style='width:25%'><br>-->
+</center>
+
+<p>形式ニューロンは，シナプス結合荷重ベクトルと出力を決定するための伝達関数とで構成される(次式)</p>
+
+\[y_i=\phi\left(\sum_jw_{ij}x_j\right),\label{eq:formal_neuron}\]
+
+<p>ここで $y_i$ は $i$ 番目のニューロンの出力，$x_j$ は $j$ 番目のニューロンの出力，$w_{ij}$ はニューロン $i$ と $j$ との間の <strong>シナプス結合荷重</strong>。
+$\phi$ は活性化関数。</p>
+
+<center>
+<img src="https://komazawa-deep-learning.github.io/assets//Formal_r.svg" style="width:84%" /><br />
+形式ニューロン
+</center>
+
+<hr />
+
+<h2 id="ローゼンブラット-rosenblatt-のパーセプトロン">ローゼンブラット Rosenblatt のパーセプトロン</h2>
+
+<center>
+<img src="https://komazawa-deep-learning.github.io/assets//rosenblatt.jpg" style="width:49%" /><br />
+フランク・ローゼンブラット
+</center>
+
+<!--
+$$
+\mathbf{w}\leftarrow\mathbf{w}+\left(y-\hat{y}\right)\mathbf{x}
+$$
+-->
+
+<center>
+<img src="https://komazawa-deep-learning.github.io/assets//perceptron.png" style="width:74%" />&lt;/br&gt;
+パーセプトロンの模式図 ミンスキーとパパート「パーセプトロン」より
+</center>
+
+<center>
+<img src="https://komazawa-deep-learning.github.io/assets//Neuron_Hand-tuned.png" style="width:69%" />&lt;/br&gt;
+ニューロンの模式図 wikipedia より
+</center>
+
+<!--
+##  人工ニューロン
+
+<center>
+<img src='../assets/neuron.png' style="width:49%"><br>
+
+<img src='../assets/neuron_model.jpeg' style="width:49%"<br>
+</center>
+-->
+
+<!--
+## パーセプトロンの学習
+
+$$
+\mathbf{w}\leftarrow\mathbf{w}+\left(y-\hat{y}\right)\mathbf{x}
+$$
+パーセプトロン perceptron は 3 層の階層型ネットワークでそれぞれ
+S(sensory layer), A(associative layer), R(response layer) と呼ぶ。
+$S\rightarrow A \rightarrow R$ のうち パーセプトロンの本質的な部分は
+$A\rightarrow R$ の間の学習にある。
+
+入力パターンに $P^+$ と $P^-$ とがある。
+パーセプトロンは $P^+$ が入力されたとき $1$, $P^-$ のとき $0$ を出力する
+機械である。
+出力層($R$) の $i$ 番目のニューロンへの入力(膜電位の変化) $u_i$は
+\begin{equation}
+ u_i = \sum_j w_{ij}x_j - \theta_i = \left(w\right)_i\cdot\left(x\right)_i-\theta_i.\label{eq1}
+\end{equation}
+ここで中間層($A$)の $j$ 番目のニューロンの出力 $y_i$とこのニューロンとの
+結合係数を$w_{ij}$、しきい値を$\theta_i$ とした。
+このニューロンの出力$y_i$(活動電位、スパイク)は、
+
+\begin{equation}
+y_i = \lceil u_i\rceil
+\qquad\left\{
+\begin{array}{ll}
+ 1 & \mbox{if $u_i \ge 0$,}\\
+ 0 & \mbox{otherwize}
+\end{array} \right.
+\end{equation}
+
+と表される。
+-->
+
+<!--
+式(\ref{eq1})の意味を理解するために以下の図を参照
+
+%
+\footnote{
+Minsky and Papert はパーセプトロンのベクトル表示について
+悲観的な考え方を持っているようですが、ここでは理解のしやすさを
+優先します。}%
+$$
+\mathbf{w}\rightarrow\mathbf{w}+\left(y-\hat{y}\right)\mathbf{x}
+$$
+-->
+
+<hr />
+
+<ul>
+  <li>1960 年，ミンスキーとパパートの批判</li>
+  <li>第一次氷河期の到来</li>
+</ul>
+
+<hr />
+
+<h2 id="第-2-次ニューロブーム">第 2 次ニューロブーム</h2>
+<ul>
+  <li>1986 年，PDP ブック，俗に言うバイブル，発表</li>
+  <li>1989 年，バプニック，サポートベクターマシン発表</li>
+  <li>第二次氷河期の到来</li>
+</ul>
+
+<hr />
+
+<h2 id="第-3-次ニューロブーム">第 3 次ニューロブーム</h2>
+
+<!--
+![大規模画像認識チャレンジの結果](./assets/ilsvrc2015.svg){#fig:ilsvrc2015 style="width:49%"}
+-->
+
+<ul>
+  <li>2013 ICLR スタート arXiv.org に予め論文を投稿，誰でも読める，誰でも批判できる。著者はそれに答えなければならない。あっという間にトップカンファレンスとなる</li>
+  <li>2013 Mikolov word2vec を発表</li>
+</ul>
+
+<center>
+<img src="https://komazawa-deep-learning.github.io/assets//Mikolov_analogy.png" style="width:94%" /><br />
+Mikolovの類推課題
+</center>
+
+<ul>
+  <li>2013 DeepMind DQN を発表</li>
+</ul>
+
+<!--
+<center>
+<div class="row post-image-bg" markdown="0">
+<video width="49%" autoplay loop markdown="0"> 
+<source src="../assets/2015Mnih_DQN-Nature_Video1.mp4" type="video/mp4" markdown="0">
+</video>
+</div>
+
+<video width="24%" markdown="0">
+<source src="../assets/2015Mnih_DQN-Nature_Video2.mp4" type="video/mp4" markdown="0">
+</video>
+</div>
+</center>
+-->
+
+<center>
+<iframe width="320" height="400" src="https://komazawa-deep-learning.github.io/assets/2015Mnih_DQN-Nature_Video1.mp4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+<iframe width="320" height="400" src="https://komazawa-deep-learning.github.io/assets/2015Mnih_DQN-Nature_Video2.mp4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe><br />
+</center>
+
+<center>
+<img src="https://komazawa-deep-learning.github.io/blob/master/assets/2015Mnih_DQNFig.png" style="width:84%" /><br />
+DQNの結果
+</center>
+
+<!--
+<center>
+<div class="row post-image-bg" markdown="0">
+<video width="49%" markdown="0">
+<source src="/assets/MOV_0013s.mp4" type="video/mp4" markdown="0">
+</video>
+</center>
+
+<video width="49%" markdown="0">
+<source src="/assets/MOV_0071s.mp4" type="video/mp4" markdown="0">
+</video>
+<video width="49%" markdown="0">
+<source src="/assets/MOV_0072s.mp4" type="video/mp4" markdown="0">
+</video>
+-->
+
+<!--- <a href="../assets/MOV_0013.mp4" target="_blank">ギャラガ 1</a>-->
+<ul>
+  <li><a href="https://komazawa-deep-learning.github.io/assets//MOV_0071s.mp4" target="_blank">ギャラガのデモ</a>
+<!--- <a href="../assets/MOV_0013s.mp4" target="_blank">ギャラガ 3</a>--></li>
+</ul>
+
+<!--
+<iframe width="640" height="400" src="../assets/MOV_0013s.mp4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+
+<iframe width="640" height="400" src="../assets/MOV_0071s.mp4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+
+<iframe width="640" height="400" src="../assets/MOV_0072s.mp4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+-->
+
+<hr />
+
+<ul>
+  <li>2014 Neural Image Captioning が注目を集める。</li>
+</ul>
+
+<center>
+<img src="https://komazawa-deep-learning.github.io/assets//17VISIOn-slide-WBE2-jumbo.jpg" style="width:88%" /><br />
+</center>
+
+<ul>
+  <li>Human: A group of men playing Frisbee in the park.</li>
+  <li>Machine: A group of young people playing a game of Frisbee.</li>
+</ul>
+
+<!--
+![Vinyals et. al (2014) より](./assets/2014Vinyals_Fig5_left.jpg){#fig:NIC2 style="width:49%"}<br>
+
+![Vinyals et. al (2014) より](./assets/2014Vinyals_Fig5_right.jpg){#fig:NIC3 style="width:49%"}
+-->
+
+<hr />
+
+<ul>
+  <li>2015 画像生成技術が注目を浴びる</li>
+</ul>
+
+<center>
+<img src="https://komazawa-deep-learning.github.io/assets/Tenn_deepdream.jpg" width="88%" /><br />
+天安門前広場の夢 (撮影は自民解放軍の兵士に依頼した)
+</center>
+<!--![天安門前広場の夢(撮影は自民解放軍の兵士に依頼した)](https://komazawa-deep-learning.github.io/assets/Tenn_deepdream.jpg){#fig:deep_dream style="width:49%"}-->
+
+<!-- 
+- 2015 ディープラーニング，機械学習，ビッグデータ あるいはその心理学，発刊
+-->
+
+<ul>
+  <li>2015 人工知能学会が日本では「<span style="Color:Lime">深層学習</span>」と呼ぶことに決定する</li>
+</ul>
+
+<hr />
+
+<ul>
+  <li>2016 GAN が注目を浴びる</li>
+</ul>
+
+<center>
+<img src="https://komazawa-deep-learning.github.io/assets//2016Reed_GAN_Text2Image1.svg" style="width:84%" /><br />
+Generative Adversarial Text to Image Synthesis &lt;arXiv:1605.05396v2&gt;
+</center>
+
+<center>
+<img src="https://komazawa-deep-learning.github.io/assets//2016Reed_GAN_Text2Image.svg" style="width:84%" /><br />
+Generative Adversarial Text to Image Synthesis arXiv:1605.05396v2
+</center>
+
+<hr />
+
+<ul>
+  <li>2016 アメリカ合州国大統領候補の一人の発言を模倣する「ディープトランプ」がツィッター上で注目を集める</li>
+</ul>
+
+<center>
+<img src="https://komazawa-deep-learning.github.io/assets//DeepTrumpf.jpg" style="width:39%" />
+<img src="https://komazawa-deep-learning.github.io/assets//DeepTrumpf2.png" style="width:59%" /><br />
+<img src="https://komazawa-deep-learning.github.io/assets//DeepTrumpfTweet.png" style="width:99%" />&lt;/br&gt;
+</center>
+
+<ul>
+  <li>2016 アルファ碁がイ・セドルを破る</li>
+</ul>
+
+<center>
+<img src="https://komazawa-deep-learning.github.io/assets//2016AlphaGo_Fig1a.svg" style="width:84%" />&lt;/br&gt;
+アルファ碁 Natureより
+</center>
+
+<h3 id="ボストンダイナミクス社ビデオ">ボストン・ダイナミクス社ビデオ</h3>
+<!--<iframe width="200" height="120" src="https://www.youtube.com/embed/fRj34o4hN4I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+
+<center>
+<iframe width="480" height="300" src="https://www.youtube.com/embed/rVlhMGQgDkY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<iframe width="480" height="300" src="https://www.youtube.com/embed/tf7IEVTDjng" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</center>
+
+<div align="center">
+<iframe width="480" height="300" src="https://www.youtube.com/embed/8vIT2da6N_o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe><br />
+source: &lt;https://www.youtube.com/embed/8vIT2da6N_o&gt;
+</div>
+
+<div align="center">
+&lt;iframe width="480" height="300" src="https://www.youtube.com/embed/fRj34o4hN4I" <!--https://www.youtube.com/embed/WcbGRBPkrps"--> frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;<br />
+source: &lt;https://www.youtube.com/embed/fRj34o4hN4I&gt;
+</div>
+
+<!-- <center>
+<iframe width="635" height="358" src="../assets/A Style-Based Generator Architecture for Generative Adversarial Networks.mp4"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</center> -->
+
+<div align="center">
+<!--<iframe width="805" height="453" src="https://www.youtube.com/embed/WcbGRBPkrps" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+<iframe width="480" height="300" src="https://www.youtube.com/embed/WcbGRBPkrps" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</div>
+
+<hr />
+
+<h2 id="フェイク画像の生成">フェイク画像の生成</h2>
+
+<div align="center">
+<img src="https://komazawa-deep-learning.github.io/assets//2018Chen_CartoonGAN.svg" style="width:94%" />
+</div>
+
+<center>
+<iframe width="480" height="300" src="https://www.youtube.com/embed/o46fcRl2yxE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</center>
+
+<div align="center">
+<!--<iframe width="805" height="453" src="https://www.youtube.com/embed/G06dEcZ-QTg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>-->
+<iframe width="480" height="300" src="https://www.youtube.com/embed/G06dEcZ-QTg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe><br />
+source: &lt;https://youtu.be/G06dEcZ-QTg&gt;
+</div>
+
+
+
+  </div>
+
+      </div>
+    </main><div class="footer">
+  <div class="wrap">
+<!--
+Thanks to <a href="http://www.imdb.com/">IMDB</a> for all the serie informations!
+-->
+駒澤大学
+  </div>
+</div>
+<!---
+<script src="https://datocms-middleman-example.netlify.com/javascripts/all.js"></script>
+-->
+
+</body>
+
+</html>

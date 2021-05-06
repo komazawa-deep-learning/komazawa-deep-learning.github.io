@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Shin Asakawa">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>ニューラルネットワークとは何か - 2020駒澤大学心理学特講IIIA</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="//fonts.googleapis.com/earlyaccess/notosansjp.css" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:600,800" rel="stylesheet">
+  <link href="../css/specific.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u30cb\u30e5\u30fc\u30e9\u30eb\u30cd\u30c3\u30c8\u30ef\u30fc\u30af\u3068\u306f\u4f55\u304b";
+    var mkdocs_page_input_path = "whatisNN.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> 2020駒澤大学心理学特講IIIA</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect00check_meet/">第 0 回 事前確認</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect00guidance/">第 0 回 ガイダンス</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect01/">第 1 回 05 月 08 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect02/">第 2 回 05 月 15 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect03/">第 3 回 05 月 22 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect04/">第 4 回 05 月 29 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect05/">第 5 回 06 月 05 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="https://github.com/ShinAsakawa/ShinAsakawa.github.io/blob/master/2020-0614exawizards_attention.pdf">第 6 回 06 月 14 日 ICLR読み会</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect07/">第 7 回 06月 19 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect08/">第 8 回 06月 26 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect09/">第 9 回 07月 03 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect10/">第 10 回 07月 17 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lect11/">第 11 回 07月 24 日</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">付録</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../colaboratory_intro/">Colab 事始め</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../colaboratory_faq/">Colaboratory FAQ</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../eco/">エコシステム</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../python_numpy_intro_ja/">Python の基礎</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../python_modules/">Python modules</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../2020-0510how_to_save_and_share_colab_files/">2020-0510 課題提出の方法</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Hinton_Maxwell_award/">ジェフェリー・ヒントンのマクセル賞受賞記念講演(2016)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../activation_functions/">活性化関数</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../t-SNE/">次元圧縮 t-SNE</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../information_theory/">情報理論</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../data_science/">データサイエンス小史</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020komazawa_how_to_read_math_equations.ipynb">数式の読み方</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Reinforcement-learning-temporal-difference-sarsa-q-learning-expected-sarsa-on-python/">強化学習 TD,Q学習, SARSA</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">2020駒澤大学心理学特講IIIA</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>ニューラルネットワークとは何か</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">ニューラルネットワークとは何か<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>形式ニューロンは，シナプス結合荷重ベクトルと出力を決定するための伝達関数とで構成され次式で表現される。</p>
+<p>
+<script type="math/tex; mode=display">
+y_i=\phi\left(\sum_jw_{ij}x_j\right) 
+</script>
+</p>
+<!-- ,\label{eq:formal_neuron}-->
+
+<p>ここで <script type="math/tex">y_i</script> は <script type="math/tex">i</script> 番目のニューロンの出力，<script type="math/tex">x_j</script> は <script type="math/tex">j</script> 番目のニューロンの出力，<script type="math/tex">w_{ij}</script> はニューロン <script type="math/tex">i</script> と <script type="math/tex">j</script> との間の <strong>シナプス結合荷重</strong> である。
+<script type="math/tex">\phi</script> は活性化関数と呼ばれる。</p>
+<p><center>
+<img src='../assets/Formal_r.svg' style='width:64%'><br>
+形式ニューロン</p>
+<p></center></p>
+<hr />
+<p>2層以上の中間層を持つニューラルネットワークを <strong>deep neural networks</strong> と呼ぶ。</p>
+<p><center>
+<img src='../assets/mlp02.svg' style='width:74%'><br>
+3層 MLP: multi-layered Perceptrons
+</center></p>
+<p>
+<script type="math/tex; mode=display">h_1 = \sigma\left(\mathbf{W}_1\mathbf{x}+\mathbf{b}_1\right)</script>
+</p>
+<p>
+<script type="math/tex; mode=display">h_2 = \sigma\left(\mathbf{W}_1\mathbf{h}_1+\mathbf{b}_2\right)</script>
+</p>
+<p>
+<script type="math/tex; mode=display">P = \mbox{softmax}\left(\mathbf{W}_{o}+\mathbf{b}_o\right)</script>
+</p>
+<p><strong>活性化関数 activation function</strong> には <strong>ロジスティック関数 logistic function</strong> が使われてきた　
+<script type="math/tex; mode=display">\sigma(x) = \left(1+e^{-x}\right)^{-1}</script>
+</p>
+<p>英語で S 字曲線の意味を持つ <strong>シグモイド関数 sigmoid function</strong> という言葉も用いられる。
+次の <strong>ハイパータンジェント</strong> もシグモイド関数である</p>
+<p>
+<script type="math/tex; mode=display">\phi(x) = \tanh(x) = \frac{e^{x}-e^{-x}}{e^{x}+e^{-x}}</script>
+</p>
+<p>近年ではより簡単な非線形関数を用いる傾向 <strong>ReLU</strong>(<strong>整流線形ユニット</strong>) など。</p>
+<p>
+<script type="math/tex; mode=display">ReLU = \max(0, x)</script>
+</p>
+<p><center>
+<img src='../assets/2012AlexNet_ReLU.svg' style='width:79%'><br>
+ReLU と <script type="math/tex">tanh</script> の比較 Krizensky et. al,2012 より</p>
+<p></center></p>
+<p><center>
+<img src='../assets/activation_f.svg' style='width:79%'><br>
+種々の活性関数のグラフ
+</center></p>
+<p>出力層における誤差，あるいは損失を最小にするような学習。
+例えば損失として <strong>クロスエントロピー cross entropy</strong> を用いることにすれば</p>
+<p>
+<script type="math/tex; mode=display">l(t,y) = \mathbf{t}^T\log\left(\mathbf{y}\right)</script>
+</p>
+<p>あるいは</p>
+<p>
+<script type="math/tex; mode=display">l(t,y)=-\sum_{i=1}^{m}\left[t_{i}\log(y_{i})+(1-t_{i})\log(1-y_{i})\right]</script>
+</p>
+<p>回帰ではなくクラス分類の場合にはクロスエントロピー損失を用いることが
+多い。理由は
+[ニールセンのブログ]((http://neuralnetworksanddeeplearning.com/chap3.html)
+にも詳細に記述されている。
+<a href="http://nnadl-ja.github.io/nnadl_site_ja/chap1.html">和訳</a>
+また Ng の<a href="https://www.coursera.org/learn/machine-learning/home/welcome">MOOC</a>ロジステック回帰の説明に詳しい。</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright (c) 2020</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
