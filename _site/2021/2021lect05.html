@@ -90,7 +90,7 @@ Appache 2.0 license<br />
   <li><a href="https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2021_0514komazawa_3mnists.ipynb" target="_blank">実習 <img src="/assets/colab_icon.svg" /></a></li>
 </ul>
 
-<h2 id="一-イチ-アルゴリズム仮説-one-algorithm-hypothesis">一 (イチ) アルゴリズム仮説 One algorithm hypothesis</h2>
+<h3 id="一-イチ-アルゴリズム仮説-one-algorithm-hypothesis">一 (イチ) アルゴリズム仮説 One algorithm hypothesis</h3>
 <p>Sur ら (1988) は，フェレット（西洋イタチ）の 聴覚信号と視覚信号との中継核，膝状体 で信号を入れ替える実験を行った。
 すなわち，聴覚信号が視覚野へ入力され，逆に視覚信号が聴覚野への入力となるように外科手術を行った。
 結果，本来聴覚信号を処理すべき聴覚野ニューロンでは，視覚刺激に応答する反応が観察され，
@@ -128,7 +128,39 @@ Sur (1988) Fig. 2
   <li>Roe et al. (1992) Visual Projections Routed to the Auditory Pathway in Ferrets: Receptive Fields of Visual Neurons in Primary Auditory Cortex</li>
 </ul>
 
-<h2 id="江間先生からの情報"><a name="ema">江間先生からの情報</a></h2>
+<h2 id="機械学習-2">機械学習 2</h2>
+
+<p>先週は 教師あり学習として，線形回帰，教師なし学習として 主成分分析を取り上げました。
+今週は，その続きです。</p>
+
+<ul>
+  <li><a href="https://komazawa-deep-learning.github.io/t-SNE/" target="_blank">次元圧縮 t-SNE</a></li>
+</ul>
+
+<h4 id="付録-読み物">付録 読み物</h4>
+<ul>
+  <li><a href="https://komazawa-deep-learning.github.io/Hinton_Maxwell_award/" target="_blank">ジェフェリー・ヒントンのマクセル賞受賞記念講演(2016)</a></li>
+</ul>
+
+<!-- - [データサイエンス小史](https://komazawa-deep-learning.github.io/data_science/){:target="_blank"}
+- [数式の読み方](https://komazawa-deep-learning.github.io/how_to_read_math/){:target="_blank"}
+-->
+<ul>
+  <li>苦い教訓
+    <ul>
+      <li><a href="https://komazawa-deep-learning.github.io/2019Sutton_Bitter_Lesson/" target="_blank">Sutton のブログ，苦い教訓</a> <!--(../2019sutton_bitter_Lesson.pdf)--></li>
+      <li>オリジナル Sutton’s blog <a href="http://www.incompleteideas.net/IncIdeas/BitterLesson.html" target="_blank">bitter lesson</a>
+<!--, [その和訳](2019sutton_bitter_lesson.pdf)--></li>
+    </ul>
+  </li>
+</ul>
+
+<!--
+  - In computer vision, there has been a similar pattern. Early methods conceived of vision as searching for edges, or generalized cylinders, or in terms of SIFT features. But today all this is discarded. Modern deep-learning neural networks use only the notions of convolution and certain kinds of invariances, and perform much better.
+  - This is a big lesson. As a field, we still have not thoroughly learned it, as we are continuing to make the same kind of mistakes. To see this, and to effectively resist it, we have to understand the appeal of these mistakes. We have to learn the bitter lesson that building in how we think we think does not work in the long run. The bitter lesson is based on the historical observations that 1) AI researchers have often tried to build knowledge into their agents, 2) this always helps in the short term, and is personally satisfying to the researcher, but 3) in the long run it plateaus and even inhibits further progress, and 4) breakthrough progress eventually arrives by an opposing approach based on scaling computation by search and learning. The eventual success is tinged with bitterness, and often incompletely digested, because it is success over a favored, human-centric approach. 
+-->
+
+<h4 id="付録-2-江間先生からの情報">付録 2. <a name="ema">江間先生からの情報</a></h4>
 
 <ul>
   <li>
@@ -180,29 +212,6 @@ CNN はケーブルニュースネットワークだったりします。 DNN �
 - colab に自分のためののコメントを書くために markdown の書式を覚えておいた方が良いです。(補講で少し取り上げました)
 - 最先端の話をしています。画像処理が人間を超える性能を示すようになったから，最近の AI ブームがあります。
 これは，第二回の授業でも取り上げました。だからこそ，この授業があります。干からびた化石のような知識を教えるつもりはありません。
--->
-
-<ul>
-  <li><a href="https://komazawa-deep-learning.github.io/Hinton_Maxwell_award/" target="_blank">ジェフェリー・ヒントンのマクセル賞受賞記念講演(2016)</a></li>
-  <li><a href="https://komazawa-deep-learning.github.io/t-SNE/" target="_blank">次元圧縮 t-SNE</a></li>
-</ul>
-
-<!-- - [データサイエンス小史](https://komazawa-deep-learning.github.io/data_science/){:target="_blank"}
-- [数式の読み方](https://komazawa-deep-learning.github.io/how_to_read_math/){:target="_blank"}
--->
-<ul>
-  <li>苦い教訓
-    <ul>
-      <li><a href="https://komazawa-deep-learning.github.io/2019Sutton_Bitter_Lesson/" target="_blank">Sutton のブログ，苦い教訓</a> <!--(../2019sutton_bitter_Lesson.pdf)--></li>
-      <li>オリジナル Sutton’s blog <a href="http://www.incompleteideas.net/IncIdeas/BitterLesson.html" target="_blank">bitter lesson</a>
-<!--, [その和訳](2019sutton_bitter_lesson.pdf)--></li>
-    </ul>
-  </li>
-</ul>
-
-<!--
-  - In computer vision, there has been a similar pattern. Early methods conceived of vision as searching for edges, or generalized cylinders, or in terms of SIFT features. But today all this is discarded. Modern deep-learning neural networks use only the notions of convolution and certain kinds of invariances, and perform much better.
-  - This is a big lesson. As a field, we still have not thoroughly learned it, as we are continuing to make the same kind of mistakes. To see this, and to effectively resist it, we have to understand the appeal of these mistakes. We have to learn the bitter lesson that building in how we think we think does not work in the long run. The bitter lesson is based on the historical observations that 1) AI researchers have often tried to build knowledge into their agents, 2) this always helps in the short term, and is personally satisfying to the researcher, but 3) in the long run it plateaus and even inhibits further progress, and 4) breakthrough progress eventually arrives by an opposing approach based on scaling computation by search and learning. The eventual success is tinged with bitterness, and often incompletely digested, because it is success over a favored, human-centric approach. 
 -->
 
 
