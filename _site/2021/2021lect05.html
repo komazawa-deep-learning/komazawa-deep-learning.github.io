@@ -48,7 +48,7 @@ MathJax.Hub.Config({
 </div>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <div class="home"><h1 class="page-heading">第05回</h1><h1 id="ディープラーニングの心理学的解釈-心理学特講iiia">ディープラーニングの心理学的解釈 (心理学特講IIIA)</h1>
+        <div class="home"><h1 class="page-heading">第05回</h1><h1 id="ディープラーニングの心理学的解釈-心理学特講iiia"><a href="https://komazawa-deep-learning.github.io/2021" target="_blank">ディープラーニングの心理学的解釈 (心理学特講IIIA)</a></h1>
 
 <div align="right">
 <a href="mailto:educ0233@komazawa-u.ac.jp">Shin Aasakawa</a>, all rights reserved.<br />
@@ -56,58 +56,141 @@ Date: 17/Apr/2021<br />
 Appache 2.0 license<br />
 </div>
 
-<!-- # [ディープラーニングの心理学的解釈 (心理学特講IIIA)](https://komazawa-deep-learning.github.io/2021){:target="_blank"} -->
-
 <h1 id="本日のキーワード">本日のキーワード</h1>
 
+<!--
+- 訓練データ，テストデータ，検証データ
+- ニューラルネットワーク neural networks
+- パーセプトロン perceptron 
+- 畳み込みニューラルネットワーク convolutional neural netoworks
+- レティノトピー retinotopy, トノトピー tonotopy, ソマトピー somatopy, 
+-->
+
 <ul>
-  <li>訓練データ，テストデータ，検証データ</li>
-  <li>ニューラルネットワーク neural networks</li>
-  <li>パーセプトロン perceptron</li>
-  <li>畳み込みニューラルネットワーク convolutional neural netoworks</li>
-  <li>レティノトピー retinotopy, トノトピー tonotopy, ソマトピー somatopy,</li>
+  <li>固有値</li>
+  <li>変分法</li>
+  <li>tSNE</li>
+  <li>ロジスティック回帰</li>
+  <li>シグモイド関数</li>
+  <li>ソフトマックス関数</li>
+  <li>交差エントロピー cross entropy</li>
+  <li>確率的勾配降下法 stochastic gradient descent methods</li>
+  <li>サポートベクトルマシン</li>
+  <li>多層パーセプトロン</li>
+  <li>勾配降下法 gradient descent methods</li>
 </ul>
 
-<font color="lightgray">
+<!-- 
 - 誤差逆伝播法 error back propagation 
 - 損失関数 loss functions, 誤差関数 error functions, 目的関数 objective functions, 目標関数 target functions
-- 勾配降下法 gradient descent methods
-- ソフトマックス関数 softmax function
-- 交差エントロピー cross entropy
-- 確率的勾配降下法 stochastic gradient descent methods
 
-色を薄くしてあるのは，ここまで進まないだろうという予想しているからです。
-</font>
+-->
 
 <ul>
-  <li><a href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0522komazawa_homework.ipynb" target="_blank">本日の課題 <img src="https://raw.githubusercontent.com/komazawa-deep-learning/komazawa-deep-learning.github.io/4c5e1c665109926508b3fa505914b60b7237bf62/assets/colab_icon.svg" /></a></li>
+  <li><a href="https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2021_0514komazawa_3mnists.ipynb" target="_blank">実習 <img src="/assets/colab_icon.svg" /></a></li>
 </ul>
 
-<h1 id="クイズの答え">クイズの答え:</h1>
+<h2 id="一-イチ-アルゴリズム仮説-one-algorithm-hypothesis">一 (イチ) アルゴリズム仮説 One algorithm hypothesis</h2>
+<p>Sur ら (1988) は，フェレット（西洋イタチ）の 聴覚信号と視覚信号との中継核，膝状体 で信号を入れ替える実験を行った。
+すなわち，聴覚信号が視覚野へ入力され，逆に視覚信号が聴覚野への入力となるように外科手術を行った。
+結果，本来聴覚信号を処理すべき聴覚野ニューロンでは，視覚刺激に応答する反応が観察され，
+本来視覚信号を処理すべき視覚野ニューロンでは，聴覚刺激に応答する反応が観察された。</p>
+<div align="center">
+  <div align="center" style="widht:88%">
+   <img src="https://komazawa-deep-learning.github.io/assets/1988Sur_Fig1upper.svg" style="width:44%" />
+   <img src="https://komazawa-deep-learning.github.io/assets/1988Sur_Fig1lower.svg" style="width:44%" /><br />
+    <div align="left" style="width:94%">
+  実験の概略 Sur (1988) Fig. 1 
+    </div>  
+  </div>
+  <div align="center" style="width:94%">
+    <img src="https://komazawa-deep-learning.github.io/assets/1988Sur_fig2.jpg" style="width:74%" /><br />
+    <div align="left" style="width:94%">
+聴覚視床への実験的に誘導された網膜投影（ハッチングされた領域）および聴覚視床と聴覚皮質の接続。
+手術した半球とは反対側の眼は、生き残っている背側LGN（LGd）と腹側LGN（LGv）、およびMGNの背側と腹側の区画内のパッチ（それぞれMGdとMG）に投影する。
+視床の傍矢状切片を番号付きで示す。視床の傍矢状切片の 同じ動物に、一次聴覚野（Al）にHRPを注入した場合（注入部位は左上に示す）、細胞が充填される。
+ドットで示されている）MG "MGdでは逆行性に、MGvでは後遺症複合体の側方分裂（P01）が行われている。MGdとMGvの多くの細胞が網膜突起帯を覆っている。 
+Sur (1988) Fig. 2
+    </div>
+  </div>
+  <div align="center" style="width:89%">
+  <img src="https://komazawa-deep-learning.github.io/assets/1988Sur_Fig4.svg" style="width:94%" /><br />
+  <div align="left">
+  結果: Sur (1988) Fig. 4 
+  </div>
+</div>
+</div>
+
+<h4 id="その他の文献">その他の文献</h4>
 
 <ul>
-  <li>ANN: <font color="black">人工ニューラルネットワーク Artificial Neural Networks</font></li>
-  <li>BNN: <font color="black">生物学的ニューラルネットワーク Biological Neural Networks</font></li>
-  <li>CNN: <font color="black">畳み込みニューラルネットワーク Convolutional Neural Networks</font></li>
-  <li>DNN: <font color="black">深層ニューラルネットワーク Deep Neural Networks</font></li>
+  <li>Metin and Frost (1989) Visual responses of neurons in somatosensory cortex of hamsters with experimentally induced retinal projections to somatosensory thalamus</li>
+  <li>Roe et al. (1992) Visual Projections Routed to the Auditory Pathway in Ferrets: Receptive Fields of Visual Neurons in Primary Auditory Cortex</li>
 </ul>
 
-<h1 id="小ネタ">小ネタ</h1>
+<h2 id="江間先生からの情報"><a name="ema">江間先生からの情報</a></h2>
+
 <ul>
   <li>
-    <p>ANN, BNN, CNN, DNN は冗談です。
+    <p>1月人工知能学会の「AI原則から実践へ」の原文公開
+人工知能学会誌vo;. 36, No.2 (2021年3月号）に掲載された原稿の原文を公開しました。日本語は有料ですが、英語は無料でご覧になれます。<a href="https://ifi.u-tokyo.ac.jp/project-news/9750/">https://ifi.u-tokyo.ac.jp/project-news/9750/</a>
+海外から日本はどのようにみられているのかに加えて、「包摂性の錯覚」「罪を隠す煙幕としてのAI倫理」など実際に、AI原則を実践に落とし込むときに考慮すべき点について（若干、私自身にとって耳の痛い点も含め）紹介されています。
+また今回の特集は、執筆者は全員女性となっています。</p>
+  </li>
+  <li><a href="https://ainow.ai/2021/04/27/254887/" target="_blank">AINOW にインタビューも掲載していただきました</a></li>
+  <li><a href="https://twitter.com/UTokyoIFI" target="_blank">IFI ツイッターでも広報しています</a></li>
+  <li>国連軍縮部（UNODA）とのワークショップ報告公開
+  2月に行った顔認証をテーマとした学生ワークショップ報告が <a href="https://doi.org/10.11517/jjsai.36.3_342">日本語</a> と <a href="https://ifi.u-tokyo.ac.jp/project-news/9749/" target="_blank">英語</a> でご覧になれます。</li>
+</ul>
+
+<p>ワークショップで用いたシナリオなどもウェブサイトで公開しております。このような議論ができる場を増やしていきたいと思います。</p>
+
+<ul>
+  <li>3月フランスEHESSとの「AIと民主主義」報告書公開
+    <ul>
+      <li><a href="https://ifi.u-tokyo.ac.jp/event/9304/" target="_blank">日本語</a></li>
+      <li><a href="https://ifi.u-tokyo.ac.jp/en/event/8732/" target="_blank">英語</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>パリ 第 8 大学の ヌロック 教授が指摘した、AI が出す結果を事実 → 客観 → 公平とみなしてしまうことの危険性を私たちは、もっと議論していかなければならない、と思います。</p>
+
+<ul>
+  <li>人工知能学会倫理委員会シンポジウム
+「AI 研究コミュニティのダイバーシティ＆インクルージョン」報告書では日本としても今後取り組んでいかなければならない課題が多く指摘されています。http://ai-elsi.org/archives/1144</li>
+</ul>
+
+<!-- 
+- [本日の課題 <img src="https://raw.githubusercontent.com/komazawa-deep-learning/komazawa-deep-learning.github.io/4c5e1c665109926508b3fa505914b60b7237bf62/assets/colab_icon.svg">](https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0522komazawa_homework.ipynb){:target="_blank"}
+
+
+# クイズの答え: 
+
+- ANN: <font color="black">人工ニューラルネットワーク Artificial Neural Networks</font>
+- BNN: <font color="black">生物学的ニューラルネットワーク Biological Neural Networks</font>
+- CNN: <font color="black">畳み込みニューラルネットワーク Convolutional Neural Networks</font>
+- DNN: <font color="black">深層ニューラルネットワーク Deep Neural Networks</font>
+
+# 小ネタ
+- ANN, BNN, CNN, DNN は冗談です。
 この分野以外では，もちろん ANN は オールナイトニッポンであったり，BNN はブルームバーグニュースネットワークだったり，
-CNN はケーブルニュースネットワークだったりします。 DNN は市民権を得てきた感があるので ディープニューラルネットワークで良いでしょう</p>
-  </li>
-  <li>colab に自分のためののコメントを書くために markdown の書式を覚えておいた方が良いです。(補講で少し取り上げました)</li>
-  <li>
-    <p>最先端の話をしています。画像処理が人間を超える性能を示すようになったから，最近の AI ブームがあります。
-これは，第二回の授業でも取り上げました。だからこそ，この授業があります。干からびた化石のような知識を教えるつもりはありません。</p>
-  </li>
+CNN はケーブルニュースネットワークだったりします。 DNN は市民権を得てきた感があるので ディープニューラルネットワークで良いでしょう
+
+- colab に自分のためののコメントを書くために markdown の書式を覚えておいた方が良いです。(補講で少し取り上げました)
+- 最先端の話をしています。画像処理が人間を超える性能を示すようになったから，最近の AI ブームがあります。
+これは，第二回の授業でも取り上げました。だからこそ，この授業があります。干からびた化石のような知識を教えるつもりはありません。
+-->
+
+<ul>
   <li><a href="https://komazawa-deep-learning.github.io/Hinton_Maxwell_award/" target="_blank">ジェフェリー・ヒントンのマクセル賞受賞記念講演(2016)</a></li>
   <li><a href="https://komazawa-deep-learning.github.io/t-SNE/" target="_blank">次元圧縮 t-SNE</a></li>
-  <li><a href="https://komazawa-deep-learning.github.io/data_science/" target="_blank">データサイエンス小史</a></li>
-  <li><a href="https://komazawa-deep-learning.github.io/how_to_read_math/" target="_blank">数式の読み方</a></li>
+</ul>
+
+<!-- - [データサイエンス小史](https://komazawa-deep-learning.github.io/data_science/){:target="_blank"}
+- [数式の読み方](https://komazawa-deep-learning.github.io/how_to_read_math/){:target="_blank"}
+-->
+<ul>
   <li>苦い教訓
     <ul>
       <li><a href="https://komazawa-deep-learning.github.io/2019Sutton_Bitter_Lesson/" target="_blank">Sutton のブログ，苦い教訓</a> <!--(../2019sutton_bitter_Lesson.pdf)--></li>
@@ -121,1004 +204,6 @@ CNN はケーブルニュースネットワークだったりします。 DNN �
   - In computer vision, there has been a similar pattern. Early methods conceived of vision as searching for edges, or generalized cylinders, or in terms of SIFT features. But today all this is discarded. Modern deep-learning neural networks use only the notions of convolution and certain kinds of invariances, and perform much better.
   - This is a big lesson. As a field, we still have not thoroughly learned it, as we are continuing to make the same kind of mistakes. To see this, and to effectively resist it, we have to understand the appeal of these mistakes. We have to learn the bitter lesson that building in how we think we think does not work in the long run. The bitter lesson is based on the historical observations that 1) AI researchers have often tried to build knowledge into their agents, 2) this always helps in the short term, and is personally satisfying to the researcher, but 3) in the long run it plateaus and even inhibits further progress, and 4) breakthrough progress eventually arrives by an opposing approach based on scaling computation by search and learning. The eventual success is tinged with bitterness, and often incompletely digested, because it is success over a favored, human-centric approach. 
 -->
-<ul>
-  <li>ところで知能とは何だろうか？ <a href="../psychological_intelligence/">心理学者の考えた知能</a></li>
-</ul>
-
-<h1 id="実習">実習</h1>
-<ul>
-  <li><a href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0515komazawa_step_by_step_CNN_Pytorch.ipynb" target="_blank">もう少し詳しくステップバイステップで画像認識  <img src="https://raw.githubusercontent.com/komazawa-deep-learning/komazawa-deep-learning.github.io/4c5e1c665109926508b3fa505914b60b7237bf62/assets/colab_icon.svg" /></a></li>
-  <li><a href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0514komazawa_visualise_first_layers.ipynb" target="_blank">第一層目の視覚化  <img src="https://raw.githubusercontent.com/komazawa-deep-learning/komazawa-deep-learning.github.io/4c5e1c665109926508b3fa505914b60b7237bf62/assets/colab_icon.svg" /></a> - 視覚特徴の視覚化。
-<a href="https://komazawa-deep-learning.github.io/gabor_filter/" target="_blank">ガボールパッチ あるいは ガボールフィルタ</a> とか，色ブロッブ。</li>
-</ul>
-
-<!--
-- [○☓分類器](./2019OX_classifier.html)
-- [pose](https://storage.googleapis.com/tfjs-models/demos/posenet/camera.html)
-- [nothotdog](../nothotdog/)
--->
-
-<div align="center">
-<img src="https://miro.medium.com/max/2812/1*bD_DMBtKwveuzIkQTwjKQQ.png" style="width:88%" /><br />
-</div>
-
-<p>from <a href="https://towardsdatascience.com/the-w3h-of-alexnet-vggnet-resnet-and-inception-7baaaecccc96" target="_blank">Difference between AlexNet, VGGNet, ResNet, and Inception</a></p>
-
-<hr />
-
-<h1 id="cnn-の特徴">CNN の特徴</h1>
-
-<ul>
-  <li>次の 7 つを上げることができます
-<!--[@2017Asakawa_deep_jps][^2017Aakawa\_deep\_jps\]-->。</li>
-</ul>
-
-<ol>
-  <li>非線形活性化関数 (nonlinear activation functions)</li>
-  <li>畳込み演算 (convolutional operation)</li>
-  <li>プーリング処理 (pooling)</li>
-  <li>データ拡張 (data augmentation)</li>
-  <li>バッチ正規化 (batch normalization)</li>
-  <li>ショートカット(shortcut)</li>
-  <li>GPU の使用</li>
-</ol>
-
-<p>上記 7 つの特徴を説明するのは専門的になりすぎるので省略します。一つだけ説明するとすれば最後の
-GPU とは高解像度でしかも処理速度を必要とするパソコンゲームで用いられるグラフィックボードのことです。
-詳細な画像を高速に画面に表示する必要から開発されたグラフィックボードですが，大規模なニュールネットワークの計算でも用いられる数学が同じです。
-そのため，ゲーム用に開発されたグラフィックボードがニューラルネットワークにも用いられるようになりました。</p>
-
-<!--
-- 素粒子 Subatomic Particles
-- 原子 Atom
-- 分子 Molecules
-- 遺伝子 Genes
-- 細胞 Cells
-- 神経回路 Circuits
-- 生理学 Physiology
-- 行動 Behavior
-- 社会 Society
-
-Morris and Cuthbert, (2012) Research Domain Criteria: cognitive systems,
-neural circuits, and dimensions of behavior. Dialogues Clin Neurosci. 2012;14:29-37.
-を一部改変
-
-- Self-reports 
-- Paradigms
-n-->
-
-<!--
-- <https://openai.com/blog/language-unsupervised/>
-
-- [ELMo](../ELMo_tab/)
-- [BERT](../BERT/)
-
-- <https://gluebenchmark.com/leaderboard>
-- <http://www.msmarco.org/leaders.aspx>
-- <https://paperswithcode.com/sota>
--->
-
-<!--
-- \citep{2018KriegesKorte}, 
-- \citep{2001DayanAbbott}, 
-- \citep{Poggio1985},
-- \citep{1963Hubel,1959Hubel_Wiesel,1962HubelWiesel,1968HubelWiesel,LivingstoneHubel1988},
-- \citep{1954Hartline,1957Hartline,1958Hartline},
-- \citep{Poggio1985},
-- \citep{1997Edelman}
-
-<center>
-<img src="https://komazawa-deep-learning.github.io/assets/2017Marcus_CoverPage.png" style="width:49%"><br>
-**Marcus (2017)より**
-</center>
--->
-
-<h2 id="ディープラーニングの特徴">ディープラーニングの特徴</h2>
-
-<p>from Democratize AI slides</p>
-
-<ul>
-  <li>データハングリー data hungry</li>
-  <li>計算資源ハングリー resource hungry</li>
-  <li>理論欠如 theory lagging</li>
-  <li>
-    <p>不透明 opacity</p>
-  </li>
-  <li>ニューラルネットワークは素人の統計学である, Anderson et. al (1993)</li>
-</ul>
-
-<p>… But Neural networks are not alchemy.</p>
-
-<!--
-## 第四次産業革命，AIの自動化，AIの民主化，ソフトウェア 2.0
-
-- [autoML](http://www.ml4aad.org/automl/)
-- [auto-sklearn](https://automl.github.io/auto-sklearn/stable/)
-- [AI democratization](https://news.microsoft.com/features/democratizing-ai/)
--->
-
-<!---
-
-## AI の自動化
-`auto-ML`, `auto-sklearn`
-
-## AI の民主化
-Democratizing AI
--->
-
-<!--
-## ソフトウェア2.0
-- Karpathy medium 'https://medium.com/@karpathy/software-2-0-a64152b37c35'
- 
-1. Software 2.0 is written in neural network weights.
-2. No human is involved in writing this code.
--->
-
-<!--
-## Michael Jordan's view
-
-- 機械学習は統計学の一部なのだから，機械学習の文献だけ読まずに，統計学一般の文献を熟読して貢献しなさい
-(Machine learning is a part of statistics; don't just read the machine learning literature. - read, ponder and contribute to the broad statistical literature.)
-
-__from Michael Jordan, Machine Learning Summer School, Cambridge 2009.__
-
-<center>
-<img src="https://komazawa-deep-learning.github.io/assets/c3-s4-jordan.jpg" style="width:39%"></br>
-Michael Irvin Jordan
-</center>
-
-- ニューラルネットワーク $\subset$ ディープラーニング
-- 統計学 $\supset$ 機械学習
--->
-
-<!---
-<center>
-<img src="https://komazawa-deep-learning.github.io/assets/Deep_Learning_Icons_R5.png" style="width:84%"></br>
-Nvidia のサイトより
-</center>
--->
-
-<!--
-- <https://enterprisetechnologyconsultant.wordpress.com/2013/03/10/data-science-and-the-definition-and-role-of-a-data-scientist/>
-
-- ウィリアム・クリーブランドの「データサイエンス:統計学の技術領野を拡張するための行動計画」が公刊されて以来データサイエンスという言葉が普及した。 
-  - W. S. Cleveland. Data Science: An Action Plan for Expanding the Technical Areas of the Field of Statistics. ISI Review, 69:21–26, 2001.
-
-- <https://www.forbes.com/sites/gilpress/2013/05/28/a-very-short-history-of-data-science/#123e7cc355cf> Gil Press, CONTRIBUTOR I write about technology, entrepreneurs and innovation.
-- 1962 John W. Tukey writes in “The Future of Data Analysis”:
-- 1974 Peter Naur publishes ``Concise Survey of Computer Methods'' in Sweden and the United States.
-- 1977 The International Association for Statistical Computing (IASC) is established as a Section of the ISI. “It is the mission of the IASC to link traditional statistical methodology, modern computer technology, and the knowledge of domain experts in order to convert data into information and knowledge.”
-- 1994 BusinessWeek publishes a cover story on “Database Marketing”:
-- 1996 Members of the International Federation of Classification Societies (IFCS) meet in Kobe, Japan, for their biennial conference. For the first time, the term “data science” is included in the title of the conference
-- 1996 Usama Fayyad, Gregory Piatetsky-Shapiro, and Padhraic Smyth publish “From Data Mining to Knowledge Discovery in Databases.” 
-- 2001 William S. Cleveland publishes “Data Science: An Action Plan for Expanding the Technical Areas of the Field of Statistics.” 
-
--->
-
-<hr />
-
-<h1 id="1-生理学">1. 生理学</h1>
-
-<center>
-<img src="https://komazawa-deep-learning.github.io/assets/1994vanEssen_gallant_Fig2.jpg" style="width:74%" />&lt;/br&gt;
-**Van Essen &amp; Gallant (1994)**
-
-<img src="https://komazawa-deep-learning.github.io/assets/thorpe_sj_01_260.jpg" style="width:49%" />
-<img src="https://komazawa-deep-learning.github.io/assets/1991Felleman_VanEssen_Fig4.svg" style="width:49%" />&lt;/br&gt;
-**Left: Thorpe et al.(2001), Right: Felleman &amp; Van Essen (1992)**
-</center>
-
-<div align="center" style="width:88%">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/d/d2/Retinotopic_English.jpg" style="width:74%" /><br />
-  <div align="left">
-    source: https://en.wikipedia.org/wiki/Retinotopy
-  </div>
-</div>
-
-<h2 id="ヒューベルとウィーゼル-hubel-and-wiesel-1969">ヒューベルとウィーゼル Hubel and Wiesel (1969)</h2>
-<center>
-<iframe width="450" height="300" src="https://www.youtube.com/embed/4nwpU7GFYe8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-<br /> source: https://youtu.be/4nwpU7GFYe8
-<!--<iframe width="901" height="676" src="https://www.youtube.com/embed/4nwpU7GFYe8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
-</center>
-
-<ul>
-  <li>トポグラフックマッピング topographic mappings (地形図):  網膜や皮膚などの体制感覚，筋肉系のような効果器系を、中枢神経系の 1 つ以上の構造物に整然と投影した地図。
-地形図は、すべての感覚系と多くの運動系で観察される。</li>
-  <li>トノトピー tonotopy（ギリシャ語のtono=周波数、topos=場所）とは、異なる周波数の音が脳内で処理される場所の空間的配置のこと。
-周波数が近い音は、脳内の場所的に隣接する領域で表現される。トノトピック地図とも呼ばれる <!--は 視覚系のレチノトピーに似た地形的な組織の特殊な例である。--></li>
-  <li>ソマトピー somatopy: 中枢神経系上の特定の点へ身体領域の照射，投影のこと。 身体領域は 第一次体性感覚皮質 (後腹回) に投影される。 典型的には 特定の身体部位と そのそれぞれの位置を ホムンクルス homunclus (小人) 
- 上に配置する 感覚ホムンクルスとして表現される。
-細かく制御されている部位 (指，舌) は体性感覚野の面積が大きい。一方 粗く制御されている部位 (体幹) は面積が小さい。内臓のような領域は体性感覚野の位置を持たない。</li>
-  <li>レティノトピー retinotopy: 網膜からの視覚入力を神経細胞 にマッピングすること。哺乳類の脳に多く見られる。この地図の大きさ、数、空間的配置は種間で異なる。
-視野の隣接する点 が 同じ領域 の 隣接する 領域で 表現される とは限らないという意味で、複雑な地図となる。
-例えば 第 2 次視覚野 (V2) での視覚地図は 視野の上半分に応答する網膜の部分が 視野の下半分に応答する部分から分離されて表現されている。第３次視覚野 (V3) や 第4次視覚野 (V4) では下位の視覚野に比べて より複雑な表現がなされている</li>
-</ul>
-
-<hr />
-
-<h2 id="ブレイクモア-と-クーパー-blackmore-and-cooper-1970">ブレイクモア と クーパー Blackmore and Cooper (1970)</h2>
-
-<center>
-<iframe width="450" height="300" src="https://www.youtube.com/embed/QzkMo45pcUo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-<!--<iframe width="845" height="676" src="https://www.youtube.com/embed/QzkMo45pcUo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
-&lt;/br&gt; source: https://youtu.be/QzkMo45pcUo
-</center>
-
-<center>
-<img src="https://komazawa-deep-learning.github.io/assets/1970BlackmoreCooper_Fig1.svg" style="width:39%" />
-<img src="https://komazawa-deep-learning.github.io/assets/1970BlackmoreCooper_Fig2.svg" style="width:49%" />
-</center>
-
-<hr />
-
-<center>
-<iframe width="450" height="300" src="https://www.youtube.com/embed/RSNofraG8ZE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-<br />source: https://youtu.be/RSNofraG8ZE
-<!--<iframe width="784" height="627" src="https://www.youtube.com/embed/RSNofraG8ZE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
-</center>
-
-<hr />
-
-<!--
-<center>
-<video style="width:84%" src="../assets/Style-based-GAN.mp4" type="video/mp4" />
-</center>
--->
-
-<!--
-図 [fig:2014Szegedy](#fig:2014Szegedy){reference-type="ref"
-reference="fig:2014Szegedy"}
-は画像認識の性能向上の例を示しています[@2014GoogLeNet]。
-
-<center>
-<img src="https://komazawa-deep-learning.github.io/assets/2014Szegedy_Going_deeper.jpg" style="width:74%">
-<img src="https://komazawa-deep-learning.github.io/assets/2014Szegedy_Going_deeper.jpg" style="width:74%">
-</center>
--->
-
-<h2 id="一アルゴリズム仮説-one-algorithm-hypothesis">一アルゴリズム仮説 One algorithm hypothesis</h2>
-
-<p>Sur (1988) より</p>
-<div align="center">
- <img src="https://komazawa-deep-learning.github.io/assets/1988Sur_Fig1upper.svg" style="width:44%" />
- <img src="https://komazawa-deep-learning.github.io/assets/1988Sur_Fig1lower.svg" style="width:44%" />
- <img src="https://komazawa-deep-learning.github.io/assets/1988Sur_fig2.jpg" style="width:74%" /><br />
-  <div align="left">
-聴覚視床への実験的に誘導された網膜投影（ハッチングされた領域）および聴覚視床と聴覚皮質の接続。
-手術した半球とは反対側の眼は、生き残っている背側LGN（LGd）と腹側LGN（LGv）、およびMGNの背側と腹側の区画内のパッチ（それぞれMGdとMG）に投影する。
-視床の傍矢状切片を番号付きで示す。
-視床の傍矢状切片の 同じ動物に、一次聴覚野（Al）にHRPを注入した場合（注入部位は左上に示す）、細胞が充填される。
-ドットで示されている）MG "MGdでは逆行性に、MGvでは後遺症複合体の側方分裂（P01）が行われている。MGdとMGvの多くの細胞が網膜突起帯を覆っている。 
-</div>
- <img src="https://komazawa-deep-learning.github.io/assets/1988Sur_Fig4.svg" style="width:74%" /><br />
-</div>
-
-<ul>
-  <li>Metin and Frost (1989) Visual responses of neurons in somatosensory cortex of hamsters with experimentally induced retinal projections to somatosensory thalamus</li>
-  <li>Roe et al. (1992) Visual Projections Routed to the Auditory Pathway in Ferrets: Receptive Fields of Visual Neurons in Primary Auditory Cortex</li>
-</ul>
-
-<h1 id="2-心理学">2. 心理学</h1>
-<h2 id="セルフリッジ-selfridge-のパンデモニウム-pandemonium-モデル">セルフリッジ Selfridge のパンデモニウム pandemonium モデル</h2>
-
-<center>
-<img src="https://komazawa-deep-learning.github.io/assets/1958Selfridge_fig3.svg" style="width:74%" /><br />
-セルフリッジ (1958) ``Mechanisation of Thought Processes'' より
-
-<img src="https://komazawa-deep-learning.github.io/assets/1958Selfridge_fig7.svg" style="width:84%" /><br />
-セルフリッジ (1958) ``Mechanisation of Thought Processes'' より
-</center>
-
-<center>
-<img src="https://komazawa-deep-learning.github.io/assets/1958Selfridge_fig4.svg" style="width:49%" /><br />
-<!--
-<img src='https://komazawa-deep-learning.github.io/assets/1958Selfridge_fig5.svg' style='width:74%'><br>
--->
-<img src="https://komazawa-deep-learning.github.io/assets/1958Selfridge_fig6.svg" style="width:49%" /><br />
-セルフリッジ (1958) ``Mechanisation of Thought Processes'' より
-</center>
-
-<h1 id="生理学視覚心理学との対応">生理学，視覚心理学との対応</h1>
-
-<ul>
-  <li>Julesz
-    <ul>
-      <li>Julesz (1981) Textons, the elements of texture perception, and their interactions, Nature</li>
-    </ul>
-  </li>
-</ul>
-
-<center>
-<img src="https://komazawa-deep-learning.github.io/assets/1981Julesz-texton-Fig2.svg" style="width:84%" />&lt;/br&gt;
-Julesz (1981) Fig. 2 より
-</center>
-
-<ul>
-  <li>Marr
-    <ul>
-      <li>Computational approach: Vision (1908)</li>
-    </ul>
-  </li>
-  <li>Poggio
-    <ul>
-      <li>Poggio, Torre, and Koch (1985) Computational vision and regularization theory</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="心理学モデル-psycholosophical-consideration">心理学モデル Psycholosophical consideration</h2>
-<ul>
-  <li>Epistemology 思念的，観念的</li>
-  <li>Empirical Episitemology 実証的 = psychology</li>
-  <li>
-    <p>Constructive epipstemology 構成論的 = computer vision, neural networks</p>
-  </li>
-  <li>Marr
-    <ul>
-      <li>Computational approach: Vision (1908)</li>
-    </ul>
-  </li>
-  <li>Poggio
-    <ul>
-      <li>Poggio, Torre, and Koch (1985) Computational vision and regularization theory</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="生理学との対応-hubel-and-wiesel-のネコとサル-blackmore-のネコ-ヴァンエッセン">生理学との対応 (Hubel and Wiesel のネコとサル, Blackmore のネコ, ヴァンエッセン)</h2>
-<ul>
-  <li>層間の結合の仕方, アーキテクチャ</li>
-  <li>forward/backward 役割，機能，実現方法</li>
-  <li>側抑制 lateral inhibition (これについては多層化して回避できる可能性あり)</li>
-  <li>
-    <p>shape from X は正しかったのか？ ただし発達心理学におけるシェイプバアスは言語発達において重要な意味を持つはず。だからと言って乳幼児はそのように強制(脅迫？)，矯正されて育つわけではないだろう。</p>
-
-    <ul>
-      <li>Ritter (2017) Cognitive Psychology for Deep Neural Networks: A Shape Bias Case Study</li>
-      <li>Landau, Smith, Jones (1992) Syntactic Context and the Shape Bias in Childrens and Adults Lexical Learning</li>
-      <li>
-        <p>Yamins (2016) Using goal-driven deep learning models to understand sensory cortex</p>
-      </li>
-      <li>Julez のアプローチは視覚研究者 Haar, SIFT, DoG などのアルゴリズム開発者と対応</li>
-      <li>Poggio (1985) Computational Vision and Regularization Theory</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="marr-and-poggio-1976">Marr and Poggio (1976)</h2>
-
-<p>中枢神経系は 4 つのほぼ独立したレベルの記述で理解される必要がある。</p>
-<ol>
-  <li>計算の性質が表現されるレベル、</li>
-  <li>計算を実装するアルゴリズムが特徴づけられるレベル、</li>
-  <li>アルゴリズムが特定のメカニズムにコミットされるレベル、</li>
-  <li>メカニズムがハードウェアで実現されるレベル</li>
-</ol>
-
-<p>である。
-一般的に、計算の性質は解決すべき問題によって決定され、使用されるメカニズムは利用可能なハードウェアに依存し、選択される特定のアルゴリズムは問題と利用可能なメカニズムに依存する。</p>
-
-<p>のちに 3 つにまとめられ，それが有名になりました。ですが，出始めは 4 つでした。他の授業では Marr の 3 水準と呼ばれるかも知れません。
-その有名になった Marr の 3 水準とは</p>
-<ol>
-  <li>計算論</li>
-  <li>アルゴリズム</li>
-  <li>実装
-にあたります。脳を理解する上で，3 つを区別して考えましょうというスローガンです。</li>
-</ol>
-
-<h2 id="現代的ニューラルネットワークモデルと生理学との対応">現代的ニューラルネットワークモデルと生理学との対応</h2>
-
-<div align="center">
-<img src="https://komazawa-deep-learning.github.io/assets/2012Zeiler_Deconvolution.png" style="width:77%" />&lt;/br&gt;
-<br />Zeiller 2012 より
-</div>
-
-<div align="center">
-<img src="https://komazawa-deep-learning.github.io/assets/2010ZeilerKrishnanTaylorFerguss_fig.svg" style="width:88%" /><br />
-Zeiler et. al. (2010) Fig. 7, and 8
-</div>
-
-<center>
-<img src="https://komazawa-deep-learning.github.io/assets/2016Yamins_fig1s_ja.svg" style="width:94%" />
-<!--<img src='https://komazawa-deep-learning.github.io/assets/2016Yamins_Fig1.svg' style='width:94%'>-->
-<img src="https://komazawa-deep-learning.github.io/assets/2016Yamins_fig2ja.svg" style="width:94%" />
-</center>
-
-<center>
-<img src="https://komazawa-deep-learning.github.io/assets/2016Yamins_fig3s_ja.svg" style="width:84%" /><br />
-<div align="left" style="width:84%">
-目標駆動型モデリングの構成要素。
-内側の円は、与えられた数のレイヤーのモデルを含む完全なモデルクラスの部分空間を表す。
-目標駆動モデルは、特に最適なモデルを発見するために、モデル・クラス内の軌道（実線）に沿ってシステムを駆動する学習アルゴリズム（黒の点線矢印）を使用して構築される。
-各ゴールは、そのゴールを解くのに特に適したパラメータを含むモデルクラス（太い黒の等高線）内の引き寄せの盆地に対応していると考えることができる。
-計算結果は、課題がモデルのパラメータ設定に強い制約を与えることを示す。
-すなわち、与えられた課題の最適化パラメータのセットは、元の空間に比べて非常に小さいということである。
-これらの目標駆動モデルは、与えられた課題領域での行動の根底にあると考えられている脳領域のニューロンの応答特性をどの程度予測できるかについて評価することができる。
-例えば、単語認識のために最適化されたモデルのユニット、聴覚皮質の一次領域、ベルト領域、パラベルト領域の応答特性と比較することができる。
-また、モデルを互いに比較して、異なるタイプの課題がどの程度の神経構造の共有につながるかを判断することもできる。
-また、様々な構成要素のルール（教師あり、教師なし、半教師あり）を研究して、それらが生後の発達や専門知識学習の間にどのように異なるダイナミクスにつながるかを判断することもできる（緑の破線のパス）。
-</div>
-</center>
-
-<div align="center">
-<!--<img src='https://komazawa-deep-learning.github.io/assets/2014Yamins_fig2Aja.svg' style='width:74%'>-->
-<!--<img src='https://komazawa-deep-learning.github.io/assets/2014Yamins_FigS2.svg' style='width:74%'>-->
-<img src="https://komazawa-deep-learning.github.io/assets/2020Schrimpf_fig1.svg" style="width:84%" /><br />
-</div>
-
-<!--<a href="../assets/2018asakawa_jdlaGtestChapt7.pdf">G 検定公式テキスト7章より</a>-->
-
-<hr />
-
-<h1 id="3-畳込みニューラルネットcnn">3. 畳込みニューラルネット(CNN)</h1>
-
-<p>深層学習 (ディープラーニング) の中で <strong>畳み込みニューラルネットワーク</strong> CNN と呼ばれるニューラルネットワークについて解説します。</p>
-
-<p>最初に画像処理の概略を述べる CNN が，それまで主流であった従来の手法の性能を凌駕したことはすでに述べました。
-CNN の特徴の一つに <strong>エンドツーエンド</strong> と呼ばれる考え方があります。
-エンドツーエンドとは，従来手法によるパターン認識システムでは，専門家による手の込んだ詳細な作り込みを必要としていたことと異なり，面倒な作り込みをせずとも性能が向上したことを指します。</p>
-
-<p>エンドツーエンドなニューラルネットワークにより，次のことが実現しました。</p>
-
-<ul>
-  <li>ニューラルネットワークの層ごとに，特徴抽出が行われ，抽出された特徴がより高次の層へと伝達される</li>
-  <li>ニューラルネットワークの各層では，比較的単純な特徴から次第に複雑な特徴へと段階的に変化する</li>
-  <li>高次層にみられる特徴は低次層の特徴より大域的，普遍的である</li>
-  <li>高次層のニューロンは，低次層で抽出された特徴を共有している</li>
-</ul>
-
-<p>このことを簡単に説明してみます。</p>
-
-<p>我々人間は，外界を認識するために必要な計算を，生物種としての発生の過程と，個人の発達を通しての経験に基づく認識システムを保持していると見ることができます。
-従って我々の視覚認識には化石時代に始まる光の受容器としての眼の進化の歴史と発達を通じた個人の視覚経験が反映された結果でもあります。
-人工知能の目標は，この複雑な特徴検出過程をどうやったらコンピュータが獲得できるかということでもあります。
-外界を認識するために今日まで考案されてきたモデル（例えば，ニューラルネットワークサポートベクターマシンなどは）は複雑です。
-ですがモデルを訓練するための学習方法はそれほど難しくありません。
-この意味で画像認識課題が正しく動作するためのポイントは，認識システムが問題を解く事が可能なほど複雑であるかどうかではなく，十分に複雑が視覚環境，すなわち画像認識の場合，外部の艦橋を反映するために十分な量の像データを容易すことができるか否かにあります。
-今日の CNN による画像認識性能の向上は，簡単な計算方法を用いて複雑な外部環境に適応できる認識システムを構築する方法が確立したからであると言うことが可能です。</p>
-
-<p>下図 <!--[fig:2012Ng_01](#fig:2012Ng_01){reference-type="ref"
-reference="fig:2012Ng_01"} -->
-に画像処理の例を挙げました。</p>
-
-<!--
-<center>
-<img src="https://komazawa-deep-learning.github.io/assets/2012Ng_ML_and_AI_01.png" style="width:94%">
-</center>
--->
-
-<!--図[[fig:2012Ng_01]](#fig:2012Ng_01){reference-type="ref"
-reference="fig:2012Ng_01"}
--->
-<!--
-<center>
-<img src='https://komazawa-deep-learning.github.io/assets/2013LeCun-tutorial-icml_15.svg' style="width:84%"></br>
-**LeCun (2013) より**
-</center>
--->
-
-<center>
-<img src="https://komazawa-deep-learning.github.io/assets/2012Ng_ML_and_AI.svg" style="width:84%" />&lt;/br&gt;
-**Goodfellow et al. (2017) Fig.1 を改変**
-</center>
-
-<!--では入力画像がネコであるか否かを判断する画像認識であるとしました。-->
-<p>我々は<!--ネコの--> 画像をほぼ瞬時に判断できます。
-ですが画像認識の難しさは，入力画像が上図 <!--[[fig:2012Ng_01]](#fig:2012Ng_01){reference-type="ref"
-reference="fig:2012Ng_01"}-->
-に示されているように入力信号の数字の集まりでしか無いことです。
-このようなデータを何度も経験することでネコを識別できるようにする必要があります。
-<!-- [[fig:2012Ng_01]]{#fig:2012Ng_01 label="fig:2012Ng_01"}-->
-<!--図[[fig:2012Ng_01]](#fig:2012Ng_01){reference-type="ref" reference="fig:2012Ng_01"}-->
-<!--に示したように-->コンピュータに入力される画像は数字の塊に過ぎません。</p>
-
-<p>状況ごとにとるべき操作を命令として逐一コンピュータに与える指示する手順の集まりのことをコンピュータプログラムと呼びます。人間がコンピュータに与えることができる操作や命令によって画像認識システムを作る場合，命令そのものが膨大になったり，そもそも説明することが難しかったりします。
-例を挙げれば，お母さんを思い浮かべてくださいと言われれば誰でも，それぞれ異なるイメージであれ思い浮かべることができます。また，提示された画像が自分の母親のものであるか，別の女性であるかの判断は人間であれば簡単です。ところがコンピュータには難しい課題となります。
-加えて母親の特徴をコンピュータに理解できる命令としてプログラムすることも難しい課題です。つまり自分の母親の特徴を曖昧な言葉でなく明確に説明するとなるととても難しい課題となります。
-というのは，女性の顔写真であればどの写真も似ていると言えるからです。顔の造形や輪郭，髪の位置などはどの画像も類似していることでしょう。ところがコンピュータにはこの似ている，似ていいないの区別が難しいのです。</p>
-
-<p>加えて，同一ネコの画像であっても，被写体の向き視線の方向や光源の位置や撮影条件が異なれば画像としては異なります。
-下図に示したように入力画像の中の特定の値だけを調べてみても，入力画像がネコであ
-る，そうではないかを判断することは難しい課題になります。</p>
-
-<!--[fig:2012Ng_02](#fig:2012Ng_02){reference-type="ref"
-reference="fig:2012Ng_02"}
--->
-<center>
-<img src="https://komazawa-deep-learning.github.io/assets/2012Ng_ML_and_AI_02.png" style="width:94%" />
-</center>
-
-<!--[fig:2012Ng_02]{#fig:2012Ng_02 label="fig:2012Ng_02"}-->
-
-<p>現在の画像認識では，特定の画素の情報に依存せずに，入力画像が持っている特徴
-をとらえるように設計されます。たとえば，ネコを認識するために必要ことは，ネ
-コに特徴的な「ネコ目」や「ネコ足」を検出することであると考えます。入力画像
-から，ネコの持つ特徴を抽出することができれば，それらの特徴を持っている入力
-画像はネコであると判断して良いことになります(下図
-<!--[[fig:2012Ng_03]](#fig:2012Ng_03){reference-type="ref"
-reference="fig:2012Ng_03"}-->)。</p>
-
-<center>
-<img src="https://komazawa-deep-learning.github.io/assets/2012Ng_ML_and_AI_03.png" style="width:94%" />
-</center>
-
-<!-- [[fig:2012Ng_03]]{#fig:2012Ng_03 label="fig:2012Ng_03"}-->
-
-<p>下図
-<!--[[fig:2013LeCun_9]](#fig:2013LeCun_9){reference-type="ref"
-reference="fig:2013LeCun_9"} -->
-は，音声認識と画像認識の両分野において CNN が用いられる以前の従来手法 をまとめたものです。</p>
-
-<center>
-<img src="https://komazawa-deep-learning.github.io/assets/2013LeCun-tutorial-icml_9.png" style="width:94%" />
-</center>
-<!--[[fig:2013LeCun_9]]{#fig:2013LeCun_9 label="fig:2013LeCun_9"}-->
-<p>上図<!--[[fig:2013LeCun_9]](#fig:2013LeCun_9){reference-type="ref"
-reference="fig:2013LeCun_9"} -->
-のような従来手法に対して，CNN
-ではエンドツーエンドな特徴抽出を多層多段に重ねることによって複雑な特徴を抽出(検出)しようとしています
-(下図<!-- [[fig:2013LeCun_10]](#fig:2013LeCun_10){reference-type="ref"
-reference="fig:2013LeCun_10"}-->)。</p>
-
-<center>
-<img src="https://komazawa-deep-learning.github.io/assets/2013LeCun-tutorial-icml_10.png" style="width:94%" />
-</center>
-<!--
-[fig:2013LeCun_10]{#fig:2013LeCun_10 label="fig:2013LeCun_10"}
--->
-
-<p>コンピュータにはネコ目特徴検出器，ネコ足特徴検出器は備わっていません。そこで画像認識研究では，画像の統計的性質に基づいて特徴検出器を算出する方法を探す努力が行われてきました。
-しかし，コンピュータにネコ目特徴やネコ足特徴を教えるは容易なことではありません。
-このことは画像処理の分野だけに限りません，音声認識でも言語情報処理でもそれぞれの特徴器を一つ一つ定義し，チューニングするのは時間がかかり，専門的な知識も必要で困難な作業でした。</p>
-
-<!--
-<center>
-<img src="https://komazawa-deep-learning.github.io/assets/2012Ng_ML_and_AI_05.png" style="width:94%">
-</center>
--->
-<!--[fig:2012Ng_05]{#fig:2012Ng_05 label="fig:2012Ng_05"}-->
-
-<!--
-<img src="https://komazawa-deep-learning.github.io/assets/2012Ng_ML_and_AI_04.png" style="width:94%">
-<img src="https://komazawa-deep-learning.github.io/assets/2012Ng_ML_and_AI_06.png" style="width:94%">
-<img src="https://komazawa-deep-learning.github.io/assets/2012Ng_ML_and_AI_07.png" style="width:94%">
-<img src="https://komazawa-deep-learning.github.io/assets/2012Ng_ML_and_AI_08.png" style="width:94%">
--->
-
-<h2 id="領域切り出し">領域切り出し</h2>
-
-<div align="center">
-<img src="https://komazawa-deep-learning.github.io/assets/HistoryOfObjectRecognition_head.svg" style="wdith:94%" />
-</div>
-
-<h2 id="画像処理と言語処理との融合">画像処理と言語処理との融合</h2>
-
-<center>
-<img src="https://komazawa-deep-learning.github.io/assets/2015Xu_Show_Attend_and_Tell.svg" style="width:84%" />&lt;/br&gt;
-</center>
-
-<p>まとめると，1950 年代後半以来:固定的，手工芸的特徴抽出器と学習可能な分類器を用いた認識システムを作ることが試みられてきたといえます。
-これに対して CNN が主流となった現在はエンドツーエンドで学習可能な特徴抽出器を多数重ね合わせることで性能が向上しました。</p>
-
-<p>夢のような話が続きましたが，本節の最後に逆に CNN は簡単に騙すことができる例
-を挙げておきます<!--(図[fig:GAN](#fig:GAN){reference-type="ref"
-reference="fig:GAN"})-->。</p>
-
-<center>
-<img src="https://komazawa-deep-learning.github.io/assets/2014Goodfellow_Fig1.png" style="width:94%" />
-</center>
-
-<p>図では，左の画像が入力画像で，CNN は確信度 57.7パーセントでパンダである認識しました。 ところがこの画像に 0.007だけ意味のない画像(図中央)を加えるた画像(図右)を CNN は 99.3パーセントの確信度でテナガザル
-(gibbon)と判断しました。この例はここでは詳しく触れることはしませんが <strong>敵対的学習</strong>と呼ぶ訓練手法を説明する際に用いられた例です <!--[@2014Goodfellow_GANHarness]-->。</p>
-
-<p>この例からも分かることは以下のようにまとめられるでしょう。
-すなわち，人間の脳を模したニューラルネットワークである CNN が大規模化像認識チャレンジにおいて人間の認識性能を越えたと報道されました。
-ですが，人間の視覚認識を完全に実現したと考えるのは早計で，解くべき課題は未だ多数あるということです。
-この状況は，音声認識や言語情報処理でも同様であると言えます。</p>
-
-<h1 id="認知計算論的神経科学-cognitive-computational-neuroscience">認知計算論的神経科学 Cognitive computational neuroscience</h1>
-
-<center>
-<img src="https://komazawa-deep-learning.github.io/assets/2018Kriegeskorte_Fig2.jpg" style="width:84%" /><br />
-**Kriegeskorte and Doglas (2018) Fig. 2より**
-</center>
-
-<p>脳の機能を理解することはどういうことか？ 認知計算神経科学の目的は実世界の認知課題を遂行可能で，生物学的妥当性を持つ計算モデルを用いて動物や人間の神経活動と行動の多くの観測結果を説明することである。
-歴史的には各分野（円）はこれら課題の回問題（白ラベル）に取り組んできた。<!--認知計算神経科学は、同時にすべての基準を満たすよう努めるています。-->
-<!--
-Figure 2 | What does it mean to understand how the brain works? The goal of cognitive computational neuroscience is to explain rich measurements of neuronal activity and behavior in animals and humans by means of biologically plausible computational models that perform real-world cognitive tasks. Historically, each of the disciplines (circles) has tackled a subset of these challenges (white labels). Cognitive computational neuroscience strives to meet all the criteria simultaneously.
---></p>
-
-<!--
----
-
-###  表記
-
-<b>深層学習</b> 文献では MLP: Multi-Layered Perceptrons と表記される場合が多い
-
-- \(x\) をニューロンの活性値とし，入力層から数えて \(i\) 層目の \(j\) 番目のニューロンの活性値を \(x_i^{(j)}\) と表記する。
-- 入力層は \(0\) 層目とみなせば \(x_1^{(0)}\)　は入力データのうち \(1\) 番目のニューロンに与える数値を表している。
-- 下付き添字は番号付けされたニューロンの指す場合に使われる。
-- 上付き添字はカッコを付けて階層的ニューラルネットワークの層を表すとする。このとき，べき乗と区別するためにカッコをつける。\(x_1^{2}\) は第 \(2\) 層の \(1\) 番目のニューロンの出力値を表している。
-- 活性化関数は多値入力一出力 (many to one) である場合が多い。プログラミング言語に多く見られる関数の定義と同じように引数が複数個存在し，戻り値が一つである関数と酷似している。
-- 活性化関数への引数は前層のニューロンとの結びつきを表現する結合強度 connection legth(結合係数 connection coefficient，重み weight とも呼ぶ)とによる荷重総和である。
-- 荷重総和は総和記号 \(\sum\) を用いることで \(\sum_{i=1}^{m}w_ix_i\) と表記される。\(m\) は関与する下位層のニューロンの総数である。
-- 各ニューロンの出力値を計算するためには荷重総和とバイアス bias を合わせてから，非線形写像 \(f\) によって変換されるので
-\(f\left(\sum_{i}w_ix_i+b\right)\) と表記される。
-
----
-
-- 写像 $f$ を **活性化関数 activation function** とする
-- 第 $k$ 層の $i$ 番目のニューロンの出力値 $x_i^{(k)}$ は次のように表記できる：
-$$ x_i^{(k)} = f\left(\sum_{i=1}^{m}w_{i}x_{i}^{(k-1)}+b_{i}^{(k)}\right) $$
-- バイアス項は常に $1$ を出力する特別な入力値であるとみなして表記を簡単にするために $0$ 番目の入力として扱うと：
-$$ x_i^{(k)} = f\left(\sum_{i=0}^{m}w_{i}x_{i}^{(k-1)}+b_{i}^{(k)}\right) $$
-とする表記も行われてきた。
-- C や Python のメモリ配置ではメモリ先頭番地を $0$ とする場合が多いので繰り返しは $n$ 回の繰り返しを $0$　から $n-1$ 回までのカウンタとする場合が多いので上記のようにバイアス項を $0$ 番目の要素として組み込むより，別の項として扱うことが最近は多いようである。()
-- ３層パーセプトロン(実際には入力層は値をセットするだけなので演算は２層しか行われない)を表記すれば
-
-\begin{align}
-y_i=x_i^{(2)}&=f\left(\sum_{j}w_{j}^{(1)}x_{j}^{(1)}+b_{i}^{(2)}\right)\\
-&=f\left(\sum_{j}w_{j}^{(1)}\left(f\left(\sum_{k}w_{k}^{(0)}x_{k}^{(0)}+b_{j}\right)\right)+b_{i}^{(2)}\right)\\
-\end{align}
-
-```python
-# Define the neural network function y = x * w + b
-def total_input(x, w, b):
-    return x * w + b
-
-# Define the cost function
-def cost(y, t): 
-    return ((t - y)**2).sum()
-```
-
--->
-
-<!--
----
-
-### 出力関数
-学習可能な重み係数とバイアスがを持つニューロンで \(f=\left(\sum_i w_ix_i + b\right)\) 構成される。<br>
-複数入力，１出力の非線形出力関数を持つ。
-
-出力関数としては：<br>
-
-- $ReLU\left(x\right)=\max\left(0,x\right)$
-- $ReLU6\left(x\right)=\min\left(\max\left(0,x\right),6\right)$
-- $crelu\left(x\right)=\left(\left[x\right]_{+},\left[-x\right]_{-}\right)$
-- \[elu\left(x\right)=\left\{
-\begin{align}
-x       & \hspace{3em}if x>0\\
-e^{x}-1 & \hspace{3em}otherwise
-\end{align}\right.\]
-- $softplus\left(x\right)=\log\left(1+e^{x}\right)$
-- $softsign\left(x\right)=\frac{x}{\Vert x\Vert+1}$
-
-- ドロップアウト
-- バイアス付加
-
-- $\sigma(x)=\frac{1}{1+e^{-x}}$
-- $\phi\left(x\right)=\tanh\left(x\right)=\frac{e^{x}-e^{-x}}{e^{x}+e^{-x}}$
-
-がある
--->
-
-<hr />
-
-<!-- [http://cs231n.github.io/convolutional-networks/](http://cs231n.github.io/convolutional-networks/)より -->
-
-<h2 id="cnn-の詳細">CNN の詳細</h2>
-
-<p>通常のニューラルネットワークでは，直下層のニューロンとそのすぐ上の層の全ニューロンと結合を有する。一方 CNN ではその結合が部分的である。
-各ニューロンは多入力一出力の信号変換機とみなすことができ，活性化関数に非線形な関数を用いる点は通常のニューラルネットワークと同様。</p>
-
-<p>画像処理を考える場合，典型的には一枚の入力静止画画像は 3 次元データである。次元は幅w，高さh，奥行きd であり，入力画像では奥行きが３次元，すなわち赤緑青の三原色。出力ニューロンへの入力は局所結合から小領域に限局される。</p>
-
-<h3 id="1-cnnの構成">1. CNNの構成</h3>
-
-<p>CNN は以下のいずれかの層から構成される：</p>
-
-<ol>
-  <li><strong>畳込み層</strong></li>
-  <li><strong>プーリング層</strong></li>
-  <li><strong>完全結合層</strong>（通常のニューラルネットワークと正確に同じもの，CNN では最終 1 層または最終 1,2 層に用いる）</li>
-</ol>
-
-<p>入力信号はパラメータの値が異なる活性化関数によって非線形変換される。
-畳込み層とプーリング層と複数積み重ねることで多層化を実現し，深層ニューラルネットワークとなる。</p>
-
-<hr />
-
-<h4 id="例">例：</h4>
-<ul>
-  <li>
-    <!--CNNの最も単純な場合。-->
-    <p>画像データを出力信号へ変換</p>
-  </li>
-  <li>各層は別々の役割（畳込み，全結合，ReLU, プーリング）</li>
-  <li>入力信号は 3 次元データ，出力信号も 3 次元データ</li>
-  <li>学習すべきパラメータを持つ層は畳込み層，全結合層</li>
-  <li>学習すべきパラメータを持たない層は ReLU 層とプーリング層</li>
-  <li>ハイパーパラメータを持つ層は畳込み層, 全結合層, プーリング層</li>
-  <li>ハイパーパラメータを持たない層は ReLU層</li>
-</ul>
-
-<hr />
-
-<center>
-  <img src="https://komazawa-deep-learning.github.io/assets/cnn/convnet.jpeg" width="94%" />
-  <!--
-  <div class="figcaption">
-  -->
-  <div>
-  CNN アーキテクチャ: 入力層は生画像の画素値(左)を格納、最後層は分類確率(右)を出力。処理経路に沿った活性の各ボリュームは列として示されている。3Dボリュームを視覚化することは難しいため、各ボリュームのスライスを行ごとに配置してある。最終層のボリュームは各クラスのスコアを保持するが、ソートされた上位5スコアだけを視覚化し、それぞれのラベルを印刷してある。
-  <!--
-  <a href="http://cs231n.stanford.edu/">ウェブベースのデモ</a>は、ウェブサイトのヘッダーに表示されています。ここに示されているアーキテクチャは、あとで説明する小さなVGG Netです。
-  -->
-</div>
-</center>
-
-<!--
-The activations of an example ConvNet architecture. The initial volume stores the raw image pixels (left) and the last volume stores the class scores (right). Each volume of activations along the processing path is shown as a column. Since it's difficult to visualize 3D volumes, we lay out each volume's slices in rows. The last layer volume holds the scores for each class, but here we only visualize the sorted top 5 scores, and print the labels of each one. The full <a href="http://cs231n.stanford.edu/">web-based demo</a> is shown in the header of our website. The architecture shown here is a tiny VGG Net, which we will discuss later.
--->
-<!--
-We now describe the individual layers and the details of their hyperparameters and their connectivities.
--->
-
-<hr />
-
-<!--
-*Example Architecture: Overview*. We will go into more details below, but a simple ConvNet for CIFAR-10 classification could have the architecture [INPUT - CONV - RELU - POOL - FC]. In more detail:
-
-*アーキテクチャ例* CIFAR-10の CNN は [入力層-畳込み層-ReLLU層-プーリング層-全結合層] という構成である。
--->
-
-<ul>
-  <li>入力層[32x32x3]: 信号は画像の生データ（画素値）幅w(32)，高さh(32)、色チャネル3(R, G, B)</li>
-  <li>畳込み層: 下位層の限局された小領域のニューロンの出力の荷重付き総和を計算(内積，ドット積）。12個のフィルタを使用すると[32x32x12]となる。</li>
-  <li>ReLU層の活性化関数は ReLU (Recutified Linear Unit) $max(0,x)$<!--入力範囲は変更されない([32x32x12])。--></li>
-  <li>プーリング層: 空間次元（幅,高さ）に沿ってダウンサンプリングを実行。[16x16x12]のようになる。</li>
-  <li>全結合層はクラスに属する確率を計算: 10 の数字のそれぞれが CIFAR-10 の 10 カテゴリーの分類確率に対応するサイズ[1x1x10]に変換。通常のニューラルネットワーク同様、全結合層のニューロンは前層の全ニューロンと結合する。</li>
-</ul>
-
-<!--
-In this way, ConvNets transform the original image layer by layer from the original pixel values to the final class scores. Note that some layers contain parameters and other don't. In particular, the CONV/FC layers perform transformations that are a function of not only the activations in the input volume, but also of the parameters (the weights and biases of the neurons). On the other hand, the RELU/POOL layers will implement a fixed function. The parameters in the CONV/FC layers will be trained with gradient descent so that the class scores that the ConvNet computes are consistent with the labels in the training set for each image. 
--->
-
-<p>CNN は元画像（入力層）から分類確率（出力層）へ変換。学習すべきパラメータを持つ層（畳込み層，全結合層）とパラメータを持たない層（ReLU層）が存在。畳込み層と全結合層のパラメータは勾配降下法で訓練</p>
-
-<hr />
-
-<h3 id="2-畳込層">2. 畳込層</h3>
-
-<center>
-<!--<img src="https://komazawa-deep-learning.github.io/assets/2012AlexNet.svg" style="width:94%">-->
-<img src="https://komazawa-deep-learning.github.io/assets/Neocognitron.svg" style="width:74%" />
-<img src="https://komazawa-deep-learning.github.io/assets/Fukushima.jpeg" style="width:24%" /><br />
-ネオコグニトロンの概略図(Fukushima, 1979)<br />
-
-<img src="https://komazawa-deep-learning.github.io/assets/1998LeCun_Fig2_CNN.svg" style="width:94%" /><br />
-LeNet5 (LeCun, 1998)<br />
-
-<img src="https://komazawa-deep-learning.github.io/assets/2012AlexNet_2.svg" style="width:94%" /><br />
-アレックスネット(Krizensky et al. 2012)<br />
-<img src="https://komazawa-deep-learning.github.io/assets/2012AlexNet_Result.svg" style="width:94%" />
-アレックスネットの出力例(Krizensky et al. 2012)<br />
-</center>
-
-<ul>
-  <li>畳込み層のパラメータは学習可能なフィルタの組</li>
-  <li>全フィルタは空間的に（幅と高さに沿って）小さくなる</li>
-  <li>フィルタは入力信号の深さと同一</li>
-  <li>第1層のフィルタサイズは例えば 5×5×3（5 画素分の幅，高さ，と深さ 3（３原色の色チャンネル）</li>
-  <li>各層の順方向の計算は入力信号の幅と高さに沿って各フィルタを水平または垂直方向へスライド</li>
-  <li>フィルタの各値と入力信号の特定の位置の信号との内積（ドット積）。</li>
-  <li>入力信号に沿って水平，垂直方向にフィルタをスライド</li>
-  <li>各空間位置でフィルタの応答を定める 2 次元の活性化地図が生成される</li>
-  <li>学習の結果獲得されるフィルタの形状には、方位検出器，色ブロッブ，生理学的には視覚野のニューロンの応答特性に類似</li>
-  <li>上位層のフィルタには複雑な視覚パタンに対応する表象が獲得される</li>
-  <li>各畳込み層全体では学習すべき入力信号をすべて網羅するフィルタの集合が形成される</li>
-  <li>各フィルタは相異なる 2 次元の活性化地図を形成</li>
-  <li>各フィルタの応答特性とみなすことが可能な活性化地図</li>
-  <li>フィルタの奥行き次元に沿って荷重総和を計算し、出力信号を生成</li>
-</ul>
-
-<hr />
-
-<ul>
-  <li><a href="https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_scipy_convolve.ipynb">畳込み演算のデモ</a></li>
-  <li><a href="https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_kitten_filters_demo.ipynb">フィルタ演算のデモ 2019komazawa_kitten_filters_demo.ipynb</a></li>
-  <li><a href="/conv-demo/">畳込み演算のデモビデオ</a></li>
-</ul>
-
-<center>
-<video controls="" loop="">
-  <source src="../assets/2019si_conv-demo.mp4" type="video/mp4" style="width:84%" />
-</video>
-</center>
-
-<ul>
-  <li>
-    <p>ビオラ，ジョーンズアルゴリズム (2001)，富士フィルムによる実装は2006年頃</p>
-  </li>
-  <li>
-    <p><a href="https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/How_to_Visualize_Filters_and_Feature_Maps_in_Convolutional_Neural_Networks.ipynb">実際にどのようなフィルタが構成されたのか</a></p>
-  </li>
-</ul>
-
-<hr />
-
-<p><strong>局所結合</strong>: 画像のような高次元の入力を処理する場合，下位層の全ニューロンと上位層の全ニューロンとを接続することは <strong>責任割当問題回避</strong> の観点からもパラメータ数の増加は現実的ではない。<br />
-代わりに各ニューロンを入力ボリュームのローカル領域のみに接続。空間的領域はニューロンの <strong>受容野</strong> と呼ばれるハイパーパラメータ（フィルタサイズとも言う）。<font color="blue">深さ次元に沿った接続性＝入力層の深さ次元</font>。
-空間次元（幅と高さ）と深さ次元をどのように扱うかにより，この非対称性を再び強調することが重要です。ニューロン間の結合は空間次元（幅と高さ）にそって限局的。入力次元の深さ全体を常にカバーする。</p>
-
-<ul>
-  <li>
-    <p>例1: 入力層のサイズが[32x32x3]（RGB CIFAR-10画像データセットなど）であれば受容野（フィルタサイズ）が 5x5 とすれば，畳込み層内の各ニューロンは入力層の [5x5x3] 小領域への結合係数を持つ。各小領域毎に 5x5x3=75 の重み係数と 1 つのバイアス項が必要である。深さ次元に沿った上層のニューロンから下位層のニューロンへの結合は下位層の深さ(色チャンネル数)と等しく 3 である。</p>
-  </li>
-  <li>
-    <p>例2: 入力ボリュームのサイズが[16x16x20]であるとすると 3x3 の受容野サイズで畳込層の全ニューロンの合計は 3x3x20=180 接続。接続性は空間的に局在する（3x3）が，入力深度（20）に沿っては完全結合</p>
-  </li>
-</ul>
-
-<p><strong>空間配置</strong>: 出力層ニューロンの数と配置については 3 つのハイパーパラメータで出力ニューロン数が定まる。</p>
-
-<ol>
-  <li><strong>深さ数(フィルタ数)</strong></li>
-  <li><strong>ストライド幅</strong></li>
-  <li><strong>ゼロパディング</strong></li>
-</ol>
-
-<ul>
-  <li>
-    <p>1 出力層ニューロン数のことを出力層の <strong>深さ</strong> 数と呼ぶハイパーパラメータである。深さ数とはフィルタ数（カーネル数）とも呼ばれる。第 1 畳込み層が生画像であれば，奥行き次元を構成する各ニューロンによって種々の方位を持つ線分(エッジ検出細胞)や色ブロッブのような特徴表現を獲得可能となる。入力の同じ領域を <strong>深さ列</strong> とするニューロン集団を <strong>ファイバ</strong> ともいう。</p>
-  </li>
-  <li>
-    <p>2 フィルタを上下左右にずらす幅を <strong>ストライド幅</strong> と呼ぶ。ストライド幅が 1 ならフィルタを 1 画素ずつ移動することを意味する。ストライドが 2ならフィルタは一度に 2 画素ずつジャンプさせる。ストライド幅が大きければ入力信号のサンプリング間隔が大きく広がることを意味する。ストライド幅が大きくなれば上位層のニューロン数は減少する。</p>
-  </li>
-  <li>
-    <p>3 入力の境界上の値をゼロで埋め込むことがある。これを <strong>ゼロパディング</strong> という。ゼロパディングの量はハイパーパラメータである。ゼロパディングにより出力層ニューロンの数を制御できる。下位層の空間情報を正確に保存するには入力と出力の幅，高さは同じである必要がある。</p>
-
-    <p>入力層のニューロン数を $W$，上位にある畳込み層のニューロン数を $F$，とすれば出力層に必要なニューロン数 $S$ は，周辺のゼロパディング を $P$ とすれば $(W-F+2P)/S+1$ で算出できる。
-たとえば下図でストライド $1$ とゼロパディング $0$ であれば入力 $7\times7$ でフィルタサイズが $3\times3$ であれば 5x5(=S=(7-3+2x0)/1+1=5) の出力である。
-ストライド $2$ ならば $3\times 3=(S=(7-3+2x\times )/2+1=3)$ となる。</p>
-  </li>
-</ul>
-
-<!--
-We can compute the spatial size of the output volume as a function of the input volume size ($W$), the receptive field size of the Conv Layer neurons ($F$), the stride with which they are applied ($S$), and the amount of zero padding used ($P$) on the border. You can convince yourself that the correct formula for calculating how many neurons "fit" is given by $(W - F + 2P)/S + 1$. For example for a 7x7 input and a 3x3 filter with stride 1 and pad 0 we would get a 5x5 output. With stride 2 we would get a 3x3 output. Lets also see one more graphical example:
--->
-
-<div align="center" style="width:94%">
-  <img src="https://komazawa-deep-learning.github.io/assets/cnn/stride.jpeg" /><br />
-  <div align="left" sytle="width:88%">
-空間配置の例：入力空間の次元（x軸）が1つで受容野サイズ F=3 の場合，入力サイズ W=5, ゼロパディング P=1 であれば，<br />
-<b>左図：</b>出力層ニューロン数は (5-3+2)/1+1=5 の出力層ニューロン数となる。ストライド数 S=1 の場合。<br />
-<b>右図：</b>s=2，出力層ニューロン数 (5-3+2)/2+1=3 となる。ストライド S=3 ならばボリューム全体にきちんと収まらない場合もでてくる。数式で表現すれば  $(5-3+2)=4$ は 3 で割り切れないので、整数の値として一意に決定はできない。<br />
-ニューロン結合係数は（右端に示されている）[1,0,-1]でありバイアスはゼロ。この重みはすべての黄色ニューロンで共有される。
-  </div>
-</div>
-
-<p><em>ゼロパディング</em>: 上例では入力次元が 5，出力次元が 5 であった。
-これは受容野が 3 でゼロ埋め込みを1としたためである。ゼロ埋め込みが使用されていない場合、出力ボリュームは、どれだけの数のニューロンが元の入力に「フィット」するのであろうかという理由で、空間次元がわずか 3 であったであろう。
-ストライドが $S=1$ のとき、ゼロ埋め込みを $P=(F-1)/2$ に設定すると、入力ボリュームと出力ボリュームが空間的に同じサイズになる。
-このようにゼロパディングを使用することは一般的である。CNNについて詳しく説明している完全な理由について説明する。</p>
-
-<p><em>ストライドの制約</em>: 空間配置ハイパーパラメータには相互の制約があることに注意。たとえば入力に $W=10$ というサイズがあり、ゼロパディングは $P=0$ ではなく、フィルタサイズは$F=3$, $(W-F+2P)/S+1=(10-3+0)/2+1=4.5$ よりストライド $S=2$ を使用することは不可能である。
-すなわち整数ではなくニューロンが入力にわたってきれいにかつ対称的に “適合” しないことを示す。</p>
-
-<p><em>AlexNet</em> の論文では，第一畳込層は受容野サイズ $F=11$，ストライド$S=4$，ゼロパディングなし$P=0$。<br />
-畳込層 $K=96$ の深さ $(227-11)/4+1=55$。畳込層の出力サイズは [55x55x96]。55x55x96 ニューロンは入力領域 [11x11x3] と連結。全深度列 96 個のニューロンは同じ入力領域[11×11×3]に繋がる。論文中には(224-11)/4+1 となっている。パディングについての記載はない。</p>
-
-<p><strong>パラメータ共有</strong> パラメータ数を制御するために畳み込み層で使用される。上記の実世界の例を使用すると、最初の畳故意層には 55x55x96=290,400のニューロンがあり、それぞれ 11x11x3=363 の重みと1のバイアスがある。これにより CNN 単独の第 1 層に最大 290400x364=105,705,600 のパラメータが追加される。<!--この数は非常に高いです。--></p>
-
-<!--
-**Parameter Sharing.** Parameter sharing scheme is used in Convolutional Layers to control the number of parameters. Using the real-world example above, we see that there are 55\*55\*96 = 290,400 neurons in the first Conv Layer, and each has 11\*11\*3 = 363 weights and 1 bias. Together, this adds up to 290400 * 364 = 105,705,600 parameters on the first layer of the ConvNet alone. Clearly, this number is very high.
--->
-
-<!--
-It turns out that we can dramatically reduce the number of parameters by making one reasonable assumption: That if one feature is useful to compute at some spatial position (x,y), then it should also be useful to compute at a different position (x2,y2). In other words, denoting a single 2-dimensional slice of depth as a **depth slice** (e.g. a volume of size [55x55x96] has 96 depth slices, each of size [55x55]), we are going to constrain the neurons in each depth slice to use the same weights and bias. With this parameter sharing scheme, the first Conv Layer in our example would now have only 96 unique set of weights (one for each depth slice), for a total of 96\*11\*11\*3 = 34,848 unique weights, or 34,944 parameters (+96 biases). Alternatively, all 55\*55 neurons in each depth slice will now be using the same parameters. In practice during backpropagation, every neuron in the volume will compute the gradient for its weights, but these gradients will be added up across each depth slice and only update a single set of weights per slice.
--->
-
-<p><strong>パラメータ共有</strong> により学習すべきパラメータ数が減少する。
-例えば [55x55x96] のフィルタでは深さ次元は 96 個のニューロンで，各深さで同じ結合係数を使うことにすれば
-ユニークな結合係数は計 96x11x11x3=34,848 となるので総パラメータ数は 34,944 となる(バイアス項 +96)。各深さで全ニューロン(55x55)は同じパラメータを使用する。逆伝播での学習では，全ニューロンの全結合係数の勾配を計算する必要がある。各勾配は各深さごとに加算され 1 つの深さあたり一つの結合係数集合を用いる。</p>
-
-<p>ある深さの全ニューロンが同じ重み係数ベクトルを共有する場合，畳込み層の順方向パスは各深さスライス内で入力ボリュームとのニューロンの重みの <strong>畳み込み</strong> として計算できることに注意。結合荷重係数集合のことを <strong>フィルタ</strong> または <strong>カーネル</strong> と呼ぶ。入力信号との間で畳込み演算を行うこととなる。</p>
-
-<!--
-Notice that if all neurons in a single depth slice are using the same weight vector, then the forward pass of the CONV layer can in each depth slice be computed as a **convolution** of the neuron's weights with the input volume (Hence the name: Convolutional Layer). This is why it is common to refer to the sets of weights as a **filter** (or a **kernel**), that is convolved with the input.
--->
-
-<div align="center" style="width:88%">
-  <img src="https://komazawa-deep-learning.github.io/assets/cnn/weights.jpeg" style="width:94%" /><br />
-<div align="left" style="width:88%">
-AlexNet の学習済フィルタ例: 図の 96 個のフィルタは サイズ [11x11x3]。
-それぞれが 1 つの深さ内の $55\times55$ ニューロンで共有されている。
-画像の任意の位置で水平エッジ検出が必要な場合，画像の並進不変構造 translationall-invariant structure 仮定により画像中の他の場所でも有効である。
-畳込み層の出力ニューロン数は $55\times55$ 個の異なる位置すべてで水平エッジの検出を再学習する必要はない。
-<!--
-Example filters learned by Krizhevsky et al. Each of the 96 filters shown here is of size [11x11x3], and each one is shared by the 55*55 neurons in one depth slice. Notice that the parameter sharing assumption is relatively reasonable: If detecting a horizontal edge is important at some location in the image, it should intuitively be useful at some other location as well due to the translationally-invariant structure of images. There is therefore no need to relearn to detect a horizontal edge at every one of the 55*55 distinct locations in the Conv layer output volume.
--->
-</div>
-</div>
-
-<h3 id="3-プーリング層">3. プーリング層</h3>
-
-<p>CNN では，連続する畳込み層間にプーリング層を挿入するのが一般的。プーリング層の役割は，空間次元の大きさに減少させることである。パラメータ，すなわち計算量を減らし，過学習を制御できる。プーリング層は入力の各深さ毎に独立して動作する。最大値のみをとり他の値を捨てることを <strong>マックスプーリング</strong> と呼ぶ。サイズが 2x2 のフィルタによるプーリング層では，入力の深さごとに $2$ つのダウンサンプルを適用し、幅と高さに沿って2ずつ増やして75％の情報を破棄する。この場合 4 つの数値のうち最大値を採用することになる。</p>
-
-<!--
-It is common to periodically insert a Pooling layer in-between successive Conv layers in a ConvNet architecture. Its function is to progressively reduce the spatial size of the representation to reduce the amount of parameters and computation in the network, and hence to also control overfitting. The Pooling Layer operates independently on every depth slice of the input and resizes it spatially, using the MAX operation. The most common form is a pooling layer with filters of size 2x2 applied with a stride of 2 downsamples every depth slice in the input by 2 along both width and height, discarding 75% of the activations. Every MAX operation would in this case be taking a max over 4 numbers (little 2x2 region in some depth slice). The depth dimension remains unchanged. More generally, the pooling layer:
--->
-
-<div align="center">
-  <img src="https://komazawa-deep-learning.github.io/assets/cnn/maxpool.jpeg" width="74%" /><br />
-<div align="left">
-一般的なダウンサンプリング演算は <b>マックスプーリング</b> である。図では ストライド 2 すなわち 4 つの数値の中の最大値
-<!--
-The most common downsampling operation is max, giving rise to <b>max pooling</b>, here shown with a stride of 2. That is, each max is taken over 4 numbers (little 2x2 square).
--->
-</div>
-</div>
-
-<p><strong>平均プーリング</strong>. マックスプーリングではなく <em>L2正則化プーリング</em> を行う場合もある。平均プーリングは歴史的な意味あいがあるがマックスプーリングの方が性能が良いとの報告がある。ある画像位置には物理的に一つの値だけが存在するという視覚情報処理が仮定すべき外界の物理的制約を反映していると文学的に解釈することも可能である。</p>
-
-<center>
-<div>
-  <img src="https://komazawa-deep-learning.github.io/assets/cnn/pool.jpeg" width="74%" /><br />
-<div>
-プーリング層では，入力層ニューロン数の各深さについて空間的ダウンサンプリングを行う。この例は サイズ[224x224x64]の入力層ニューロン数がフィルタサイズ 2 でプールされ，サイズ 2 の出力ニューロン数 [112x112x64] は 2 倍である。奥行き数が保持されている。
-<!--
-Pooling layer downsamples the volume spatially, independently in each depth slice of the input volume. In this example, the input volume of size [224x224x64] is pooled with filter size 2, stride 2 into output volume of size [112x112x64]. Notice that the volume depth is preserved.    
--->
-</div>
-</div>
-</center>
-
-<h3 id="4-全結合層">4. 全結合層</h3>
-
-<p>全結合層のニューロンは、通常のニューラルネットワークと同じ<br />
-前層の全ニューロンと結合を持つ<br /></p>
-
-<h3 id="5-cnn-アーキテクチャ">5. CNN アーキテクチャ</h3>
-
-<ol>
-  <li>畳込層</li>
-  <li>プーリング層</li>
-  <li>全結合層</li>
-</ol>
-
-<p>層は以上 3 種類が一般的。</p>
-
-<h3 id="6-cnn-の層構造">6. CNN の層構造</h3>
-
-<p>入力層 $\rightarrow$ [[畳込層 $\rightarrow$ ReLU]$\times N\rightarrow$ プーリング(?)]$\times$ M $\rightarrow$ [全結合層 $\rightarrow$ ReLU] $\times$ K $\rightarrow$ 全結合層</p>
-
-<p>最近のトレンドとしては大きなフィルタより小さなフィルタが好まれる傾向にある。<br />
-[3x3] が好まれる理由はど真ん中がある奇関数を暗黙に仮定しているためだと思われる（浅川の妄想）。
-その代わり多段にすれば [3x3] が２層で ［5x5]，３層で[7x7]の受容野を形成できるから受容野の広さを層の深さとして実装しているとも解釈できる。１層で[7x7]の受容野より３層で[7x7]の受容野を実現した方が the simpler, the better の原則に沿っているとも（文学的）解釈が可能である（またしても浅川妄想）。</p>
-
-<p>バックプロパゲーションの計算時に広い受容野を作るより層を分けた方が GPU のメモリに乗せやすいと言う計算上の利点もある。</p>
-
-<div align="center">
-<img src="https://komazawa-deep-learning.github.io/assets/2020Lillicrap_fig7.svg" style="width:94%" /><br />
-Lillicrap et al. (2020) Fig. 7 を改変
-</div>
-
-<ul>
-  <li><a href="https://www.youtube.com/watch?v=mlaLLQofmR8" target="_blank">video by Geoffrey Hinton</a> on the softmax function</li>
-  <li><a href="https://rdipietro.github.io/friendly-intro-to-cross-entropy-loss/" target="_blank">A Friendly Introduction to Cross Entropy Loss</a> by Rob DiPietro</li>
-  <li><a href="https://peterroelants.github.io/posts/cross-entropy-softmax/" target="_blank">How to Implement a Neural Network Intermezzo 2</a> by Peter Roelants</li>
-  <li>
-    <p><a href="https://towardsdatascience.com/simply-deep-learning-an-effortless-introduction-45591a1c4abb" target="_blank">画像分類の基礎</a></p>
-  </li>
-  <li><a href="https://web.stanford.edu/class/cs231a/lectures/intro_cnn.pdf" target="_blank">Introduction to Convolutional Neural Networks</a> by Jianxin Wu</li>
-  <li>Yann LeCun’s original article, <a href="http://yann.lecun.com/exdb/publis/pdf/lecun-01a.pdf" target="_blank">Gradient-Based Learning Applied to Document Recognition</a></li>
-  <li><a href="https://adeshpande3.github.io/The-9-Deep-Learning-Papers-You-Need-To-Know-About.html" target="_blank">The Nine Deep Learning Papers You Need to Know About</a> (Understanding CNNs part 3) by Adit Deshpande</li>
-</ul>
-
 
 
 
