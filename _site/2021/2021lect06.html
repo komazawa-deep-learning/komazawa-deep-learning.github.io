@@ -157,7 +157,15 @@ SNSデータを利用したドメイン転用化な観点別極性分析モデ�
 顧客のビジネスに貢献できるモデル可視化手法の活用方法検討
 </code></pre></div></div>
 
-<h2 id="コスト関数">コスト関数</h2>
+<h2 id="勾配降下法-gradient-descent-methods">勾配降下法 Gradient descent methods</h2>
+
+<center>
+<img src="https://miro.medium.com/max/814/1*kmmjFBP5vRkKOM1SP4URpA.png" style="width:68%" /><br />
+
+出典: [The Complete Beginner’s Guide to Deep Learning: Artificial Neural Networks](https://towardsdatascience.com/simply-deep-learning-an-effortless-introduction-45591a1c4abb)
+</center>
+
+<h3 id="コスト関数">コスト関数</h3>
 
 <ul>
   <li>コスト関数 cost function</li>
@@ -173,7 +181,7 @@ SNSデータを利用したドメイン転用化な観点別極性分析モデ�
 \[J(\mathbf{\theta})=\frac{1}{2}\mathbb{E}_{\mathbf{x,y}\sim\hat{p}_{data}}
 \left\|\mathbf{y}-f(\mathbf{x};\mathbf{\theta})\right\|^2+\mbox{const.}\]
 
-<h1 id="交差エントロピー損失関数">交差エントロピー損失関数</h1>
+<h3 id="交差エントロピー損失関数">交差エントロピー損失関数</h3>
 <p>ニューラルネットワークや機械学習において，予測すべき値が2値化された量，たとえば真偽値真であれば $1$ をとり，偽
 であれば $0$ であったり，確率である場合には，最小化すべき目標関数(正則化項を含めて損失関数でもよい)は平均二乗
 誤差 Mean Square Errors ではなく <strong>交差エントロピー cross-entropy 損失</strong>，あるいは交差エントロピー誤差と呼ぶ関
@@ -194,8 +202,6 @@ SNSデータを利用したドメイン転用化な観点別極性分析モデ�
 
 <p>右辺第一項と右辺第二項とを別曲線として描いた下図。</p>
 
-<h2 id="交差エントロピーのグラフ">交差エントロピーのグラフ</h2>
-
 <center>
 <img src="/assets/cross-entropy.svg" style="width:39%" /><br />
 <!--      https://raw.githubusercontent.com/komazawa-deep-learning/komazawa-deep-learning.github.io/e69ca10d8b2a4e9f34943fc302e5eafc7dbd934d/assets/cross-entropy.svg-->
@@ -214,12 +220,11 @@ SNSデータを利用したドメイン転用化な観点別極性分析モデ�
 \(H[x]=-\int x\log(x)\;dx\)</p>
 
 <center>
-
 <img src="/assets/shannon-entropy.svg" style="width:29%" /><br />
 シャノンのエントロピー
 </center>
 
-<h2 id="まとめ">まとめ</h2>
+<h3 id="まとめ">まとめ</h3>
 
 <ul>
   <li>コスト関数，損失関数，誤差関数，目的関数，はほぼ同じような意味で用いられる</li>
@@ -292,12 +297,12 @@ rforming polynomial fitting y = w0 + w1x1 + w2x2 + ... + wdxd.
 Even though the fitted curve passes through almost all points, it won't perform well on unseen data. 
 -->
 
-<h1 id="オーバーフィッティングの回避">オーバーフィッティングの回避</h1>
+<h3 id="オーバーフィッティングの回避">オーバーフィッティングの回避</h3>
 <!-- Strategies to Avoid Overfitting
 
 One way to avoid overfitting it to collect more data. However, that is not always feasible. Below are some oth
 er strategies to overcome the problem of overfitting - regularization and cross-validation. -->
-<h2 id="regularization">Regularization</h2>
+<h3 id="正則化-regularization">正則化 Regularization</h3>
 
 <p>モデルの複雑さを調整する</p>
 
@@ -361,7 +366,7 @@ Cross Validation and Validation Datasets
 <img src="/assets/Regularization.svg" style="width:44%" /><br />
 </center>
 
-<h3 id="正則化項の影響">正則化項の影響</h3>
+<h4 id="正則化項の影響">正則化項の影響</h4>
 
 <center>
 <img src="/assets/2001Hastie_p84.png" style="width:66%" /><br />
@@ -379,6 +384,56 @@ Cross Validation and Validation Datasets
   <li>正則化 L1, L2, L0, エラスティック</li>
   <li>正則化項の大きさ $\lambda$ はハイパーパラメータと呼ぶ</li>
 </ul>
+
+<h2 id="交差妥当性-cross-validation">交差妥当性 cross validation</h2>
+
+<!--
+is a method for finding the best hyper-parameters of a model. 
+For example, in gradient descent, we need to choose a stopping criteria. 
+The simplest stopping criteria is to check whether our accuracy is improving on the training dataset. 
+However, this is prone to overfitting since the model might be capturing noise present in the training data as reliable patterns. -->
+
+<h2 id="ホールドアウト法-holdout-method">ホールド・アウト法 Holdout method</h2>
+
+<p>データを訓練データと検証データに分割 
+<!--
+We can overcome this problem by not using the entire training data while training a model. 
+Instead we will hold out some data (validation dataset) and we'll train only on remaining data. 
+For example, we can split our training dataset into 70/30 and use 70% data for training and 30% data for validation. 
+In the above example of gradient descent, now we train our algorithm on the training data, but check whether or not our model is getting better on the validation dataset. 
+This is known as the holdout method and it is one of the simplest cross validation methods. 
+We can also use the validation data for other types of experimentation. Such as if we want to run multiple experiments where we choose different features to use to train our machine learning model. 
+--></p>
+
+<ul>
+  <li>kホールド法 K-fold Cross Validation</li>
+</ul>
+
+<p>データを k 個に分割して, k-1 データで訓練，残りの 1 で検証
+<!--
+In K-fold cross validation, the dataset is divided into k separate parts. We repeat training process k times. 
+Each time, one part is used as validation data, and the rest is used for training a model. 
+Then we average the error to evaluate a model. Note that k-fold cross validation increases the computational requirements for training our model by a factor of k.
+--></p>
+
+<!--
+The main advantages of k-fold cross validation are that 
+1. It is more robust to over-fitting than the holdout method when performing large number of experiments. 
+2. It is better to use when the dataset size is small. This is because when performing k-fold cross-validation, we can use a much smaller validation split (say 10% instead of 30%) since we are testing the model on various subsamples of the data being in the 10%.
+Leave-one-out cross validation is a special instance of k-fold cross validation in which k is equal to the number of data points in the dataset. 
+Each time, we hold out a single data point and train a model on rest of the data. 
+We use the single data point to test our model. Then we calculate the average error to evaluate a model.
+-->
+
+<ul>
+  <li>初期停止 early stopping</li>
+</ul>
+
+<p>オーバーフィッティングを避ける方法の一つ: 学習打ち切り基準</p>
+
+<center>
+<img src="/assets/04_07earlyStopping.svg" style="width:66%" /><br />
+</center>
 
 <h2 id="sgd-は-sdg-に貢献できるのか">SGD は SDG に貢献できるのか？</h2>
 
