@@ -179,38 +179,6 @@ from [A guide to Face Detection in Python](https://towardsdatascience.com/a-guid
 
 <hr />
 
-<center>
-<img src="https://komazawa-deep-learning.github.io/assets/2014Imgur_Saddle_point.gif" style="width:74%" /><br />
-<img src="https://komazawa-deep-learning.github.io/assets/2014Imgur_Beales_function.gif" style="width:74%" /><br />
-<img src="https://komazawa-deep-learning.github.io/assets/2014Imgur_Long_Valley.gif" style="width:74%" /><br />
-</center>
-
-<h4 id="relu-layer">ReLU layer</h4>
-<p>The <strong>ReLU</strong> (rectified linear unit) layer is another step to our convolution layer. 
-You’re applying an activation function onto your feature maps to increase non-linearity in the network. 
-This is because images themselves are highly non-linear! 
-It removes negative values from an activation map by setting them to zero.</p>
-
-<p>Convolution is a linear operation with things like element wise matrix
-multiplication and addition. 
-The real-world data we want our CNN to learn will be non-linear. 
-We can account for that with an operation like ReLU. 
-You can use other operations like tanh or sigmoid. ReLU, however, is a popular choice because it can train the network faster without any major penalty to generalization accuracy.</p>
-
-<p>Want to dig deeper? Try Kaiming He, et al. <a href="https://arxiv.org/abs/1502.01852">Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification</a>.</p>
-
-<p>If you need a little more info about <a href="https://towardsdatascience.com/simply-deep-learning-an-effortless-introduction-45591a1c4abb">the absolute basics of activation functions, you can find that here</a>!</p>
-
-<p>Here’s how our little buddy is looking after a ReLU activation function
-turns all of the negative pixel values black</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">viz_layer</span><span class="p">(</span><span class="n">activated_layer</span><span class="p">)</span>
-</code></pre></div></div>
-
-<center>
-<img src="https://komazawa-deep-learning.github.io/assets/output2.jpg" style="width:84%" />
-</center>
-
 <h4 id="pooling">Pooling</h4>
 
 <p>The last thing you want is for your network to look for one specific feature in an exact shade in an exact location. 
