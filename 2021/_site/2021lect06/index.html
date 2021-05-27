@@ -52,7 +52,7 @@ MathJax.Hub.Config({
 
 <div align="right">
 <a href="mailto:educ0233@komazawa-u.ac.jp">Shin Aasakawa</a>, all rights reserved.<br />
-Date: 17/Apr/2021<br />
+Date: 21/May/2021<br />
 Appache 2.0 license<br />
 </div>
 
@@ -60,46 +60,282 @@ Appache 2.0 license<br />
 # [ディープラーニングの心理学的解釈 (心理学特講IIIA)](https://komazawa-deep-learning.github.io/)
 -->
 
-<div align="right">
-<a href="mailto:educ0233@komazawa-u.ac.jp">Shin Aasakawa</a>, all rights reserved.<br />
-Date: 29/May/2020<br />
-Appache 2.0 license<br />
-</div>
-
 <ul>
+  <li><a href="https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2021_0521mlp_Adam_SGD.ipynb" target="_blank">実習 <img src="https://komazawa-deep-learning.github.io/assets/colab_icon.svg" /></a></li>
   <li><a href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0529komazawa_homework.ipynb" target="_blank">本日の課題 <img src="https://komazawa-deep-learning.github.io/assets/colab_icon.svg" /></a></li>
 </ul>
 
 <hr />
 
-<h2 id="前回の復習">前回の復習</h2>
+<h2 id="用語">用語</h2>
 
 <ul>
-  <li><strong>ディープラーニング</strong> 深層学習, <!--deep learning とは **信用割当問題** credit assignment problem を回避するために **畳込み** convolution 演算(処理)を用いて多層にしたニューラルネットワークのこと-->
-    <ul>
-      <li>畳込み演算って何？</li>
-      <li>カーネルサイズ</li>
-      <li>プーリング</li>
-      <li>ストライド</li>
-      <li>パディング
+  <li>パーセプトロン perceptron</li>
+  <li>正則化 regularization</li>
+  <li>誤差逆伝播法</li>
+</ul>
+
+<h3 id="補足的用語">補足的用語</h3>
+
+<ul>
+  <li>勾配降下法</li>
+  <li>バッチ学習，オンライ学習，ミニバッチ，確率的勾配降下法，</li>
+  <li>ソフトマックス関数，交差エントロピー誤差</li>
+</ul>
+
+<h2 id="案件紹介-夏季インターン">案件紹介 夏季インターン</h2>
+
+<!-- 機械学習系だと自然言語処理、Computer Vision、構造化データ（テーブルデータ）の3種があり、
+興味があるものに応募するイメージです(メール最下部)。
+-->
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 自然言語処理：
+
+SNSデータを利用したドメイン判定モデルの開発
+SNSデータを利用したドメイン転用化な観点別極性分析モデルの開発
+
+2. Computer Vision
+
+異常検知に対する事前学習モデル検討
+自然災害防止のため画像による異常検知
+
+3. 構造化データ
+
+顧客のビジネス要件にマッチしたモデル構築検討
+構造化案件におけるEDA検討
+
+顧客のビジネスに貢献できるモデル可視化手法の活用方法検討
+</code></pre></div></div>
+
+<h2 id="一般化とオーバーフィッティングアンダーフィッティング">一般化とオーバーフィッティング，アンダーフィッティング</h2>
+<!--Generalization, Overfitting and Under-fitting-->
+
+<ul>
+  <li>データへの当てはまりが良いことが良いモデルではない</li>
+  <li>未知のデータに対してどれほど当てはまるのかがモデルの性能を決める
+&lt;!–</li>
+  <li>訓練データ training data 実際に学習に用いたデータ</li>
+  <li>テストデータ test data 未知のデータ，訓練時には使用していないデータ
+–&gt;</li>
+  <li>オーバーフィッティング 訓練データへの過剰適合</li>
+  <li>アンダーフィッティング 訓練データを十分に学習できない場合
+&lt;!–</li>
+  <li>データ数(<em>小</em>) アンダーフィットする可能性<strong>大</strong>
+–&gt;</li>
+</ul>
+
+<center>
+<img src="/assets/04_07underOverFittings.svg" style="width:59%" /><br />
+</center>
+
+<ul>
+  <li><a href="https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2020Sight_Visit_polynomilal_fittings_demo.ipynb">多項回帰による過剰適合，デモ <img src="/assets/colab_icon.svg" /></a></li>
+</ul>
+
+<!--
+It's not a good idea to test a machine learning model on a dataset which we used to train it, since it won't g
+ive any indication of how well our model performs on unseen data. The ability to perform well on unseen data i
+s called generalization, and is the desirable characteristic we want in a model.
+When a model performs well on training data (the data on which the algorithm was trained) but does not perform
+ well on test data (new or unseen data), we say that it has overfit the training data or that the model is ove
+rfitting. This happens because the model learns the noise present in the training data as if it was a reliable
+ pattern. 
+Conversely, when a model does not perform well on training data (i.e. it fails to capture patterns present in 
+the training data) as well as unseen data then it is said to be under-fitting. That is, the model is unable to
+ capture patterns present in the training data. 
+A smaller dataset can significantly increase the chance of overfitting. This is because it is much tougher to 
+separate reliable patterns from noise when the dataset is small. [1]
+Examples of overfitting and under-fitting
+-->
+
+<p>$y = w_0 + w_1 x$,</p>
+
+<p>$y = w_0 + w_1 x_1 + w_2 x_2$,</p>
+
+<p>$y = w_0 + w_1 x_1 +\cdots + x_nx_n$</p>
+
+<!--
+Suppose we have the following dataset (red points in the figure), where we have only one input variable x and 
+one output variable y. 
+
+If we fit y = w0 + w1x to the above dataset, we get the straight line fit as shown above. Note that this is no
+t a good fit since it is quite far from many data points. This is an example of under-fitting. 
+
+Now, if we add another feature x2 and fit y = w0 + w1x1 + w2x2 then we'll get a curve fit as shown above. (Sid
+e note: This is still a linear model. x2 is a feature, i.e. input. The weights are w's and they are interactin
+g linearly with the features x and x2. The curve we are fitting is a quadratic curve). As you can see, this is
+ slightly better since it passes much closer to the data points above. 
+
+If we keep adding more features we'll get a curve that is more and more complex and that passes through more a
+nd more data points. Above figure shows an example. This is an example of overfitting. In this case, we are pe
+rforming polynomial fitting y = w0 + w1x1 + w2x2 + ... + wdxd.
+Even though the fitted curve passes through almost all points, it won't perform well on unseen data. 
+-->
+
+<h1 id="オーバーフィッティングの回避">オーバーフィッティングの回避</h1>
+<!-- Strategies to Avoid Overfitting
+
+One way to avoid overfitting it to collect more data. However, that is not always feasible. Below are some oth
+er strategies to overcome the problem of overfitting - regularization and cross-validation. -->
+<h2 id="regularization">Regularization</h2>
+
+<p>モデルの複雑さを調整する</p>
+
+<!--
+In regularization, we combat overfitting by controlling the model's complexity, i.e. by introducing an additio
+nal term in our cost function in-order to penalize large weights. This biases our model to be simpler, where s
+impler is weights of smaller magnitude (or even zero). We want to make the weights smaller, because complex mo
+dels and overfitting are characterized by large weights. Recall the mean-squared error cost function, 
+J(w)=1nn∑i=1(y(xi)−yit)2
+-->
+
+<h3 id="l2-正則化-リッジ回帰">L2 正則化 リッジ回帰</h3>
+<!--Regularization or Ridge Regression-->
+
+\[\text{目的関数} = \text{誤差} + \lambda \left|w\right|^2\]
+
+<!--
+In L2 regularization, a commonly used regularization technique, we add a penalty proportional to the squared m
+agnitude of each weight. Our new cost function with L2 regularization is as follows:-
+J(w)=1nn∑i=1(y(xi)−yit)2+λ||w2||
+where, the first term is the same as in regular linear regression (without any regularization), and the second
+ term is the regularization term. λ is a hyper-parameter that we choose and decides the regularization strengh. Larger values of λ imply more regularization, i.e. smaller values for the model parameters. ||w2|| is w12  w22 + ... wd2. 
+-->
+<ul>
+  <li>L2 正則化はパラメータの絶対値が大きくなると罰則項 pernalty term として作用</li>
+</ul>
+
+<!--
+L2 regularization penalizes the larger weights more (since the penalty is proportional to the weight squared).
+ For example, reducing w = 10 to w = 9 has a larger effect on the penalty term (102-92) than reducing w = 3 to
+ w = 2 (32-22).  
+-->
+<h3 id="l1-正則化-lasso-回帰-">L1 正則化 Lasso 回帰 <!--Regularization or Lasso Regression--></h3>
+
+\[\text{目的関数} = \text{誤差} + \lambda\left|w\right|\]
+
+<!--
+In L1 regularization, we the penalty term is λ ||w||. That is, our cost function is:
+J(w)=1nn∑i=1(y(xi)−yit)2+λ||w||
+-->
+<!--
+An interesting property of L1 regularization is that model's parameters become sparse during optimization, i.e
+. it promotes a larger number of parameters w to be zero. This is because smaller weights are equally penalize
+d as larger weights, whereas in L2 regularizations, larger weights are being penalized much more. This sparse 
+property is often quite useful. For example, it might help us identify which features are more important for m
+aking predictions, or it might help us reduce the size of a model (the zero values don't need to be stored). 
+Ordinary least square (which we saw earlier in linear regression) with L2 regularization is known as Ridge Reg
+ression and with L1 regularization it is known as Lasso Regression.
+Cross Validation and Validation Datasets
+-->
+
+<h1 id="正則化項">正則化項</h1>
+
+<ul>
+  <li>簡潔さ原理 simplicity principle L1</li>
+  <li>滑らかさ原理 smoothness principle L2</li>
+  <li>疎性原理 sparseness principle L0</li>
+</ul>
+
+<center>
+<img src="/assets/Regularization.svg" style="width:44%" /><br />
+</center>
+
+<h1 id="正則化項の影響">正則化項の影響</h1>
+
+<center>
+
+<center>
+<img src="/assets/2001Hastie_p84.png" style="width:33%" /><br />
+<img src="/assets/2001Hastie_p89.png" style="width:33%" /><br />
+<img src="/assets/2001Hastie_p91.png" style="width:39%" /><br />
+</center>
+Hastie (2001) より
+
+## まとめ
+
+- アンダーフィッテイングとオーバーフィッティング
+- データ数に比べて，推定すべきパラメータが多過ぎ = オーバーフィッティング
+- データ数に比べて，推定すべきパラメータが少な過ぎ = アンダーフィッティング
+- 正則化 L1, L2, L0, エラスティック
+- 正則化項の大きさ $\lambda$ はハイパーパラメータと呼ぶ
+
+
+
+## SGD は SDG に貢献できるのか？
+
+報道などで昨今耳にする SDG 持続可能な成長目標 ですが，大変紛らわしいことに，ニューラルネットワーク，機械学習の分野では SGD があります。
+
+同じ ３ 文字で同じ文字で，順番が異なるだけでややこしいですが， SGD は 確率的勾配降下法 Stochastic Gradient Descent methods のことです。
+レオン・ボットーらを中心に，
+
+前回までと同様に，この授業では，損失関数，目標関数，誤差関数，を区別せずに用います。
+ニューラルネットワークに限らず最適化手法として，これら関数の最大化，もしくは最小化を行うことを学習と呼びます。
+
+
+
+<center>
+<img src="https://komazawa-deep-learning.github.io/assets/2014Imgur_Saddle_point.gif" style="width:74%" /><br />
+<img src="https://komazawa-deep-learning.github.io/assets/2014Imgur_Beales_function.gif" style="width:74%" /><br />
+<img src="https://komazawa-deep-learning.github.io/assets/2014Imgur_Long_Valley.gif" style="width:74%" /><br />
+</center>
+
+
+#### 整流線型ユニット ReLU (Recutified Linear Unit)
+**整流線型ユニット ReLU** とは，ニューラルネットワークの活性化関数の一つです。
+シグモイド関数や，ハイパータンジェント関数に比べて，極端に単純な形をしています。
+駄菓子菓子，生理学との対応についても根拠を持っています。
+
+<!-- The **ReLU** (rectified linear unit) layer is another step to our convolution layer. 
+You’re applying an activation function onto your feature maps to increase non-linearity in the network. 
+This is because images themselves are highly non-linear! 
+It removes negative values from an activation map by setting them to zero.
+
+Convolution is a linear operation with things like element wise matrix
+multiplication and addition. 
+The real-world data we want our CNN to learn will be non-linear. 
+We can account for that with an operation like ReLU. 
+You can use other operations like tanh or sigmoid. ReLU, however, is a popular choice because it can train the network faster without any major penalty to generalization accuracy.
+
+Want to dig deeper? Try Kaiming He, et al. [Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification](https://arxiv.org/abs/1502.01852).
+
+If you need a little more info about [the absolute basics of activation functions, you can find that here](https://towardsdatascience.com/simply-deep-learning-an-effortless-introduction-45591a1c4abb)!
+
+
+Here’s how our little buddy is looking after a ReLU activation function turns all of the negative pixel values black
+
+
+```python
+viz_layer(activated_layer)
+```
+-->
+
+<center>
+<img src="https://komazawa-deep-learning.github.io/assets/output2.jpg" style="width:84%" />
+</center>
+
+
+## 前回の復習
+
+- **ディープラーニング** 深層学習, <!--deep learning とは **信用割当問題** credit assignment problem を回避するために **畳込み** convolution 演算(処理)を用いて多層にしたニューラルネットワークのこと-->
+	- 畳込み演算って何？
+	- カーネルサイズ
+	- プーリング
+	- ストライド
+	- パディング
 <!-- ハイパーパラメータとしてのカーネル(特徴)サイズ，ストライド，パディング
 \[
 \left[\text{畳込み}\left(\ge1\right) \rightarrow \text{プーリング}\left(\ge0\right)\right]
 \times \left(\ge1\right)\rightarrow\text{全結合層}\left(\ge1\right)
 \]
---></li>
-    </ul>
-  </li>
-</ul>
+-->
 
-<hr />
+---
 
-<h1 id="本日の目標">本日の目標</h1>
-<ul>
-  <li>最小二乗法から誤差逆伝播法へ。誤差関数，損失関数，目的関数，勾配降下法 (ブラインド ハイカー アナロジー)。 信用割当問題。勾配消失問題。</li>
-  <li>標準正則化理論。制約付き最適化。変分原理。<a href="https://ja.wikipedia.org/wiki/%E3%82%AA%E3%82%A4%E3%83%A9%E3%83%BC%EF%BC%9D%E3%83%A9%E3%82%B0%E3%83%A9%E3%83%B3%E3%82%B8%E3%83%A5%E6%96%B9%E7%A8%8B%E5%BC%8F" target="_blank">オイラー=ラグランジェ方程式</a></li>
-  <li>画像切り分け</li>
-</ul>
+# 本日の目標
+- 最小二乗法から誤差逆伝播法へ。誤差関数，損失関数，目的関数，勾配降下法 (ブラインド ハイカー アナロジー)。 信用割当問題。勾配消失問題。
+- 標準正則化理論。制約付き最適化。変分原理。[オイラー=ラグランジェ方程式](https://ja.wikipedia.org/wiki/%E3%82%AA%E3%82%A4%E3%83%A9%E3%83%BC%EF%BC%9D%E3%83%A9%E3%82%B0%E3%83%A9%E3%83%B3%E3%82%B8%E3%83%A5%E6%96%B9%E7%A8%8B%E5%BC%8F){:target="_blank"} 
+- 画像切り分け
 
 <!--- 画像切り分け
 - ニューラルネットワーク，機械学習の分野で頻繁に用いられている性能向上のための技法を紹介
@@ -107,22 +343,20 @@ Appache 2.0 license<br />
 - だがそうではないことを理解することが目的
 -->
 
-<h1 id="本日の実習">本日の実習</h1>
+# 本日の実習
 
-<ul>
-  <li><a href="https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019keras_kmnist_demo.ipynb" target="_blank">kminst による CNN</a></li>
-  <li><a href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0529transfer_learning.ipynb" target="_blank">転移学習</a></li>
-  <li><a href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0529Mask_R_CNN_Image_Segmentation.ipynb" target="_blank">MaskR-CNN によるインスタンス画像領域分割</a></li>
-  <li><a href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0529Semantic_segmantation_DeepLab_Demo.ipynb" target="_blank">Deeplab のデモによる画像の意味的画像切り分け</a></li>
-</ul>
+<!-- - [kminst による CNN](https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019keras_kmnist_demo.ipynb){:target="_blank"} -->
+- [転移学習](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0529transfer_learning.ipynb){:target="_blank"}
 
-<h1 id="デモ">デモ</h1>
+- [MaskR-CNN によるインスタンス画像領域分割](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0529Mask_R_CNN_Image_Segmentation.ipynb){:target="_blank"}
+- [Deeplab のデモによる画像の意味的画像切り分け](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0529Semantic_segmantation_DeepLab_Demo.ipynb){:target="_blank"}
 
-<ul>
-  <li><a href="https://project-ccap.github.io/tensorflow-playground/" target="_blank">グーグルによるニューラルネットワークの遊び場 (プレイグランド)</a></li>
-</ul>
 
 <!--
+# デモ
+
+- [グーグルによるニューラルネットワークの遊び場 (プレイグランド)](https://project-ccap.github.io/tensorflow-playground/){:target="_blank"}
+
 - [Scavenger hunt](https://emojiscavengerhunt.withgoogle.com/){target="_blank"}
 - [https://teachablemachine.withgoogle.com/](https://teachablemachine.withgoogle.com/){target="_blank"}
 - [姿勢推定デモ](https://storage.googleapis.com/tfjs-models/demos/posenet/camera.html){target="_blank"}
@@ -130,7 +364,7 @@ Appache 2.0 license<br />
 - [foodly による唐揚げもりつけロボット](https://rt-net.jp/service/foodly/), [YouTube](https://youtu.be/KiT_DrDjdDE)
 -->
 
-<h2 id="畳み込み演算を利用したニューラルネットワーク">畳み込み演算を利用したニューラルネットワーク</h2>
+## 畳み込み演算を利用したニューラルネットワーク
 
 <div align="center">
 <!--<img src='https://komazawa-deep-learning.github.io/assets/2012AlexNet.svg" style="width:94%">-->
@@ -139,20 +373,21 @@ Appache 2.0 license<br />
 ネオコグニトロンの概略図(Fukushima, 1979)<br />
 </div>
 
-<h2 id="lenet5-lecun-1998">LeNet5 (LeCun, 1998)</h2>
+
+## LeNet5 (LeCun, 1998)
 <center>
 <img src="https://komazawa-deep-learning.github.io/assets/1998LeCun_Fig2_CNN.svg" style="width:94%" /><br />
 LeCun (1998) より
 </center>
 
-<h2 id="alexnet-krizensky-et-al-2012">AlexNet (Krizensky, et al., 2012)</h2>
+## AlexNet (Krizensky, et al., 2012)
 
 <center>
 <img src="https://komazawa-deep-learning.github.io/assets/2012AlexNet.svg" style="width:94%" /><br />
 Krzensky et al (2012) より
 </center>
 
-<h2 id="goolenet-inception-szegedy-et-al-2014">GooLeNet (Inception) (Szegedy et. al, 2014)</h2>
+## GooLeNet (Inception) (Szegedy et. al, 2014)
 
 <center>
 <img src="https://komazawa-deep-learning.github.io/assets/2014Szegedy_GoogLeNet.svg" style="width:99%" /><br />
@@ -200,7 +435,8 @@ Krzensky et al (2012) より
 </div>
 -->
 
-<h3 id="イメージネットコンテストアレックスネットの出力にみる問題点">イメージネットコンテスト，アレックスネットの出力にみる問題点</h3>
+
+### イメージネットコンテスト，アレックスネットの出力にみる問題点
 
 <div align="center" style="width:89%">
 	<img src="https://komazawa-deep-learning.github.io/assets/2012AlexNetResult0.svg" style="width:33%" />
@@ -212,23 +448,22 @@ Krzensky et al (2012) より
 </div>
 </div>
 
-<h3 id="画像切り出し">画像切り出し</h3>
+### 画像切り出し
 
-<ol>
-  <li>物体位置</li>
-  <li>物体認識 object recognition</li>
-  <li>意味的切り出し semantic segmentation</li>
-  <li>対象切り出し instance segmentation</li>
-  <li>特徴点抽出 keypoint</li>
-  <li>パノプティック切り出し</li>
-</ol>
+1. 物体位置
+3. 物体認識 object recognition
+2. 意味的切り出し semantic segmentation
+4. 対象切り出し instance segmentation
+5. 特徴点抽出 keypoint
+6. パノプティック切り出し
 
 <div align="center">
 	<img src="https://komazawa-deep-learning.github.io/assets/2017DangHa_History_Of_Object_Recognition_ja.svg" style="width:99%" /><br />
 	Dang and Ha (2017) より
 </div>
 
-<h1 id="転移学習">転移学習</h1>
+
+# 転移学習
 
 <div align="center" style="width:99%">
 <img src="https://komazawa-deep-learning.github.io/assets/2017Li_Deeper_Broader_fig1ja.svg" style="width:84%" /><br />
@@ -269,43 +504,45 @@ Inception モジュール
 </center>
 -->
 
-<h1 id="標準正則化理論と条件付き最適化">標準正則化理論と条件付き最適化</h1>
+# 標準正則化理論と条件付き最適化
 
 <div align="center" style="width:94%">
 	<img src="https://komazawa-deep-learning.github.io/assets/1985Poggio_2.svg" style="width:98%" />
 </div>
 
-<p>データ $y$ から $z$ を見つけ出す不良設定問題の正則化
-\(Az = y\)
-では，正則化項 $\left|\cdot\right|$ の選択と汎関数の安定化項 $\left|Pz\right|$ が必要となる。
+
+データ $y$ から $z$ を見つけ出す不良設定問題の正則化
+$$
+Az = y
+$$
+では，正則化項 $\left\|\cdot\right\|$ の選択と汎関数の安定化項 $\left\|Pz\right\|$ が必要となる。
 標準正則化理論においては，$A$ は線形演算子，ノルムは 2 次，$P$ は線形である。
 2 種類の方法が適用可能である。
-すなわち</p>
-<ol>
-  <li>
-    <p>$\left|Az-y\right|\leqslant\epsilon$ を満たし，次式を最小化する $z$ を探す
-\(\left\|Pz\right\|^2\)</p>
-  </li>
-  <li>
-    <p>次式を最小化する $z$ を探す
-\(\left\|Az-y\right\|+\lambda\left\|Pz\right\|^2,\)
-ここで $\lambda$ はいわゆる正則化パラメータである。</p>
-  </li>
-</ol>
+すなわち 
+1. $\left\|Az-y\right\|\leqslant\epsilon$ を満たし，次式を最小化する $z$ を探す
+$$
+\left\|Pz\right\|^2
+$$
 
-<p>最初の方法は，十分にデータを近似し，かつ，「基準」$\left|Pz\right|$ を最小化するという意味で「正則」な $z$ を探す方法である。
+2. 次式を最小化する $z$ を探す
+$$
+\left\|Az-y\right\|+\lambda\left\|Pz\right\|^2,
+$$
+ここで $\lambda$ はいわゆる正則化パラメータである。
+
+最初の方法は，十分にデータを近似し，かつ，「基準」$\left\|Pz\right\|$ を最小化するという意味で「正則」な $z$ を探す方法である。
 二番目の方法は，$\lambda$ が正則化の程度と解のデータへの近似とをコントロールする。
 標準正則化理論は，最良の $\lambda$ を決定する手法を提供する。
 標準正則化の手法は，上式に制約を導入することで変分原理の問題としている。
 最小化するコストは物理的制約条件を満たす良い解を反映している。
-すなわち，データへの近似もよく，かつ，正則化項 $\left|Pz\right|^2$ も小さいことを意味する。
+すなわち，データへの近似もよく，かつ，正則化項 $\left\|Pz\right\|^2$ も小さいことを意味する。
 $P$ は問題の物理的制約を表しており，2 次の変分原理であり，解空間内での唯一解が存在する。
 標準正則化手法は，不良設定問題に対して注意深い分析が必要であることを注記しておく。
-ノルム $\left|\cdot\right|$，正則化関数 $\left|Pz\right|$, および，汎関数空間の選択は数学的性質と，物理的説得性を有する必要がある。
-これらにより，正しい正則化の詳細条件が定まる。</p>
+ノルム $\left\|\cdot\right\|$，正則化関数 $\left\|Pz\right\|$, および，汎関数空間の選択は数学的性質と，物理的説得性を有する必要がある。
+これらにより，正しい正則化の詳細条件が定まる。
 
-<p>変分原理は物理学，経済学，工学，で幅広く用いられている。例えば物理学における基本法則は変分原理を用いて，
-エネルギーやラグランジェ関数を用いて簡潔に表現されている。</p>
+変分原理は物理学，経済学，工学，で幅広く用いられている。例えば物理学における基本法則は変分原理を用いて，
+エネルギーやラグランジェ関数を用いて簡潔に表現されている。
 
 <!--
 - [上を訳してみました。github.io だと数式が表示されない場合があるため colab にしています](https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0529Poggios_standard_regularization_translation.ipynb){:target="_blank"}
@@ -430,6 +667,7 @@ similar transformations on their inputs.
 同程度の。
 これらの結果は、視経路および体性感覚経路における対応するレベルの視床核または皮質領域がそれらの入力に対して同様の変換を実行することを示唆している。
 -->
+</center>
 
 
 
