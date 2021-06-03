@@ -48,13 +48,28 @@ MathJax.Hub.Config({
 </div>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <div class="home"><h1 class="page-heading">第08回</h1><!-- # [ディープラーニングの心理学的解釈 (心理学特講IIIA)](https://komazawa-deep-learning.github.io/) -->
-
-<div align="right">
+        <div class="home"><h1 class="page-heading">第08回</h1><div align="right">
 <a href="mailto:educ0233@komazawa-u.ac.jp">Shin Aasakawa</a>, all rights reserved.<br />
-Date: 19/Jun/2020<br />
+Date: 04/Jun/2021<br />
 Appache 2.0 license<br />
 </div>
+
+<h1 id="keywords">Keywords</h1>
+
+<ul>
+  <li>dropout</li>
+  <li>the meaning of convolutions with width 1</li>
+  <li>data augmentation</li>
+  <li>batch normalization, layer normalizatoin, instance normalization</li>
+  <li>skip connection</li>
+  <li>R-CNN, semantic segmentation, object segmentation, panoptic segmentation</li>
+  <li>Fully convolutional network</li>
+</ul>
+
+<center>
+    <img src="/assets/Visual_Comparison_of_Various_Normalizaton_Methods.png" style="width:89%" /><br />
+種々の正規化の比較
+</center>
 
 <h2 id="01-デモ">0.1 デモ</h2>
 <ul>
@@ -73,6 +88,91 @@ Appache 2.0 license<br />
 - <a target="_blank" href="https://github.com/ShinAsakawa/2019cnps/blob/master/notebooks/2019cnps_addtion_rnn.ipynb">足し算をするリカレントニューラルネットワーク<img src="../assets/colab_icon.svg"></a>
 - <a target="_blank" href="https://github.com/ShinAsakawa/2019cnps/blob/master/notebooks/2019cnps_sketch_RNN_demo.ipynb">書画のデモ<img src="../assets/colab_icon.svg"></a>
 -->
+
+<h4 id="want-more-check-out">Want more? Check out</h4>
+
+<h1 id="用語集">用語集</h1>
+
+<h2 id="非線形性">非線形性</h2>
+<ul>
+  <li>ReLU</li>
+  <li>Sigmoid</li>
+  <li>Tanh</li>
+  <li>GRU</li>
+  <li>LSTM</li>
+</ul>
+
+<h2 id="最適化">最適化</h2>
+<ul>
+  <li>SGD</li>
+  <li>Momentum</li>
+  <li>RMSProp</li>
+  <li>Adagrad</li>
+  <li>Adam</li>
+  <li>KFac</li>
+</ul>
+
+<h2 id="結合パターン">結合パターン</h2>
+<ul>
+  <li>完全結合</li>
+  <li>畳込み</li>
+  <li>Dilated</li>
+  <li>再帰結合</li>
+  <li>スキップコネクト，残渣</li>
+</ul>
+
+<h2 id="損失関数">損失関数</h2>
+<ul>
+  <li>交差エントロピー</li>
+  <li>敵対学習</li>
+  <li>変分原理</li>
+  <li>最尤法</li>
+  <li>L2</li>
+</ul>
+
+<h2 id="ハイパーパラメータ">ハイパーパラメータ</h2>
+<ul>
+  <li>学習率</li>
+  <li>層数</li>
+  <li>バッチサイズ</li>
+  <li>ドロップアウト率</li>
+  <li>初期化</li>
+  <li>データ拡張</li>
+  <li>勾配クリップ</li>
+  <li>モーメント</li>
+</ul>
+
+<hr />
+
+<h1 id="アレックスネット以降の流れ">アレックスネット以降の流れ</h1>
+
+<ul>
+  <li>2013年 ZF ネット</li>
+  <li>2014年 GoogLeNet (インセプション)，VGG，Very Deep,  GAN, VAE</li>
+  <li>2015年 残渣ネット (ResNet) この時点で，人間超え</li>
+  <li>2016年 YOLO, SSD, Segmentation (Semantics/Instance)</li>
+  <li>2017年 Mask R-CNN</li>
+  <li>2018年 モバイルネット</li>
+</ul>
+
+<h1 id="高精度化高速化への努力">高精度化，高速化への努力</h1>
+
+<ul>
+  <li>確率的勾配降下法，オンライン学習，バッチ学習</li>
+  <li>データ拡張</li>
+  <li>正則化</li>
+  <li>ドロップアウト</li>
+  <li>非線形活性化関数</li>
+  <li>最適化手法</li>
+</ul>
+
+<hr />
+
+<center>
+<img src="https://komazawa-deep-learning.github.io/assets/2014Imgur_Saddle_point.gif" style="width:74%" /><br />
+<img src="https://komazawa-deep-learning.github.io/assets/2014Imgur_Beales_function.gif" style="width:74%" /><br />
+<img src="https://komazawa-deep-learning.github.io/assets/2014Imgur_Long_Valley.gif" style="width:74%" /><br />
+</center>
 
 <h2 id="02-再帰型-リカレント-ニューラルネットワークモデル">0.2 再帰型 (リカレント) ニューラルネットワークモデル</h2>
 <p><strong>リカレントニューラルネットワークモデル</strong> (Recurrent Neural Networks, 以下 RNN) は <strong>系列情報処理</strong> (serial information processings) を扱うニューラルネットワークモデル
