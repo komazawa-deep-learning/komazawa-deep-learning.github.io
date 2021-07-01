@@ -56,6 +56,170 @@ Date: 02/Jul/2021<br />
 Appache 2.0 license<br />
 </div>
 
+<div align="center">
+    <img src="../assets/2019mitchell-54_20.png" style="width:44%" />
+    <img src="../assets/2019mitchell_2.png" style="width:44%" /><br />
+    <img src="../assets/2019mitchell_3.png" style="width:44%" />
+    <img src="../assets/2019mitchell_4.png" style="width:44%" /><br />
+</div>
+
+<h2 id="211-画像と言語との融合へ向けて">2.11. 画像と言語との融合へ向けて</h2>
+
+<p>以上で今回の特別企画の目標である画像と言語とのマルチモーダル統合へ向けての準備がほぼ出揃いました。
+2014 年に提案されたニューラル画像脚注付けのモデルを下図に示します。</p>
+
+<!--
+<center>
+
+<img src="../assets/2014KarpathyImageDescriptionsFig3.svg" style="width:84%"><br>
+[@2015Karpathy_FeiFei_caption]
+</center>
+-->
+
+<center>
+
+<img src="../assets/2014Vinyals_Fig1.svg" style="width:84%" /><br />
+[@2014Vinyals_Bengio_Show_and_Tell]
+</center>
+
+<!--
+<center>
+
+<img src="../assets/2015Xu_ShowAttendTellFig1.svg" style="width:84%"></br>
+</center>
+-->
+
+<p>画像に対して注意を付加した脚注付けモデルの出力例を下図に示します。</p>
+
+<!--
+<center>
+
+<img src="../assets/2015Xu_ShowAttendTellFig2_upper.svg" style="width:84%"><br>
+[@2015Xu_Bengio_NIC_attention]
+</center>
+-->
+<p>各画像対は右が入力画像であり，左はその入力画像の脚注付けである単語を出力している際にどこに注意しているのかを白色で表しています。</p>
+<center>
+
+<img src="../assets/2015Xu_ShowAttendTellFig2_lower.svg" style="width:99%" />&lt;/br&gt;
+[@2015Xu_Bengio_NIC_attention]
+</center>
+
+<!--
+<center>
+
+<img src="../assets/2014Mnih_attention.svg"></br>
+</center>
+
+Glimpse Sensor: Given the coordinates of the glimpse and an input image,
+the sensor extracts a __retina-like__ representation
+$\rho\left(x_t,l_{t-1}\right)$ centered at $l_{t-1}$ that contains multiple
+resolution patches. 
+
+- B) **Glimpse Network**: Given the location $\left(l_{t-1}\right)$ and
+input image $\left(x_t\right)$, uses the glimpse sensor to extract retina
+representation $\rho\left(x_t,l_{t-1}\right)$.  The retina representation
+and glimpse location is then mapped into a hidden space using independent
+linear layers parameterized by $\theta_g^{0}$ and $\theta_g^{1}$
+respectively using rectified units followed by another linear layer
+$\theta_2^{2}$ to combine the information from both components. The glimpse
+network
+$f_{g}\left(\dot;\left[\theta_g^0,\theta_g^1,\theta_g^2\right]\right)$
+defines a trainable bandwidth limited sensor for the attention network
+producing the glimpse representation $g_t$. 
+- C) **Model Architecture**: Overall, the model is an RNN. The core network
+of the model $f_h\left(\cdot;\theta_h\right)$ takes the glimpse
+representation $g_t$ as input and combining with the internal
+representation at previous time step $h_{t-1}$, produces the new internal
+state of the model $h_t$. The location network
+$f_l\left(\cdot;\theta_a\right)$ and the action network
+$f_a\left(\cdot;\theta_a\right)$ use the internal state $h_t$ of the model
+to produce the next location to attend to $l_t$ and the
+action/classification at respectively. This basic RNN iteration is repeated
+for a variable number of steps.[@2014Mnih_RNN_attention]
+-->
+
+<!--
+#  World Models
+<center>
+
+<img src="../assets/2018Ha_WorldModel.svg" style="width:84%"></br>
+[@2018Ha_WorldModels] Fig.1
+</center>
+<center>
+
+<img src="../assets/2018HaWorldModelsFig1.svg"></br>
+A World Model, from Scott McCloud’s Understanding Comics. (McCloud, 1993; E, 2012)
+</center>
+
+Jay Wright Forrester, the father of system dynamics,
+described a mental model as:\\
+    \begin{quote}
+      The image of the world around us, which we carry in our
+      head, is just a model. Nobody in his head imagines all
+      the world, government or country. He has only selected
+      concepts, and relationships between them, and uses those
+      to represent the real system. \citep{1971Forrester}
+    \end{quote}
+
+<center>
+-->
+
+<!--
+<img src="../assets/2015Greff_LSTM_ja.svg" style="width:74%"><br>
+<p align="left" style="width:49%">
+LSTM の概念 (Shumithuber ら 2015)を改変
+</p>
+</center>
+-->
+
+<!--
+<center>
+
+<img src="../assets/2010Mikolov_Fig1.svg" style="width:49%"></br>
+\cite{2010Mikolov2010}
+</center>
+
+<center>
+
+<img src="../assets/2011Mikolov_Extention_Fig1.jpg" style="width:49%"><br>
+Mikolov Extension
+</center>
+
+<center>
+
+<img src="../assets/2001Boden_Fig5.jpg" style="width:94%"></br>
+Boden's BPTT
+</center>
+-->
+
+<!--
+- モチベーション
+- ニューラルネットワーク言語モデル
+- 訓練アルゴリズム
+  - リカレントニューラルネットワーク
+  - クラス
+  - エントロピー最大化言語モデル
+
+### モチベーション
+
+### モチベーション (2) チューリングテスト
+- チューリングテストは原理的に言語モデルの問題とみなすことが可能
+- 会話の履歴が与えられた時，良い言語モデルは正しい応答に高い確率を与える
+
+- 例:
+  - $P\left(\mathbf{ox{月曜日}\vert \mathbf{ox{今日は何曜日ですか？}}} = ?$\\
+  - $P\left(\mathbf{ox{赤}\vert \mathbf{ox{バラは何色？}}} = ?$\\
+
+言語モデルの問題と考えれば以下の文のような問題と等価とみなせる:\\
+$P\left(\mathbf{ox{赤}\vert {\mathbf{ox{バラの色は}}}=?$
+
+### モチベーション(3) n-グラム言語モデル
+
+- どうすれば「良い言語モデル」を創れるか？
+- 伝統的解: n-グラム言語モデル: $P\left{w\vert h}=\displaystyle\frac{C\left{h,w\right}}{C\left(h\right)}$
+-->
+
 <hr />
 
 <h1 id="3-意味論">3. 意味論</h1>

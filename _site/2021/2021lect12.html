@@ -48,7 +48,7 @@ MathJax.Hub.Config({
 </div>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <div class="home"><h1 class="page-heading">第12回 リカレントニューラルネットワークモデル</h1><h1 id="ディープラーニングの心理学的解釈-心理学特講iiia">ディープラーニングの心理学的解釈 (心理学特講IIIA)</h1>
+        <div class="home"><h1 class="page-heading">第12回</h1><h1 id="ディープラーニングの心理学的解釈-心理学特講iiia">ディープラーニングの心理学的解釈 (心理学特講IIIA)</h1>
 
 <div align="right">
 <a href="mailto:educ0233@komazawa-u.ac.jp">Shin Aasakawa</a>, all rights reserved.<br />
@@ -56,19 +56,16 @@ Date: 28/Jun/2021<br />
 Appache 2.0 license<br />
 </div>
 
+<h1 id="リカレントニューラルネットワークモデル">リカレントニューラルネットワークモデル</h1>
+
 <ul>
+  <li><a href="https://komazawa-deep-learning.github.io/character_demo.html" target="_blank">リカレントニューラルネットワークによる文処理デモ</a></li>
+  <li><a href="https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_0702rnn_demo.ipynb" target="_blank">SRN のデモ <img src="../assets/colab_icon.svg" /></a></li>
   <li><a href="https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_0702RNN_binary_addtion_demo.ipynb" target="_blank">足し算のデモ <img src="../assets/colab_icon.svg" /></a></li>
   <li><a href="https://colab.research.google.com/github/ShinAsakawa/2019cnps/blob/master/notebooks/2019cnps_addtion_rnn.ipynb#scrollTo=Y3vy6Lvk-ivI" target="_blank">足し算のデモ keras 版 <img src="../assets/colab_icon.svg" /></a></li>
 </ul>
 
 <!-- 自動翻訳, 文章要約, 転移学習, マルチモーダル学習, マルチタスク学習-->
-
-<div align="center">
-    <img src="../assets/2019mitchell-54_20.png" style="width:44%" />
-    <img src="../assets/2019mitchell_2.png" style="width:44%" /><br />
-    <img src="../assets/2019mitchell_3.png" style="width:44%" />
-    <img src="../assets/2019mitchell_4.png" style="width:44%" /><br />
-</div>
 
 <!-- 
 VAE と MAML と転移学習の実際とをやろうと思う。
@@ -113,7 +110,7 @@ VAE と MAML と転移学習の実際とをやろうと思う。
   <li>制御，予測。天気予報，ロケットなどの弾道制御</li>
   <li>データ処理</li>
   <li>未来予想，SF 的，心理学的，哲学的，歴史的意味あいも含めて。身近な例では占いや経済予測も含まれます
- –&gt;
+–&gt;
     <ul>
       <li><a target="_blank" href="https://gauss-ai.jp/2019/04/05/siva%E9%81%8B%E5%96%B6%E5%85%83%E5%A4%89%E6%9B%B4%E3%81%AE%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B/">競馬予想</a><sup id="fnref:gauss_supervisor" role="doc-noteref"><a href="#fn:gauss_supervisor" class="footnote" rel="footnote">1</a></sup>,</li>
       <li><a target="_blank" href="https://www.shikaku-square.com/yobishiken/miraimon">資格試験問題予測 “未来問”</a></li>
@@ -135,6 +132,450 @@ RNN の応用可能性は神経心理学にとって一考の価値があるモ�
 <p>2018 年，複数の言語課題で人間の成績を凌駕する自然言語処理モデルが提案されました。
 このことから自然言語処理モデルを神経心理学に応用する機運は熟していると考えます。</p>
 
+<h1 id="1-リカレントニューラルネットワークモデル">1. リカレントニューラルネットワークモデル</h1>
+
+<h2 id="11-nettalk">1.1. NETtalk</h2>
+<p>系列情報処理を扱った初期のニューラルネットワーク例として NETTalk が挙げられます。
+NETTalk<sup id="fnref:NETTalk" role="doc-noteref"><a href="#fn:NETTalk" class="footnote" rel="footnote">2</a></sup> は文字を音読するネットワークです。下図のような構成になっています。
+下図のようにアルファベット 7 文字を入力して，空白はアンダーラインで表現されています，中央の文字の発音を学習する 3 層のニューラルネットワークです。NETTalk は 7 文字幅の窓を移動させながら
+逐次中央の文字の発音を学習しました。たとえば /I ate the apple/ という文章では
+“the” を “ザ” ではなく “ジ” と発音することになります。</p>
+
+<p>印刷単語の読字過程のニューラルネットワークモデルである SM89<sup id="fnref:SM89" role="doc-noteref"><a href="#fn:SM89" class="footnote" rel="footnote">3</a></sup>, PMSP96<sup id="fnref:PMSP96" role="doc-noteref"><a href="#fn:PMSP96" class="footnote" rel="footnote">4</a></sup> で用いられた発音表現は <a target="_blank" href="https://en.wikipedia.org/wiki/ARPABET">ARPABET</a> の亜種です。Python では <code class="language-plaintext highlighter-rouge">nltk</code> ライブラリを使うと ARPABET の発音を得ることができます(
+<a href="https://colab.research.google.com/github/ShinAsakawa/2019cnps/blob/master/notebooks/2019cnps_arpabet_test.ipynb" target="_blank">ARPABET のデモ <img src="../assets/colab_icon.svg" /></a>)。</p>
+
+<center>
+
+<img src="../assets/1986Sejnowski_NETtalkFig2.svg" style="width:74%" />&lt;/br&gt;
+Sejnowski (1986) Fig. 2
+</center>
+
+<h2 id="12-単純リカレントニューラルネットワーク">1.2. 単純リカレントニューラルネットワーク</h2>
+
+<p>NETTalk を先がけとして <strong>単純再帰型ニューラルネットワーク</strong> Simple Recurrent Neural networks (SRN) が提案されました。
+発案者の名前で <strong>Jordan ネット</strong><sup id="fnref:JordanNet" role="doc-noteref"><a href="#fn:JordanNet" class="footnote" rel="footnote">5</a></sup>，<strong>Elman ネット</strong><sup id="fnref:ElmanNet" role="doc-noteref"><a href="#fn:ElmanNet" class="footnote" rel="footnote">6</a></sup> と呼ばれます。</p>
+
+<p>Jordan ネットも Elman ネットも上位層からの <strong>帰還信号</strong> を持ちます。これを <strong>フィードバック結合</strong> と呼び，位置時刻前の状態が次の時刻に使われます。Jordan ネットでは一時刻前の出力層の情報が用いられます(下図)。</p>
+
+<center>
+
+<img src="../assets/SRN_J.svg" style="width:74%" /><br />
+<p style="width:74%" align="center">
+図：マイケル・ジョーダン発案ジョーダンネット [@1986Jordan]
+</p>
+</center>
+
+<ul>
+  <li>駄菓子菓子 <a target="_blank" href="../assets/MJ_air.jpg">彼（マイケル・ジェフェリー(エアー)・ジョーダン）</a> ではない :)</li>
+  <li><a target="_blank" href="../assets/c3-s4-jordan.jpg">マイケル・アーウィン・ジョーダン。ミスター機械学習<sup id="fnref:jordan_ai_revolution_not_yet" role="doc-noteref"><a href="#fn:jordan_ai_revolution_not_yet" class="footnote" rel="footnote">7</a></sup></a></li>
+</ul>
+
+<p>一方，Elman ネットでは一時刻前の中間層の状態がフィードバック信号として用いられます。</p>
+
+<center>
+
+<img src="../assets/SRN_E.svg" style="width:74%" /><br />
+<p style="align:center; width:74%">
+図：ジェフ・エルマン発案のエルマンネット[@lman1990],[@Elman1993]
+</p>
+</center>
+
+<p>どちらも一時刻前の状態を短期記憶として保持して利用するのですが，実際の学習では一時刻前の状態をコピーして保存しておくだけで，実際の学習では通常の <strong>誤差逆伝播法</strong> すなわちバックプロパゲーション法が用いられます。上 2 つの図に示したとおり U と W とは共に中間層への結合係数であり，V は中間層から出力層への結合係数です。Z=I と書き点線で描かれている矢印はコピーするだけですので学習は起こりません。このように考えれば SRN は 3 層のニューラルネットワークであることが分かります。</p>
+
+<p>SRN はこのような単純な構造にも関わらず <strong>チューリング完全</strong> であろうと言われてきました。
+すなわちコンピュータで計算可能な問題はすべて計算できるくらい強力な計算機だという意味です。</p>
+
+<ul>
+  <li>Jordan ネットは出力層の情報を用いるため <strong>運動制御</strong> に</li>
+  <li>Elan ネットは内部状態を利用するため <strong>言語処理</strong> に</li>
+</ul>
+
+<p>それぞれ用いられます。従って <strong>失行</strong> aparxia (no matter what kind of apraxia such as ‘ideomotor’ or ‘conceptual’)，<strong>行為障害</strong> のモデルを考える場合 Jordan ネットは考慮すべき選択肢の候補の一つとなるでしょう。</p>
+
+<h2 id="13-リカレントニューラルネットワークの時間展開">1.3. リカレントニューラルネットワークの時間展開</h2>
+
+<p>一時刻前の状態を保持して利用する SRN は下図左のように描くことができます。同時に時間発展を考慮すれば下図右のように描くことも可能です。</p>
+
+<center>
+
+<img src="../assets/RNN_fold.svg" style="width:94%" />&lt;/br&gt;
+Time unfoldings of recurrent neural networks
+</center>
+
+<p>上図右を頭部を 90 度右に傾けて眺めてください。あるいは同義ですが上図右を反時計回りに 90 度回転させたメンタルローテーションを想像してください。このことから <strong>“SRN とは時間方向に展開したディープラーニングである”</strong> ことが分かります。</p>
+
+<h2 id="14-エルマンネットによる言語モデル">1.4. エルマンネットによる言語モデル</h2>
+
+<p>下図に <a target="_blank" href="../assets/Elman_portrait.jpg">エルマン</a> が用いたネットワークモデルを示しました。図中の数字はニューロンの数を表します。入力層と出力層のニューロン数 26 とは，もちいた語彙数が 26 であったことを表します。</p>
+
+<center>
+
+<img src="../assets/1991Elman_starting_small_Fig1.svg" style="width:74%" /><br />
+from [@Elman1991startingsmall]
+</center>
+
+<p>エルマンは，系列予測課題によって次の単語を予想することを繰り返し学習させた結果，文法構造がネットワークの結合係数として学習されることを示しました。Elman ネットによって，埋め込み文の処理，時制の一致，性や数の一致，長距離依存などを正しく予測できることが示されました(Elman, 1990, 1991, 1993)。</p>
+
+<ul>
+  <li>S     $\rightarrow$  NP VP “.”</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>NP    $\rightarrow$  PropN</td>
+          <td>N</td>
+          <td>N RC</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>VP    $\rightarrow$  V (NP)</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>RC    $\rightarrow$  who NP VP</td>
+          <td>who VP (NP)</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>N     $\rightarrow$  boy</td>
+          <td>girl</td>
+          <td>cat</td>
+          <td>dog</td>
+          <td>boys</td>
+          <td>girls</td>
+          <td>cats</td>
+          <td>dogs</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>PropN $\rightarrow$  John</td>
+          <td>Mary</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>V     $\rightarrow$  chase</td>
+          <td>feed</td>
+          <td>see</td>
+          <td>hear</td>
+          <td>walk</td>
+          <td>live</td>
+          <td>chases</td>
+          <td>feeds</td>
+          <td>seeds</td>
+          <td>hears</td>
+          <td>walks</td>
+          <td>lives</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<p>これらの規則にはさらに 2 つの制約があります。</p>
+
+<ol>
+  <li>N と V の数が一致していなければならない</li>
+  <li>目的語を取る動詞に制限がある。例えばhit, feed は直接目的語が必ず必要であり，see とhear は目的語をとってもとらなくても良い。walk とlive では目的語は不要である。</li>
+</ol>
+
+<p>文章は 23 個の項目から構成され，8 個の名詞と 12 個の動詞，関係代名詞 who，及び文の終端を表すピリオドです。この文法規則から生成される文 S は，名詞句 NP と動詞句 VP と最後にピリオドから成り立っている。
+名詞句 NP は固有名詞 PropN か名詞 N か名詞に関係節 RC が付加したものの何れかとなります。
+動詞句 VP は動詞 V と名詞句 NP から構成されるが名詞句が付加されるか否かは動詞の種類によって定まる。
+関係節 RC は関係代名詞 who で始まり，名詞句 NP と動詞句 VP か，もしくは動詞句だけのどちらかかが続く，というものです。</p>
+
+<p>下図に訓練後の中間層の状態を主成分分析にかけた結果を示しました。”boy chases boy”, “boy sees boy”, および “boy walks” という文を逐次入力した場合の遷移を示しています。
+同じ文型の文章は同じような状態遷移を辿ることが分かります。</p>
+
+<center>
+
+<img src="../assets/1991Elman_Fig3.jpg" style="width:84%" />&lt;/br&gt;
+<p align="left" style="width:74%">
+<!--
+Trajectories through state space for sentences boy chases boy, boy sees
+boy, boy walks. Principal component 1 is plotted along the abscissa;
+principal component 3 is plotted along the ordinate. These two PC’s
+together encode differences in verb-argument expectations.
+-->
+</p>
+</center>
+
+<!--
+<img src="../assets/1991Elman_Fig4a.jpg" style="width:84%"><br>
+-->
+
+<p>下図は文 “boy chases boy who chases boy” を入力した場合の遷移図です。この文章には単語 “boy” が 3 度出てきます。それぞれが異なるけれど，他の単語とは異なる位置に附置されていることがわかります。
+同様に ‘chases” が 2 度出てきますが，やはり同じような位置で，かつ，別の単語とは異なる位置に附置されています。&lt;/br&gt;</p>
+
+<center>
+
+<img src="../assets/1991Elman_Fig4b.jpg" style="width:84%" /><br />
+</center>
+
+<p>同様にして “boy who chases boy chases boy” (男の子を追いかける男の子が男の子を追いかける) の状態遷移図を下図に示しました。&lt;/br&gt;</p>
+<center>
+
+<img src="../assets/1991Elman_Fig4c.jpg" style="width:84%" /><br />
+</center>
+
+<p>さらに複雑な文章例 “boy chases boy who chases boy who chases boy” の状態遷移図を下図に島します。&lt;/br&gt;</p>
+<center> 
+
+<img src="../assets/1991Elman_Fig4d.jpg" style="width:84%" /><br />
+</center>
+
+<p>Elman ネットが構文，文法処理ができるということは上図のような中間層での状態遷移で同じ単語が
+異なる文位置で異なる文法的役割を担っている場合に，微妙に異なる表象を，図に即してで言えば，
+同じ単語では，同じような場所を占めるが，その文法的役割によって異なる位置を占めることが
+示唆されます。このことから中間層の状態は異なる文章の表現を異なる位置として表現していることが考えられ，
+後述する <strong>単語の意味</strong> や <strong>自動翻訳</strong> などに使われることに繋がります(浅川の主観半分以上)</p>
+
+<!--
+<p align="left" style="width:74%">
+Movement through state space for sentences with relative clauses. Principal component 1 is displayed along the abscissa; principal component 11 is displayed along the ordinate. These two PC’s encode depth of embedding in relative clauses.
+</p>
+</center>
+-->
+
+<h2 id="15-seq2sep-翻訳モデル">1.5. Seq2sep 翻訳モデル</h2>
+
+<p>上記の中間層の状態を素直に応用すると <strong>機械翻訳</strong> や <strong>対話</strong> のモデルになります。
+下図は初期の翻訳モデルである “seq2seq” の概念図を示しました。
+“<code class="language-plaintext highlighter-rouge">&lt;eos&gt;</code>” は文末 end of sentence を表します。中央の “<code class="language-plaintext highlighter-rouge">&lt;eos&gt;</code>” の前がソース言語
+であり，中央の “<code class="language-plaintext highlighter-rouge">&lt;eos&gt;</code>” の後はターゲット言語の言語モデルである SRN の中間層への
+入力として用います。</p>
+
+<p>注意すべきは，ソース言語の文終了時の中間層状態のみをターゲット言語の最初の中間層
+の入力に用いることであり，それ以外の時刻ではソース言語とターゲット言語は関係が
+ないことです。逆に言えば最終時刻の中間層状態がソース文の情報全てを含んでいると
+みなすことです。この点を改善することを目指すことが 2014 年以降盛んに行われてきました。
+顕著な例が後述する <strong>双方向 RNN</strong>， <strong>LSTM</strong> を採用したり，<strong>注意</strong> 機構を導入することでした。</p>
+
+<!--
+<center>
+
+<img src="../assets/RNN_fold.svg" style="width:94%"></br>
+Time unfoldings of recurrent neural networks
+</center>
+-->
+
+<center>
+
+<img src="../assets/2014Sutskever_S22_Fig1.svg" style="width:99%" /><br />
+From [@2014Sutskever_Sequence_to_Sequence]
+</center>
+
+\[\mbox{argmax}_{\theta}
+\left(-\log p\left(w_{t+1}\right)\right)=f\left(w_{t}\vert \theta\right)\]
+
+<h2 id="16-多様な-rnn-とその万能性">1.6. 多様な RNN とその万能性</h2>
+<p>双方向 RNN や LSTM を紹介する前に，カルパシーのブログ[^karpathy] から下図に引用します。
+下の 2 つ図ではピンク色が入力層，緑が中間層，青が出力層を示しています。</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[^karpathy]: 去年までスタンフォード大学の大学院生。現在はステラ自動車，イーロン・マスクが社長，の AI 部長さんです。図は彼のブログから引用です。蛇足ですがブログのタイトルが unreasonable effectiveness of RNN です。過去の偉大な論文 Wiegner (1960), Hamming (1967), Halevy (2009) からの <del>パクリ</del> <strong>敬意を表したオマージュ</strong>です。”unreasonable effectiveness of [science</td>
+      <td>mathematics</td>
+      <td>data]” $\ldots$ www</td>
+    </tr>
+  </tbody>
+</table>
+
+<center>
+
+<img src="../assets/diags.jpeg" sytle="width:99%" />&gt;<br />
+RNN variations from &lt;http://karpathy.github.io/2015/05/21/rnn-effectiveness/&gt;
+</center>
+
+<ul>
+  <li>上図最左は通常の多層ニューラルネットワークで画像認識，分類，識別問題に用いられます。</li>
+  <li>上図左から 2 つ目は，画像からの文章生成</li>
+  <li>上図中央，左から 3 つ目は，極性分析，文章のレビュー，星の数推定</li>
+  <li>上図右から 2 つ目は翻訳や文章生成</li>
+  <li>上図最右はビデオ分析，ビデオ脚注付け</li>
+</ul>
+
+<p>などに用いられます。これまで理解を促進する目的で中間層をただ一層として描いてきました。
+ですがが中間層は多層化されていることの方が多いこと，中間層各層のニューロン数は
+1024 程度まで用いられていることには注意してください。</p>
+
+<p>数は各層のニューロン数が 4 つである場合の数値例を示しています。入力層では <strong>ワンホット</strong> 表現<sup id="fnref:onehot" role="doc-noteref"><a href="#fn:onehot" class="footnote" rel="footnote">8</a></sup></p>
+
+<center>
+<img src="../assets/charseq.jpeg" style="width:94%" />&gt;<br />
+RNN variations from &lt;http://karpathy.github.io/2015/05/21/rnn-effectiveness/&gt;
+</center>
+
+<p>[@1991Siegelmann_RNN_universal] said Turing completeness of RNN.</p>
+
+<h2 id="17-双方向-rnn-birnn">1.7. 双方向 RNN BiRNN</h2>
+
+<p>RNN を改善するモデルとして 2 つ紹介します。一つは <strong>双方向 RNN</strong> bidirectional RNN (BiRNN) で
+Shuster[^shuster]，別は LSTM です。ここでは BiRNN を扱います。下図に BiRNN の概念図を示しました。
+BiRNN は RNN が 2 つ逆方向に走っていて互いに交わることはありません。
+この意味では時間を逆向きに考えるだけなのでプログラム上の難しさは有りません。
+時刻 $t$ での出力 $y(t)$ を得るためには，$[0\ldots,t-1]$ までの順方法 RNN と
+$[T,\ldots,t+1]$ までの逆方法 RNN を用いて予測します。
+逆方法 RNN は未来から過去を予測することを意味します。物理的因果律に違反することになるので
+気持ち悪いとも言えます。ですが英単語 “the” の発音は後続する名詞を知っていれば発音を
+予測することは容易です。同様にフランス語の定冠詞を “ラ” にするか “ル” にするかは
+後続する名詞の性が分かっていれば容易です。このように自然言語処理では BiRNN を使うと
+精度向上が期待される場合頻用されます。ここには神経心理学的な意味づけと工学的価値との齟齬，乖離が
+あります。</p>
+
+<center>
+<img src="../assets/1997Shuster_BiRNN.png" style="width:74%" /><br />
+</center>
+
+<p>下図に BiRNN の音声認識データセットを用いた性能比較を示しました。図中では “BiRNN” が “BRNN” と表記されています。</p>
+
+<center>
+<img src="../assets/1997Shuster_BiRNN_Tab2.png" style="width:74%" /><br />
+<p align="left" style="width:74%">
+Shuster (1997) Fig.1, Tab. 2
+</p>
+</center>
+
+<h2 id="18-長距離依存">1.8. 長距離依存</h2>
+
+<p>上では RNN は時間方向でのディープラーニング(深層学習)であると説明しました。
+ですが過去の情報を用いるために，一時刻前，すなわち直前の情報ではなく過去のある時点での情報を保持しておいて使いたい場合がありまs。英語の関係代名詞節を名詞の修飾に用いるような <strong>中央埋め込み文</strong> では，
+主語と動詞との間で時制の一致が必要ですが，主語の後に関係代名詞節が埋め込まれると，主語の時制や数を
+覚えておく必要が生じます。</p>
+
+<p>文 “boy that girls chase plays the guitar” では関係代名詞節内の主語 “girls” が複数形です。
+この複数形 “girls” に引きづられて動詞 “plays” を “play” としては正しい文法になりません。</p>
+
+<p>このように過去の情報を覚えておく必要があります。これを <strong>長距離依存</strong> long term dependency と言います。SRN は長距離依存解消のために学習時間が長くなるという問題点があります。
+これは中間層の内容が時々刻々変化し続けるため，特定の内容を保持することが困難になると考えられます。
+この長距離依存解消が難しいという短所は，記憶内容を保持しておく別の場所，短期記憶バッファを用意するなどの解消方法も存在します。一方，短期記憶を保持する機構をリカレントニューラルネットワーク内に組み込むという考え方もあります。後者の考え方を実現する方法として次に紹介する長=短期記憶モデルがあります。</p>
+
+<center>
+<img src="../assets/LTD.svg" style="width:49%" /><br />
+長距離依存の概念図
+<!--Schematic description of a long term dependency-->
+</center>
+
+<h2 id="19-長短期記憶-lstm">1.9. 長=短期記憶 LSTM</h2>
+
+<p><strong>長=短期記憶</strong> (Long Short-Term Memory: LSTM, henceforth) はシュミットフーバー (Shumithuber, J.) 一派により提案された長距離依存解消のためのニューラルネットワークモデルです。
+長距離依存を解消するためには，ある内容を保持し続けて必要に応じてその内容を表出する必要があります。
+このことを実現するために，ニューロンへの入力に門 (gate) を置くことが提案されました。
+下図に長=短期記憶モデルの概念図を示しました。</p>
+<center>
+
+<img src="../assets/2015Greff_LSTM_ja.svg" style="width:74%" /><br />
+LSTM from [@2016Asakawa_AIdict]
+</center>
+
+<p>上図の LSTM は一つのニューロンに該当します。このニューロンには 3 つのゲート(gate, 門) が付いています。
+3 つのゲートは以下の名前で呼ばれます。</p>
+
+<ol>
+  <li>入力ゲート input gate</li>
+  <li>出力ゲート output gate</li>
+  <li>忘却ゲート forget gate</li>
+</ol>
+
+<p>各ゲートの位置を上図で確認してください。入力ゲートと出力ゲートが閉じていれば，セルの内容(これまでは中間層の状態と呼んできました)が保持されることになります。
+出力ゲートが開いている場合には，セル内容が出力されます。一方出力ゲートが閉じていればそのセル内容は出力されません。このように入力ゲートと出力ゲートはセル内容の入出力に関与します。
+忘却ゲートはセル内容の保持に関与します。忘却ゲートが開いていれば一時刻前のセル内容が保持されることを意味します。反対に忘却ゲートが閉じていれば一時刻前のセル内容は破棄されます。全セルの忘却ゲートが全閉ならば通常の多層ニューラルネットワークであることと同義です。すなわち記憶内容を保持しないことを意味します。SRN でフィードバック信号が存在しない場合に相当します。セルへの入力は，</p>
+
+<ol>
+  <li>下層からの信号，</li>
+  <li>上層からの信号, すなわち Jordan ネットの帰還信号</li>
+  <li>自分自身の内容，すなわち Elman ネットの帰還信号</li>
+</ol>
+
+<p>が用いられます。これら入力信号が</p>
+
+<ol>
+  <li>入力信号そのもの</li>
+  <li>入力ゲートの開閉制御用信号</li>
+  <li>出力ゲートの開閉制御用信号</li>
+  <li>忘却ゲートの開閉制御用信号</li>
+</ol>
+
+<p>という 4 種類に用いられます。従って LSTM のパラメータ数は SRN に比べて 4 倍になります。</p>
+
+<p>LSTM に限らず一般のニューラルネットワークの出力には非線形関数が用いられます。代表的な非線形出力関数としては，以下のような関数が挙げられます。</p>
+
+<ol>
+  <li>シグモイド関数<sup id="fnref:sigmoid" role="doc-noteref"><a href="#fn:sigmoid" class="footnote" rel="footnote">9</a></sup>: $f(x)=\left[1+e^{-x}\right]^{-1}$</li>
+  <li>ハイパーボリックタンジェント関数:  $f(x)=\left(e^{x}-e^{-x}\right)/\left(e^{x}+e^{-x}\right)$</li>
+  <li>整流線形ユニット関数: $f(x)=\max\left(0,x\right)$</li>
+</ol>
+
+<p>この中で，セルの出力関数として 2. のハイパーボリックタンジェント関数が，ゲートの出力関数にはシグモイド関数が使われます。その理由はハイパーボリックタンジェント関数の方が収束が早いこと，シグモイド関数は値域が $[0,1]$ であるためゲートの開閉に直接対応しているからです。</p>
+
+<ul>
+  <li>Le Cun, Y. Bottou, L., Orr, G. B, Muller K-R. (1988) Efficient BackProp, in Orr, G. and Muller, K. (Eds.) Neural Networks: tricks and trade, Springer.</li>
+</ul>
+
+<!--
+The LSTM (left figure) can be described as the input signals $\mathbf{x}_t$ at
+time $t$, the output signals $\mathbf{o}_t$, the forget gate $\mathbf{f}_t$, and
+the output signal $\mathbf{y}_t$, the memory cell $\mathbf{c}_t$, then we can get
+the following:
+$i_{t}=\sigma\left(W_{xi}x_{t}+W_{hi}y_{t-1}+b_{i}\right)$, </br>
+$f_{t}=\sigma\left(W_{xf}x_{t}+W_{hf}y_{t-1}+b_{f}\right)$, </br>
+$o_{t}=\sigma\left(W_{xo}x_{t}+W_{ho}y_{t-1}+b_{o}\right)$, </br> 
+$g_{t}=\phi\left(W_{xc}x_{t}+W_{hc}y_{t-1}+b_{c}\right)$,</br>
+$c_{t}=f_{t}\odot c_{t-1} + i_{t}\odot g_{t}$,<br>
+$h_{t}=o_{t}\odot\phi\left(c_{t}\right)$</br>\label{eq:LSTM}
+where
+$\sigma\left(x\right)=\displaystyle\frac{1}{1+\mbox{exp}\left(-x\right)}$ (logistic function)
+%% =1/2\left(\phi\Brc{x}+1\right)$,
+$\phi\left(x\right)=\displaystyle\frac{\mbox{exp}\left(x\right)-\mbox{exp}\left(-x\right)}{\mbox{exp}\left(x\right)+\mbox{exp}\left(-x\right)}$ (hyper tangent)
+%% $=2\sigma\left(x\right)-1$
+and $\odot$ menas Hadamard (element--wise) product.
+-->
+
+<h2 id="110-lstm-におけるゲートの生理学的対応物-">1.10. LSTM におけるゲートの生理学的対応物 <!--Physiological correlates of gates in LSTM--></h2>
+
+<p>以下の画像は <a href="http://kybele.psych.cornell.edu/~edelman/Psych-2140/week-2-2.html">http://kybele.psych.cornell.edu/~edelman/Psych-2140/week-2-2.html</a> よりの引用。
+ウミウシのエラ引っ込め反応時に，ニューロンへの入力信号ではなく，入力信号を修飾する結合が存在する。下図参照。</p>
+
+<center>
+<img src="../assets/2016McComas_presynaptic_inhibition.jpg" style="width:74%" /><br />
+</center>
+
+<center>
+
+<!-- sea slug, ウミウシ。Mollush 軟体動物，-->
+<img src="../assets/C87-fig2_24.jpg" style="width:37%" />
+<img src="../assets/shunting-inhibition.jpg" style="width:49%" /><br />
+<img src="../assets/C87-fig2_25.jpg" style="width:84%" /><br />
+アメフラシ (Aplysia) のエラ引っ込め反応(a.k.a. 防御反応)の模式図[^seaslang]
+</center>
+
+<p>画像はそれぞれ http://kybele.psych.cornell.edu/~edelman/Psych-2140/shunting-inhibition.jpg<br />http://kybele.psych.cornell.edu/~edelman/Psych-2140/C87-fig2.25.jpg<br />http://kybele.psych.cornell.edu/~edelman/Psych-2140/C87-fig2.24.jpg<br /></p>
+
+<p>また古くは PDP のバイブルにもシグマパイユニット ($\sigma\pi$ units) として既述が見られます。各ユニットを掛け算 ($\pi$) してから足し算 ($\sum$) するのでこのように命名されたのでしょう。</p>
+
+<center>
+
+<img src="../assets/sigma-pi.jpg" style="width:64%" /><br />
+From [@PDPbook] chaper 7
+</center>
+
 <h3 id="リカレントニューラルネットワークの成果">リカレントニューラルネットワークの成果</h3>
 <ul>
   <li><a target="_blank" href="http://people.idsia.ch/~juergen/nips2009.pdf">手書き文字認識 Graves(2009)</a></li>
@@ -149,7 +590,7 @@ RNN の応用可能性は神経心理学にとって一考の価値があるモ�
   <li><a target="_blank" href="https://openreview.net/pdf?id=ByldLrqlx">プログラムコード生成 Zaremba (2015)</a></li>
   <li><a target="_blank" href="https://arxiv.org/abs/1506.05869">対話生成 Vinyals (2014)</a></li>
   <li><a target="_blank" href="https://arxiv.org/abs/1410.5401">ニューラルチューリングマシン NTM Graves et. al, (2014)</a></li>
-  <li><a target="_blank" href="https://worldmodels.github.io/">世界モデル Ha and Schmithuber (2018)</a><sup id="fnref:about_world_model" role="doc-noteref"><a href="#fn:about_world_model" class="footnote" rel="footnote">2</a></sup></li>
+  <li><a target="_blank" href="https://worldmodels.github.io/">世界モデル Ha and Schmithuber (2018)</a><sup id="fnref:about_world_model" role="doc-noteref"><a href="#fn:about_world_model" class="footnote" rel="footnote">10</a></sup></li>
 </ul>
 
 <!--
@@ -168,9 +609,9 @@ RNN の応用可能性は神経心理学にとって一考の価値があるモ�
   <li><a target="_blank" href="../6658.pdf">浅川伸一 (2016) リカレントニューラルネットワークによる文法学習, 日本人工知能学会編，人工知能学事典新版，共立出版</a></li>
 </ul>
 
-<h1 id="1-自然言語処理-natural-language-processings-nlp">1. 自然言語処理 (Natural Language Processings: NLP)</h1>
+<h1 id="2-自然言語処理-natural-language-processings-nlp">2. 自然言語処理 (Natural Language Processings: NLP)</h1>
 
-<h2 id="11-自然言語処理前史">1.1. 自然言語処理前史</h2>
+<h2 id="21-自然言語処理前史">2.1. 自然言語処理前史</h2>
 
 <ol>
   <li>第一次ブーム 1960 年代
@@ -213,7 +654,7 @@ RNN の応用可能性は神経心理学にとって一考の価値があるモ�
 3. ニューラルネットワーク
 -->
 
-<h2 id="14-n-グラム言語モデル">1.4. N-グラム言語モデル</h2>
+<h2 id="24-n-グラム言語モデル">2.4. N-グラム言語モデル</h2>
 
 <ul>
   <li>類似した言語履歴 $h$ について, n-gram 言語モデルは言語履歴 $h$ によって言語が定まることを言います。</li>
@@ -245,7 +686,7 @@ on which to base our predictions, and even if we had heard the beginning
 of the sentence before, it might end differently this time. And so we
 -->
 
-<p>余談<sup id="fnref:gram" role="doc-noteref"><a href="#fn:gram" class="footnote" rel="footnote">3</a></sup> ですが</p>
+<p>余談<sup id="fnref:gram" role="doc-noteref"><a href="#fn:gram" class="footnote" rel="footnote">11</a></sup> ですが</p>
 
 <ul>
   <li>$n=0$: ヌルグラム null-gram</li>
@@ -266,7 +707,7 @@ Rather than _four-gram_, some people do make an attempt at appearing educated by
 that we have to specify to determine a particular model within that model space.
 -->
 
-<h2 id="15-ニューラルネットワーク言語モデルあるいはミコロフ革命">1.5. ニューラルネットワーク言語モデルあるいはミコロフ革命</h2>
+<h2 id="25-ニューラルネットワーク言語モデルあるいはミコロフ革命">2.5. ニューラルネットワーク言語モデルあるいはミコロフ革命</h2>
 <center>
 <img src="../assets/Mikolov_portrait.jpg" style="width:24%" />
 <img src="../assets/2015Mikolov_NIPSportrait.png" style="width:33%" /><br />
@@ -278,7 +719,7 @@ that we have to specify to determine a particular model within that model space.
 (訓練データから推定すべきパラメータが少ない)。</li>
 </ul>
 
-<h2 id="16-ニューラルネットワーク言語モデル-nnlm-フィードフォワード型-nnlm">1.6. ニューラルネットワーク言語モデル NNLM フィードフォワード型 NNLM</h2>
+<h2 id="26-ニューラルネットワーク言語モデル-nnlm-フィードフォワード型-nnlm">2.6. ニューラルネットワーク言語モデル NNLM フィードフォワード型 NNLM</h2>
 
 <center>
 <img src="../assets/2012Mikolov_Google_Slides8.svg" style="width:74%" />&lt;/br&gt;
@@ -457,7 +898,7 @@ computation can be speeded up by updating weights that correspond just to
 the active input neuron.
 -->
 
-<h2 id="16-rnnlm-の学習-時間貫通バックプロパゲーション-bptt">1.6. RNNLM の学習 時間貫通バックプロパゲーション BPTT</h2>
+<h2 id="27-rnnlm-の学習-時間貫通バックプロパゲーション-bptt">2.7. RNNLM の学習 時間貫通バックプロパゲーション BPTT</h2>
 
 <center>
 <img src="../assets/2011Mikolov_Extention_Fig3.svg" style="width:94%" /><br />
@@ -540,7 +981,7 @@ during backpropagation of errors.
 
 -->
 
-<h2 id="17-時間貫通バックプロパゲーション-bptt">1.7. 時間貫通バックプロパゲーション BPTT</h2>
+<h2 id="28-時間貫通バックプロパゲーション-bptt">2.8. 時間貫通バックプロパゲーション BPTT</h2>
 
 <center>
 <img src="../assets/2012Mikolov_Google_Slides20.svg" style="width:74%" /><br />
@@ -548,628 +989,16 @@ during backpropagation of errors.
 </center>
 <p>の時間展開を遡っていく様子を示している。</p>
 
-<h2 id="18-文字ベースか単語ベースか">1.8. 文字ベースか単語ベースか？</h2>
+<h2 id="29-文字ベースか単語ベースか">2.9. 文字ベースか単語ベースか？</h2>
 <ol>
   <li>Pros/Cons</li>
   <li>OOV problems。OOV: Out of Vocabulary 問題。ソーシャルメディアなどを活用する場合不可避の問題</li>
 </ol>
 
-<hr />
-
-<h1 id="2-再帰型ニューラルネットワーク">2. 再帰型ニューラルネットワーク</h1>
-
-<h2 id="21-nettalk">2.1. NETtalk</h2>
-<p>系列情報処理を扱った初期のニューラルネットワーク例として NETTalk が挙げられます。
-NETTalk<sup id="fnref:NETTalk" role="doc-noteref"><a href="#fn:NETTalk" class="footnote" rel="footnote">4</a></sup> は文字を音読するネットワークです。下図のような構成になっています。
-下図のようにアルファベット 7 文字を入力して，空白はアンダーラインで表現されています，中央の文字の発音を学習する 3 層のニューラルネットワークです。NETTalk は 7 文字幅の窓を移動させながら
-逐次中央の文字の発音を学習しました。たとえば /I ate the apple/ という文章では
-“the” を “ザ” ではなく “ジ” と発音することになります。</p>
-
-<p>印刷単語の読字過程のニューラルネットワークモデルである SM89<sup id="fnref:SM89" role="doc-noteref"><a href="#fn:SM89" class="footnote" rel="footnote">5</a></sup>, PMSP96<sup id="fnref:PMSP96" role="doc-noteref"><a href="#fn:PMSP96" class="footnote" rel="footnote">6</a></sup> で用いられた発音表現は <a target="_blank" href="https://en.wikipedia.org/wiki/ARPABET">ARPABET</a> の亜種です。Python では <code class="language-plaintext highlighter-rouge">nltk</code> ライブラリを使うと ARPABET の発音を得ることができます(
-<a href="https://colab.research.google.com/github/ShinAsakawa/2019cnps/blob/master/notebooks/2019cnps_arpabet_test.ipynb" target="_blank">ARPABET のデモ <img src="../assets/colab_icon.svg" /></a>)。</p>
-
-<center>
-
-<img src="../assets/1986Sejnowski_NETtalkFig2.svg" style="width:74%" />&lt;/br&gt;
-Sejnowski (1986) Fig. 2
-</center>
-
-<h2 id="22-単純再帰型ニューラルネットワーク">2.2. 単純再帰型ニューラルネットワーク</h2>
-
-<p>NETTalk を先がけとして <strong>単純再帰型ニューラルネットワーク</strong> Simple Recurrent Neural networks (SRN) が提案されました。
-発案者の名前で <strong>Jordan ネット</strong><sup id="fnref:JordanNet" role="doc-noteref"><a href="#fn:JordanNet" class="footnote" rel="footnote">7</a></sup>，<strong>Elman ネット</strong><sup id="fnref:ElmanNet" role="doc-noteref"><a href="#fn:ElmanNet" class="footnote" rel="footnote">8</a></sup> と呼ばれます。</p>
-
-<p>Jordan ネットも Elman ネットも上位層からの <strong>帰還信号</strong> を持ちます。これを <strong>フィードバック結合</strong> と呼び，位置時刻前の状態が次の時刻に使われます。Jordan ネットでは一時刻前の出力層の情報が用いられます(下図)。</p>
-
-<center>
-
-<img src="../assets/SRN_J.svg" style="width:74%" /><br />
-<p style="width:74%" align="center">
-図：マイケル・ジョーダン発案ジョーダンネット [@1986Jordan]
-</p>
-</center>
-
-<ul>
-  <li>駄菓子菓子 <a target="_blank" href="../assets/MJ_air.jpg">彼（マイケル・ジェフェリー(エアー)・ジョーダン）</a> ではない :)</li>
-  <li><a target="_blank" href="../assets/c3-s4-jordan.jpg">マイケル・アーウィン・ジョーダン。ミスター機械学習<sup id="fnref:jordan_ai_revolution_not_yet" role="doc-noteref"><a href="#fn:jordan_ai_revolution_not_yet" class="footnote" rel="footnote">9</a></sup></a></li>
-</ul>
-
-<p>一方，Elman ネットでは一時刻前の中間層の状態がフィードバック信号として用いられます。</p>
-
-<center>
-
-<img src="../assets/SRN_E.svg" style="width:74%" /><br />
-<p style="align:center; width:74%">
-図：ジェフ・エルマン発案のエルマンネット[@lman1990],[@Elman1993]
-</p>
-</center>
-
-<p>どちらも一時刻前の状態を短期記憶として保持して利用するのですが，実際の学習では一時刻前の状態をコピーして保存しておくだけで，実際の学習では通常の <strong>誤差逆伝播法</strong> すなわちバックプロパゲーション法が用いられます。上 2 つの図に示したとおり U と W とは共に中間層への結合係数であり，V は中間層から出力層への結合係数です。Z=I と書き点線で描かれている矢印はコピーするだけですので学習は起こりません。このように考えれば SRN は 3 層のニューラルネットワークであることが分かります。</p>
-
-<p>SRN はこのような単純な構造にも関わらず <strong>チューリング完全</strong> であろうと言われてきました。
-すなわちコンピュータで計算可能な問題はすべて計算できるくらい強力な計算機だという意味です。</p>
-
-<ul>
-  <li>Jordan ネットは出力層の情報を用いるため <strong>運動制御</strong> に</li>
-  <li>Elan ネットは内部状態を利用するため <strong>言語処理</strong> に</li>
-</ul>
-
-<p>それぞれ用いられます。従って <strong>失行</strong> aparxia (no matter what kind of apraxia such as ‘ideomotor’ or ‘conceptual’)，<strong>行為障害</strong> のモデルを考える場合 Jordan ネットは考慮すべき選択肢の候補の一つとなるでしょう。</p>
-
-<h2 id="23-リカレントニューラルネットワークの時間展開">2.3. リカレントニューラルネットワークの時間展開</h2>
-
-<p>一時刻前の状態を保持して利用する SRN は下図左のように描くことができます。同時に時間発展を考慮すれば下図右のように描くことも可能です。</p>
-
-<center>
-
-<img src="../assets/RNN_fold.svg" style="width:94%" />&lt;/br&gt;
-Time unfoldings of recurrent neural networks
-</center>
-
-<p>上図右を頭部を 90 度右に傾けて眺めてください。あるいは同義ですが上図右を反時計回りに 90 度回転させたメンタルローテーションを想像してください。このことから <strong>“SRN とは時間方向に展開したディープラーニングである”</strong> ことが分かります。</p>
-
-<h2 id="24-エルマンネットによる言語モデル">2.4. エルマンネットによる言語モデル</h2>
-
-<p>下図に <a target="_blank" href="../assets/Elman_portrait.jpg">エルマン</a> が用いたネットワークモデルを示しました。図中の数字はニューロンの数を表します。入力層と出力層のニューロン数 26 とは，もちいた語彙数が 26 であったことを表します。</p>
-
-<center>
-
-<img src="../assets/1991Elman_starting_small_Fig1.svg" style="width:74%" /><br />
-from [@Elman1991startingsmall]
-</center>
-
-<p>エルマンは，系列予測課題によって次の単語を予想することを繰り返し学習させた結果，文法構造がネットワークの結合係数として学習されることを示しました。Elman ネットによって，埋め込み文の処理，時制の一致，性や数の一致，長距離依存などを正しく予測できることが示されました(Elman, 1990, 1991, 1993)。</p>
-
-<ul>
-  <li>S     $\rightarrow$  NP VP “.”</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>NP    $\rightarrow$  PropN</td>
-          <td>N</td>
-          <td>N RC</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>VP    $\rightarrow$  V (NP)</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>RC    $\rightarrow$  who NP VP</td>
-          <td>who VP (NP)</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>N     $\rightarrow$  boy</td>
-          <td>girl</td>
-          <td>cat</td>
-          <td>dog</td>
-          <td>boys</td>
-          <td>girls</td>
-          <td>cats</td>
-          <td>dogs</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>PropN $\rightarrow$  John</td>
-          <td>Mary</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>V     $\rightarrow$  chase</td>
-          <td>feed</td>
-          <td>see</td>
-          <td>hear</td>
-          <td>walk</td>
-          <td>live</td>
-          <td>chases</td>
-          <td>feeds</td>
-          <td>seeds</td>
-          <td>hears</td>
-          <td>walks</td>
-          <td>lives</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-</ul>
-
-<p>これらの規則にはさらに 2 つの制約があります。</p>
-
-<ol>
-  <li>N と V の数が一致していなければならない</li>
-  <li>目的語を取る動詞に制限がある。例えばhit, feed は直接目的語が必ず必要であり，see とhear は目的語をとってもとらなくても良い。walk とlive では目的語は不要である。</li>
-</ol>
-
-<p>文章は 23 個の項目から構成され，8 個の名詞と 12 個の動詞，関係代名詞 who，及び文の終端を表すピリオドです。この文法規則から生成される文 S は，名詞句 NP と動詞句 VP と最後にピリオドから成り立っている。
-名詞句 NP は固有名詞 PropN か名詞 N か名詞に関係節 RC が付加したものの何れかとなります。
-動詞句 VP は動詞 V と名詞句 NP から構成されるが名詞句が付加されるか否かは動詞の種類によって定まる。
-関係節 RC は関係代名詞 who で始まり，名詞句 NP と動詞句 VP か，もしくは動詞句だけのどちらかかが続く，というものです。</p>
-
-<p>下図に訓練後の中間層の状態を主成分分析にかけた結果を示しました。”boy chases boy”, “boy sees boy”, および “boy walks” という文を逐次入力した場合の遷移を示しています。
-同じ文型の文章は同じような状態遷移を辿ることが分かります。</p>
-
-<center>
-
-<img src="../assets/1991Elman_Fig3.jpg" style="width:84%" />&lt;/br&gt;
-<p align="left" style="width:74%">
-<!--
-Trajectories through state space for sentences boy chases boy, boy sees
-boy, boy walks. Principal component 1 is plotted along the abscissa;
-principal component 3 is plotted along the ordinate. These two PC’s
-together encode differences in verb-argument expectations.
--->
-</p>
-</center>
-
-<!--
-<img src="../assets/1991Elman_Fig4a.jpg" style="width:84%"><br>
--->
-
-<p>下図は文 “boy chases boy who chases boy” を入力した場合の遷移図です。この文章には単語 “boy” が 3 度出てきます。それぞれが異なるけれど，他の単語とは異なる位置に附置されていることがわかります。
-同様に ‘chases” が 2 度出てきますが，やはり同じような位置で，かつ，別の単語とは異なる位置に附置されています。&lt;/br&gt;</p>
-
-<center>
-
-<img src="../assets/1991Elman_Fig4b.jpg" style="width:84%" /><br />
-</center>
-
-<p>同様にして “boy who chases boy chases boy” (男の子を追いかける男の子が男の子を追いかける) の状態遷移図を下図に示しました。&lt;/br&gt;</p>
-<center>
-
-<img src="../assets/1991Elman_Fig4c.jpg" style="width:84%" /><br />
-</center>
-
-<p>さらに複雑な文章例 “boy chases boy who chases boy who chases boy” の状態遷移図を下図に島します。&lt;/br&gt;</p>
-<center> 
-
-<img src="../assets/1991Elman_Fig4d.jpg" style="width:84%" /><br />
-</center>
-
-<p>Elman ネットが構文，文法処理ができるということは上図のような中間層での状態遷移で同じ単語が
-異なる文位置で異なる文法的役割を担っている場合に，微妙に異なる表象を，図に即してで言えば，
-同じ単語では，同じような場所を占めるが，その文法的役割によって異なる位置を占めることが
-示唆されます。このことから中間層の状態は異なる文章の表現を異なる位置として表現していることが考えられ，
-後述する <strong>単語の意味</strong> や <strong>自動翻訳</strong> などに使われることに繋がります(浅川の主観半分以上)</p>
-
-<!--
-<p align="left" style="width:74%">
-Movement through state space for sentences with relative clauses. Principal component 1 is displayed along the abscissa; principal component 11 is displayed along the ordinate. These two PC’s encode depth of embedding in relative clauses.
-</p>
-</center>
--->
-
-<h2 id="25-seq2sep-翻訳モデル">2.5. Seq2sep 翻訳モデル</h2>
-
-<p>上記の中間層の状態を素直に応用すると <strong>機械翻訳</strong> や <strong>対話</strong> のモデルになります。
-下図は初期の翻訳モデルである “seq2seq” の概念図を示しました。
-“<code class="language-plaintext highlighter-rouge">&lt;eos&gt;</code>” は文末 end of sentence を表します。中央の “<code class="language-plaintext highlighter-rouge">&lt;eos&gt;</code>” の前がソース言語
-であり，中央の “<code class="language-plaintext highlighter-rouge">&lt;eos&gt;</code>” の後はターゲット言語の言語モデルである SRN の中間層への
-入力として用います。</p>
-
-<p>注意すべきは，ソース言語の文終了時の中間層状態のみをターゲット言語の最初の中間層
-の入力に用いることであり，それ以外の時刻ではソース言語とターゲット言語は関係が
-ないことです。逆に言えば最終時刻の中間層状態がソース文の情報全てを含んでいると
-みなすことです。この点を改善することを目指すことが 2014 年以降盛んに行われてきました。
-顕著な例が後述する <strong>双方向 RNN</strong>， <strong>LSTM</strong> を採用したり，<strong>注意</strong> 機構を導入することでした。</p>
-
-<!--
-<center>
-
-<img src="../assets/RNN_fold.svg" style="width:94%"></br>
-Time unfoldings of recurrent neural networks
-</center>
--->
-
-<center>
-
-<img src="../assets/2014Sutskever_S22_Fig1.svg" style="width:99%" /><br />
-From [@2014Sutskever_Sequence_to_Sequence]
-</center>
-
-\[\mbox{argmax}_{\theta}
-\left(-\log p\left(w_{t+1}\right)\right)=f\left(w_{t}\vert \theta\right)\]
-
-<h2 id="26-多様な-rnn-とその万能性">2.6. 多様な RNN とその万能性</h2>
-<p>双方向 RNN や LSTM を紹介する前に，カルパシーのブログ[^karpathy] から下図に引用します。
-下の 2 つ図ではピンク色が入力層，緑が中間層，青が出力層を示しています。</p>
-
-<table>
-  <tbody>
-    <tr>
-      <td>[^karpathy]: 去年までスタンフォード大学の大学院生。現在はステラ自動車，イーロン・マスクが社長，の AI 部長さんです。図は彼のブログから引用です。蛇足ですがブログのタイトルが unreasonable effectiveness of RNN です。過去の偉大な論文 Wiegner (1960), Hamming (1967), Halevy (2009) からの <del>パクリ</del> <strong>敬意を表したオマージュ</strong>です。”unreasonable effectiveness of [science</td>
-      <td>mathematics</td>
-      <td>data]” $\ldots$ www</td>
-    </tr>
-  </tbody>
-</table>
-
-<center>
-
-<img src="../assets/diags.jpeg" sytle="width:99%" />&gt;<br />
-RNN variations from &lt;http://karpathy.github.io/2015/05/21/rnn-effectiveness/&gt;
-</center>
-
-<ul>
-  <li>上図最左は通常の多層ニューラルネットワークで画像認識，分類，識別問題に用いられます。</li>
-  <li>上図左から 2 つ目は，画像からの文章生成</li>
-  <li>上図中央，左から 3 つ目は，極性分析，文章のレビュー，星の数推定</li>
-  <li>上図右から 2 つ目は翻訳や文章生成</li>
-  <li>上図最右はビデオ分析，ビデオ脚注付け</li>
-</ul>
-
-<p>などに用いられます。これまで理解を促進する目的で中間層をただ一層として描いてきました。
-ですがが中間層は多層化されていることの方が多いこと，中間層各層のニューロン数は
-1024 程度まで用いられていることには注意してください。</p>
-
-<p>数は各層のニューロン数が 4 つである場合の数値例を示しています。入力層では <strong>ワンホット</strong> 表現<sup id="fnref:onehot" role="doc-noteref"><a href="#fn:onehot" class="footnote" rel="footnote">10</a></sup></p>
-
-<center>
-
-<img src="../assets/charseq.jpeg" style="width:94%" />&gt;&lt;/br&gt;
-RNN variations from &lt;http://karpathy.github.io/2015/05/21/rnn-effectiveness/&gt;
-</center>
-
-<p>[@1991Siegelmann_RNN_universal] said Turing completeness of RNN.</p>
-
-<h2 id="27-双方向-rnn-birnn">2.7. 双方向 RNN BiRNN</h2>
-
-<p>RNN を改善するモデルとして 2 つ紹介します。一つは <strong>双方向 RNN</strong> bidirectional RNN (BiRNN) で
-Shuster[^shuster]，別は LSTM です。ここでは BiRNN を扱います。下図に BiRNN の概念図を示しました。
-BiRNN は RNN が 2 つ逆方向に走っていて互いに交わることはありません。
-この意味では時間を逆向きに考えるだけなのでプログラム上の難しさは有りません。
-時刻 $t$ での出力 $y(t)$ を得るためには，$[0\ldots,t-1]$ までの順方法 RNN と
-$[T,\ldots,t+1]$ までの逆方法 RNN を用いて予測します。
-逆方法 RNN は未来から過去を予測することを意味します。物理的因果律に違反することになるので
-気持ち悪いとも言えます。ですが英単語 “the” の発音は後続する名詞を知っていれば発音を
-予測することは容易です。同様にフランス語の定冠詞を “ラ” にするか “ル” にするかは
-後続する名詞の性が分かっていれば容易です。このように自然言語処理では BiRNN を使うと
-精度向上が期待される場合頻用されます。ここには神経心理学的な意味づけと工学的価値との齟齬，乖離が
-あります。</p>
-
-<center>
-
-<img src="../assets/1997Shuster_BiRNN.png" style="width:74%" />&lt;/br&gt;
-</center>
-
-<p>下図に BiRNN の音声認識データセットを用いた性能比較を示しました。図中では “BiRNN” が “BRNN” と表記されています。</p>
-<center>
-
-<img src="../assets/1997Shuster_BiRNN_Tab2.png" style="width:74%" />&lt;/br&gt;
-<p align="left" style="width:74%">
-Shuster (1997) Fig.1, Tab. 2
-</p>
-</center>
-
-<h2 id="28-長距離依存">2.8. 長距離依存</h2>
-
-<p>上では RNN は時間方向でのディープラーニング(深層学習)であると説明しました。
-ですが過去の情報を用いるために，一時刻前，すなわち直前の情報ではなく過去のある時点での情報を保持しておいて使いたい場合がありまs。英語の関係代名詞節を名詞の修飾に用いるような <strong>中央埋め込み文</strong> では，
-主語と動詞との間で時制の一致が必要ですが，主語の後に関係代名詞節が埋め込まれると，主語の時制や数を
-覚えておく必要が生じます。</p>
-
-<p>文 “boy that girls chase plays the guitar” では関係代名詞節内の主語 “girls” が複数形です。
-この複数形 “girls” に引きづられて動詞 “plays” を “play” としては正しい文法になりません。</p>
-
-<p>このように過去の情報を覚えておく必要があります。これを <strong>長距離依存</strong> long term dependency と言います。SRN は長距離依存解消のために学習時間が長くなるという問題点があります。
-これは中間層の内容が時々刻々変化し続けるため，特定の内容を保持することが困難になると考えられます。
-この長距離依存解消が難しいという短所は，記憶内容を保持しておく別の場所，短期記憶バッファを用意するなどの解消方法も存在します。一方，短期記憶を保持する機構をリカレントニューラルネットワーク内に組み込むという考え方もあります。後者の考え方を実現する方法として次に紹介する長=短期記憶モデルがあります。</p>
-
-<center>
-<img src="../assets/LTD.svg" style="width:49%" /><br />
-長距離依存の概念図
-<!--Schematic description of a long term dependency-->
-</center>
-
-<h2 id="29-長短期記憶-lstm">2.9. 長=短期記憶 LSTM</h2>
-
-<p><strong>長=短期記憶</strong> (Long Short-Term Memory: LSTM, henceforth) はシュミットフーバー (Shumithuber, J.) 一派により提案された長距離依存解消のためのニューラルネットワークモデルです。
-長距離依存を解消するためには，ある内容を保持し続けて必要に応じてその内容を表出する必要があります。
-このことを実現するために，ニューロンへの入力に門 (gate) を置くことが提案されました。
-下図に長=短期記憶モデルの概念図を示しました。</p>
-<center>
-
-<img src="../assets/2015Greff_LSTM_ja.svg" style="width:74%" /><br />
-LSTM from [@2016Asakawa_AIdict]
-</center>
-
-<p>上図の LSTM は一つのニューロンに該当します。このニューロンには 3 つのゲート(gate, 門) が付いています。
-3 つのゲートは以下の名前で呼ばれます。</p>
-
-<ol>
-  <li>入力ゲート input gate</li>
-  <li>出力ゲート output gate</li>
-  <li>忘却ゲート forget gate</li>
-</ol>
-
-<p>各ゲートの位置を上図で確認してください。入力ゲートと出力ゲートが閉じていれば，セルの内容(これまでは中間層の状態と呼んできました)が保持されることになります。
-出力ゲートが開いている場合には，セル内容が出力されます。一方出力ゲートが閉じていればそのセル内容は出力されません。このように入力ゲートと出力ゲートはセル内容の入出力に関与します。
-忘却ゲートはセル内容の保持に関与します。忘却ゲートが開いていれば一時刻前のセル内容が保持されることを意味します。反対に忘却ゲートが閉じていれば一時刻前のセル内容は破棄されます。全セルの忘却ゲートが全閉ならば通常の多層ニューラルネットワークであることと同義です。すなわち記憶内容を保持しないことを意味します。SRN でフィードバック信号が存在しない場合に相当します。セルへの入力は，</p>
-
-<ol>
-  <li>下層からの信号，</li>
-  <li>上層からの信号, すなわち Jordan ネットの帰還信号</li>
-  <li>自分自身の内容，すなわち Elman ネットの帰還信号</li>
-</ol>
-
-<p>が用いられます。これら入力信号が</p>
-
-<ol>
-  <li>入力信号そのもの</li>
-  <li>入力ゲートの開閉制御用信号</li>
-  <li>出力ゲートの開閉制御用信号</li>
-  <li>忘却ゲートの開閉制御用信号</li>
-</ol>
-
-<p>という 4 種類に用いられます。従って LSTM のパラメータ数は SRN に比べて 4 倍になります。</p>
-
-<p>LSTM に限らず一般のニューラルネットワークの出力には非線形関数が用いられます。代表的な非線形出力関数としては，以下のような関数が挙げられます。</p>
-
-<ol>
-  <li>シグモイド関数<sup id="fnref:sigmoid" role="doc-noteref"><a href="#fn:sigmoid" class="footnote" rel="footnote">11</a></sup>: $f(x)=\left[1+e^{-x}\right]^{-1}$</li>
-  <li>ハイパーボリックタンジェント関数:  $f(x)=\left(e^{x}-e^{-x}\right)/\left(e^{x}+e^{-x}\right)$</li>
-  <li>整流線形ユニット関数: $f(x)=\max\left(0,x\right)$</li>
-</ol>
-
-<p>この中で，セルの出力関数として 2. のハイパーボリックタンジェント関数が，ゲートの出力関数にはシグモイド関数が使われます。その理由はハイパーボリックタンジェント関数の方が収束が早いこと，シグモイド関数は値域が $[0,1]$ であるためゲートの開閉に直接対応しているからです。</p>
-
-<ul>
-  <li>Le Cun, Y. Bottou, L., Orr, G. B, Muller K-R. (1988) Efficient BackProp, in Orr, G. and Muller, K. (Eds.) Neural Networks: tricks and trade, Springer.</li>
-</ul>
-
-<!--
-The LSTM (left figure) can be described as the input signals $\mathbf{x}_t$ at
-time $t$, the output signals $\mathbf{o}_t$, the forget gate $\mathbf{f}_t$, and
-the output signal $\mathbf{y}_t$, the memory cell $\mathbf{c}_t$, then we can get
-the following:
-$i_{t}=\sigma\left(W_{xi}x_{t}+W_{hi}y_{t-1}+b_{i}\right)$, </br>
-$f_{t}=\sigma\left(W_{xf}x_{t}+W_{hf}y_{t-1}+b_{f}\right)$, </br>
-$o_{t}=\sigma\left(W_{xo}x_{t}+W_{ho}y_{t-1}+b_{o}\right)$, </br> 
-$g_{t}=\phi\left(W_{xc}x_{t}+W_{hc}y_{t-1}+b_{c}\right)$,</br>
-$c_{t}=f_{t}\odot c_{t-1} + i_{t}\odot g_{t}$,<br>
-$h_{t}=o_{t}\odot\phi\left(c_{t}\right)$</br>\label{eq:LSTM}
-where
-$\sigma\left(x\right)=\displaystyle\frac{1}{1+\mbox{exp}\left(-x\right)}$ (logistic function)
-%% =1/2\left(\phi\Brc{x}+1\right)$,
-$\phi\left(x\right)=\displaystyle\frac{\mbox{exp}\left(x\right)-\mbox{exp}\left(-x\right)}{\mbox{exp}\left(x\right)+\mbox{exp}\left(-x\right)}$ (hyper tangent)
-%% $=2\sigma\left(x\right)-1$
-and $\odot$ menas Hadamard (element--wise) product.
--->
-
-<h2 id="210-lstm-におけるゲートの生理学的対応物-">2.10. LSTM におけるゲートの生理学的対応物 <!--Physiological correlates of gates in LSTM--></h2>
-
-<p>以下の画像は <a href="http://kybele.psych.cornell.edu/~edelman/Psych-2140/week-2-2.html">http://kybele.psych.cornell.edu/~edelman/Psych-2140/week-2-2.html</a>
-よりの引用です。
-ウミウシのエラ引っ込め反応時に，ニューロンへの入力信号ではなく，入力信号を修飾する結合
-が存在します。下図参照。
-&lt;!–</p>
-<center>
-<img src="../assets/2016McComas_presynaptic_inhibition.jpg" style="width:74%" />&lt;/br&gt;
-</center>
-<p>–&gt;</p>
-
-<center>
-<!-- sea slug, ウミウシ。Mollush 軟体動物，-->
-<img src="../assets/C87-fig2_24.jpg" style="width:37%" />
-<img src="../assets/shunting-inhibition.jpg" style="width:49%" />&lt;/br&gt;
-<img src="../assets/C87-fig2_25.jpg" style="width:84%" />&lt;/br&gt;
-アメフラシ (Aplysia) のエラ引っ込め反応(a.k.a. 防御反応)の模式図[^seaslang]
-</center>
-
-<p>画像はそれぞれ http://kybele.psych.cornell.edu/~edelman/Psych-2140/shunting-inhibition.jpg<br />http://kybele.psych.cornell.edu/~edelman/Psych-2140/C87-fig2.25.jpg<br />http://kybele.psych.cornell.edu/~edelman/Psych-2140/C87-fig2.24.jpg<br /></p>
-
-<p>また古くは PDP のバイブルにもシグマパイユニット ($\sigma\pi$ units) として既述が見られます。各ユニットを掛け算 ($\pi$) してから足し算 ($\sum$) するのでこのように命名されたのでしょう。</p>
-
-<center>
-
-<img src="../assets/sigma-pi.jpg" style="width:64%" /><br />
-From [@PDPbook] chaper 7
-</center>
-
-<h2 id="211-画像と言語との融合へ向けて">2.11. 画像と言語との融合へ向けて</h2>
-
-<p>以上で今回の特別企画の目標である画像と言語とのマルチモーダル統合へ向けての準備がほぼ出揃いました。
-2014 年に提案されたニューラル画像脚注付けのモデルを下図に示します。</p>
-
-<!--
-<center>
-
-<img src="../assets/2014KarpathyImageDescriptionsFig3.svg" style="width:84%"><br>
-[@2015Karpathy_FeiFei_caption]
-</center>
--->
-
-<center>
-
-<img src="../assets/2014Vinyals_Fig1.svg" style="width:84%" /><br />
-[@2014Vinyals_Bengio_Show_and_Tell]
-</center>
-
-<!--
-<center>
-
-<img src="../assets/2015Xu_ShowAttendTellFig1.svg" style="width:84%"></br>
-</center>
--->
-
-<p>画像に対して注意を付加した脚注付けモデルの出力例を下図に示します。</p>
-
-<!--
-<center>
-
-<img src="../assets/2015Xu_ShowAttendTellFig2_upper.svg" style="width:84%"><br>
-[@2015Xu_Bengio_NIC_attention]
-</center>
--->
-<p>各画像対は右が入力画像であり，左はその入力画像の脚注付けである単語を出力している際にどこに注意しているのかを白色で表しています。</p>
-<center>
-
-<img src="../assets/2015Xu_ShowAttendTellFig2_lower.svg" style="width:99%" />&lt;/br&gt;
-[@2015Xu_Bengio_NIC_attention]
-</center>
-
-<!--
-<center>
-
-<img src="../assets/2014Mnih_attention.svg"></br>
-</center>
-
-Glimpse Sensor: Given the coordinates of the glimpse and an input image,
-the sensor extracts a __retina-like__ representation
-$\rho\left(x_t,l_{t-1}\right)$ centered at $l_{t-1}$ that contains multiple
-resolution patches. 
-
-- B) **Glimpse Network**: Given the location $\left(l_{t-1}\right)$ and
-input image $\left(x_t\right)$, uses the glimpse sensor to extract retina
-representation $\rho\left(x_t,l_{t-1}\right)$.  The retina representation
-and glimpse location is then mapped into a hidden space using independent
-linear layers parameterized by $\theta_g^{0}$ and $\theta_g^{1}$
-respectively using rectified units followed by another linear layer
-$\theta_2^{2}$ to combine the information from both components. The glimpse
-network
-$f_{g}\left(\dot;\left[\theta_g^0,\theta_g^1,\theta_g^2\right]\right)$
-defines a trainable bandwidth limited sensor for the attention network
-producing the glimpse representation $g_t$. 
-- C) **Model Architecture**: Overall, the model is an RNN. The core network
-of the model $f_h\left(\cdot;\theta_h\right)$ takes the glimpse
-representation $g_t$ as input and combining with the internal
-representation at previous time step $h_{t-1}$, produces the new internal
-state of the model $h_t$. The location network
-$f_l\left(\cdot;\theta_a\right)$ and the action network
-$f_a\left(\cdot;\theta_a\right)$ use the internal state $h_t$ of the model
-to produce the next location to attend to $l_t$ and the
-action/classification at respectively. This basic RNN iteration is repeated
-for a variable number of steps.[@2014Mnih_RNN_attention]
--->
-
-<!--
-#  World Models
-<center>
-
-<img src="../assets/2018Ha_WorldModel.svg" style="width:84%"></br>
-[@2018Ha_WorldModels] Fig.1
-</center>
-<center>
-
-<img src="../assets/2018HaWorldModelsFig1.svg"></br>
-A World Model, from Scott McCloud’s Understanding Comics. (McCloud, 1993; E, 2012)
-</center>
-
-Jay Wright Forrester, the father of system dynamics,
-described a mental model as:\\
-    \begin{quote}
-      The image of the world around us, which we carry in our
-      head, is just a model. Nobody in his head imagines all
-      the world, government or country. He has only selected
-      concepts, and relationships between them, and uses those
-      to represent the real system. \citep{1971Forrester}
-    \end{quote}
-
-<center>
--->
-
-<!--
-<img src="../assets/2015Greff_LSTM_ja.svg" style="width:74%"><br>
-<p align="left" style="width:49%">
-LSTM の概念 (Shumithuber ら 2015)を改変
-</p>
-</center>
--->
-
-<!--
-<center>
-
-<img src="../assets/2010Mikolov_Fig1.svg" style="width:49%"></br>
-\cite{2010Mikolov2010}
-</center>
-
-<center>
-
-<img src="../assets/2011Mikolov_Extention_Fig1.jpg" style="width:49%"><br>
-Mikolov Extension
-</center>
-
-<center>
-
-<img src="../assets/2001Boden_Fig5.jpg" style="width:94%"></br>
-Boden's BPTT
-</center>
--->
-
-<!--
-- モチベーション
-- ニューラルネットワーク言語モデル
-- 訓練アルゴリズム
-  - リカレントニューラルネットワーク
-  - クラス
-  - エントロピー最大化言語モデル
-
-### モチベーション
-
-### モチベーション (2) チューリングテスト
-- チューリングテストは原理的に言語モデルの問題とみなすことが可能
-- 会話の履歴が与えられた時，良い言語モデルは正しい応答に高い確率を与える
-
-- 例:
-  - $P\left(\mathbf{ox{月曜日}\vert \mathbf{ox{今日は何曜日ですか？}}} = ?$\\
-  - $P\left(\mathbf{ox{赤}\vert \mathbf{ox{バラは何色？}}} = ?$\\
-
-言語モデルの問題と考えれば以下の文のような問題と等価とみなせる:\\
-$P\left(\mathbf{ox{赤}\vert {\mathbf{ox{バラの色は}}}=?$
-
-### モチベーション(3) n-グラム言語モデル
-
-- どうすれば「良い言語モデル」を創れるか？
-- 伝統的解: n-グラム言語モデル: $P\left{w\vert h}=\displaystyle\frac{C\left{h,w\right}}{C\left(h\right)}$
--->
 <div class="footnotes" role="doc-endnotes">
   <ol>
     <li id="fn:gauss_supervisor" role="doc-endnote">
       <p><a target="_blank" href="https://gauss-ai.jp/about/">この会社の技術顧問って $\ldots$ :)</a> <a href="#fnref:gauss_supervisor" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
-    </li>
-    <li id="fn:about_world_model" role="doc-endnote">
-      <p>我々を取り巻く世界のイメージは脳内のメンタルモデルである。誰しも全ての世界，政府，国を想像できない。 <a href="#fnref:about_world_model" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
-    </li>
-    <li id="fn:gram" role="doc-endnote">
-      <p>五月蝿いことを言えば Manning (1999, p.193) によると単語 <em>gram</em> はギリシャ語由来の単語だそうです。従って <em>gram</em> に付ける数接頭辞もギリシャ語である教養を持つべきです。そうすると $n=1$: mono-gram, $n=2$: di-gram, $n=4$: tetra-gram が教養です。$n=3$ はギリシャ，ローマ共通で tri-gram です。日常会話では $n=4$ をクワッドグラム(ラテン語由来)やフォーグラムと呼ぶことも多いです。 <a href="#fnref:gram" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:NETTalk" role="doc-endnote">
       <p>Sejnowski, T.J. and Rosenberg, C. R. (1987) Parallel Networks that Learn to Pronounce English Text, Complex Systems 1, 145-168. <a href="#fnref:NETTalk" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
@@ -1194,6 +1023,12 @@ $P\left(\mathbf{ox{赤}\vert {\mathbf{ox{バラの色は}}}=?$
     </li>
     <li id="fn:sigmoid" role="doc-endnote">
       <p>1980 年代に用いられたシグモイド関数が用いられることはほとんどなくなりました。理由は収束が遅いからです[@1999LeCun] <a href="#fnref:sigmoid" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:about_world_model" role="doc-endnote">
+      <p>我々を取り巻く世界のイメージは脳内のメンタルモデルである。誰しも全ての世界，政府，国を想像できない。 <a href="#fnref:about_world_model" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:gram" role="doc-endnote">
+      <p>五月蝿いことを言えば Manning (1999, p.193) によると単語 <em>gram</em> はギリシャ語由来の単語だそうです。従って <em>gram</em> に付ける数接頭辞もギリシャ語である教養を持つべきです。そうすると $n=1$: mono-gram, $n=2$: di-gram, $n=4$: tetra-gram が教養です。$n=3$ はギリシャ，ローマ共通で tri-gram です。日常会話では $n=4$ をクワッドグラム(ラテン語由来)やフォーグラムと呼ぶことも多いです。 <a href="#fnref:gram" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
   </ol>
 </div>
