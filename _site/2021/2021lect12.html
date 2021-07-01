@@ -62,10 +62,10 @@ Appache 2.0 license<br />
   <li><a href="https://komazawa-deep-learning.github.io/character_demo.html" target="_blank">リカレントニューラルネットワークによる文処理デモ</a></li>
   <li><a href="https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_0702rnn_demo.ipynb" target="_blank">SRN のデモ <img src="../assets/colab_icon.svg" /></a></li>
   <li><a href="https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_0702RNN_binary_addtion_demo.ipynb" target="_blank">足し算のデモ <img src="../assets/colab_icon.svg" /></a></li>
-  <li><a href="https://colab.research.google.com/github/ShinAsakawa/2019cnps/blob/master/notebooks/2019cnps_addtion_rnn.ipynb#scrollTo=Y3vy6Lvk-ivI" target="_blank">足し算のデモ keras 版 <img src="../assets/colab_icon.svg" /></a></li>
+  <li><a href="https://colab.research.google.com/github/ShinAsakawa/2019cnps/blob/master/notebooks/2019cnps_addtion_rnn.ipynb#scrollTo=Y3vy6Lvk-ivI" target="_blank">足し算のデモ keras 版 <img src="../assets/colab_icon.svg" /></a>
+<!-- sequential mnist の実装は tensorflow だった. see ~/study/2017rnn_book/code -->
+<!-- 自動翻訳, 文章要約, 転移学習, マルチモーダル学習, マルチタスク学習--></li>
 </ul>
-
-<!-- 自動翻訳, 文章要約, 転移学習, マルチモーダル学習, マルチタスク学習-->
 
 <!-- 
 VAE と MAML と転移学習の実際とをやろうと思う。
@@ -101,22 +101,20 @@ VAE と MAML と転移学習の実際とをやろうと思う。
 <p>翻って考えてみれば，時系列データが与えられたとき，次に起こることを予測すること，その精度を向上させることは，生存競争に勝ち抜くために必要な技能である。</p>
 
 <ul>
-  <li>観察された証拠から次に生じる事象を予想することは，生物の生存にとって意味ある情報処理である
-&lt;!– - その適用範囲を思いつくままに考えてみると以下のような事柄が含まれる:</li>
+  <li>観察された証拠から次に生じる事象を予想することは，生物の生存にとって意味ある情報処理である</li>
 </ul>
 
-<ol>
-  <li>生物の生存戦略</li>
-  <li>制御，予測。天気予報，ロケットなどの弾道制御</li>
-  <li>データ処理</li>
-  <li>未来予想，SF 的，心理学的，哲学的，歴史的意味あいも含めて。身近な例では占いや経済予測も含まれます
-–&gt;
-    <ul>
-      <li><a target="_blank" href="https://gauss-ai.jp/2019/04/05/siva%E9%81%8B%E5%96%B6%E5%85%83%E5%A4%89%E6%9B%B4%E3%81%AE%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B/">競馬予想</a><sup id="fnref:gauss_supervisor" role="doc-noteref"><a href="#fn:gauss_supervisor" class="footnote" rel="footnote">1</a></sup>,</li>
-      <li><a target="_blank" href="https://www.shikaku-square.com/yobishiken/miraimon">資格試験問題予測 “未来問”</a></li>
-    </ul>
-  </li>
-</ol>
+<!-- - その適用範囲を思いつくままに考えてみると以下のような事柄が含まれる:
+
+2. 生物の生存戦略
+3. 制御，予測。天気予報，ロケットなどの弾道制御
+1. データ処理
+4. 未来予想，SF 的，心理学的，哲学的，歴史的意味あいも含めて。身近な例では占いや経済予測も含まれます
+-->
+<ul>
+  <li><a target="_blank" href="https://gauss-ai.jp/2019/04/05/siva%E9%81%8B%E5%96%B6%E5%85%83%E5%A4%89%E6%9B%B4%E3%81%AE%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B/">競馬予想</a><sup id="fnref:gauss_supervisor" role="doc-noteref"><a href="#fn:gauss_supervisor" class="footnote" rel="footnote">1</a></sup>,</li>
+  <li><a target="_blank" href="https://www.shikaku-square.com/yobishiken/miraimon">資格試験問題予測 “未来問”</a></li>
+</ul>
 
 <!--神経心理学モデルへの適用例では初期の読みのモデルから用いられて来ました。
 1980年代のトライアングルモデル(Seidenberg and McClelland, 1989; Plaut et. al, 1996) や系列位置効果を検討する際
@@ -357,14 +355,10 @@ Movement through state space for sentences with relative clauses. Principal comp
 
 <p>上記の中間層の状態を素直に応用すると <strong>機械翻訳</strong> や <strong>対話</strong> のモデルになります。
 下図は初期の翻訳モデルである “seq2seq” の概念図を示しました。
-“<code class="language-plaintext highlighter-rouge">&lt;eos&gt;</code>” は文末 end of sentence を表します。中央の “<code class="language-plaintext highlighter-rouge">&lt;eos&gt;</code>” の前がソース言語
-であり，中央の “<code class="language-plaintext highlighter-rouge">&lt;eos&gt;</code>” の後はターゲット言語の言語モデルである SRN の中間層への
-入力として用います。</p>
+“<code class="language-plaintext highlighter-rouge">&lt;eos&gt;</code>” は文末 end of sentence を表します。中央の “<code class="language-plaintext highlighter-rouge">&lt;eos&gt;</code>” の前がソース言語であり，中央の “<code class="language-plaintext highlighter-rouge">&lt;eos&gt;</code>” の後はターゲット言語の言語モデルである SRN の中間層への入力として用います。</p>
 
-<p>注意すべきは，ソース言語の文終了時の中間層状態のみをターゲット言語の最初の中間層
-の入力に用いることであり，それ以外の時刻ではソース言語とターゲット言語は関係が
-ないことです。逆に言えば最終時刻の中間層状態がソース文の情報全てを含んでいると
-みなすことです。この点を改善することを目指すことが 2014 年以降盛んに行われてきました。
+<p>注意すべきは，ソース言語の文終了時の中間層状態のみをターゲット言語の最初の中間層の入力に用いることであり，それ以外の時刻ではソース言語とターゲット言語は関係がないことです。
+逆に言えば最終時刻の中間層状態がソース文の情報全てを含んでいるとみなすことです。この点を改善することを目指すことが 2014 年以降盛んに行われてきました。
 顕著な例が後述する <strong>双方向 RNN</strong>， <strong>LSTM</strong> を採用したり，<strong>注意</strong> 機構を導入することでした。</p>
 
 <!--
@@ -385,23 +379,16 @@ From [@2014Sutskever_Sequence_to_Sequence]
 \left(-\log p\left(w_{t+1}\right)\right)=f\left(w_{t}\vert \theta\right)\]
 
 <h2 id="16-多様な-rnn-とその万能性">1.6. 多様な RNN とその万能性</h2>
-<p>双方向 RNN や LSTM を紹介する前に，カルパシーのブログ[^karpathy] から下図に引用します。
+<p>双方向 RNN や LSTM を紹介する前に，<a href="http://karpathy.github.io/2015/05/21/rnn-effectiveness/">カルパシーのブログ</a> から下図に引用します。
 下の 2 つ図ではピンク色が入力層，緑が中間層，青が出力層を示しています。</p>
 
-<table>
-  <tbody>
-    <tr>
-      <td>[^karpathy]: 去年までスタンフォード大学の大学院生。現在はステラ自動車，イーロン・マスクが社長，の AI 部長さんです。図は彼のブログから引用です。蛇足ですがブログのタイトルが unreasonable effectiveness of RNN です。過去の偉大な論文 Wiegner (1960), Hamming (1967), Halevy (2009) からの <del>パクリ</del> <strong>敬意を表したオマージュ</strong>です。”unreasonable effectiveness of [science</td>
-      <td>mathematics</td>
-      <td>data]” $\ldots$ www</td>
-    </tr>
-  </tbody>
-</table>
+<!-- 
+[^karpathy]: 去年までスタンフォード大学の大学院生。現在はステラ自動車，イーロン・マスクが社長，の AI 部長さんです。図は彼のブログから引用です。蛇足ですがブログのタイトルが unreasonable effectiveness of RNN です。過去の偉大な論文 Wiegner (1960), Hamming (1967), Halevy (2009) からの <del>パクリ</del> **敬意を表したオマージュ**です。"unreasonable effectiveness of [science|mathematics|data]" $\ldots$ www
+-->
 
 <center>
-
-<img src="../assets/diags.jpeg" sytle="width:99%" />&gt;<br />
-RNN variations from &lt;http://karpathy.github.io/2015/05/21/rnn-effectiveness/&gt;
+<img src="../assets/diags.jpeg" sytle="width:99%" /><br />
+RNN variations from http://karpathy.github.io/2015/05/21/rnn-effectiveness/
 </center>
 
 <ul>
@@ -418,8 +405,16 @@ RNN variations from &lt;http://karpathy.github.io/2015/05/21/rnn-effectiveness/&
 
 <p>数は各層のニューロン数が 4 つである場合の数値例を示しています。入力層では <strong>ワンホット</strong> 表現<sup id="fnref:onehot" role="doc-noteref"><a href="#fn:onehot" class="footnote" rel="footnote">8</a></sup></p>
 
+<p>以前は one-of-$k$ 表現 (MacKay の PRML など) と呼ばれていたのですが ワンホット表現，あるいは ワンホットベクトル (おそらく命名者は Begnio 一派)と呼ばれることが多いです。
+ワンホットベクトルを学習させると時間がかかるという計算上の弱点が生じます。
+典型的な誤差逆伝播法による学習では，下位層の入力値に結合係数を掛けた値で結合係数を更新します。
+従って，下位層の値のほとんどが “0” であるワンホットベクトルは学習効率が落ちることになります。
+そこで Elman はワンホットベクトルを実数値を持つ多次元ベクトルに変換してから用いることを行いました。
+上のエルマンネットによる文法学習において,ニューロン数 10 の単語埋め込み層と書かれた層がこれに該当します。
+単語埋め込み層を用いることで学習効率が改善し，後に示す word2vec などの <strong>分散ベクトルモデル</strong> へと発展します。</p>
+
 <center>
-<img src="../assets/charseq.jpeg" style="width:94%" />&gt;<br />
+<img src="../assets/charseq.jpeg" style="width:94%" /><br />
 RNN variations from &lt;http://karpathy.github.io/2015/05/21/rnn-effectiveness/&gt;
 </center>
 
@@ -1019,7 +1014,7 @@ during backpropagation of errors.
       <p>彼は(も？)神様です。多くの機械学習アルゴリズムを提案し続けている影響力のある人です。長らく機械学習の国際雑誌の編集長でした。2018年 <a target="_blank" href="https://medium.com/@mijordan3/artificial-intelligence-the-revolution-hasnt-happened-yet-5e1d5812e1e7">AI 革命は未だ起こっていない</a> と言い出して議論を呼びました。 <a href="#fnref:jordan_ai_revolution_not_yet" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:onehot" role="doc-endnote">
-      <p>ベクトルの要素のうち一つだけが “1” であり他は全て “0” である疎なベクトルのこと。一つだけが “熱い” あるいは “辛い” ベクトルと呼びます。以前は one-of-$k$ 表現 (MacKay の PRML など) と呼ばれていたのですが ワンホット表現，あるいは ワンホットベクトル (おそらく命名者は Begnio 一派)と呼ばれることが多いです。ワンホットベクトルを学習させると時間がかかるという計算上の弱点が生じます。典型的な誤差逆伝播法による学習では，下位層の入力値に結合係数を掛けた値で結合係数を更新します。従って，下位層の値のほとんどが “0” であるワンホットベクトルは学習効率が落ちることになります。そこで Elman はワンホットベクトルを実数値を持つ多次元ベクトルに変換してから用いることを行いました。上のエルマンネットによる文法学習において,ニューロン数 10 の単語埋め込み層と書かれた層がこれに該当します。単語埋め込み層を用いることで学習効率が改善し，後に示す word2vec などの <strong>分散ベクトルモデル</strong> へと発展します。 <a href="#fnref:onehot" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>ベクトルの要素のうち一つだけが “1” であり他は全て “0” である疎なベクトルのこと。一つだけが “熱い” あるいは “辛い” ベクトルと呼びます。 <a href="#fnref:onehot" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:sigmoid" role="doc-endnote">
       <p>1980 年代に用いられたシグモイド関数が用いられることはほとんどなくなりました。理由は収束が遅いからです[@1999LeCun] <a href="#fnref:sigmoid" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
