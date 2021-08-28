@@ -48,608 +48,216 @@ MathJax.Hub.Config({
 </div>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <div class="home"><h1 class="page-heading">第11回</h1><h1 id="ディープラーニングの心理学的解釈-心理学特講iiia">ディープラーニングの心理学的解釈 (心理学特講IIIA)</h1>
+        <div class="home"><h1 class="page-heading">第10回</h1><h1 id="ディープラーニングの心理学的解釈-心理学特講iiia">ディープラーニングの心理学的解釈 (心理学特講IIIA)</h1>
 
 <div align="right">
 <a href="mailto:educ0233@komazawa-u.ac.jp">Shin Aasakawa</a>, all rights reserved.<br />
-Date: 17/Apr/2021<br />
+Date: 25/Jun/2021<br />
 Appache 2.0 license<br />
 </div>
 
-<h1 id="第-12-回-強化学習-予測報酬誤差-ゲームai-経済学">第 12 回 強化学習, 予測報酬誤差, ゲームAI, 経済学</h1>
+<h1 id="1-キーワード">1. キーワード</h1>
+
+<ul>
+  <li>敵対的生成ネットワーク (GAN: Generative Adversarial Networks)</li>
+  <li>画風変換 (Style Transfer)</li>
+  <li>EM アルゴリズム (Estimation Maximization Algorithm)</li>
+  <li>変分自己符号化器モデル (VAE: Variational Auto-Encoders)</li>
+  <li>変分下限 (ELBO: Evidence Lower BOund) <a href="https://www.youtube.com/watch?v=jugUBL4rEIM" target="_blank">ビデオ </a></li>
+  <li><a href="/2021/2018Nishio_LBDtmp.pdf">幻視 パレイドリア</a></li>
+</ul>
+
+<h1 id="2-実習">2. 実習</h1>
+<ul>
+  <li><a href="https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2021deep_dream_corrected.ipynb" target="_blank">DeepDream 実習 <img src="https://komazawa-deep-learning.github.io/assets/colab_icon.svg" /> </a></li>
+  <li><a href="https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_0628CartoonGAN_demo.ipynb" target="_blank">CartoonGAN 実習 <img src="https://komazawa-deep-learning.github.io/assets/colab_icon.svg" /></a></li>
+  <li><a href="https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_0625_CycleGAN_demo.ipynb" target="_blank">CycleGAN 実習 <img src="https://komazawa-deep-learning.github.io/assets/colab_icon.svg" /></a></li>
+  <li><a href="https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2020SightVisit_vae_demo.ipynb#scrollTo=GC8fpkk6cFbw" target="_blank">VAE の実習 <img src="https://komazawa-deep-learning.github.io/assets/colab_icon.svg" /></a></li>
+</ul>
+
+<h1 id="3-ビデオ供覧">3. ビデオ供覧</h1>
+<ul>
+  <li><a href="https://drive.google.com/file/d/18uxufT2rf49ItV1PjP2J1-QgmseVoJgT/view?usp=sharing" target="_blank">GAN ビデオ教材</a>
+<a href="https://drive.google.com/file/d/1QE5X5enbEXKzHXj82veUC3dMGO3yrRrN/view?usp=sharing" target="_blank">資料</a></li>
+  <li><a href="https://drive.google.com/file/d/1AKvOa-EeGnpfNznpfBGZ4xqZJR7Z1ro8/view?usp=sharing" target="_blank">VAE の予備知識ビデオ</a>
+<a href="https://drive.google.com/file/d/1hIenuObaY-DX244pjvKh5zjOORlSbeT3/view?usp=sharing" target="_blank">資料</a></li>
+  <li><a href="https://drive.google.com/file/d/10jxvAeJzfRv2RkJcv-BKX--EerpwMWu1/view?usp=sharing" target="_blank">VAE ビデオ</a>
+<a href="https://drive.google.com/file/d/1hIenuObaY-DX244pjvKh5zjOORlSbeT3/view?usp=sharing" target="_blank">資料</a></li>
+</ul>
+
+<h1 id="4-生成モデル-generative-models">4. 生成モデル Generative models</h1>
 
 <center>
-
-<img src="../assets/2016AlphaGo_Fig1a.svg" />
-<img src="../assets/2016AlphaGo_Fig1b.svg" /><br />
-AlphaGo の模式図，原著論文より
-
-<img src="../assets/AlphaGoZeroFig2.png" /><br />
-AlphaGoZero のセルフプレイ，原著論文より
+<img src="https://komazawa-deep-learning.github.io/assets/Tenn2.jpg" width="48%" />
+<img src="https://komazawa-deep-learning.github.io/assets/Tenn_deepdream.jpg" width="48%" /><br />
+天安門前広場の夢 (撮影は自民解放軍の兵士に依頼した)
 </center>
 
-<!--
-<https://medium.com/tensorflow/deep-reinforcement-learning-playing-cartpole-through-asynchronous-advantage-actor-critic-a3c-7eab2eea5296>
-
-<https://gist.github.com/ruippeixotog/cde7cae770e72916e209b915521bb18f>
-
-- 強化学習のデモ
-```bash
-# for Reinforcement Learning
-cd ~/study/2018karpathy_reinforcejs.git
-open index.html
-```
--->
-
-<h2 id="実習ファイル">実習ファイル</h2>
-
-<ul>
-  <li><a href="https://colab.research.google.com/github/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_rl_ogawa_2_2_maze_random.ipynb">ランダム探索  <img src="../assets/colab_icon.svg" /></a>{target=”_blank”}</li>
-  <li><a href="https://colab.research.google.com/github/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_rl_ogawa_2_3_policygradient.ipynb">方策勾配法  <img src="../assets/colab_icon.svg" /></a>{target=”_blank”}</li>
-  <li><a href="https://colab.research.google.com/github/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_rl_ogawa_2_5_Sarsa.ipynb">SARSA  <img src="../assets/colab_icon.svg" /></a>{target=”_blank”}</li>
-  <li><a href="https://colab.research.google.com/github/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_rl_ogawa_2_6_Qlearning.ipynb">Q学習  <img src="../assets/colab_icon.svg" /></a>{target=”_blank”}</li>
-  <li><a href="reinforcejs/index.html">REINFORCE.js</a>{target=”_blank”}</li>
-</ul>
-
-<!-- https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_rl_ogawa_2_2_maze_random.ipynb)-->
-<!--(https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_rl_ogawa_2_3_policygradient.ipynb)-->
-<!--(https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_rl_ogawa_2_5_Sarsa.ipynb)-->
-<!--(https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_rl_ogawa_2_6_Qlearning.ipynb)-->
-
-<p>以下のデモは，<a href="https://openai.com/">OpenAI</a> 提供の強化学習環境 <a href="https://gym.openai.com/">gym</a>
-を用いています。</p>
-
-<ul>
-  <li><a href="https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0716Gym_cartpole_rendering.ipynb">倒立振子 (cartpole) <img src="../assets/colab_icon.svg" /></a>{target=”_blank”}</li>
-</ul>
-
-<p>Colaboratory 上で gym を 動作させるためには <a href="https://star-ai.github.io/Rendering-OpenAi-Gym-in-Colaboratory/">StarAI の開発したレンダリング環境</a>
-が必要です。</p>
-
-<!--
-使うと環境構築は楽です。ただし -->
-
-<!--
-```python
-import gym
-env = gym.make('CartPole-v0')
-env.reset()
-for _ in range(1000):
-    env.render()
-    env.step(env.action_space.sample()) # take a random action
-```
-
-[cartpole 問題](https://www.youtube.com/watch?v=J7E6_my3CHk)を解いてみました
-
-```bash 
-cd ~/study/2019tensorflow_models.git/research/a3c_blogpost
-# python a3c_cartpole.py --train
-python a3c_cartpole.py --algorithm=random --max-eps=4000
-```
-## The Animal-AI Olympics
-
-<http://animalaiolympics.com/>
-
-<div>
-<video style="width:84%" src='./assets/Animal-AI Olympics Preview.mp4' controls >
-</div>
-
-## Unity Obstacle Tower Challenge
-
-<https://www.aicrowd.com/challenges/unity-obstacle-tower-challenge>
-
-<div>
-<video style="width:84%" src='./assets/Unity Obstacle Tower Challenge.mp4' controls >
-</div>
-
--->
-
-<h1 id="強化学習条件付けの古典">強化学習，条件付けの古典</h1>
-
-<ul>
-  <li><a href="https://en.wikipedia.org/wiki/Ivan_Pavlov">パブロフ</a> (Ivan Petrovich Pavlov; 1849/Sep/14-1936/Feb/27)古典的条件づけ 1904 年ノーベル医学生理学賞</li>
-  <li><a href="https://en.wikipedia.org/wiki/B._F._Skinner">スキナー</a> (Burrhus Frederic Skinner; 1904/Mar/20-1990/Aug/18) 道具的条件付け， オペラント条件づけ，<a href="./assets/1938Skinner_Fig1_skinnerBOX.jpg">スキナー箱, Skinner(1938) Fig.1, page 39 より</a></li>
-  <li><a href="http://incompleteideas.net/">Sutton</a> and <a href="http://www-anw.cs.umass.edu/~barto/">Barto</a> の強化学習 <a href="http://incompleteideas.net/book/first/the-book.html">初版 1998年</a>, <a href="http://incompleteideas.net/book/the-book-2nd.html">第2版 2018年</a>, <a href="https://www.amazon.co.jp/dp/4627826613/">初版は翻訳あり</a>，第2版は pdf ファイルで<a href="http://incompleteideas.net/book/bookdraft2017nov5.pdf">ダウンロード可能</a></li>
-</ul>
-
-<center>
-
-<img src="https://www.nobelprize.org/images/pavlov-12840-content-portrait-mobile-tiny.jpg" width="24%" />
-<a href="https://www.nobelprize.org/prizes/medicine/1904/pavlov/biographical/">Ian Pavlov</a>&nbsp;&nbsp;
-<img src="https://www.bfskinner.org/wp-content/gallery/1970s-1990/BFS-IN-THE-OFFICE.jpg" width="24%" />
-<a href="https://www.bfskinner.org/archives/photos/">Burrhus Frederic Skinner</a>&nbsp;&nbsp;
-<img src="http://incompleteideas.net/sutton-head5.jpg" width="24%" />
-<a href="http://incompleteideas.net/">Richard S. Sutton,</a>&nbsp;&nbsp;
-<img src="https://people.cs.umass.edu/~barto/barto2006-lowres.jpg" width="24%" />
-<a href="https://people.cs.umass.edu/~barto/">Andrew G. Barto</a>
-</center>
-
-<h1 id="強化学習とは何か">強化学習とは何か？</h1>
-
-<center>
-
-<img src="../assets/2018Sutton_Fig3j.svg" style="width:74%" /><br />
-<p align="center" style="width:74%">
-Sutton &amp; Barto (2018) Fig. 3.2 を改変
-</p>
-</center>
-
-<p>強化学習という言葉は古い言葉ですが機械学習の文脈では，
-環境とその環境におかれた動作主（エージェントと言ったり，ロボットシステムだったりします）が，
-環境と相互作用しながらより良い行動を形成するためのモデルです。
-動作主は，環境から受け取った現在の状態を分析して，
-次にとるべき行動を選択します。このとき将来に渡って報酬が最大となるような行動を学習する手法の一つです。</p>
-
-<p>2015 年には，Google傘下のデープマインドというスタートアップチームが開発した囲碁プログラムAlphaGoがプロ棋士のイ・セドル氏に勝利し話題になりました。
-AlphaGo は強化学習を基本技術の一つとして用いています。</p>
-
-<ol>
-  <li><a href="rl01_elements.pdf">強化学習(1): 基礎</a></li>
-  <li><a href="rl02_agentAndEnv.pdf">強化学習(2): エージェントと環境</a></li>
-  <li><a href="rl03_goalAndReward.pdf">強化学習(3): 目標と報酬</a></li>
-  <li><a href="rl04_mdp.pdf">強化学習(4): マルコフ決定過程</a></li>
-  <li><a href="rl05_vi.pdf">強化学習(5): 価値反復，方策反復</a></li>
-  <li><a href="rl06_advanced.pdf">強化学習(6): </a></li>
-  <li><a href="rl07_robotics.pdf">強化学習(7): </a></li>
-</ol>
-
-<ul>
-  <li>エージェントと環境，マルコフ決定過程 MDP，POMDP，効用関数，ベルマン方程式，探索と利用のジレンマ，SARSA:</li>
-  <li>価値，方策，Q 学習，モデルベース対モデルフリー，アクター=クリティック:</li>
-  <li>
-    <p>深層 Q 学習:</p>
-  </li>
-  <li>ゲーム AI へ (AlphaGo，AlphaGoZero，OpenAI five):</li>
-  <li>セルフプレイ:</li>
-  <li>最近の発展 A3C，Rainbow，RDT，World model:</li>
-</ul>
-
-<!--
-### 方策，報酬，価値観数，(環境)モデル
-
-- $s,s'$: 状態 state
-- $a$: 行動，行為 action
-- $r$: 報酬 reward
-- $t$: 時間 (離散時間 $t=1,2,\ldots,T$)
-- $p(s',r\vert s, a)$: 状態 $s$ で行為 $a$ を行ったとき，報酬 $r$ を受け取って 状態 $s'$ に遷移する確率
-- $p(s'\vert s, a)$: 状態 $s$ で行為 $a$ を行った場合，状態 $s'$ へ遷移する確率
-- $r(s,a)$: 状態 $s$ で行為 $a$ を行った場合の即時報酬 immediate reward の期待値
-- $r(s,a,s')$: 行為 $a$ を行った場合状態が $s$ から $s'$ へ変化したときの即時報酬の期待値
-- $v_\pi(s)$: 方策 $\pi$ での状態 $s$ の価値 (期待報酬)
-- $v_*(s)$: 最適方策化での状態 $s$ の価値
-- $q_\pi(s,a)$: 方策 $\pi$ のもとで状態 $s$ で行為 $a$ をおこなた場合の価値
-- $q_*(a)$: 行動 $a$ を行った場合の期待報酬(真の報酬) <!-- true value (expected reward) of action $a$-->
-
-<!--
-- $Q_t(a)$: 時刻 $t$ での $q_*(a)$ の期待値 <!-- qestimate at time $t$ of $q_*(a)$
-- $N_t(a)$: 時刻 $t$ で行為 $a$ を行った回数 <!-- number of times action $a$ has been selected up prior to time $t$
-- $H_t(a$) 時刻 $t$ で行為 $a$ を行う傾向(選好 preference) <!--learned preference for selecting action a at time $t$
-- $\pi_t(a)$: 時刻 $t$ で行為 $a$ を選択する確率 <!-- probability of selecting action a at time $t$
-- $R_t$: $\pi_t$ が与えられた場合，時刻 $t$ における の期待報酬 <!--estimate at time $t$ of the expected reward given $\pi_t$
---->
-
-<h2 id="複雑な状況をどう理解して解決するのか">複雑な状況をどう理解して解決するのか？</h2>
-
-<ul>
-  <li>強化学習というニューラルネットワークモデルがあるわけではない</li>
-  <li>
-    <p>動的で複雑な環境に対処 $\rightarrow$ <strong>強化学習</strong> + DL $\rightarrow$ 一般人工知能への礎</p>
-  </li>
-  <li>DQN ATARIのビデオゲーム, <a href="https://www.nature.com/articles/nature14236">https://www.nature.com/articles/nature14236</a></li>
-  <li>AlphaGo 囲碁, <a href="https://www.nature.com/articles/nature16961">https://www.nature.com/articles/nature16961</a></li>
-  <li>AlphaGoZero 囲碁, <a href="https://www.nature.com/articles/nature24270">https://www.nature.com/articles/nature24270</a></li>
-</ul>
-
-<h1 id="deep-q-network">Deep Q Network</h1>
-
-<center>
-  <img src="../assets/2015DQNFig1.svg" width="74%" /><br />
-DQNの模式図, 原著論文より
-</center>
+<p>畳み込みニューラルネットワークの精度は向上しました。ですが，2014 年まで画像の合成はできませんでした。</p>
 
 <!-- 
-- [ギャラガ1](../assets/MOV_0013s.mp4)
-- [ギャラガ2](../assets/MOV_0071s.mp4)
+Throughout most of this book, we have talked about how to make predictions. 
+In some form or another, we used deep neural networks learned mappings from data examples to labels. 
+This kind of learning is called discriminative learning, as in, weʼd like to be able to discriminate between photos cats and photos of dogs. 
+Classifiers and regressors are both examples of discriminative learning. 
+And neural networks trained by backpropagation have upended everything we thought we knew about discriminative learning on large complicated datasets. 
+Classification accuracies on high-res images has gone from useless to human-level (with some caveats) in just 5-6 years. 
+We will spare you another spiel about all the other discriminative tasks where deep neural networks do astoundingly well.
+
+But there is more to machine learning than just solving discriminative tasks. 
+For example, given a large dataset, without any labels, we might want to learn a model that concisely captures the characteristics of this data. 
+Given such a model, we could sample synthetic data examples that resemble the distribution of the training data. 
+For example, given a large corpus of photographs of faces, we might want to be able to generate a new photorealistic image that looks like it might plausibly have come from the same dataset. This kind of learning is called generative modeling.
+
+Until recently, we had no method that could synthesize novel photorealistic images. 
+But the success of deep neural networks for discriminative learning opened up new possibilities. 
+One big trend over the last three years has been the application of discriminative deep nets to overcome challenges in problems that we do not generally think of as supervised learning problems. 
+The recurrent neural network language models are one example of using a discriminative network (trained to predict the next character) that once trained can act as a generative model.
+
+In 2014, a breakthrough paper introduced Generative adversarial networks (GANs) (Goodfellow et al., 2014), a clever new way to leverage the power of discriminative models to get good generative models. 
+At their heart, GANs rely on the idea that a data generator is good if we cannot tell fake data apart from real data. 
+In statistics, this is called a two-sample test - a test to answer the question whether datasets $X = \{x_1,\ldots, x_n\}$ and $X' = \{x'_1,\ldots,x'_n\}$ were drawn from the same distribution.
+The main difference between most statistics papers and GANs is that the latter use this idea in a constructive way. 
+In other words, rather than just training a model to say “hey, these two datasets do not look like they came from the same distribution”, they use the two-sample test to provide training signals to a generative model. 
+This allows us to improve the data generator until it generates something that resembles the real data. 
+At the very least, it needs to fool the classifier. 
+Even if our classifier is a state of the art deep neural network.
 -->
+<!-- 
+2014 年 画期的な論文により Generative adversarial networks (GAN) (Goodfellow et al., 2014) が紹介されました。
+これは 識別モデルの力を活用して 優れた生成モデルを得るための巧妙な新しい方法です。
+GAN の核心は 「偽のデータと本物のデータを見分けることができなければ データ生成器は優れている」という考え方にあります。
+統計学では  「2 標本検定」といい、データセット $X=\left\\{x_1,\ldots, x_n\right\\}$ と $X'=\left\\{x'_1,\ldots,x'_n\right\\}$ が同じ分布から引き出されているかどうかを調べる検定です。
+統計学の論文と GAN の大きな違いは GAN がこの考え方を建設的に利用していることです。
+つまり 単に「おい、この 2 つのデータセットは同じ分布から来たようには見えないぞ」 とモデルを訓練するのではなく 生成モデルに訓練信号を与えるために 2 標本検定 を使うのです。
+これにより 実際のデータに似たものを生成するまで、データ生成器 を改良することができます。
+少なくとも、分類器 を騙す必要があります。
+たとえ 分類器 が最先端のディープニューラルネットワークであったとしてもです。
 
-<ul>
-  <li><strong>Q 学習</strong> Q learning に DNN を採用</li>
-  <li>CNN が LeNet, @1998LeCun そうであったように，強化学習 RL も昔からの技術 @Sutton_and_Barto1998</li>
-  <li>ではなぜ，今になって囲碁や自動運転に応用できるようになったのか？
-    <ul>
-      <li>$\Rightarrow$ コンピュータの能力, データ規模，アルゴリズムの改良, エコシステム(ArXiv, Linux, Git, ROS, AMT, TensorFlow)</li>
-    </ul>
-  </li>
-</ul>
 
-<!--
-# 強化学習
-
-- 強化学習 $\Rightarrow$ 意思決定
-  - **エージェント** agent が **行動**(行為) action をする
-  - 行動によって **状態** が変化する
-  - **環境** から与えられる **報酬** によって**目標**が決定
-- 深層学習: $\Rightarrow$ 表現，表象
-  - 教師信号として目標が与えられる
-  - 目標を達成するために外部状況の **表現** を獲得
-
-<center>
-<font size="+2" color="Green">強化学習 + 深層学習 = 人工知能</font>
-</center>
-
-  - 強化学習 $\Rightarrow$ 目標の設定
-  - 深層学習 $\Rightarrow$ 内部表象の獲得機構を提供
-
-# 用語の整理
-
-- 教師信号なし **報酬信号** reward signal
-- 遅延フィードバック
-
-- **価値** Value
-- **行為** Action
-- **状態** State
-- TD 学習
-  - **Sarsa**
-  - **Q 学習**
-  - **アクタークリティック**
-- 報酬 $R_t$: **スカラ値**
-  - 時刻 $t$ でエージェントのとった行動を評価する指標
-  - エージェントは**累積報酬** cumulative reward の最大化する
-  - 報酬仮説: **目標は累積期待報酬の最大化として記述可能**
--->
-
-<h2 id="youtube-上でのデモ動画">YouTube 上でのデモ動画</h2>
-<ul>
-  <li>ブロック崩し: <a href="https://www.youtube.com/watch?v=V1eYniJ0Rnk">https://www.youtube.com/watch?v=V1eYniJ0Rnk</a>{target=”_blank”}</li>
-  <li>スペースインベーダー: <a href="https://www.youtube.com/watch?v=W2CAghUiofY">https://www.youtube.com/watch?v=W2CAghUiofY</a>{target=”_blank”}</li>
-</ul>
-
-<!--- packman: [https://www.youtube.com/watch?v=r3pb-ZDEKVg](https://www.youtube.com/watch?v=r3pb-ZDEKVg)
-- OpenMind selfplay: [https://www.youtube.com/watch?v=OBcjhp4KSgQ](https://www.youtube.com/watch?v=OBcjhp4KSgQ)
--->
-
-<ul>
-  <li>DQN の動画 スペースインベーダー</li>
-</ul>
-
-<center>
-
-<div>
-<video style="width:33%" controls="" src="../assets/2015Mnih_DQN-Nature_Video1.mp4" type="video/mp4"><br />
-&lt;/div&gt;
-&lt;/center&gt;
-
-- DQN の動画 ブロック崩し
-
-<center>
-
-<div>
-<video style="width:33%" controls="" src="../assets/2015Mnih_DQN-Nature_Video2.mp4" type="video/mp4">
-&lt;/div&gt;
-&lt;/center&gt;
-
-## DQN 結果
-
-<center>
-
-<img src="../assets/2015Mnih_DQNFig.png" style="width:94%" />&lt;/br&gt;
-</center>
-
-<!-- ## なぜ DQN には難しいのか？
-
-<center>
-<div>
-<video style="width:74%" controls src="../assets/Montezuma.mp4" type="video/mp4" /></br>
-**Montezuma**
-</div>
-</center>
-
-<center>
-<video style="width:74%" controls src="../assets/PrivateEye.mp4" type="video/mp4" /></br>
-**Private Eye**
-</center>
-
-<center>
-<video width="39%" autoplay loop markdown="0" controls muted>
-  <source src="./assets/Montezuma.mp4">
-</video>
-<video width="39%" autoplay loop markdown="0" controls muted>
-  <source src="./assets/privateEye.mp4">
-</video>
+本物そっくりのデータを生成できる可能性のあるネットワークが必要です。
+画像を扱うのであれば、画像を生成する必要があります。画像を扱う場合は画像を、音声を扱う場合は音声シーケンスを生成する必要があります。
+これを「生成器ネットワーク」と呼びます。
+2 つ目のネットワークは 識別器ネットワークです。
+このネットワークは、偽物と本物のデータを区別しようとします。
+この2つのネットワークはお互いに競争しています。
+生成器ネットワークは、識別器ネットワークを欺こうとします。
+この時、識別器ネットワークは、新しい偽のデータに適応します。
+この情報は 今度は生成器ネットワークを改善するために使用され という具合です。
  -->
 
-## 人間にはできて強化学習には難しいこと
+<!-- The GAN architecture is illustrated in Fig. 17.1.1.  -->
 
-- Montenzuma's Revenge の動画 [https://www.youtube.com/watch?v=Klxxg9JM5tY](https://www.youtube.com/watch?v=Klxxg9JM5tY){target="_blank"}
-- Private Eys の動画 [https://www.youtube.com/watch?v=OfyS-Wj1M78](https://www.youtube.com/watch?v=OfyS-Wj1M78){target="_blank"}
+<!-- As you can see, there are two pieces in GAN architecture - first off, we need a device (say, a deep network but it really could be anything, such as a game rendering engine) that might potentially be able to generate data that looks just like the real thing. 
+If we are dealing with images, this needs to generate images. If we are dealing with speech, it needs to generate audio sequences, and so on. We call this the generator network. 
+The second component is the discriminator network. 
+It attempts to distinguish fake and real data from each other. 
+Both networks are in competition with each other. The generator network attempts to fool the discriminator network. 
+At that point, the discriminator network adapts to the new fake data. 
+This information, in turn is used to improve the generator network, and so on.
 
-<!---
-## エージェントと環境
-
-- At each step $t$ the agent:
-  - Executes action $A_t$
-  - Receives observation $O_t$
-  - Receives scalar reward $R_t$
-- The environment:
-  - Receives action $A_t$
-  - Emits observation $O_{t+1}$
-  - Emits scalar reward $R_{t+1}$
-- $t$ increments at env. step
--->
-
-<!--
-- **エージェント**: 学習と意思決定を行う主体
-  1. **行動** action **$A_t$** を行い
-  1. 環境の **観察** observation **$O_t$** を行う
-  1. 環境からスカラ値の **報酬** reward **$R_t$** を受け取る
-- **環境**: エージェント外部の全て
-  1. エージェントから **行為** $A_t$ を受け取り
-  1. エージェントに **観察** $O_{t+1}$ を与え
-  1. エージェントへ **報酬** $R_{t+1}$ を与える
-
-## エージェントの要素
-
-- **方策** Policy
-- **価値関数** Value function
-- **モデル** エージェントが持つ環境の表象
-
-## 方策 policy
-
-- **方策** : エージェントの行為
-- 決定論的方策: $a=\pi(S)$
-- 確率論的方策: $\pi(a|s)=p(A_{t=a}|S_{t=s})$
-
-## 価値関数
-- 将来の報酬予測
-- 状態評価(良/悪)
-- 行為の選択
-$$
-v_\pi(S)=\mathbb{E}_\pi\left\{R_{t+1}+\gamma R_{t+2} + \gamma^2R_{t+3}+\ldots|S_{t=s}\right\}
-$$
-
-## 強化学習のモデル
-- 価値ベース
-  - 方策:なし
-  - 価値関数:あり
-- 方策ベース
-  - 方策:あり
-  - 価値関数:なし
-- アクター=クリティック Actor Critic
-  - 方策: あり
-  - 価値関数: あり
-
-- モデルフリー
-  - 方策，価値関数: あり
-  - モデル: なし
-- モデルベース
-  - 方策，価値関数: あり
-  - モデル: あり
-
-## 探索と利用のジレンマ Exploration and exploitaion dilemma
-- 過去の経験から，一番良いと思う行動ばかりをしていると，さらに良い選択肢を見つけ出すことができない **探索不足**
-- 更に良い選択肢ばかり探していると過去の経験が活かせない **過去の経験の利用不足**
-
-## 目標，収益，報酬
-
-- エージェントの目標は累積報酬を最大化すること (報酬仮説)
-  - **報酬仮説** Reward Hypothesis
-  - 目標: 期待報酬の最大化
-
-- 時刻 $t$ における報酬 $R_t$ : **スカラ値**
-- 時刻 $t$ におけるエージェント行為の評価
-
-## 逐次的意思決定 Sequential Decision Making
-- 目標 Goal: 総収益を最大化する行動を選択すること
-- 行為，行動 Actions は長期的結果
-- 収益は遅延することも有る
-- 直近の報酬を選ぶよりも，長期的な報酬を考えた方が良い場合がある 
-
-
-## 収益 Return
-- **収益** return $G_t$: 割引付き収益 
-$$
-G_t=R_{t+1}+\gamma R_{t+2}+\ldots=\sum_{k=0}^{\infty}\gamma^k R_{t+k+1} 
-$$
-
-- 割引率 The discount $\gamma\in\left\{0,1\right\}$ : 現時点から見た将来の報酬を計算するため
-
-- **遅延報酬** delayed reward の評価
-- $0$ に近ければ __近視眼的__ 評価
-- $1$ に近ければ __将来を見通した__ 評価
-
-## 価値関数 Value Function
-
-- **状態価値関数 $v$ ** と **行動価値関数 $q$ **
-
-- **価値関数** $v(s)$: gives the long-term value of state $s$
-- **状態価値関数** $v(s)$ of an MRP is the expected return starting from state $s$
-$$
-v(s)=\mathbb{E}\left\{G_t|S_{t=2}\right\}
-$$
-
-- **状態価値関数** state-value function: 
-$$
-v_\pi(s)=\mathbb{E}_\pi\left\{G_t|S_{t=s}\right\}
-$$
-
-# ベルマン期待期待 Bellman Expectation Equation
-- **状態価値関数** : 即時報酬と後続状態の割引付き報酬の和に分解できる
+識別器は 入力 $x$ が（実データからの）本物か（生成器からの）偽物かを区別するための二値分類器です。
+一般に識別器は 隠れたサイズが 1 の密な層を使用するなどして、入力 $masbf{x}$ に対してスカラー予測 $o\in\mathcal{R}$ を出力し シグモイド関数を適用して予測確率 $D(x) = 1/(1 + e^o)$ を得ることができます。
+真のデータのラベル $y$ は 1 偽のデータは 0 だとします。
+交差エントロピー損失を最小化するように識別器を学習:
 
 $$
-v_\pi(s)=\mathbb{E}_\pi\left\{R_{t+1}+\gamma v_\pi(S_{t+1}|S_t=s)\right\}
-$$
-
-- **行動価値関数** action-value function:
-$$
-q_\pi(s,a)=\mathbb{E}_\pi\left\{G_t|S_{t}=s,A_{t}=a\right\}
-$$
-
-- **行動価値関数** 同じく分解可能 The action-value function can similarly be decomposed,
-$$
-q_\pi(s,a)=\mathbb{E}_\pi\left\{R_{t+1}+\gamma q_\pi(S_{t+1},A_{t+1})|S_{t}=s,A_{t}=a\right\}
-$$
-
-
-## 最適価値関数 Optimal Value Function
-- 最適状態価値関数 
-$$
-v_{*}(s) = \max_{\pi} v_{\pi}(s)
-$$
-- 最適行動価値関数
-$$
-q_{*}(s,a)=\max q_{\pi}(s,a)
-$$
-
-- ベルマン方程式 一般に非線形になるので難しい
--->
-
-<!--
-- No closed form solution (in general)
-- Many iterative solution methods
-- 幾つかの解法:
-  - 価値反復
-  - 方策反復
-  - Q 学習
-  - sarsa
--->
- 
-<!--
-  - Value Iteration
-  - Policy Iteration
-  - Q-learning
-  - Sarsa
--->
-
-<!--
-# Markov Reward Process
-A Markov reward process is a Markov chain with values.
-
-- A Markov Reward Process is a tuple $<S,P,R,\gamma>$
-  - $S$ is a finite set of states
-  - $P$ is a state transition probability matrix,
-  - $P_{ss'}=P\of{S_{t+1}=s'\given{S_t=s}}$
-  - $R$ is a reward function, $R_s=\mathbb{E}\BRc{R_{t+1}\given{S_t=s}}$
-  - $\gamma$ is a discount factor
-
-# Bellman Equation for MRPs
-The value function can be decomposed into two parts:
-  - immediate reward $R_{t+1}$
-  - discounted value of successor state $\gamma v\of{S_{t+1}}$
-
-$$
-\begin{array}{lll}
-v\of{s}&=&\mathbb{E}\BRc{G_t\given{S_t=s}}\\
-&=&\mathbb{E}\BRc{R_{t+1}+\gamma R_{t+2}+\gamma^2R_{t+3}+\ldots\given{S_{t}=s}}\\
-&=&\mathbb{E}\BRc{R_{t+1}+\gamma\Brc{R_{t+2}+\gamma R_{t+3}+\ldots}\given{S_{t}=s}}\\
-&=&\mathbb{E}\BRc{R_{t+1}+\gamma G_{t+1}\given{S_{t}=s}}\\
-&=&\mathbb{E}\BRc{R_{t+1}+\gamma v\of{S_{t+1}\given{S_{t}=s}}}
-\end{array}
-$$
-
-# Bellman Equation for MRPs
-
-$$
-v\of{s}=\mathbb{E}\BRc{R_{t+1}+\gamma v\of{S_{t+1}}\given{S_t=s}}
-$$
-
-
-$$
-v\of{s}=R_s +\gamma\sum_{s'\in S} P_{ss'}v\of{s'}
-$$
-
-# Solving the Bellman Equation
-- The Bellman equation is a linear equation
-- It can be solved directly:
-$$
-\begin{array}{lll}
-v &=& R +\gamma Pv\\ 
-\Brc{I - \gamma P}v &=& R\\
-v &=& \Brc{I-\gamma P}^{-1}R
-\end{array}
-$$
-
-- Computational complexity is $O(n^3)$ for $n$ states
-- Direct solution only possible for small MRPs
-- There are many iterative methods for large MRPs, e.g.
-  - Dynamic programming
-  - Monte-Carlo evaluation
-  - Temporal-Difference learning
--->
-
-
-<!-- # 価値関数 Value Function -->
-<!-- - 将来の報酬予測の関数 -->
-<!--   - ある状態である行動を起こすとどれほどの報酬が得られるか -->
-<!-- - **Q-値関数** Q-value function : 総期待報酬を得る関数<\!--gives expected total reward-\-> -->
-<!--   - 方策 $\pi$ のもとで -->
-<!--   - 状態 $s$ で行動 $a$ を行ったとき -->
-<!-- $$ -->
-<!--   Q^\pi\of{s,a}=\mathbb{E}\BRc{r_{t+1}+\gamma r_{t+2}+\gamma^2 r_{t+3}+\ldots\given{s,a}} -->
-<!-- $$   -->
-
-<!--
-# 最適価値関数 Optimal Value Functions
-- 最大の価値を与える関数
-$$
-Q^*(s,a)=\max_{\pi}Q^\pi(s,a)=Q^{\pi^*}(s,a)
-$$
-- 最適価値関数 $Q^*$ が得られれば最適方策 $\pi^*$ を求めることができる
-$$
-\pi^*(s)=\operatorname{argmax}_aQ^*(s,a)
-$$
-
-- 全ての意思決定における最適価値:
-$$
-\begin{array}{lll}
-Q^*(s,a)&=&r_{t+1}+\gamma\max_{a_{t+1}}r_{t+2}+\gamma^2\max_{a_{t+2}}r_{t+3}+\ldots\\
-           &=&r_{t+1}+\gamma\max_{a_{t+1}}Q^*(s_{t+1},a_{t+1})
-\end{array}
+\min_D\left\{y\log(D(x))-(1-y)\log(1-D(x))\right\},
 $$
 -->
 
-<!-- from sliver (2016) icml lecture -->
-<!--
-- **ベルマン方程式** Bellman equation:
-$$
-Q^*(s,a)=\mathbb{E}_{s'}\left\{r+\gamma\max_{a'}Q^*(s',a')|s,a\right\}.
-$$
+<!-- The discriminator is a binary classifier to distinguish if the input $x$ is real (from real data) or fake (from the generator). 
+Typically, the discriminator outputs a scalar prediction $o\in\mathcal{R}$ for input $\mathbf{x}$, such as using a dense layer with hidden size 1, and then applies sigmoid function to obtain the predicted probability $D(x) = 1/(1 + e^o)$. 
+Assume the label $y$ for the true data is 1 and 0 for the fake data. 
+We train the discriminator to minimize the cross-entropy loss, i.e.,
 -->
 
-<!--
-# 報酬(収益) Rewards
-- 時刻 $t$ における報酬 $R_t$ : **スカラ値**
-- 時刻 $t$ におけるエージェント行為の評価Indicates how well agent is doing at step $t$
-
-# Sequential Decision Making
-- 目標 Goal: select actions to maximise total future reward
-- 行為 Actions はmay have long term consequences
-- 収益は遅延することも有る
-- 直近の報酬を選ぶよりも，長期的な報酬を考えた方が良い場合がある <!--It may be better to sacrifice immediate reward to gain more long-term reward-
-- Examples:
-  - A financial investment (may take months to mature)
-  - Refuelling a helicopter (might prevent a crash in several hours)
-  - Blocking opponent moves (might help winning chances many moves from now)
+<!-- - 生成器は ランダムなソース 正規分布 $z\sim\mathcal{N}(0, 1)$ から パラメータ $z$ をサンプリング
+- $z$ を潜在変数として扱う
+- 生成器ネットワークを適用して $x'=G(z)$ を生成
 -->
 
----
+<!-- For the generator, it first draws some parameter $z\in\mathbb{R}^d$ from a source of randomness, e.g., a normal distribution $z\sim\mathcal{N}(0, 1)$. 
+We often call $z$ as the latent variable. 
+It then applies a function to generate $x'= G(z)$. 
+The goal of the generator is to fool the discriminator to classify $x'=G(z)$ as true data, i.e., we want $D(G(z))\sim 1$. 
+In other words, for a given discriminator $D$, we update the parameters of the generator $G$ to maximize the cross-entropy loss when $y=0$, i.e.,
+ -->
+<p>\(\min_G\left\{-(1-y)\log(D(G(\mathbf{z})))\right\} = \min_G\left\{-\log(D(G(\mathbf{z})))\right\}\)</p>
+
+<ul>
+  <li>認識の反対の操作が 生成器。<strong>生成敵対ネットワーク</strong> Generative Adversarial Networks: GAN</li>
+  <li>GAN では 2 つのニューラルネットワークが用いられ，<strong>識別器</strong> descriminator と <strong>生成器</strong> generator と呼びます(Goodfellow,2014)。</li>
+  <li>
+    <p>識別器も生成器も多層ニューラルネットワーク</p>
+  </li>
+  <li>通常の画像分類課題では，最上位層において推論，すなわち入力画像が何であるかを計算するためにソフトマックス関数などが用いられる。</li>
+  <li>これに対して GAN の識別器は，0 か 1 かの出力</li>
+  <li>入力画像が通常の画像であれば 1 を，生成器によって生成 された画像であれあば 0 を出力</li>
+  <li>生成器は，識別器の最終直下層で得られたような画像表現に雑音を加えた値から画像を生成</li>
+  <li>生成器は，識別器が入力データから画像を推論するのと逆方法に推論から画像を生成</li>
+  <li>すなわち GAN は入力が実在するか，偽造品，すなわちフェイクかを見破る訓練がなされる</li>
+  <li>生成器の目的は 識別器を騙すこと。 $x’=G(z)$ を真のデータとして分類させること。すなわち $D(G(z))$ を $\sim 1$ に近づけること。</li>
+  <li>識別器 $D$ に対して $y=0$ のときの交差エントロピー損失 が最大になるように 生成器 $G$ のパラメータを更新する</li>
+  <li>生成器 は 識別器 の学習成果であるデータの内部表現を模倣し，生成器を欺こうとする</li>
+  <li>識別器 と 生成器 との間で  <strong>ゲーム理論</strong> でいう <strong>ナッシュ均衡</strong> Nash’s equilibrium が成り立つ (Heusel, 2017)。</li>
+</ul>
+
+<!-- GAN の模式的な流れを下図 に示しました。 -->
+<div align="center" style="width:88%">
+<img src="/assets/2016Goodfellow_fig12ja.svg" style="width:99%" /><br />
+</div>
+
+<h2 id="41-画像変換">4.1. 画像変換</h2>
 
 <center>
-<div>
-<img src="../assets/2017Hassel_RainbowFig1.svg" style="width:74%" /><br />
-<strong>すでに結果が古いのですが Rainbow の性能</strong>
-
-<img src="../assets/2017Hassel_RainbowRes1.svg" style="width:94%" /><br />
-<strong>すでに結果が古いのですが Rainbow の性能</strong>
-</div>
+<img src="/assets/2017Taigman_fig.svg" style="width:94%" /><br />
 </center>
 
----
+<center>
+<img src="/assets/2017Reed_tmp_5.svg" style="width:94%" />
+</center>
 
-- カルパシーのブログ [http://karpathy.github.io/2016/05/31/rl/](http://karpathy.github.io/2016/05/31/rl/)
+<center>
+<img src="/assets/2017Reed_tmp_1.svg" style="width:94%" />
+</center>
 
+<center>
+<img src="/assets/2017Reed_tmp_6.svg" style="width:94%" />
+</center>
 
+<h2 id="42--サイクル-gan">4.2.  サイクル GAN</h2>
+<center>
+<img src="/assets/2017Reed_tmp_7.svg" style="width:94%" />
+</center>
 
-</video></div></center></video></div></center>
+<h3 id="421-サイクル-gan-による領域変換">4.2.1. サイクル GAN による領域変換</h3>
+<center>
+<img src="/assets/2017Reed_tmp8.svg" style="width:94%" />
+</center>
+
+<center>
+<img src="/assets/2017Zhu_cycleGAN1.svg" style="width:94%" /><br />
+<img src="/assets/2017Zhu_cycleGAN2.svg" style="width:94%" /><br />
+<img src="/assets/2017Zhu_cycleGAN3.svg" style="width:94%" /><br />
+</center>
+
+<hr />
+
+<h2 id="43-まんがの画風変換">4.3. まんがの画風変換</h2>
+
+<center>
+<img src="/assets/2018Chen_CartoonGAN.svg" style="width:94%" />&lt;/br&gt;
+``CartoonGAN: Generative Adversarial Networks for Photo Cartoonization'' CVPR 2018 (Conference on Computer Vision and Pattern Recognition)
+</center>
+
+<center>
+<img src="https://cdn-images-1.medium.com/max/1800/1*GS5_bEgpy00cotNRFvAPyA.png" style="width:46%" />
+<img src="https://d2l930y2yx77uc.cloudfront.net/production/uploads/images/7291694/rectangle_large_type_2_86d2e2a52336624f98ed8aa3163a1865.jpg" style="width:49%" /><br />
+&gt;
+左: 君の名は。右: 風の谷のナウシカ，より
+</center>
+
 
 
 

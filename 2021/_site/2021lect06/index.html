@@ -61,11 +61,10 @@ Appache 2.0 license<br />
 -->
 
 <ul>
-  <li><a href="https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2021_0521mlp_Adam_SGD.ipynb" target="_blank">実習 <img src="https://komazawa-deep-learning.github.io/assets/colab_icon.svg" /></a></li>
-  <li><a href="https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0529komazawa_homework.ipynb" target="_blank">本日の課題 <img src="https://komazawa-deep-learning.github.io/assets/colab_icon.svg" /></a></li>
+  <li><a href="https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2021_0521mlp_Adam_SGD.ipynb" target="_blank">実習 <img src="https://komazawa-deep-learning.github.io/assets/colab_icon.svg" /></a>
+<!-- - [本日の課題 <img src="https://komazawa-deep-learning.github.io/assets/colab_icon.svg">](https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0529komazawa_homework.ipynb){:target="_blank"}
+ --></li>
 </ul>
-
-<hr />
 
 <h2 id="用語">用語</h2>
 
@@ -82,6 +81,57 @@ Appache 2.0 license<br />
   <li>バッチ学習，オンライ学習，ミニバッチ，確率的勾配降下法，</li>
   <li>ソフトマックス関数，交差エントロピー誤差</li>
 </ul>
+
+<!-- ## 前回の復習
+
+- **ディープラーニング** 深層学習, deep learning とは **信用割当問題** credit assignment problem を回避するために **畳込み** convolution 演算(処理)を用いて多層にしたニューラルネットワークのこと
+	- 畳込み演算って何？
+	- カーネルサイズ
+	- プーリング
+	- ストライド
+	- パディング-->
+<p><!-- ハイパーパラメータとしてのカーネル(特徴)サイズ，ストライド，パディング
+\[
+\left[\text{畳込み}\left(\ge1\right) \rightarrow \text{プーリング}\left(\ge0\right)\right]
+\times \left(\ge1\right)\rightarrow\text{全結合層}\left(\ge1\right)
+\]
+--></p>
+
+<h1 id="本日の目標">本日の目標</h1>
+<ul>
+  <li>最小二乗法から誤差逆伝播法へ。誤差関数，損失関数，目的関数，勾配降下法 (ブラインド ハイカー アナロジー)。 信用割当問題。勾配消失問題。</li>
+  <li>標準正則化理論。制約付き最適化。変分原理。<a href="https://ja.wikipedia.org/wiki/%E3%82%AA%E3%82%A4%E3%83%A9%E3%83%BC%EF%BC%9D%E3%83%A9%E3%82%B0%E3%83%A9%E3%83%B3%E3%82%B8%E3%83%A5%E6%96%B9%E7%A8%8B%E5%BC%8F" target="_blank">オイラー=ラグランジェ方程式</a></li>
+  <li>画像切り分け</li>
+</ul>
+
+<!--- 画像切り分け
+- ニューラルネットワーク，機械学習の分野で頻繁に用いられている性能向上のための技法を紹介
+- この授業の目標は深層学習の心理学的な意味付けを考えることであるので，紹介する上記の技法は無関係のように思われる
+- だがそうではないことを理解することが目的
+-->
+
+<h2 id="多分本日は行わない実習">多分本日は行わない実習</h2>
+
+<!-- - [kminst による CNN](https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019keras_kmnist_demo.ipynb){:target="_blank"} -->
+<ul>
+  <li>
+    <p><a href="https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0529transfer_learning.ipynb" target="_blank">転移学習</a></p>
+  </li>
+  <li><a href="https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0529Mask_R_CNN_Image_Segmentation.ipynb" target="_blank">MaskR-CNN によるインスタンス画像領域分割</a></li>
+  <li><a href="https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0529Semantic_segmantation_DeepLab_Demo.ipynb" target="_blank">Deeplab のデモによる画像の意味的画像切り分け</a></li>
+</ul>
+
+<!--
+# デモ
+
+- [グーグルによるニューラルネットワークの遊び場 (プレイグランド)](https://project-ccap.github.io/tensorflow-playground/){:target="_blank"}
+
+- [Scavenger hunt](https://emojiscavengerhunt.withgoogle.com/){target="_blank"}
+- [https://teachablemachine.withgoogle.com/](https://teachablemachine.withgoogle.com/){target="_blank"}
+- [姿勢推定デモ](https://storage.googleapis.com/tfjs-models/demos/posenet/camera.html){target="_blank"}
+- [Style-based GAN](https://youtu.be/kSLJriaOumA)
+- [foodly による唐揚げもりつけロボット](https://rt-net.jp/service/foodly/), [YouTube](https://youtu.be/KiT_DrDjdDE)
+-->
 
 <h2 id="案件紹介-夏季インターン">案件紹介 夏季インターン</h2>
 
@@ -106,6 +156,81 @@ SNSデータを利用したドメイン転用化な観点別極性分析モデ�
 
 顧客のビジネスに貢献できるモデル可視化手法の活用方法検討
 </code></pre></div></div>
+
+<h2 id="勾配降下法-gradient-descent-methods">勾配降下法 Gradient descent methods</h2>
+
+<center>
+<img src="https://miro.medium.com/max/814/1*kmmjFBP5vRkKOM1SP4URpA.png" style="width:68%" /><br />
+
+出典: [The Complete Beginner’s Guide to Deep Learning: Artificial Neural Networks](https://towardsdatascience.com/simply-deep-learning-an-effortless-introduction-45591a1c4abb)
+</center>
+
+<h3 id="コスト関数">コスト関数</h3>
+
+<ul>
+  <li>コスト関数 cost function</li>
+  <li>損失関数 loss function</li>
+  <li>誤差関数 error function</li>
+  <li>目的関数 objective function</li>
+</ul>
+
+\[p(\mathbf{y}\vert \mathbf{x};\mathbf{\theta})\]
+
+<p><strong>最小二乗誤差</strong>（下式）, あるいは<strong>負の対数尤度</strong> negative log likelifood ($-\log(x)$) など</p>
+
+\[J(\mathbf{\theta})=\frac{1}{2}\mathbb{E}_{\mathbf{x,y}\sim\hat{p}_{data}}
+\left\|\mathbf{y}-f(\mathbf{x};\mathbf{\theta})\right\|^2+\mbox{const.}\]
+
+<h3 id="交差エントロピー損失関数">交差エントロピー損失関数</h3>
+<p>ニューラルネットワークや機械学習において，予測すべき値が2値化された量，たとえば真偽値真であれば $1$ をとり，偽
+であれば $0$ であったり，確率である場合には，最小化すべき目標関数(正則化項を含めて損失関数でもよい)は平均二乗
+誤差 Mean Square Errors ではなく <strong>交差エントロピー cross-entropy 損失</strong>，あるいは交差エントロピー誤差と呼ぶ関
+数が用いられる。</p>
+
+<p>自乗誤差に比べて交差エントロピーを用いると学習が高速化される。
+<!-- 理由は以下で説明する-->
+文献的にはニューラルネットワークに交差エントロピーが導入されたのは Hinton(1989) など</p>
+
+<p>交差エントロピーは次式で表される:</p>
+
+<p>\(\mathcal{L}=-t\log(y)-(1-t)\log(1-y),\)<!-- {#eq:def-cross-entropy}--></p>
+
+<p>ここで $t$ は教師信号すなわち $1$ または $0$ をとり，$y$ はニューラルネットワークから出力された予測値。</p>
+
+<p>上式は （確率とみなせる）出力 $y$ が $t$ 回起こった と解釈できる $y^t$ このときの $t$ の値はは $0$ か $1$ しか取らないので，
+上式右辺は，もし $t$ が 1 であれば右辺第一項を計算し，$t$ が $0$ であれば 右辺第2項を計算することになる。</p>
+
+<p>右辺第一項と右辺第二項とを別曲線として描いた下図。</p>
+
+<center>
+<img src="/assets/cross-entropy.svg" style="width:39%" /><br />
+<!--      https://raw.githubusercontent.com/komazawa-deep-learning/komazawa-deep-learning.github.io/e69ca10d8b2a4e9f34943fc302e5eafc7dbd934d/assets/cross-entropy.svg-->
+交差エントロピーのグラフ
+</center>
+
+<p>ここで対数 $\log$ の底は $e$ や $2$ が用いられる。</p>
+
+<h2 id="エントロピー">エントロピー</h2>
+<p>エントロピーには熱力学エントロピーと情報論的エントロピーと $2$ 種類存在するがどちらも同じ形式をしている。情報
+論的には平均エントロピー $H$ を以下のように定義する</p>
+
+\[H[X]=-\sum_i X_i\log(X_i)\]
+
+<p>上式 は 平均情報量 [@Shannon1948] とも呼ばれる。連続変量の場合には総和記号 $\sum$ が積分記号 $\int$ となって 
+\(H[x]=-\int x\log(x)\;dx\)</p>
+
+<center>
+<img src="/assets/shannon-entropy.svg" style="width:29%" /><br />
+シャノンのエントロピー
+</center>
+
+<h3 id="まとめ">まとめ</h3>
+
+<ul>
+  <li>コスト関数，損失関数，誤差関数，目的関数，はほぼ同じような意味で用いられる</li>
+  <li>代表的なコスト関数として，最小自乗誤差，交差エントロピー誤差，などがある</li>
+  <li>出力が確率で与えられるような問題，たとえば，分類問題などでは交差エントロピー誤差関数が用いられる</li>
+</ul>
 
 <h2 id="一般化とオーバーフィッティングアンダーフィッティング">一般化とオーバーフィッティング，アンダーフィッティング</h2>
 <!--Generalization, Overfitting and Under-fitting-->
@@ -172,12 +297,12 @@ rforming polynomial fitting y = w0 + w1x1 + w2x2 + ... + wdxd.
 Even though the fitted curve passes through almost all points, it won't perform well on unseen data. 
 -->
 
-<h1 id="オーバーフィッティングの回避">オーバーフィッティングの回避</h1>
+<h3 id="オーバーフィッティングの回避">オーバーフィッティングの回避</h3>
 <!-- Strategies to Avoid Overfitting
 
 One way to avoid overfitting it to collect more data. However, that is not always feasible. Below are some oth
 er strategies to overcome the problem of overfitting - regularization and cross-validation. -->
-<h2 id="regularization">Regularization</h2>
+<h3 id="正則化-regularization">正則化 Regularization</h3>
 
 <p>モデルの複雑さを調整する</p>
 
@@ -229,7 +354,7 @@ ression and with L1 regularization it is known as Lasso Regression.
 Cross Validation and Validation Datasets
 -->
 
-<h1 id="正則化項">正則化項</h1>
+<h3 id="正則化項">正則化項</h3>
 
 <ul>
   <li>簡潔さ原理 simplicity principle L1</li>
@@ -241,38 +366,84 @@ Cross Validation and Validation Datasets
 <img src="/assets/Regularization.svg" style="width:44%" /><br />
 </center>
 
-<h1 id="正則化項の影響">正則化項の影響</h1>
+<h4 id="正則化項の影響">正則化項の影響</h4>
 
 <center>
-
-<center>
-<img src="/assets/2001Hastie_p84.png" style="width:33%" /><br />
-<img src="/assets/2001Hastie_p89.png" style="width:33%" /><br />
-<img src="/assets/2001Hastie_p91.png" style="width:39%" /><br />
+<img src="/assets/2001Hastie_p84.png" style="width:66%" /><br />
+<img src="/assets/2001Hastie_p89.png" style="width:66%" /><br />
+<img src="/assets/2001Hastie_p91.png" style="width:69%" /><br />
 </center>
-Hastie (2001) より
+<p>Hastie (2001) より</p>
 
-## まとめ
+<h3 id="まとめ-1">まとめ</h3>
 
-- アンダーフィッテイングとオーバーフィッティング
-- データ数に比べて，推定すべきパラメータが多過ぎ = オーバーフィッティング
-- データ数に比べて，推定すべきパラメータが少な過ぎ = アンダーフィッティング
-- 正則化 L1, L2, L0, エラスティック
-- 正則化項の大きさ $\lambda$ はハイパーパラメータと呼ぶ
+<ul>
+  <li>アンダーフィッテイングとオーバーフィッティング</li>
+  <li>データ数に比べて，推定すべきパラメータが多過ぎ = オーバーフィッティング</li>
+  <li>データ数に比べて，推定すべきパラメータが少な過ぎ = アンダーフィッティング</li>
+  <li>正則化 L1, L2, L0, エラスティック</li>
+  <li>正則化項の大きさ $\lambda$ はハイパーパラメータと呼ぶ</li>
+</ul>
 
+<h2 id="交差妥当性-cross-validation">交差妥当性 cross validation</h2>
 
+<!--
+is a method for finding the best hyper-parameters of a model. 
+For example, in gradient descent, we need to choose a stopping criteria. 
+The simplest stopping criteria is to check whether our accuracy is improving on the training dataset. 
+However, this is prone to overfitting since the model might be capturing noise present in the training data as reliable patterns. -->
 
-## SGD は SDG に貢献できるのか？
+<h2 id="ホールドアウト法-holdout-method">ホールド・アウト法 Holdout method</h2>
 
-報道などで昨今耳にする SDG 持続可能な成長目標 ですが，大変紛らわしいことに，ニューラルネットワーク，機械学習の分野では SGD があります。
+<p>データを訓練データと検証データに分割 
+<!--
+We can overcome this problem by not using the entire training data while training a model. 
+Instead we will hold out some data (validation dataset) and we'll train only on remaining data. 
+For example, we can split our training dataset into 70/30 and use 70% data for training and 30% data for validation. 
+In the above example of gradient descent, now we train our algorithm on the training data, but check whether or not our model is getting better on the validation dataset. 
+This is known as the holdout method and it is one of the simplest cross validation methods. 
+We can also use the validation data for other types of experimentation. Such as if we want to run multiple experiments where we choose different features to use to train our machine learning model. 
+--></p>
 
-同じ ３ 文字で同じ文字で，順番が異なるだけでややこしいですが， SGD は 確率的勾配降下法 Stochastic Gradient Descent methods のことです。
-レオン・ボットーらを中心に，
+<ul>
+  <li>kホールド法 K-fold Cross Validation</li>
+</ul>
 
-前回までと同様に，この授業では，損失関数，目標関数，誤差関数，を区別せずに用います。
-ニューラルネットワークに限らず最適化手法として，これら関数の最大化，もしくは最小化を行うことを学習と呼びます。
+<p>データを k 個に分割して, k-1 データで訓練，残りの 1 で検証
+<!--
+In K-fold cross validation, the dataset is divided into k separate parts. We repeat training process k times. 
+Each time, one part is used as validation data, and the rest is used for training a model. 
+Then we average the error to evaluate a model. Note that k-fold cross validation increases the computational requirements for training our model by a factor of k.
+--></p>
 
+<!--
+The main advantages of k-fold cross validation are that 
+1. It is more robust to over-fitting than the holdout method when performing large number of experiments. 
+2. It is better to use when the dataset size is small. This is because when performing k-fold cross-validation, we can use a much smaller validation split (say 10% instead of 30%) since we are testing the model on various subsamples of the data being in the 10%.
+Leave-one-out cross validation is a special instance of k-fold cross validation in which k is equal to the number of data points in the dataset. 
+Each time, we hold out a single data point and train a model on rest of the data. 
+We use the single data point to test our model. Then we calculate the average error to evaluate a model.
+-->
 
+<ul>
+  <li>初期停止 early stopping</li>
+</ul>
+
+<p>オーバーフィッティングを避ける方法の一つ: 学習打ち切り基準</p>
+
+<center>
+<img src="/assets/04_07earlyStopping.svg" style="width:66%" /><br />
+</center>
+
+<h2 id="sgd-は-sdg-に貢献できるのか">SGD は SDG に貢献できるのか？</h2>
+
+<p>報道などで昨今耳にする SDG 持続可能な成長目標 ですが，大変紛らわしいことに，ニューラルネットワーク，機械学習の分野では SGD があります。</p>
+
+<p>同じ ３ 文字で同じ文字で，順番が異なるだけでややこしいですが， SGD は 確率的勾配降下法 Stochastic Gradient Descent methods のことです。
+レオン・ボットーらを中心に，</p>
+
+<p>前回までと同様に，この授業では，損失関数，目標関数，誤差関数，を区別せずに用います。
+ニューラルネットワークに限らず最適化手法として，これら関数の最大化，もしくは最小化を行うことを学習と呼びます。</p>
 
 <center>
 <img src="https://komazawa-deep-learning.github.io/assets/2014Imgur_Saddle_point.gif" style="width:74%" /><br />
@@ -280,11 +451,11 @@ Hastie (2001) より
 <img src="https://komazawa-deep-learning.github.io/assets/2014Imgur_Long_Valley.gif" style="width:74%" /><br />
 </center>
 
+<h2 id="整流線型ユニット-relu-recutified-linear-unit">整流線型ユニット ReLU (Recutified Linear Unit)</h2>
 
-#### 整流線型ユニット ReLU (Recutified Linear Unit)
-**整流線型ユニット ReLU** とは，ニューラルネットワークの活性化関数の一つです。
+<p><strong>整流線型ユニット ReLU</strong> とは，ニューラルネットワークの活性化関数の一つです。
 シグモイド関数や，ハイパータンジェント関数に比べて，極端に単純な形をしています。
-駄菓子菓子，生理学との対応についても根拠を持っています。
+駄菓子菓子，生理学との対応についても根拠を持っています。</p>
 
 <!-- The **ReLU** (rectified linear unit) layer is another step to our convolution layer. 
 You’re applying an activation function onto your feature maps to increase non-linearity in the network. 
@@ -308,265 +479,94 @@ Here’s how our little buddy is looking after a ReLU activation function turns 
 ```python
 viz_layer(activated_layer)
 ```
--->
 
 <center>
-<img src="https://komazawa-deep-learning.github.io/assets/output2.jpg" style="width:84%" />
+<img src="https://komazawa-deep-learning.github.io/assets/output2.jpg" style="width:84%">
 </center>
-
-
-## 前回の復習
-
-- **ディープラーニング** 深層学習, <!--deep learning とは **信用割当問題** credit assignment problem を回避するために **畳込み** convolution 演算(処理)を用いて多層にしたニューラルネットワークのこと-->
-	- 畳込み演算って何？
-	- カーネルサイズ
-	- プーリング
-	- ストライド
-	- パディング
-<!-- ハイパーパラメータとしてのカーネル(特徴)サイズ，ストライド，パディング
-\[
-\left[\text{畳込み}\left(\ge1\right) \rightarrow \text{プーリング}\left(\ge0\right)\right]
-\times \left(\ge1\right)\rightarrow\text{全結合層}\left(\ge1\right)
-\]
 -->
 
----
+<h1 id="標準正則化理論と条件付き最適化">標準正則化理論と条件付き最適化</h1>
 
-# 本日の目標
-- 最小二乗法から誤差逆伝播法へ。誤差関数，損失関数，目的関数，勾配降下法 (ブラインド ハイカー アナロジー)。 信用割当問題。勾配消失問題。
-- 標準正則化理論。制約付き最適化。変分原理。[オイラー=ラグランジェ方程式](https://ja.wikipedia.org/wiki/%E3%82%AA%E3%82%A4%E3%83%A9%E3%83%BC%EF%BC%9D%E3%83%A9%E3%82%B0%E3%83%A9%E3%83%B3%E3%82%B8%E3%83%A5%E6%96%B9%E7%A8%8B%E5%BC%8F){:target="_blank"} 
-- 画像切り分け
-
-<!--- 画像切り分け
-- ニューラルネットワーク，機械学習の分野で頻繁に用いられている性能向上のための技法を紹介
-- この授業の目標は深層学習の心理学的な意味付けを考えることであるので，紹介する上記の技法は無関係のように思われる
-- だがそうではないことを理解することが目的
--->
-
-# 本日の実習
-
-<!-- - [kminst による CNN](https://github.com/ShinAsakawa/2019komazawa/blob/master/notebooks/2019keras_kmnist_demo.ipynb){:target="_blank"} -->
-- [転移学習](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0529transfer_learning.ipynb){:target="_blank"}
-
-- [MaskR-CNN によるインスタンス画像領域分割](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0529Mask_R_CNN_Image_Segmentation.ipynb){:target="_blank"}
-- [Deeplab のデモによる画像の意味的画像切り分け](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0529Semantic_segmantation_DeepLab_Demo.ipynb){:target="_blank"}
-
-
-<!--
-# デモ
-
-- [グーグルによるニューラルネットワークの遊び場 (プレイグランド)](https://project-ccap.github.io/tensorflow-playground/){:target="_blank"}
-
-- [Scavenger hunt](https://emojiscavengerhunt.withgoogle.com/){target="_blank"}
-- [https://teachablemachine.withgoogle.com/](https://teachablemachine.withgoogle.com/){target="_blank"}
-- [姿勢推定デモ](https://storage.googleapis.com/tfjs-models/demos/posenet/camera.html){target="_blank"}
-- [Style-based GAN](https://youtu.be/kSLJriaOumA)
-- [foodly による唐揚げもりつけロボット](https://rt-net.jp/service/foodly/), [YouTube](https://youtu.be/KiT_DrDjdDE)
--->
-
-## 畳み込み演算を利用したニューラルネットワーク
-
-<div align="center">
-<!--<img src='https://komazawa-deep-learning.github.io/assets/2012AlexNet.svg" style="width:94%">-->
-<img src="https://komazawa-deep-learning.github.io/assets/Neocognitron.svg" style="width:74%" />
-<img src="https://komazawa-deep-learning.github.io/assets/Fukushima.jpeg" style="width:24%" /><br />
-ネオコグニトロンの概略図(Fukushima, 1979)<br />
-</div>
-
-
-## LeNet5 (LeCun, 1998)
-<center>
-<img src="https://komazawa-deep-learning.github.io/assets/1998LeCun_Fig2_CNN.svg" style="width:94%" /><br />
-LeCun (1998) より
-</center>
-
-## AlexNet (Krizensky, et al., 2012)
-
-<center>
-<img src="https://komazawa-deep-learning.github.io/assets/2012AlexNet.svg" style="width:94%" /><br />
-Krzensky et al (2012) より
-</center>
-
-## GooLeNet (Inception) (Szegedy et. al, 2014)
-
-<center>
-<img src="https://komazawa-deep-learning.github.io/assets/2014Szegedy_GoogLeNet.svg" style="width:99%" /><br />
-</center>
-
-<!-- <center>
-<img src='https://komazawa-deep-learning.github.io/assets/2013Uijings_Selective_Search_Fig1.svg' style='width:94%'><br>
-空間ピラミッド (2015) より
-</center>
-
-
+<p>視覚情報処理の分野では，ディビッド・マー David Marr や トマソ・ポッジオ らによって視覚情報処理を定式化する研究が行われました。
+以下に論文を引用します。</p>
 
 <div align="center" style="width:94%">
-	<img src="https://komazawa-deep-learning.github.io/assetsdmoulin_gif/full_padding_no_strides.gif" style="width:33%">
-	<img src="https://komazawa-deep-learning.github.io/assetsdmoulin_gif/same_padding_no_strides_transposed.gif" style="width:33%"><br/>
-	<div align="left" style="width:66%">
-		左:入力層 5x5青，出力層緑，カーネルサイズ3x3, フルパディング，ストライド=1.
-		右:入力層 5x5青，出力層緑，カーネルサイズ3x3, フルパディング，ストライド=1. トランスポーズド畳み込み
-	</div>
-	<img src="https://komazawa-deep-learning.github.io/assetsdmoulin_gif/numerical_max_pooling.gif" style="width:33%">
-	<img src="https://komazawa-deep-learning.github.io/assetsdmoulin_gif/numerical_average_pooling.gif" style="width:33%"><br/>
-	<div align="left" style="width:66%">
-		左: 最大値プーリング。
-		右: 平均値プーリング
-	</div>
-	<div align="left" style="width:66%">
-		Dmoulin and Visin (2020) より
-	</div>
-	<img src="https://komazawa-deep-learning.github.io/assetsdmoulin_gif/padding_strides.gif" style="width:33%">
-	<img src="https://komazawa-deep-learning.github.io/assetsdmoulin_gif/padding_strides_odd.gif" style="width:33%">
-	<img src="https://komazawa-deep-learning.github.io/assetsdmoulin_gif/padding_strides_odd_transposed.gif" style="width:33%"><br/>
-	<div align="left" style="width:66%">
-		左: padding_strides, 中:padding_strides_odd, 右:padding_stride_transposed
-	</div>
-	<img src="https://komazawa-deep-learning.github.io/assetsdmoulin_gif/same_padding_no_strides.gif" style="width:33%">
-	<img src="https://komazawa-deep-learning.github.io/assetsdmoulin_gif/same_padding_no_strides_transposed.gif" style="width:33%">
-    <div align="left" style="width:66%">
-	 右:same_padding_no_strides, 左: same_padding_no_strides_transposed
-	</div>
-	<img src="https://komazawa-deep-learning.github.io/assetsdmoulin_gif/arbitrary_padding_no_strides.gif" style="width:33%">
-	<img src="https://komazawa-deep-learning.github.io/assetsdmoulin_gif/arbitrary_padding_no_strides_transposed.gif" style="width:33%">
-    <div align="left" style="width:66%">
-	 右:arbitrary padding no strides, 左: artibtrary padding no stride transposed
-	</div>
-</div>
--->
-
-
-### イメージネットコンテスト，アレックスネットの出力にみる問題点
-
-<div align="center" style="width:89%">
-	<img src="https://komazawa-deep-learning.github.io/assets/2012AlexNetResult0.svg" style="width:33%" />
-	<img src="https://komazawa-deep-learning.github.io/assets/2012AlexNetResult.svg" style="width:33%" />
-	<div align="left" style="width:66%">
-	アレックスネットの結果: 画像のすぐ下の英単語は正解ラベルを表す。Krizensky et. al (2012) Fig. 4 より。
-	ピンク色は正解ラベルの確率を表す。ブルーは不正解ラベル判断確率を表している。
-	チェリーが正解であるが，画像を見る限り，第一回答候補のダルマチアンを正解だと考えても問題は無いと考えられる。
-</div>
+<img src="https://komazawa-deep-learning.github.io/assets/1985Poggio_2.svg" style="width:98%" />
 </div>
 
-### 画像切り出し
+<p>以下に上記引用部分の拙訳を付けます:</p>
 
-1. 物体位置
-3. 物体認識 object recognition
-2. 意味的切り出し semantic segmentation
-4. 対象切り出し instance segmentation
-5. 特徴点抽出 keypoint
-6. パノプティック切り出し
-
-<div align="center">
-	<img src="https://komazawa-deep-learning.github.io/assets/2017DangHa_History_Of_Object_Recognition_ja.svg" style="width:99%" /><br />
-	Dang and Ha (2017) より
-</div>
-
-
-# 転移学習
-
-<div align="center" style="width:99%">
-<img src="https://komazawa-deep-learning.github.io/assets/2017Li_Deeper_Broader_fig1ja.svg" style="width:84%" /><br />
-</div>
-
-<!---
-- [活性化関数](../activation_functions/)
--->
-
-<!-- 
-<div align="center">
-<img src='https://komazawa-deep-learning.github.io/assets2019Inception_screenshot.png' style='width:84%'><br>
-<div align="left"  style="width:69%">
-映画インセプションのスクリーンショット。
- 
-[Netflix](https://www.netflix.com/watch/70131314?trackId=14170286&tctx=3%2C0%2C9a10a321-9c1f-4396-b5df-00b5b84e6917-23965358%2C3d0e40f0-b286-48eb-afb3-2c7c501c86fc_86910893X3XX1558568676167%2C3d0e40f0-b286-48eb-afb3-2c7c501c86fc_ROOT){target="_blank"} <br/>
-<https://www.netflix.com/watch/70131314?trackId=14170286&tctx=3%2C0%2C9a10a321-9c1f-4396-b5df-00b5b84e6917-23965358%2C3d0e40f0-b286-48eb-afb3-2c7c501c86fc_86910893X3XX1558568676167%2C3d0e40f0-b286-48eb-afb3-2c7c501c86fc_ROOT><br/>
-
-『インセプション』（原題: Inception）は、クリストファー・ノーラン監督・脚本・製作による2010年のアメリカのSFアクション映画。第83回アカデミー賞では作品賞、脚本賞、撮影賞、視覚効果賞、美術賞、作曲賞、音響編集賞、録音賞の8部門にノミネートされ、撮影賞、視覚効果賞、音響編集賞、録音賞を受賞した。全米脚本家組合賞ではオリジナル脚本賞を受賞した。
-[日本語ウィキペデイアより](https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%B3%E3%82%BB%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3){target="_blank"}
-
-</div>
-</div>
-
-<div align="center" style="width:94%">
-	<img src='https://komazawa-deep-learning.github.io/assetsInception3.svg' style="width:94%"></br>
-	<img src='https://komazawa-deep-learning.github.io/assets2015GoogLeNet_Inception.svg' style="width:74%"></br>
-	<div align="left">
-Inception モジュール
-</div>
-</div>
- -->
-
-<!-- 
-</center>
-<center>
-<img src='https://komazawa-deep-learning.github.io/assets2014Cadieu_Fig3.svg' style='width:74%'>
-</center>
--->
-
-# 標準正則化理論と条件付き最適化
-
-<div align="center" style="width:94%">
-	<img src="https://komazawa-deep-learning.github.io/assets/1985Poggio_2.svg" style="width:98%" />
-</div>
-
-
-データ $y$ から $z$ を見つけ出す不良設定問題の正則化
-$$
-Az = y
-$$
-では，正則化項 $\left\|\cdot\right\|$ の選択と汎関数の安定化項 $\left\|Pz\right\|$ が必要となる。
+<p>データ $y$ から $z$ を見つけ出す不良設定問題の正則化
+\(Az = y\)
+では，正則化項 $\left|\cdot\right|$ の選択と汎関数の安定化項 $\left|Pz\right|$ が必要となる。
 標準正則化理論においては，$A$ は線形演算子，ノルムは 2 次，$P$ は線形である。
 2 種類の方法が適用可能である。
-すなわち 
-1. $\left\|Az-y\right\|\leqslant\epsilon$ を満たし，次式を最小化する $z$ を探す
-$$
-\left\|Pz\right\|^2
-$$
+すなわち</p>
+<ol>
+  <li>
+    <p>$\left|Az-y\right|\leqslant\epsilon$ を満たし，次式を最小化する $z$ を探す
+\(\left\|Pz\right\|^2\)</p>
+  </li>
+  <li>
+    <p>次式を最小化する $z$ を探す
+\(\left\|Az-y\right\|+\lambda\left\|Pz\right\|^2,\)
+ここで $\lambda$ はいわゆる正則化パラメータである。</p>
+  </li>
+</ol>
 
-2. 次式を最小化する $z$ を探す
-$$
-\left\|Az-y\right\|+\lambda\left\|Pz\right\|^2,
-$$
-ここで $\lambda$ はいわゆる正則化パラメータである。
-
-最初の方法は，十分にデータを近似し，かつ，「基準」$\left\|Pz\right\|$ を最小化するという意味で「正則」な $z$ を探す方法である。
+<p>最初の方法は，十分にデータを近似し，かつ，「基準」$\left|Pz\right|$ を最小化するという意味で「正則」な $z$ を探す方法である。
 二番目の方法は，$\lambda$ が正則化の程度と解のデータへの近似とをコントロールする。
 標準正則化理論は，最良の $\lambda$ を決定する手法を提供する。
 標準正則化の手法は，上式に制約を導入することで変分原理の問題としている。
 最小化するコストは物理的制約条件を満たす良い解を反映している。
-すなわち，データへの近似もよく，かつ，正則化項 $\left\|Pz\right\|^2$ も小さいことを意味する。
+すなわち，データへの近似もよく，かつ，正則化項 $\left|Pz\right|^2$ も小さいことを意味する。
 $P$ は問題の物理的制約を表しており，2 次の変分原理であり，解空間内での唯一解が存在する。
 標準正則化手法は，不良設定問題に対して注意深い分析が必要であることを注記しておく。
-ノルム $\left\|\cdot\right\|$，正則化関数 $\left\|Pz\right\|$, および，汎関数空間の選択は数学的性質と，物理的説得性を有する必要がある。
-これらにより，正しい正則化の詳細条件が定まる。
+ノルム $\left|\cdot\right|$，正則化関数 $\left|Pz\right|$, および，汎関数空間の選択は数学的性質と，物理的説得性を有する必要がある。
+これらにより，正しい正則化の詳細条件が定まる。</p>
 
-変分原理は物理学，経済学，工学，で幅広く用いられている。例えば物理学における基本法則は変分原理を用いて，
-エネルギーやラグランジェ関数を用いて簡潔に表現されている。
+<p>変分原理は物理学，経済学，工学，で幅広く用いられている。例えば物理学における基本法則は変分原理を用いて，
+エネルギーやラグランジェ関数を用いて簡潔に表現されている。</p>
 
 <!--
 - [上を訳してみました。github.io だと数式が表示されない場合があるため colab にしています](https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0529Poggios_standard_regularization_translation.ipynb){:target="_blank"}
 -->
 
+<p>様々な視覚課題に適用されていて，以下のようなリストが挙げられています。</p>
+
 <div align="center" style="width:94%">
 <img src="https://komazawa-deep-learning.github.io/assets/1985Poggio_1.svg" style="width:44%" />
 <img src="https://komazawa-deep-learning.github.io/assets/1985Poggio_3math.svg" style="width:44%" />
-<!-- <div align="left" sytle="width:49%">
-1. Edge detection
-1. Spatio-temporal interpolation and approximation
-1. Computation of optical flow
-1. Computation of lightness and albedo
-1. Shape from contours
-1. Shape from texture
-1. Shape from shading
-1. Binocular stereo matching
-1. Structure from motion
-1. Structure from stereo
-1. Surface reconstruction
-1. Computation of surface colour
+<!-- <div align="left" sytle="width:49%">-->
+<br />
+</div>
+
+<ol>
+  <li>縁検出 Edge detection $\int[(Sf-i)^2 +\lambda(f_{xx}^2)]dx$</li>
+  <li>光学フローの計算 Computation of optical flow $\int[(V\cdot N - V^N )^2+\lambda(\partial/\partial_x)v^2]dx$</li>
+  <li>表面の再構成 $\int[(S\cdot f - d)^2+\lambda(f_{xx}^2+2f_{xy}^2+f_{yy}^2)^2]dxdy$</li>
+  <li>時空間近似 spatiotemporal approximation: $\int[(S\cdot i)^2+\lambda(\nabla fV+f_t)^2]dxdydt$</li>
+  <li>色: $|I^v-Az|^2 +\lambda|Pz|^2$</li>
+  <li>陰影からの形状復元 shape from shading: $\int[(E-R(f,g))^2+\lambda(f_x^2+f_y^2+g_x^2+g_y^2)]dxdy$</li>
+  <li>立体視: $\int{[
+\nabla^2 G * (L(x,y)-R(x+d(x,y),y))]^2
++\lambda(\nabla d)^2]} dxdy$</li>
+</ol>
+
+<!--
+1. 時空間内挿，近似 Spatio-temporal interpolation and approximation $\int[i_x+i,v+i)^2+\lambda(u_x^2+u_y^2+v_x^2+v_y^2)]dxdy$
+1. 明度，環境光の計算 Computation of lightness and albedo
+1. 輪郭線からの形状復元 Shape from contours
+1. キメからの形状復元 Shape from texture
+1. 陰影からの形状復元 Shape from shading
+1. 両眼立体視 Binocular stereo matching
+1. 運動からの形状復元 Structure from motion
+1. 両眼立体視 Structure from stereo
+1. 表面復元 Surface reconstruction
+1. 表面色の計算 Computation of surface colour
+</div>
 </div>
 -->
-</div>
 
 <!--
 The regularization of the ill-posed problem of finding $z$ from
@@ -667,7 +667,146 @@ similar transformations on their inputs.
 同程度の。
 これらの結果は、視経路および体性感覚経路における対応するレベルの視床核または皮質領域がそれらの入力に対して同様の変換を実行することを示唆している。
 -->
+
+<h2 id="畳み込み演算を利用したニューラルネットワーク">畳み込み演算を利用したニューラルネットワーク</h2>
+
+<div align="center">
+<!--<img src='https://komazawa-deep-learning.github.io/assets/2012AlexNet.svg" style="width:94%">-->
+<img src="https://komazawa-deep-learning.github.io/assets/Neocognitron.svg" style="width:74%" />
+<img src="https://komazawa-deep-learning.github.io/assets/Fukushima.jpeg" style="width:24%" /><br />
+ネオコグニトロンの概略図(Fukushima, 1979)<br />
+</div>
+
+<h2 id="lenet5-lecun-1998">LeNet5 (LeCun, 1998)</h2>
+<center>
+<img src="https://komazawa-deep-learning.github.io/assets/1998LeCun_Fig2_CNN.svg" style="width:94%" /><br />
+LeCun (1998) より
 </center>
+
+<h2 id="alexnet-krizensky-et-al-2012">AlexNet (Krizensky, et al., 2012)</h2>
+
+<center>
+<img src="https://komazawa-deep-learning.github.io/assets/2012AlexNet.svg" style="width:94%" /><br />
+Krzensky et al (2012) より
+</center>
+
+<h2 id="goolenet-inception-szegedy-et-al-2014">GooLeNet (Inception) (Szegedy et. al, 2014)</h2>
+
+<center>
+<img src="https://komazawa-deep-learning.github.io/assets/2014Szegedy_GoogLeNet.svg" style="width:99%" /><br />
+</center>
+
+<!-- <center>
+<img src='https://komazawa-deep-learning.github.io/assets/2013Uijings_Selective_Search_Fig1.svg' style='width:94%'><br>
+空間ピラミッド (2015) より
+</center>
+
+
+
+<div align="center" style="width:94%">
+	<img src="https://komazawa-deep-learning.github.io/assetsdmoulin_gif/full_padding_no_strides.gif" style="width:33%">
+	<img src="https://komazawa-deep-learning.github.io/assetsdmoulin_gif/same_padding_no_strides_transposed.gif" style="width:33%"><br/>
+	<div align="left" style="width:66%">
+		左:入力層 5x5青，出力層緑，カーネルサイズ3x3, フルパディング，ストライド=1.
+		右:入力層 5x5青，出力層緑，カーネルサイズ3x3, フルパディング，ストライド=1. トランスポーズド畳み込み
+	</div>
+	<img src="https://komazawa-deep-learning.github.io/assetsdmoulin_gif/numerical_max_pooling.gif" style="width:33%">
+	<img src="https://komazawa-deep-learning.github.io/assetsdmoulin_gif/numerical_average_pooling.gif" style="width:33%"><br/>
+	<div align="left" style="width:66%">
+		左: 最大値プーリング。
+		右: 平均値プーリング
+	</div>
+	<div align="left" style="width:66%">
+		Dmoulin and Visin (2020) より
+	</div>
+	<img src="https://komazawa-deep-learning.github.io/assetsdmoulin_gif/padding_strides.gif" style="width:33%">
+	<img src="https://komazawa-deep-learning.github.io/assetsdmoulin_gif/padding_strides_odd.gif" style="width:33%">
+	<img src="https://komazawa-deep-learning.github.io/assetsdmoulin_gif/padding_strides_odd_transposed.gif" style="width:33%"><br/>
+	<div align="left" style="width:66%">
+		左: padding_strides, 中:padding_strides_odd, 右:padding_stride_transposed
+	</div>
+	<img src="https://komazawa-deep-learning.github.io/assetsdmoulin_gif/same_padding_no_strides.gif" style="width:33%">
+	<img src="https://komazawa-deep-learning.github.io/assetsdmoulin_gif/same_padding_no_strides_transposed.gif" style="width:33%">
+    <div align="left" style="width:66%">
+	 右:same_padding_no_strides, 左: same_padding_no_strides_transposed
+	</div>
+	<img src="https://komazawa-deep-learning.github.io/assetsdmoulin_gif/arbitrary_padding_no_strides.gif" style="width:33%">
+	<img src="https://komazawa-deep-learning.github.io/assetsdmoulin_gif/arbitrary_padding_no_strides_transposed.gif" style="width:33%">
+    <div align="left" style="width:66%">
+	 右:arbitrary padding no strides, 左: artibtrary padding no stride transposed
+	</div>
+</div>
+-->
+
+<h3 id="イメージネットコンテストアレックスネットの出力にみる問題点">イメージネットコンテスト，アレックスネットの出力にみる問題点</h3>
+
+<div align="center" style="width:89%">
+	<img src="https://komazawa-deep-learning.github.io/assets/2012AlexNetResult0.svg" style="width:33%" />
+	<img src="https://komazawa-deep-learning.github.io/assets/2012AlexNetResult.svg" style="width:33%" />
+	<div align="left" style="width:66%">
+	アレックスネットの結果: 画像のすぐ下の英単語は正解ラベルを表す。Krizensky et. al (2012) Fig. 4 より。
+	ピンク色は正解ラベルの確率を表す。ブルーは不正解ラベル判断確率を表している。
+	チェリーが正解であるが，画像を見る限り，第一回答候補のダルマチアンを正解だと考えても問題は無いと考えられる。
+</div>
+</div>
+
+<h3 id="画像切り出し">画像切り出し</h3>
+
+<ol>
+  <li>物体位置</li>
+  <li>物体認識 object recognition</li>
+  <li>意味的切り出し semantic segmentation</li>
+  <li>対象切り出し instance segmentation</li>
+  <li>特徴点抽出 keypoint</li>
+  <li>パノプティック切り出し</li>
+</ol>
+
+<div align="center">
+	<img src="https://komazawa-deep-learning.github.io/assets/2017DangHa_History_Of_Object_Recognition_ja.svg" style="width:99%" /><br />
+	Dang and Ha (2017) より
+</div>
+
+<h1 id="転移学習">転移学習</h1>
+
+<div align="center" style="width:99%">
+<img src="https://komazawa-deep-learning.github.io/assets/2017Li_Deeper_Broader_fig1ja.svg" style="width:84%" /><br />
+</div>
+
+<!---
+- [活性化関数](../activation_functions/)
+-->
+
+<!-- 
+<div align="center">
+<img src='https://komazawa-deep-learning.github.io/assets2019Inception_screenshot.png' style='width:84%'><br>
+<div align="left"  style="width:69%">
+映画インセプションのスクリーンショット。
+ 
+[Netflix](https://www.netflix.com/watch/70131314?trackId=14170286&tctx=3%2C0%2C9a10a321-9c1f-4396-b5df-00b5b84e6917-23965358%2C3d0e40f0-b286-48eb-afb3-2c7c501c86fc_86910893X3XX1558568676167%2C3d0e40f0-b286-48eb-afb3-2c7c501c86fc_ROOT){target="_blank"} <br/>
+<https://www.netflix.com/watch/70131314?trackId=14170286&tctx=3%2C0%2C9a10a321-9c1f-4396-b5df-00b5b84e6917-23965358%2C3d0e40f0-b286-48eb-afb3-2c7c501c86fc_86910893X3XX1558568676167%2C3d0e40f0-b286-48eb-afb3-2c7c501c86fc_ROOT><br/>
+
+『インセプション』（原題: Inception）は、クリストファー・ノーラン監督・脚本・製作による2010年のアメリカのSFアクション映画。第83回アカデミー賞では作品賞、脚本賞、撮影賞、視覚効果賞、美術賞、作曲賞、音響編集賞、録音賞の8部門にノミネートされ、撮影賞、視覚効果賞、音響編集賞、録音賞を受賞した。全米脚本家組合賞ではオリジナル脚本賞を受賞した。
+[日本語ウィキペデイアより](https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%B3%E3%82%BB%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3){target="_blank"}
+
+</div>
+</div>
+
+<div align="center" style="width:94%">
+	<img src='https://komazawa-deep-learning.github.io/assetsInception3.svg' style="width:94%"></br>
+	<img src='https://komazawa-deep-learning.github.io/assets2015GoogLeNet_Inception.svg' style="width:74%"></br>
+	<div align="left">
+Inception モジュール
+</div>
+</div>
+ -->
+
+<!-- 
+</center>
+<center>
+<img src='https://komazawa-deep-learning.github.io/assets2014Cadieu_Fig3.svg' style='width:74%'>
+</center>
+-->
+
 
 
 
