@@ -18,6 +18,8 @@ layout: home
 
 ---
 
+- [はじめての colab による画像認識 <img src="https://komazawa-deep-learning.github.io/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021komazawa_cogsy000_CNN_demo.ipynb){:target="_blank"}
+
 
 * [**第 4 回**](lect04){:target="_blank"} 授業の計画・内容 【浅川：畳み込みニューラルネットワークによる特徴抽出】第２講パターン認知の知識に基づき，畳み込みニューラルネットワークによる特徴抽出の実装とその意味について考える。生体が行う視覚情報処理に触発されて福島が提案したネオコグニトロンから，現在の畳み込みニューラルネットワークによる物体認識に至る道筋を確認します。畳み込み，スキップ結合，ドロップアウト，などの概念と生理学的対応物について議論します。 
     * 準備学習（予習・復習等）  YouTube上で以下のキーワードで検索し，結果の幾つか最初の数分ほどを視聴し，その内容を 1, 2行で要約してださい。キーワード : deeplearning, beginners, tutorial 60分 
@@ -51,6 +53,7 @@ layout: home
 <!-- * [Lindsay, G. W., Convolutional Neural Networks as a Model of the Visual System: Past, Present, and Future, 2020](2020Lindsay_Convolutional_Neural_Networks_as_a_Model_of_the_Visual_System_Past_Present_and_Future.pdf){:target="_blank"} -->
 1. [計算論的視覚と正則化理論 Poggio, Torre, Koch, 1985](https://komazawa-deep-learning.github.io/2021cogpsy/1985Poggio_Computational_Vision_and_Regularization_Theory.pdf){:target="_blank"}
 1. [皮質における物体認識の階層モデル Riesenhuber and Poggio (1999) Nature](https://komazawa-deep-learning.github.io/2021cogpsy/1999Riesenhuber_Poggio_Hierarchical_models_of_object_recognition_in_cortex.pdf){:target="_blank"}
+1. [名詞の意味に関連した人間の脳活動の予測, Mitchell, 2018, Predicting Human Brain Activity Associated with the Meanings of Nouns](https://shinasakawa.github.io/2008Mitchell_Predicting_Human_Brain_Activity_Associated_with_the_Meanings_of_Nounsscience.pdf){:target="_blank"}
 1. [ディープラーニング回顧録 Senjowski, 2020, Unreasonable effectiveness of deep learning in artificial intelligence](https://komazawa-deep-learning.github.io/2021/2020Sejnowski_Unreasonable_effectiveness_of_deep_learning_in_artificial_intelligence.pdf){:target="_blank"}
 <!-- * [Senjowski, Unreasonable effectiveness of deep learning in artificial intelligence, 2020](2020Sejnowski_Unreasonable_effectiveness_of_deep_learning_in_artificial_intelligence.pdf){:target="_blank"} -->
 1. [注意レビュー論文 Lindsay, 2020, Attention in Psychology, Neuroscience, and Machine Learning](https://project-ccap.github.io/2020Lindsay_Attention_in_Psychology_Neuroscience_and_Machine_Learning.pdf){:target="_blank"}
