@@ -3,7 +3,6 @@ title: 2021年度 駒澤大学 認知心理学研究 II (b)
 layout: home
 ---
 
-
 <img src="figures/qrcode.png">
 
 - 授業名: 認知心理学研究 II (b)
@@ -19,6 +18,8 @@ layout: home
 ---
 
 - [はじめての colab による画像認識 <img src="https://komazawa-deep-learning.github.io/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021komazawa_cogsy000_CNN_demo.ipynb){:target="_blank"}
+- [画像処理における特徴量抽出 <img src="https://komazawa-deep-learning.github.io/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2020Sight_visit_feature_extractions_demo.ipynb){:target="_blank"}
+- [DOG 等エッジ検出と顔検出の従来手法 <img src="https://komazawa-deep-learning.github.io/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2021_0528edge_and_face_detection_algorithm_not_cnn.ipynb){:target="_blank"}
 
 
 * [**第 4 回**](lect04){:target="_blank"} 授業の計画・内容 【浅川：畳み込みニューラルネットワークによる特徴抽出】第２講パターン認知の知識に基づき，畳み込みニューラルネットワークによる特徴抽出の実装とその意味について考える。生体が行う視覚情報処理に触発されて福島が提案したネオコグニトロンから，現在の畳み込みニューラルネットワークによる物体認識に至る道筋を確認します。畳み込み，スキップ結合，ドロップアウト，などの概念と生理学的対応物について議論します。 
