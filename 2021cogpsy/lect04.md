@@ -28,45 +28,255 @@ enhancing neurological function in human beings.
 Read more: http://www.33rdsquare.com/2013/03/theodore-berger-on-neuroengineering.html#ixzz3QMIpk4DK
 
 
-<iframe width="640" height="360" src="https://www.youtube.com/embed/kJsfQTcBhAM"
-frameborder="0" allowfullscreen></iframe>
-Future of Neuroscience
+---
 
-Sur ら (1988) は，フェレット（西洋イタチ）の 聴覚信号と視覚信号との中継核，膝状体 で信号を入れ替える実験を行っ
-た。
-すなわち，聴覚信号が視覚野へ入力され，逆に視覚信号が聴覚野への入力となるように外科手術を行った。
-結果，本来聴覚信号を処理すべき聴覚野ニューロンでは，視覚刺激に応答する反応が観察され，
-本来視覚信号を処理すべき視覚野ニューロンでは，聴覚刺激に応答する反応が観察された。
+# 1. 人工知能と機械学習とニューラルネットワークと深層学習
+
+下図には，深層学習，表象学習，機械学習，人工知能 (AI) の関係が示されている。
+一番外側に人工知能があり，人工知能は他の全てを含む言葉であることが示されています。
+人工知能には機械学習と呼ばれる分野と図に示されている言葉では知識ベースと機械学習に分かれます。
+機械学習はロジスティック回帰などとニューラルネットワークに代表される表象学習に分かれます。
+ニューラルネットワーク，あるいは表象学習は，深層ではない自動符号化と深層学習に分かれます。
+どれも広義には人工知能に含まれます。
+今日注目を集めている分野はほぼ深層学習 (ディープラーニング) と呼ばれる分野になります。
 
 <center>
-   <img src="/assets/1988Sur_Fig1upper.svg" style="width:44%">
-   <img src="/assets/1988Sur_Fig1lower.svg" style="width:44%"><br/>
-<div style="text-align: left; width:94%; background-color: cornsilk;">
+<img src="/assets/2017Goodfellow_Fig1_4ja.svg" style="width:%"><br/>
+[@2016GoodfellowBook] Fig 1.4 を改変
+</center>
+
+<!-- [https://leonardoaraujosantos.gitbooks.io/artificial-inteligence/content/chapter1.html](https://leonardoaraujosantos.gitbooks.io/artificial-inteligence/content/chapter1.html)](./figures/AI_Deeplearning.jpg){style="width:99%"}
+-->
+<!-- [^2016GoodfellowBook]: Deep Learning, Ian Goodfellow, Yoshua Bengio and Aaron Courville, -->
+<!-- MIT Press, 2016 -->
+
+<!-- 
+<center>
+<img src="figures/2009Gray_4th_paradigm_plus.svg" style="width:69%"><br/>
+</center>
+-->
+
+
+# 2. 深層学習(ディープラーニング)とは何か
+
+<!-- 本節では深層学習，特に CNN と呼ばれるニューラルネットワークについて解説します。
+
+最初に画像処理の概略を述べる-->
+<!-- CNN が，それまで主流であった従来の手法の性能を凌駕したことはすでに述べました。 -->
+CNN の特徴の一つに **エンドツーエンド** と呼ばれる考え方があります。
+エンドツーエンドとは，従来手法によるパターン認識システムでは，専門家による
+手の込んだ詳細な作り込みを必要としていたことと異なり，面倒な作り込みをせずとも性能が向上したことを指します。
+
+エンドツーエンドなニューラルネットワークにより，次のことが実現しました。
+
+- ニューラルネットワークの層ごとに，特徴抽出が行われ，抽出された特徴がより高次の層へと伝達される
+- ニューラルネットワークの各層では，比較的単純な特徴から次第に複雑な特徴へと段階的に変化する
+- 高次層にみられる特徴は低次層の特徴より大域的，普遍的である
+- 高次層のニューロンは，低次層で抽出された特徴を共有している
+
+<center>
+<img src='/assets/Formal_r.svg' style="width:44%">
+<img src='/assets/Neuron_Hand-tuned.png' style="width:44%"><br/>
+左: 形式ニューロン. 右: ニューロンの模式図 wikipedia より
+</center>
+
+上図で 入力信号 $x$ を 重み $w$ を付けて足し合わて合算する部分を線形変換と呼び，線形変換した値に変換する部分を非線形変換と呼びます。
+
+---
+
+# 3. ニューラルネットワークの分類学 neural network taxonomy
+
+1. 畳み込みニューラルネットワーク Convolutional Neural Networks: CNN
+2. リカレントニューラルネットワーク Recurrent Neural Networks: RNN
+3. 強化学習 Reinforcement Learning: RL
+    * 注意: Multi-head self attention: MHSA
+    * 敵対的ネットワーク Generative Adversarial Networks: GAN
+    * 変分自己符号化器 Variational Auto Encoders, 変分推論 Variational Inference
+    * 自己教師あり学習 Self Supervised Learning: SSL
+    * 対比学習 Contrastive Learning: 
+
+## 3.1 学習方法による分類
+* 教師あり学習 Supervised Learning
+* 教師なし学習 Unsupervised Learning
+* 半教師あり学習 Semi-supervised Learning
+
+
+# 4. オンライデモ
+- [ニューラルネットワークで遊んでみよう！](https://jpa-bert.github.io/tensorflow-playground)
+- [強化学習のデモ](https://komazawa-deep-learning.github.io/reinforcejs/)
+- [リカレントニューラルネットワークによる文処理デモ](https://komazawa-deep-learning.github.io/character_demo.html)
+
+# 5. ディープラーニングがもたらしたもの SOTA の一部
+
+* 音声認識 <font color="blue">(Hannun, A. et al. Deep speech: scaling up end-to-end speech recognition. arXiv:
+1412.5567 (2014).)</font>
+* 画像認識 <font color="blue">(Krizhevsky, A., Sutskever, I. & Hinton, G. E. in Adv. Neural Inf. Process. Syst
+. 1097–1105 (NIPS, 2012).; He, K., Zhang, X., Ren, S. & Sun, J. Deep residual learning for image recognition.Proc. IEEE Conf. Comput. Vision Patt. Recog., 770–778 (2016))</font>
+* 自動翻訳 <font color="blue">(Vaswani, A. et al. in Adv. Neural Inf. Process. Syst. 6000–6010, NIPS, 2017)</ont>
+* 画像，音声生成 <font color="blue">(Oord, A. v. d., Kalchbrenner, N. & Kavukcuoglu, K. Pixel recurrent neural
+ networks. PMLR 48, 1747–1756,2016; Van den Oord, A. et al. Wavenet: a generative model for raw audio. arXiv:609.03499 (2016)</font>
+* 言語モデル <font color="blue">(Jozefowicz, R., Vinyals, O., Schuster, M., Shazeer, N. & Wu, Y. Exploring the
+ limits of language modeling. Preprint at arXiv:1602.02410, 2016)</font>
+* 強化学習によるテレビゲーム <font color="blue">(Mnih, V. et al. Human-level control through deep reinforcemen
+t learning. Nature 518, 529–533, 2015). </font>
+* 囲碁 <font color="blue">(Mnih, V. et al. Human-level control through deep reinforcement learning. Nature 518
+, 529–533,2015; Silver, D. et al. Mastering the game of go without human knowledge. Nature 550, 354–359,2017</font> ポーカー <font color="blue">(Moravčík, M. et al. DeepStack: expert-level artificial intelligence in hads-up no-limit poker. Science 356, 508–513,2017)</font>, アタリの全ゲーム<font color="blue">(Badia et al. Agnt57: Outperforming the Atari Human Benchmark, arXiv:2003.13350,2020)</font>
+
+### 若干の考察 （妄想？）
+
+* 我々人間は，外界を認識するために必要な計算を，生物種としての発生の過程と，個人の発達を通しての経験に基づく認識システムを保持していると見ることができます。
+* 従って我々の視覚認識には化石時代に始まる光の受容器としての眼の進化の歴史と発達を通じた個人の視覚経験が反映された結果でもあります。
+* 人工知能の目標は，この複雑な特徴検出過程をどうやったらコンピュータが獲得できるかということでもあります。
+* 外界を認識するために今日まで考案されてきたモデル <!--（例えば，ニューラルネットワーク，ブースティング，決定木，サポートベクターマシンなどは）は複雑です。ですがモデル-->を訓練するための学習方法はそれほど難しくありません。
+* この意味で画像認識課題が正しく動作するためのポイントは，認識システムが問題を解く事が可能なほど複雑であるかど
+うかではなく，十分に複雑が視覚環境，すなわち画像認識の場合，外部の艦橋を反映するために十分な量の像データを容易すことができるか否かにあります。
+* 今日の CNN による画像認識性能の向上は，簡単な計算方法を用いて複雑な外部環境に適応できる認識システムを構築する方法が確立したからであると言うことが可能です。
+
+モデルが複雑な課題を解くことができるか否かはモデルの複雑さによるのではなく，そのモデルに与えられたデータ(外部環境)が複雑だからです。
+生物は，己を取り巻く複雑な外部環境(データ)にさらされながら，その環境に適応しようとしてきました。
+今日の人工知能の盛況ぶりこのような環境を以下にして簡単なアルゴリズムを用いて複雑なモデルを構成するかという点に
+着目し，およそその方法が確立しつつあるという点が強調されるべき点であると考えます。
+
+<!-- @fig:2012Ng_01 に画像処理の例を挙げました。
+@fig:2012Ng_01 では入力画像がネコであるか否かを判断する画像認識であるとしました。
+我々はネコの画像を瞬時に判断できます。ですが画像認識の難しさは，
+入力画像が @fig:2012Ng_01 に示されているように入力信号の数字の集まりでしか無いことです。
+このようなデータを何度も経験することでネコを識別できるようにする必要があります。
+-->
+
+# 6. 現代的認識モデルの特徴
+
+- 深層学習=表象学習/特徴の学習
+- 従来モデルによるパターン認識(1950年代ー)
+- 固定的/職人芸的特徴(固定カーネル)+学習可能な分類器
+- エンドツーエンドな学習/特徴学習/深層学習
+- 学習可能な特徴(カーネル)+学習可能な分類器
+- 基本モデルは1950年代以来進化していない
+- 最初の学習する機械: パーセプトロン(1960) ローゼンブラット コーネル大学
+- パーセプトロンは単純な特徴検出器の上に線形分離器を乗せたモデル
+- 今日の機械学習の実際:
+    1. パーセプトロンの線形分類器を使用
+    1. パーセプトロンのテンプレートマッチングを使用。
+- 特徴抽出器の設計には，専門家による長期の努力が必要
+
+<!-- 
+## 従来主流であったパタン認識システムの構成
+- 従来手法によるパターン認識システム構成
+-->
+
+<!-- ### 1990年代から2011年までの音声認識-->
+
+# 7. 画像認識
+<center>
+<img src="/assets/2012Ng_ML_and_AI_01.png" style="width:47%">
+<img src="/assets/2012Ng_ML_and_AI_03.png" style="width:47%"><br/>
+<div style="text-align: left; width:66%; background-color:cornsilk">
+適切な特徴抽出ができればネコ目特徴とネコ足特徴が同時に高い値となる画像はネコと認識して良い可能性が高まる。
+我々の見ている画像は数値の列としてデータ化される
+</div>
+</center>
+ <!--[@fig:2012Ng_01] に示したようにコンピュータに入力される画像は数字の塊に過ぎません。-->
+
+* 状況ごとにとるべき操作を命令として逐一コンピュータに与える指示する手順の集まりのことをコンピュータプログラムと呼びます。
+* 人間がコンピュータに与えることができる操作や命令によって画像認識システムを作る場合，命令そのものが膨大になったり，そもそも説明することが難しかったりします。
+* 例を挙げれば，お母さんを思い浮かべてくださいと言われれば誰でも，それぞれ異なるイメージであれ思い浮かべることができます。また，提示された画像が自分の母親のものであるか，
+別の女性であるかの判断は人間であれば簡単です。
+
+* ところがコンピュータには難しい課題となります。
+* 加えて母親の特徴をコンピュータに理解できる命令としてプログラムすることも難しい課題です。
+つまり自分の母親の特徴を曖昧な言葉でなく明確に説明するとなるととても難しい課題となります。
+というのは，女性の顔写真であればどの写真も似ていると言えるからです。
+顔の造形や輪郭，髪の位置などはどの画像も類似していることでしょう。
+ところがコンピュータにはこの似ている，似ていいないの区別が難しいのです。
+
+
+加えて，同一ネコの画像であっても，被写体の向き視線の方向や光源の位置や撮影条件が異なれば画像としては異なります。
+<!--@fig:2012Ng_02 に示したように-->入力画像の中の特定の値だけを調べてみても，入力画像がネコである，そうではないかを判断することは難しい課題になります。
+
+<!-- 
+<center>
+<img src="figures/2012Ng_ML_and_AI_02.png" style="width:74%"><br/>
+数値列から画像を理解することは難しい
+</center>
+-->
+
+<!-- ## 画像認識の課題 -->
+現在の画像認識では，特定の画素の情報に依存せずに，入力画像が持っている特徴をとらえるように設計されます。
+たとえば，ネコを認識するために必要ことは，ネコに特徴的な「ネコ目」や「ネコ足」を検出することであると考えます。
+入力画像から，ネコの持つ特徴を抽出することができれば，それらの特徴を持っている入力画像はネコであると判断して良いことになります<!--(@fig:2012Ng_03)-->。
+
+<!--@fig:2013LeCun_9 は，-->下図は音声認識と画像認識の両分野において CNN が用いられる以前の従来手法をまとめたものです。
+
+<center>
+<img src="/assets/2013LeCun-tutorial-icml_9.png" style="width:47%">
+<img src="/assets/2013LeCun-tutorial-icml_10.png" style="width:47%"><br/>
+<div style="text-align: left;width: 88%;background-color: cornsilk">
+左: 従来主流であったパタン認識システムの構成。
+右: 非線形特徴変換を多数回繰り返した学習器を深層学習(ディープラーニング)という
+</div>
+</center>
+
+<!--@fig:2013LeCun_9 のような従来手法に対して，CNN ではエンドツーエンドな特徴抽出を多層多段に重ねることによっ
+て複雑な特徴を抽出しようとしています(@fig:2013LeCun_10)。-->
+
+コンピュータにはネコ目特徴検出器，ネコ足特徴検出器は備わっていません。そこで画像認識研究では，画像の統計的性質に基づいて特徴検出器を算出する方法を探す努力が行われてきました。
+しかし，コンピュータにネコ目特徴やネコ足特徴を教えるは容易なことではありません。
+このことは画像処理の分野だけに限りません，音声認識でも言語情報処理でも
+それぞれの特徴器を一つ一つ定義し，チューニングするのは時間がかかり，専門的な知識も必要で困難な作業でした。
+
+<center>
+<img src="/assets/2012Ng_ML_and_AI_05.png" style="width:74%"><br/>
+<rstrong>コンピュータはどうやって知覚するか</rstrong>。
+画像(上)，音声(央)，言語(下)とも入力情報(左)から特徴抽出(央)して分類器(右)で認識に至る
+</center>
+
+<!-- <center>
+<img src="/assets/2012Ng_ML_and_AI_06.png" style="width:64%"><br/>
+<img src="/assets/2012Ng_ML_and_AI_07.png" style="width:64%"><br/>
+<img src="/assets/2012Ng_ML_and_AI_08.png" style="width:64%"><br/>
+視覚, 聴覚, 言語の特徴抽出の例
+</center>
+ -->
+
+---
+
+<!--   
+<iframe width="640" height="360" src="https://www.youtube.com/embed/kJsfQTcBhAM" frameborder="0" allowfullscreen></iframe>
+Future of Neuroscience
+ -->
+
+* Sur ら (1988) は，フェレット（西洋イタチ）の 聴覚信号と視覚信号との中継核，膝状体 で信号を入れ替える実験を行った。
+* すなわち，聴覚信号が視覚野へ入力され，逆に視覚信号が聴覚野への入力となるように外科手術を行った。
+* 結果，本来聴覚信号を処理すべき聴覚野ニューロンでは，視覚刺激に応答する反応が観察され，本来視覚信号を処理すべき視覚野ニューロンでは，聴覚刺激に応答する反応が観察された。
+
+<center>
+<img src="/assets/1988Sur_Fig1upper.svg" width="33%">
+<img src="/assets/1988Sur_Fig1lower.svg" width="33%"><br/>
+<div style="text-align: left; width:66%; background-color: cornsilk;">
 実験の概略 Sur (1988) Fig. 1 
 </div>  
 </center>
 
 <center>
-<img src="/assets/1988Sur_fig2.jpg" width="74%"><br/>
-<div style="text-align: left; width:94%; text-color:cornsilk">
+<img src="/assets/1988Sur_fig2.jpg" width="33%"><br/>
+<div style="text-align: left; width:66%; background-color:cornsilk">
 聴覚視床への実験的に誘導された網膜投影（ハッチングされた領域）および聴覚視床と聴覚皮質の接続。
 手術した半球とは反対側の眼は、生き残っている背側LGN（LGd）と腹側LGN（LGv）、およびMGNの背側と腹側の区画内のパッチ（それぞれMGdとMG）に投影する。
 視床の傍矢状切片を番号付きで示す。
 視床の傍矢状切片の 同じ動物に、一次聴覚野（Al）にHRPを注入した場合（注入部位は左上に示す）、細胞が充填される。
 ドットで示されている）MG "MGdでは逆行性に、MGvでは後遺症複合体の側方分裂（P01）が行われている。MGd と MGv の多くの細胞が網膜突起帯を覆っている。 
-Sur (1988) Fig. 2
+Sur (1988) Fig. 2 より
 </div>
 </center>
 
 <center>
-<img src="/assets/1988Sur_Fig4.svg" style="width:94%"><br/>
-<div style="text-align: left; width:88%; background-color:cornsilk">
-  結果: Sur (1988) Fig. 4 
+<img src="/assets/1988Sur_Fig4.svg" width="49%"><br/>
+<div style="text-align: left; width:66%; background-color:cornsilk">
+結果: Sur (1988) Fig. 4 
 </div>
 </center>
 
-- Hinton's words about AI
-  * __speech for the IEEE/RSE Wolfson James Clerk Maxwell Award.__
+- Hinton's words about AI **speech for the IEEE/RSE Wolfson James Clerk Maxwell Award.**
 
 > 50年前，人工知能の父たちは論理こそが知性の鍵である確信していた。コンピュータに論理推論をさせることこそが必要であると考えた。
 論理ではなく，脳のネットワーク(訳注:現在のニューラルネットワーク)がどのように学習するのかを理解することはクレージーなアプローチであると考えた。
@@ -95,11 +305,8 @@ Hubel と Wiesel の実験結果 (Hubel & Wiesel, 1968 の Fig.2.7をトレー�
 </center>
 
 
-* [実習 2 いくつかの画像フィルタ 特徴点検出アルゴリズム<img src="https://raw.githubusercontent.com/komazawa-deep-learning/komazawa-deep-learning.github.io/8ff17b2977309e5943f512b6d10b76ac0cddbbe3/assets/colab_icon.svg">]
-(https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2020Sight_visit_feature_extractions_demo.ipynb){:target="_blank"}
-
-* [実習 3 DOG などのフィルタと Harr 特徴による顔検出 a.k.a ビオラ＝ジョーンズ アルゴリズム<img src="https://raw.githubusercontent.com/komazawa-deep-learning/komazawa-deep-learning.github.io/8ff17b2977309e5943f512b6d10b76
-ac0cddbbe3/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2021_0528edge_and_face_detection_algorithm_not_cnn.ipynb){:target="_blank"}
+* [実習 2 いくつかの画像フィルタ 特徴点検出アルゴリズム <img src="https://komazawa-deep-learning.github.io/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2020Sight_visit_feature_extractions_demo.ipynb){:target="_blank"}
+* [実習 3 DOG などのフィルタと Harr 特徴による顔検出 a.k.a ビオラ＝ジョーンズ アルゴリズム <img src="https://komazawa-deep-learning.github.io/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2021_0528edge_and_face_detection_algorithm_not_cnn.ipynb){:target="_blank"}
 
 
 ```python
@@ -189,7 +396,6 @@ LeNet5 の論文より改変
 <img src="/assets/1999Riesenhuber_Poggio_fig2.svg" width="49%"><br/>
 <!-- <img src="https://raw.githubusercontent.com/komazawa-deep-learning/komazawa-deep-learning.github.io/cde8974e50a598aa8c2ff88760acc450fab3fbf8/assets/1999Riesenhuber_Poggio_fig2.svg"  style="width:89%"><br/> -->
 <div style="text-align:left; width:66%; background-color:cornsilk">
-
 モデルのスケッチ。
 このモデルは、単純な細胞から作られた複雑な細胞の古典的なモデル[4]を拡張したもので、線形演算（福島の表記法では「S」ユニット，テンプレート・マッチング 図中の実線）と非線形演算
 （「C」プーリングユニット，最大値 MAX 演算を行う 図中破線）を持つ層の階層で構成。
@@ -223,7 +429,12 @@ MAX 機構 高度に非線形な形状調整の特性。
 </div>
 </center>
 
-<iframe src="../2021/conv-demo/index.html" width="140%" height="640px;" style="border:none;"></iframe>
+<br/><br/>
+
+<center>
+    <iframe src="/2021/conv-demo/index.html" width="140%" height="640px;" style="border:none;"></iframe>
+
+</center>
 
 <!--
 ## [TensorFlow HUB](https://www.tensorflow.org/hub){:target="_blank"}
@@ -264,8 +475,7 @@ Explores object detection with the use of the  [Faster R-CNN module trained on O
 
 <center>
 <img src='https://cdn-images-1.medium.com/max/1280/1*sS_WZM4GLS88XlnDLKcZ-g.png' style='width:94%'><br>
-from [A guide to Face Detection in Python](https://towardsdatascience.com/a-guide-to-face-detection-in-python-
-3eab0f6b9fc1)
+from [A guide to Face Detection in Python](https://towardsdatascience.com/a-guide-to-face-detection-in-python-3eab0f6b9fc1)
 </center>
 
 - [The Complete Beginner’s Guide to Deep Learning: Convolutional Neural Networks and Image Classification](https://towardsdatascience.com/wtf-is-image-classification-8e78a8235acb){:target="_blank"}, Anne Bonner Feb.  02
@@ -410,8 +620,7 @@ Scherer et. al, [Evaluation of Pooling Operations in Convolutional
 Architectures for Object Recognition](http://ais.uni-bonn.de/papers/icann2010_maxpool.pdf).__-->
 
 
-[ここ](http://scs.ryerson.ca/~aharley/vis/conv/flat.html){:target="_blank"} に行くと、畳み込み層の実に面白い 2
-D 視覚化をチェックすることができます。
+[ここ](http://scs.ryerson.ca/~aharley/vis/conv/flat.html){:target="_blank"} に行くと、畳み込み層の実に面白い 2D 視覚化をチェックすることができます。
 画面の左端のボックスに数字を描き、出力を見てみましょう。
 畳み込み層とプール層、そして推測を見ることができます。
 1 つの画像の 上にカーソルを置いてみると、フィルターが適用された場所がわかります。
