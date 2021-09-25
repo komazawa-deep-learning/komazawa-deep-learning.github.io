@@ -102,6 +102,46 @@ Hubel と Wiesel の実験結果 (Hubel & Wiesel, 1968 の Fig.2.7をトレー�
 ac0cddbbe3/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2021_0528edge_and_face_detection_algorithm_not_cnn.ipynb){:target="_blank"}
 
 
+```python
+import matplotlib.pyplot as plt
+%matplotlib inline
+from torchvision import models
+resnet = models.resnet18(pretrained=True)
+
+# 30 行 30 列目の結合荷重を視覚化する
+plt.imshow(resnet.layer4[0].conv1.weight.detach().numpy()[30,30], cmap='gray')
+plt.title('resent layer 4')
+plt.show()
+
+print(resnet_model.layer1[0].conv1.weight.detach().numpy().shape) 
+print(resnet_model.conv1.weight.detach().numpy().shape)
+
+for name, param in resnet_model.named_parameters():
+    print(name, type(param))
+
+alexnet = models.alexnet(pretrained=True)
+alex0 = alexnet.features[0].weight.detach().numpy()
+plt.imshow(alex0[3,0], cmap='gray')
+plt.title('alexnet features0')
+plt.show()
+
+for name, param in alexnet.named_parameters():
+    print(name, type(param))
+    
+# 第 1 層は入力画像が 3 チャンネルの色情報 r,g,b を持っているはずである。
+# 従って，色の情報を見ることが可能である。
+# 以下サンプルコード
+alexnet = models.alexnet(pretrained=True)
+
+#  AlexNet の最初の中間層の重み係数を取り出して numpy 配列に格納
+alex0 = alexnet.features[0].weight.detach().numpy()
+
+# 第 n 番目の結合係数を表示させたいのかを決める
+n = 7
+plt.imshow(np.clip(alex0[n].transpose(1,2,0),0,1))
+plt.show()
+```
+
 ## MLPの問題点
 
 1. **勾配消失問題** gradient vanishing problem
