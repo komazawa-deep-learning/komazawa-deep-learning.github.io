@@ -3,32 +3,25 @@ title: 第04回
 layout: home
 ---
 
-- キーワード: レチノトピー retinotopy，ソマトピー somatopy, トノトピー tonotopy
-- ワン・アルゴリズム仮説, 
-- [苦い教訓 (2019) Sutton](https://komazawa-deep-learning.github.io/2021cogpsy/2019Sutton_Bitter_Lesson.pdf){:target="_blank"}
+## 実習ファイル
 
-- Neural prosthesis, neural implants 
-	- World's first brain prosthesis revealed 9:00 12 March 2003 by Duncan Graham Rowe
-	http://www.technologyreview.com/featuredstory/514006/regaining-lost-brainfunction/
-	Regaining Lost Brain Function By Susan Young Rojahn on April 23, 2013
-
-	Our Amazingly Plastic Brains Mental and physical exercise can keep the brain fit and help it recover capacities lost to disease and trauma 
-	http://www.wsj.com/articles/our-amazingly-plastic-brains-1423262095 2015年02月15日閲覧 By NORMAN DOIDGE 
-
-	http://www.33rdsquare.com/2013/03/theodore-berger-on-neuro-engineering.html 2015年01月31日閲覧
-	Theodore Berger On Neuro Engineering https://www.youtube.com/watch?v=kJsfQTcBhAM
-
-	脳損傷によって失われた運動機能を肩代わりする脳の変化を解明 http://www.aist.go.jp/aist_j/press_release/pr2015/pr20150107/pr20150107.html 2015年02月02日閲覧 －脳から学んだリハビリの開発につながる発見－
-
-	Future of Neuroscience
-Later this year, Dr. Theodore Berger is slated to be a featured speaker at the GF2045 -
-Global Futures 2045 International Congress in New York. Dr. Berger's work involves
-recreating functions of the brain in silicon, with the aim of one day restoring and
-enhancing neurological function in human beings.
-Read more: http://www.33rdsquare.com/2013/03/theodore-berger-on-neuroengineering.html#ixzz3QMIpk4DK
+* [ヴィオラ=ジョーンズ アルゴリズム(従来手法) による顔認識実験 <img src="https://komazawa-deep-learning.github.io/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_0930viola_jones_ipynb.ipynb)
+* [顔，非顔判別データセットを用いた紡錘状回のモデル化 --- 転移学習を用いた顔検出モデル ---  <img src="https://komazawa-deep-learning.github.io/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_0925face_dataset_transfer_learning.ipynb)
+* [いくつかの画像フィルタ 特徴点検出アルゴリズム <img src="https://komazawa-deep-learning.github.io/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2020Sight_visit_feature_extractions_demo.ipynb){:target="_blank"}
+* [DOG 等エッジ検出と opencv を用いた Haar 特徴による顔領域の検出 従来手法 <img src="https://komazawa-deep-learning.github.io/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2021_0528edge_and_face_detection_algorithm_not_cnn.ipynb){:target="_blank"}
 
 
----
+## 文献資料
+
+1. [ディープラーニング概説, 2015, LeCun, Bengio, Hinton, Nature](https://komazawa-deep-learning.github.io/2021/2015LeCun_Bengio_Hinton_NatureDeepReview.pdf){:target="_blank"}
+1. [ゴール駆動型深層学習モデルを用いた感覚皮質の理解 Yamins(2016) Nature](https://project-ccap.github.io/2016YaminsDiCarlo_Using_goal-driven_deep_learning_models_to_understand_sensory_cortex.pdf){:target="_blank"}
+1. [ディープラーニングレビュー Storrs ら, 2019, Neural Network Models and Deep Learning, 2019](https://komazawa-deep-learning.github.io/2021/2019Storrs_Golan_Kriegeskorte_Neural_network_models_and_deep_learning.pdf){:target="_blank"}
+1. [深層学習と脳の情報処理レビュー Kriegestorte, 2015, Deep Neural Networks: A New Framework for Modeling Biological Vision and Brain Information Processing](2015Kriegeskorte_Deep_Neural_Networks-A_New_Framework_for_Modeling_Biological_Vision_and_Brain_Information_Processing.pdf){:target="_blank"}
+1. [生物の視覚と脳の情報処理をモデル化する新しい枠組み Kriegeskorte, Deep Neural Networks: A New Framework for Modeling Biological Vision and Brain Information Processing, 2015](https://project-ccap.github.io/2015Kriegeskorte_Deep_Neural_Networks-A_New_Framework_for_Modeling_Biological_Vision_and_Brain_Information_Processing.pdf){:target="_blank"}
+1. [計算論的認知神経科学 Kriegeskorte and Douglas, 2018, Cognitive computational neuroscience](https://project-ccap.github.io/2018Kriegeskorte_Douglas_Cognitive_Computational_Neuroscience.pdf){:target="_blank"} 
+1. [視覚系の畳み込みニューラルネットワークモデル，過去現在未来 Lindsay, 2020, Convolutional Neural Networks as a Model of the Visual System: Past, Present, and Future](https://project-ccap.github.io/2020Lindsay_Convolutional_Neural_Networks_as_a_Model_of_the_Visual_System_Past_Present_and_Future.pdf){:target="_blank"}
+
+
 
 # 1. 人工知能と機械学習とニューラルネットワークと深層学習
 
@@ -101,6 +94,7 @@ CNN の特徴の一つに **エンドツーエンド** と呼ばれる考え方�
 * 半教師あり学習 Semi-supervised Learning
 
 
+<!-- 
 # 4. オンライデモ
 - [ニューラルネットワークで遊んでみよう！](https://jpa-bert.github.io/tensorflow-playground)
 - [強化学習のデモ](https://komazawa-deep-learning.github.io/reinforcejs/)
@@ -122,12 +116,14 @@ t learning. Nature 518, 529–533, 2015). </font>
 * 囲碁 <font color="blue">(Mnih, V. et al. Human-level control through deep reinforcement learning. Nature 518
 , 529–533,2015; Silver, D. et al. Mastering the game of go without human knowledge. Nature 550, 354–359,2017</font> ポーカー <font color="blue">(Moravčík, M. et al. DeepStack: expert-level artificial intelligence in hads-up no-limit poker. Science 356, 508–513,2017)</font>, アタリの全ゲーム<font color="blue">(Badia et al. Agnt57: Outperforming the Atari Human Benchmark, arXiv:2003.13350,2020)</font>
 
+
 ### 若干の考察 （妄想？）
 
 * 我々人間は，外界を認識するために必要な計算を，生物種としての発生の過程と，個人の発達を通しての経験に基づく認識システムを保持していると見ることができます。
 * 従って我々の視覚認識には化石時代に始まる光の受容器としての眼の進化の歴史と発達を通じた個人の視覚経験が反映された結果でもあります。
 * 人工知能の目標は，この複雑な特徴検出過程をどうやったらコンピュータが獲得できるかということでもあります。
-* 外界を認識するために今日まで考案されてきたモデル <!--（例えば，ニューラルネットワーク，ブースティング，決定木，サポートベクターマシンなどは）は複雑です。ですがモデル-->を訓練するための学習方法はそれほど難しくありません。
+* 外界を認識するために今日まで考案されてきたモデル 
+（例えば，ニューラルネットワーク，ブースティング，決定木，サポートベクターマシンなどは）は複雑です。ですがモデル ）を訓練するための学習方法はそれほど難しくありません。
 * この意味で画像認識課題が正しく動作するためのポイントは，認識システムが問題を解く事が可能なほど複雑であるかど
 うかではなく，十分に複雑が視覚環境，すなわち画像認識の場合，外部の艦橋を反映するために十分な量の像データを容易すことができるか否かにあります。
 * 今日の CNN による画像認識性能の向上は，簡単な計算方法を用いて複雑な外部環境に適応できる認識システムを構築する方法が確立したからであると言うことが可能です。
@@ -136,7 +132,7 @@ t learning. Nature 518, 529–533, 2015). </font>
 生物は，己を取り巻く複雑な外部環境(データ)にさらされながら，その環境に適応しようとしてきました。
 今日の人工知能の盛況ぶりこのような環境を以下にして簡単なアルゴリズムを用いて複雑なモデルを構成するかという点に
 着目し，およそその方法が確立しつつあるという点が強調されるべき点であると考えます。
-
+ -->
 <!-- @fig:2012Ng_01 に画像処理の例を挙げました。
 @fig:2012Ng_01 では入力画像がネコであるか否かを判断する画像認識であるとしました。
 我々はネコの画像を瞬時に判断できます。ですが画像認識の難しさは，
@@ -144,7 +140,7 @@ t learning. Nature 518, 529–533, 2015). </font>
 このようなデータを何度も経験することでネコを識別できるようにする必要があります。
 -->
 
-# 6. 現代的認識モデルの特徴
+# 4. 現代的認識モデルの特徴
 
 - 深層学習=表象学習/特徴の学習
 - 従来モデルによるパターン認識(1950年代ー)
@@ -166,7 +162,7 @@ t learning. Nature 518, 529–533, 2015). </font>
 
 <!-- ### 1990年代から2011年までの音声認識-->
 
-# 7. 画像認識
+# 5. 画像認識
 <center>
 <img src="/assets/2012Ng_ML_and_AI_01.png" style="width:47%">
 <img src="/assets/2012Ng_ML_and_AI_03.png" style="width:47%"><br/>
@@ -224,22 +220,338 @@ t learning. Nature 518, 529–533, 2015). </font>
 このことは画像処理の分野だけに限りません，音声認識でも言語情報処理でも
 それぞれの特徴器を一つ一つ定義し，チューニングするのは時間がかかり，専門的な知識も必要で困難な作業でした。
 
+<!--
 <center>
 <img src="/assets/2012Ng_ML_and_AI_05.png" style="width:74%"><br/>
 <rstrong>コンピュータはどうやって知覚するか</rstrong>。
 画像(上)，音声(央)，言語(下)とも入力情報(左)から特徴抽出(央)して分類器(右)で認識に至る
 </center>
 
-<!-- <center>
+<center>
 <img src="/assets/2012Ng_ML_and_AI_06.png" style="width:64%"><br/>
 <img src="/assets/2012Ng_ML_and_AI_07.png" style="width:64%"><br/>
 <img src="/assets/2012Ng_ML_and_AI_08.png" style="width:64%"><br/>
 視覚, 聴覚, 言語の特徴抽出の例
 </center>
- -->
+-->
+
+# 6. ヒューベルとウィーゼルによる視覚野の生理学研究
+
+<center>
+<img src="/assets/1968Hubel_Wiesel_1.svg" style="width:49%"><br/>
+Hubel と Wiesel (1959, 1962, 1968) の実験の模式図
+</center>
+
+<center>
+<img src="/assets/1968Hubel_Wiesel_2.svg" style="width:49%"><br/>
+Hubel と Wiesel の実験結果 (Hubel & Wiesel, 1968 の Fig.2.7をトレーシングしたもの
+</center>
+
+
+### 上と同じ実習ファイル
+
+* [実習 いくつかの画像フィルタ 特徴点検出アルゴリズム <img src="https://komazawa-deep-learning.github.io/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2020Sight_visit_feature_extractions_demo.ipynb){:target="_blank"}
+* [実習 3DOG 等エッジ検出と opencv を用いた Haar 特徴による顔領域の検出 従来手法 <img src="https://komazawa-deep-learning.github.io/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2021_0528edge_and_face_detection_algorithm_not_cnn.ipynb){:target="_blank"}
+
+
+```python
+import matplotlib.pyplot as plt
+%matplotlib inline
+from torchvision import models
+resnet = models.resnet18(pretrained=True)
+
+# 30 行 30 列目の結合荷重を視覚化する
+plt.imshow(resnet.layer4[0].conv1.weight.detach().numpy()[30,30], cmap='gray')
+plt.title('resent layer 4')
+plt.show()
+
+print(resnet_model.layer1[0].conv1.weight.detach().numpy().shape) 
+print(resnet_model.conv1.weight.detach().numpy().shape)
+
+for name, param in resnet_model.named_parameters():
+    print(name, type(param))
+
+alexnet = models.alexnet(pretrained=True)
+alex0 = alexnet.features[0].weight.detach().numpy()
+plt.imshow(alex0[3,0], cmap='gray')
+plt.title('alexnet features0')
+plt.show()
+
+for name, param in alexnet.named_parameters():
+    print(name, type(param))
+    
+# 第 1 層は入力画像が 3 チャンネルの色情報 r,g,b を持っているはずである。
+# 従って，色の情報を見ることが可能である。
+# 以下サンプルコード
+alexnet = models.alexnet(pretrained=True)
+
+#  AlexNet の最初の中間層の重み係数を取り出して numpy 配列に格納
+alex0 = alexnet.features[0].weight.detach().numpy()
+
+# 第 n 番目の結合係数を表示させたいのかを決める
+n = 7
+plt.imshow(np.clip(alex0[n].transpose(1,2,0),0,1))
+plt.show()
+```
+
+<!-- 
+## MLPの問題点
+
+1. **勾配消失問題** gradient vanishing problem
+2. **責任割当問題** credit assignment problem
+
+これら２点の問題を解決する諸手法を元に多層化ニューラルネットワークが構成される。
+総称して **深層学習 deep learning** と呼ばれる。
+-->
+
+
+# 7. ネオコグニトロン (Fukushima, 1980)
+
+* S 細胞と C 細胞との繰り返し。最初の多層（深層）化された物体認識モデルととらえることが可能
+    - S 細胞：生理学の単純細胞 simple cells に対応。受容野 receptive fileds の概念を実現。特徴抽出，特徴検出を
+行う。<br/>
+    - C 細胞：複雑細胞 complex cells に対応。広い受容野。位置，回転，拡大縮小の差異を吸収<br>
+
+<center>
+<img src="/assets/Neocognitron.jpeg" width="66%">
+<div class="figcaption">
+ネオコグニトロンの模式図
+</div>
+</center>
 
 ---
 
+# 8. LeNet5 (LeCun, 1998)
+
+- **LeNet**. Yann LeCun (現 Facebook AI 研究所所長)による CNN 実装
+[LeNet](http://yann.lecun.com/exdb/publis/pdf/lecun-98.pdf){:target="_blank"} 手書き数字認識
+ 
+<center>
+<img src="/assets/1998LeNet5.png" width="88%">
+<div class="figcaption">
+LeNet5 の論文より改変
+</div>
+</center>
+
+- 畳込層とプーリング層（発表当初はサブサンプリング）との繰り返し
+    - 畳込とプーリングは<font color="green">局所結合</font>
+- MNIST を用いた１０種類の手書き文字認識
+- 最終２層は全結合層をつなげて最終層１０ニューロン，最終層の各ニューロンの出力がそれぞれの数字（０から９までの１０種）に対応する
+
+
+<center>
+<img src="/assets/1999Riesenhuber_Poggio_fig2.svg" width="49%"><br/>
+<!-- <img src="https://raw.githubusercontent.com/komazawa-deep-learning/komazawa-deep-learning.github.io/cde8974e50a598aa8c2ff88760acc450fab3fbf8/assets/1999Riesenhuber_Poggio_fig2.svg"  style="width:89%"><br/> -->
+<div style="text-align:left; width:66%; background-color:cornsilk">
+モデルのスケッチ。
+このモデルは、単純な細胞から作られた複雑な細胞の古典的なモデル[4]を拡張したもので、線形演算（福島の表記法では「S」ユニット，テンプレート・マッチング 図中の実線）と非線形演算
+（「C」プーリングユニット，最大値 MAX 演算を行う 図中破線）を持つ層の階層で構成。
+細胞入力の最大値を選択、その値を用いてセルを駆動する非線形の MAX演算は複雑細胞に対して，線形入力の合計とは異なり モデルの特性の鍵となる概念。
+この 2 種類の操作は 異なる位置にチューニングされた求心性結合をプールすることでパターン特異性と並進不変性を，また異なるスケールにチューニングされた求心性結合をプールすることで、スケール不変性をもたらした(図示せず)。
+</div>
+</center>
+
+# 9. 畳み込みニューラルネットワーク CNN
+
+畳み込みニューラルネットワークは，ネオコグニトロンを先祖にした現在のニューラルネットワークによる画像認識の基礎モデルです。
+
+## 9.1 CNN の特徴
+
+<!--[@2017Asakawa_deep_jps][^2017Aakawa\_deep\_jps\]-->。
+
+1.  畳込み演算 (convolutional operation)
+1.  非線形活性化関数 (nonlinear activation functions)
+3.  プーリング処理 (pooling)
+4.  データ拡張 (data augmentation)
+5.  バッチ正規化 (batch normalization)
+6.  ショートカット(shortcut) あるいは スキップ結合
+7. ドロップアウト (dropout)
+8.  GPU の使用
+
+
+* カーネル, ストライド，ダイアレーション，勾配消失問題，整流線形化関数 (ReLU),
+* 完全結合層，交差エントロピー損失
+* データ拡張 data augumentation
+* 転移学習 transfer learning 
+
+<center>
+    <iframe src="/2021/conv-demo/index.html" width="140%" height="640px;" style="border:none;"></iframe>
+
+</center>
+
+
+## 9.2 ディープラーニングの短所
+
+- データハングリー data hungry
+- 計算資源ハングリー resource hungry
+- 理論欠如 theory lagging
+- 不透明 opacity
+- ニューラルネットワークは素人の統計学である, Anderson et. al (1993)
+
+
+<!--
+## [TensorFlow HUB](https://www.tensorflow.org/hub){:target="_blank"}
+
+- ドロップアウト，データ拡張，各種正規化: cnn.md
+- 有名なモデル LeNet，Alex Net，Inception，VGG，ResNet
+- R-CNN，ハイウェイネット，YOLO，SSD
+- セマンティックセグメンテーション
+- 転移学習，事前学習，ファインチューニング
+- GAN
+
+### インセプション Inception，残渣ネット ResNet，領域 R-CNN (Regional Convolutional Neural Networks)
+- what and where routes 
+- 心理学的対応物(？)
+  - Cadieu (2014) Deep Neural Networks Rival the Representation of Primate IT Cortex for Core Visual Object Re cognition
+  - Nasr, Viswanathan, Nieder (2019) Number detectors spontaneously emerge in a deep neural network designed for visual object recognition
+  - Marcus (2018) Deep Learning A Critical Appraisal
+ -->
+
+
+# 10. 最大値プーリングの生理学的根拠
+
+<center>
+<img src="/assets/1999Riesenhuber_Poggio_fig3a.svg" width="49%"><br/>
+<div style="text-align: left; width:66%; background-color:cornsilk">
+MAX 機構 高度に非線形な形状調整の特性。
+「最適」特徴を決定するために考案された「単純化手順」を用いて得られた下側頭葉細胞の応答（選好刺激に対する反応が
+等しくなるように正規化された反応)。
+この実験では、もともと細胞は「水のボトル」の画像（一番左の物体）に非常に強い反応を示した。
+その後、刺激を単色の輪郭に単純化したところ、細胞の発火が増加し、さらに、楕円を支える棒からなるパドルのような物
+体に変化した。
+この物体が強い反応を引き起こすのに対し、棒や楕円だけではほとんど反応しなかった。
+</div>
+</center>
+
+<center>
+<img src="/assets/1999Riesenhuber_Poggio_fig3b.svg" width="49%"><br/>
+<div style="text-align: left; width:88%; background-color:cornsilk">
+実験とモデルの比較。
+白棒はの実験用ニューロンの反応を示す。
+黒と灰色の棒は 選好刺激の 幹-楕円 の基部の遷移に合わせてチューニングしたモデル細胞の反応を示している。
+モデル細胞は 直上図に示したモデルを簡略化したもの。
+受容野の各位置に 2 種類の S1 特徴があり、それぞれが遷移領域の左側または右側にチューンしていて、その出力が C1 ユニットに入力され MAX 関数 (黒棒) または SUM 関数 (灰色棒) を用いてプールされている。
+モデル細胞は 実験ニューロンの 選好刺激が受容野内にあるときに反応が最大になるよう、C1 ユニットに接続されていた。
+</div>
+</center>
+
+
+# 11. 生理学，視覚心理学との対応
+
+- Julesz(1981) Textons, the elements of texture perception, and their interactions, Nature
+
+<center>
+<img src="/assets/1981Julesz-texton-Fig2.svg" width="84%"><br/>
+Julesz (1981) Fig. 2 より
+</center>
+
+
+### 生理学との対応 (Hubel and Wiesel のネコとサル, Blackmore のネコ, ヴァンエッセン) 
+- 層間の結合の仕方, アーキテクチャ
+- forward/backward 役割，機能，実現方法
+- 側抑制 lateral inhibition (これについては多層化して回避できる可能性あり)
+- shape from X は正しかったのか？ ただし発達心理学におけるシェイプバアスは言語発達において重要な意味を持つはず
+。だからと言って乳幼児はそのように強制(脅迫？)，矯正されて育つわけではないだろう。
+
+    - Ritter (2017) Cognitive Psychology for Deep Neural Networks: A Shape Bias Case Study
+    - Landau, Smith, Jones (1992) Syntactic Context and the Shape Bias in Childrens and Adults Lexical Learnin
+    - Yamins (2016) Using goal-driven deep learning models to understand sensory cortex
+    - Julez のアプローチは視覚研究者 Haar, SIFT, DoG などのアルゴリズム開発者と対応
+    - Poggio (1985) Computational Vision and Regularization Theory
+
+## 現代的ニューラルネットワークモデルと生理学との対応
+
+<div align="center">
+<img src='/assets/2012Zeiler_Deconvolution.png' style='width:77%'></br>
+<br>Zeiller 2012 より
+</div>
+
+<div align="center">
+<img src="/assets/2010ZeilerKrishnanTaylorFerguss_fig.svg" style="width:88%"><br/>
+Zeiler et. al. (2010) Fig. 7, and 8
+</div>
+
+
+<center>
+<img src='/assets/2016Yamins_fig1s_ja.svg' style='width:94%'>
+<!--<img src='../assets/2016Yamins_Fig1.svg' style='width:94%'>-->
+<img src='/assets/2016Yamins_fig2ja.svg' style='width:94%'>
+</center>
+
+
+<br/><br/>
+
+# 11. 転移学習
+
+**転移学習** transfer learning は機械学習分野のみならず，ロボット工学や実応用の分野でも応用が考えられます。
+シミュレーションと現実との間隙をどのように埋めるのかという大きな問題に関連します。
+一方で，転移学習と **ファインチューニング** や **領域適応** domain adaptation の区別がなされています。
+
+転移学習とは 課題 A を用いて訓練したモデルに対して，別の課題 B に適用することを言います。
+DNN では転移学習は頻用されます。
+イメージネットで画像分類を学習したネットワークに対して，例えば顔認識を学習させるような場合です。
+
+PyTorch のチュートリアルなどでは，学習済のネットワークに対して，最終直下層を入れ替えて別の課題を訓練することを
+転移学習と呼びます。
+このとき，最終直下層と出力層との結合を学習させ，その他の下位層の結合は固定し，訓練しません。
+一方で，下位層まで含めて全結合を訓練させる場合をファインチューニングと呼び，区別しています。
+
+<div align="center" style="width:99%">
+<img src="/assets/2019Ruder_hard_parameter_sharing_p48.jpg" style="width:44%">
+<img src="/assets/2019Ruder_soft_parameter_sharing_p49.jpg" style="width:44%"><br/>
+左: ハードパラメータ共有: 転移学習,  右: ソフトパラメータ共有: ファインチューニング
+</div>
+
+
+
+
+### Notebooks
+
+- [colab/text_classification_with_tf_hub_on_kaggle.ipynb](https://github.com/tensorflow/hub/blob/master/examples/colab/text_classification_with_tf_hub_on_kaggle.ipynb)
+Shows how to solve a problem on Kaggle with TF-Hub.
+- [colab/semantic_similarity_with_tf_hub_universal_encoder.ipynb](https://github.com/tensorflow/hub/blob/master/examples/colab/semantic_similarity_with_tf_hub_universal_encoder.ipynb)
+Explores text semantic similarity with the [Universal Encoder Module](https://tfhub.dev/google/universal-sentence-encoder/2).
+- [colab/tf_hub_generative_image_module.ipynb](https://github.com/tensorflow/hub/blob/master/examples/colab/tf_hub_generative_image_module.ipynb)
+Explores a generative image module.
+- [colab/action_recognition_with_tf_hub.ipynb](https://github.com/tensorflow/hub/blob/master/examples/colab/action_recognition_with_tf_hub.ipynb)
+Explores action recognition from video.
+- [colab/tf_hub_delf_module.ipynb](https://github.com/tensorflow/hub/blob/master/examples/colab/tf_hub_delf_module.ipynb)
+Exemplifies use of the [DELF Module](https://tfhub.dev/google/delf/1) for landmark recognition and matching.
+- [colab/object_detection.ipynb](https://github.com/tensorflow/hub/blob/master/examples/colab/object_detection.ipynb) 
+Explores object detection with the use of the  [Faster R-CNN module trained on Open Images v4](https://github.com/tensorflow/hub/blob/master/examples/colab/object_detection.ipynb)
+
+
+
+
+---
+
+
+- キーワード: レチノトピー retinotopy，ソマトピー somatopy, トノトピー tonotopy
+- ワン・アルゴリズム仮説, 
+- [苦い教訓 (2019) Sutton](https://komazawa-deep-learning.github.io/2021cogpsy/2019Sutton_Bitter_Lesson.pdf){:target="_blank"}
+
+- Neural prosthesis, neural implants 
+    - World's first brain prosthesis revealed 9:00 12 March 2003 by Duncan Graham Rowe
+    http://www.technologyreview.com/featuredstory/514006/regaining-lost-brainfunction/
+    Regaining Lost Brain Function By Susan Young Rojahn on April 23, 2013
+
+    Our Amazingly Plastic Brains Mental and physical exercise can keep the brain fit and help it recover capacities lost to disease and trauma 
+    http://www.wsj.com/articles/our-amazingly-plastic-brains-1423262095 2015年02月15日閲覧 By NORMAN DOIDGE 
+
+    http://www.33rdsquare.com/2013/03/theodore-berger-on-neuro-engineering.html 2015年01月31日閲覧
+    Theodore Berger On Neuro Engineering https://www.youtube.com/watch?v=kJsfQTcBhAM
+
+    脳損傷によって失われた運動機能を肩代わりする脳の変化を解明 http://www.aist.go.jp/aist_j/press_release/pr2015/pr20150107/pr20150107.html 2015年02月02日閲覧 －脳から学んだリハビリの開発につながる発見－
+
+    Future of Neuroscience
+Later this year, Dr. Theodore Berger is slated to be a featured speaker at the GF2045 -
+Global Futures 2045 International Congress in New York. Dr. Berger's work involves
+recreating functions of the brain in silicon, with the aim of one day restoring and
+enhancing neurological function in human beings.
+Read more: http://www.33rdsquare.com/2013/03/theodore-berger-on-neuroengineering.html#ixzz3QMIpk4DK
+
+
+# ワン・アルゴリズム仮説
 <!--   
 <iframe width="640" height="360" src="https://www.youtube.com/embed/kJsfQTcBhAM" frameborder="0" allowfullscreen></iframe>
 Future of Neuroscience
@@ -292,187 +604,6 @@ Curiously, two people who rejected the logic based approach to AI were Turing an
 If either of them had lived I think things would have turned out differently... now neural networks are everywhere and the crazy approach is winning.
 -->
 
-# 1. ヒューベルとウィーゼルによる視覚野の生理学研究
-
-<center>
-<img src="/assets/1968Hubel_Wiesel_1.svg" style="width:49%"><br/>
-Hubel と Wiesel (1959, 1962, 1968) の実験の模式図
-</center>
-
-<center>
-<img src="/assets/1968Hubel_Wiesel_2.svg" style="width:49%"><br/>
-Hubel と Wiesel の実験結果 (Hubel & Wiesel, 1968 の Fig.2.7をトレーシングしたもの
-</center>
-
-
-* [実習 2 いくつかの画像フィルタ 特徴点検出アルゴリズム <img src="https://komazawa-deep-learning.github.io/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2020Sight_visit_feature_extractions_demo.ipynb){:target="_blank"}
-* [実習 3 DOG などのフィルタと Harr 特徴による顔検出 a.k.a ビオラ＝ジョーンズ アルゴリズム <img src="https://komazawa-deep-learning.github.io/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2021_0528edge_and_face_detection_algorithm_not_cnn.ipynb){:target="_blank"}
-
-
-```python
-import matplotlib.pyplot as plt
-%matplotlib inline
-from torchvision import models
-resnet = models.resnet18(pretrained=True)
-
-# 30 行 30 列目の結合荷重を視覚化する
-plt.imshow(resnet.layer4[0].conv1.weight.detach().numpy()[30,30], cmap='gray')
-plt.title('resent layer 4')
-plt.show()
-
-print(resnet_model.layer1[0].conv1.weight.detach().numpy().shape) 
-print(resnet_model.conv1.weight.detach().numpy().shape)
-
-for name, param in resnet_model.named_parameters():
-    print(name, type(param))
-
-alexnet = models.alexnet(pretrained=True)
-alex0 = alexnet.features[0].weight.detach().numpy()
-plt.imshow(alex0[3,0], cmap='gray')
-plt.title('alexnet features0')
-plt.show()
-
-for name, param in alexnet.named_parameters():
-    print(name, type(param))
-    
-# 第 1 層は入力画像が 3 チャンネルの色情報 r,g,b を持っているはずである。
-# 従って，色の情報を見ることが可能である。
-# 以下サンプルコード
-alexnet = models.alexnet(pretrained=True)
-
-#  AlexNet の最初の中間層の重み係数を取り出して numpy 配列に格納
-alex0 = alexnet.features[0].weight.detach().numpy()
-
-# 第 n 番目の結合係数を表示させたいのかを決める
-n = 7
-plt.imshow(np.clip(alex0[n].transpose(1,2,0),0,1))
-plt.show()
-```
-
-## MLPの問題点
-
-1. **勾配消失問題** gradient vanishing problem
-2. **責任割当問題** credit assignment problem
-
-これら２点の問題を解決する諸手法を元に多層化ニューラルネットワークが構成される。
-総称して **深層学習 deep learning** と呼ばれる。
-
-
-# 2. ネオコグニトロン (Fukushima, 1980)
-
-* S 細胞と C 細胞との繰り返し。最初の多層（深層）化された物体認識モデルととらえることが可能
-    - S 細胞：生理学の単純細胞 simple cells に対応。受容野 receptive fileds の概念を実現。特徴抽出，特徴検出を
-行う。<br/>
-    - C 細胞：複雑細胞 complex cells に対応。広い受容野。位置，回転，拡大縮小の差異を吸収<br>
-
-<center>
-<img src="/assets/Neocognitron.jpeg" width="66%">
-<div class="figcaption">
-ネオコグニトロンの模式図
-</div>
-</center>
-
----
-
-# 3. LeNet5 (LeCun, 1998)
-
-- **LeNet**. Yann LeCun (現 Facebook AI 研究所所長)による CNN 実装
-[LeNet](http://yann.lecun.com/exdb/publis/pdf/lecun-98.pdf){:target="_blank"} 手書き数字認識
- 
-<center>
-<img src="/assets/1998LeNet5.png" width="88%">
-<div class="figcaption">
-LeNet5 の論文より改変
-</div>
-</center>
-
-- 畳込層とプーリング層（発表当初はサブサンプリング）との繰り返し
-    - 畳込とプーリングは<font color="green">局所結合</font>
-- MNIST を用いた１０種類の手書き文字認識
-- 最終２層は全結合層をつなげて最終層１０ニューロン，最終層の各ニューロンの出力がそれぞれの数字（０から９までの１０種）に対応する
-
-
-<center>
-<img src="/assets/1999Riesenhuber_Poggio_fig2.svg" width="49%"><br/>
-<!-- <img src="https://raw.githubusercontent.com/komazawa-deep-learning/komazawa-deep-learning.github.io/cde8974e50a598aa8c2ff88760acc450fab3fbf8/assets/1999Riesenhuber_Poggio_fig2.svg"  style="width:89%"><br/> -->
-<div style="text-align:left; width:66%; background-color:cornsilk">
-モデルのスケッチ。
-このモデルは、単純な細胞から作られた複雑な細胞の古典的なモデル[4]を拡張したもので、線形演算（福島の表記法では「S」ユニット，テンプレート・マッチング 図中の実線）と非線形演算
-（「C」プーリングユニット，最大値 MAX 演算を行う 図中破線）を持つ層の階層で構成。
-細胞入力の最大値を選択、その値を用いてセルを駆動する非線形の MAX演算は複雑細胞に対して，線形入力の合計とは異なり モデルの特性の鍵となる概念。
-この 2 種類の操作は 異なる位置にチューニングされた求心性結合をプールすることでパターン特異性と並進不変性を，また異なるスケールにチューニングされた求心性結合をプールすることで、スケール不変性をもたらした(図示せず)。
-</div>
-</center>
-
-<center>
-<img src="/assets/1999Riesenhuber_Poggio_fig3a.svg" width="49%"><br/>
-<div style="text-align: left; width:66%; background-color:cornsilk">
-MAX 機構 高度に非線形な形状調整の特性。
-「最適」特徴を決定するために考案された「単純化手順」を用いて得られた下側頭葉細胞の応答（選好刺激に対する反応が
-等しくなるように正規化された反応)。
-この実験では、もともと細胞は「水のボトル」の画像（一番左の物体）に非常に強い反応を示した。
-その後、刺激を単色の輪郭に単純化したところ、細胞の発火が増加し、さらに、楕円を支える棒からなるパドルのような物
-体に変化した。
-この物体が強い反応を引き起こすのに対し、棒や楕円だけではほとんど反応しなかった。
-</div>
-</center>
-
-<center>
-<img src="/assets/1999Riesenhuber_Poggio_fig3b.svg" width="49%"><br/>
-<div style="text-align: left; width:88%; background-color:cornsilk">
-実験とモデルの比較。
-白棒はの実験用ニューロンの反応を示す。
-黒と灰色の棒は 選好刺激の 幹-楕円 の基部の遷移に合わせてチューニングしたモデル細胞の反応を示している。
-モデル細胞は 直上図に示したモデルを簡略化したもの。
-受容野の各位置に 2 種類の S1 特徴があり、それぞれが遷移領域の左側または右側にチューンしていて、その出力が C1 ユニットに入力され MAX 関数 (黒棒) または SUM 関数 (灰色棒) を用いてプールされている。
-モデル細胞は 実験ニューロンの 選好刺激が受容野内にあるときに反応が最大になるよう、C1 ユニットに接続されていた。
-</div>
-</center>
-
-<br/><br/>
-
-<center>
-    <iframe src="/2021/conv-demo/index.html" width="140%" height="640px;" style="border:none;"></iframe>
-
-</center>
-
-<!--
-## [TensorFlow HUB](https://www.tensorflow.org/hub){:target="_blank"}
--->
-
-- ドロップアウト，データ拡張，各種正規化: cnn.md
-- 有名なモデル LeNet，Alex Net，Inception，VGG，ResNet
-- R-CNN，ハイウェイネット，YOLO，SSD
-- セマンティックセグメンテーション
-- 転移学習，事前学習，ファインチューニング
-- GAN
-
-### インセプション Inception，残渣ネット ResNet，領域 R-CNN (Regional Convolutional Neural Networks)
-- what and where routes
-- 心理学的対応物(？)
-  - Cadieu (2014) Deep Neural Networks Rival the Representation of Primate IT Cortex for Core Visual Object Re
-cognition
-  - Nasr, Viswanathan, Nieder (2019) Number detectors spontaneously emerge in a deep neural network designed f
-or visual object recognition
-  - Marcus (2018) Deep Learning A Critical Appraisal
-- 転移学習
-
-### Notebooks
-
-- [colab/text_classification_with_tf_hub_on_kaggle.ipynb](https://github.com/tensorflow/hub/blob/master/examples/colab/text_classification_with_tf_hub_on_kaggle.ipynb)
-Shows how to solve a problem on Kaggle with TF-Hub.
-- [colab/semantic_similarity_with_tf_hub_universal_encoder.ipynb](https://github.com/tensorflow/hub/blob/master/examples/colab/semantic_similarity_with_tf_hub_universal_encoder.ipynb)
-Explores text semantic similarity with the [Universal Encoder Module](https://tfhub.dev/google/universal-sentence-encoder/2).
-- [colab/tf_hub_generative_image_module.ipynb](https://github.com/tensorflow/hub/blob/master/examples/colab/tf_hub_generative_image_module.ipynb)
-Explores a generative image module.
-- [colab/action_recognition_with_tf_hub.ipynb](https://github.com/tensorflow/hub/blob/master/examples/colab/action_recognition_with_tf_hub.ipynb)
-Explores action recognition from video.
-- [colab/tf_hub_delf_module.ipynb](https://github.com/tensorflow/hub/blob/master/examples/colab/tf_hub_delf_module.ipynb)
-Exemplifies use of the [DELF Module](https://tfhub.dev/google/delf/1) for landmark recognition and matching.
-- [colab/object_detection.ipynb](https://github.com/tensorflow/hub/blob/master/examples/colab/object_detection.ipynb) 
-Explores object detection with the use of the  [Faster R-CNN module trained on Open Images v4](https://github.com/tensorflow/hub/blob/master/examples/colab/object_detection.ipynb)
-
-
 <center>
 <img src='https://cdn-images-1.medium.com/max/1280/1*sS_WZM4GLS88XlnDLKcZ-g.png' style='width:94%'><br>
 from [A guide to Face Detection in Python](https://towardsdatascience.com/a-guide-to-face-detection-in-python-3eab0f6b9fc1)
@@ -495,6 +626,7 @@ enet-classification-with-deep-convolutional-neural-networks.pdf){:target="_blank
 - [Artificial neural networks? [You can learn about them here](https://towardsdatascience.com/simply-deep-learning-an-effortless-introduction-45591a1c4abb)
 
 
+<!--
 ## 正規化，正則化，標準化，白色化，二重中心化
 
 - 白色化については平井有三先生のパターン認識が参考文献で良いかな
@@ -502,6 +634,8 @@ enet-classification-with-deep-convolutional-neural-networks.pdf){:target="_blank
 - [Differences between normalization, standardization and regularization](https://maristie.com/blog/differences-between-normalization-standardization-and-regularization/)
 
 ---
+-->
+
 
 #### プーリング Pooling
 
@@ -557,22 +691,21 @@ classifying dogs correctly! But if your outputs are only “dog” and “cat,�
 and the Husky as cats. You can see the problem!)-->
 
 分散がないと、ネットワークはトレーニングデータと完全に一致しない画像では役に立たなくなります。
-**トレーニングデータとテストデータは必ず別々にしましょう。
-トレーニングデータでテストを行うと、ネットワークはその情報を記憶してしまいます。
-トレーニングしたデータでテストを行うと、ネットワークは情報を記憶してしまいます！新しいデータを導入すると、ひど
-い結果になるでしょう。
+
+**訓練データと検証データは必ず別々にする** 
+
+- 訓練データで検証を行うと ネットワークはその情報を記憶してしまいます。
+- 新しいデータを導入すると、ひどい結果になるでしょう。
 <!-- Without variance, your network will be useless with images that don’t exactly match the training data. 
 **Always, always, always keep your training and testing data separate**! 
 If you test with the data you trained on, your network has the information memorized! 
 It will do a terrible job when it’s introduced to any new data.  -->
 
 
-### Overfitting is not cool.
+### 過学習は良くない
 
 つまり、このステップでは、**特徴地図** を取得し、**プーリング層** を適用して、**プール済特徴地図** を作成します。
-<!-- So for this step, you take the **feature map**, apply a **pooling layer**, and the result is the **pooled feat
-ure map**.-->
-
+<!-- So for this step, you take the **feature map**, apply a **pooling layer**, and the result is the **pooled feature map**.-->
 
 プーリングの最も一般的な例は、**最大値プーリング** (またはマックスプーリング) です。
 最大値プーリングでは、入力画像を重ならない領域のセットに分割します。
@@ -583,25 +716,24 @@ In max pooling, the input image is partitioned into a set of areas that don’t 
 The outputs of each area are the maximum value in each area. 
 This makes a smaller size with fewer parameters. -->
 
-<!-- マックスプーリングとは、画像の各スポットで最大値を掴むことです。
+**最大値プーリング** は， 画像の各スポットで最大値だけの残して他は捨て去ることを意味します。
 これにより、特徴ではない 75％ の情報を取り除くことができます。
 ピクセルの最大値を取ることで、歪みを考慮することができます。
 特徴が左や右に少し回転しても、プールされた特徴は同じになります。サイズやパラメータを小さくしているのですね。
 これは、モデルがその情報に対してオーバーフィットしないことを意味するので、素晴らしいことです。
-Max pooling is all about grabbing the maximum value at each spot in the image. 
+<!-- Max pooling is all about grabbing the maximum value at each spot in the image. 
 This gets rid of 75% of the information that is not the feature. 
 By taking the maximum value of the pixels, you’re accounting for distortion. 
 If the feature rotates a little to the left or right or whatever, the pooled feature will be the same. You’rereducing the size and parameters. 
 This is great because it means that the model won’t overfit on that information.-->
 
-<!-- **平均プーリング** または **合計プーリング** を使用することもできますが、一般的な選択肢ではありません。
+**平均プーリング** または **合計プーリング** を使用することもできますが、一般的な選択肢ではありません。
 実際には、最大プーリングの方が両者よりも性能が良い傾向にあります。
 最大プーリングでは、最大のピクセル値を取ることになります。
 平均プーリングでは、画像のその場所にあるすべてのピクセル値の平均を取ります。
 実際には、より小さなフィルターを使ったり、プーリングレイヤーを完全に破棄したりする傾向があります。
 これは、積極的な表現サイズの縮小に対応したものです)。
- -->
- <!-- You could use **average pooling or sum pooling**, but they aren’t common choices. 
+<!-- You could use **average pooling or sum pooling**, but they aren’t common choices. 
 Max pooling tends to perform better than both in practice. 
 In max pooling, you’re taking the largest pixel value. 
 In average pooling, you take the average of all the pixel values at that spot in the image. 
@@ -661,12 +793,10 @@ ector).
 This allows that information to become the input layer of an artificial neural network for further processing.
 
 
-
 #### Fully connected layer
 At this step, we add an **artificial neural network** to our convolutional neural network. 
 (Not sure about artificial neural networks? [You can learn about them here](https://towardsdatascience.com/sim
 ply-deep-learning-an-effortless-introduction-45591a1c4abb)!)
-
 
 
 The main purpose of the artificial neural network is to combine our features into more attributes. 
