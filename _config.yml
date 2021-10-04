@@ -20,6 +20,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   駒澤大学文学部2021年度開講 心理学特講IIIA,B 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
+port: 8008
 
 # Build settings
 markdown: kramdown
