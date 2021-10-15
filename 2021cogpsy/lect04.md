@@ -4,6 +4,29 @@ layout: home
 author: 浅川伸一
 ---
 
+
+# 教材
+
+* [2021第04回 スライド00はじめに](https://youtu.be/5aXwpcp3o6U), 
+[資料 pdf ファイル](https://komazawa-deep-learning.github.io/2021cogpsy/2021lect04_slide00.pdf)
+* [2021第04回スライド01ニューラルネットワーク](https://youtu.be/yVHluU9B_PE)
+[資料 pdf ファイル](https://komazawa-deep-learning.github.io/2021cogpsy/2021lect04_slide01.pdf)
+* [2021第04回スライド02背景，歴史](https://youtu.be/7aYPUCnP7_E)
+[資料 pdf ファイル](https://komazawa-deep-learning.github.io/2021cogpsy/2021lect04_slide02.pdf)
+* [2021第4回スライド03パーセプトロン](https://youtu.be/8RdHdBCpsXw)
+[資料 pdf ファイル](https://komazawa-deep-learning.github.io/2021cogpsy/2021lect04_slide03.pdf)
+
+* [2021第04実習01 ミニマムニューラルネットワーク](https://youtu.be/2Y1bg8PlzDM)
+[資料 pdf ファイル](https://komazawa-deep-learning.github.io/2021cogpsy/2021lect04_excercise01_model_def.pdf)
+* [2021第04回実習02 活性化関数](https://youtu.be/n4_CGScTRso)
+[資料 pdf ファイル](http://komazawa-deep-learning.github.io/2021cogpsy/2021lect04_excercise02_activation.pdf)
+* [2021第04回実習03 損失関数](https://youtu.be/Jjzk1z2P_Nw)
+[資料 pdf ファイル](http://komazawa-deep-learning.github.io/2021cogpsy/2021cogpsy/2021lect04_excercise03_loss.pdf)
+* [2021第04回実習04 最適化](https://youtu.be/yuj58Miokrg)
+[資料 pdf ファイル](https://komazawa-deep-learning.github.io/2021cogpsy/2021lect04_excercise04_optim.pdf)
+* [2021第04回実習05 ミニマムセットの実行](https://youtu.be/3s-WYPWGH6Q)
+[資料 pdf ファイル](https://komazawa-deep-learning.github.io/2021cogpsy/2021lect04_excercise05_data_and_run.pdf)
+
 ## 実習ファイル
 
 * [顔データベースによる機械学習のデモと PyTorch による回帰，正則化項の実習  <img src="https://komazawa-deep-learning.github.io/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_1008face_dataset_regression.ipynb){:target="_blank"}
@@ -50,6 +73,8 @@ Yamins (2016), one algorithm 仮説
 
 # 0. 始める前に
 
+1. お詫び
+2. 
 <!-- - キーワード: レチノトピー retinotopy，ソマトピー somatopy, トノトピー tonotopy -->
 
 ## 0.1 必要なソフトウェアなど
