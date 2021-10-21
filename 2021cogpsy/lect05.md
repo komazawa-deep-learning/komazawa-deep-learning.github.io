@@ -3,8 +3,175 @@ title: 第05回
 layout: home
 ---
 
+# 授業計画案 (仮)
 
-# 7. ネオコグニトロン (Fukushima, 1980)
+* 10/22 05【浅川：標準正則化理論における，滑らかさの制約条件と単純さの制約条件を オリベッティ顔データセットを用いて，L1 と L2 の実習】
+* 10/29 06【浅川：畳み込みニューラルネットワークによる特徴抽出】<!-- 　←　[10/01, 04] -->
+<!-- ＞固有顔？　現在の心理学研究ではどうなっているのか？　＞永田先生 -->
+* 11/05 07【竹市対面：初期視覚特徴の神経生理学と　解析力学入門】
+* 11/12 08【浅川：初期視覚特徴の検証，畳み込み演算による第 1 次視覚野の対応物の検証】<!-- 　++ -->
+* 11/19 09【浅川：意味的領域切り出し，および，汎光学的領域切り出しとクラス関連記憶】<!-- 　←　[10/22 05] -->
+* 11/26 10【竹市対面：顔認知の神経生理学のもろもろ，カテゴリ知覚，個体識別と表情認知，紡錘状回と相貌失認，視点依存性など】
+* 12/03 11【浅川：ビオラ・ジョーンズアルゴリズムの実習】<!-- 　++   <---- ここに，顔の特徴点抽出実習 -->
+* 12/10 12【浅川：転移学習とファインチューニング，顔認識実演】<!-- 　←　[11/12 08] -->
+* 12/17 13【浅川：ディープラーニングを用いた転移学習で，顔と非顔の識別をする実習】<!-- 　++ -->
+* 12/24 14（課題授業）【浅川： GAN と変分自己符号化器モデルによる実習も行う】
+* 01/07 15【永田：授業のまとめ】
+
+# 0. 本日のメニュー
+
+
+* [多項式回帰によるアンダーフィッティング，オーバーフィッテイングのデモ <img src="https://komazawa-deep-learning.github.io/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2020Sight_Visit_polynomilal_fittings_demo.ipynb){:target="_blank"}
+* [顔データベースによる機械学習のデモと PyTorch による回帰，正則化項の実習](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_1020face_dataset_regression.ipynb){:target="_blank"}
+
+
+
+# 1. 一般化とオーバーフィッティング，アンダーフィッティング
+
+- データへの当てはまりが良いことが良いモデルではない
+- 未知のデータに対してどれほど当てはまるのかがモデルの性能を決める
+<!--
+* 訓練データ training data 実際に学習に用いたデータ
+* テストデータ test data 未知のデータ，訓練時には使用していないデータ
+-->
+* オーバーフィッティング 訓練データへの過剰適合
+* アンダーフィッティング 訓練データを十分に学習できない場合
+
+<!--
+* データ数(*小*) アンダーフィットする可能性**大**
+-->
+
+<center>
+<img src="/assets/04_07underOverFittings.svg" width="39%"><br/>
+<!-- ![](assets/04_07underOverFittings.svg){#fig:underOver style="width:59%"}
+ --></center>
+
+<!-- - [多項回帰による過剰適合，デモ <img src="assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2020Sight_Visit_polynomilal_fittings_demo.ipynb)
+-->
+
+<!--
+It's not a good idea to test a machine learning model on a dataset which we used to train it, since it won't give any indication of how well our model performs on unseen data. The ability to perform well on unseen data is called generalization, and is the desirable characteristic we want in a model.
+When a model performs well on training data (the data on which the algorithm was trained) but does not perform well on test data (new or unseen data), we say that it has overfit the training data or that the model is overfitting. This happens because the model learns the noise present in the training data as if it was a reliable pattern. 
+Conversely, when a model does not perform well on training data (i.e. it fails to capture patterns present in the training data) as well as unseen data then it is said to be under-fitting. That is, the model is unable to capture patterns present in the training data. 
+A smaller dataset can significantly increase the chance of overfitting. This is because it is much tougher to separate reliable patterns from noise when the dataset is small. [1]
+Examples of overfitting and under-fitting
+-->
+
+$$
+\begin{aligned}
+y &= w_0 + w_1 x,\\
+y &= w_0 + w_1 x_1 + w_2 x_2,\\
+y &= w_0 + w_1 x_1 +\cdots + x_nx_n
+\end{aligned}
+$$
+
+<!--
+Suppose we have the following dataset (red points in the figure), where we have only one input variable x and one output variable y. 
+
+If we fit y = w0 + w1x to the above dataset, we get the straight line fit as shown above. Note that this is not a good fit since it is quite far from many data points. This is an example of under-fitting. 
+
+Now, if we add another feature x2 and fit y = w0 + w1x1 + w2x2 then we'll get a curve fit as shown above. (Side note: This is still a linear model. x2 is a feature, i.e. input. The weights are w's and they are interacting linearly with the features x and x2. The curve we are fitting is a quadratic curve). As you can see, this is slightly better since it passes much closer to the data points above. 
+
+If we keep adding more features we'll get a curve that is more and more complex and that passes through more and more data points. Above figure shows an example. This is an example of overfitting. In this case, we are performing polynomial fitting y = w0 + w1x1 + w2x2 + ... + wdxd.
+Even though the fitted curve passes through almost all points, it won't perform well on unseen data. 
+-->
+
+## 2. オーバーフィッティングの回避
+<!-- Strategies to Avoid Overfitting
+
+One way to avoid overfitting it to collect more data. However, that is not always feasible. Below are some other strategies to overcome the problem of overfitting - regularization and cross-validation. -->
+
+## 2.1 正則化 Regularization
+
+モデルの複雑さを調整する
+
+<!--
+In regularization, we combat overfitting by controlling the model's complexity, i.e. by introducing an additional term in our cost function in-order to penalize large weights. This biases our model to be simpler, where simpler is weights of smaller magnitude (or even zero). We want to make the weights smaller, because complex models and overfitting are characterized by large weights. Recall the mean-squared error cost function, 
+J(w)=1nn∑i=1(y(xi)−yit)2
+-->
+
+### 2.1.1 L2 正則化 リッジ回帰
+<!--Regularization or Ridge Regression-->
+
+$$
+\text{損失関数(目的関数)} = \text{誤差} + \lambda\left|w\right|^2
+$$
+
+<!--
+In L2 regularization, a commonly used regularization technique, we add a penalty proportional to the squared magnitude of each weight. Our new cost function with L2 regularization is as follows:-
+J(w)=1nn∑i=1(y(xi)−yit)2+λ||w2||
+where, the first term is the same as in regular linear regression (without any regularization), and the second term is the regularization term. λ is a hyper-parameter that we choose and decides the regularization strength. Larger values of λ imply more regularization, i.e. smaller values for the model parameters. ||w2|| is w12 + w22 + ... wd2. 
+-->
+* L2 正則化はパラメータの絶対値が大きくなると罰則項 pernalty term として作用
+
+<!--
+L2 regularization penalizes the larger weights more (since the penalty is proportional to the weight squared). For example, reducing w = 10 to w = 9 has a larger effect on the penalty term (102-92) than reducing w = 3 to w = 2 (32-22).  
+-->
+
+### 2.1.2 L1 正則化 Lasso 回帰 <!--Regularization or Lasso Regression-->
+
+$$
+\text{目的関数} = \text{誤差} + \lambda\left|w\right|
+$$
+
+<!--
+In L1 regularization, we the penalty term is λ ||w||. That is, our cost function is:
+J(w)=1nn∑i=1(y(xi)−yit)2+λ||w||
+-->
+<!--
+An interesting property of L1 regularization is that model's parameters become sparse during optimization, i.e. it promotes a larger number of parameters w to be zero. This is because smaller weights are equally penalized as larger weights, whereas in L2 regularizations, larger weights are being penalized much more. This sparse property is often quite useful. For example, it might help us identify which features are more important for making predictions, or it might help us reduce the size of a model (the zero values don't need to be stored). 
+Ordinary least square (which we saw earlier in linear regression) with L2 regularization is known as Ridge Regression and with L1 regularization it is known as Lasso Regression.
+Cross Validation and Validation Datasets
+-->
+
+# 3. 正則化項
+
+- 簡潔さ原理 simplicity principle L1
+- 滑らかさ原理 smoothness principle L2
+- 疎性原理 sparseness principle L0
+
+<center>
+<img src="/assets/Regularization.svg" width="39%"><br/>
+<!-- ![]( assets/Regularization.svg){#fig:regularization style="width:44%"} -->
+</center>
+
+## 3.1 正則化項の影響
+
+<center>
+<img src="/assets/2001Hastie_p84.png" width="33%">
+<img src="/assets/2001Hastie_p89.png" width="33%"><br/>
+<img src="/assets/2001Hastie_p91.png" width="33%">
+<!-- ![](assets/2001Hastie_p84.png){#fig:hasiterP84 style="width:33%"}
+![](assets/2001Hastie_p89.png){#fig:hasiterP84 style="width:33%"}<br/>
+![](assets/2001Hastie_p91.png){#fig:hasiterP84 style="width:39%"}
+-->
+</center>
+[@2001HTF] より
+
+<!-- # まとめ
+
+- アンダーフィッテイングとオーバーフィッティング
+- データ数に比べて，推定すべきパラメータが多過ぎ = オーバーフィッティング
+- データ数に比べて，推定すべきパラメータが少な過ぎ = アンダーフィッティング
+- 正則化 L1, L2, L0, エラスティック
+- 正則化項の大きさ $\lambda$ はハイパーパラメータと呼ぶ
+
+# クイズ
+
+次の ＊＊＊＊ に当てはまる言葉をかんがえてください
+
+- データ数に比べて，推定すべきパラメータの過多 = ＊＊＊＊フィッティング
+- データ数に比べて，推定すべきパラメータが過少 = ＊＊＊＊フィッティング
+
+# クイズの答え
+
+- データ数に比べて，推定すべきパラメータが過多 = オーバーフィッティング
+- データ数に比べて，推定すべきパラメータが過少 = アンダーフィッティング
+-->
+
+- [多項式回帰の簡単なデモ  <img src="https://komazawa-deep-learning.github.io/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2020Sight_Visit_polynomilal_fittings_demo.ipynb){:target="_blank"}
+
+# 4. ネオコグニトロン (Fukushima, 1980)
 
 * S 細胞と C 細胞との繰り返し。最初の多層（深層）化された物体認識モデルととらえることが可能
     - S 細胞：生理学の単純細胞 simple cells に対応。受容野 receptive fileds の概念を実現。特徴抽出，特徴検出を
@@ -20,13 +187,13 @@ layout: home
 
 ---
 
-# 8. LeNet5 (LeCun, 1998)
+# 5. LeNet5 (LeCun, 1998)
 
 - **LeNet**. Yann LeCun (現 Facebook AI 研究所所長)による CNN 実装
 [LeNet](http://yann.lecun.com/exdb/publis/pdf/lecun-98.pdf){:target="_blank"} 手書き数字認識
  
 <center>
-<img src="/assets/1998LeNet5.png" width="88%">
+<img src="figures/1998LeNet5.png" width="88%">
 <div class="figcaption">
 LeNet5 の論文より改変
 </div>
@@ -50,22 +217,22 @@ LeNet5 の論文より改変
 </div>
 </center>
 
-# 9. 畳み込みニューラルネットワーク CNN
+# 6. 畳み込みニューラルネットワーク CNN
 
 畳み込みニューラルネットワークは，ネオコグニトロンを先祖にした現在のニューラルネットワークによる画像認識の基礎モデルです。
 
-## 9.1 CNN の特徴
+## 6.1 CNN の特徴
 
 <!--[@2017Asakawa_deep_jps][^2017Aakawa\_deep\_jps\]-->。
 
-1.  畳込み演算 (convolutional operation)
-1.  非線形活性化関数 (nonlinear activation functions)
-3.  プーリング処理 (pooling)
-4.  データ拡張 (data augmentation)
-5.  バッチ正規化 (batch normalization)
-6.  ショートカット(shortcut) あるいは スキップ結合
+1. 畳込み演算 (convolutional operation)
+1. 非線形活性化関数 (nonlinear activation functions)
+3. プーリング処理 (pooling)
+4. データ拡張 (data augmentation)
+5. バッチ正規化 (batch normalization)
+6. ショートカット(shortcut) あるいは スキップ結合
 7. ドロップアウト (dropout)
-8.  GPU の使用
+8. GPU の使用
 
 
 * カーネル, ストライド，ダイアレーション，勾配消失問題，整流線形化関数 (ReLU),
@@ -79,7 +246,7 @@ LeNet5 の論文より改変
 </center>
 
 
-## 9.2 ディープラーニングの短所
+## 6.2 ディープラーニングの短所
 
 - データハングリー data hungry
 - 計算資源ハングリー resource hungry
@@ -107,7 +274,7 @@ LeNet5 の論文より改変
  -->
 
 
-# 10. 最大値プーリングの生理学的根拠
+# 7. 最大値プーリングの生理学的根拠
 
 <center>
 <img src="/assets/1999Riesenhuber_Poggio_fig3a.svg" width="49%"><br/>
@@ -135,7 +302,7 @@ MAX 機構 高度に非線形な形状調整の特性。
 </center>
 
 
-# 11. 生理学，視覚心理学との対応
+# 8. 生理学，視覚心理学との対応
 
 - Julesz(1981) Textons, the elements of texture perception, and their interactions, Nature
 
@@ -158,7 +325,7 @@ Julesz (1981) Fig. 2 より
     - Julez のアプローチは視覚研究者 Haar, SIFT, DoG などのアルゴリズム開発者と対応
     - Poggio (1985) Computational Vision and Regularization Theory
 
-# 11. 転移学習
+# 9. 転移学習
 
 **転移学習** transfer learning は機械学習分野のみならず，ロボット工学や実応用の分野でも応用が考えられます。
 シミュレーションと現実との間隙をどのように埋めるのかという大きな問題に関連します。
@@ -180,7 +347,6 @@ PyTorch のチュートリアルなどでは，学習済のネットワークに
 </div>
 
 
-
 ### Notebooks
 
 - [colab/text_classification_with_tf_hub_on_kaggle.ipynb](https://github.com/tensorflow/hub/blob/master/examples/colab/text_classification_with_tf_hub_on_kaggle.ipynb)
@@ -195,9 +361,6 @@ Explores action recognition from video.
 Exemplifies use of the [DELF Module](https://tfhub.dev/google/delf/1) for landmark recognition and matching.
 - [colab/object_detection.ipynb](https://github.com/tensorflow/hub/blob/master/examples/colab/object_detection.ipynb) 
 Explores object detection with the use of the  [Faster R-CNN module trained on Open Images v4](https://github.com/tensorflow/hub/blob/master/examples/colab/object_detection.ipynb)
-
-
-
 
 
 
@@ -416,17 +579,13 @@ What is it that makes them relate to each other?
 Essentially, they wouldn’t, but they do when we introduce the **softmax function**.
 This brings the values between 0 and 1 and makes them add up to 1 (100%). 
 (You can read all about this on Wikipedia.) 
-The softmax function takes a vector of scores and squashes it to a vector of values between 0 and 1 that add u
-p to 1.
+The softmax function takes a vector of scores and squashes it to a vector of values between 0 and 1 that add up to 1.
 
 After you apply a softmax function, you can apply the loss function.
 Cross entropy often goes hand in hand with softmax. 
-We want to minimize the loss function so we can maximize the performance of our
-network.
+We want to minimize the loss function so we can maximize the performance of our network.
 At the beginning of backpropagation, your output values would be tiny.
 That’s why you might choose cross entropy loss. 
-The gradient would be very low and it would be hard for the neural network to start adjusting in the right dir
-ection. 
+The gradient would be very low and it would be hard for the neural network to start adjusting in the right direction. 
 Using cross entropy helps the network assess even a tiny error and get to the optimal state faster.
-
- -->
+-->
