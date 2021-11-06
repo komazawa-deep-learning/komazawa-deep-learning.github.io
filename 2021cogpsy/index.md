@@ -31,7 +31,7 @@ layout: home
     * 準備学習（予習・復習等）  YouTube上で以下のキーワードで検索し，結果の幾つか最初の数分ほどを視聴し，その内容を 1, 2行で要約してださい。キーワード : deeplearning, beginners, tutorial 60分
 * [**第 6 回** 課題授業](lect06){:target="_blank"} 授業の計画・内容【浅川（課題授業）：別途指示の通り】
     * 準備学習（予習・復習等）  課題授業
-* [**第 7 回** 教場（2021年11月05日予定）](https://komazawa-deep-learning.github.io/2021cogpsy/lect07_1.pdf){:target="_blank"} 授業の計画・内容 【竹市：初期視覚特徴と顔認知の神経生理学１】
+* [**第 7 回** 教場（2021年11月05日）](https://komazawa-deep-learning.github.io/2021cogpsy/lect07_1.pdf){:target="_blank"} 授業の計画・内容 【竹市：初期視覚特徴と顔認知の神経生理学１】
     * [**事後学習**](prep07){:target="_blank"}（予習・復習等） 60分
 * [**第 8 回** 教場（2021年11月12日予定）](lect08){:target="_blank"} 授業の計画・内容 【浅川：初期視覚特徴の検証，畳み込み演算による第 1 次視覚野の対応物の検証】
     * 準備学習（予習・復習等）  準備中 60分
