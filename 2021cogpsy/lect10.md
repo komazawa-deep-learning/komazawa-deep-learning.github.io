@@ -6,10 +6,11 @@ layout: home
 
 ## 実習ファイル
 
-* [DeepLabV3 によるセマンティックセグメンテーション](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_1126semantic_segmentation_pytorch_deeplabv3_resnet50.ipynb)
-* [Detectron2](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0605Detectron2.ipynb)
+* [DeepLabV3 によるセマンティックセグメンテーション <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_1126semantic_segmentation_pytorch_deeplabv3_resnet50.ipynb)
+* [Detectron2  <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0605Detectron2.ipynb)
+* [顔のキーポイント <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/project-ccap/project-ccap.github.io/blob/master/2021notebooks/2021_1010facial_keypoints_detection.ipynb)
 
-
+<!-- 
 1. R−CNN から位置情報と物体情報とを切り分けて，実時間処理が可能に
 2. YOLO, SSD 
 3. Squeeze-and-Extention など分岐して結合する流れ
@@ -21,17 +22,16 @@ layout: home
 * [Faster R-CNN](https://arxiv.org/pdf/1506.01497.pdf){:target="_blank"}, 
 * [YOLO](https://arxiv.org/pdf/1506.02640.pdf){:target="_blank"}, 
 * [SSD](https://arxiv.org/pdf/1512.02325.pdf){:target="_blank"},
-
+-->
 
 # 2 経路仮説
 - 腹側経路 ventral pathways ("what" 経路)
 - 背側経路 dorsan pathways ("where" 経路)
 
 <center>
-<img src="/assets/1982Ungerleider_Mishkin.jpg" width="49%"><br/>
-Ungerleider and Mishkin (1982) より<br/>
-<img src="/assets/LNCS2766_Chapter_2_fig2_4.jpg" width="66%"><br/>
-Behnke (2003) より<br/>
+<img src="/assets/1982Ungerleider_Mishkin.jpg" width="39%" hspace="30px">
+<img src="/assets/LNCS2766_Chapter_2_fig2_4.jpg" width="54%" hspace="1cm"><br/>
+左: Ungerleider and Mishkin (1982) より, 右: Behnke (2003) より<br/>
 </center>
 
 <font color="indigo">同様の 2 経路による処理は 聴覚 (Romanski et al., 1999) や 触覚(Reed et al., 2005)でも発見されています。</font>
@@ -55,7 +55,7 @@ Behnke (2003) より<br/>
 
 # 二段階モデル
 
-### R-CNN <!-- (2015) -->
+## R-CNN
 
 <center>
 <img src='/assets/2013Girshick_RCNN_Fig1.svg' style='width:74%'><br>
@@ -71,52 +71,62 @@ Girshick (2013) より
 Selective Search (2015) より
 </center>
 
+## Fast R-CNN と Faster R-CNN (2014)
 
-## NoisyStudent
 <center>
-<img src="/assets/2020Xie_NoisyStudent_fig2ja.svg" style="width:46%"><br/>
-教師あり学習の SOTA (Xie 他, 2020, Fig. 2 を改変)
+<img src='/assets/2015Fast_R-CNN_Fig1.svg' style='width:74%'><br>
+Fast R-CNN
+
+<img src='/assets/2015Faster_RCNN_RPN.svg' style='width:74%'><br>
+Faster R-CNN
 </center>
 
-## SwAV
-<center>
-<img src="/assets/2020Jaiswal_fig3ja.svg" style="width:49%"><br/>
-対比学習 の SOTA (Jaiswal 他, 2020, Fig. 3 を改変)
-</center>
 
-## クラス活性マッピング CAM: Class Activation Mapping 
+### 画像切り出し
 
-<!-- <center>
-<img src="http://gradcam.cloudcv.org/static/images/network.png"><br/>
-Grad-CAM の概念図
-</center>
+1. 物体位置
+3. 物体認識 object recognition
+2. 意味的切り出し semantic segmentation
+4. 対象切り出し instance segmentation
+5. 特徴点抽出 keypoint
+6. パノプティック切り出し
+
+<div align="center">
+<img src="/assets/2017DangHa_History_Of_Object_Recognition_ja.svg" style="width:88%"><br/>
+Dang and Ha (2017) より
+</div>
+
+<!-- ## セマンティックセグメンテーション(意味的切り出し)，インスタンスセグメンテーション(実体切り出し) 及び パノプティックセグメンテーション(汎光学的切り出し)
+
+- 完全畳み込みネットワーク(Fully Convolutional Network:FCN) と呼ばれるセマンティックセグメンテーションを実現するネットワーク
+- FCN とは文字通り全ての層が畳込み層であるモデル
 -->
-### CAM の例 （正確には grad-CAM の例）
 
 <center>
-    <img src="/assets/2016Grad-CAM_boxer_tigercat.png" style="width:24%">
-    <img src="/assets/2016Grad-CAM_boxer.png" style="width:24%">
-    <img src="/assets/2016Grad-CAM_tigercat.png" style="width:24%">
-    <div align="left" style="width:88%">
-        左:入力画像, 中:ボクサーに対応するヒートマップ, 右:トラ猫に対応するヒートマップ
-    </div>
+<img src='/assets/2015Long_FCN.svg' style='width:94%'></br>
+Long (2017) FCN
 </center>
 
-## 対比学習 contrastive learning 
+- 通常のCNN は，出力層のユニット数が識別すべきカテゴリー数であった。一方 FCN では入力画像の画素数だけ
+出力層が必要になる。
+- すなわち各画素がそれぞれどのカテゴリーに属するのかを出力する必要があるため出力層には，縦画素数 $\times$ 横画
+素数 $\times$ カテゴリー数の出力ニューロンが用意される。
+- 図 では，識別すべきカテゴリー数 が 20 であったたま，どのカテゴリーにも属さない，すなわち背景を指示するもう1 
+つのカテゴリーを加えた計 21 カテゴリーの分類を行うことになる。
+
+- CNN では畳込演算によって畳込みのカーネル幅(受容野) だけ近傍の入力刺激を加えて計算することになるため，
+上位層では下位層に比べて受容野が大きくなることの影響で画像サイズは小さく(あるいは粗く) なってしまう
+- このため，最終出力層に入力層と同じ解像度の画素数を得るためには，畳込みと反対方向の解像度を細かくする工夫が必
+要となる。
+- これを解決する一つの方法がアンサンプリング(unsampling) と呼ばれる方法
+- 下位のプーリング層の情報を用いて詳細な解像度を得る
+- 図 はアンサンプリングにより詳細な画像，すなわち最終的には入力画像と等解像度の出力を得る仕組みを示している。
 
 <center>
-<img src="/assets/2020Jaiswal_fig1.svg" style="width:49%"><br/>
-<img src="/assets/2020Jaiswal_fig2.svg" style="width:49%"><br/>
+<img src='/assets/2015Long_FCN2J.svg' style='width:94%'><br>
 </center>
 
-# 蒸留 distillation
 
-# 教師 生徒 学習 teacher student learning
-
-# R-CNN
-
-<center>
-</center>
 
 # ELBO
 
