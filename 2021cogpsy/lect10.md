@@ -154,7 +154,7 @@ pxq の 2 次元濃淡画像は pq 次元のベクトル空間に属している
 したがって， 私たちが探しているのは， 情報の大部分を占める成分です。
 主成分分析 (PCA) は Karl Pearson (1901) と Harold Hotelling (1933) によって独立に提案されたもので，相関している可能性のある変数の集合を， 相関していない変数のより小さな集合に変換するものです。
 このアイデアは，高次元データセットは，しばしば相関した変数によって記述され，したがって，情報の大部分を占める意味のあるいくつかの次元だけがあるというものです。
-PCA 法は， 主成分と呼ばれる， データの中で最大の分散を持つ方向を見つけます。
+PCA 法は，主成分と呼ばれる，データの中で最大の分散を持つ方向を見つけます。
 <!--The problem with the image representation we are given is its high dimensionality. 
 Two-dimensional pxq grayscale images span a pq-dimensional vector space, so an image with 100x100 pixels lies in a 10000-dimensional image space already. 
 The question is: Are all dimensions equally useful for us? 
@@ -202,7 +202,7 @@ $$
 固有顔法は以下の方法で顔認識を行います。
 
 * すべての学習サンプルを PCA 部分空間に射影する
-* クエリ画像を PCA 部分空間に射影すう
+* クエリ画像を PCA 部分空間に射影する
 * 射影された学習画像と射影されたクエリ画像の間の最近傍を見つける
 
 しかし，まだ解決しなければならない問題が 1 つ残っています。
@@ -257,10 +257,10 @@ I don't want to turn this into a publication, so please look into [62] for the d
 それを光とします。
 PCA で同定された成分は， 必ずしも識別情報を全く含んでいないので， 投影されたサンプルは一緒に塗りつぶされ，分類は不可能になります (例として http://www.bytefish.de/wiki/pca_lda_with_gnu_octave を参照)。
 線形判別分析は， クラス固有の次元削減を行うもので， 偉大な統計学者フィッシャー（Sir R. A. Fisher）によって考案されました。
-フィッシャーは 1936 年に発表した論文 The use of multiple measurements in taxonomic problems （分類学上の問題における複数の測定値の使用）の中で,， 花の分類にこの手法を用いることに成功しました [77]。
+フィッシャーは 1936 年に発表した論文 The use of multiple measurements in taxonomic problems （分類学上の問題における複数の測定値の使用）の中で,， 花の分類にこの手法を用いることに成功しました<!--  [77] -->。
 線形判別分析は， クラス間で最もよく分離する特徴の組み合わせを見つけるために， 全体の散らばりを最大化する代わりに， クラス間の散らばりとクラス内の散らばりの比率を最大化します。
 その考え方は簡単で， 同じクラスはしっかりとクラスター化し， 異なるクラスは低次元の表現の中でできる限り離れているべきだというものです。
-このことは， Belhumeur, Hespanha and Kriegman も認識しており [18] では顔認識に判別分析を適用しています。
+このことは，Belhumeur, Hespanha and Kriegman も認識しており<!--  [18]  -->論文中では顔認識に判別分析を適用しています。
 <!--
 The Principal Component Analysis (PCA), which is the core of the Eigenfaces method, finds a linear combination of features that maximizes the total variance in data. 
 While this is clearly a powerful way to represent data, it doesn't consider any classes and so a lot of discriminative information may be lost when throwing components away. 
@@ -273,23 +273,18 @@ The idea is simple: same classes should cluster tightly together, while differen
 This was also recognized by Belhumeur, Hespanha and Kriegman and so they applied a Discriminant Analysis to face recognition in [18].
 -->
 
-* [10] Peter N. Belhumeur, João P Hespanha, and David Kriegman. Eigenfaces vs. fisherfaces: Recognition using class specific linear projection. Pattern Analysis and Machine Intelligence, IEEE Transactions on, 19(7):711–720, 1997.
-* [77] Ronald A Fisher. The use of multiple measurements in taxonomic problems. Annals of eugenics, 7(2):179–188, 1936.
+* <!-- [10]  -->Peter N. Belhumeur, João P Hespanha, and David Kriegman. Eigenfaces vs. fisherfaces: Recognition using class specific linear projection. Pattern Analysis and Machine Intelligence, IEEE Transactions on, 19(7):711–720, 1997.
+* <!-- [77]  -->Ronald A Fisher. The use of multiple measurements in taxonomic problems. Annals of eugenics, 7(2):179–188, 1936.
 
 
 ## フィッシャー顔法のアルゴリズムの説明
 <!-- ### Algorithmic Description of Fisherfaces method -->
 
-クラスからサンプルを抽出したランダムなベクトルを指定します。
-<!-- Let be a random vector with samples drawn from classes: -->
+クラスからサンプルを抽出したランダムなベクトルを指定します。<!-- Let be a random vector with samples drawn from classes: -->
 
-$$
-\mathbf{X} = \left\{X_{1},X_{2},\ldots,X_{c}\right\}
-$$
+$$ \mathbf{X} = \left\{X_{1},X_{2},\ldots,X_{c}\right\} $$
 
-$$
-\mathbf{X}_i = \left\{x_{1},x_{2},\ldots,x_{n}\right\}
-$$
+$$ \mathbf{X}_i = \left\{x_{1},x_{2},\ldots,x_{n}\right\} $$
 
 分散行列 $S_{B}$ と $S_{W}$ とは以下のように計算されます:
 
@@ -302,24 +297,18 @@ $$
 
 ここで $\mu$ は全平均を表します:
 
-$$
-\mu=\frac{1}{N}\sum_{i=1}^{N}x_{i}.
-$$
+$$ \mu=\frac{1}{N}\sum_{i=1}^{N}x_{i}. $$
 
 そして $\mu_i$ は群平均 $\in\left(1,\ldots,c\right)$ を表します。
 
-$$
-\mu_{i}=\frac{1}{\left|X_{i}\right|}\sum_{x_{j}\in X_{i}} x_{j}.
-$$
+$$ \mu_{i}=\frac{1}{\left|X_{i}\right|}\sum_{x_{j}\in X_{i}} x_{j}. $$
 
 Fisher の古典的なアルゴリズムでは，クラスの分離可能性の基準を最大化する射影を探すことになります。
 <!-- Fisher's classic algorithm now looks for a projection , that maximizes the class separability criterion: -->
 
-$$
-W_{opt}=\arg\max_{W}\frac{\left|W^{\top}S_{B}W\right|}{\left|W^{\top}S_{W}W\right|}
-$$
+$$ W_{opt}=\arg\max_{W}\frac{\left|W^{\top}S_{B}W\right|}{\left|W^{\top}S_{W}W\right|} $$
 
-[18] によれば，この最適化問題の解は，一般固有値問題を解くことで与えられます。
+<!-- [18] によれば， -->この最適化問題の解は，一般固有値問題を解くことで与えられます。
 <!-- Following[18], a solution for this optimization problem is given by solving the General Eigenvalue Problem: -->
 
 $$
@@ -329,11 +318,12 @@ S_{W}^{-1}S_{B}\nu_{i} &= \lambda_{i}\nu_{i}
 \end{aligned}
 $$
 
-問題が 1 つ残っています。
+<!-- 問題が 1 つ残っています。 -->
 $S_w$ のランクは， サンプル数 N, クラス数 c の場合，最大でも (N-c) です。
-パターン認識の問題では，サンプル数 N は，ほとんどの場合，入力データの次元 (画素数) よりも小さいので，散布行列 $S_w$ は特異となります ([200]参照)。
-[18]では，データに対して主成分分析を行い，サンプルを (N-c) 次元の空間に投影することで，この問題を解決しました。
-その後， $S_w$ が特異点でなくなったので，縮小されたデータに対して線形判別分析を行いました。
+パターン認識の問題では，サンプル数 N は，ほとんどの場合，入力データの次元 (画素数) よりも小さいので，散布行列 $S_w$ は特異となります (Ruudys and Jain, 2000) <!-- ([200]参照) -->。
+
+<!-- [18]では， -->データに対して主成分分析を行い，サンプルを (N-c) 次元の空間に投影することで，この問題を解決することが提案されています (Belhumeur et al, 1997)。
+その後，$S_w$ が特異点でなくなったので，縮小されたデータに対して線形判別分析を行いました。
 最適化問題は次のように書き換えられます。
 <!-- There's one problem left to solve: 
 The rank of S_w is at most (N-C), with N samples and c classes. 
@@ -362,8 +352,8 @@ $$
 W=W_{fld}^{\top}W_{pca}^{\top}
 $$
 
-* [18] Peter N. Belhumeur, João P Hespanha, and David Kriegman. Eigenfaces vs. fisherfaces: Recognition using class specific linear projection. Pattern Analysis and Machine Intelligence, IEEE Transactions on, 19(7):711–720, 1997.
-* [200] Sarunas J Raudys and Anil K. Jain. Small sample size effects in statistical pattern recognition: Recommendations for practitioners. IEEE Transactions on pattern analysis and machine intelligence, 13(3):252–264, 1991.
+* <!-- [18]  -->Peter N. Belhumeur, João P Hespanha, and David Kriegman. Eigenfaces vs. fisherfaces: Recognition using class specific linear projection. Pattern Analysis and Machine Intelligence, IEEE Transactions on, 19(7):711–720, 1997.
+* <!-- [200]  -->Sarunas J Raudys and Anil K. Jain. Small sample size effects in statistical pattern recognition: Recommendations for practitioners. IEEE Transactions on pattern analysis and machine intelligence, 13(3):252–264, 1991.
 
 
 # 機械学習に現れるベイズ推論
