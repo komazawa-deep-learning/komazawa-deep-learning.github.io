@@ -59,7 +59,7 @@ layout: home
 - [第23回 12月03日](2021lect23) マルチモーダル統合 1 変分自己符号器モデル VAE, KL divergence
 - [第24回 12月10日](2021lect24) 
 - [第25回 12月17日](2021lect25) 
-- 第14回 12月24日 [Google Meet https://meet.google.com/oia-vgsd-cpb](https://meet.google.com/oia-vgsd-cpb)
+- [第14回 12月24日](2021lect26)  [Google Meet https://meet.google.com/oia-vgsd-cpb](https://meet.google.com/oia-vgsd-cpb)
 - 第15回 01月07日
 
 ---
