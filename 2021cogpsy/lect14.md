@@ -3,12 +3,102 @@ title: 第14回
 layout: home
 ---
 
+<!-- 
+# memo
+
+蒸溜 distillation -> softmax -> thermal parameters
+
+-->
 
 - [LIME による XAI 実習 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_1221Lime_face_and_GradBoost.ipynb)
 - [CAM の実習  <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_0618CAM_demo.ipynb)
+- [sentence-transformers 日本語版 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/sonoisa/sentence-transformers/blob/master/sentence_transformers_ja.ipynb)
+- [ヴィオラ=ジョーンズ アルゴリズム(従来手法) による顔認識実験 <img src="https://komazawa-deep-learning.github.io/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_0930viola_jones_ipynb.ipynb){:target="_blank"}
+- [単語の意味空間を心的操作する＝ 射影](/2021/P1-43_浅川伸一_ポスター.pdf){:target="_blank"}
 
 ## 資料
 
 - [2021cnps 相互活性化モデルの改善に向けた絵画命名課題の簡便解法 実習ファイル included](https://project-ccap.github.io/2021cnps/2021cnps_ccap1_simple.html){:target="_blank"}
-- [2021cnps 潜在空間モデルによる単語間の意味的類似度の定量化試案](https://project-ccap.github.io/2021cnps/2021cnps_ccap3_semantics.html){:target="_blank"}
+<!-- - [2021cnps 潜在空間モデルによる単語間の意味的類似度の定量化試案](https://project-ccap.github.io/2021cnps/2021cnps_ccap3_semantics.html){:target="_blank"} -->
 - [2021jcss 単語の意味空間を心的操作する = 射影](https://komazawa-deep-learning.git.io/2021/P1-43_浅川伸一_ポスター.pdf){:target="_blank"}
+
+
+# 転移学習 transfer learning と微調整 fine tuning
+
+
+**転移学習** transfer learning は機械学習分野のみならず，ロボット工学や実応用の分野でも応用が考えられます。
+シミュレーションと現実との間隙をどのように埋めるのかという大きな問題に関連します。
+一方で，転移学習と **ファインチューニング** や **領域適応** domain adaptation の区別がなされています。
+
+転移学習とは 課題 A を用いて訓練したモデルに対して，別の課題 B に適用することを言います。
+DNN では転移学習は頻用されます。
+イメージネットで画像分類を学習したネットワークに対して，例えば顔認識を学習させるような場合です。
+
+PyTorch のチュートリアルなどでは，学習済のネットワークに対して，最終層 (全結合層) を入れ替えて別の課題を訓練することを転移学習と呼びます。
+このとき，最終直下層と出力層との結合を学習させ，その他の下位層の結合は固定し，訓練しません。
+一方で，下位層まで含めて全結合を訓練させる場合を，微調整 (fine tuning ファインチューニング) と呼び，区別しています。
+
+<div align="center" style="width:99%">
+<img src="/assets/2019Ruder_hard_parameter_sharing_p48.jpg" style="width:44%">
+<img src="/assets/2019Ruder_soft_parameter_sharing_p49.jpg" style="width:44%"><br/>
+左: ハードパラメータ共有: 転移学習,  右: ソフトパラメータ共有: ファインチューニング
+</div>
+
+* 教師生徒学習 teacher-student learning
+* 蒸留 distillation
+* 画風変換 style transfer 
+
+
+## 転移学習の定義 
+
+* 転移学習には，領域 (domain) と課題  (task) という概念がある。 
+* 領域は，特徴空間 $\mathcal{X}$ と特徴空間上の周辺確率分布 $P(X)$ からなり，$X = {x_{1}, \cdots, x_{n}} \in \mathcal{X}$ である。
+* 文書分類課題では $\mathcal{X}$ は全ての文書表現の空間，$x_{i}$ はある文書に対応するベクトル，$X$ は学習に用いた文書サンプルなどとなる。
+* 課題 $\mathcal{D} = {\mathcal{X},P(X)}$ は，ラベル空間 $\mathcal{Y}$ と条件付き確率分布 $P(Y\vert X)$ からなり，$x_{i}\in X$, $y_{i}\in Y$ の組からなる学習データを用いて学習される。
+
+<!-- Given a domain, $\mathcal{D} = \left\{\mathcal{X},P(X)\right\}$, a task $\mathcal{T}$ consists of a label space $\mathcal{Y}$ and a conditional probability distribution $P(Y\vert X)$ that is typically learned from the training data consisting of pairs $x_{i}\in X$ and $y_{i}\in \mathcal{Y}$. 
+In our document classification example, $\mathcal{Y}$ is the set of all labels, i.e. *True*, *False* and $y_i$ is either *True* or *False*.
+-->
+
+ソース領域 $\mathcal{D}_ {S}$ とそれに対応するソース課題 $\mathcal{T}_ {S}$，およびターゲット領域 $\mathcal{D}_ {T}$ とターゲット課題 $\mathcal{T}_ {T}$ が与えられたとき，
+ソース領域 $\mathcal{D}_ {S}$ とターゲット課題 $\mathcal{T}_ {S}$ は，ターゲット課題とターゲット領域 $\mathcal{T}_ {T}$ に対応するソース課題とターゲット課題の両方を含む。
+ここで，転移学習の目的は $\mathcal{D}_ {T}$ の条件付き確率分布 $P(Y_{T}\vert X_{T})$ を学習することである。
+ここで $\mathcal{D}_ {S}$ と $\mathcal{T}_ {S}$ から得られる情報は $\mathcal{D}_ {S}\neq\mathcal{D}_ {T}$ または $\mathcal{T}_ {S}\neq \mathcal{T}_ {T}$ の場合である。
+多くの場合，ラベル付けされた対象例は，ラベル付けされた元例より指数関数的に少ない限られた数しか利用できないと仮定する。
+<!-- Given a source domain $\mathcal{D}_ {S}$, a corresponding source task $\mathcal{T}_ {S}$, as well as a target domain $\mathcal{D}_ {T}$ and a target task $\mathcal{T}_ {T}$, the objective of transfer learning now is to enable us to learn the target conditional probability distribution $P(Y_{T}\vert X_{T})$ in $\mathcal{D}_ {T}$ with the information gained from $\mathcal{D}_ {S}$ and $\mathcal{T}_ {S}$ where $\mathcal{D}_ {S}\neq \mathcal{D}_ {T}$ or $\mathcal{T}_ {S} \neq \mathcal{T}_ {T}$. 
+In most cases, a limited number of labeled target examples, which is exponentially smaller than the number of labeled source examples are assumed to be available. -->
+
+<!-- 領域 $\mathcal{D}$ と課題 $\mathcal{T}$ は共にタプルとして定義されるため，これらの不等式は 4 つの転移学習シナリオを生じさせ，以下で議論する。 -->
+
+1. $\mathcal{X}_ {S}\neq\mathcal{X}_ {T}$. 
+例えば，文書が 2 つの異なる言語で書かれているなど，ソース領域とターゲット領域の特徴空間が異なる場合。
+自然言語処理の文脈では，一般に異言語間適応と呼ばれる。
+<!-- The feature spaces of the source and target domain are different, e.g. the documents are written in two different languages. 
+In the context of natural language processing, this is generally referred to as cross-lingual adaptation. -->
+2. $P(X_{S})\neq P(X_{T})$. 
+原文領域と訳文領域の周辺確率分布が異なる場合，例えば，異なる話題について議論している文書がある場合，原文領域と訳文領域の周辺確率分布は異なる。
+このようなシナリオは一般にドメイン適応と呼ばれる。
+<!-- The marginal probability distributions of source and target domain are different, e.g. the documents discuss different topics. 
+This scenario is generally known as domain adaptation. -->
+3. $\mathcal{Y}_ {S}\neq\mathcal{Y}_ {T}$. 
+2 つの課題のラベル空間が異なる場合。例えば，ターゲット課題では文書に異なるラベルを割り当てる必要がある。
+実際には 2 つの異なる課題が異なるラベル空間を持ちながら，全く同じ条件付き確率分布を持つことは極めて稀であるため，これは通常 4 で発生する。
+<!-- The label spaces between the two tasks are different, e.g. documents need to be assigned different labels in the target task. 
+In practice, this scenario usually occurs with scenario 4, as it is extremely rare for two different tasks to have different label spaces, but exactly the same conditional probability distributions. -->
+4. $P(Y_{S}\vert X_{S})\neq P(Y_{T}\vert X_{T})$. 
+原文と訳文の条件付き確率分布が異なる，例えば，原文と訳文がクラスに関してアンバランスである場合。
+このようなシナリオは実際にはよくあることである<!-- ，オーバーサンプリング，アンダーサンプリング，あるいは SMOTE [7] などのアプローチが広く使われている。 -->
+
+
+## 転移学習の方法
+<!-- # 6. Transfer Learning Methods -->
+
+- 領域不変な表現の学習
+- 領域混交
+
+###  関連分野
+
+- 半教師あり学習
+- マルチ課題学習
+- 継続学習
+- ゼロショット学習
