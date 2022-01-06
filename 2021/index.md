@@ -60,7 +60,7 @@ layout: home
 - [第24回 12月10日](2021lect24) 
 - [第25回 12月17日](2021lect25) 
 - [第26回 12月24日](2021lect26)  [Google Meet https://meet.google.com/oia-vgsd-cpb](https://meet.google.com/oia-vgsd-cpb)
-- [第15回 01月07日](2021lect27)
+- [第27回 01月07日](2021lect27)
 
 ---
 
