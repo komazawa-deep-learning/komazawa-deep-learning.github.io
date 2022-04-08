@@ -80,6 +80,14 @@ layout: home
 ただし，注意と言語に関しては後期の授業で，前期の本授業では取り上げることができなかった，続きの内容を取り上げる予定です。
 後期は，注意と言語，強化学習，その他の応用的話題を取り上げる予定です。
 
+
+#### キーワード
+
+- ニューラルネットワーク，ディープラーニング，人工知能 (AI)，モデル論，構成論的研究，計算論，機械学習，生成モデルと認識モデル，
+
+- 注意 attention, 記憶 memory, 認識論 epistemology, 認知 cogntion, 視覚・聴覚情報処理 visual/audio information processing, 
+- 発達 development, 好奇心 curiosity, 生成モデルと識別モデル generative and descriminative models, 運動制御 motor control, 予測誤差  prediction error,
+
 ### 履修にあたっての注意事項
 
 * 基礎疾患のある履修者，あるいは正当な理由があると認められる履修者のために，事前に届け出があれば，[オンラインで授業に参加する https://meet.google.com/oia-vgsd-cpb](https://meet.google.com/oia-vgsd-cpb) ことも可能です。
@@ -113,13 +121,15 @@ layout: home
 - [PyTorch](https://pytorch.org/): Python 上で動作する深層学習のためのライブラリ，あるいはフレームワークと呼ばれるプログラムの集まりです。
 - [Python](https://www.python.org/)
 
-### 本授業で獲得できる知識
+### 本授業で獲得できる知識，メリット
 
 - ニューラルネットワーク
 - 深層学習 (ディープラーニング)
 - 機械学習，- データサイエンスの基本的な考え方。
 
-- 生成モデルと認識モデルの相違
+- 就職に役立つ資格: JDLA G 検定, 学生受験者 （全受験者中 15％程度）もかなりあります。
+<!-- 最年少では小中学生，最高齢は８０代。 -->
+<!-- - 生成モデルと認識モデルの相違 -->
 
 ### 履修上の留意点等
 
