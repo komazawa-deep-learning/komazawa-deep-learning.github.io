@@ -179,6 +179,23 @@ layout: home
 * **Q**: これは心理学なのでしょうか？
     - **A**: これが心理学であり，認知科学でもあり，人工知能でもあります。現代的な認識論の形です
 
+
+### 情勢
+
+2025 年度から大学入試科目に情報が加わります。
+データサイエンス，人工知能系のエンジニアの育成が急務です。
+すなわち，資格，就職にとって武器になり得るでしょう。
+実際に，検索すれば，文化系だけどデータサイエンティストになった，という宣伝をする YouTuber が多数見つかります。
+
+- [政府、AI 人材年 25 万人育成へ　全大学生に初級教育](https://www.nikkei.com/article/DGXMZO42932250W9A320C1SHA000/)
+- [AI人材25万人目標達成へ 政府、統合イノベ戦略を閣議決定](https://www.nikkei.com/article/DGXMZO46386930R20C19A6EAF000/)
+- [東大など　学生が学ぶべき「AIリテラシー」を定義](https://www.nikkei.com/article/DGXMZO56107550X20C20A2000000/)
+- [引く手あまたのデータサイエンティスト 学生は及び腰?](https://style.nikkei.com/article/DGXMZO47952800Q9A730C1000000)
+    - [高等学校情報科「情報Ⅱ」教員研修用教材(本編)](https://www.mext.go.jp/a_menu/shotou/zyouhou/detail/mext_00742.html)
+    - [上サイト第3章前半 情報とデータサイエンス pdf ファイル](https://www.mext.go.jp/content/20200702-mxt_jogai01-000007843_004.pdf)
+    - [上サイト第3章後半 pdf ファイル](https://www.mext.go.jp/content/20200609-mxt_jogai01-000007843_007.pdf)
+
+
 ## 前期予定
 
 - [第 01 回 04月15日](2022lect01): イントロダクション，Python, Google Colab, PyTorch。AI 進歩の背景。認知心理学，認知科学，脳画像研究との関連。
