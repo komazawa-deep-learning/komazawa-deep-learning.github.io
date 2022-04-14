@@ -179,22 +179,47 @@ layout: home
 * **Q**: これは心理学なのでしょうか？
     - **A**: これが心理学であり，認知科学でもあり，人工知能でもあります。現代的な認識論の形です
 
+## 関連用語
 
-### 情勢
+- 機械学習 Machine Learning
+- データサイエンス Data Science
+- AI
+- 統計学 Statistics
+- 数学
+    - 情報理論，通信理論
 
-2025 年度から大学入試科目に情報が加わります。
-データサイエンス，人工知能系のエンジニアの育成が急務です。
-すなわち，資格，就職にとって武器になり得るでしょう。
-実際に，検索すれば，文化系だけどデータサイエンティストになった，という宣伝をする YouTuber が多数見つかります。
+## 関連分野
 
-- [政府、AI 人材年 25 万人育成へ　全大学生に初級教育](https://www.nikkei.com/article/DGXMZO42932250W9A320C1SHA000/)
-- [AI人材25万人目標達成へ 政府、統合イノベ戦略を閣議決定](https://www.nikkei.com/article/DGXMZO46386930R20C19A6EAF000/)
-- [東大など　学生が学ぶべき「AIリテラシー」を定義](https://www.nikkei.com/article/DGXMZO56107550X20C20A2000000/)
-- [引く手あまたのデータサイエンティスト 学生は及び腰?](https://style.nikkei.com/article/DGXMZO47952800Q9A730C1000000)
-    - [高等学校情報科「情報Ⅱ」教員研修用教材(本編)](https://www.mext.go.jp/a_menu/shotou/zyouhou/detail/mext_00742.html)
-    - [上サイト第3章前半 情報とデータサイエンス pdf ファイル](https://www.mext.go.jp/content/20200702-mxt_jogai01-000007843_004.pdf)
-    - [上サイト第3章後半 pdf ファイル](https://www.mext.go.jp/content/20200609-mxt_jogai01-000007843_007.pdf)
+- 心理学
+    - 知覚
+    - 精神物理学
+    - 認知心理学
+    - 神経心理学
+    - 学習
+- 認知科学
+- 神経科学
+- 精神医学
+- 生物学
 
+だが，これでニューウェルの疑問に答えられるのだろうか？
+だが，人工知能 は知的機能をコンピュータで作ろうとする構成論的研究。浅川にはむしろ人工知能研究者の方が，人間の心を真摯に向き合っているようにも見える。
+
+
+## 関連企業，団体
+
+* [エクサウィザーズ](https://exawizards.com/){:target="_blank"}
+* [サイトビジット](https://sight-visit.com/){:target="_blank"}
+* [Gauss](https://gauss-ai.jp/){:target="_blank"}
+* [KUNO](https://kuno-corp.com/company){:target="_blank"}
+* [AVILEN](https://avilen.co.jp/){:target="_blank"}
+* [スタンダード](https://standard-dx.com/){:target="_blank"}
+* [日本ディープラーニング協会](https://www.jdla.org/){:target="_blank"}
+
+
+- [ディープラーニング，ビッグデータ，機械学習](https://www.shin-yo-sha.co.jp/book/b455586.html)
+- [Pythonで体験する深層学習](https://www.coronasha.co.jp/np/isbn/9784339028515/)
+- [深層学習教科書 ディープラーニング G検定(ジェネラリスト)公式テキスト](https://www.amazon.co.jp/-/en/%E7%8C%AA%E7%8B%A9-%E5%AE%87%E5%8F%B8/dp/4798165948/)
+- [これ1冊で最短合格 ディープラーニングG検定ジェネラリスト 要点整理テキスト&問題集](https://www.shuwasystem.co.jp/book/9784798057309.html)
 
 ## 前期予定
 
