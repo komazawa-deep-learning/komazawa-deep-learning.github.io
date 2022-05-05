@@ -230,7 +230,8 @@ layout: home
 <!-- - 準備学習（予習・復習等）:    心理学とAIの関係について，自分の考えを聞かせてください。数行程度のレポートの提出をお願いします。   60分 -->
 - 第 03 回: 課題授業 04月29日: 課題授業日 機械学習(1)，教師あり学習，教師なし学習，半教師あり学習，回帰，分類，Naive Bayes, AdaBoost，Nearest Neighbors, clustering, PCA, dataset, train/eval/test, sklearn
 <!-- - 準備学習（予習・復習等）    心理統計と密接に関係する内容になります。自分の持っている心理統計の知識をまとめてレポートをお願いします。    60分 -->
-- 第 04 回 05月06日: 機械学習(2)，教師あり学習，教師なし学習，半教師あり学習，回帰，分類，Naive Bayes, AdaBoost，Nearest Neighbors, clustering, PCA, dataset, train/eval/test, sklearn
+- [第 04 回 05月06日](2022lect04): 
+<!-- 機械学習(2)，教師あり学習，教師なし学習，半教師あり学習，回帰，分類，Naive Bayes, AdaBoost，Nearest Neighbors, clustering, PCA, dataset, train/eval/test, sklearn -->
 <!-- - 準備学習（予習・復習等）    主成分分析，回帰分析について簡潔にまとめてレポートをお願いします。   60分-->
 - 第 05 回 05月13日: パーセプトロン，最小二乗法，LMS，最尤法，情報量，EM アルゴリズム，パンデモニアムモデル
 <!-- - 準備学習: 最小二乗法と3層パーセプトロンについて調べておいてください。  60分 -->
