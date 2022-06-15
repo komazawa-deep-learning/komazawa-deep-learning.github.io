@@ -1,5 +1,5 @@
 ---
-title: 2022年度 駒澤大学心理学特講IIIa
+title: 2022年度 駒澤大学心理学特講 IIIa
 layout: home
 ---
 
@@ -250,7 +250,7 @@ layout: home
 - [第 09 回 06月10日](2022lect09): ソフトマックス関数と CAM。転移学習と微調整。
 <!-- ドロップアウト，スキップコネクト，ソフトマックス関数, LeNet, Inception, ResNet, MHnet, EfficientNet。視覚野の結合，Van Essen -->
 <!-- - 準備学習    視覚心理学に関連する生理学，機能的脳画像研究について検索エンジンで調べておいてください。結果を完結にまとめてレポートをお願いします。  60分 -->
-- 第 10 回 06月17日: 標準正則化理論 (Poggio, Koch)，CNN と生理学との対応(Yamins, Mitchell) , Poggio, Koch, Ulman, Mar
+- [第 10 回 06月17日](2022lect10): 標準正則化理論 (Poggio, Koch)，CNN と生理学との対応(Yamins, Mitchell) , Poggio, Koch, Ulman, Mar
 <!-- - 準備学習 視覚心理実験と生理学と，それらをつなぐ数学について，自分の知識を整理してください。結果を簡潔にまとめてレポートをお願いします。 60分 -->
 - 第 11 回 06月24日: 領域分割と物体認識，what and where, dorsal and ventral pathways. Marr
 <!-- - 準備学習 物体認識について，必要と思われる基礎知識には何があるか調べてレポートをお願いします。  60分 -->
@@ -314,8 +314,7 @@ layout: home
 - [1970Newell](1970Newell){:target="_blank"}
 - [2019Glaser](2019Glaser){:target="_blank"}
 - [2020Lindsay](2020Lindsay){:target="_blank"}
-
- -->
+-->
 
 <!--
 <br/>
@@ -331,5 +330,21 @@ layout: home
 3. [2020 第2回 中央大学，緑川先生，重宗先生，研究会資料](2020chuo2)
 4. [2020サイトビジット資料](2020sightvisit)
 
- <a href="https://guides.github.com/features/pages/">Read this page to write this page.</a>
--->
+<a href="https://guides.github.com/features/pages/">Read this page to write this page.</a>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
