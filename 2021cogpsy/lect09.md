@@ -1,0 +1,515 @@
+---
+title: 第09回
+layout: home
+date: 2021_1119
+---
+
+# キーワード
+
+1. データ拡張 data augmentation
+2. バッチ正規化 batch normalization
+3. ソフトマックス関数 softmax function
+4. ResNet 
+5. スキップ結合 skip connections あるいは ショートカットshortcut
+6. 固有顔とフィッシャー顔 Eigen and Fisher faces
+7. EM アルゴリズム EM algorithm
+
+
+### バッチ正規化 の周辺
+
+
+$$
+\hat{x} = \frac{x-\bar{x}}{s(x)}
+$$
+
+<center>
+<img src="/assets/Visual_Comparison_of_Various_Normalizaton_Methods.png" style="width:77%"><br/>
+種々の正規化の比較
+</center>
+
+<center>
+<img src="/assets/2015Ioffe_BN.svg" style="width:49%"><br/>
+</center>
+
+### インセプションネット GoogLeNet
+<center>
+<img src="/assets/2015GoogLeNet_Inception.svg" width="24%">
+<img src="/assets/Inception3.svg" width="66%"><br/>
+</center>
+
+### 残差ネット ResNet
+<center>
+<img src="/assets/ResNet_Fig2.svg" width="20%">
+<img src="/assets/2015ResNet30.svg" width="77%"><br/>
+</center>
+
+
+# 固有顔 と フィッシャー顔
+
+## 固有顔法の数学的記述
+<!-- ## Algorithmic Description of Eigenfaces method -->
+
+$\mathbf{X}=$ $\left(x_{1},x_{2},\ldots,x_{n}\right)$ を  観測データ $x_{i}\in\mathbb{R}^{d}$ からのランダム抽出されたデータだとします。
+
+1. 平均 $\mu$ を計算する
+$$
+\mu = \frac{1}{n}\sum_{i=1}^{n}x_{i}.
+$$
+
+2. 共分散行列 $\mathbf{S}$ を計算する
+$$
+\mathbf{S}=\frac{1}{n}\sum_{i=1}^{n}\left(x_{i}-\mu\right)\left(x_{i}-\mu\right)^{\top}.
+$$
+
+3. 固有値 $\lambda_{i}$ と対応する固有ベクトル $\nu_{i}$ を $\mathbf{S}$ から計算する:
+$$
+\mathbf{S\nu}_ {i},\hspace{1cm}\text{$i=1,2,\ldots,n$}
+$$
+
+4. 固有値に従って固有ベクトルを降順に並べ，$k$ 番目の成分は，$k$ 番目に大きい固有値に対応する固有ベクトルとする。
+第 $k$ 主成分に対応する 観測データ $x$ の固有ベクトルは，次式で求めることができる
+
+$$
+\mathbf{y} = \mathbf{W}^{\top}\left(\mathbf{x}-\mathbf{\mu}\right).
+$$
+
+ここで $\mathbf{W}=\left(\nu_{1},\nu_{2},\ldots,\nu_{k}\right)$ である。
+
+PCA 基底に基づくデータの再構成は次式で与えられる
+
+$$
+\mathbf{x} = \mathbf{Wy} + \mathbf{\mu}
+$$
+
+固有顔法は以下の方法で顔認識を行います。
+
+* すべての学習サンプルを PCA 部分空間に射影する
+* クエリ画像を PCA 部分空間に射影すう
+* 射影された学習画像と射影されたクエリ画像の間の最近傍を見つける
+
+しかし，まだ解決しなければならない問題が 1 つ残っています
+100×100 画素の画像が 400 枚与えられたとします。
+主成分分析では， 共分散行列 $\mathbf{S}=\mathbf{XX}^{\top}$ を解きます。
+この例では $\text{size}(\mathbf{X})=10000\times400$ となります。
+10000x10000 行列の場合，およそ 0.8GB になってしまいます。
+この問題を解決することは不可能なので，あるトリックを適用する必要があります。
+線形代数の授業で M>N の MxM 行列は N-1 個の非ゼロの固有値しか持たないことを知っているでしょう。
+そこで，サイズが MxN の固有値分解 $S=X^{t}X$ を代わりに取ることができます。
+
+<!--
+The Eigenfaces method then performs face recognition by:
+* Projecting all training samples into the PCA subspace.
+* Projecting the query image into the PCA subspace.
+* Finding the nearest neighbor between the projected training images and the projected query image.
+
+Still there's one problem left to solve. 
+Imagine we are given 400 images sized 100x100 pixel. 
+The Principal Component Analysis solves the covariance matrix $\mathbf{S}=\matbf{XX}^{\top}$, where $\text{size}(\mathbf{X})=10000\times400$ in our example. 
+You would end up with a 10000x10000 matrixx, roughly 0.8GB. 
+Solving this problem isn't feasible, so we'll need to apply a trick. 
+From your linear algebra lessons you know that a MxM matrix with M>N can only have N-1 non-zero eigenvalues. 
+So it's possible to take the eigenvalue decomposition S=X^tX of size MxN instead:
+-->
+
+$$
+\mathbf{X}^{\top}\mathbf{X}\mathbf{\nu}_{i}=\lambda_{i}\mathbf{\nu}_ {i}
+$$
+
+元の行列 $S=XX^{\top}$ の固有ベクトルはデータ行列の積
+
+$$
+\mathbf{XX}^{\top}\left(\mathbf{X\nu}_{i}\right)=\lambda_{i}\left(\mathbf{X\nu}_ {i}\right)
+$$
+
+結果として得られる固有ベクトルは直交していますが， 直交する固有ベクトルを得るためには， 単位長さに正規化する必要があります。
+これを出版物にしたくないので，方程式の導出と証明は [62] を見てください。
+<!-- The resulting eigenvectors are orthogonal, to get orthonormal eigenvectors they need to be normalized to unit length. 
+I don't want to turn this into a publication, so please look into [62] for the derivation and proof of the equations.
+ -->
+
+* [62] Richard O Duda, Peter E Hart, and David G Stork. Pattern classification. John Wiley & Sons, 2012.
+
+
+## フィッシャー顔
+<!-- ## Fisherfaces -->
+
+鼓友顔法の中核である主成分分析（PCA）は、データの全分散を最大化する特徴の線形結合を見つけます。
+これはデータを表現する強力な方法であることは間違いありませんが、クラスを考慮していないため、成分を捨てる際に多くの識別情報が失われる可能性があります。
+データの分散が外部から発生している状況を想像してみてください。
+それを光とします。
+PCA で同定された成分は， 必ずしも識別情報を全く含んでいないので， 投影されたサンプルは一緒に塗りつぶされ，分類は不可能になります (例として http://www.bytefish.de/wiki/pca_lda_with_gnu_octave を参照)。
+線形判別分析は， クラス固有の次元削減を行うもので， 偉大な統計学者フィッシャー（Sir R. A. Fisher）によって考案されました。
+フィッシャーは 1936 年に発表した論文 The use of multiple measurements in taxonomic problems （分類学上の問題における複数の測定値の使用）の中で,， 花の分類にこの手法を用いることに成功しました [77]。
+線形判別分析は， クラス間で最もよく分離する特徴の組み合わせを見つけるために， 全体の散らばりを最大化する代わりに， クラス間の散らばりとクラス内の散らばりの比率を最大化します。
+その考え方は簡単で， 同じクラスはしっかりとクラスター化し， 異なるクラスは低次元の表現の中でできる限り離れているべきだというものです。
+このことは， Belhumeur, Hespanha and Kriegman も認識しており [18] では顔認識に判別分析を適用しています。
+<!--
+The Principal Component Analysis (PCA), which is the core of the Eigenfaces method, finds a linear combination of features that maximizes the total variance in data. 
+While this is clearly a powerful way to represent data, it doesn't consider any classes and so a lot of discriminative information may be lost when throwing components away. 
+Imagine a situation where the variance in your data is generated by an external source, let it be the light. 
+The components identified by a PCA do not necessarily contain any discriminative information at all, so the projected samples are smeared together and a classification becomes impossible (see http://www.bytefish.de/wiki/pca_lda_with_gnu_octave for an example). 
+The Linear Discriminant Analysis performs a class-specific dimensionality reduction and was invented by the great statistician Sir R. A. Fisher. 
+He successfully used it for classifying flowers in his 1936 paper The use of multiple measurements in taxonomic problems [77]. 
+In order to find the combination of features that separates best between classes the Linear Discriminant Analysis maximizes the ratio of between-classes to within-classes scatter, instead of maximizing the overall scatter. 
+The idea is simple: same classes should cluster tightly together, while different classes are as far away as possible from each other in the lower-dimensional representation. 
+This was also recognized by Belhumeur, Hespanha and Kriegman and so they applied a Discriminant Analysis to face recognition in [18].
+-->
+
+* [10] Peter N. Belhumeur, João P Hespanha, and David Kriegman. Eigenfaces vs. fisherfaces: Recognition using class specific linear projection. Pattern Analysis and Machine Intelligence, IEEE Transactions on, 19(7):711–720, 1997.
+* [77] Ronald A Fisher. The use of multiple measurements in taxonomic problems. Annals of eugenics, 7(2):179–188, 1936.
+
+
+## フィッシャー顔法のアルゴリズムの説明
+<!-- ### Algorithmic Description of Fisherfaces method -->
+
+クラスからサンプルを抽出したランダムなベクトルを指定します。
+<!-- Let be a random vector with samples drawn from classes: -->
+
+$$
+\mathbf{X} = \left\{X_{1},X_{2},\ldots,X_{c}\right\}
+$$
+
+$$
+\mathbf{X}_i = \left\{x_{1},x_{2},\ldots,x_{n}\right\}
+$$
+
+分散行列 $S_{B}$ と $S_{W}$ とは以下のように計算されます:
+
+$$
+\begin{aligned}
+S_{B} &= \sum_{i=1}^{c} N_{i}\left(\mu_{i}-\mu\right)\left(\mu_{i}-\mu\right)^{\top}\\
+S_{W} &= \sum_{i=1}^{c}\sum_{x_{j}\in X_{i}}\left(x_{j}-\mu_{j}\right)\left(x_{j}-\mu_{j}\right)^{\top}
+\end{aligned}
+$$
+
+ここで $\mu$ は全平均を表します:
+
+$$
+\mu=\frac{1}{N}\sum_{i=1}^{N}x_{i}.
+$$
+
+そして $\mu_i$ は群平均 $\in\in\left(1,\ldots,c\right)$ を表します。
+
+$$
+\mu_{i}=\frac{1}{\left|X_{i}\right|}\sum_{x_{j}\in X_{i}} x_{j}.
+$$
+
+Fisher の古典的なアルゴリズムでは，クラスの分離可能性の基準を最大化する射影 , を探すことになります。
+<!-- Fisher's classic algorithm now looks for a projection , that maximizes the class separability criterion: -->
+
+$$
+W_{opt}=\arg\max_{W}\frac{\left|W^{\top}S_{B}W\right|}{\left|W^{\top}S_{W}W\right|}
+$$
+
+
+[18] によれば，この最適化問題の解は，一般固有値問題を解くことで与えられます。
+<!-- Following[18], a solution for this optimization problem is given by solving the General Eigenvalue Problem:
+-->
+
+$$
+\begin{aligned}
+S_{B}\nu_{i} &=\lambda_{i}S_{w}\nu_{i}\\
+S_{W}^{-1}S_{B}\nu_{i} &= \lambda_{i}\nu_{i}
+\end{aligned}
+$$
+
+
+問題が 1 つ残っています。
+$S_w$ のランクは， サンプル数 N, クラス数 c の場合，最大でも (N-c) です。
+パターン認識の問題では，サンプル数 N は，ほとんどの場合，入力データの次元 (画素数) よりも小さいので，散布行列 $S_w$ は特異となります ([200]参照)。
+[18]では，データに対して主成分分析を行い，サンプルを (N-c) 次元の空間に投影することで，この問題を解決しました。
+その後， $S_w$ が特異点でなくなったので，縮小されたデータに対して線形判別分析を行いました。
+最適化問題は次のように書き換えられます。
+<!-- There's one problem left to solve: 
+The rank of S_w is at most (N-C), with N samples and c classes. 
+In pattern recognition problems the number of samples N is almost always samller than the dimension of the input data (the number of pixels), so the scatter matrix S_w becomes singular (see [200]). In [18] this was solved by performing a Principal Component Analysis on the data and projecting the samples into the (N-c) -dimensional space. 
+A Linear Discriminant Analysis was then performed on the reduced data, because S_w isn't singular anymore.
+The optimization problem can then be rewritten as:
+-->
+
+$$
+\begin{aligned}
+W_{pca} &= \arg\max_{W} \left|W^{\top}S_{T}W\right|\\
+\end{aligned}
+$$
+
+
+$$
+\begin{aligned}
+W_{fld} &= \arg\max_{W}\frac{\left|W^{\top}W_{pca}^{\top}S_{B}W_{pca}W\right|}{\left|W^{\top}W_{pca}^{\top}S_{W}W_{pca}W\right|}\\
+\end{aligned}
+$$
+
+そして，サンプルを（c-1）次元の空間に投影する変換行列 W は、次のように与えられます:
+<!-- The transformation matrix W, that projects a sample into the (c-1)-dimensional space is then given by: -->
+
+$$
+W=W_{fld}^{\top}W_{pca}^{\top}
+$$
+
+* [18] Peter N. Belhumeur, João P Hespanha, and David Kriegman. Eigenfaces vs. fisherfaces: Recognition using class specific linear projection. Pattern Analysis and Machine Intelligence, IEEE Transactions on, 19(7):711–720, 1997.
+* [200] Sarunas J Raudys and Anil K. Jain. Small sample size effects in statistical pattern recognition: Recommendations for practitioners. IEEE Transactions on pattern analysis and machine intelligence, 13(3):252–264, 1991.
+
+
+# Fisher 顔 (射影行列)
+
+線形関数近似においては，射影演算子は線形 $\left|\mathcal{S}\right| \rightarrow\left\|\mathcal{S}\right\|$ となり，以下の行列で表される:
+
+<!-- For a linear function approximator, the projection operation is linear, which implies that it can be represented as an $\left|\mathcal{S}\right|\rightarrow\left|\mathcal{S}\right|$ matrix: -->
+
+$$
+\mathbf{\Pi} \doteq \mathbf{X}\left(\mathbf{X}^{\top}\mathbf{DX}\right)^{-1}\mathbf{X}^{\top}\mathbf{D},\tag{11.14}
+$$
+
+$\mathbf{D}$ は対角行列であり，$\mu(s)$ を対角要素に持つ。$\mathbf{X}$ は $\left|\mathcal{S}\right|\times d$ 行列であり，行ベクトルが特徴ベクトル
+$\mathbf{x}(s)^{\top}$ である。
+逆行列が存在しなければ，擬似逆行列を用いる。自乗ノルムは以下のように書ける:
+
+ここで，$\mathbf{D}$ は，$\mu(s)$ を対角線上に持つ $\left\|\mathcal{S}\right\|\rightarrow\left\|\mathcal{S}\right\|$ の対角行列を表し，$\mathbf{X}$ は，各状態 $s$ に対して 1 つずつの特徴ベクトル $\mathbf{x}(s)^{top}$ を行とする $\left\|\mathcal{S}\right\|$ の $d$ 倍行列を表します。
+(11.14) の逆行列が存在しない場合は，擬似逆行列が代用されます。
+これらの行列を用いて，ベクトルの 2 乗ノルムは次のように書ける。
+
+<!-- where, $\mathbf{D}$ denotes the $\left|\mathcal{S}\right|\rightarrow\left|\mathcal{S}\right|$ diagonal matrix with the $\mu(s)$ on the diagonal, and $\mathbf{X}$ denotes the $\left|\mathcal{S}\right|\times d$ matrix whose rows are the feature vectors $\mathbf{x}(s)^{\top}$, one for each state $s$. 
+If the inverse in (11.14) does not exist, then the pseudoinverse is substituted. 
+Using these matrices, the squared norm of a vector can be written
+-->
+
+$$
+\left\|v\right\|_{\mu}^{2}=v^{\top}\mathbf{D}v,\tag{11.15}
+$$
+
+and the approximate linear value function can be written
+
+$$
+v_{w} = \mathbf{Xw}.\tag{11.16}
+$$
+
+
+# EM アルゴリズム
+
+$x$ は観測値，$\theta$ は $x$ を生成したモデルの未知パラメータであるとする。
+ここでは，推定という用語はパラメータ，および，推論という用語は確率変数を指すものとする。
+
+より正確には，推定という用語は，不完全，不確実，ノイズ付きのデータからのパラメータの値を計算するための近似を指す。
+これとは対照的に推論という用語はベイズ推論を指すために使用し，事前証拠と観測を用いて観測 $x$ が与えられた確率変数 $\theta$ の事後確率 $p\left(\theta\vert x\right)$ を推測する過程を指す。
+<!-- Assume that $x$ are the observations and $\theta$ the unknown parameters of a model that generated $x$. 
+In this article, the term estimation will be used strictly to refer to parameters and inference to refer to random variables. 
+The term estimation refers to the calculated approximation of the value of a parameter from incomplete, uncertain and noisy data. 
+In contrast, the term inference will be used to imply Bayesian inference and refers to the process in which prior evidence and observations are used to infer the posterior probability $p\of{\theta\given{x}}$ of the random variables $\theta$ given the observations $x$. -->
+
+人口に膾炙しているパラーメタ推定のアプローチは **最尤法(ML)** である。
+ML は以下の式(eq:tk1) で与えられる。
+<!-- %% One of the most popular approaches for parameter estimation is
+%% ML. According to this approach, the ML estimate is obtained as -->
+$$
+\hat{\theta}_ {ML} = \arg\max_{\theta} p\left(x;\theta\right)\tag{eq:tk1}
+$$
+
+ここで $p\left(x;\theta\right)$ は観察変数 $x$ を生成するモデルとパラメータとの確率的関係を表す。
+ここで，$p\left(x;\theta\right)$ と $p\left(x\vert\theta\right)$ との区別を明確にしておく。
+<!-- %% where $p\of{x;\theta}$ describes the probabilistic relationship between
+%% the observations and the parameters based on the assumed model that
+%% generated the observations $x$.  At this point, we would like to clarify
+%% the difference between the notation $p\of{x;\theta}$ and
+%% $p\of{x\given{\theta}}$.
+%$p\of{x;\theta}$ -->
+
+$p(x;\theta)$ と書いた場合，$\theta$ がパラメータであることを意味し $\theta$ の関数として，尤度関数と呼ばれる。
+一方 $p(x\vert\theta)$ と書くときは $\theta$ が確率変数であることを意味しています。
+<!-- % When we write $p\of{x;\theta}$ we imply that $\theta$ are parameters and as a function of $\theta$ is called the likelihood function. 
+% In contrast, when we write $p\of{x;\theta}$, we imply that $\theta$ are random variables. -->
+
+興味のある多くのケースでは，尤度関数 $p(x;\theta)$ の直接的な評価は複雑であり，それを直接計算することや最適化することは困難または不可能である。
+このような場合には，隠れ変数  $z$ を導入することで，この尤度の計算が容易になる場合がある。
+これらの確率変数は **ベイズ則** によって観測値と未知のパラメータを結びつけるリンクとして機能する。
+隠れ変数の選択は問題によって異なる。
+しかし，その名前が示すように，これらの変数は観測されず，条件付き確率 $p(x\vert z)$ が容易に計算できるように，観測結果に関する十分な情報を提供する。
+この役割とは別に，隠れた変数は統計的モデリングにおいて別の役割を果たす。
+隠れ変数は，観測値を生成したと仮定される確率的機構の重要な部分であり **グラフィカルモデル** と呼ばれるグラフによって簡潔に記述することができる。
+<!-- % In many cases of interest direct assessment of the likelihood function $p\of{x;\theta}$ is complex and is either difficult or impossible to compute it directly or optimize it. 
+% In such cases the computation of this likelihood is greatly \strong{facilitated} by the \strong{introduction of hidden variables $z$}. 
+% These random variables act as links that connect the observations to the unknown parameters via \strong{Bayes' law}. 
+% The choice of hidden variables is problem dependent. 
+% However, as their name suggests, these variables are not observed and they provide enough information about the observations so that the conditional probability $p\of{x\given{z}}$ is easy to compute. 
+% Apart from this role, hidden variables play another role in statistical modeling. 
+% They are an important part of the probabilistic mechanism that is assumed to have generated the observations and can be described very succinctly by a graph that is termed ``\strong{graphical model}.'' -->
+
+隠れ変数とその事前確率 $p(z;\theta)$ が導入されると，隠れた変数を以下のように積分 (周辺化) することで，尤度または限界尤度と呼ばれることがあります。
+隠れ変数: 
+<!-- % Once hidden variables and a prior probability for them $p\of{z;\theta}$ have been introduced, one can obtain the likelihood or the marginal likelihood as it is called at times by integrating out (marginalizing) the
+% hidden variables according to -->
+$$
+p(x;\theta)=\int p(x,z;\theta)\,dz=\int p\left(x\vert z;\theta\right)\, p\left(z;\theta\right)\;dz.\tag{eq:tz2}
+$$
+
+一見単純なこの統合は， ベイズ法の核心であり，この方法では，尤度関数と，ベイズの定理を用いて，次のような隠れた変数の事後結果の両方を得ることができるからです。
+<!-- % This seemingly simple integration is the crux of the Bayesian methodology because in this manner we can obtain both the likelihood function, and by using Bayes' theorem, the posterior of the hidden variables according to -->
+
+$$
+p\left(z\vert x;\theta\right) = \frac{p\left(x\vert z;\theta\right)p\left(z;\theta\right)}{p\left(x;\theta\right)}.
+$$
+
+事後情報が得られれば， 上で説明したような隠れ変数の推論も可能になります。
+上記の定式化は単純であるにもかかわらず，興味のあるほとんどのケースでは 式(\ref{eq:tz2}) の積分を閉形式で計算することは不可能であるか，非常に困難である。
+そのため，ベイズ推論では，この積分をバイパスしたり，近似的に評価したりする技術に力を入れています。
+<!-- % Once the posterior is available, inference as explained above for the hidden variables is also possible. 
+% Despite the simplicity of the above formulation, in \strong{most cases of interest the integral in Eq.(\ref{eq:tz2}) is either impossible or very difficult to compute in closed form}. 
+% Thus, the main effort in Bayesian Inference is concentrated on techniques that allow us to bypass or approximately evaluate this integral. -->
+
+このような方法は 2 つの大きなカテゴリーに分類される。
+一つは **モンテカルロ法** として知られている数値サンプリング法，もう一つは **決定論的近似法** です。
+この記事では， モンテカルロ法については一切触れません。
+また ML 法の延長線上にある MAP(Maximum Posteriori) 推論は，非常に粗いベイズ近似と考えられます。
+<!-- % Such methods can be classified into two broad categories. 
+% The first is numerical sampling methods also known as \strong{モンテカルロ法 (Monte Carlo techniques)} and the second is \strong{決定論的近似 deterministic approximations}. 
+% This article will not address at all Monte Carlo methods. 
+% Furthermore, maximum posteriori (MAP) inference, which is an extension of the ML approach, can be considered as a very crude Bayesian approximation, see \strong{``Maximum A Posteriori (MAP): 貧者のベイズ推論 (Poor Man's Bayesian Inference).''} -->
+
+後述するように EM アルゴリズムはベイズ推定法の一つであり，事後評価 $p\left(z\vert x;\theta\right)$ の知識を仮定し，それを明示的に計算することなく，繰り返し尤度関数を最大化する。
+この方法論の重大な欠点は，興味ある多くのケースにおいて，この事後結果が得られないことである。
+しかし，ベイズ推論の最近の発展により， 事後を近似することでこの問題を回避することができるようになりました。
+この手法は，**変分ベイズ** と呼ばれ， このチュートリアルの焦点となります。
+<!-- % As it will be shown in what follows, the EM algorithm is a Bayesian inference methodology that assumes knowledge of the posterior $p\of{z\given{x;\theta}}$ and iteratively maximizes the likelihood function without explicitly computing it. 
+% A serious shortcoming of this methodology is that in many cases of interest this posterior is not available. 
+% However, recent developments in Bayesian inference allow us to bypass this difficulty by approximating the posterior. 
+% They are termed \strong{``variational Bayesian''} and they will be the focus of this tutorial. -->
+
+### EM アルゴリズムの別視点
+
+<!-- %\subsection{An Alternative View of The EM Algorithm}
+% In this article, we will follow the exposition of the EM in [16] and [13]. -->
+対数尤度が次のように書けることを示すのは簡単です。
+<!-- % It is straightforward to show that the log-likelihood can be written as -->
+
+$$
+\log p\left(x;\theta\right) = F\left(q,\theta\right)+ \text{KL}\left(q\vert\vert p\right)\tag{eq:tz7}
+$$
+
+を
+
+$$
+F\left(q;\theta\right) = \int q(z)\log\left(\frac{p(x,z;\theta)}{q(z)}\right)\;dz
+=\text{ELBO}(q) = \mathbb{E}\left[\log p(x,z;\theta)_ {q(z)} \right]. \tag{eq:tz8}
+$$
+
+かつ
+
+$$
+\text{KL}(q\vert\vert p) = -\int q(z)\log\left(\frac{p(z\vert x;\theta)}{q(z)}\;dz\right) 
+= -\mathbb{E}\left[p(z\vert x;\theta)_ {q(z)}\right]\tag{eq:tz9}
+$$
+
+ここで $q(z)$ は任意の確率密度関数である。
+$\text{KL}(q\vert\vert p)$ は $p(z\vert x;\theta)$ と $q(z)$ との間のカルバック・ライブラー・ダイバージェンスであり $\text{KL}(q\vert\vert p)\ge0$ であることから，$\log p(x;\theta)\ge F(q,\theta)$ が成り立ちます。
+つまり，$F(q,\theta)$ は対数尤度の強い下界である。
+等価が成り立つのは $\text{KL}(q\vert\vert p)=0$ のときだけで， これは $p(z\vert x;\theta) = q(z)$ を意味しています。
+EM アルゴリズムや最近のベイズ推定のための決定論的近似法は，式(eq:tz7）の分解を，密度 $q$ とパラメータ $\theta$ に関する下界 $F(q,\theta)$ の最大化と見なすことができる。
+<!-- % where $q\of{z}$ is any probability density function. $\KL{q}{p}$ is the Kullback-Leibler divergence between $p\of{z\given{x;\theta}}$ and $q\of{z}$, and since $\KL{q}{p}\ge0$, it holds that $\log p\of{x;\theta}\ge 
+% F\of{q,\theta}$. 
+% In other words, $F\of{q,\theta}$ is a \strong{lower bound} of the log-likelihood. 
+% Equality holds only when $\KL{q}{p}=0$, which implies $p\of{z\given{x;\theta}}=q\of{z}$. 
+% The EM algorithm and some recent advances in deterministic approximations for Bayesian inference can be viewed in the light of the decomposition in Eq.(\ref{eq:tz7}) as the maximization of the lower bound $F\of{q,\theta}$ with respect to the density $q$ and the parameters $\theta$. -->
+
+$$
+\begin{aligned}
+F(q,\theta) + \text{KL}(q\vert\vert p) = & \int q(z)\log\left[\frac{p(x,z;\theta)}{q(z)}\right]\;dz - \int q(z)\log\left[\frac{p(z\vert x;\theta)}{q(z)}\right]\;dz\\
+ = & \int q(z)\log\left[\frac{p(z\vert x;\theta) p(x;\vert)} {q(z)}\right]\;dz  - \int q(z)\log\left]\frac{p(z\vert x;\theta)}{q(z)}\right]\;dz\\
+ = & \int q(z)
+\left[
+\log\left(\frac{p(z\vert x;\theta)}{q(z)} \right)\right]\;qz + \log p(x;\theta)  - \log\left[\frac{p(z\vert x;\theta)}{q(z)}\right]\;dz\\
+= & \int q(z)\log p(x;\theta)\;dz\\
+= & \log p(x;\theta) \int q(z)\;dz\\
+= &\log p(x;\theta)\\
+\end{aligned}
+$$
+
+特に EM は，下界 $F(q,\theta)$， ひいては対数尤度を最大化する 2 ステップの反復アルゴリズムです。
+パラメータの現在の値を $\theta^{(t)}$ とします。
+E ステップでは $q(z)$ に関して下界 $F(q,\theta^{(t)})$ を最大化します。
+これは $\text{KL}(q\vert\vert p)=0$ のとき，つまり $q(z)=p(z\vert x;\theta^{(t)})$ のとき $t\in[1,T]$ のときに起こることは簡単にわかります。
+この場合，下界は対数尤度と等しくなります。
+続く M ステップでは $q(z)$ を固定して，下界 $F(q,\theta)$ を $\theta$ に関して最大化し，ある新しい値 $\theta^{(t+1)}$ を与えるようにします。
+これにより，下限値が大きくなり，その結果，対応する対数尤度も大きくなります。
+$q(z)$ は $\theta^{(t)}$ を用いて決定され M ステップでは固定されているため，新しい事後の $p\left(z\vert x;\theta^{(t+1)}\right)$ とは等しくならず，KL ダイバージェンス は 0 になりません。
+したがって，対数尤度の増加は下限の増加よりも大きい。
+$q(z)=p\left(z\vert x;\theta^{(t)}\right)$ を下界に代入し，式 (eq:tz8) を展開すると，次のようになります。
+<!-- % In particular, the EM is a two step iterative algorithm that maximizes the lower bound $F\of{q,\theta}$ and hence the log-likelihood. 
+% Assume that the current value of the parameters is $\theta^{(t)}$. 
+% In the E-step the lower bound $F\of{q,\theta^{(t)}}$ is maximized with respect to $q\of{z}$. 
+% It is easy to see that this happens when $\KL{q}{p}=0$, in other words, when $q\of{z}=p\of{z\given{x;\theta^{(t)}}}$, where $t\in[1,T]$. 
+% In this case the lower bound is equal to the log-likelihood. 
+% In the subsequent M-step, $q\of{z}$ is held fixed and the lower bound $F\of{q,\theta}$ is maximized with respect to $\theta$ to give some new value $\theta^{(t+1)}$. 
+% This will cause the lower bound to increase and as a result, the corresponding log-likelihood will also increase. 
+% Because $q\of{z}$ fwas determined using $\theta^{(t)}$ and is held fixed in the M-step, it will not be equal to the new posterior $p\of{z\given{x;\theta^{(t+1)}}}$ and hence the KL distance will not be zero. 
+% Thus, the increase in the log-likelihood is greater than the increase in the lower bound. 
+% If we substitute $q\of{z}=p\of{z\given{x;\theta^{(t)}}}$ into the lower bound and expand Eq.(\ref{eq:tz8}) we get: -->
+
+$$
+\begin{aligned}
+F(q,\theta^{(t+1)}) &= \int q(z\vert x;\theta^{(t)}) \log p(x,z;\theta^{(t)})\;dz  - \int q(z\vert x;\theta^{(t)}) \log q(z\vert x;\theta^{(t)})\;dz\\
+        &= Q(\theta^{t+1},\theta^{t}) + \text{constant}.\\
+\end{aligned}
+$$
+
+ここで定数とは $p(z\vert x;\theta^{(t)})$ のエントロピーであり $\theta$ には依存しません。
+その関数は: 
+<!-- % where the constant is simply the entropy of $p\of{z\given{x;\theta^{(t)}}}$ which does not depend on $\theta$. 
+% The function: -->
+
+$$
+\begin{aligned}
+Q(\theta^{(t+1)},\theta^{(t)}) =& \int p(z\vert x;\theta^{(t)})\log p(x,z;\theta^{(t+1)})\;dz\\
+=& \left<\log p(x,z;\theta^{(t+1)})\right>_ {p(z\vert x;\theta^{(t)})}\\
+\end{aligned} \tag{eq:tz11}
+$$
+
+は，M ステップで最大化される完全データ (観測値＋隠れ変数) の対数尤度の期待値である。
+信号処理の分野で EM アルゴリズムを紹介する際には，$Q\left(\theta^{(t+1)},\theta^{(t)}\right)$ の関数を直接使用するのが一般的です。
+<!-- % is the expectation of the log-likelihood of the complete data (observations + hidden variables) which is maximized in the M-step. 
+% The usual way of presenting the EM algorithm in the signal processing literature has been via use of the $Q\of{\theta^{(t+1)},\theta^{(t)}}$ function directly. -->
+
+つまり EM アルゴリズムは以下の 2 つのステップを含む反復アルゴリズムです。
+<!-- % In summary, the EM algorithm is an iterative algorithm involving the following two steps: -->
+
+* E ステップ: $p\left(z\vert x;\theta^{(t)}\right)$ (eq:tz12) を計算する
+* M ステップ: $\theta^{(t+1)} =\arg\max Q\left(\theta^{(t+1)},\theta^{(t)}\right)$ (eq:tz13) を評価する
+
+さらに EM アルゴリズムでは $p\left(z\vert x;\theta\right)$ が明示的に知られているか，少なくともその十分統計量の条件付き期待値 $\left<\log p\left(z\vert x;\theta\right)\right>$ を計算できることが必要であることを指摘しておく(eq:tz11)。
+つまり EM アルゴリズムを使うためには，観測値を与えられた隠れ変数の条件付き pdf を知る必要があります。
+一般的に $p\left(z\vert x;\theta\right)$ は $p\left(x;\theta\right)$ よりもはるかに簡単に推論できますが，多くの興味深い問題ではこれが不可能であり，したがって EM アルゴリズムは適用できません。
+<!-- % Furthermore, we would like to point out that the EM algorithm requires that $p\of{z\given{x;\theta}}$ is explicitly known, or at least we should be able to compute the conditional expectation of its sufficient statistics $\left<\log p\of{z\given{x;\theta}}\right>$, see Eq.(\ref{eq:tz11}). 
+% In other words, we have to know the conditional pdf of the hidden variables given the observations in order to use the EM algorithm. 
+% While $p\of{z\given{x;\theta}}$ is in general much easier to infer than $p\of{x;\theta}$, in many interesting problems this is not possible and thus the EM algorithm is not applicable.-->
+
+### 変分 EM の枠組み
+
+<!-- This section cited from \cite{2008Tzikas_VaBayes}. page 135. -->
+
+式 (eq:tz7) の分解において適切な $q(z)$ を仮定することで $p\left(z\vert x;\theta\right)$ を正確に知るという要件を回避することができます。
+E ステップでは $\theta$ を固定したまま $F\left({q,\theta\right)$ を最大化するような $q(z)$ を見つけます。
+この最大化を行うためには $q(z)$ の特定の形式を仮定しなければならない。 
+特定のケースでは $q(z;\omega)$ の形式の知識を仮定することが可能です ($\omega$ はパラメータのセット)。
+したがって，下界 $F(\omega,\theta)$ はこれらのパラメータの関数となり，E-step では$\omega$ に関して，M-step では $\theta$ に関して最大化されます。
+<!-- % One can bypass the requirement of exactly knowing $p\of{z\given{x;\theta}}$ by assuming an appropriate $q\of{z}$ in the decomposition of Eq.(\ref{eq:tz7}). 
+% In the E-step $q\of{z}$ is found such that it maximizes $F\of{q,\theta}$ keeping $\theta$ fixed. 
+% To perform this maximization, a particular form of $q\of{z}$ must be assumed.  In certain cases it is possible to assume knowledge of the form of $q\of{z;\omega}$, where $\omega$ is a set of parameters. 
+% Thus, the lower bound $F\of{\omega,\theta}$ becomes a function of these parameters and is maximized with respect to $\omega$ in the E-step and with respect to $\theta$ in the M-step see for example \cite{2006BishopPRML}. -->
+
+しかし，一般的な形式では，下界 $F\left(q,\theta\right)$ は $q$ についての **汎関数** である。
+換言すれば $q(z)$ の関数を入力として受け取り，関数の値を出力として返す写像である。
+これは自然に汎関数の微分の概念につながり，関数の微分と同様，入力関数の無限小の変化に対する関数の変化を与える。
+この分野の数学は **変分計算**と呼ばれ，流体力学，熱伝導，制御理論など，数学，物理科学，工学の多くの分野に応用されています。
+<!-- % However, in its general form the lower bound $F\of{q,\theta}$ is a \strong{汎関数 functional} in terms of $q$, in other words, a mapping that takes as input a function $q\of{z}$, and returns as output the value of the
+% functional. 
+% This leads naturally to the concept of the functional derivative, which in analogy to the function derivative, gives the functional changes for infinitesimal changes to the input function. 
+% This area of mathematics is called \strong{変分計算 calculus of variations} and has been applied to many areas of mathematics, physical sciences and engineering, for example fluid mechanics, heat transfer, and control theory. -->
+
+変分理論には近似値はありませんが，変分法はベイズ推論問題の近似解を求めるのに使用できます。
+これは，最適化が行われる関数が特定の形を持っていると仮定することによって行われます。
+例えば 2 次関数や， 固定基底関数の線形結合である関数のみを仮定することができる。
+<!--ベイジアン推論において， 大きな成功を収めている特定の形式は [19] と [20] を参照してください，因子化されたものです。-->
+この因子化近似のアイデアは，理論物理学に由来しており，それは **平均場理論** mean field theory と呼ばれている。
+<!-- % Although there are no approximations in the variational theory, variational methods can be used to find approximate solutions in Bayesian inference problems. 
+% This is done by assuming that the functions over which optimization is performed have specific forms. For example, we can assume only quadratic functions or functions that are linear combinations of fixed basis functions. 
+% For Bayesian inference, a particular form that has been used with great success is the factorized one, see [19] and [20]. 
+% The idea for this factorized approximation stems from theoretical physics where it is called \strong{平均場理論} (mean field theory). -->
