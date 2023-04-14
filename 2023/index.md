@@ -330,6 +330,8 @@ chatGPT の背景に何があるのかを探ることは，人間の心に関心
 * [コンピュータ実習 II](https://koneco.komazawa-u.ac.jp/syllabus/browse/07115/2023)，佐藤理晴 先生，HAD ，金曜日 2 時限 (後期)
 * [データサイエンス・ＡＩ入門](https://koneco.komazawa-u.ac.jp/syllabus/browse/54385/2023) 坂野井　和代 先生，金曜日 2 時限 (前期) AI data science
 
+[演習 <img src="../assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2023notebooks/2023_0414high_school_information1_text.ipynb)
+
 #### 関連用語
 
 - 機械学習 Machine Learning
