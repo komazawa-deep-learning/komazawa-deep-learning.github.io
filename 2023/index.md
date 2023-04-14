@@ -58,7 +58,7 @@ Appache 2.0 license<br/>
 - 第 15 回 07月21日: フェイク画像の生成，画風変換。
 キーワード: GAN (生成敵対モデル)，変分自己符号化器モデル
 <!-- - [定期試験 07月28日](2023exam): -->
-
+<!--
 ### 代替案
 
 1. Introduction, ChatGPT, diffusion model
@@ -79,7 +79,7 @@ Appache 2.0 license<br/>
 1. Simon and Stroop effects
 1. picture naming
 1. GAN, generative modeling, VAE
-
+ -->
 
 
 ### 後期予定
