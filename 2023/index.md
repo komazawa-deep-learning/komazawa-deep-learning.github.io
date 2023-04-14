@@ -1,6 +1,6 @@
 ---
 title: 2023年度 駒澤大学心理学特講 IIIa
-layout: home
+layout: default
 ---
 
 # ディープラーニング deep learning  と心理学との関連を探る
@@ -11,8 +11,10 @@ Date: 15/Apr/2022<br/>
 Appache 2.0 license<br/>
 </div>
 
-## 目次
+#### 目次
+
 * [概要](#概要)
+* [諸元](#諸元)
 * [履修に際して必要と知識や技能](#履修に際して必要と知識や技能)
 * [到達目標](#到達目標)
 * [前期予定](#前期予定)
@@ -62,20 +64,20 @@ Appache 2.0 license<br/>
 1. Introduction, ChatGPT, diffusion model
 2. Machine Learning, HAD Fisher Iris data, colab, Python
 3. History of AI, statistics and P values, Turing test
-4. Perceptron, MLP, XOR, Playground, Back-propagation, sigmoid function, tanh, RELU, Softmax
+4. Perceptron, MLP, XOR, Playground, Back-propagation, sigmoid function, tanh, RELU, Softmax, object (error, loss) function
 5. RNN, Language modeling, Elman, Jordan, BPTT,
 6. LSTM, BPTT, Language modeling, seq2seq
 7. Transformer, Attention,
 1. BERT, GPT, transfer learning, fine-tuning
-1. CNN, LeNet, AlexNet
-1. ResNet, skip-connection, R-CNN
+1. CNN, LeNet, AlexNet, data augmentation
+1. ResNet, skip-connection, R-CNN, dropout, layer normalization
+1. difusion model
 1. hemi-neglect
 1. Prosoagnosia (face blindness)
 1. Geometorical illusion
 1. visual search
 1. Simon and Stroop effects
 1. picture naming
-
 1. GAN, generative modeling, VAE
 
 
@@ -201,6 +203,20 @@ DQN が苦手としていたゲームを克服するための努力から得ら�
 - オフィスアワー: なし，メールや SNS を活用してください。駒澤大学の専任ではありません。
 非常勤講師ですので，金曜日の 3 時限だけしか駒澤大学には居ません。
 
+### 授業で使用するソフトウェア
+
+以下に実習で使用する道具を挙げます。
+ただし，あらかじめインストールしておく必要があるアプリケーションソフトウェアは，最初に挙げてある Google Chrome だけです。
+
+- [Google Chrome](https://www.google.com/intl/ja_jp/chrome/): 駒澤大学のアカウントでログインしてください。
+日常的に使っているブラウザが，Edge や Safari である方も Chrome をインストールしておいてください。
+理由は下に挙げた Google Colaboratory の動作が一貫しない場合があるからです。
+- [Google Colaboratory](https://colab.research.google.com/): Web ブラウザ上で動作する Python の実行環境です。
+クラウドコンピューティング環境であり，したがって，PC にインストールする必要はありません。
+- [PyTorch](https://pytorch.org/): Python 上で動作する深層学習のためのライブラリ，あるいはフレームワークと呼ばれるプログラムの集まりです。
+- [Python](https://www.python.org/) 令和 7 年から情報 I が [センター試験科目](https://www.dnc.ac.jp/kyotsu/shiken_jouhou/r7ikou/r7mondai.html){:target="_blank"} ([高等学校情報科 情報 I 教員研修用教材(本編)](https://www.mext.go.jp/a_menu/shotou/zyouhou/detail/1416756.htm){:target="_blank"}) になるので，Python, R の知識は常識となるかも知れません。
+
+
 ### 概要 人工知能 (AI) と人間の知性
 
 我々の持つ知性と AI とは，どのように関連するのだろうか。
@@ -259,43 +275,29 @@ chatGPT の背景に何があるのかを探ることは，人間の心に関心
 * 基礎疾患のある履修者，あるいは正当な理由があると認められる履修者のために，事前に届け出があれば，[オンラインで授業に参加する https://meet.google.com/oia-vgsd-cpb](https://meet.google.com/oia-vgsd-cpb) ことも可能です。
 あらかじめ，そのような自体が分かれば連絡をお願いします。
 <!-- その際には授業の Google meet URL は以下のとおりです: [https://meet.google.com/oia-vgsd-cpb](https://meet.google.com/oia-vgsd-cpb) -->
-* 毎回，簡単なコンピュータ実習を予定しています。<!-- そのため，仮にオンラインで受講する際には，十分な回線速度を確保してください。
-* スマートフォンによる参加では不十分です。
-* 必ず PC や Macintosh などでの履修をお願いします。
+* 毎回，簡単なコンピュータ実習を予定しています。<!-- そのため，仮にオンラインで受講する際には，十分な回線速度を確保してください。-->
+* スマートフォンによる参加では不十分です。必ず PC や Macintosh などでの履修をお願いします。
 
 ### 教科書/テキスト
 
 以下に挙げた教科書と参考書は購入する必要はありません。
 必要な文献は授業中にその都度指示します。
 
-- `ディープラーニング、ビッグデータ、機械学習 あるいはその心理学` 著者名 浅川伸一    出版社 新曜社 出版年 2014
-- `Python で体験する深層学習` 著者名 浅川伸一    出版社 コロナ社 出版年 2016
+- `ディープラーニング、ビッグデータ、機械学習 あるいはその心理学` 著者名 浅川伸一 出版社 新曜社 出版年 2014
+- `Python で体験する深層学習` 著者名 浅川伸一  出版社 コロナ社 出版年 2016
 - `深層学習教科書 ディープラーニング G 検定(ジェネラリスト) 公式テキスト`（監修：日本ディープラーニング協会, 共著, 翔泳社, 2018）
 - `人工知能学大事典` （人工知能学会編、共立出版 2017)
 
-### 授業で使用するソフトウェア
-
-以下に実習で使用する道具を挙げます。
-ただし，あらかじめインストールしておく必要があるアプリケーションソフトウェアは，最初に挙げてある Google Chrome だけです。
-
-- [Google Chrome](https://www.google.com/intl/ja_jp/chrome/): 駒澤大学のアカウントでログインしてください。
-日常的に使っているブラウザが，Edge や Safari である方も Chrome をインストールしておいてください。
-理由は下に挙げた Google Colaboratory の動作が一貫しない場合があるからです。
-- [Google Colaboratory](https://colab.research.google.com/): Web ブラウザ上で動作する Python の実行環境です。
-クラウドコンピューティング環境
-- [PyTorch](https://pytorch.org/): Python 上で動作する深層学習のためのライブラリ，あるいはフレームワークと呼ばれるプログラムの集まりです。
-- [Python](https://www.python.org/)
 
 ### 本授業で獲得できる知識，メリット
 
 - ニューラルネットワーク
 - 深層学習 (ディープラーニング)
-- 機械学習，- データサイエンスの基本的な考え方。
-
+- 機械学習，
+- データサイエンスの基本的な考え方。
 - 就職に役立つ資格: JDLA G 検定, 学生受験者 （全受験者中 15％程度）もかなりあります。
 <!-- 最年少では小中学生，最高齢は８０代。 -->
 <!-- - 生成モデルと認識モデルの相違 -->
-
 
 ### Q and A
 
@@ -317,17 +319,17 @@ chatGPT の背景に何があるのかを探ることは，人間の心に関心
     - **A**: これが心理学であり，認知科学でもあり，人工知能でもあります。現代的な認識論の形です
 
 
-## 関連授業
+#### 関連授業
 
-* 情報処理IA, IB 佐藤理晴 先生 水曜日 4 時限，◎予（前期）心２３４選，Psychopy Builder, R,
-* 情報処理IIA, IIB 堀内　正彦 先生，　火曜日 3時限
-* 心理学実験演習ⅠＡ 白間　綾 先生，木曜日 1時限 Stroop 効果, Simon effect
-* 心理学実験演習ⅢＡ 堀　直人 先生，木曜日 4時限，特徴統合理論と視覚探索課題（1）　
-* 心理学実験演習VIIA 堀内　正彦 先生
-* コンピュータ実習Ⅱ，佐藤理晴 先生，HAD ，　金曜日 2 時限 (後期)
-* データサイエンス・ＡＩ入門 坂野井　和代 先生，金曜日 2 時限 (前記) AI data science
+* [情報処理IA](https://koneco.komazawa-u.ac.jp/syllabus/browse/07480/2023), [情報処理 IB](https://koneco.komazawa-u.ac.jp/syllabus/browse/07485/2023) 佐藤理晴 先生 水曜日 4 時限，◎予（前期）心２３４選，[PsychoPy](https://www.psychopy.org/), [Psychopy Builder](https://www.psychopy.org/builder/), [R](https://www.r-project.org/),
+* [情報処理 IIA](https://koneco.komazawa-u.ac.jp/syllabus/browse/07490/2023), [情報処理 IIB](https://koneco.komazawa-u.ac.jp/syllabus/browse/07495/2023) 堀内　正彦 先生，火曜日 3時限 [HAD](https://norimune.net/had)
+* [心理学実験演習 IA](https://koneco.komazawa-u.ac.jp/syllabus/browse/07260/2023) [心理学実験演習 ⅠB](https://koneco.komazawa-u.ac.jp/syllabus/browse/07265/2023) 白間　綾 先生，木曜日 1 時限 Stroop 効果, Simon 効果
+* [心理学実験演習 IIIA](https://koneco.komazawa-u.ac.jp/syllabus/browse/07280/2023), [心理学実験演習 IIIB](https://koneco.komazawa-u.ac.jp/syllabus/browse/07285/2023), 堀　直人 先生，木曜日 4時限，特徴統合理論，視覚探索課題
+* [心理学実験演習 VIIA](https://koneco.komazawa-u.ac.jp/syllabus/browse/07320/2023) 堀内　正彦 先生 金曜日 4時限
+* [コンピュータ実習 II](https://koneco.komazawa-u.ac.jp/syllabus/browse/07115/2023)，佐藤理晴 先生，HAD ，金曜日 2 時限 (後期)
+* [データサイエンス・ＡＩ入門](https://koneco.komazawa-u.ac.jp/syllabus/browse/54385/2023) 坂野井　和代 先生，金曜日 2 時限 (前期) AI data science
 
-## 関連用語
+#### 関連用語
 
 - 機械学習 Machine Learning
 - データサイエンス Data Science
@@ -338,39 +340,11 @@ chatGPT の背景に何があるのかを探ることは，人間の心に関心
 
 #### 関連分野
 
-- 心理学
-    - 知覚
-    - 精神物理学
-    - 認知心理学
-    - 神経心理学
-    - 学習
-- 認知科学
-- 神経科学
-- 精神医学
-- 生物学
+心理学 (知覚, 精神物理学, 認知, 神経心理学, 学習), 認知科学, 神経科学, 精神医学, 生物学
 
 だが，これでニューウェルの疑問に答えられるのだろうか？
-だが，人工知能 は知的機能をコンピュータで作ろうとする構成論的研究。浅川にはむしろ人工知能研究者の方が，人間の心を真摯に向き合っているようにも見える。
-
-#### 関連企業，団体
-
-* [エクサウィザーズ](https://exawizards.com/){:target="_blank"}
-* [サイトビジット](https://sight-visit.com/){:target="_blank"}
-* [Gauss](https://gauss-ai.jp/){:target="_blank"}
-* [KUNO](https://kuno-corp.com/company){:target="_blank"}
-* [AVILEN](https://avilen.co.jp/){:target="_blank"}
-* [スタンダード](https://standard-dx.com/){:target="_blank"}
-* [日本ディープラーニング協会](https://www.jdla.org/){:target="_blank"}
-
-
-- [ディープラーニング，ビッグデータ，機械学習](https://www.shin-yo-sha.co.jp/book/b455586.html)
-- [Pythonで体験する深層学習](https://www.coronasha.co.jp/np/isbn/9784339028515/)
-- [深層学習教科書 ディープラーニング G検定(ジェネラリスト)公式テキスト](https://www.amazon.co.jp/-/en/%E7%8C%AA%E7%8B%A9-%E5%AE%87%E5%8F%B8/dp/4798165948/)
-- [これ1冊で最短合格 ディープラーニングG検定ジェネラリスト 要点整理テキスト&問題集](https://www.shuwasystem.co.jp/book/9784798057309.html)
-
----
-
-- [用語集](glossary)
+だが，人工知能 は知的機能をコンピュータで作ろうとする構成論的研究。
+浅川にはむしろ人工知能研究者の方が，人間の心を真摯に向き合っているようにも見える。
 
 <!-- - CNN: 畳み込みニューラルネットワーク
 - RNN: リカレントニューラルネットワーク
