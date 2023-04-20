@@ -1,0 +1,270 @@
+body {
+    /* font-family: Georgia, 'Times New Roman', Times, serif, 'Noto serif Japanese'; */
+    /* font-family: "Noto serif Japanese"; */
+    /* font-family: noto-serif, "Noto serif Japanese"; */
+    font-family: noto-sans, "Noto sans Japanese";
+    /* font-family: sans-serif, "Noto serif Japanese"; */
+    font-size: 12px;
+    line-height: 1.6;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding: 30px;
+    /* background-color: #fafaf0; */
+}
+
+h1 {
+    /* font-size: 28px; */
+    font-size: 22px;
+    font-weight: bold;
+    color: navy;
+    /* border-bottom: 4px solid #cccccc; */
+    /* border-top: 4px solid #cccccc; */
+    margin-top: 15mm;
+}
+
+h2 {
+    /* font-size: 28px; */
+    font-size: 20px;
+    font-weight: bold;
+    color: #792e85;
+    margin: 02px;
+    /* padding: 04px; */
+    margin-top: 5mm;
+}
+
+h3 {
+    /* font-size: 22px; */
+    font-size: 18px;
+    font-weight: bold;
+    color: teal;
+    /* margin: 02px; */
+    /* padding: 10px; */
+}
+
+h4 {
+    /* font-size: 16px; */
+    font-size: 16px;
+    font-weight: bold;
+    color: navy;
+}
+
+h5 {
+    /* font-size: 14px; */
+    font-weight: bold;
+}
+
+h6 {
+   /* font-size: 14px; */
+   color: #777777;
+   font-size: 14px;
+}
+
+hr {
+   border: 0 none;
+   color: #cccccc;
+   height: 4px;
+   padding: 0;
+}
+
+
+/* Images */
+img {
+    max-width: 100%;
+    vertical-align: middle;
+    margin-bottom: 02mm;
+    /* display: block; */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/** Figures */
+figure > img {
+    background-color: #fafaf0;
+    margin-bottom: 1mm;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.abstract {
+    text-align: left;
+    font-size: inherit;
+    background-color: powderblue;
+    margin-bottom: 10mm;
+    width: 88%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.figcaption {
+    font-size: inherit;
+    background-color: lavender;
+    text-align: left;
+    width: 77%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* margin-bottom: 5mm;
+    margin-left: 30mm; */
+}
+
+.figcaption3 {
+    font-size: inherit;
+    background-color: conrnsilk;
+    text-align: left;
+    width: 77%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* margin-bottom: 5mm;
+    margin-left: 30mm; */
+}
+
+.figcenter {
+    text-align: center;
+}
+.fig img {
+    max-width: 98%;
+}
+.figleft img {
+    max-width: 50%;
+    float: left;
+    margin-right: 20px;
+}
+.figleft svg {
+    float: left;
+    margin-right: 20px;
+}
+.fighighlight {
+    background-color: #f7f6f1;
+    padding: 20px 4px 20px 4px;
+    border-bottom: 1px solid #999;
+    border-top: 1px solid #999;
+    box-shadow: 0px 2px 5px #CCC, 0px -2px 5px #CCC;
+}
+.figcaption2 {
+    font-weight: 400;
+    font-size: 14px;
+    color: #575651;
+    text-align: justify;
+}
+
+
+.fig {
+    display: block;
+    width: 99%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.author {
+    text-align: center;
+    font-weight: bold;
+    font-size: inherit;
+    margin-bottom: 5mm;
+}
+
+.title {
+    font: 900 "Helvetica Neue", Helvetica, Arial, sans-serif, "Noto Sans Japanese";
+    font-size: inherit;
+    /* font-size: 28px; */
+    /* font-size: 30px; */
+    /* font-size: 34px; */
+    font-size: 20px;
+    font-weight: 900;
+    /* color: navy; */
+    color: black;
+    text-align: center;
+    margin-bottom: 10mm;
+}
+
+.code {
+    font-size: inherit;
+    display: block;
+    width: 88%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    background-color:#f7f6f1;
+}
+
+.footnote {
+    font-size: inherit;
+    display: block;
+    width: 88%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    background-color: beige;
+    color: dimgray;
+    /* color:teal; */
+}
+
+.memo {
+    font-size: inherit;
+    display: block;
+    width: 88%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    background-color:azure;
+    color: teal;
+    /*color: dimgray;*/
+}
+
+
+@media screen and (min-width: 914px) {
+   body {
+      width: 1024px;
+#      width: 854px;
+      margin:0 auto;
+   }
+}
+
+@media print {
+	 table, pre {
+		  page-break-inside: avoid;
+	 }
+	 pre {
+		  word-wrap: break-word;
+	 }
+}
+
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+  },
+  TeX: {
+    equationNumbers: {
+      autoNumber: "all"
+    },
+    Macros: {
+      R: '{\\mathbb R}',
+      C: '{\\mathbb C}',
+      np: ['{#1}#2{#1}', 2],
+      of: ['\\left({#1}\\right)', 1],
+      Given: ['\\left|#1\\right.', 1],
+      KL: ['\text{KL}\\left(\\left.{#1}\\right\\|{#2}\\right)', 2],
+      bf: ['\\mathbf{#1}', 1]
+    }
+  }
+    });
+
+bstrong {
+    color: blue;
+    font-weight: bold;
+}
+
+cstrong {
+    color: cyan;
+    font-weight: bold;
+}
+
+pstrong {
+    color: pink;
+    font-weight: bold;
+}
