@@ -1,5 +1,6 @@
 ---
-title: 2023年度 駒澤大学心理学特講 IIIa
+title: 2023年度開講 駒澤大学 心理学特講 IIIA, IIIB
+author: 浅川 伸一
 layout: home
 ---
 <link href="/css/asamarkdown.css" rel="stylesheet">
