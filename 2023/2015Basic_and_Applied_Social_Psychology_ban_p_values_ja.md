@@ -1,5 +1,6 @@
 ---
-title: "BASP statement"
+title: "基礎と応用社会心理学 (BASP) 編集方針 (2014,2015)"
+author: Trafimow, D.
 layout: home
 ---
 

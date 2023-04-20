@@ -9,7 +9,8 @@ article: 29
 layout: default
 ---
 
-<!-- <link href="asamarkdown.css" rel="stylesheet"></link> -->
+<link href="/css/asamarkdown.css" rel="stylesheet"></link>
+
 <!-- - [2019JCSS](https://github.com/ShinAsakawa/ShinAsakawa.github.io/raw/master/2019jcss_slides.pdf) -->
 <!--https://raw.githubusercontent.com/ShinAasakawa/ShinAsakawa.github.io/master/2019jcss_slides.pdf){:target="_blank"}-->
 
@@ -152,7 +153,8 @@ It may explain why psychostimulants such as Adderall or caffeine can work to inc
 <img src="/2023assets/2020Lindsay_fig1.svg" style="width:66%">
 <div class="figcaption">
 
-#### 図 1 青斑核の細胞は， ノルエピネフリン (ノルアドレナリンとしても知られている) を， 他の神経調節系を含む， さまざまな機能を持つ脳の多くの部分に放出する。
+### 図 1 青斑核の細胞は， ノルエピネフリン (ノルアドレナリンとしても知られている) を， 他の神経調節系を含む， さまざまな機能を持つ脳の多くの部分に放出する
+
 これが全体的な覚醒に寄与する (Samuels&Szabadi2008)。
 ここでの色は， 前脳 (緑)， 間脳(黄)，  脳幹(青) といった脳の各部位を表している。
 (B）ヤーケス・ドッドソン曲線は， 覚醒度と課題遂行能力の非線形関係を表している。
@@ -368,7 +370,7 @@ Because certain features can create a pop-out effect—for example, a single red
 <img src="/2023assets/2020Lindsay_Attention_fig2.svg" style="width:66%">
 <div class="figcaption">
 
-#### 図 2. 視覚探索課題では，さまざまな形で視覚的な注意が働く。
+#### 図 2. 視覚探索課題では，さまざまな形で視覚的な注意が作用する
 上列は，視覚探索課題の進行を示している。
 まず，視覚探索の対象を示す手がかり (この場合青い X）が表示される。
 次に，多くの非標的を含む探索配列が現れる。
@@ -863,10 +865,11 @@ Here, the attention mechanism is a small feedforward neural network that takes i
 <img src="/2023assets/2020Lindsay_Attention_fig3.svg" style="width:66%">
 <div class="figcaption">
 
-図 3 ニューラル機械翻訳への注意。
-翻訳されるべき文は， リカレントニューラルネットワークを介して一連のベクトル (v) に符号化される。
-注意機構 ($\phi$) は， デコーダの隠れた状態 (h) とこれらのベクトルを用いて， エンコードされたベクトルをどのように組み合わせて文脈ベクトル  (c） を生成すべきかを決定する。
-このベクトルは， デコーダの次の隠れた状態に影響を与え， したがって翻訳文の次の単語に影響を与える。
+#### 図 3 ニューラル機械翻訳への注意
+
+翻訳されるべき文は，リカレントニューラルネットワークを介して一連のベクトル (v) に符号化される。
+注意機構 ($\phi$) は，デコーダの隠れ状態 (h) とこれらのベクトルを用いて，エンコードされたベクトルをどのように組み合わせて文脈ベクトル  (c） を生成すべきかを決定する。
+このベクトルは，デコーダの次の隠れ状態に影響を与え，したがって翻訳文の次の単語に影響を与える。
 <!-- Attention for neural machine translation.
 The to-be-translated sentence is encoded to a series of vectors (v) via a recurrent neural network.
 The attention mechanism () uses the hidden state of the decoder (h) and these vectors to determine how the encoded vectors should be combined to produce a context vector (c), which influences the next hidden state of the decoder and thus the next word in the translated sentence.-->
@@ -879,7 +882,7 @@ The attention mechanism () uses the hidden state of the decoder (h) and these v
 This can be especially useful for translating between languages with different standard word orders.
 By visualizing the locations in the input sentence to which attention was applied the authors observed attention helping with this problem.-->
 
-この最初のアプリケーション以来，言語翻訳のための注意ネットワークの多くのバリエーションが開発されてきた。
+この最初の応用以来，言語翻訳のための注意ネットワークの多くの変種が開発されてきた。
 Firat+2016 では，1 つの言語だけでなく，複数の言語の対間の翻訳に使用できるように，注意機構が適応された。
 Luong+2015 では，著者らは，すべての入力単語に一度にアクセスする能力が必要かどうかを判断するために，異なる注意の構造を探っている。
 また，Cheng+2016 では，より柔軟に文の表現を作るために，文の符号化と復号化を行うリカレントニューラルネットワークに注意機構を追加した。
@@ -888,7 +891,7 @@ In Firat et al. (2016), the attention mechanism was adapted so it could be used 
 In Luong et al. (2015), the authors explore different structures of attention to determine if the ability to access all input words at once is necessary.
 And in Cheng et al. (2016), attention mechanisms were added to the recurrent neural networks that perform the sentence encoding and decoding in order to more flexibly create sentence representations. -->
 
-2017年，影響力のある「Attention is All You Need」という論文では，機械翻訳にまったく異なるスタイルのアーキテクチャが活用された (Vaswani+2017)。
+2017 年，影響力のある Attention is All You Need という論文では，機械翻訳にまったく異なるスタイルのアーキテクチャが活用された (Vaswani+2017)。
 このモデルは再帰性を持たないので，学習がよりシンプルになる。
 代わりに，文中の単語が並列に符号化され，これらの符号化によってキー表現とクエリ表現が生成され，これらが組み合わされて注意の重み付けが作られる。
 これらの重み付けは，単語の符号化自体をスケーリングして，モデルの次の層，つまり「自己注意」として知られる過程を作る。
@@ -1208,7 +1211,8 @@ However, the true promise of brain-inspired AI should deliver a more integrated,
 <img src="/2023assets/2020Lindsay_Attention_fig5.svg" style="width:66%">
 <div class="figcaption">
 
-図 5 神経科学・心理学と機械学習で研究されているさまざまな注意の種類とその関連性を不完全ながらまとめたもの。<br/>
+#### 図 5 神経科学・心理学と機械学習で研究されているさまざまな注意の種類とその関連性を不完全ながらまとめたもの
+
 左は生物学的に研究されている注意の区分，右は人工知能や機械学習のために開発された注意の区分である。
 同じ水平方向の位置にある話題は，ある程度の類似性があり，その距離が類似性の近さを示す。
 例えば，視覚的注意の形態は，生物学と機械学習の間で最も重複しており，最も直接的に比較することができる。
