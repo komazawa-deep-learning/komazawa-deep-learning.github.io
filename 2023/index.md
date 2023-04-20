@@ -1,15 +1,22 @@
 ---
 title: 2023年度 駒澤大学心理学特講 IIIa
-layout: default
+layout: home
 ---
-
-# ディープラーニング deep learning  と心理学との関連を探る
+<link href="/css/asamarkdown.css" rel="stylesheet">
+<div align="center">
+<!-- <font size="+2" color="navy"><strong>2020年度開講 駒澤大学 心理学特講 IIIA, IIIB</strong></font><br/> -->
+<font size="+1" color="navy"><strong>ディープラーニングの心理学的解釈</strong></font><br/><br/>
+<img src="/assets/header_logo.png" sytle="width:09%">
+</div>
 
 <div align='right'>
 <a href='mailto:educ0233@komazawa-u.ac.jp'>Shin Aasakawa</a>, all rights reserved.<br>
-Date: 15/Apr/2022<br/>
-Appache 2.0 license<br/>
+Date: 15/Apr/2023<br/>
+Appache 2.0 license<br/><br/>
 </div>
+
+# ディープラーニング deep learning  と心理学との関連を探る
+
 
 #### 目次
 
@@ -31,8 +38,8 @@ Appache 2.0 license<br/>
 
 - [第 01 回 04月14日](2023lect01): イントロダクション
 キーワード: Python, Colab, PyTorch。AI 進歩の背景。認知心理学，認知科学，脳画像研究と AI
-- 第 02 回 04月21日: 人工知能とは何か。人工知能の歴史を概説します。
-キーワード: チューリングテスト，知識表現，エキスパートシステム，意味ネット，第3次AIブーム，AI の冬
+- [第 02 回 04月21日](2023lect02): 人工知能とは何か。人工知能の歴史。機械学習の考え方
+キーワード: チューリングテスト，知識表現，エキスパートシステム，意味ネット，第 3 次 AI ブーム，AI の冬
 - 第 03 回 04月28日: 機械学習(1) 機械学習について概説します。
 キーワード：教師あり学習，教師なし学習，半教師あり学習，回帰，分類。
 - 第 04 回 05月06日: 機械学習(2) 課題授業 (5月5日を予定)
@@ -245,10 +252,10 @@ chatGPT の背景に何があるのかを探ることは，人間の心に関心
 
 ### 履修に際して必要と知識や技能
 
-- 日本語または英語で意思伝達ができること
-- 駒澤大学から付与された電子メールを用いて連絡が取れること
-- 大学一年生程度の初等統計学の知識
-- 心理学入門，あるいは心理学概論程度の心理学の知識
+* 日本語または英語で意思伝達ができること
+* 駒澤大学から付与された電子メールを用いて連絡が取れること
+* 大学一年生程度の初等統計学の知識
+* 心理学入門，あるいは心理学概論程度の心理学の知識
 
 逆に，プログラミングの技能，上記以上の数学の知識は求めません。
 必要に応じて解説することにします。
@@ -287,7 +294,7 @@ chatGPT の背景に何があるのかを探ることは，人間の心に関心
 - `ディープラーニング、ビッグデータ、機械学習 あるいはその心理学` 著者名 浅川伸一 出版社 新曜社 出版年 2014
 - `Python で体験する深層学習` 著者名 浅川伸一  出版社 コロナ社 出版年 2016
 - `深層学習教科書 ディープラーニング G 検定(ジェネラリスト) 公式テキスト`（監修：日本ディープラーニング協会, 共著, 翔泳社, 2018）
-- `人工知能学大事典` （人工知能学会編、共立出版 2017)
+- `人工知能学大事典` (人工知能学会編、共立出版 2017)
 
 
 ### 本授業で獲得できる知識，メリット
@@ -330,7 +337,6 @@ chatGPT の背景に何があるのかを探ることは，人間の心に関心
 * [コンピュータ実習 II](https://koneco.komazawa-u.ac.jp/syllabus/browse/07115/2023)，佐藤理晴 先生，HAD ，金曜日 2 時限 (後期)
 * [データサイエンス・ＡＩ入門](https://koneco.komazawa-u.ac.jp/syllabus/browse/54385/2023) 坂野井　和代 先生，金曜日 2 時限 (前期) AI data science
 
-[演習 <img src="../assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2023notebooks/2023_0414high_school_information1_text.ipynb)
 
 #### 関連用語
 
@@ -339,7 +345,7 @@ chatGPT の背景に何があるのかを探ることは，人間の心に関心
 - AI
 - 統計学 Statistics
 - 数学
-    - 情報理論，通信理論
+- 情報理論，通信理論
 
 #### 関連分野
 
@@ -348,49 +354,3 @@ chatGPT の背景に何があるのかを探ることは，人間の心に関心
 だが，これでニューウェルの疑問に答えられるのだろうか？
 だが，人工知能 は知的機能をコンピュータで作ろうとする構成論的研究。
 浅川にはむしろ人工知能研究者の方が，人間の心を真摯に向き合っているようにも見える。
-
-<!-- - CNN: 畳み込みニューラルネットワーク
-- RNN: リカレントニューラルネットワーク
-- RL: 強化学習-->
-
-<!-- <center> -->
-<!--  <img src="https://komazawa-deep-learning.github.io/assets/2008Fuster_Prefrontal_Cortex_fig8_4.svg" width="39%"> -->
-<!--  <img src="https://komazawa-deep-learning.github.io/assets/2015Ronneberger_U-Net_Fig1_ja.svg" width="48%"> -->
-<!-- </center> -->
-
-<!-- - [2018Kriegeskorte](2018Kriegeskorte){:target="_blank"}
-- [1970Newell](1970Newell){:target="_blank"}
-- [2019Glaser](2019Glaser){:target="_blank"}
-- [2020Lindsay](2020Lindsay){:target="_blank"}
-- [G 検定](https://www.seshop.com/product/detail/23864?utm_source=seid_it_spot_20210412&utm_medium=email&utm_campaign=coupon){:target="_blank"}
-
-### 2021年02月23日分
-- [2020-0215](2020-0215abstract){:target="_blank"}
-- [どうぶつの森モデル，動物の名前連想モデル](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2021_0223word_associtaion.ipynb){:target="_blank"}
-- [導入講義用 CCP ウィルス感染者予測モデルを題材に](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2021Kermack_McKendrick_model.ipynb){:target="_blank"}
-- [CNN の簡単なデモ](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2021Keras_CNN_demo_with_wordnet_ja.ipynb){:target="_blank"}
-
-# 統計学と機械学習の関係
-
-母集団における差異の有無を問題にする心理統計学と機械学習との間には，決定的な差があります。
-
-- [1970Newell](1970Newell){:target="_blank"}
-- [2019Glaser](2019Glaser){:target="_blank"}
-- [2020Lindsay](2020Lindsay){:target="_blank"}
--->
-
-<!--
-<br/>
-1. [tSNE を用いた TLPA 200語の word2vec 視覚化](https://ShinAsakawa.github.io/2020cnps_tSNE_for_word2vec.ipynb)
-2. [2020年2月24日資料1 tlpa 画像](https://ShinAsakawa.github.io/2020making_tlpa.html)
-3. [2020年4月15日かじゅまるつがる松本先生のモデルの説明](https://shinasakawa.github.io/2020gajumarutugaru/2020-0415Friston_in_detail.html)
-4. [2020年4月18日かじゅまるつがる投稿](https://shinasakawa.github.io/2020gajumarutugaru/2020-0418gajumarutugaru.html)
-
-<br/>
-
-1. [2020ccap 資料置き場](2020ccap)
-2. [2020中央大学，緑川先生，重宗先生，研究会資料](2020chuo)
-3. [2020 第2回 中央大学，緑川先生，重宗先生，研究会資料](2020chuo2)
-4. [2020サイトビジット資料](2020sightvisit)
-
-<a href="https://guides.github.com/features/pages/">Read this page to write this page.</a>-->
