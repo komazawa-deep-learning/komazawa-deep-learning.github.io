@@ -24,21 +24,66 @@ layout: home
 
 ## 授業計画
 
-* 第01回 (Sep.22) 永田：オリエンテーション・多感覚統合の神経生理学と人工知能 授業の概要について説明します。感覚情報統合に対する心理学分野のアプローチを紹介します。
+* [第01回 (Sep.22)](2023cogpsy_lect01) 永田：オリエンテーション・多感覚統合の神経生理学と人工知能 授業の概要について説明します。感覚情報統合に対する心理学分野のアプローチを紹介します。
 * 第02回 (Sep.29) 竹市：刺激と感覚のモダリティ 多感覚知覚の問題（バインディング問題・ダブルフラッシュ錯視ほか）と最近のアプローチについて紹介します。
 * 第03回 (Oct.06) 竹市：感覚運動協応 多感覚知覚研究の発展的な話題を紹介します。
 * 第04回 (Oct.13) 竹市：感覚情報統合の神経生理学 感覚情報統合に関する脳神経科学分野の基礎的な知見を，結合性の研究を中心に紹介します。
 * 第05回 (Oct.20) 竹市：言語学習 言語処理の神経生理学的な特異性（ストループ効果ほか）と，近年の音声言語知覚の獲得に関する行動学的・神経生理学的な研究を紹介します。
 * 第06回 (Oct.27) 竹市：身体運動知覚と逆変換 身体運動の知覚認知に関連する神経生理学的な研究（マガーク効果・腹話術ほか）を紹介します。
 * 第07回 (Nov.03) 竹市：身体性 自己身体の知覚認知に関連する神経生理学的な研究（ラバーハンド錯視ほか）を紹介します。
-* 第08回 (Nov.10) 浅川：人工知能基礎】多感覚統合に関連する，深層学習の概念を取り上げます。ニューラルネットワーク分野での諸概念との対応関係を議論します。初回となる第8回では，ニューラルネットワークの基礎を概説します。畳み込みニューラルネットワークに関してのハンズオンを行います。
+* [第08回 (Nov.10)](2023cogpsy_lect08){:target="_blank"} 浅川：人工知能基礎】多感覚統合に関連する，深層学習の概念を取り上げます。ニューラルネットワーク分野での諸概念との対応関係を議論します。初回となる第8回では，ニューラルネットワークの基礎を概説します。畳み込みニューラルネットワークに関してのハンズオンを行います。
 * 第09回 (Nov.17) 浅川：トランスフォーマー 言語モデルの導入を行います。埋め込み分散表現モデル，および，トランスフォーマーモデルにおける注意を紹介し，情報を統合する方法について考えます。
 * 第10回 (Nov.24) 浅川：符号化-復号化モデル モダリティ変換について取り上げます。
 * 第11回 (Dec.01) 浅川：事前学習とファインチューニング 感覚統合に向けて，ファインチューニングのハンズオンを行います。
-* 第12回 (Dec.08) 浅川：単語の形態情報，意味，音韻の情報の統合】 感覚モダリティの統合に向けて，視覚情報統合について取り上げます。視覚探索とストループ効果について取り上げます。
+* 第12回 (Dec.08) 浅川：単語の形態情報，意味，音韻の情報の統合: 感覚モダリティの統合に向けて，視覚情報統合について取り上げます。視覚探索とストループ効果について取り上げます。
 * 第13回 (Dec.15) 浅川：位置情報と形態情報の統合 半側空間無視について取り上げます。ニューラルネットワークによる実装についてハンズオンを行います。
 * 第14回 (Dec.22) 浅川：言語と画像の統合 これまで提案されてきたモデルを理解することを通して，言語と画像との相互変換から感覚統合をについて議論します。
 * 第15回 (Jan.05) 永田：課題授業 授業で学んだことをまとめて発表していただきます。
+
+<center>
+<div class="fig">
+<img src="/2023assets/1999Shelton_Caramazza_fig1.png" width="33%">
+<div class="figcaption">
+図 1. 語彙系の概要
+<!-- Figure 1. A general overview of the lexical system -->
+</div></div>
+</center>
+
+<center>
+<div class="fig">
+<img src="/2023assets/1999Shelton_Caramazza_fig2.png" width="33%">
+<img src="/2023assets/1999Shelton_Caramazza_fig3.png" width="33%">
+<div class="figcaption">
+左 図 2. モダリティ別の意味体系を仮定したモデルの例<br/>
+右 図 3. 単一のアモーダルな意味体系を仮定したモデルの例。
+<!-- left: Figure 2. An example of a model postulating separate modality-specific semantic systems.<br/>
+right: Figure 3. An example of a model postulating a single, amodal semantic system. -->
+</div></div>
+</center>
+
+<center>
+<div class="fig">
+<img src="/2023assets/1999Shelton_Caramazza_fig4.png" width="33%">
+<img src="/2023assets/1999Shelton_Caramazza_fig5.png" width="33%"><br/>
+<div class="figcaption">
+左 図 4. 感覚的特徴と非感覚的特徴に基づく別々の知識特異的意味系を仮定したモデルの例<br/>
+右 図 5. 意味カテゴリーに従って組織化された単一の意味系を仮定したモデルの例。
+<!-- left: Figure 4. An example of a model postulating separate knowledge-specific semantic systems based on sensory features versus nonsensory features.<br/>
+rigth: Figure 5. An example of a model postulating a single semantic system organized according to semantic category. -->
+</div></div>
+</center>
+
+<center>
+<div class="fig">
+<img src="/2023assets/1999Shelton_Caramazza_fig6.png" width="33%">
+<img src="/2023assets/1999Shelton_Caramazza_fig7.png" width="33%"><br/>
+<div class="figcaption">
+左 図 6. 音韻サポートと書記素出力の間に義務的な関係を仮定したモデルの一例。<br/>
+右 図 7. 音韻サポートと書記素出力の間に非義務的な関係を仮定したモデルの例。
+<!-- left: Figure 6. An example of a model postulating an obligatory relationship between phonological support and orthographic output.<br/>
+right: Figure 7. An example of a model postulating a nonobligatory relationship between phonological support and orthographic output. -->
+</div></div>
+</center>
 
 
 
