@@ -113,15 +113,14 @@ The executive system centered on the anterior cingulate achieves goal and input 
 # 機械学習の技法
 
 3. Breiman の 2 つの文化
-2. データセット
-7. 交差検証法
-6. 誤差逆伝播法
-4. 勾配降下法，確率的勾配降下法
-5. ミニバッチ
-1. データ拡張
-1. ドロップアウト
-2. 正則化
-3. フィードフォワード結合，フィードバック結合，リカレント結合
+2. データセット, 訓練データ，検証データ，テストデータ
+1. フィードフォワード, フィードバック
+8. 活性化関数
+9. 損失関数 (誤差関数，目的関数)
+10. 誤差逆伝播法, 勾配降下法, 確率的勾配降下法, ミニバッチ
+13. データ拡張
+15. 正則化
+14. ドロップアウト
 
 ## 正則化
 
@@ -148,6 +147,49 @@ $P$ は問題の物理的制約を表しており，2 次の変分原理であ�
 変分原理は物理学，経済学，工学，で幅広く用いられている。例えば物理学における基本法則は変分原理を用いて，
 エネルギーやラグランジェ関数を用いて簡潔に表現されている。
 
+### 機械学習と心理統計学の違い
+
+仮説検定とパラメータチューニングの差異は，母集団の相違に期すのか，それとも選択しているモデルによるものなのか。
+心理統計では，データを説明する努力よりも，母集団の相違，すなわち，帰無仮説が棄却できるか採択されるかに興味がある。
+ところが，帰無仮説が正しいかどうかは，選択する統計モデルに依存する。
+このとき統計モデルの精度が正しいのかどうかを問題にすることは少ない。
+だが，用いるモデルに依存して推論結果が変化するかも知れない。
+そうするとモデルの優劣が問題になるであろう。
+
+一方，機械学習では，心理統計の母集団に相当する概念が，汎化性能である。
+所与のデータにだけ当てはまるモデルではなく，未知のデータにたいして性能の高いモデルが選択される。
+未知のデータ，未学習のデータに対する性能と母集団の差異を，一概に比較することは難しいが，予測精度を高くすることが，現実には用いられる実用性が高い。
+応用が可能で，実学として世の中の役に立つ成果を生み出すことができる。
+
+### ASA アメリカ統計学会の声明再録
+
+<!-- 1. **P 値は，データが指定された統計モデルとどの程度相性が悪いかを示すことができる** P-values can indicate how incompatible the data are with a specified statistical model. -->
+<!-- 2. **P 値は，研究された仮説が真である確率を測定するものではない。そうではなく，データがランダムな偶然だけから，生成された確率を測定するものである** P-values do not measure the probability that the studied hypothesis is true, or the probability that the data were produced by random chance alone. -->
+<!-- 3. **科学的な結論やビジネスや政策の決定は，p 値が特定の閾値を超えたかどうかだけに基づくべきではない** Scientific conclusions and business or policy decisions should not be based only on whether a p-value passes a specific threshold. -->
+<!-- 4. **適切な推論を行うには，完全な報告と透明性が必要である** Proper inference requires full reporting and transparency. -->
+<!-- 5. **P 値や統計的有意性は，効果の大きさや結果の重要性を測定するものではない** A p-value, or statistical significance, does not measure the size of an effect or the importance of a result. -->
+<!-- 6. **それ自体では，p 値はモデルや仮説に関する証拠の良い尺度を提供しない。** By itself, a p-value does not provide a good measure of evidence regarding a model or hypothesis. -->
+
+* [基礎と応用社会心理学 (BASP)  編集方針 (2014,2015)](../2023/2015Basic_and_Applied_Social_Psychology_ban_p_values_ja.md)
+* [アメリカ統計学会の声明 2014, 2015](../2023/2015Basic_and_Applied_Social_Psychology_ban_p_values_ja.md)
+* [統計学の誤り : 統計的妥当性の「ゴールドスタンダード」である P 値は多くの科学者が想定しているほど信頼できるものではない (Nuzzo+2014)](../2023/2014Nuzzo_Statistical_errors_ja.md)
+* [統計的有意性を引退させろ (サイエンティフィックアメリカン, 2019)](2019Amrhein_Retire_statistical_significance_ja.md)
+
+### Breiman によるデータサイエンスにおける 2 つの文化 <!-- あるいは，統計学と機械学習とニューラルネットワークの関係-->
+
+<div class="figcenter">
+<img src="/2023assets/2001Breiman_Two_Cultures_fig2.svg" width="39%"><br/>
+<img src="/2023assets/2001Breiman_Two_Cultures_fig3_.svg" width="39%"><br/>
+<!-- <img src="/2023assets/2001Breiman_cultures.svg" width="23%"><br/> -->
+<div class="figcaption">
+<!-- ![Breiman(2001)](/2023assets/2001Breiman_cultures.svg){#fig:2001breiman style="width:34%"} -->
+
+From Leo Breiman, Statistical Modeling: The Two Cultures, _Statistical Science_, 2001, Vol. 16, No. 3, 199–231, doi:10.1214/ss/1009213725.
+[pdf](https://projecteuclid.org/journals/statistical-science/volume-16/issue-3/Statistical-Modeling--The-Two-Cultures-with-comments-and-a/10.1214/ss/1009213726.full)
+</div></div>
+
+Breiman は，アンサンブル学習 (バギング，ブートストラップ法) など，影響力のあるいくつかの機械学習手法を提案した機械学習界隈のレジェンド。
+<!-- Breiman によれば，2 つの文化 -->
 
 # PyTorch
 
@@ -161,17 +203,55 @@ $P$ は問題の物理的制約を表しており，2 次の変分原理であ�
 
 # Google colabratory でのファイルの [アップ|ダウン]ロード
 
-<div style="width:	77%;align:center;text-align:left;margin-left:10%;margin-right:10%">
 
-```python
-from google.colab import files
-uploaded = files.upload()
-```
+<div class="code">
 
-```python
-from google.colab import files
+from google.colab import files<br/>
+uploaded = files.upload()<br/>
+
+from google.colab import files<br/>
 files.download('ファイル名')
-```
+
+</div>
+
+
+* [1985 Poggio 計算論的視覚と正則化理論](1985Poggio_ja.pdf)
+* [1988 Sur+ ワン・アルゴリズム仮説](2023_1030one_algorithm.pdf)
+* [2000 Rasmussen&Ghahramani オッカムのカミソリ](2001Rasmussen_Ghahramani_occams_razor_ja.pdf)
+* [1990 Riesenhuber&Poggio 皮質における物体認識の階層モデル](1999Riesenhuber_Poggio_HMAX.pdf)
+* [1998 Hamming あなたとあなたの研究](1998Hamming_あなたとあなたの研究.pdf)
+* [Hamming による最良の研究をする 10 のルール](2007ErrenCullenErrenBourne_Ten_Simple_Rules_for_Doing_Your_Best_Research,_According_to_Hamming.pdf)
+
+# Feynmann の技法
+
+> 奇跡の人はいない。 あることに興味を持ち，たまたま，そのすべてを学んだ人がいるだけだ。- リチャード・ファインマン
+
+> There’s no miracle people. It just happens they got interested in this thing and they learned all this stuff. There’s just people. – Richard Feynman
+
+1. 学ぶべきテーマを一つ選ぶ
+2. 自分に説明する，あるいは，誰かに説明する
+3. 行き詰まったら元の資料に戻る
+4. 説明を単純化し，例え話を作る
+
+
+<div class="code">
+import numpy as np                                 # numpy ライブラリの輸入<br/>
+np.set_printoptions(precision=2)                   # 表示桁数の設定<br/>
+np.random.seed(42)                                 # 乱数系列の初期化<br/>
+X = np.array([ [0,0,1],[0,1,1],[1,0,1],[1,1,1] ])<br/>
+y = np.array([[0,1,1,0]]).T<br/>
+w0 = 2 * np.random.random((3,4)) - 1<br/>
+w1 = 2 * np.random.random((4,1)) - 1<br/>
+for i in range(300):<br/>
+　　l1 = np.tanh(np.dot(X,w0))                     # tanh<br/>
+　　#l1 = 1/(1+np.exp(-(np.dot(X,w0))))            # sigmoid<br/>
+　　l2 = 1/(1+np.exp(-(np.dot(l1,w1))))<br/>
+　　dl2 = (y - l2) * (l2 * (1 - l2))<br/>
+　　dl1 = dl2.dot(w1.T) * (1 - l1 ** 2)            # tanh<br/>
+　　#dl1 = dl2.dot(w1.T) * (11 * (1-l1))           # sigmoid<br/>
+　　w1 += np.dot(l1.T, dl2)<br/>
+　　w0 += np.dot(X.T, dl1)<br/>
+　　print(l2.T) if i % 100 == 0 else None<br/>
 </div>
 
 
@@ -944,11 +1024,16 @@ $$
 <img src="/assets/2007Bottou_NIPSpage30.svg" style="width:77%">
 </center>
 
-- 多層パーセプトロン MLP: multi-layer perceptron:
-* neural networks,
-* perceptron, multi-layer perceptron, feed-forward
-* convolution, feature engineering
-* RNN (SRN, Elman, Jordan, LSTM, GRU)
+* 多層パーセプトロン MLP: multi-layer perceptron: 代表的なニューラルネットワークモデルの一つ。神経細胞を模した非線形出力をする基本処理単位の集団から構成される層を複数重ね合わせた処理機構である。
+* ニューラルネットワーク neural networks: 脳の神経細胞をモデル化した基本構成単位から構成される情報処理モデル。1943 年，Warren McCuloch と Walter Pitts が脳の神経細胞は論理回路とみなしうることを提案して以来，脳を情報処理機械とみなすこと，および，情報処理機械であれば，脳をコンピュータと同一視できるとの考えから，脳，および知的情報処理モデルとして研究されている。
+* パーセプトロン perceptron: Frank Rosenblatt によって提唱された画像認識のためのニューラルネットワークモデル。第一次ニューロブームの端緒となった。Rosenblatt 自身は水難事故により早逝したが，後のモデルはすべからくパーセプトロンの影響を受けている。
+* , multi-layer perceptron, feed-forward
+* 畳み込み convolution: 信号処理における畳み込み演算，ニューラルネットワークにおいては，Hubel & Wiesel の単純細胞，複雑細胞に基づいてニューラルネットワークとして実装した福島のネオコグニトロンに始まる画像認識を主とするモデル。
+* 特徴エンジニアリング feature engineering
+* リカレントニューラルネットワーク RNN: recurrent neural networks: フィードバック結合を持つニューラルネットワークモデルの総称。日本語では再帰的ニューラルネットワークと訳されることもあるし，R で始まる単語であるため，言語学でも用いられる recursive との混用がある。処理対象の一部を自分自身への引数として自身の処理を呼び出すリカーシブとは別物である。
+* 単純再帰型ニューラルネットワーク (Simple Recurrent Networks): Elman の提唱したニューラルネットワークモデルでありエルマンネットと通称される。一時刻前の中間層状態を中間層の入力信号として用いる。一時刻前の中間層状態をフィードバック信号として用いるため，内部状態の遷移によって動作が定まるような系列情報処理，とりわけ自然言語処理に用いられてきた。
+* Jordan net: 再帰型ニューラルネットワークの一つ。内部状態をフィードバック信号として用いるエルマンネットとは異なり，一時刻前の出力信号をフィードバック信号とするモデル。一時刻前の出力信号であるため運動制御に用いられることが多い。
+* LSTM, GRU)
 * activation functions {sigmoide,tanh,ReLU}
 * back-propagation {gradient descent algorithm}
 * gradient vanishing problems, gradient exploding problems
@@ -957,9 +1042,9 @@ $$
 * optimization methods (SGD, AdaGrad, AdaDelta, RMSprop, Adam)
 * dataset {training/validation/test}
 * L0, L1, L2 normalization
-* dropout
-* over/under fitting
-* batch normalization, skip-connection, ResNet
-* auto-encoders
-* reinforcement learning {environment, state, action, reward, value, q-value, policy, TD, REINFORCE, MDP, POMDP, SARSA, experice replay, advantage, duealing, double-Q, A3C}
+* ドロップアウト dropout:
+* 過学習，未学習 over/under fitting
+* バッチ正則化 batch normalization, skip-connection, ResNet
+* 自己符号化器 auto-encoders
+* 強化学習 reinforcement learning {environment, state, action, reward, value, q-value, policy, TD, REINFORCE, MDP, POMDP, SARSA, experice replay, advantage, duealing, double-Q, A3C}
 
