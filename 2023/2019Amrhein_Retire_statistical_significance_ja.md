@@ -11,7 +11,8 @@ layout: home
 
 
 <div class="figure figcenter">
-<img src="/2023assets/2019Amrhein_Retire_stats.jpg" width="49%">
+<img src="https://komazawa-deep-learning.github.io/2023assets/2019Amrhein_Retire_stats.jpg" width="49%">
+<!-- <img src="/2023assets/2019Amrhein_Retire_stats.jpg" width="49%"> -->
 </div>
 
 「統計的に有意でない」という理由で，2 群に「差はない」と主張するセミナー講師の話を最後に聞いたのはいつだろうか？
@@ -122,7 +123,8 @@ Rather, and in line with many others over the decades, we are calling for a stop
 The same problems are likely to arise under any proposed statistical alternative that involves dichotomization, whether frequentist, Bayesian or otherwise. -->
 
 <div class="figure figcenter">
-<img src="/2023assets/2019Amrhein_Retire_statistical_significance_fig2ja.svg" width="33%">
+<img src="https://komazawa-deep-learning.github.io/2023assets/2019Amrhein_Retire_statistical_significance_fig2ja.svg" width="49%">
+<!-- <img src="/2023assets/2019Amrhein_Retire_statistical_significance_fig2ja.svg" width="33%"> -->
 </div>
 
 残念ながら，統計的有意性の閾値を超えれば，その結果が「本物」であることを示すのに十分であるという誤った信念が，科学者や雑誌編集者にそのような結果を優遇させ，それによって文献を歪めている。
