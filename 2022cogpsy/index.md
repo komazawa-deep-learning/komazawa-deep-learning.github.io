@@ -1,187 +1,123 @@
 ---
-title: 2022年度 駒澤大学 認知心理学研究 II (b) 浅川担当分
+title: 2023年度 駒澤大学 認知心理学研究 II (b) 浅川担当分
 layout: home
 ---
 
 - 授業名: 認知心理学研究 II (b)
 - 担当者名: 永田 陽子, 竹市 博臣, 浅川 伸一 (アサカワ シンイチ)
 - 電子メールアドレス: <educ20233@komazawa-u.ac.jp>, <asakawa@cis.twcu.a.jp>
-- 開講年度・期:　2021年 後期
+- 開講年度・期:　2023年 後期
 - 開講曜日・時限: 金曜日 2 限 10:40-12:10
-- 教室: 三号館 201 教場
+- 教室: 2 号館 研-001 教場
 - 単位数　2
-- オフィスアワー: なし，メールや SNS を活用してください。駒澤大学の専任ではありません。
-非常勤講師ですので，金曜日の 1 時限だけしか駒澤大学には居ません。
 
----
+## 授業概要
 
-* [はじめての colab による画像認識 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021komazawa_cogsy000_CNN_demo.ipynb){:target="_blank"}
-* [畳み込み演算の実習と DOG 関数 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/2022notebooks/2022_1024convolution_exercise.ipynb){:target="_blank"}
-* [CNN 畳み込み層の可視化 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/2022notebooks/2022_1024CNN_layer_visualization.ipynb)
+認知心理学・神経生理学・人工知能のリレー講義です。認知を情報処理過程として捉え，共通トピックとして「多感覚統合」を取り上げます。
+認知心理学・神経生理学・人工知能の３領域の結びつきがわかるように，幅広くお話ししてゆく予定です。理解を深めるためのハンズオンを取り入れます。
 
-<!-- - [画像処理における特徴量抽出 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2020Sight_visit_feature_extractions_demo.ipynb){:target="_blank"}
-- [DOG 等エッジ検出と顔検出の従来手法 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2021_0528edge_and_face_detection_algorithm_not_cnn.ipynb){:target="_blank"} -->
+## 到達目標(ねらい)
 
-# 最近のニューラルネットワークをめぐるキーワード
+本講義の到達目標は、受講生各自が、①認知心理学と関連する神経生理学および人工知能のキーワードを理解し，関係を説明できるようになること，
+②心理学と関連する分野の話題を理解し，多様な見方を持った実践ができるようになることです。
 
-1. ビッグデータ
-2. 注意
-3. エンコーダ・デコーダモデル
-4. 転移学習，微調整
-5. プロンプト，接頭辞モデル
 
-授業計画
+## 授業計画
+
+* [第01回 (Sep.22)](2023cogpsy_lect01) 永田：オリエンテーション・多感覚統合の神経生理学と人工知能 授業の概要について説明します。感覚情報統合に対する心理学分野のアプローチを紹介します。
+* 第02回 (Sep.29) 竹市：刺激と感覚のモダリティ 多感覚知覚の問題（バインディング問題・ダブルフラッシュ錯視ほか）と最近のアプローチについて紹介します。
+* 第03回 (Oct.06) 竹市：感覚運動協応 多感覚知覚研究の発展的な話題を紹介します。
+* 第04回 (Oct.13) 竹市：感覚情報統合の神経生理学 感覚情報統合に関する脳神経科学分野の基礎的な知見を，結合性の研究を中心に紹介します。
+* 第05回 (Oct.20) 竹市：言語学習 言語処理の神経生理学的な特異性（ストループ効果ほか）と，近年の音声言語知覚の獲得に関する行動学的・神経生理学的な研究を紹介します。
+* 第06回 (Oct.27) 竹市：身体運動知覚と逆変換 身体運動の知覚認知に関連する神経生理学的な研究（マガーク効果・腹話術ほか）を紹介します。
+* 第07回 (Nov.03) 竹市：身体性 自己身体の知覚認知に関連する神経生理学的な研究（ラバーハンド錯視ほか）を紹介します。
+* [第08回 (Nov.10)](2023cogpsy_lect08){:target="_blank"} 浅川：人工知能基礎】多感覚統合に関連する，深層学習の概念を取り上げます。ニューラルネットワーク分野での諸概念との対応関係を議論します。初回となる第8回では，ニューラルネットワークの基礎を概説します。畳み込みニューラルネットワークに関してのハンズオンを行います。
+* [第09回 (Nov.17)](2023cogpsy_lect09) 浅川：トランスフォーマー 言語モデルの導入を行います。埋め込み分散表現モデル，および，トランスフォーマーモデルにおける注意を紹介し，情報を統合する方法について考えます。
+* 第10回 (Nov.24) 浅川：符号化-復号化モデル モダリティ変換について取り上げます。
+* 第11回 (Dec.01) 浅川：事前学習とファインチューニング 感覚統合に向けて，ファインチューニングのハンズオンを行います。
+* 第12回 (Dec.08) 浅川：単語の形態情報，意味，音韻の情報の統合: 感覚モダリティの統合に向けて，視覚情報統合について取り上げます。視覚探索とストループ効果について取り上げます。
+* 第13回 (Dec.15) 浅川：位置情報と形態情報の統合 半側空間無視について取り上げます。ニューラルネットワークによる実装についてハンズオンを行います。
+* 第14回 (Dec.22) 浅川：言語と画像の統合 これまで提案されてきたモデルを理解することを通して，言語と画像との相互変換から感覚統合をについて議論します。
+* 第15回 (Jan.05) 永田：課題授業 授業で学んだことをまとめて発表していただきます。
 
 <center>
-<img src="2022global_flow.svg">
-</center
->
-* 第01回 オリエンテーション (Sep.16)
-* 第02回 視覚探索 (Sep.23)
-* 第03回 顕著性マップと眼球運動と情景理解 (Sep.30)
-* 第04回 反跳躍眼球運動＝抑制 (Oct.07)
-* 第05回 座標変換  (Oct.14)
-* 第06回 座標変換階層, マルチスケール階層 (Oct.21)
-* 第07回 人工知能基礎 (Oct.28)
-* 第08回 座標変換階層 (Nov.04)
-* 第09回 マルチスケール階層，双方向注意 (Nov.11)
-* 第10回 deepGaze (Nov.18)
-* 第11回 deepGaze (Nov.25)
-* 第12回 人工知能基礎 (Dec.02)
-* 第13回 Image captioning (Dec.09)
-* 第14回 Image captioning (Dec.16)
-* 第15回 (Dec.23)
-* 第16回 (Jan.13)
+<div class="fig">
+<img src="/2023assets/1999Shelton_Caramazza_fig1.png" width="33%">
+<div class="figcaption">
+図 1. 語彙系の概要
+<!-- Figure 1. A general overview of the lexical system -->
+</div></div>
+</center>
+
+<center>
+<div class="fig">
+<img src="/2023assets/1999Shelton_Caramazza_fig2.png" width="33%">
+<img src="/2023assets/1999Shelton_Caramazza_fig3.png" width="33%">
+<div class="figcaption">
+左 図 2. モダリティ別の意味体系を仮定したモデルの例<br/>
+右 図 3. 単一のアモーダルな意味体系を仮定したモデルの例。
+<!-- left: Figure 2. An example of a model postulating separate modality-specific semantic systems.<br/>
+right: Figure 3. An example of a model postulating a single, amodal semantic system. -->
+</div></div>
+</center>
+
+<center>
+<div class="fig">
+<img src="/2023assets/1999Shelton_Caramazza_fig4.png" width="33%">
+<img src="/2023assets/1999Shelton_Caramazza_fig5.png" width="33%"><br/>
+<div class="figcaption">
+左 図 4. 感覚的特徴と非感覚的特徴に基づく別々の知識特異的意味系を仮定したモデルの例<br/>
+右 図 5. 意味カテゴリーに従って組織化された単一の意味系を仮定したモデルの例。
+<!-- left: Figure 4. An example of a model postulating separate knowledge-specific semantic systems based on sensory features versus nonsensory features.<br/>
+rigth: Figure 5. An example of a model postulating a single semantic system organized according to semantic category. -->
+</div></div>
+</center>
+
+<center>
+<div class="fig">
+<img src="/2023assets/1999Shelton_Caramazza_fig6.png" width="33%">
+<img src="/2023assets/1999Shelton_Caramazza_fig7.png" width="33%"><br/>
+<div class="figcaption">
+左 図 6. 音韻サポートと書記素出力の間に義務的な関係を仮定したモデルの一例。<br/>
+右 図 7. 音韻サポートと書記素出力の間に非義務的な関係を仮定したモデルの例。
+<!-- left: Figure 6. An example of a model postulating an obligatory relationship between phonological support and orthographic output.<br/>
+right: Figure 7. An example of a model postulating a nonobligatory relationship between phonological support and orthographic output. -->
+</div></div>
+</center>
 
 
-
-* [**第 2 回** オンライン（2021年09月24日）](lect02){:target="_blank"} 授業の計画・内容 【竹市：パターン認知】視覚認知を理解する上で重要な特徴と特徴の知覚認知の心理学・神経生理学について。階層的表現，空間周波数，カテゴリカルな知覚など，パターン認知の基礎的な内容について説明します。
-    * [**準備学習**](prep02){:target="_blank"}（予習・復習等） 60分
-* [**第 3 回** 教場（2021年10月08日）](lect03){:target="_blank"} 授業の計画・内容 【竹市：不良設定問題と自然制約条件】画像上の特徴は文脈に依存するが，「特徴」を環境にかかわらず認識できなければ対象は認知できない。そのような環境変化に不変の「特徴」は不変項と呼ばれ，不変項を計算するためには「仮定」が必要である。人間が暮らす自然界で一般に成り立つ「仮定」を自然制約条件という。特徴と不変項の計算理論について説明します。
-    * [**準備学習**](prep03){:target="_blank"}（予習・復習等） 60分
-* [**第 4 回** オンデマンド（2021年10月15日配信）](lect04){:target="_blank"} 授業の計画・内容 【浅川：ディープニューラルネットワークの基礎】
-* [**第 5 回** 教場（2021年10月22日）](lect05){:target="_blank"} 授業の計画・内容 【浅川：標準正則化理論における，滑らかさの制約条件と単純さの制約条件を オリベッティ顔データセットを用いて，L1 と L2 の実習】
-    * 準備学習（予習・復習等）  YouTube上で以下のキーワードで検索し，結果の幾つか最初の数分ほどを視聴し，その内容を 1, 2行で要約してださい。キーワード : deeplearning, beginners, tutorial 60分
-* [**第 6 回** 課題授業](lect06){:target="_blank"} 授業の計画・内容【浅川（課題授業）：別途指示の通り】
-    * 準備学習（予習・復習等）  課題授業
-* [**第 7 回** 教場（2021年11月05日）](https://komazawa-deep-learning.github.io/2021cogpsy/lect07_1.pdf){:target="_blank"} 授業の計画・内容 【竹市：初期視覚特徴と顔認知の神経生理学１】
-    * [**事後学習**](prep07){:target="_blank"}（予習・復習等） 60分
-* [**第 8 回** 教場（2021年11月12日予定）](lect08){:target="_blank"} 授業の計画・内容 【浅川：初期視覚特徴の検証，畳み込み演算による第 1 次視覚野の対応物の検証】
-    * [**準備学習**](prep08){:target="_blank"}（予習・復習等） 60分
-* [**第 9 回** 教場（2021年11月19日）](lect09){:target="_blank"} 授業の計画・内容 【浅川：意味的領域切り出し，および，汎光学的領域切り出しとクラス関連記憶】第３講不良設定問題と自然制約条件を踏まえて，環境からの不変項を抽出するための技法について議論します。また，生理学で言及される背側経路と腹側経路との情報処理経路の役割分担の実装について実習します。画像切り出しに用いられる技法の心理学的意味を考察したのち，クラス関連記憶からの示唆について考察を加えます。
-    * 準備学習（予習・復習等） 自身の使っている PCで，画像の一部を切り取り，あるいはトリミングする方法を調べ，実際に切り取った画像を保存してください。60分画像のうち一枚は正面から撮影された顔画像である必要があります。（操作に習熟しているか否かで作業に要する時間は異なりますが60分程度でしょう）
-* [**第 10 回** 教場（2021年11月26日）](lect10){:target="_blank"} 授業の計画・内容 【浅川: R-CNN 領域切り出し where と 物体検出 what】
-    * [**準備学習**](prep10){:target="_blank"}（予習・復習等） 60分
-* [**第 11 回** 教場（2021年12月03日予定）](lect11){:target="_blank"} 授業の計画・内容 【竹市：初期視覚特徴と顔認知の神経生理学２】
-
-* [**第 12 回** 教場（2021年12月10日予定）](lect12){:target="_blank"} 授業の計画・内容 【浅川：転移学習とファインチューニング，顔認識実演】顔認識実演：訓練済の顔認識プログラムのコードを用いる。履修者は，顔のキーポイントを抽出して，各パーツを切り出す。切り出したパーツを元にシャッフル顔を作成しする。作成した画像を認識プログラムに入力し，出力結果を得る。結果を検討，考察の上レポートを作成し提出する。
-<!-- 【浅川：顔の特徴点抽出（ヴィオラ＝ジョーンズアルゴリズム）実習】 -->
-    * 準備学習（予習・復習等）  準備中 60分
-    * 準備学習（予習・復習等） 転移学習に関する PyTorch のチュートリアルに目を通しておいてください。
- * [**第 13 回** 教場（2021年12月17日予定）](lect13){:target="_blank"} 授業の計画・内容 【浅川：ディープラーニングを用いた転移学習で顔と非顔の識別をする実習】
-    * 準備学習（予習・復習等）  準備中 60分
-* [**第 14 回** オンライン（2021年12月24日予定）](lect14){:target="_blank"} 授業の計画・内容 【浅川： GAN と変分自己符号化器モデルによる実習】
-    * 準備学習（予習・復習等）  準備中 60分
 
 ## 文献資料
 
 1. [ディープラーニング概説, 2015, LeCun, Bengio, Hinton, Nature](https://komazawa-deep-learning.github.io/2021/2015LeCun_Bengio_Hinton_NatureDeepReview.pdf){:target="_blank"}
-1. [苦い教訓 (2019) Sutton](https://komazawa-deep-learning.github.io/2021cogpsy/2019Sutton_Bitter_Lesson.pdf){:target="_blank"}
 1. [ゴール駆動型深層学習モデルを用いた感覚皮質の理解 Yamins(2016) Nature](https://project-ccap.github.io/2016YaminsDiCarlo_Using_goal-driven_deep_learning_models_to_understand_sensory_cortex.pdf){:target="_blank"}
 1. [ディープラーニングレビュー Storrs ら, 2019, Neural Network Models and Deep Learning, 2019](https://komazawa-deep-learning.github.io/2021/2019Storrs_Golan_Kriegeskorte_Neural_network_models_and_deep_learning.pdf){:target="_blank"}
 <!-- * [Storrs ら, Neural Network Models and Deep Learning, 2019](2019Storrs_Golan_Kriegeskorte_Neural_network_models_and_deep_learning.pdf){:target="_blank"} -->
 1. [深層学習と脳の情報処理レビュー Kriegestorte, 2015, Deep Neural Networks: A New Framework for Modeling Biological Vision and Brain Information Processing](2015Kriegeskorte_Deep_Neural_Networks-A_New_Framework_for_Modeling_Biological_Vision_and_Brain_Information_Processing.pdf){:target="_blank"}
 1. [生物の視覚と脳の情報処理をモデル化する新しい枠組み Kriegeskorte, Deep Neural Networks: A New Framework for Modeling Biological Vision and Brain Information Processing, 2015](https://project-ccap.github.io/2015Kriegeskorte_Deep_Neural_Networks-A_New_Framework_for_Modeling_Biological_Vision_and_Brain_Information_Processing.pdf){:target="_blank"}
 1. [計算論的認知神経科学 Kriegeskorte and Douglas, 2018, Cognitive computational neuroscience](https://project-ccap.github.io/2018Kriegeskorte_Douglas_Cognitive_Computational_Neuroscience.pdf){:target="_blank"}
-<!-- * [Kriegeskorte, N. and Douglas, P. K., Cognitive computational neuroscience, 2018](2018Kriegeskorte_Douglas_Cognitive_Computational_Neuroscience.pdf){:target="_blank"} -->
 1. [視覚系の畳み込みニューラルネットワークモデル，過去現在未来 Lindsay, 2020, Convolutional Neural Networks as a Model of the Visual System: Past, Present, and Future](https://project-ccap.github.io/2020Lindsay_Convolutional_Neural_Networks_as_a_Model_of_the_Visual_System_Past_Present_and_Future.pdf){:target="_blank"}
-<!-- * [Lindsay, G. W., Convolutional Neural Networks as a Model of the Visual System: Past, Present, and Future, 2020](2020Lindsay_Convolutional_Neural_Networks_as_a_Model_of_the_Visual_System_Past_Present_and_Future.pdf){:target="_blank"} -->
 1. [計算論的視覚と正則化理論 Poggio, Torre, Koch, 1985](https://komazawa-deep-learning.github.io/2021cogpsy/1985Poggio_Computational_Vision_and_Regularization_Theory.pdf){:target="_blank"}
 1. [皮質における物体認識の階層モデル Riesenhuber and Poggio (1999) Nature](https://komazawa-deep-learning.github.io/2021cogpsy/1999Riesenhuber_Poggio_Hierarchical_models_of_object_recognition_in_cortex.pdf){:target="_blank"}
-1. [名詞の意味に関連した人間の脳活動の予測, Mitchell, 2018, Predicting Human Brain Activity Associated with the Meanings of Nouns](https://shinasakawa.github.io/2008Mitchell_Predicting_Human_Brain_Activity_Associated_with_the_Meanings_of_Nounsscience.pdf){:target="_blank"}
-1. [ディープラーニング回顧録 Senjowski, 2020, Unreasonable effectiveness of deep learning in artificial intelligence](https://komazawa-deep-learning.github.io/2021/2020Sejnowski_Unreasonable_effectiveness_of_deep_learning_in_artificial_intelligence.pdf){:target="_blank"}
-<!-- * [Senjowski, Unreasonable effectiveness of deep learning in artificial intelligence, 2020](2020Sejnowski_Unreasonable_effectiveness_of_deep_learning_in_artificial_intelligence.pdf){:target="_blank"} -->
 1. [注意レビュー論文 Lindsay, 2020, Attention in Psychology, Neuroscience, and Machine Learning](https://project-ccap.github.io/2020Lindsay_Attention_in_Psychology_Neuroscience_and_Machine_Learning.pdf){:target="_blank"}
-1. [運動制御のカルマンフィルター仮説 Wolpert, Ghahramani, and Jordan, 1995, An Internal Model for Sensorimotor Integration](https://project-ccap.github.io/1995WolpertGhahramaniJordan_Internal_Model_for_Sensorimotor_Integration.pdf){:target="_blank"}
-1. [ハブ＆スポーク仮説 Lambon Ralph, M., Jefferies, E., Patterson, K, and Rogers, T.T., 2017 The neural and computational bases of semantic cognition](https://project-ccap.github.io/2017LambonRalphJefferiesPattersonRogers_The_neural_and_computational_bases_of_semantic_cognition.pdf){:target="_blank"}
-1. [知覚と認知における相互活性化と相互制約充足, 2014, McClelland](https://project-ccap.github.io/2014McClelland_Interactive_Activation_and_Mutual_Constraint_Satisfaction_in_Perception_and_Cognition.pdf){:target="_blank"}
 
 
 ---
 
-# 授業概要
+<center>
+<img src="/2021/2008Fuster_Prefrontal_Cortex_fig8_4.svg" width="39%">
+<!-- <img src="https://komazawa-deep-learning.github.io/2021/2008Fuster_Prefrontal_Cortex_fig8_4.svg" width="39%"> -->
+<img src="/assets/2015Ronneberger_U-Net_Fig1_ja.svg" width="48%">
+<!-- <img src="https://komazawa-deep-learning.github.io/assets/2015Ronneberger_U-Net_Fig1_ja.svg" width="48%"> -->
+</center>
 
-<!-- * 本授業では，毎回オンライン配信を行う予定です。
-* 授業の Google meet URL は以下のとおりです: [https://meet.google.com/oia-vgsd-cpb](https://meet.google.com/oia-vgsd-cpb)
--->
-* コンピュータ実習を予定しています。そのため，仮にオンラインで受講する際には，十分な回線速度を確保してください。
-* スマートフォンによる参加では不十分です。
-* 必ず PC や Macintosh などでの履修をお願いします。
-* 十分な授業参加環境が用意できない場合には，対面での参加を検討してください。
-
-<!-- この授業は，2021年度後期開講予定の 07445/心理学特講IIIB と連係し，連続した内容となります。
-履修者は両授業を履修することで完結した理解に至るようになります。
-前期のこの授業では，主として画像認識，視覚情報処理に関する話題を取り上げます。
-深層学習で採用されている技法を知ることで，如何にして人間を上回る認識性能を示すようになったのか，そこから人間の認識機構への示唆はどのようなものが感がられるのかについて考えます。
-
-本授業では人工知能に用いられる技術の詳細を検討しながら，その心理学的意味を考えます。
-自動運転が可能となり，
-囲碁の世界チャンピオンを破り，自動翻訳の精度が向上し，スマートスピーカーが普及するなど AI 技術は毎日のように報道されています。
-これらの技術はニューラルネットワークモデルに基づいています。
-とりわけディープラーニング (深層学習) 技術は現在の人工知能の根幹をなしています。
-現在は第 3 次ニューラルネットワークブームと呼ばれますが 3 度のブーム とも心理学者が火付け役でした。
-2014年 から始まった現在のブームも心理系出身の研究者が先導しました。
-加えてディープマインドの共同創設者デミス・ハサビスは認知科学出です。
-このように人工知能と心理学とは同じことを別の側面から理解しようとしているとさえ言えます。
-このような背景から，心理学と最近の人工知能技術の相互関係を考察する授業になります。
-昨今の人工知能技術と心理学との関係から理解することで，最新の技術についての背景となる考え方を解説します。
- -->
-<!-- - CNN: 畳み込みニューラルネットワーク
-- RNN: リカレントニューラルネットワーク
-- RL: 強化学習
--->
-
-<!-- <center> -->
-<!--  <img src="https://komazawa-deep-learning.github.io/assets/2008Fuster_Prefrontal_Cortex_fig8_4.svg" width="39%"> -->
-<!--  <img src="https://komazawa-deep-learning.github.io/assets/2015Ronneberger_U-Net_Fig1_ja.svg" width="48%"> -->
-<!-- </center> -->
-
-
-<!-- - [2018Kriegeskorte](2018Kriegeskorte){:target="_blank"}
-- [1970Newell](1970Newell){:target="_blank"}
-- [2019Glaser](2019Glaser){:target="_blank"}
-- [2020Lindsay](2020Lindsay){:target="_blank"}
-- [G 検定](https://www.seshop.com/product/detail/23864?utm_source=seid_it_spot_20210412&utm_medium=email&utm_campaign=coupon){:target="_blank"}
-
-### 2021年02月23日分
-- [2020-0215](2020-0215abstract){:target="_blank"}
-- [どうぶつの森モデル，動物の名前連想モデル](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2021_0223word_associtaion.ipynb){:target="_blank"}
-- [導入講義用 CCP ウィルス感染者予測モデルを題材に](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2021Kermack_McKendrick_model.ipynb){:target="_blank"}
-- [CNN の簡単なデモ](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2021Keras_CNN_demo_with_wordnet_ja.ipynb){:target="_blank"}
-
-# 統計学と機械学習の関係
-
-母集団における差異の有無を問題にする心理統計学と機械学習との間には，決定的な差があります。
-
-- [1970Newell](1970Newell){:target="_blank"}
-- [2019Glaser](2019Glaser){:target="_blank"}
-- [2020Lindsay](2020Lindsay){:target="_blank"}
-
- -->
+<br/>
 
 <!--
-<br/>
-1. [tSNE を用いた TLPA 200語の word2vec 視覚化](https://ShinAsakawa.github.io/2020cnps_tSNE_for_word2vec.ipynb)
-2. [2020年2月24日資料1 tlpa 画像](https://ShinAsakawa.github.io/2020making_tlpa.html)
-3. [2020年4月15日かじゅまるつがる松本先生のモデルの説明](https://shinasakawa.github.io/2020gajumarutugaru/2020-0415Friston_in_detail.html)
-4. [2020年4月18日かじゅまるつがる投稿](https://shinasakawa.github.io/2020gajumarutugaru/2020-0418gajumarutugaru.html)
-
-<br/>
-
 1. [2020ccap 資料置き場](2020ccap)
 2. [2020中央大学，緑川先生，重宗先生，研究会資料](2020chuo)
 3. [2020 第2回 中央大学，緑川先生，重宗先生，研究会資料](2020chuo2)
 4. [2020サイトビジット資料](2020sightvisit)
 
- <a href="https://guides.github.com/features/pages/">Read this page to write this page.</a>
+<a href="https://guides.github.com/features/pages/">Read this page to write this page.</a>
 -->
