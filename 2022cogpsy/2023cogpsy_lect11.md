@@ -1,25 +1,54 @@
 ---
-title: "第09回 2023年度開講 駒澤大学 認知心理学研究"
+title: "第11回"
 author: "浅川 伸一"
 layout: home
 ---
 
-# 認知心理学研究 IIB
+# 2023年度開講 駒澤大学 認知心理学研究 IIB
+
 <div align="right">
 <a href='mailto:educ0233@komazawa-u.ac.jp'>Shin Aasakawa</a>, all rights reserved.<br>
-Date: 24/Nov/2023<br/>
+Date: 01/Dec/2023<br/>
 Appache 2.0 license<br/>
 </div>
 
-<link href="/css/asamarkdown.css" rel="stylesheet">
+<!-- <link href="/css/asamarkdown.css" rel="stylesheet"> -->
 
 * [ベイズ学習](../2023_1124bayes)
 * [最適化](../2023_1124optimizations)
 
 <div class="figcenter">
+<img src="/2023assets/2016Marblestone_fig1.jpg" width="77%">
+</div>
+<!-- <div class="figcaption"> -->
+
+図 1. 従来のニューラルネットワークと脳のようなニューラルネットワークの設計の違い。
+
+* **(A)** 従来の深層学習では，教師あり学習は外部から供給されたラベル付きデータに基づいて行われる。
+* **(B)** 脳では，ネットワークの教師付き学習は，誤差信号に対する勾配降下によって行うことができるが，この誤差信号は内部で生成されたコスト関数から発生する必要がある。
+これらのコスト関数は，遺伝と学習の両方によって指定された神経モジュールによって計算される。
+内部で生成されたコスト関数は，より複雑な学習のブートストラップに使われるヒューリスティックスを作り出す。
+例えば，顔を認識する領域は，まず線の上に 2 つの点があることのような単純なヒューリスティックスを使って顔を検出するように訓練され，その後，教師なし学習と社会的報酬処理に関連する他の脳領域からの誤差信号から生じる表現を使って，顕著な表情を識別するようにさらに訓練されるかもしれない。
+* **(C)** 皮質深層ネットワークの内部で生成されたコスト関数と誤差駆動型訓練は，いくつかの特殊な系を含むより大きなアーキテクチャの一部を形成している。
+ここでは，訓練可能な皮質領域をフィードフォワード神経回路網として図式化しているが，LSTM や他のタイプのリカレントネットワークの方がより正確なアナロジーかもしれない， 適応と恒常的可塑性，タイミング依存的可塑性，直接的電気接続，過渡的シナプス・ダイナミクス，興奮性／抑制性のバランス，自発的振動活動，軸索伝導遅延 (Izhikevich2006) など，多くの神経細胞やネットワークの特性が，このようなネットワークが何をどのように学習するかに影響を与えるだろう。
+
+<!-- FIGURE 1.
+Putative differences between conventional and brain-like neural network designs.
+(A) In conventional deep learning, supervised training is based on externally-supplied, labeled data.
+(B) In the brain, supervised training of networks can still occur via gradient descent on an error signal, but this error signal must arise from internally generated cost functions.
+These cost functions are themselves computed by neural modules specified by both genetics and learning.
+Internally generated cost functions create heuristics that are used to bootstrap more complex learning.
+For example, an area which recognizes faces might first be trained to detect faces using simple heuristics, like the presence of two dots above a line, and then further trained to discriminate salient facial expressions using representations arising from unsupervised learning and error signals from other brain areas related to social reward processing.
+(C) Internally generated cost functions and error-driven training of cortical deep networks form part of a larger architecture containing several specialized systems.
+Although the trainable cortical areas are schematized as feedforward neural networks here, LSTMs or other types of recurrent networks may be a more accurate analogy, and many neuronal and network properties such as spiking, dendritic computation, neuromodulation, adaptation and homeostatic plasticity, timing-dependent plasticity, direct electrical connections, transient synaptic dynamics, excitatory/inhibitory balance, spontaneous oscillatory activity, axonal conduction delays (Izhikevich2006) and others, will influence what and how such networks learn. -->
+<!-- </div> -->
+<!-- </div> -->
+
+<div class="figcenter">
 <img src="/2023assets/1990Cohen_McClelland_stroop_fig3.svg">
 <img src="/2023assets/2023_1110task_demand_conflict_ja.svg" width="49%">
-<div class="figcaption">
+</div>
+<!-- <div class="figcaption"> -->
 
 左: 図 3. 単語読解と色名学習後の接続強度を示すネットワーク図。 (強度は接続の横に示され，中間ユニットのバイアスはユニットの内側に示されている。
 課題要求ユニットから中間ユニットへの注意強度は固定され，中間ユニットのバイアスも固定された。
@@ -32,7 +61,8 @@ The values were chosen so that when the task demand unit was on, the base input 
 cessing Account of the Stroop Effect__, Psychological Review, Vol. 97, No. 3, 332-361.
 
 右: 転移学習，微調整を用いた Stroop 課題の枠組み
-</div></div>
+<!-- </div> -->
+<!-- </div> -->
 
 ## 実習
 
@@ -105,6 +135,86 @@ The executive system centered on the anterior cingulate achieves goal and input 
 <!-- <img src="figures/2006Howard_fig5.svg">
 <img src="figures/2006Howard_fig6.svg"> -->
 </div>
+
+# 機械学習一般
+
+$$
+\begin{aligned}
+\text{損失関数} &= \text{誤差関数} + \text{ペナルティ項}\\
+\mathcal{L}\left(y,x;\theta\right) &=\left\|y-f(x;\theta)\right\|^2+\lambda\left\|P\theta\right\|^2
+\end{aligned}
+$$
+
+損失関数は目標関数とも呼ばれる。誤差関数は最小自乗誤差 least squared error が用いられる(回帰との類推では)。
+ニューラルネットワークによる画像分類[@2012AlexNet]，主成分分析[@1901Pearson_PCA]，標準正則化理論(画像復元)[@Poggio1985]，画像分類課題では次式交差エントロピー誤差[@1989Hinton]が用いられる。
+
+$$
+\text{CEE}=-\sum_{j,c}y_{j,c}\log_2\left(f(x_{j,c})\right)+\left(1-y_{j,c}\right)\log_2\left(1-f(x_{j,c})\right),
+$$
+
+[@1995GirosiPoggio]
+
+- See https://ermongroup.github.io/cs228-notes/inference/variational/
+
+
+$$
+H[f]=\sum_{i=1}^{N}
+\left(y_i-f\left(\mathbf{x}_i\right)\right)^2+\lambda\left\|Pf\right\|^2
+$$
+
+ここに $P$ は制約演算子，$\left\|\cdot\right\|$ はノルムを表す
+$\lambda$ は正の有理数であり正則化パラメータと呼ばれる。
+汎関数 $H$ の最小化は オイラー=ラグランジェ方程式として定式化される。
+$P$ は事前知識を表す。 [GirosiPoggio1990]
+
+$$
+\hat{P}Pf\left(\mathbf{x}\right)=\frac{1}{\lambda}\sum_{i=1}^N\left(y_i-f\left(\mathbf{x}\right)\right)\,\delta\left(\mathbf{x}-\mathbf{x}_i\right),
+$$
+ここで $\hat{P}$ は微分演算子 $P$ の随伴演算子であり，微分方程式，右辺の
+
+上記は偏微分方程式であり，その解は微分作用素 $G$ のグリーン関数で与えられるカーネルを持つ右辺の積分変換，すなわち以下の分布微分方程式を満たす関数 $G$ として書けることがよく知られている：
+<!-- The above is a partial differential equation, and it is well known that its solution can be written as the integral transformation of its right side with a kernel given by the Green's function of the differential operator $\hat{P}P$, that is the function $G$ satisfying the following distributional differential equation: -->
+$$\tag{4}
+\hat{P}P\,G\left(\mathbf{x};y\right)=\delta\left(\mathbf{x}-y\right).
+$$
+(4) 式にデルタ関数が現れるので，積分変換は離散和になり，$f$ は次のように書ける:
+<!-- Because of the delta functions appearing in (4) the integral transformation becomes a discrete sum and $f$ can then be written as -->
+$$
+f(\mathbf{x})=\frac{1}{\lambda}\sum_{i=1}^N(y_i-f(\mathbf{x}_i))
+G(\mathbf{x};\mathbf{x}_i).
+$$
+式 (5) は，正則化問題の解が滑らかな関数の空間の $N$ 次元部分空間にあることを示している。
+この部分空間の基底は $N$ 個の関数 $G(\mathbf{x};mathbf{x}_j)$ によって与えられる。
+以下では，$G(\mathbf{x};mathbf{x}_j)$ を点 $\mathbf{x}_i$ を「中心とする」グリーン関数，点$\mathbf{x}_i$ を展開の「中心」と呼ぶ。
+この理由は，通常グリーン関数は遷移的に不変であり，$G=G(\mathbf{x}-\mathbf{x}_i)$ であり，この場合 $G(\mathbf{x})$ と $G(\mathbf{x}-\mathbf{x}_i)$ とは，原点に $\mathbf{x}_i$ を写す座標変換によって等価になることにある。
+<!-- Equation (5) says that the sol ution of the regularization problem lies in an N-dimensional subspace of the space of smooth functions.
+A basis for this subspace is given by the $N$ functions $G(\mathbf{x};\mathbf{x}_j)$.
+In the following we will refer to $G(\mathbf{x}; \mathbf{x}_j)$ as to the Green's function "centered" at the point $\mathbf{x}_i$, and to the points $\mathbf{x}_i$ as to the "centers" of the expansion.
+The reason for this lies in the fact that usually the Green's function is transitionally invariant, that is $G=G(\mathbf{x}-\mathbf{x}_i)$, and in this case $G(\mathbf{x})$ and $G(\mathbf{x}-\mathbf{x}_i)$ are equivalent modulo a coordinates translation that maps $\mathbf{x}_i$ in the origin. -->
+
+R. Courant and D. Hilbert, Methods of Mathematica/Physics, Vol. 2. Interscience, London, England, 1962.
+where $c$, which is related to $P_d(d)$, depens only on $d$.
+
+物理学の場合 $\lambda$ が定まる，あるいは意味を持つ場合があるが，機械学習，ニューラルネットワークの場合定まるとはかぎらない。ハイパーパラメータとして扱われる場合が多い。
+
+<center>
+<img src="/2023assets/2018Tschannen_Fig1.svg" style="width:74%"><br/>
+<img src="/2023assets/2018Tschannen_Fig2.svg" style="width:74%"><br/>
+</center>
+
+## 関連技術
+1. 主成分分析[@1901Pearson_PCA]
+$$
+H[y,X,w]=\left(y-Xw\right)^2+\lambda(w^{\top}w-1)
+$$
+2. エントロピー最大化
+3. word2vec における負例サンプリング[@2013Mikolov_skip-gram_NIPS]
+2. 画風変換 [@2015Gatys_DeepArt]
+3. 領域 CNN [@2015Girshick_FastRCNN],[@2015Ren_FasterRCNN],[@2017He_MaskRCNN]
+- 解絡学習，解絡表現 disentangled representation, disentaglement
+4. $\beta-\text{VAE}$ (Kruse=Kuhn=Tucker 条件[@2017Higgins_betaVAE])
+5. InfoGAN[@2016Chen_infoGAN]
+
 
 
 ## 実習
