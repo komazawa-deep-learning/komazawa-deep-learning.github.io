@@ -2,12 +2,14 @@
 title: "第08回 2023年度開講 駒澤大学 認知心理学研究"
 author: "浅川 伸一"
 layout: home
+codemirror_mode: python
+codemirror_mime_type: text/x-cython
 ---
 
 # 認知心理学研究 IIB
 <div style="align:right">
 <a href='mailto:educ0233@komazawa-u.ac.jp'>Shin Aasakawa</a>, all rights reserved.<br>
-Date: 10/Nov/2023<br/>
+Date: 17/Nov/2023<br/>
 Appache 2.0 license<br/>
 </div>
 
@@ -184,6 +186,14 @@ $P$ は問題の物理的制約を表しており，2 次の変分原理であ�
 <div class="figcaption">
 <!-- ![Breiman(2001)](/2023assets/2001Breiman_cultures.svg){#fig:2001breiman style="width:34%"} -->
 
+
+From Leo Breiman, Statistical Modeling: The Two Cultures, _Statistical Science_, 2001, Vol. 16, No. 3, 199–231, doi:10.1214/ss/1009213725.
+[pdf](https://projecteuclid.org/journals/statistical-science/volume-16/issue-3/Statistical-Modeling--The-Two-Cultures-with-comments-and-a/10.1214/ss/1009213726.full)
+</div></div>
+
+Breiman は，アンサンブル学習 (バギング，ブートストラップ法) など，影響力のあるいくつかの機械学習手法を提案した機械学習界隈のレジェンド。
+<!-- Breiman によれば，2 つの文化 -->
+
 * データモデル文化: 心理統計で用いられるような統計学モデルを使用する文化
 * アルゴリズムモデル文化: 機械学習における統計学的技法を重視する文化
 
@@ -198,14 +208,6 @@ $P$ は問題の物理的制約を表しており，2 次の変分原理であ�
 暗箱の中は複雑で未知であると考える。 アプローチは，関数，$f(x)$ すなわち $x$ を操作して応答 $y$  を予測するアルゴリズムを見出すこと。
   * モデルの検証方法： 予測精度によって測定する機械学習的手法
 
-
-From Leo Breiman, Statistical Modeling: The Two Cultures, _Statistical Science_, 2001, Vol. 16, No. 3, 199–231, doi:10.1214/ss/1009213725.
-[pdf](https://projecteuclid.org/journals/statistical-science/volume-16/issue-3/Statistical-Modeling--The-Two-Cultures-with-comments-and-a/10.1214/ss/1009213726.full)
-</div></div>
-
-Breiman は，アンサンブル学習 (バギング，ブートストラップ法) など，影響力のあるいくつかの機械学習手法を提案した機械学習界隈のレジェンド。
-<!-- Breiman によれば，2 つの文化 -->
-
 # PyTorch
 
 * [Pytorch によるニューラルネットワークの構築 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_1115PyTorch_buildmodel_tutorial_ja.ipynb)
@@ -217,6 +219,20 @@ Breiman は，アンサンブル学習 (バギング，ブートストラップ�
 * [効率よく t-SNE を使う方法](https://project-ccap.github.io/misread-tsne/)
 
 # Google colabratory でのファイルの [アップ|ダウン]ロード
+
+<div class="code">
+
+```python
+
+from google.colab import files<br/>
+uploaded = files.upload()<br/>
+
+from google.colab import files<br/>
+files.download('ファイル名')
+```
+</div>
+
+---
 
 
 <div class="code">
