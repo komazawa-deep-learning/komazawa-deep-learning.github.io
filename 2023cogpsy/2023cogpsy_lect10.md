@@ -67,7 +67,14 @@ cessing Account of the Stroop Effect__, Psychological Review, Vol. 97, No. 3, 33
 ## 実習
 
 * [1990 年代の Stroop 効果のシミュレーション<img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2023notebooks/2023_1110Stroop_1990Cohen_model.ipynb){:target="_blank"}
-* [転移学習による Stroop 効果のデモ<img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2023notebooks/2023_1123Stroop_model.ipynb)
+* [転移学習による Stroop 効果のデモ<img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2023notebooks/2023_1123Stroop_model.ipynb){:target="_blank"}
+
+* [符号化器・復号化器モデル ちはやふる <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/2023notebooks/2023_1113chihaya_Transformer.ipynb)
+* [実習 オーバーフィッティング，アンダーフィッテング <img src="/assets/colab_icon.svg">]{:target="_blank"}(https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2020Sight_Visit_polynomilal_fittings_demo.ipynb){:target="_blank"}
+* [ニューラルネットワークで遊んでみよう](https://komazawa-deep-learning.github.io/tensorflow-playground/#activation=tanh&batchSize=10&dataset=circle&regDataset=reg-plane&learningRate=0.03&regularizationRate=0&noise=0&networkShape=4,2&seed=0.98055&showTestData=false&discretize=false&percTrainData=50&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false){:target="_blank"}
+
+
+---
 
 <div class="figcenter">
 <img src="/2023assets/2003Roelofs_stroop_fig7.svg" width="33%">　　　　　　　　　
@@ -135,6 +142,17 @@ The executive system centered on the anterior cingulate achieves goal and input 
 <!-- <img src="figures/2006Howard_fig5.svg">
 <img src="figures/2006Howard_fig6.svg"> -->
 </div>
+
+# 告知
+
+* [DaSiC2023 ワークショップ](https://sites.google.com/view/dasic7-2023){:target="_blank"}
+  * 日時: 2023年12月23日(土)
+  * 会場: [筑波大学天王台キャンパス 第一エリア1D201講義室 Google map](https://www.google.co.jp/maps/place/1D201%E6%95%99%E5%AE%A4/@36.108528,140.1019327,16.79z/data=!4m6!3m5!1s0x60220c0745ebad25:0x83c473710859d960!8m2!3d36.1084607!4d140.1018482!16s%2Fg%2F11g6yv8vk7?hl=ja&entry=ttu){:target="_blank"}
+  * 参加無料
+  * 概要：
+	健常者は日常の発話でついうっかり、また失語症患者は主に脳の疾患により言い誤り(錯語)を表出することが知られています。今回のイベントでは、こうした言語データを機械学習モデルと神経科学といういわば２枚の「鏡」の前に置いた時、そこに映し出されるのはどのような景色、振る舞いかを実演を交えて示します。はたしてそれは機械学習モデルの貢献か研究者の願望か。言語学者、機械学習の専門家、言語聴覚士という登壇者それぞれの３つの視座から、実際の健常者の言い誤りや失語症患者の錯語の実際のデータを供覧しつつ、それらのデータが機械学習モデルではどのように説明されるのか、から議論していきます。
+
+	[ワークショップホームページ](https://sites.google.com/view/dasic7-2023/workshop?authuser=0)
 
 # 機械学習一般
 
@@ -217,9 +235,6 @@ $$
 
 
 
-## 実習
-
-* [実習 オーバーフィッティング，アンダーフィッテング <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2020Sight_Visit_polynomilal_fittings_demo.ipynb){:target="_blank"}
 
 ## 機械学習と推測統計学
 
