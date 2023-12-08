@@ -1,10 +1,10 @@
 ---
-title: "第10回"
+title: "第10回 2023年度開講 駒澤大学 認知心理学研究"
 author: "浅川 伸一"
 layout: home
+codemirror_mode: python
+codemirror_mime_type: text/x-cython
 ---
-
-# 2023年度開講 駒澤大学 認知心理学研究 IIB
 
 <div align="right">
 <a href='mailto:educ0233@komazawa-u.ac.jp'>Shin Aasakawa</a>, all rights reserved.<br>
@@ -12,15 +12,30 @@ Date: 01/Dec/2023<br/>
 Appache 2.0 license<br/>
 </div>
 
-<!-- <link href="/css/asamarkdown.css" rel="stylesheet"> -->
+<link href="/css/asamarkdown.css" rel="stylesheet">
+
+## 実習
+
+* [転移学習による Stroop 効果のデモ <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2023notebooks/2023_1123Stroop_model.ipynb)
+
+<!-- * [1990 年代の Stroop 効果のシミュレーション<img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2023notebooks/2023_1110Stroop_1990Cohen_model.ipynb){:target="_blank"}
+* [Stroop 効果シミュレーションの準備 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2023notebooks/2023_1123Stroop_model.ipynb){:target="_blank"} -->
+
+* [実習 オーバーフィッティング，アンダーフィッテング <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2020Sight_Visit_polynomilal_fittings_demo.ipynb){:target="_blank"}
+* [ニューラルネットワークで遊んでみよう](https://komazawa-deep-learning.github.io/tensorflow-playground/#activation=tanh&batchSize=10&dataset=circle&regDataset=reg-plane&learningRate=0.03&regularizationRate=0&noise=0&networkShape=4,2&seed=0.98055&showTestData=false&discretize=false&percTrainData=50&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false){:target="_blank"}
+
+
+## 参考
 
 * [ベイズ学習](../2023_1124bayes)
 * [最適化](../2023_1124optimizations)
 
+## ニューラルネットワークと機械学習とのコスト関数 (損失関数，誤差関数) の類似
+
 <div class="figcenter">
-<img src="/2023assets/2016Marblestone_fig1.jpg" width="77%">
+<img src="/2023assets/2016Marblestone_fig1.jpg" width="77%"><br/>
 </div>
-<!-- <div class="figcaption"> -->
+<div class="figcaption">
 
 図 1. 従来のニューラルネットワークと脳のようなニューラルネットワークの設計の違い。
 
@@ -41,14 +56,16 @@ Internally generated cost functions create heuristics that are used to bootstrap
 For example, an area which recognizes faces might first be trained to detect faces using simple heuristics, like the presence of two dots above a line, and then further trained to discriminate salient facial expressions using representations arising from unsupervised learning and error signals from other brain areas related to social reward processing.
 (C) Internally generated cost functions and error-driven training of cortical deep networks form part of a larger architecture containing several specialized systems.
 Although the trainable cortical areas are schematized as feedforward neural networks here, LSTMs or other types of recurrent networks may be a more accurate analogy, and many neuronal and network properties such as spiking, dendritic computation, neuromodulation, adaptation and homeostatic plasticity, timing-dependent plasticity, direct electrical connections, transient synaptic dynamics, excitatory/inhibitory balance, spontaneous oscillatory activity, axonal conduction delays (Izhikevich2006) and others, will influence what and how such networks learn. -->
-<!-- </div> -->
-<!-- </div> -->
+</div>
+
+
+## Stroop 効果
 
 <div class="figcenter">
 <img src="/2023assets/1990Cohen_McClelland_stroop_fig3.svg">
 <img src="/2023assets/2023_1110task_demand_conflict_ja.svg" width="49%">
 </div>
-<!-- <div class="figcaption"> -->
+<div class="figcaption" style="width:94%">
 
 左: 図 3. 単語読解と色名学習後の接続強度を示すネットワーク図。 (強度は接続の横に示され，中間ユニットのバイアスはユニットの内側に示されている。
 課題要求ユニットから中間ユニットへの注意強度は固定され，中間ユニットのバイアスも固定された。
@@ -57,23 +74,12 @@ Although the trainable cortical areas are schematized as feedforward neural netw
 (Strengths are shown next to connections; biases on the intermediate units are shown inside the units.
 Attention strengths-from task demand units to intermediate units-were fixed, as were biases for the intermediate units.
 The values were chosen so that when the task demand unit was on, the base input for units in the corresponding pathway was 0.0, whereas the base input to units in the other pathway was in the range of -4.0 to -4.9, depending on the experiment.) -->
+
 出典: Cohen, Dunbar, and McClelland (1990) __On the Control of Automatic Processes: A Parallel Distributed Pro
 cessing Account of the Stroop Effect__, Psychological Review, Vol. 97, No. 3, 332-361.
 
 右: 転移学習，微調整を用いた Stroop 課題の枠組み
-<!-- </div> -->
-<!-- </div> -->
-
-## 実習
-
-* [1990 年代の Stroop 効果のシミュレーション<img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2023notebooks/2023_1110Stroop_1990Cohen_model.ipynb){:target="_blank"}
-* [Stroop 効果シミュレーションの準備 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2023notebooks/2023_1123Stroop_model.ipynb){:target="_blank"}
-* [符号化器・復号化器モデル ちはやふる <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/2023notebooks/2023_1113chihaya_Transformer.ipynb)
-
-* [転移学習による Stroop 効果のデモ <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2023notebooks/2023_1123Stroop_model.ipynb){:target="_blank"}
-
-* [実習 オーバーフィッティング，アンダーフィッテング <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2020Sight_Visit_polynomilal_fittings_demo.ipynb){:target="_blank"}
-* [ニューラルネットワークで遊んでみよう](https://komazawa-deep-learning.github.io/tensorflow-playground/#activation=tanh&batchSize=10&dataset=circle&regDataset=reg-plane&learningRate=0.03&regularizationRate=0&noise=0&networkShape=4,2&seed=0.98055&showTestData=false&discretize=false&percTrainData=50&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false){:target="_blank"}
+</div>
 
 
 ---
@@ -81,7 +87,8 @@ cessing Account of the Stroop Effect__, Psychological Review, Vol. 97, No. 3, 33
 <div class="figcenter">
 <img src="/2023assets/2003Roelofs_stroop_fig7.svg" width="33%">　　　　　　　　　
 <img src="/2023assets/2003Roelofs_stroop_fig9.jpg" width="44%">
-<div class="figcaption">
+</div>
+<div class="figcaption" style="width:88%">
 
 図 7. WEAVER++ における処理レベル。
 単語の読解はレンマ選択を伴う場合もあれば (経路 a)，伴わない場合もある (経路 b)。
@@ -103,23 +110,34 @@ word-form perception (wfp) activates lemmas and word forms in parallel.
 Word reading minimally involves wfp, wfe, and art.
 The executive system centered on the anterior cingulate achieves goal and input control. -->
 出典: Roelofs (2003) __Goal-Referenced Selection of Verbal Action: Modeling Attentional Control in the StroopTask__, Psychological Review, 2003, Vol. 110, No. 1, 88–125.
-</div></div>
+</div>
 
+## 関連する話題
 
-<div class="figcenter">
-<img src="/2023assets/1984Glaser_picture-word_fig1.svg">
+### 絵画‐単語干渉課題
+
+<center>
+<img src="/2023assets/1984Glaser_picture-word_fig1.svg" width="39%">
 <div class="figcaption">
 
-刺激成分の特徴例: (a) 非絵画，(b) 空単語付き絵画刺激, (c) 非単語，(d) 不調和刺激
-</div></div>
+刺激の例: (a) 非絵画，(b) 単語なし絵画, (c) 非単語，(d) 不一致刺激
 
+<!-- Figure 1. Characteristic examples of the stimulus components:
+Panel a, nonpicture;
+Panel b, picture with blank word field;
+Panel c, nonword; and Panel d, complete incongruent stimulus.
 
-<div class="figcenter">
+Note. The pictures are from Bildgeschichten [Picture stories] (pp. I , 22) by F. Meixner, n.d., Frankfurt, Federal Republic of Germany: Diesterweg. Copyright 1 975 by Diesterweg. Reprinted by permission. -->
+</div></center>
+
+<center>
 <img src="/2023assets/1984Glaser_picture-word_fig2.svg">
 <div class="figcaption">
 図 課題 $\times$ SOA $\times$ 一致性における平均促進・抑制得点
 <!-- Figure 2. Mean facilitation and inhibition scores in the Task X SOA X Congruency cells of Experiment I. (SOA = stimulus onset asynchrony.) -->
-</div></div>
+</div></center>
+
+### 単語反復課題
 
 <div class="figcenter">
 <img src="/2023assets/2006Howard_fig1.svg" width="44%">
@@ -145,16 +163,17 @@ The executive system centered on the anterior cingulate achieves goal and input 
 <img src="figures/2006Howard_fig6.svg"> -->
 </div>
 
-# 告知
 
-* [DaSiC2023 ワークショップ](https://sites.google.com/view/dasic7-2023){:target="_blank"}
-  * 日時: 2023年12月23日(土)
-  * 会場: [筑波大学天王台キャンパス 第一エリア1D201講義室 Google map](https://www.google.co.jp/maps/place/1D201%E6%95%99%E5%AE%A4/@36.108528,140.1019327,16.79z/data=!4m6!3m5!1s0x60220c0745ebad25:0x83c473710859d960!8m2!3d36.1084607!4d140.1018482!16s%2Fg%2F11g6yv8vk7?hl=ja&entry=ttu){:target="_blank"}
-  * 参加無料
-  * 概要：
-	健常者は日常の発話でついうっかり、また失語症患者は主に脳の疾患により言い誤り(錯語)を表出することが知られています。今回のイベントでは、こうした言語データを機械学習モデルと神経科学といういわば２枚の「鏡」の前に置いた時、そこに映し出されるのはどのような景色、振る舞いかを実演を交えて示します。はたしてそれは機械学習モデルの貢献か研究者の願望か。言語学者、機械学習の専門家、言語聴覚士という登壇者それぞれの３つの視座から、実際の健常者の言い誤りや失語症患者の錯語の実際のデータを供覧しつつ、それらのデータが機械学習モデルではどのように説明されるのか、から議論していきます。
+# 文献
 
-	[ワークショップホームページ](https://sites.google.com/view/dasic7-2023/workshop?authuser=0)
+* ストループ効果 J. Ridley Stroop (1935) __Studies of Interference in Serial Verbal Reactions__, Journal of Experimental Psychology, 18, 643-662.
+* サイモン効果 J. Richard Simon (1969) __Reactions Toward the Source of Stimulation__, Journal of Experimental Psychology, 81(1), 174-176.
+* 絵画‐単語干渉効果 W. Glaser & F-J. Dungelhoff, (1984) __The Time Course of Picture-Word Interference__, Journal of Experimental Psychology: Human Perception and Performance, 10(5), 640-654.
+* 絵画‐単語課題の意味促進 M-T. Bajo (1988) __Semantic Facilitation With Pictures and Words__, Journal of Experimental Psychology: Learning, Memory, and Cognition, 14(4), 579-589.
+* 絵画命名課題における累積意味抑制 D. Howard+ (2006) __Cumulative semantic inhibition in picture naming: experimental and computational studies__, Cognition 100, 464–482.
+* 絵画命名課題における言語間の干渉と促進 A. Roelofs+ (2016) __Electrophysiology of cross-language interference and facilitation in picture naming__. http://dx.doi.org/10.1016/j.cortex.2015.12.003
+* 累積意味，意味ブロック，意味妨害効果 A. Roelofs+ (2018) __A unified computational account of cumulative semantic, semantic blocking, and semantic distractor effects in picture naming__. https://doi.org/10.1016/j.cognition.2017.12.007
+
 
 # 機械学習一般
 
@@ -221,403 +240,3 @@ where $c$, which is related to $P_d(d)$, depens only on $d$.
 <img src="/2023assets/2018Tschannen_Fig1.svg" style="width:74%"><br/>
 <img src="/2023assets/2018Tschannen_Fig2.svg" style="width:74%"><br/>
 </center>
-
-## 関連技術
-1. 主成分分析[@1901Pearson_PCA]
-$$
-H[y,X,w]=\left(y-Xw\right)^2+\lambda(w^{\top}w-1)
-$$
-2. エントロピー最大化
-3. word2vec における負例サンプリング[@2013Mikolov_skip-gram_NIPS]
-2. 画風変換 [@2015Gatys_DeepArt]
-3. 領域 CNN [@2015Girshick_FastRCNN],[@2015Ren_FasterRCNN],[@2017He_MaskRCNN]
-- 解絡学習，解絡表現 disentangled representation, disentaglement
-4. $\beta-\text{VAE}$ (Kruse=Kuhn=Tucker 条件[@2017Higgins_betaVAE])
-5. InfoGAN[@2016Chen_infoGAN]
-
-
-
-
-## 機械学習と推測統計学
-
-# 機械学習の技法
-
-3. Breiman の 2 つの文化
-2. データセット, 訓練データ，検証データ，テストデータ
-1. フィードフォワード, フィードバック
-8. 活性化関数
-9. 損失関数 (誤差関数，目的関数)
-10. 誤差逆伝播法, 勾配降下法, 確率的勾配降下法, ミニバッチ
-13. データ拡張
-15. 正則化
-14. ドロップアウト
-
-## 正則化
-
-データ $y$ から $z$ を見つけ出す不良設定問題の正則化 $Az = y$ では，正則化項 $\left\|\cdot\right\|$ の選択と汎関数の安定化項 $\left\|Pz\right\|$ が必要となる。
-標準正則化理論においては，$A$ は線形演算子，ノルムは 2 次，$P$ は線形である。
-2 種類の方法が適用可能である。
-すなわち
-
-1. $\left\|Az-y\right\|\leqslant\epsilon$ を満たし，$\displaystyle\left\|Pz\right\|^2$ を最小化する $z$ を探す
-2. $\displaystyle \left\|Az-y\right\|+\lambda\left\|Pz\right\|^2,$ を最小化する $z$ を探す
-ここで $\lambda$ は正則化パラメータ。
-
-最初の方法は，十分にデータを近似し，かつ，「基準」$\left\|Pz\right\|$ を最小化するという意味で「正則」な $z$ を探す方法である。
-二番目の方法は，$\lambda$ が正則化の程度と解のデータへの近似とをコントロールする。
-標準正則化理論は，最良の $\lambda$ を決定する手法を提供する。
-標準正則化の手法は，上式に制約を導入することで変分原理の問題としている。
-最小化するコストは物理的制約条件を満たす良い解を反映している。
-すなわち，データへの近似もよく，かつ，正則化項 $\left\|Pz\right\|^2$ も小さいことを意味する。
-$P$ は問題の物理的制約を表しており，2 次の変分原理であり，解空間内での唯一解が存在する。
-標準正則化手法は，不良設定問題に対して注意深い分析が必要であることを注記しておく。
-ノルム $\left\|\cdot\right\|$，正則化関数 $\left\|Pz\right\|$, および，汎関数空間の選択は数学的性質と，物理的説得性を有する必要がある。
-これらにより，正しい正則化の詳細条件が定まる。
-
-変分原理は物理学，経済学，工学，で幅広く用いられている。例えば物理学における基本法則は変分原理を用いて，
-エネルギーやラグランジェ関数を用いて簡潔に表現されている。
-
-
-# Transformer
-
-* Transformer: マルチヘッド注意機構，位置符号化器，埋め込み表現，ソフトマックス関数
-* 事前訓練とファインチューニング: マスク言語モデル，次文予測  <!--Masked Language model, next sentence prediction--->
-* GTP-4: 符号化器・復号化器モデルを用いた画像と言語との融合
-* プロンプトエンジニアリングと RLHF (人間のフィードバックによる強化学習): 報酬モデルと代理方針最適化 (Proximal Policy Optimization)
-
-<div class="figcenter">
-<img src="/assets/2017Vaswani_Fig2_1.svg" width="09%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img src="/assets/2017Vaswani_Fig2_2.svg" width="19%">&nbsp;&nbsp;&nbsp;
-<img src="/assets/2017Vaswani_Fig1.svg" width="29%">
-<div class="figcaption">
-
-Transformer ([2017Vaswani++](https://arxiv.org/abs/1706.03762)) Fig.2 を改変
-</div></div>
-
-上図で，`matmul` は行列の積，`scale` は，平均 0 分散 1 への標準化，`mask` は 0 と 1 とで，データを制限すること，`softmax` はソフトマックス関数である。
-
-トランスフォーマーの注意とは，このソフトマックス関数である。
-
-<!-- <div class="figure figcenter">
-<img src="figures/2017Vaswani_Fig2_1.svg" width="19%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img src="figures/2017Vaswani_Fig2_2.svg" width="29%">&nbsp;&nbsp;&nbsp;
-<img src="figures/2017Vaswani_Fig1.svg" width="39%"> -->
-
-<!-- # Transformer(2): Attention is all you need -->
-
-$$
-\text{MultiHead}\left(Q,K,V\right)=\text{Concat}\left(\text{head}_1,\ldots,\text{head}_{h}\right)W^O
-$$
-where, $\text{head}_i =\text{Attention}\left(QW_i^Q,KW_i^K,VW_i^V\right)$
-
-The projections are parameter matrices $W_i^Q\in\mathbb{R}^{d_{\text{model}}\times d_k}$, $W_i^K \in\mathbb{R}^{d_{\text{model}}\times d_k}$,
-$W_i^V\in\mathbb{R}^{d_{\mathop{model}}\times d_v}$, and $W^O\in\mathbb{R} ^{hd_v\times d_{\mathop{model}}}$.
-$h=8$, $d_k=d_v=\frac{d_{\mathop{model}}}{h}=64$
-
-$$
-\text{FFN}(x)=\max\left(0,xW_1+b_1\right)W_2+b_2
-$$
-
-$$
-\text{PE}_{(\text{pos},2i)} = \sin\left(\frac{\text{pos}}{10000^{\frac{2i}{d_{\mathop{model}}}}}\right)
-$$
-
-$$
-\mathop{PE}_{(\mathop{pos},2i+1)} = \cos\left(\frac{\mathop{pos}}{10000^{\frac{2i}{d_{\mathop{model}}}}}\right)
-$$
-
-<!-- # Transformer(3): Attention is all you need -->
-
-<div class="figcenter">
-<img src="/assets/2017Vaswani_Fig1.svg">
-<div class="figcaption" style="width:33%">
-[Vaswani+2017](https://arxiv.org/abs/1706.03762) Fig. 1 より
-</div></div>
-
-<!-- # Sejnowski2022
-
-<div class="figcenter">
-<img src="figures/2022Sejnowski_fig5.jpg" width="66%">
-<div class="figcaption">
-
-トランスフォーマーのループと皮質-基底核のループの比較。
-(左) トランスフォーマーは，出力を入力とループさせて単語系列を生成するフィードフォワード自己回帰型アーキテクチャを持つ (Vaswani+2017)。
-示された単一のエンコーダ/デコーダモジュールは N 層 深く (Nx) 積み重ねることができる。
-(右) 位相的に写像された運動皮質は大脳基底核に投射し，大脳皮質にループバックして，話し言葉の単語列のような一連の動作を生成する。
-大脳皮質のすべての部分が大脳基底核に投影され，前頭前野と大脳基底核の間の同様のループによって，思考の系列が生み出される。
-
-thalamus: 視床，
-putamen: 被殻
-SMA: supplementary motor area 補足運動野
-PM: premotor cortex 運動前野
-STN: subthalamic nucleus 視床下核
-GPi: internal segment of globus pallidus 淡蒼球内節
-GP: globus pallidus     淡蒼球
-M1: 一次運動野
-</div></div>
--->
-
-## 1 位置符号器 Position encoders
-
- Transformer の入力には，上述の単語表現に加えて，位置符号器からの信号も重ね合わされる。
-位置 $i$ の信号は次式で周波数領域へと変換される:
-
-$$
-\text{PE}_{(\text{pos},2i)} = \sin\left(\frac{\text{pos}}{10000^{\frac{2i}{d_{\text{model}}}}}\right)\\
-\text{PE}_{(\text{pos},2i+1)} = \cos\left(\frac{\text{pos}}{10000^{\frac{2i}{d_{\text{model}}}}}\right)
-$$
-
-位置符号器による位置表現は，$i$ 番目の位置情報をワンホット表現するのではなく，
-周波数領域に変換することで周期情報を表現する試みと見なし得るだろう。
-
-<div class="figcenter">
-<img src="/assets/PE_example.svg" width="66%">
-<div class="figcaption">
-位置符号化に用いられる符号化
-</div></div>
-
-# BERT
-
-## BERT の入力表現
-
-<div class="figure figcenter">
-<img src="/assets/2018Devlin_BERT_Fig2.svg" width="49%">
-<div class="figcaption">
-埋め込みトークンの総和，位置符号器，分離埋め込みの 3 者
-</div></div>
-
-<!-- <div class="figure figcenter">
-<img src="figures/2018Devlin_BERT_Fig2.svg">
-</div> -->
-
-## BERT の事前訓練: マスク化言語モデル
-
-全入力系列のうち 15% をランダムに [MASK] トークンで置き換える
-
-* 入力はオリジナル系列を [MASK] トークンで置き換えた系列
-* ラベル: オリジナル系列の [MASK] 部分にの正しいラベルを予測
-
-%Rather than always replacing the chosen words with [MASK], the date generator will do the following:
-
-* 80%: オリジナル入力系列を [MASK] で置換
-y $\rightarrow$ my dog is  [MASK].
-* 10%: [MASK] の位置の単語をランダムな無関連語で置き換える
-my dog is hairy $\rightarrow$ my dog is apple
-* 10%: オリジナル系列
-
-## BERT の事前訓練: 次文予測課題
-
-言語モデルの欠点を補完する目的，次の文を予測
-
-[SEP] トークンで区切られた 2 文入力
-* 入力: the man went to the store [SEP] he bought a gallon of milk.
-* ラベル: IsNext
-* 入力: the man went to the store [SEP] penguins are flightless  birds.
-* ラベル: NotNext
-
-### BERT のファインチューニング
-
-<div class="figcenter">
-<img src="/2023assets/2019Liu_mt-dnn.png" width="66%">
-<div class="figcaption">
-
-[Liu+2019](https://arxiv.org/abs/1901.11504) Fig. 1
-</div></div>
-
-<!-- <div class="figcenter">
-<img src="figures/2017Vaswani_Fig2_1ja.svg" width="22%">
-<img src="figures/2017Vaswani_Fig2_2ja.svg" width="22%">
-<div class="figcaption">
-From Vaswani+2017 transformer Fig. 2
-</div></div> -->
-
-<!-- # BERT: ファインチューニング (1) -->
-
-<div class="figcenter">
-<img src="/assets/2018Devlin_BERT_Fig3.svg">
-<div class="figcaption">
-
-(a), (b) は文レベル課題，(c),(d)はトークンレベル課題, E: 入力埋め込み表現,
-$T_i$: トークン $i$ の文脈表象。[CLS]: 分類出力記号, [SEP]:文分離記号
-</div></div>
-
-# GPT-4
-加えて，chatGPT の後続モデルである GPT-4 では，マルチモーダル，すなわち，視覚と言語の統合が進んだ。
-
-<div class="figcenter">
-<img src="/2023assets/2023kosmos_coverpage.png" width="49%">
-<div class="figcaption">
-
-[Kosmos-1 の概念図](https://arXiv.org/abs/2302.14045)
-</div></div>
-
-<!-- まず第一に，大規模ではない，言語モデルについて考えます。
-言語モデルは，機械翻訳などでも使われる技術です。
-ですから，DeepL や Google 翻訳で，使っている方もいることでしょう。
-
-chatGPT を使える方は，上記太字のキーワードについて，chatGPT に質問してみることをお勧めします。
-とりわけ 注意 については，認知，視覚，心理学との関連も深く，注意の障害は，臨床，教育，発達などの分野と関係するでしょう。 -->
-
-
-# BERT: 埋め込みモデルによる構文解析
-
-BERT の構文解析能力を下図示した。
-各単語の共通空間に射影し，単語間の距離を計算することにより構文解析木と同等の表現を得ることができることが報告されている [@2019HewittManning_structural]。
-
-<div class="figure figcenter">
-<img src="/assets/2019hewitt-header.jpg" width="44%">
-<img src="/assets/2019HewittManning_blogFig1.jpg" width="22%">
-<img src="/asets/2019HewittManning_blogFig2.jpg" width="22%">
-<div class="figcaption">
-BERT による構文解析木を再現する射影空間
-From `https://github.com/john-hewitt/structural-probes``
-</div></div>
-
-word2vec において単語間の距離は内積で定義されていた。
-このことから，文章を構成する単語で張られる線形内積空間内の距離が構文解析木を与えると見なすことは不自然ではない。
-
-そこで構文解析木を再現するような射影変換を見つけることができれば BERT を用いて構文解析が可能となる。
-例えば上図における chef と store と was の距離を解析木を反映するような空間を見つけ出すことに相当する。
-2 つの単語 $w_i$, $w_j$ とし単語間の距離を $d\left(w_i,w_j\right)$ とする。 適当な変換を施した後の座標を $h_i$, $h_j$ とすれば，求める変換 $B$ は次式のような変換を行なうことに相当する:
-
-$$
-\min_{B}\sum_l\frac{1}{\left|s_\ell\right|^2}\sum_{i,j}\left(d\left(w_i,w_j\right)-\left\|B\left(h_i-h_j\right)\right\|^2\right)
-$$
-
-ここで $\ell$ は文 s の訓練文のインデックスであり，各文の長さで規格化することを意味している。
-
-
-# Seq2seq model
-
-<div class="figure figcenter">
-<img src="/assets/2014Sutskever_S22_Fig1.svg" width="77%">
-<div class="figcaption">
-
-Sutskever+2014 Fig. 1, 翻訳モデル `seq2seq` の概念図
-</div>
-</div>
-
-`eos` は文末を表す。
-中央の `eos` の前がソース言語であり，中央の `eos` の後はターゲット言語の言語モデルである SRN の中間層への入力として用いる。
-
-注意すべきは，ソース言語の文終了時の中間層状態のみをターゲット言語の最初の中間層の入力に用いることであり，それ以外の時刻ではソース言語とターゲット言語は関係がない。
-逆に言えば最終時刻の中間層状態がソース文の情報全てを含んでいるとみなしうる。
-この点を改善することを目指すことが 2014 年以降盛んに行われてきた。
-顕著な例が後述する **双方向 RNN**，**LSTM** 採用したり，**注意** 機構を導入することであった。
-
-<div class="figure figcenter">
-<img src="/assets/2014Sutskever_Fig2left.svg" width="44%">
-<img src="/assets/2014Sutskever_Fig2right.svg" width="44%">
-<div class="figcaption">
-
-From Sutskever+2014, Fig. 2
-</div></div>
-
-# 自然言語系の注意
-
-<div class="figure figcenter">
-<img src="/assets/2015Bahdanau_attention.jpg" width="30%">
-<img src="/assets/2015Luong_Fig2.svg" width="30%">
-<img src="/assets/2015Luong_Fig3.svg" width="30%">
-<div class="figcaption">
-
-左: Bahdanau+2014,
-中: Luong+2015, Fig. 2,
-右: Luong+2015, Fig. 3
-</div></div>
-
-# StableDiffusion と LangChain
-
-<div class="figure figcenter">
-<img src="/2023assets/2022patrickvonplaten_scientific_images_stable_diffusion.png" width="34%">
-<img src="/2023assets/2023Polzer_LLM_app_ja_fig1.webp" width="44%">
-<div class="figcaption">
-左: `https://github.com/patrickvonplaten/scientific_images/tree/master`，
-右: [Polzer2023](https://towardsdatascience.com/all-you-need-to-know-to-build-your-first-llm-app-eb982c78ffac) より
-</div></div>
-
-<!-- * [StableDiffusion <img src="figures/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2023notebooks/2023_0714stable_diffusion.ipynb) -->
-
-# 埋め込みモデル，ベクトル空間
-
-* ピラミッド・パームツリー・テスト: 認知症検査
-* ターゲットと最も関連のあると考えられる選択肢を一つ選べ。
-
-1. ターゲット: オートバイ，選択肢: 麦わら帽子，帽子，ヘルメット，兜
-2. ターゲット: かもめ，選択肢: 水田，池，滝，海
-3. ターゲット: 柿，選択肢: 五重塔，教会，病院，駅
-
-<div class="figure figcenter">
-<img src="/2023assets/2023_0712projection_concept.svg" width="24%">
-<img src="/2023assets/2021_0831jcss_PPT1.svg" width="29%">
-<img src="/2023assets/2021_0831jcss_PPT2.svg" width="29%">
-</div>
-
-<!-- ベクトル空間の例として，word2vec による PPT  `~/study/2021ccap/notebooks/2021_0831jcss_PPT_projection.[ip
-ynb,pdf]` まで
-
-* いまだに，このような記事が出ることの方が問題だろうと思う。
-[<img src="https://www.mag2.com/p/news/wp-content/uploads/2017/09/logo_mag2news_290x50-1.png" style="width:9%"
-> 大ウソつきChatGPT。訴訟文書「過去の判例」が“ほぼ出鱈目”だった理由](https://www.mag2.com/p/news/577615)
-
-生成 AI と呼ばれる，生成 generative とは，サンプリングを行うことを意味している。
-このため，サンプリングに伴う変動は常に存在する。
-
-$$
-p(x_i,\beta) = \frac{e^{x_i/\beta}}{\sum_{j\in X} e^{x_j/\beta}}
-$$ -->
-
-
-# 14. 視覚における注意と CAM
-
-<div class="figcenter">
-<img src="/2023assets/2016Grad-CAM_boxer_tigercat.png" width="19%">
-<img src="/2023assets/2023_0723Grad-CAM_boxer_tigercat_results.png" width="74%">
-</div>
-
-<!--
-## ファインチューニング (fine-tuning)，転移学習 (transfer-learning)
-
-<div class="figcenter">
-<img src="figures/2017Ruder_fig1.jpg" width="22%">
-<div class="figcaption">
-
-微調整 (fine tuning) による課題ごとの訓練。
-多層ニューラルネットワークモデルの最終層を，課題ごとに入れ替えることで，複数の課題に適応できるようにする。
-今回は，BIT の 4 課題 (線分二等分，線分検出，文字検出，星印検出) を考える。
-ただし，文字検出課題と星印検出課題は，文字と記号検出を微調整した。
-そのため，課題ごとの微調整は，この両課題については同一である。
-従って，3 種類の微調整を行った。
-
-図は Ruder (2017) [An Overview of Multi-Task Learning in Deep Neural Network](https://arXiv.org/abs/1706.05098), Fig. 1. より
-</div></div>
-
-## 様々なタイプの生成モデル
-
-<div class="figure figcenter">
-<img src="figures/generative-overview.png" width="66%">
-<div class="figcaption">
-[Weng2021](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/) より
-</div></div>
-
--->
-
-
-# 実習
-
-* [PyTorch による Transfomer 実装 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2023notebooks/2023_0602Transformer_from_scratch.ipynb)
-* [chatGPT <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2023notebooks/2023_0608rinna_chatGPT_demo.ipynb)
-* [Stable-baselines3 を用いた PPO デモ Atari Lunalander 月面着陸 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2023notebooks/2023_0619stable_baselines3_demo_LunaLander_V2.ipynb)
-* [画像認識における注意 CAM <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2023notebooks/2021_0618CAM_demo.ipynb)
-* [Stable diffusion デモ <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2023notebooks/2023_0707stable_diffusion.ipynb)
-* [sentenceBERT <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2023notebooks/2023_0602minimam_sentenceBERT.ipynb)
-* [BERT の微調整 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/2022notebooks/2022_0623BERT_SNOW_training.ipynb)
-* [BERT のマルチヘッド注意の視覚化 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/2022notebooks/2022_1007BERT_head_view.ipynb)
-* [日本語 BERT 2 つの文の距離を求めるデモ <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0624BERTja_test.ipynb)
-* [リカレントニューラルネットワークによる文処理デモ 青空文庫より，夏目漱石 こころ](https://komazawa-deep-learning.github.io/character_demo.html)
-* [CartoonGAN 実習<img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_0628CartoonGAN_demo.ipynb)
-* [加算型注意 (Bahdanu) と 内積型注意 (Loung) の実習 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_1022Two_attentions_additive_and_multiplicative_Seq2seq.ipynb)
-
-# Huggingface RTL
-
-* [TRL - Transformer Reinforcement Learning](https://github.com/huggingface/trl/tree/main)
