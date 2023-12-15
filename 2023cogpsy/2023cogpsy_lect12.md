@@ -21,7 +21,7 @@ $$
 codemirror_mime_type: text/x-cython -->
 <!-- <link href="/css/asamarkdown.css" rel="stylesheet"> -->
 
-* [Lake+2017 人間のように考える機械を作る Building machines that learned think like people](https://www.cambridge.org/core/services/aop-cambridge-core/content/view/A9535B1D745A0377E16C590E14B94993/S0140525X16001837a.pdf/building-machines-that-learn-and-think-like-people.pdf){:target="_blank"}
+### [Lake+2017 人間のように考える機械を作る Building machines that learned think like people](https://www.cambridge.org/core/services/aop-cambridge-core/content/view/A9535B1D745A0377E16C590E14B94993/S0140525X16001837a.pdf/building-machines-that-learn-and-think-like-people.pdf){:target="_blank"}
 
 ニューラルネットワークが存在する限り，ニューラルネットワークに対する批判も存在する[@minsky69; @fodor88; @pinker88; @crick89; @Marcus1998; @marcus01]。
 本稿ではニューラルネットワークに批判的であるが，我々の目標は，その欠点にこだわるのではなく，むしろその成功に立脚することである。
@@ -62,21 +62,19 @@ codemirror_mime_type: text/x-cython -->
 ニューラルネットワークは通常，モデル構築よりもパターン認識を目指しているが，このような「モデルフリー」手法が，知覚や認知における遅いモデルベースの推論を加速する方法について議論する (4.3.1 節)。
 これらの推論におけるパターン認識を学習することで，コストのかかる中間ステップを経ることなく，推論の出力を予測することができる。
 「推論を行うことを学習する」ニューラルネットワークと，豊富なモデル構築学習機構を統合することは，人間の心がなぜこれほど速く，これほどうまく世界を理解できるのかを説明する有望な方法を提供する。
-
-<!-- また，強化学習 (4.3.2 節)  におけるモデルベースとモデルフリーの手法の統合についても述べる。
+また，強化学習 (4.3.2 節)  におけるモデルベースとモデルフリーの手法の統合についても述べる。
 いったん課題の因果モデルが学習されると，人間はそのモデルを用いて，将来の報酬を最大化する行動系列を計画することができる。
 モデル構築の成功の尺度として報酬が用いられる場合，これはモデルベースの強化学習として知られている。
 しかし，複雑なモデルでのプランニングは面倒で時間がかかるため，スピードと精度のトレードオフはリアルタイム制御には不向きである。
 対照的に，現在の深層強化学習の実体化など，モデルを用いない強化学習アルゴリズムは，高速な制御をサポートするが，柔軟性や場合によっては精度を犠牲にする。
 我々は，人間がモデルベースとモデルフリーの学習アルゴリズムを競争的・協調的に組み合わせ，これらの相互作用がメタ認知処理によって監督されているという証拠をレビューする。
-人間のような洗練された強化学習は，AI 系ではまだ実現されていないが，認知的アプローチと工学的アプローチのクロストークが特に有望な分野である。 -->
-</div>
-</center>
+人間のような洗練された強化学習は，AI 系ではまだ実現されていないが，認知的アプローチと工学的アプローチのクロストークが特に有望な分野である。
 
-* [Higgins+2018 階層的視覚的概念の学習 SCAN: Learning Hierarchical Compositional Visual Concepts](https://openreview.net/forum?id=rkN2Il-RZ){:target="_blank"}
+
+### [Higgins+2018 階層的視覚的概念の学習 SCAN: Learning Hierarchical Compositional Visual Concepts](https://openreview.net/forum?id=rkN2Il-RZ){:target="_blank"}
 
 <center>
-<div style="width:77%;background-color:lavender;text-align:left">
+<div style="width:88%;background-color:cornsilk;text-align:left">
 
 一見無限に見える自然界の多様性は，物理学や化学の法則のような，比較的小さな首尾一貫したルールの集合から生じている。
 我々は，これらの規則が，主に教師なしの経験を通じて発見され，抽象的な概念として表現される規則性を生み出すと推測している。
@@ -91,7 +89,7 @@ SCAN は，教師無しで発見される分離された視覚的プリミティ
 
 <center>
 <img src="/2023assets/2018Higgins_SCAN_fig1.svg" width="66%">
-<div style="background-color:cornsilk;width:77%;text-algin:left">
+<div style="background-color:lavender;width:88%;text-algin:left">
 
 図 1：物体識別 (I)，物体色 (O)，床色 (F)，壁色 (W) の 4 つの視覚的プリミティブのサブセットに基づいて構築された暗黙の概念階層の概略図 (この例では，情景生成に必要な他の視覚的プリミティブは無視されている)。
 概念は暗黙の階層を形成し，それぞれの親はその子や元の視覚的プリミティブの集合を抽象化したものである (視覚的プリミティブの概念を定義する集合の値は太字の大文字で示されている)。
@@ -106,7 +104,7 @@ Given certain nodes in the concept hierarchy, one can traverse the other nodes u
 
 <center>
 <img src="/2023assets/2017Higgins_SCAN_fig1ja_.svg" width="66%">
-<div style="width:88%;background-color:cornsilk;text-align:left">
+<div style="width:88%;background-color:lavender;text-align:left">
 (A) SCAN モデルの構成図。
 (B) SCAN の損失関数の余分な KL 項のモードカバレッジ。
 各青色モードは，画像 $x_ {i}$ が与えられたときに推定される視覚的潜在分布 $q(z^ {k}_  {x}\vert x_ {i})$ に対応する。
@@ -124,10 +122,22 @@ C:beta-VAEDAE model architecture.-->
 2017Higgins_SCAN Fig. 1, 2 を改変
 </div></center>
 
+### NIC (Neural Caption Generation)
+
+<center>
+<img src="/assets//17VISIOn-slide-WBE2-jumbo.jpg" width="49%"><br/>
+- 人間: A group of men playing Frisbee in the park.
+- 機械: A group of young people playing a game of Frisbee.
+</center>
+
+<img src="/assets/2014Vinyals_Fig5_left.jpg" width="44%">
+<img src="/assets/2014Vinyals_Fig5_right.jpg" width="44%"><br/>
+Vinyals et. al (2014) より
+
+### 二段階仮説
 
 * [線分二等分課題 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/2022notebooks/2022_1210bit_line_bisection.ipynb){:target="_blank"}
 
-## 2 経路仮説
 - 腹側経路 ventral pathways (what 経路)
 - 背側経路 dorsan pathways (where 経路)
 
