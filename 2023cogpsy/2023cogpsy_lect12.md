@@ -21,13 +21,77 @@ $$
 codemirror_mime_type: text/x-cython -->
 <!-- <link href="/css/asamarkdown.css" rel="stylesheet"> -->
 
-* [Lake+2017 Building machines that learnand think like people](https://www.cambridge.org/core/services/aop-cambridge-core/content/view/A9535B1D745A0377E16C590E14B94993/S0140525X16001837a.pdf/building-machines-that-learn-and-think-like-people.pdf)
-* [Higgins+2018 階層的視覚的概念の学習 SCAN: Learning Hierarchical Compositional Visual Concepts](https://openreview.net/forum?id=rkN2Il-RZ)
+* [Lake+2017 人間のように考える機械を作る Building machines that learned think like people](https://www.cambridge.org/core/services/aop-cambridge-core/content/view/A9535B1D745A0377E16C590E14B94993/S0140525X16001837a.pdf/building-machines-that-learn-and-think-like-people.pdf){:target="_blank"}
+
+ニューラルネットワークが存在する限り，ニューラルネットワークに対する批判も存在する[@minsky69; @fodor88; @pinker88; @crick89; @Marcus1998; @marcus01]。
+本稿ではニューラルネットワークに批判的であるが，我々の目標は，その欠点にこだわるのではなく，むしろその成功に立脚することである。
+我々は，より人間に近い学習機械を開発する上で，ニューラルネットワークの役割を考えている：
+ニューラルネットワークは，勾配ベースの学習と潜在変数の深い階層の力を実証し，多くの種類の機械学習問題に説得力のある方法で適用されてきた。
+ニューラルネットワークはまた，認知の計算モデルとしても豊かな歴史を持っている[@Rumelhart1986; @McClelland1986]。
+より基本的なレベルでは，学習の計算モデルは最終的に脳の生物学的神経回路網に基づかなければならない。
+
+鍵となる概念
+
+1. 発達段階の スタートアップ・ソフトウェア，すなわち発達初期に存在する認知能力。
+ある要素が発達の初期に存在する場合，それは子供や大人がこの論文で取り上げたような種類の課題を学ぼうとするはるか以前から活動的であり，利用可能であることは間違いない。
+これは，早期から存在する成分が，それ自体が経験から学習されたものであるか，生得的に存在するものであるかに関係なく当てはまる。
+また，早期に存在する要素ほど，その後の発達や学習の基礎となる可能性が高い。
+ここでは，2 つの発展的なスタートアップ・ソフトウェアに焦点を当てる (両者のレビューについては Wellman&Gelman1992 参照)。
+
+   1. 直感的物理学 (4.1.1 節)：乳幼児は原始的な物体概念を持っており，これによって物体を経時的に追跡し，物理的にありえない軌跡を割り引くことができる。
+例えば，乳幼児は物体が時間と共に持続すること，そして物体が堅固で首尾一貫していることを知っている。
+このような一般原則を備えていれば，人はより早く学習し，より正確な予測をすることができる。
+課題が新しくなっても，物理学の仕組みは変わらない。
+   2. 直観的心理学である (4.1.2 節) ：
+幼児は，他人が目標や信念のような心的状態を持っていることを理解し，この理解が学習や予測を強く制約する。
+専門家が新しいビデオゲームをプレイするのを見ている子供は，アバターが主体性を持ち，罰を避けながら報酬を得ようとしていると推測できる。
+この推論は直ちに他の推論を制約し，子どもはどのような物体が善で，どのような物体が悪なのかを推論できるようになる。
+このような推論は，新しい課題の学習をさらに加速させる。
+2. 学習
+学習には様々な観点があるが，我々はモデル構築を人間レベルの学習の特徴，つまり世界の因果モデルの構築を通して観察されたデータを説明することだと考えている (4.2.2 節)。
+この観点に基づけば，直観的な物理学や心理学の初期の現在の能力も，世界の因果モデルである。(4.2.2 節)
+学習の主な仕事は，これらのモデルを拡張し，充実させ，他の領域の類似した因果構造理論を構築することである。
+機械学習における最先端のアルゴリズムに比べ，人間の学習はその豊かさと効率性で際立っている。
+子どもたちは，まばらに観測された事象の根本的な原因を解明し，その知識をデータの少なさをはるかに超えるために利用する能力と欲求を持っている。
+人は非常に限られた量の経験から，このような豊かな構造を持つモデルを学習することができるというのは，逆説的に思えるかもしれない。
+我々は，**構成性** と **学ぶことを学ぶこと** が，この種の迅速なモデル学習を可能にする要素であることを示唆している (4.2.1 節と 4.2.3 節)。
+3. 心が構築した豊かなモデルが，リアルタイムでどのように実行に移されるか (4.3 節)。
+我々の知覚と行動の速さには目を見張るものがある。
+人は斬新な情景をほんの一瞬で理解し，斬新な発話を口に出して聞くのにかかる時間よりもわずかな時間で理解することができる。
+マシンビジョンや音声システムにニューラルネットワークを使用する重要な動機は，脳と同じように素早く反応することである。
+ニューラルネットワークは通常，モデル構築よりもパターン認識を目指しているが，このような「モデルフリー」手法が，知覚や認知における遅いモデルベースの推論を加速する方法について議論する (4.3.1 節)。
+これらの推論におけるパターン認識を学習することで，コストのかかる中間ステップを経ることなく，推論の出力を予測することができる。
+「推論を行うことを学習する」ニューラルネットワークと，豊富なモデル構築学習機構を統合することは，人間の心がなぜこれほど速く，これほどうまく世界を理解できるのかを説明する有望な方法を提供する。
+
+<!-- また，強化学習 (4.3.2 節)  におけるモデルベースとモデルフリーの手法の統合についても述べる。
+いったん課題の因果モデルが学習されると，人間はそのモデルを用いて，将来の報酬を最大化する行動系列を計画することができる。
+モデル構築の成功の尺度として報酬が用いられる場合，これはモデルベースの強化学習として知られている。
+しかし，複雑なモデルでのプランニングは面倒で時間がかかるため，スピードと精度のトレードオフはリアルタイム制御には不向きである。
+対照的に，現在の深層強化学習の実体化など，モデルを用いない強化学習アルゴリズムは，高速な制御をサポートするが，柔軟性や場合によっては精度を犠牲にする。
+我々は，人間がモデルベースとモデルフリーの学習アルゴリズムを競争的・協調的に組み合わせ，これらの相互作用がメタ認知処理によって監督されているという証拠をレビューする。
+人間のような洗練された強化学習は，AI 系ではまだ実現されていないが，認知的アプローチと工学的アプローチのクロストークが特に有望な分野である。 -->
+</div>
+</center>
+
+* [Higgins+2018 階層的視覚的概念の学習 SCAN: Learning Hierarchical Compositional Visual Concepts](https://openreview.net/forum?id=rkN2Il-RZ){:target="_blank"}
+
+<center>
+<div style="width:77%;background-color:lavender;text-align:left">
+
+一見無限に見える自然界の多様性は，物理学や化学の法則のような，比較的小さな首尾一貫したルールの集合から生じている。
+我々は，これらの規則が，主に教師なしの経験を通じて発見され，抽象的な概念として表現される規則性を生み出すと推測している。
+このような表現が構成的で階層的であれば，指数関数的に大きな新しい概念の集合に組み替えることができる。
+本稿では，視覚領域におけるこのような抽象概念を学習するための新しいフレームワークである SCAN (Symbol-Concept Association Network) について述べる。
+SCAN は，教師無しで発見される分離された視覚的プリミティブを基礎とし，高速な記号関連付けを通して概念を学習する。
+最新のマルチモーダル生成モデルのベースラインとは異なり，我々のアプローチは記号と画像のペアリングをほとんど必要とせず，記号表現の形式を仮定しない。
+一旦学習されれば，SCAN はマルチモーダルな双方向推論が可能であり，記号記述から多様な画像サンプルを生成し，またその逆も可能である。
+また，記号命令や学習された論理的組み換え操作によって，視覚的概念の暗黙の階層を横断し，操作することができる。
+このような操作により，SCAN は学習データの分布から離れ，以前に学習した概念の記号的な指示による組み替えを通じて，新しい視覚的概念を想像することができる。
+</div></center>
 
 <center>
 <img src="/2023assets/2018Higgins_SCAN_fig1.svg" width="66%">
-</center>
-<div style="background-color:lavender;width:77%;algin:left">
+<div style="background-color:cornsilk;width:77%;text-algin:left">
 
 図 1：物体識別 (I)，物体色 (O)，床色 (F)，壁色 (W) の 4 つの視覚的プリミティブのサブセットに基づいて構築された暗黙の概念階層の概略図 (この例では，情景生成に必要な他の視覚的プリミティブは無視されている)。
 概念は暗黙の階層を形成し，それぞれの親はその子や元の視覚的プリミティブの集合を抽象化したものである (視覚的プリミティブの概念を定義する集合の値は太字の大文字で示されている)。
@@ -38,8 +102,30 @@ Concepts form an implicit hierarchy, where each parent is an abstraction over it
 In order to generate an image that corresponds to a concept, one has to fill in values for the factors that got abstracted away (represented as “_”), e.g. by sampling from their respective priors.
 Given certain nodes in the concept hierarchy, one can traverse the other nodes using logical operations. -->
 <!-- See Sec.3 for our formal definition of concepts. -->
-</div>
+</div></center>
 
+<center>
+<img src="/2023assets/2017Higgins_SCAN_fig1ja_.svg" width="66%">
+<div style="width:88%;background-color:cornsilk;text-align:left">
+(A) SCAN モデルの構成図。
+(B) SCAN の損失関数の余分な KL 項のモードカバレッジ。
+各青色モードは，画像 $x_ {i}$ が与えられたときに推定される視覚的潜在分布 $q(z^ {k}_  {x}\vert x_ {i})$ に対応する。
+黄色い分布は学習された概念的潜在分布 $q(z^ {k}_ {y})$ に対応する。
+特定の生成因子に対して高い変動性を持つ視覚的事例，例えばリンゴの事例を見るときの様々な照明条件，が提示されたとき，データ生成因子に対する事前分布に近い，対応する概念潜在量 $q(z^ {k}_ {y})$ の広範な分布を学習することが重要である。
+これは，モードを選ぶ逆 KL ダイバージェンス $D_ {KL}(z_ {y}\vert\vert z_ {x})$ ではなく，順 KL ダイバージェンス $D_{KL}(z_ {x}\vert\vert z_ {y})$ により達成することができる。
+C: $\beta-\text{VAE}_{\text{DAE}}$ モデルアーキテクチャ。
+<!-- Figure 1: A: SCAN model architecture.
+B: Mode coverage of the extra KL term of the SCAN loss function.
+Each blue mode corresponds to an inferred visual latent distribution q(zk xjxi) given an image xi.
+The yellow distribution corresponds to the learnt conceptual latent distribution q(zk y ).
+When presented with visual examples that have high variability for a particular generative factor, e.g. various lighting conditions when viewing examples of apples, it is important to learn a broad distribution for the corresponding conceptual latent q(zk y ) that is close to the prior distribution for the data generative factor.
+This can be achieved through forward KL divergence DKL(zxjjzy), rather than the mode picking reverse KL divergence DKL(zyjjzx).
+C:beta-VAEDAE model architecture.-->
+2017Higgins_SCAN Fig. 1, 2 を改変
+</div></center>
+
+
+* [線分二等分課題 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/2022notebooks/2022_1210bit_line_bisection.ipynb){:target="_blank"}
 
 ## 2 経路仮説
 - 腹側経路 ventral pathways (what 経路)
