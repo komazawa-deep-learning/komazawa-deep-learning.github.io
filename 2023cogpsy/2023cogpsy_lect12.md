@@ -137,7 +137,8 @@ Vinyals et. al (2014) より
 ### 二段階仮説
 
 * [線分二等分課題 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/2022notebooks/2022_1210bit_line_bisection.ipynb){:target="_blank"}
-
+* [VAE のデモ <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2023notebooks/2023_1215vae.ipynb)
+*
 - 腹側経路 ventral pathways (what 経路)
 - 背側経路 dorsan pathways (where 経路)
 
