@@ -191,10 +191,10 @@ $$
 \text{CEE}=-\sum_{j,c}y_{j,c}\log_2\left(f(x_{j,c})\right)+\left(1-y_{j,c}\right)\log_2\left(1-f(x_{j,c})\right),
 $$
 
-[@1995GirosiPoggio]
+<!-- [@1995GirosiPoggio]
+- See https://ermongroup.github.io/cs228-notes/inference/variational/ -->
 
-- See https://ermongroup.github.io/cs228-notes/inference/variational/
-
+頻用される目的関数としては，次式のような形が挙げられる。
 
 $$
 H[f]=\sum_{i=1}^{N}
@@ -209,20 +209,26 @@ $P$ は事前知識を表す。 [GirosiPoggio1990]
 $$
 \hat{P}Pf\left(\mathbf{x}\right)=\frac{1}{\lambda}\sum_{i=1}^N\left(y_i-f\left(\mathbf{x}\right)\right)\,\delta\left(\mathbf{x}-\mathbf{x}_i\right),
 $$
-ここで $\hat{P}$ は微分演算子 $P$ の随伴演算子であり，微分方程式，右辺の
 
-上記は偏微分方程式であり，その解は微分作用素 $G$ のグリーン関数で与えられるカーネルを持つ右辺の積分変換，すなわち以下の分布微分方程式を満たす関数 $G$ として書けることがよく知られている：
+ここで $\hat{P}$ は微分演算子 $P$ の随伴演算子であり，微分方程式，右辺の$H$ のデータ項の $f$ に関する関数微分から来ている。
+
+上式は偏微分方程式であり，その解は微分作用素 $G$ のグリーン関数で与えられるカーネルを持つ右辺の積分変換，すなわち以下の分布微分方程式を満たす関数 $G$ として書けることがよく知られている：
 <!-- The above is a partial differential equation, and it is well known that its solution can be written as the integral transformation of its right side with a kernel given by the Green's function of the differential operator $\hat{P}P$, that is the function $G$ satisfying the following distributional differential equation: -->
-$$\tag{4}
+
+$$
 \hat{P}P\,G\left(\mathbf{x};y\right)=\delta\left(\mathbf{x}-y\right).
 $$
-(4) 式にデルタ関数が現れるので，積分変換は離散和になり，$f$ は次のように書ける:
+
+上式右辺にデルタ関数が現れるので，積分変換は離散和になり，$f$ は次のように書ける:
 <!-- Because of the delta functions appearing in (4) the integral transformation becomes a discrete sum and $f$ can then be written as -->
+
 $$
 f(\mathbf{x})=\frac{1}{\lambda}\sum_{i=1}^N(y_i-f(\mathbf{x}_i))
 G(\mathbf{x};\mathbf{x}_i).
 $$
-式 (5) は，正則化問題の解が滑らかな関数の空間の $N$ 次元部分空間にあることを示している。
+
+この式は，正則化問題の解が滑らかな関数の空間の $N$ 次元部分空間にあることを示している。
+
 この部分空間の基底は $N$ 個の関数 $G(\mathbf{x};mathbf{x}_j)$ によって与えられる。
 以下では，$G(\mathbf{x};mathbf{x}_j)$ を点 $\mathbf{x}_i$ を「中心とする」グリーン関数，点$\mathbf{x}_i$ を展開の「中心」と呼ぶ。
 この理由は，通常グリーン関数は遷移的に不変であり，$G=G(\mathbf{x}-\mathbf{x}_i)$ であり，この場合 $G(\mathbf{x})$ と $G(\mathbf{x}-\mathbf{x}_i)$ とは，原点に $\mathbf{x}_i$ を写す座標変換によって等価になることにある。
@@ -231,12 +237,12 @@ A basis for this subspace is given by the $N$ functions $G(\mathbf{x};\mathbf{x}
 In the following we will refer to $G(\mathbf{x}; \mathbf{x}_j)$ as to the Green's function "centered" at the point $\mathbf{x}_i$, and to the points $\mathbf{x}_i$ as to the "centers" of the expansion.
 The reason for this lies in the fact that usually the Green's function is transitionally invariant, that is $G=G(\mathbf{x}-\mathbf{x}_i)$, and in this case $G(\mathbf{x})$ and $G(\mathbf{x}-\mathbf{x}_i)$ are equivalent modulo a coordinates translation that maps $\mathbf{x}_i$ in the origin. -->
 
-R. Courant and D. Hilbert, Methods of Mathematica/Physics, Vol. 2. Interscience, London, England, 1962.
+<!-- R. Courant and D. Hilbert, Methods of Mathematica/Physics, Vol. 2. Interscience, London, England, 1962.
 where $c$, which is related to $P_d(d)$, depens only on $d$.
 
-物理学の場合 $\lambda$ が定まる，あるいは意味を持つ場合があるが，機械学習，ニューラルネットワークの場合定まるとはかぎらない。ハイパーパラメータとして扱われる場合が多い。
+物理学の場合 $\lambda$ が定まる，あるいは意味を持つ場合があるが，機械学習，ニューラルネットワークの場合定まるとはかぎらない。ハイパーパラメータとして扱われる場合が多い。 -->
 
-<center>
+<!-- <center>
 <img src="/2023assets/2018Tschannen_Fig1.svg" style="width:74%"><br/>
 <img src="/2023assets/2018Tschannen_Fig2.svg" style="width:74%"><br/>
-</center>
+</center> -->
