@@ -20,6 +20,7 @@ $$
 <link href="/assets/css/asamarkdown.css" rel="stylesheet">
 
 * [DaSiC ワークショップ 12月23日開催](https://sites.google.com/view/dasic7-2023/workshop){:target="_blank"}
+* [DaSiC ワークショップ プロジェクトページ](https://project-ccap.github.io/2023DaSiC/){:target="_blank"}
 
 ## [世界モデル](https://worldmodels.github.io/){:target="_blank"}
 
@@ -55,5 +56,5 @@ Ancient drawing (1990) of a RNN-based controller interacting with an environment
 
 ## マルチモーダルインテグレーション，マルチタスク，トップダウン流とボトムアップ流
 
-* [系列探索と逆行流: 視覚野における双方向情報フローの計算モデル](2021Ullman_bu_td_ja.pdf)
-* [ボトムアップ・トップダウンの反復処理による画像解釈](1995Ullman_bidirectional_cortex_ja.pdf)
+* [系列探索と逆行流: 視覚野における双方向情報フローの計算モデル](/2023cogpsy/2021Ullman_bu_td_ja.pdf)
+* [ボトムアップ・トップダウンの反復処理による画像解釈](/2023cogpsy/1995Ullman_bidirectional_cortex_ja.pdf)
