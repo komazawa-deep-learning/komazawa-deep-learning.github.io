@@ -155,7 +155,39 @@ Therefore, in contrast with standard models, the entire computation is carried o
 <img src="/2023assets/MTL_schematic.png" width="49%">
 </div>
 
+**カウンター Hebbian 学習**<br/>
 
+1. BU ネットワークを実行し，入力 $x$ を非線形活性化関数を用いて出力 $y$ へと写像
+2. 誤差信号を計算
+3. 誤差信号を用いて TD ネットワークを GaLu (非線形性なし) のバイアスブロックモードで実行
+4. Counter-Hebb 学習則に従い，BU と TD パラメータの両方を更新
+
+<!-- 1. Run BU network to map the input x to an output y with non-linear activation function.
+2. Compute error signals.
+3. Run the TD network using the error signals, in a bias-blocking mode with GaLu (no non-lineality).
+4. Update both the BU and TD parameters according to the Counter-Hebb learning rule. -->
+
+**マルチタスク学習**<!--Multi-task learning--><br/>
+
+1. 課題ヘッドを使って，課題 $t$ を入力とする TD ネットワークを ReLU で実行する。
+2. BU ネットワークを実行し，入力 $x$ を出力 $y$ に ReLU と GaLU の合成で対応付ける。
+3. 誤差信号，すなわち BU 出力に対する損失 $L$ の勾配を計算： $\displaystyle -\frac{\partial L}{\partial y}$
+4. 誤差信号を入力として，GaLU (非線形性なし) のバイアスブロックモードで TD ネットワークを実行
+5. すべての重みを Counter-Hebb 学習則に従って更新する (課題ヘッドは除く，6 節参照)。
+
+<!-- 1. Run the TD network with task t as input with ReLU, using the task head.
+2. Run the BU network to map the input x to an output y with a composition of ReLU and GaLU.
+3. Compute error signals, i.e. the gradients of a loss L with respect to the BU output: $\displaystyle -\frac{\partial L}{\partial y}$
+4. Run the TD network using the error signals as inputs, in a bias-blocking mode with GaLU (no non-lineality).
+5. Update all the weights according to th Counter-Hebb learning rule. (Excluding the task head, see section 6) -->
+
+
+## マルチモーダルインテグレーション，マルチタスク，トップダウン流とボトムアップ流 -->
+
+* [系列探索と逆行流: 視覚野における双方向情報フローの計算モデル](/2023cogpsy/2021Ullman_bu_td_ja.pdf)
+* [ボトムアップ・トップダウンの反復処理による画像解釈](/2023cogpsy/1995Ullman_bidirectional_cortex_ja.pdf)
+
+<!--
 ## [世界モデル](https://worldmodels.github.io/){:target="_blank"}
 
 先週取り上げた変分符号化器モデルの応用として，[世界モデル](https://arxiv.org/abs/1803.10122) を取り上げます。
@@ -179,16 +211,12 @@ Therefore, in contrast with standard models, the entire computation is carried o
 <img src="/2023assets/world_models_1990_feedback.jpeg" style="width:44%;"/>
 <!-- <img src="/2023assets/world_models_1990.jpeg" style="display: block; margin: auto; width: 44%;"/>
 <img src="/2023assets/world_models_1990_feedback.jpeg" style="display: block; margin: auto; width: 44%;"/> -->
-</div>
+<!-- </div>
 <div style="text-align: center;">
-世界 RNN モデルを内蔵したコントローラ。
-
-環境と相互作用する RNN ベースのコントローラの図 (Schmithuber1990)
+世界 RNN モデルを内蔵したコントローラ。 -->
+<!--
+環境と相互作用する RNN ベースのコントローラの図 (Schmithuber1990) -->
 <!-- A controller with internal RNN model of the world.
 Ancient drawing (1990) of a RNN-based controller interacting with an environment. [20] -->
-</div>
+<!-- </div> -->
 
-## マルチモーダルインテグレーション，マルチタスク，トップダウン流とボトムアップ流
-
-* [系列探索と逆行流: 視覚野における双方向情報フローの計算モデル](/2023cogpsy/2021Ullman_bu_td_ja.pdf)
-* [ボトムアップ・トップダウンの反復処理による画像解釈](/2023cogpsy/1995Ullman_bidirectional_cortex_ja.pdf)
