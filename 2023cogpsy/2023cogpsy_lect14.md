@@ -181,8 +181,7 @@ Therefore, in contrast with standard models, the entire computation is carried o
 4. Run the TD network using the error signals as inputs, in a bias-blocking mode with GaLU (no non-lineality).
 5. Update all the weights according to th Counter-Hebb learning rule. (Excluding the task head, see section 6) -->
 
-
-## マルチモーダルインテグレーション，マルチタスク，トップダウン流とボトムアップ流 -->
+### 文献
 
 * [系列探索と逆行流: 視覚野における双方向情報フローの計算モデル](/2023cogpsy/2021Ullman_bu_td_ja.pdf)
 * [ボトムアップ・トップダウンの反復処理による画像解釈](/2023cogpsy/1995Ullman_bidirectional_cortex_ja.pdf)
