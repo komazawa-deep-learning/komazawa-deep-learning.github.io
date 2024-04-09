@@ -6,7 +6,8 @@ layout: home
 <link href="/css/asamarkdown.css" rel="stylesheet">
 <div style="text-align:right">
 <!-- <font size="+1" color="navy"><strong>人工知能</strong></font><br/><br/> -->
-<img src="/assets/header_logo.png" sytle="width:09%">
+<img src="/2024assets/2024ai_qrcode.png" style="width:19%">
+<!-- <img src="/assets/header_logo.png" sytle="width:09%"> -->
 </div>
 
 <div align='right'>
