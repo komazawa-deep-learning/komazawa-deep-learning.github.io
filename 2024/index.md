@@ -30,13 +30,13 @@ Appache 2.0 license<br/><br/>
 - [キーワード](#キーワード)
 - [履修にあたっての注意事項](#履修にあたっての注意事項)
 - [教科書/テキスト](#教科書テキスト)
+- [授業で使用するソフトウェア](#授業で使用するソフトウェア)
 - [本授業で獲得できる知識，メリット](#本授業で獲得できる知識メリット)
 - [Q and A](#q-and-a)
 - [関連授業](#関連授業)
 - [関連用語](#関連用語)
 - [関連分野](#関連分野)
-- [授業で使用するソフトウェア](#授業で使用するソフトウェア)
-- [概要 人工知能 (AI) と人間の知性](#概要-人工知能-ai-と人間の知性)
+- [関連企業，団体](#関連企業団体)
 
 ---
 
@@ -163,6 +163,19 @@ Appache 2.0 license<br/><br/>
 - `深層学習教科書 ディープラーニング G 検定(ジェネラリスト) 公式テキスト`（監修：日本ディープラーニング協会, 共著, 翔泳社, 2018）
 - `人工知能学大事典` (人工知能学会編、共立出版 2017)
 
+# 授業で使用するソフトウェア
+
+以下に実習で使用する道具を挙げます。
+ただし，あらかじめインストールしておく必要があるアプリケーションソフトウェアは，最初に挙げてある Google Chrome だけです。
+
+- [Google Chrome](https://www.google.com/intl/ja_jp/chrome/): 駒澤大学のアカウントでログインしてください。
+日常的に使っているブラウザが，Edge や Safari である方も Chrome をインストールしておいてください。
+理由は下に挙げた Google Colaboratory の動作が一貫しない場合があるからです。
+- [Google Colaboratory](https://colab.research.google.com/): Web ブラウザ上で動作する Python の実行環境です。
+クラウドコンピューティング環境であり，したがって，PC にインストールする必要はありません。
+- [PyTorch](https://pytorch.org/): Python 上で動作する深層学習のためのライブラリ，あるいはフレームワークと呼ばれるプログラムの集まりです。
+- [Python](https://www.python.org/) 令和 7 年から情報 I が [センター試験科目](https://www.dnc.ac.jp/kyotsu/shiken_jouhou/r7ikou/r7mondai.html){:target="_blank"} ([高等学校情報科 情報 I 教員研修用教材(本編)](https://www.mext.go.jp/a_menu/shotou/zyouhou/detail/1416756.htm){:target="_blank"}) になるので，Python, R の知識は常識となるかも知れません。
+
 
 # 本授業で獲得できる知識，メリット
 
@@ -271,24 +284,28 @@ Appache 2.0 license<br/><br/>
 
 心理学 (知覚, 精神物理学, 認知, 神経心理学, 学習), 認知科学, 神経科学, 精神医学, 生物学
 
-だが，これでニューウェルの疑問に答えられるのだろうか？
+<!-- だが，これでニューウェルの疑問に答えられるのだろうか？
 だが，人工知能 は知的機能をコンピュータで作ろうとする構成論的研究。
-浅川にはむしろ人工知能研究者の方が，人間の心を真摯に向き合っているようにも見える。
-
-# 授業で使用するソフトウェア
-
-以下に実習で使用する道具を挙げます。
-ただし，あらかじめインストールしておく必要があるアプリケーションソフトウェアは，最初に挙げてある Google Chrome だけです。
-
-- [Google Chrome](https://www.google.com/intl/ja_jp/chrome/): 駒澤大学のアカウントでログインしてください。
-日常的に使っているブラウザが，Edge や Safari である方も Chrome をインストールしておいてください。
-理由は下に挙げた Google Colaboratory の動作が一貫しない場合があるからです。
-- [Google Colaboratory](https://colab.research.google.com/): Web ブラウザ上で動作する Python の実行環境です。
-クラウドコンピューティング環境であり，したがって，PC にインストールする必要はありません。
-- [PyTorch](https://pytorch.org/): Python 上で動作する深層学習のためのライブラリ，あるいはフレームワークと呼ばれるプログラムの集まりです。
-- [Python](https://www.python.org/) 令和 7 年から情報 I が [センター試験科目](https://www.dnc.ac.jp/kyotsu/shiken_jouhou/r7ikou/r7mondai.html){:target="_blank"} ([高等学校情報科 情報 I 教員研修用教材(本編)](https://www.mext.go.jp/a_menu/shotou/zyouhou/detail/1416756.htm){:target="_blank"}) になるので，Python, R の知識は常識となるかも知れません。
+浅川にはむしろ人工知能研究者の方が，人間の心を真摯に向き合っているようにも見える。 -->
 
 
+# 関連企業，団体
+
+* [エクサウィザーズ](https://exawizards.com/){:target="_blank"}
+* [サイトビジット](https://sight-visit.com/){:target="_blank"}
+* [Gauss](https://gauss-ai.jp/){:target="_blank"}
+* [KUNO](https://kuno-corp.com/company){:target="_blank"}
+* [AVILEN](https://avilen.co.jp/){:target="_blank"}
+* [スタンダード](https://standard-dx.com/){:target="_blank"}
+* [日本ディープラーニング協会](https://www.jdla.org/){:target="_blank"}
+
+- [ディープラーニング，ビッグデータ，機械学習](https://www.shin-yo-sha.co.jp/book/b455586.html)
+- [Pythonで体験する深層学習](https://www.coronasha.co.jp/np/isbn/9784339028515/)
+- [深層学習教科書 ディープラーニング G検定(ジェネラリスト)公式テキスト](https://www.amazon.co.jp/-/en/%E7%8C%AA%E7%8B%A9-%E5%AE%87%E5%8F%B8/dp/4798165948/)
+- [これ 1 冊で最短合格 ディープラーニングG検定ジェネラリスト 要点整理テキスト&問題集](https://www.shuwasystem.co.jp/book/9784798057309.html)
+
+
+<!--
 # 概要 人工知能 (AI) と人間の知性
 
 我々の持つ知性と AI とは，どのように関連するのだろうか。
@@ -306,7 +323,7 @@ chatGPT の背景に何があるのかを探ることは，人間の心に関心
 理解を深めるために，本授業では簡単な，コンピュータ実習を行います。
 実習にあたって，プログラミングの知識，数学の知識は不要です。必要に応じて，その都度必要な知識は解説を加えることで，知識の補完を行います。
 
-本授業を履修することで，ディープラーニング検定 (G検定)，データサイエンティスト検定，画像処理検定，統計検定などを受験する基礎知識を得ることが可能となリます。
+本授業を履修することで，ディープラーニング検定 (G検定)，データサイエンティスト検定，画像処理検定，統計検定などを受験する基礎知識を得ることが可能となリます。 -->
 
 <!-- 本授業では，毎回対面授業を行う予定です。ただし COVID19 感染状況次第でオンライン授業に切り替える可能性があります。
 履修者は，担当者からの連絡に注意するようにしてください。 -->
