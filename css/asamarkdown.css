@@ -1,3 +1,36 @@
+li {
+    font-family: 'Times New Roman', "Noto Sans Jp";
+    /* font-family: "Menlo", 'Times New Roman', Times, serif, 'Noto Sans Jp'; */
+    /* font-family: "Andale Mono", 'Times New Roman', Times, serif, 'Noto Sans Jp'; */
+    /* font-family: Georgia, 'Times New Roman', Times, serif, 'Noto Sans Jp'; */
+    /* font-family: Georgia, 'Times New Roman', Times, serif, 'Noto Serif Jp'; */
+    /* font-family: "Noto Serif Jp"; */
+    /* font-family: "Noto Sans Jp"; */
+    font-size: inherit;
+    font-weight: inherit;
+    /* line-height: 1.4; */
+    line-height: 1.6;
+    /* font-weight: normal; */
+    /* font-weight: bold; */
+    /* font-weight: normal; */
+    /* font-size: 12px; */
+    /* line-height: 1.2; */
+    /* line-height: 1.0; */
+    /* margin: 0;*/
+    margin: 0pt;
+    /*padding: 0; */
+    padding-top: 0pt;
+    padding-bottom: 0pt;
+    /* padding-top: 0px;
+    padding-bottom: 0px; */
+    padding: 0px;
+    /* padding: 4px; */
+    /* background-color: inherit; */
+    background-color: #fafaf0;
+}
+
+
+
 body {
     /* font-family: "Menlo", 'Times New Roman', Times, serif, 'Noto Sans Jp';*/
     /* font-family: "Menlo", "Noto Sans Jp";*/
@@ -218,8 +251,9 @@ figure > img {
 
 @media screen and (min-width: 914px) {
    body {
-      width: 1024px;
-#      width: 854px;
+      width: 2048px;
+      /* width: 1024px; */
+      /* width: 854px; */
       margin:0 auto;
    }
 }
