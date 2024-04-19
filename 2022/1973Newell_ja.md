@@ -1,20 +1,19 @@
 ---
+layout: default
 title: "心理実験で真実が分かるのか？"
 author: ニューウェル
 ---
+<link href="/css/asamarkdown.css" rel="stylesheet">
 
-<!-- # 心理実験で真実が分かるのか？ -->
+# 原題 YOU CAN'T PLAY 20 QUESTIONS WITH NATURE AND WIN: PROJECTIVE COMMENTS ON THE PAPERS OF THIS SYMPOSIUM
 
-<div class="author">
-原題 YOU CAN'T PLAY 20 QUESTIONS WITH NATURE AND WIN: PROJECTIVE COMMENTS ON THE PAPERS OF THIS SYMPOSIUM
+## Allen Newell (1973)
 
-Allen Newell
-</div>
-
-<!-- I am a man who is half and half. Half of me is half distressed and half confused. 
-Half of me is quite content and clear on where we are going. -->
 私は半分半分です。半分の私は悩んでいて、半分は混乱しています。
 半分は満足していて、我々がどこに向かっているのかはっきりしています。
+<!-- I am a man who is half and half.
+Half of me is half distressed and half confused.
+Half of me is quite content and clear on where we are going. -->
 
 この混乱した半分の気持ちは，今回のシンポジウムの論文にコメントするという任務によって引き起こされました。
 これは不思議なことです。
@@ -27,14 +26,14 @@ Bransford と Johnson のデモ（第8章）は特別なインパクトがある
 それだけではなく、ここで紹介されているほとんどすべての資料は、情報の処理者としての人間についての見解を深めるものであり、私の現在の理論的傾向と一致しています。
 私の半分は有頂天になっています。
 <!-- My confused and distressed half has been roused by my assignment to comment on the papers of this symposium.
-It is curious that it should be so. 
-We have just listened to a sample of the best work in current experimental psychology. 
-For instance, the beautifully symmetric RT data of Cooper and Shepard (Chapter 3) make me positively envious. 
+It is curious that it should be so.
+We have just listened to a sample of the best work in current experimental psychology.
+For instance, the beautifully symmetric RT data of Cooper and Shepard (Chapter 3) make me positively envious.
 It is a pleasure to watch Dave Klahr (Chapter 1) clean up the subitizing data.
-The demonstrations of Bransford and Johnson (Chapter 8) produce a special sort of impact. 
-And so it goes. 
-Furthermore, independent of the particular papers presented here, the speakers constitute a large proportion of my all-time favorite experimenters--Chase, Clark, Posner, Shepard. 
-Not only this, but almost all of the material shown here serves to further a view of man as a processor of information, agreeing with my current theoretical disposition. 
+The demonstrations of Bransford and Johnson (Chapter 8) produce a special sort of impact.
+And so it goes.
+Furthermore, independent of the particular papers presented here, the speakers constitute a large proportion of my all-time favorite experimenters--Chase, Clark, Posner, Shepard.
+Not only this, but almost all of the material shown here serves to further a view of man as a processor of information, agreeing with my current theoretical disposition.
 Half of me is ecstatic.  -->
 
 それでも，私は悩んでいます。
@@ -46,29 +45,28 @@ Half of me is ecstatic.  -->
 我々は，人間の複雑さに見合った力を持つ人間の科学を達成しただろうか？
 もしそうだとしたら、私が今あなたに与えたこれらの論文によって、どのようにしてそれが実現したのでしょうか。
 それとも、次の時間にまた新たな論文の割当を求めることになるのでしょうか。
-<!-- Still, I am distressed. I can illustrate it by the way I was going to start my comments, though I could not in fact bring myself to do so. 
-I was going to draw a line on the blackboard and, picking one of the speakers of the day at random, note on the line the time at which he got his PhD and the current time (in mid-career). 
-Then, taking his total production of papers like those in the present symposium, I was going to compute a rate of productivity of such excellent work. 
-Moving, finally, to the date of my chosen target's retirement, I was going to compute the total future additon of such papers to the (putative) end of this man's scientific career. 
-Then I was going to pose, in my role as discussant, a question: Suppose you had all those additional papers, just like those of today (except being on new aspects of the problem), where will psychology then be? 
-Will we have achieved a science of man ad e quate in power and commensurate with his complexity? 
-And if so, how will this have happened via these papers that I have just granted you? 
+<!-- Still, I am distressed. I can illustrate it by the way I was going to start my comments, though I could not in fact bring myself to do so.
+I was going to draw a line on the blackboard and, picking one of the speakers of the day at random, note on the line the time at which he got his PhD and the current time (in mid-career).
+Then, taking his total production of papers like those in the present symposium, I was going to compute a rate of productivity of such excellent work.
+Moving, finally, to the date of my chosen target's retirement, I was going to compute the total future additon of such papers to the (putative) end of this man's scientific career.
+Then I was going to pose, in my role as discussant, a question: Suppose you had all those additional papers, just like those of today (except being on new aspects of the problem), where will psychology then be?
+Will we have achieved a science of man ad e quate in power and commensurate with his complexity?
+And if so, how will this have happened via these papers that I have just granted you?
 Or will we be asking for yet another quota of papers in the next dollop of time? -->
 
 
-このようなアプローチは、特に来訪者に対してはかなり厳しいものがあります。 
-思わず「セイウチの時間」というサブタイトルをつけてしまいそうになったが、「鏡の国のアリス」をご存知の方にはお分かりいただけるだろう。 
-セイウチと大工は、カキの群れを招いて楽しい散歩をさせ、結局、昼食にしたのだ。
+このようなアプローチは、特に来訪者に対してはかなり厳しいものがあります。
+思わず「セイウチの時間」というサブタイトルをつけてしまいそうになったが「鏡の国のアリス」をご存知の方にはお分かりいただけるでしょう。
+セイウチと大工は、カキの群れを招いて楽しい散歩をさせ、結局、昼食にしました。
 そこで，私は別の方法を試してみようと思いました。
-<!-- Such an approach seems fairly harsh, expecially to visit upon visitors.  
-It almost made me subtitle my comments "The Time of the Walrus," as thos e of you who know their Alice Through the Looking Glass can appreciate.  
-The Walrus and the Carpenter invited a passel of oysters to take a pleasant walk with them -- and ended up having them for lunch. 
+<!-- Such an approach seems fairly harsh, expecially to visit upon visitors.
+It almost made me subtitle my comments "The Time of the Walrus," as thos e of you who know their Alice Through the Looking Glass can appreciate.
+The Walrus and the Carpenter invited a passel of oysters to take a pleasant walk with them -- and ended up having them for lunch.
 Thus, I thought I'd try a different way. -->
 
-訳注: 不思議の国のアリスの「セイウチと大工」の話の中で、セイウチはヤングオイスターをお腹いっぱい食べておきながら、カキが可哀想だと涙を流す
+訳注: 不思議の国のアリスの「セイウチと大工」の話の中で、セイウチは若いカキをお腹いっぱい食べておきながら，カキが可哀想だと涙を流す
 
-# 1. 発見
-<!-- Detection -->
+# 1. 発見<!-- Detection -->
 
 心理学は現象を扱うのが現在のスタイルである。
 身近なところでは，Cooper と Shepard が見かけの回転現象を，Posner (第 2 章) がコーディング現象を，Klahr がサブタイジング現象を，それぞれ扱っています。
@@ -76,11 +74,11 @@ Thus, I thought I'd try a different way. -->
 その数の多さには恐れ入るばかりです。
 図 1 は，私が数分で作成した，ほとんどすべてとは言えないいくつかのリストです。
 それぞれに名前を付けましたが，これは発信者としてではなく (私が書いているのは学術的なレビューではありませんから)，単に識別のための助けとして付けたものです。
-<!-- Psychology, in its current style of operation, deals with phenomena. 
-Looking just at the local scene, we have Cooper and Shepard dealing with the phenomenon of apparent rotation, Posner (Chapter 2) dealing with the phenomenon of coding, Klahr dealing with the phenomenon of subitizing, and so on. 
-There is, today, an amazing number of such phenomena that we deal with. 
-The number is so large it scares me. 
-Figure 1 gives a list of some -hardly all- that I generated in a few minutes. 
+<!-- Psychology, in its current style of operation, deals with phenomena.
+Looking just at the local scene, we have Cooper and Shepard dealing with the phenomenon of apparent rotation, Posner (Chapter 2) dealing with the phenomenon of coding, Klahr dealing with the phenomenon of subitizing, and so on.
+There is, today, an amazing number of such phenomena that we deal with.
+The number is so large it scares me.
+Figure 1 gives a list of some -hardly all- that I generated in a few minutes.
 With each I've associated a name or two, not so much as originators (for this is not a scholarly review I am writing), but simply as an aid to identification. -->
 
 
@@ -90,7 +88,7 @@ With each I've associated a name or two, not so much as originators (for this is
 
 1. 物理的な命名合わせの違い（Posner)
 2. 連続回転効果 (Shepard)
-3. サブイタイジング（Klahr)
+3. サブタイジング（Klahr)
 4. チェスのポジション知覚 (DeGroot)
 5. SIM のチャンク（Miller）
 6. 自由想起における再帰性効果（Murdock）
@@ -105,7 +103,7 @@ With each I've associated a name or two, not so much as originators (for this is
 15. 大規模な絵のセットで高い認識率 (Teghtsoonian and Shepard)
 16. 視覚的アイコン(Sperling)
 17. LIM 階層 (Collins and Quillian)
-18. LTIIの経済性の原則 (Collins and Qullian)
+18. LTII の経済性の原則 (Collins and Qullian)
 19. 二重聴取における逐次記憶と対の記憶 (Broadbent)
 20. 言語表現におけるクリックシフト (Ladefoged and Broad bent)
 21. 否定のための一貫した余分な遅延 (Wason)
@@ -117,7 +115,7 @@ With each I've associated a name or two, not so much as originators (for this is
 27. 後方連想 (EbenholtzとAsch)
 28. アインシュテルン Einstellung (Luchins)
 29. 機能的固定性 (Dunker)
-30. 2 状態の概念モデル (全学習か無学習か) （BowerとTrabasso）	
+30. 2 状態の概念モデル (全学習か無学習か) （BowerとTrabasso）
 31. 概念の難易度の順序付け：conjunct, disjunct, cond, ... (Hovland)
 32. 反転学習  (Kendlers)
 33. von Restorff 効果
@@ -128,7 +126,7 @@ With each I've associated a name or two, not so much as originators (for this is
 38. 月の錯視 (Boring)
 39. 知覚的錯覚（Mueller-Lyer 他）
 40. 曖昧な図形 (Necker cube)
-41. サイクロペアン知覚  (Julesz)
+41. 単眼視知覚  (Julesz)
 42. イメージと再生 (Pavia)
 43. 一定時間の学習 (Murdock, Bugelski)
 44. 確率的マッチング (Humphreys)
@@ -148,8 +146,7 @@ With each I've associated a name or two, not so much as originators (for this is
 58. 文章の変換が記憶に与える影響 (Miller)
 59. 概念学習における無関係な次元の効果 (Restle)
 
-<!-- 
-1. Physical - name match difference (Posner)
+<!--1. Physical - name match difference (Posner)
 2. Continuous rotation effect (Shepard)
 3. Subitizing (Klahr)
 4. Chess position perception (DeGroot)
@@ -178,7 +175,7 @@ With each I've associated a name or two, not so much as originators (for this is
 27. Backward associations (Ebenholtz and Asch)
 28. Einstellung (Luchins)
 29. Functional fixity (Dunker)
-30. Two-state concept models (all or none learning) (Bower and Trabasso)	
+30. Two-state concept models (all or none learning) (Bower and Trabasso)
 31. Concept difficulty ordering: conjunct, disjunct, cond, ... (Hovland)
 32. Reversal learning (Kendlers)
 33. von Restorff effect
@@ -212,30 +209,27 @@ With each I've associated a name or two, not so much as originators (for this is
 Fig. 1. A partial list of psychological phenomena and investigators (parentheses).
 <!-- </div> -->
 
-実験心理学では，実験的な発見によって生まれたこれらの現象をどのように扱っているのだろうか。 
+実験心理学では，実験的な発見によって生まれたこれらの現象をどのように扱っているのだろうか。
 私たちは新しい現象を発見するたびに，つまり PI リリースやマーキング，線形探索などを発見するたびに，それを調べるための実験を次々と行っています。
 何のための機能なのかを探り，その組み合わせによるバリエーションが実験室から流れてきます。
 図 1 の各項目は，そのような流れの中で生まれたものです。
 この図に掲載するためには，少なくとも 1 つの「第 2 の研究」を知っている必要がありましたが，一般的にはもっとたくさんあります。
 これらの現象は，私たちの実験生活にとって，まさに豊かな角笛を形成しており，角笛の螺旋自体が成長しながら，二次的な実験の必要性を注いでいるのです。
-<!-- How are these phenomena dealt with by Experimental Psychology, once brought into existence by some clever experimental discovery?  
-Every time we find a new phenomenon -- every time we find PI release, or marking, or linear search, or what -not - we produce a flurry of experiments to investigate it. 
-We explore what it is a function of, and the combinational variations flow from our experimental laboratories. 
-Each of the items in Figure 1 has been the source of such a flurry. 
-I insisted on knowing at least one "second study" in order to include the item in the figure; in general there are many more. 
-Those phenomena form a veritable horn of plenty for our experimental life -- the spiral of the horn itself growing all the while it pours forth the requirements for secondary experiments.
--->
+<!-- How are these phenomena dealt with by Experimental Psychology, once brought into existence by some clever experimental discovery?
+Every time we find a new phenomenon -- every time we find PI release, or marking, or linear search, or what -not - we produce a flurry of experiments to investigate it.
+We explore what it is a function of, and the combinational variations flow from our experimental laboratories.
+Each of the items in Figure 1 has been the source of such a flurry.
+I insisted on knowing at least one "second study" in order to include the item in the figure; in general there are many more.
+Those phenomena form a veritable horn of plenty for our experimental life -- the spiral of the horn itself growing all the while it pours forth the requirements for secondary experiments.-->
 
 私の説明を聞いて気を落とさないでください。
 このような豊富さは，活力の表れです。
 私たちは，中世のスコラ学者のように，いつまでも同じ小さな疑問を書き留めたり，注釈をつけたりしているわけではありません。
 現象は確実に現実であり，その現実を確認し，その性質を確認するための調査は確実に保証されています。
-<!-- Do not let my description put you off. 
-Such fe cundity is a sign of vitality. 
-We do not stay, like the medieval scholastics, forever notating and annotating the same small set of questions. 
-The phenomena are assuredly real, the investigations surely warrented to verify their reality and confirm their nature.
--->
-
+<!-- Do not let my description put you off.
+Such fe cundity is a sign of vitality.
+We do not stay, like the medieval scholastics, forever notating and annotating the same small set of questions.
+The phenomena are assuredly real, the investigations surely warrented to verify their reality and confirm their nature.-->
 
 また，心理学は，これらの現象を調査するためのガイドとして，自分がやっていることを概念化しようとします。
 どのようにしてそれを行うのでしょうか？
@@ -245,19 +239,19 @@ The phenomena are assuredly real, the investigations surely warrented to verify 
 これらの問題は，どちらか一方がある現象を特徴づけるか，あるいは説明するかという問題であり，実験的試みの大部分を推進する役割を果たしていると私は主張します。
 確かに，パラメトリックに表現された一群の現象に対して，ある種の定量的な説明を求めている，異なる系統の理論もいくつかあります。
 私はこれらの研究を否定したいわけではありませんが，私の懸念を払拭するほど現在の研究スタイルを支配しているわけでもありません。
-<!-- Psychology also attempts to conceptualize what it is doing, as a guide to investigating these phenomena. 
-How do we do that? Mostly, so it seems to me, by the construction of oppositions - usually binary ones. 
-We worry about nature versus nurture, about central versus peripheral, about serial versus parallel, and so on. 
-To bring this point home, I give in Figure 2 a list of oppositions that have currency in psychology. 
-These issues, I claim--about whether one or the other characterizes or explains some phenomenon - serve to drive a large part of the experimental endeavor. 
-There are, to be sure, a few strands of theory of a different stripe, where the theory strives for some kind of quantitative explanation over a class of phenomena, parametrically expressed. 
+<!-- Psychology also attempts to conceptualize what it is doing, as a guide to investigating these phenomena.
+How do we do that? Mostly, so it seems to me, by the construction of oppositions - usually binary ones.
+We worry about nature versus nurture, about central versus peripheral, about serial versus parallel, and so on.
+To bring this point home, I give in Figure 2 a list of oppositions that have currency in psychology.
+These issues, I claim--about whether one or the other characterizes or explains some phenomenon - serve to drive a large part of the experimental endeavor.
+There are, to be sure, a few strands of theory of a different stripe, where the theory strives for some kind of quantitative explanation over a class of phenomena, parametrically expressed.
 I do not wish to deny these studies; neither do they dominate the current style of research enough to quiet my concern. -->
 
 <!-- <div style="text-align: left; width:66%;background-color: cornsilk;"> -->
 
 1. 生まれ 対 育ち
 2. 末梢性 対 中枢性
-3、継続的な学習 対 全か無か学習
+3. 継続的な学習 対 全か無か学習
 4. 一過程 対 二過程の学習 (Harlow)
 5. 単一記憶 対 二重記憶 (STM-LD) (Melton)
 6. 集中練習 対 分散練習
@@ -316,10 +310,10 @@ I do not wish to deny these studies; neither do they dominate the current style 
 壮大な理論の高いレベルでは，発達を探究する，言語がどのように使用されるかを発見する，人間が情報の処理者であることを示す，強化の偶発性に対応するという観点からのみ人間が分析可能であることを示すなど，極めて一般的な関心事に駆られるかもしれません。
 しかし，私たちが実際の実験を行い，実際の説明を行うのは，この下の 2 つのレベルを媒介としているのです。
 実際，心理学はその方法論を明確にしたがる傾向があるため，「方向付けの態度」や「理論以前の処分」などの特別な用語を作り，理論の最高レベルと日々の科学の即時的な決定とを隔てる大きな距離を表現しています。
-<!-- I stand by my assertion that the two constructs that drive our current experimental style are (1) at a low level, the discovery and empirical exploration of phenomena such as are shown in Figure 1; 
-and (2) at the middle level, the formulation of questions to be put to nature that center on the resolution of binary oppositions. 
-At the high level of grand theory, we may be driven by quite general concerns: to explore development; to discover how language is used; to show that man is a processor of information; to show he is solely analysable in terms of contingencies of reinforcement responded to. 
-But it is through the mediation of these lower two levels that we generate our actual experiments and give our actual explanations. 
+<!-- I stand by my assertion that the two constructs that drive our current experimental style are (1) at a low level, the discovery and empirical exploration of phenomena such as are shown in Figure 1;
+and (2) at the middle level, the formulation of questions to be put to nature that center on the resolution of binary oppositions.
+At the high level of grand theory, we may be driven by quite general concerns: to explore development; to discover how language is used; to show that man is a processor of information; to show he is solely analysable in terms of contingencies of reinforcement responded to.
+But it is through the mediation of these lower two levels that we generate our actual experiments and give our actual explanations.
 Indeed, psychology with its penchant for being explicit about its methodology has created special terms, such as "orienting attitudes" and "pretheoretical dispositions," to convey the large distance that separates the highest levels of theory from the immediate decisions of day to day science.
 -->
 
@@ -331,11 +325,11 @@ Indeed, psychology with its penchant for being explicit about its methodology ha
 私たちが成熟した科学の特徴として挙げているように，心理学はその主題である人間の行動を包括することができるでしょうか？
 そして，もしそうならば，この現象と対立の連続によって，どのように変革が達成されるのでしょうか？
 以前と同じ質問ですが，リードの仕方が違うだけです。
-<!-- Accept this view, then for the moment, despite the fact that psychology like all human endeavors is too diverse to be forced into such an iron maiden. 
-Suppose that in the next thirty years we continued as we are now going. 
-Another hundred phenomena, give or take a few dozen, will have been discovered and explored. 
-Another forty oppositions will have been posited and their resolution initiated. 
-Will psychology then have come of age? 
+<!-- Accept this view, then for the moment, despite the fact that psychology like all human endeavors is too diverse to be forced into such an iron maiden.
+Suppose that in the next thirty years we continued as we are now going.
+Another hundred phenomena, give or take a few dozen, will have been discovered and explored.
+Another forty oppositions will have been posited and their resolution initiated.
+Will psychology then have come of age?
 Will it provide the kind of encompassing of its subject matter - the behavior of man - that we all posit as a characteristic of a mature science?
 And if so, how will the transformation be accomplished by this succession of phenomena and oppositions? Same question as before, just a different lead in.
 -->
@@ -343,8 +337,8 @@ And if so, how will the transformation be accomplished by this succession of phe
 私たちの対立候補の運命を検討し，すでに存在しているものを見て，彼らがどのように行動し，科学の流れを形成するかの指針としていますが，決して明確にはならないように思います。
 時代が下るにつれ，問題はますます混濁していきます。
 このように，心理学が徐々に明確になるような梯子を提供するどころか，このような形の概念構造は，むしろ問題の山が増え続けることにつながり，私たちはそれに飽きたり，そこから目をそらしたりしますが，本当の意味での解決には至りません。
-<!-- As I examine the fate of our oppositions, looking at those already in existence as a guide to how they fare and shape the course of science, it seems to me that clarity is never achieved. 
-Matters simply become muddier and muddier as we go down through time. 
+<!-- As I examine the fate of our oppositions, looking at those already in existence as a guide to how they fare and shape the course of science, it seems to me that clarity is never achieved.
+Matters simply become muddier and muddier as we go down through time.
 Thus, far from providing the rungs of a ladder by which psychology gradually climbs to clarity, this form of conceptual structure leads rather to an ever increasing pile of issues, which we weary of or become diverted from, but never really settle.
 -->
 
@@ -357,14 +351,14 @@ Thus, far from providing the rungs of a ladder by which psychology gradually cli
 この論文では，この現象に対する新しい説明が報告されていますが，それは図 3  (彼らの論文から再現) から最も簡単に理解できます。
 項目が短期記憶にある時間の長さだけに依存する，記憶の一様な減衰曲線を考えれば，各項目が記憶されている時間の長さを詳細に計算することで，両方の結果が得られることになります。
 このように，グループ化自体は重要な考慮事項ではなく，項目がどのくらいの期間記憶されていなければならないかを決定するための間接的な方法に過ぎず，したがって，差次的な減衰の対象となります。
-<!-- As I was preparing these comments an inadvertent illustration happened my way. 
-The new Science came across my desk. 
-Sure enough, there was an article by Wingfield and Byrnes (1972) entitled "Decay of Information in Short Te rm Memory." 
-They are concerned with dichotic listening. 
-The phenomenon is that if you hear a series of stimuli simultaneously in both ears at a rapid rate there are differences in the difficulty of reporting the stimuli, depending on how they are to be grouped. 
-If the left ear gets stimuli L1, L2, L3 and the right ear R1, R2, R3, then successive reporting (Ll, L2, L3, R1, R2, R3) is easier than so-called simultaneous reporting (L1, R1, L2, R2, L3, R3). 
-The paper reports a new explanation for the phenomenon, which is most easily understood from Figure 3 (reproduced from their article). 
-If one considers a uniform decay curve for memory, dependent only on the length of time an item is in short term memory, then both results follow from a detailed calculation of the lengths of time each item is in store. 
+<!-- As I was preparing these comments an inadvertent illustration happened my way.
+The new Science came across my desk.
+Sure enough, there was an article by Wingfield and Byrnes (1972) entitled "Decay of Information in Short Te rm Memory."
+They are concerned with dichotic listening.
+The phenomenon is that if you hear a series of stimuli simultaneously in both ears at a rapid rate there are differences in the difficulty of reporting the stimuli, depending on how they are to be grouped.
+If the left ear gets stimuli L1, L2, L3 and the right ear R1, R2, R3, then successive reporting (Ll, L2, L3, R1, R2, R3) is easier than so-called simultaneous reporting (L1, R1, L2, R2, L3, R3).
+The paper reports a new explanation for the phenomenon, which is most easily understood from Figure 3 (reproduced from their article).
+If one considers a uniform decay curve for memory, dependent only on the length of time an item is in short term memory, then both results follow from a detailed calculation of the lengths of time each item is in store.
 Thus, the grouping itself is not the operative consideration, but simply an indirect way of determining how long items must remain in memory, hence be subject to differential decay. -->
 
 
@@ -372,9 +366,9 @@ Thus, the grouping itself is not the operative consideration, but simply an indi
 <div class="fig">
 <img src="/assets/1973Newell_fig3.png">
 <div class="figcaption">
-Fig. 3. 
+Fig. 3.
 Probability of recall of successive report (filled circles) and pair-by-pair report (open circles) as a function of storage time in STM (after Wingfield and Byrnes, 1972).
-</div>	
+</div>
 </div>
 </center>
 
@@ -384,11 +378,11 @@ Probability of recall of successive report (filled circles) and pair-by-pair rep
 彼らのケースの正確なメリットに関わらず，そしてここでの私の目的のために彼らを判断する必要はありませんが，彼らの論文が問題を解決していないことは自信を持って言うことができます。
 彼らの論文は，いわゆる解明実験の永遠に続くような一連の一つに過ぎないのです。
 彼らの研究をこのように利用した Wingfield と Byrnes には申し訳ないですが (実際には上述のような偶然の産物であった)，心理的な問題は消え去ることさえ困難であるという一般的な命題に良い証拠を与えています。。
-<!-- The original experiments showing the phenomenon and the original explanations, in terms of time to switch a channel go back 18 years to Broadbent (1958). 
-Furthermore, this phenomenon of simultaneous versus sequential grouping has occasioned some hundreds of papers over the intervening years, in an attempt to clarify the issues (was it channel switching or not?). 
-Now Wingfield and Byrnes provide yet one more explanation. 
-Regardless of the exact merits of their case - and for my purposes here I need not judge them - it can be stated with confidenc e that their article does not settle the issue. 
-Theirs is just one more entry in what seems like a forever ending series of so-called clarif ying experiments. 
+<!-- The original experiments showing the phenomenon and the original explanations, in terms of time to switch a channel go back 18 years to Broadbent (1958).
+Furthermore, this phenomenon of simultaneous versus sequential grouping has occasioned some hundreds of papers over the intervening years, in an attempt to clarify the issues (was it channel switching or not?).
+Now Wingfield and Byrnes provide yet one more explanation.
+Regardless of the exact merits of their case - and for my purposes here I need not judge them - it can be stated with confidenc e that their article does not settle the issue.
+Theirs is just one more entry in what seems like a forever ending series of so-called clarif ying experiments.
 With due apologies to Wingfield and Byrnes for using their work in this way (it was in fact the random occurrence noted above), it provides good evidence for the general proposition that psychological issues have dif ficulty even fadinn away.
 -->
 
@@ -400,19 +394,19 @@ With due apologies to Wingfield and Byrnes for using their work in this way (it 
 この方針は最適であるように見えます。
 つまり，大きなリスクを冒すことなく，すべてのステップで自然からのフィードバックがあり，進歩は必然です。
 しかし，残念なことに，疑問が解決されることはなく，この戦略はうまくいかないようです。
-<!-- There is, I submit, a view of the scientific endeavor that is implicit (and sometimes explicit) in the picture I have presented above. 
-Science advances by playing twenty questions with nature. 
-The proper tactic is to frame a general question, hopefully binary, that can be attacked experimentally. 
-Having settled that bits-worth, one can proceed to the next. 
-The policy appears optimal - one never risks much, there is feedback from nature at every step, and progress is inevitable. 
+<!-- There is, I submit, a view of the scientific endeavor that is implicit (and sometimes explicit) in the picture I have presented above.
+Science advances by playing twenty questions with nature.
+The proper tactic is to frame a general question, hopefully binary, that can be attacked experimentally.
+Having settled that bits-worth, one can proceed to the next.
+The policy appears optimal - one never risks much, there is feedback from nature at every step, and progress is inevitable.
 Unfortunately, the questions never seem to be really answered, the strategy does not se em to work.
 -->
 
 もちろん，私は風刺画を描いています。
 しかし，私はあなたの注意を引かなければなりません。
 そして，その風刺は，メリットがないほどのものではありません。
-<!-- Of course I caricature. 
-But I must get your attention. 
+<!-- Of course I caricature.
+But I must get your attention.
 And the cari cature is not so great as to be without merit.
 -->
 
@@ -431,65 +425,65 @@ And the cari cature is not so great as to be without merit.
 しかし，これらの論文がすべて蓄積されたものであることは，次第に明らかではなくなっていきました。
 私が検討していた実験 (今日の実験) も，将来的には同じような役割を果たす運命にあるようです。
 <!-- Why do these considerations rise in me upon at tempting to comment on the papers in this symposium?
-First, I took as my assignment from Bill Chase to comment on them all, to the extent that I was able. 
-To do so was probably a fateful error. 
-Second, since I was playing the theorist, I adopted the set of trying to put them all together. 
-Put them all togqther. 
-No doubt a compounding of the error. 
-For not only could I not put them all together, I did nvt see how they themselves were putting them all together. 
-It was exceedingly clear that each paper made a contribution. 
-I was not exaggerating when I asserted that we have witnessed here an exceptionally fine set of experimental results and theoretical interpretations based thereon. 
-But as I tried to put them all together, I was led back from the particular results described to a set of results that these papers referenced and used, in a qualitative sort of way. 
-These led me back to yet other papers, many by the same group of authors and of equal merit and precision. 
-It became less and less clear to me that all these papers were cumulating. 
+First, I took as my assignment from Bill Chase to comment on them all, to the extent that I was able.
+To do so was probably a fateful error.
+Second, since I was playing the theorist, I adopted the set of trying to put them all together.
+Put them all togqther.
+No doubt a compounding of the error.
+For not only could I not put them all together, I did nvt see how they themselves were putting them all together.
+It was exceedingly clear that each paper made a contribution.
+I was not exaggerating when I asserted that we have witnessed here an exceptionally fine set of experimental results and theoretical interpretations based thereon.
+But as I tried to put them all together, I was led back from the particular results described to a set of results that these papers referenced and used, in a qualitative sort of way.
+These led me back to yet other papers, many by the same group of authors and of equal merit and precision.
+It became less and less clear to me that all these papers were cumulating.
 Only the barest fraction of ea ch prior paper found its way into the next (though fortunately there were some exceptions), and these experiments I was considering (those today) seemed destined to play a similar role vis a vis the future.
 -->
 
-提起された問題（シングルコードとマルチコード、連続的表現と離散的表現など）を考えるうちに 
+提起された問題（シングルコードとマルチコード、連続的表現と離散的表現など）を考えるうちに
 私は，現在の心理学における科学的プロセスのモデルを思い浮かべていました。
 探索されるべき現象と，本質的に対立する概念による説明です。
 そして 30 年以上やってみても，似たような優れた論文が 300 本あっても，それが腑に落ちるとは思えませんでした。
-<!-- As I considered the issues raised (single code versus multiple code, continuous versus discrete representation, etc.) 
-I found myself conjuring up this model of the current scientific process in psychology - of phenomena to be explored and their explanation by essentially oppositional concepts. 
+<!-- As I considered the issues raised (single code versus multiple code, continuous versus discrete representation, etc.)
+I found myself conjuring up this model of the current scientific process in psychology - of phenomena to be explored and their explanation by essentially oppositional concepts.
 And I coundn't convince myself that it would add up, even in thirty more years of trying, even if one had another 300 papers of similar, excellent ilk.  -->
 
 この大きな問題を気にすることで，私は対象となる特定の論文の査読者としての義務を放棄しようとしているわけではありません。
 (私の論文を査読するはずだった人が，単に自分の話したいことを話す機会としてしまったために，私は何度も腹を立てたことがあります)。
 そんな私の誠意の証として，論文の内容に応じて寄せられた直接回答の一例をここに記しておきます。
-<!-- In opting for worrying about this larger issue, I am not trying thereby to shirk my duty as a reviewer of the particular papers under consideration. 
+<!-- In opting for worrying about this larger issue, I am not trying thereby to shirk my duty as a reviewer of the particular papers under consideration.
 (How often have I been annoyed as someone who was to review my paper simply took it as the opportunity to go his own way with what he wanted to talk about!) As an earnest of my good faith, I re cord herewith a sample of the direct responses generated by the specifics of the papers.
 -->
 
 
-> マイク・ポズナーへ: 
+> マイク・ポズナーへ:
 確かに、複数のコードがあることには同意します。
 それはほとんど論理的必然であることがわかりました。
 あなたは確かに、ある特定の単純な見解を打ち破ったように見えます。
 しかし、あなたが提示した証拠によれば、表現内容という意味でのコードと，記憶構造中の別々の箱を意味するという意味でのコードを区別することは不可能だと思われます。
-<!-- To Mike Posner: 
-Certainly, I agree that there are multiple codes. 
-That turns out to be almost a logical necessity. 
-You certainly would seem to have knocked out one particular simple view. 
+<!-- To Mike Posner:
+Certainly, I agree that there are multiple codes.
+That turns out to be almost a logical necessity.
+You certainly would seem to have knocked out one particular simple view.
 However, it would seem impossible, on the evidence that you present, to distinguish codes in the sense of the content of a representation with codes in the sense of implying separate boxes in an architectural memory structure.
 -->
 
-> Lynn Cooper,  Roger Shepard へ: 
+> Lynn Cooper,  Roger Shepard へ:
 あながたのデータには非常に感銘を受けました。
 しかし，私には，連続した回転の物理的処理が存在する可能性は極めて低いように思えます。
 私は，離散的な記号処理に対する一般的な偏見からこのような信念を持っているわけではありません (私もそのような偏見を持っていますが)。
 視覚系について知られていることの多くは，視覚系がサンプルデータ系のようなもので，空間的にも時間的にも連続して機能しないことを教えてくれています (Hubel & Wiesel,1962; Stark,1968)。
 もし (1) トラッキングや眼球運動を制御する装置としての視覚系自体がサンプルデータ系でありながら，(2) その内部 (つまり刺激の処理から中心に向かって) で回転に対応するために再び連続的に働くようになったとしたら，驚くべきことです。
 なぜなら，回転を連続的な系で実現しようと考える背景には，外界が連続的であり，それが内部の機構に反映されるべきだという直感があるからです。
-<!-- To Lynn Cooper and Roger Shepard : I am extraordinarily impressed by your data. 
-However, it seems to me quite un likely that there is a physical process of cont inuous rotation involved. 
-I do not take this belief from a general bias for discrete symbolic processing (though I have that bias). 
-Much of what is known about the visual system tells us that it is like a sampled data system - that it doesn't work continuously either in space or time (Hubel & Wiesel,1962; Stark,1968). 
+<!-- To Lynn Cooper and Roger Shepard : I am extraordinarily impressed by your data.
+However, it seems to me quite un likely that there is a physical process of cont inuous rotation involved.
+I do not take this belief from a general bias for discrete symbolic processing (though I have that bias).
+Much of what is known about the visual system tells us that it is like a sampled data system - that it doesn't work continuously either in space or time (Hubel & Wiesel,1962; Stark,1968).
 It would be surprising if (1) the visual system itself, considered as a tracking and eyemovement - controlling device, were a sampled data system, yet
- (2) inside that (that is, centerward from the processing of the stimulus) it became continuous again to deal with rotation. 
+ (2) inside that (that is, centerward from the processing of the stimulus) it became continuous again to deal with rotation.
 For the intuition behind the belief that rotation is to be accomplished by a continuous system is that the outside world is continuous and this should be mirrored in the internal mechanism.
 -->
 
-> Bill Chase と Herb Simon へ: 
+> Bill Chase と Herb Simon へ:
 あなた方は，チェスの腕前に関連する現象があることを明確に立証し，この現象がどのようにして生じるかを説明する理論を持っています。
 それは，チェスの達人には，専門家や初心者には生じない程度に生じるのです。
 しかし，この相関関係は，チェスの達人が初心者や上級者よりもチェスが上手い理由を説明するものではありません。
@@ -497,20 +491,20 @@ For the intuition behind the belief that rotation is to be accomplished by a con
 (これは実際 Newell and Simon (1965) が戦術的探索を導くために提案したスキームであり，アクションは機能的なムーブジェネレーターでした)。
 しかし，あながたが提示した理論は，マスターレベルのスキルに関する理論の基礎を築いただけで，その証拠となるものではありません。
 誰かがそのような配置のプログラムを構築して，規定通りにプレイできるかどうかを確認する必要があります。
-<!-- To Bill Chase and Herb Simon: You have clearly established that there is a phenomenon associated with chess skill, and that we have a theory now to explain how this phenomenon could arise - and arise in chess masters to adegree that it would not in experts or beginners. 
-This correlational fact, however, does not yet explain why chess masters are better chess players than beginners or experts. 
-A natural theory is at hand given the type of theory provided; namely, a chess player will have specific actions associated with each pattern. 
-(This is, in fact , the scheme proposed in Newell and Simon (1965) for guiding the tactical search, where the actions were functional move generators.) 
-However, the theory as you present it only lays the groundwork for a theory of master level skill, and does not in any sense provide evidence for it. 
+<!-- To Bill Chase and Herb Simon: You have clearly established that there is a phenomenon associated with chess skill, and that we have a theory now to explain how this phenomenon could arise - and arise in chess masters to adegree that it would not in experts or beginners.
+This correlational fact, however, does not yet explain why chess masters are better chess players than beginners or experts.
+A natural theory is at hand given the type of theory provided; namely, a chess player will have specific actions associated with each pattern.
+(This is, in fact , the scheme proposed in Newell and Simon (1965) for guiding the tactical search, where the actions were functional move generators.)
+However, the theory as you present it only lays the groundwork for a theory of master level skill, and does not in any sense provide evidence for it.
 It requires that someone construct a program with such an arrangement and see if it plays as prescribed.  -->
 
 といった具合です。
 しかし，私にはそれがあまり役に立たないように思えました。
 私が望んでいたのは，これらの実験的なモザイクの優れた部分が，私たち全員が予見したいと思っていた心理学につながることでした。
 そうならなかったのは，局所的に優れたものがなかったからではなく，それらのほとんどが，積み重ねることができないような心理的活動のパターンの一部に見えたからです。
-<!-- And so it might go. 
-But it didn't seem to me to add up to much. 
-What I wanted was for these excellent pieces of the experimental mosiac to add up to the psychology th at we all wished to foresee. 
+<!-- And so it might go.
+But it didn't seem to me to add up to much.
+What I wanted was for these excellent pieces of the experimental mosiac to add up to the psychology th at we all wished to foresee.
 They didn't, not be cause of any lack of excellence locally, but because most of them seemed part of a pattern of psychological activity that didn't seem able to cumulate.
 -->
 
@@ -520,7 +514,7 @@ They didn't, not be cause of any lack of excellence locally, but because most of
 
 それでは、検出から診断へと移りましょう。
 つまり，現在の研究のパターンに現れているある種の困難を抱えているという主張から，なぜそうなのかを説明する試みへと移ります。
-<!-- 
+<!--
 Let me turn, then, from detection to diagnosis -from assertions that we have certain difficulties that are manifest in the current pattern of our research, to an attempt to say why that is the case. -->
 
 ## 2.1 方法について
@@ -539,11 +533,11 @@ Let me turn, then, from detection to diagnosis -from assertions that we have cer
 これらがなければ，そして何よりも方法がなければ，彼が何をするかを予測することはできません。
 
 <!--
-The most fundamental fact about behavior is that it is programmable. 
-That is to say, behavior is under the control of the subject to shape in the service of his own ends. 
-There is a sort of symbolic formula that we use in information processing psychology. 
-To predict a subject you must know: (1) his goals; (2) the structure of the task environment; and (3) the invariant structure of his processing mechanisms. 
-From this you can pretty well predict what methods are available to the subject; and from the method you can predict what the subject will do. 
+The most fundamental fact about behavior is that it is programmable.
+That is to say, behavior is under the control of the subject to shape in the service of his own ends.
+There is a sort of symbolic formula that we use in information processing psychology.
+To predict a subject you must know: (1) his goals; (2) the structure of the task environment; and (3) the invariant structure of his processing mechanisms.
+From this you can pretty well predict what methods are available to the subject; and from the method you can predict what the subject will do.
 Without these things, most importantly without the method, you cannot predict what he will do. -->
 
 
@@ -557,9 +551,9 @@ Without these things, most importantly without the method, you cannot predict wh
 今回の一連の論文では、それが顕著に現れています。
 Klahr は、彼の図 6 (第 1 章) の最後の点が少し低くなっている理由について，被験者が 5 つ以上の要素が存在しないことを知っているので，早めにループを終了させることができると主張しています。
 つまり，課題環境に存在することがわかっているちょっとした知識を時間的に利用できる特別な方法を被験者が持っていると主張しています。
-<!-- Uncertainty over what method the subject is using drives a substantial amount of discussion of experimental results. 
-It is quite inevidence in the present set of papers. 
-Klahr's discussion of why the last point in his Figure 6 (Chapter 1) is a little lower hinges on asserting the subject knows there cannot be more than five elements so he can terminate the loop early. 
+<!-- Uncertainty over what method the subject is using drives a substantial amount of discussion of experimental results.
+It is quite inevidence in the present set of papers.
+Klahr's discussion of why the last point in his Figure 6 (Chapter 1) is a little lower hinges on asserting the subject knows there cannot be more than five elements so he can terminate the loop early.
 That is, it is argued that the subject has a special method that can capitalize timewise on a bit of knowledge that we know exists in the task environment. -->
 
 
@@ -568,8 +562,8 @@ Chase and Simonの論文（第5章）では、データ分析全体が、ある�
 また、そうです。
 つまり、私たちは心理学実験において、被験者が実験課題を行う際の具体的な方法を発見し、検証することに全面的に取り組んでいるのです。
 <!-- In Cooper and Shepard's piece (Chapter 3) there is a similar concern, for instance, at what choices the subject is making at the bottom -whether to rotate to the left or right.
-In Chase and Simon's paper (Chapter 5), the entire data analysis rests, in some sense, on the method a ttributed to the subject for doing the tasks; and much of the side calculations (e.g., those on chunking) are done to confirm the method. 
-Again, so it goes. 
+In Chase and Simon's paper (Chapter 5), the entire data analysis rests, in some sense, on the method a ttributed to the subject for doing the tasks; and much of the side calculations (e.g., those on chunking) are done to confirm the method.
+Again, so it goes.
 In short, we are totally engaged, in psychological experimentation, in the discovery and verification of the specific methods used by the subject in doing the experimental t asks. -->
 
 以上の考察は、次の戒めに直結します。
@@ -582,9 +576,9 @@ In short, we are totally engaged, in psychological experimentation, in the disco
 この警告に従わない典型的な例は，連続的な学習曲線を得るためにシングルショットの学習曲線を平均化することです。
 しかし，今回の論文には，ほぼ完璧な例が 2 つあります。
 完璧なのは，ミスがあったからではなく，それぞれの論文で著者がいわば前と後の両方のデータを提供しているため，解釈の誤りをわずかに逃しただけで評価することができるからです。
-<!-- To do so conceals, rather than reveals. 
-You get garbage or, even worse, spurious regularity. 
-The classic example of the failure to heed this injunction is the averaging of single-shot learning curves to yield continuous learning curves. 
+<!-- To do so conceals, rather than reveals.
+You get garbage or, even worse, spurious regularity.
+The classic example of the failure to heed this injunction is the averaging of single-shot learning curves to yield continuous learning curves.
 However, we have two almost perfect examples in the present papers - perfect, not because an error was made, but because in each the authors provide data both before and after, so to speak, so one can appreciate the mis-in terpretation narrowly missed. -->
 
 1 つ目は，Cooper と Shepard の図 5 に示されているデータです。
@@ -592,10 +586,10 @@ However, we have two almost perfect examples in the present papers - perfect, no
 しかし，彼らの図 13 は，時間が角度に対して線形であることを示しています。
 Cooper と Shepard が指摘した後者の説明は，すべての異なる出発点を平均化したものです。
 もし，彼らが先に後者のデータを入手していたら，非線形曲線の解釈の問題は起こらなかったでしょうし，私たちは過度に単純化された規則性という素敵な庭園の道に導かれていたかもしれません。
-<!-- The first is the Cooper-Shepard data given in their Figure 5. 
-It shows th at RT is non-linear with angle of rotation. 
-Their Figure 13 shows, however, that time is linear with angle. 
-The explanation of the latter as noted by Cooper and Shepard, is that it averages over all the different starting points. 
+<!-- The first is the Cooper-Shepard data given in their Figure 5.
+It shows th at RT is non-linear with angle of rotation.
+Their Figure 13 shows, however, that time is linear with angle.
+The explanation of the latter as noted by Cooper and Shepard, is that it averages over all the different starting points.
 If they had settled for this latter data, having obtained it first then the problem of interpretation of the non-linear curves would not have arisen - and we could have been led down a lovely garden path of over-simplified regularity.
 -->
 
@@ -606,12 +600,12 @@ If they had settled for this latter data, having obtained it first then the prob
 傾きは，部分適応したセットでは 1 点あたり 25 ミリ秒にまで下がります (彼の図7)。
 我々は，方法の混合を解除してくれたことに感謝しています。
 これで，私たちは底を打ったと判断し，解釈を始めることができるでしょうか？
-<!-- The second example is from the Klahr paper. 
-Gradually he purifies the subitizing data. 
+<!-- The second example is from the Klahr paper.
+Gradually he purifies the subitizing data.
 At one stage (his Figure 5) we get the curve with a slope of 66 ms.
-However, he then separates out the instances with eye movement, leaving an additionally purified sample of resonse done with a single fixation and with a single subject: 
-The slope drops to 25 ms per point in the subitizing set (his Figure 7). 
-We are grateful for the unmixing of the methods. 
+However, he then separates out the instances with eye movement, leaving an additionally purified sample of resonse done with a single fixation and with a single subject:
+The slope drops to 25 ms per point in the subitizing set (his Figure 7).
+We are grateful for the unmixing of the methods.
 Can we a ssume to have touched bottom and that interpretation can now commence? -->
 
 
@@ -626,10 +620,10 @@ tations arises from the possibility of the subject's having done the task by a n
 そして，適切な実験計画や被験者の成績の特別な事後分析によって，彼が実際にどのような方法を使ったかを調べることができます。
 このような枠組みがなければ，古い現象に対して新しい方法，つまり新しい説明を生み出すことは，延々と続くことになります。
 今そうであるように，そのための規律もありません。
-<!-- To put this in general terms again, our task in (psychology is first to discover that structure which is fixed and invariant so that we can theoretically infer the method. 
-Given the goal of the subject and the task environment which he faces, we can generate the (small) collection of methods that are likely to be used by him to perform the task (given his processing limits). 
-Then, by means of ca reful design of the experimen ts or by sui table post-hoc analysis of the subj ec t's perf ormance we can se ttle wha t me thod he did in deed use. 
-Without such a framework within which to work, the generation of new methods, hence new explanations, for old phenomena, will go on ad nauseum. 
+<!-- To put this in general terms again, our task in (psychology is first to discover that structure which is fixed and invariant so that we can theoretically infer the method.
+Given the goal of the subject and the task environment which he faces, we can generate the (small) collection of methods that are likely to be used by him to perform the task (given his processing limits).
+Then, by means of ca reful design of the experimen ts or by sui table post-hoc analysis of the subj ec t's perf ormance we can se ttle wha t me thod he did in deed use.
+Without such a framework within which to work, the generation of new methods, hence new explanations, for old phenomena, will go on ad nauseum.
 The re will be no discipline for it, as there is none now. -->
 
 この診断の枝をもう一歩進めてみましょう。
@@ -638,11 +632,11 @@ The re will be no discipline for it, as there is none now. -->
 このように Posner (第 2 章) は，視覚情報と聴覚情報の符号化を扱い，それらが同じであるかどうかを判断しようと試みています (私の考えでは成功しています)。
 Cooper と Shepard や Klahr の流れ図，そして Clark の研究の他の発表 (Clark & Chase, 1972) のように，全体の処理過程の詳細が示されることもあります。
 これらの流れ図は，処理段階または要素の全体セットの存在と，それらの間のいくつかの順序を主張するのに役立ちます。
-<!-- Let me push this branch of the diagnosis one step further. 
-The papers of our symposium proceed by extracting for consideration a couple of mechanisms out of the totality of those required for the job. 
-They then proceed by means of experimental technique to verify their existence, or to measu re some of their properties (e.g., duration). 
-Thus, Posner (Chapter 2) attempts (successfully, in my view) to deal wi th encoding of visual and aud itory information, to de termine whether they are the same. 
-Sometimes more detail of a total process is presented: the flow diagrams in Cooper-Shepard, in Klahr, and in other presentations of Clark's work (Clark & Chase, 1972). 
+<!-- Let me push this branch of the diagnosis one step further.
+The papers of our symposium proceed by extracting for consideration a couple of mechanisms out of the totality of those required for the job.
+They then proceed by means of experimental technique to verify their existence, or to measu re some of their properties (e.g., duration).
+Thus, Posner (Chapter 2) attempts (successfully, in my view) to deal wi th encoding of visual and aud itory information, to de termine whether they are the same.
+Sometimes more detail of a total process is presented: the flow diagrams in Cooper-Shepard, in Klahr, and in other presentations of Clark's work (Clark & Chase, 1972).
 These flow diagrams serve to assert the existence of an entire set of processing stages or components and some orderings between them. -->
 
 
@@ -651,10 +645,10 @@ These flow diagrams serve to assert the existence of an entire set of processing
 しかし，これらに共通しているのは，使用されている方法の全体像をオープンにしていることです。
 彼らは，同じ課題を実行するために呼び出される可能性のある他の方法を制約する枠組みの中で操作していません。
 要するに，制御構造をモデル化していないのです。
-<!-- All of the above, especially including the flow diagrams, represent major progress, both in our experimental technique and in our frameworks of interpretation. 
-I am no t here to challenge that. 
-However, they have in common that they leave open the total method being used. 
-They do not ope ra te within a frame that constrains what other methods might also be evoked to perform the same task. 
+<!-- All of the above, especially including the flow diagrams, represent major progress, both in our experimental technique and in our frameworks of interpretation.
+I am no t here to challenge that.
+However, they have in common that they leave open the total method being used.
+They do not ope ra te within a frame that constrains what other methods might also be evoked to perform the same task.
 In shor t, they do not model the control structure.  -->
 
 それは何かというと、制御構造です。
@@ -663,19 +657,19 @@ FORTRAN のような言語 (あるいは他の言語) は，一連の原始的�
 FORTRAN における原始的な操作とは，算術演算，与えられた関数 (サイン，コサイン，対数など)，変数への値の割り当て，入力と出力の操作などです。
 これらにはそれぞれ言語で名前がついています (+ , -, SIN, LOG など)。
 しかし，演算の名前があるだけでは不十分です。
-条件となる順序を指定することも必要で，それを行うものを制御構造と呼ぶ。 
+条件となる順序を指定することも必要で，それを行うものを制御構造と呼ぶ。
 FORTRANでは、代数式の構文 (算術演算をどのように呼び出すか)，文の順序 (これらの文で指定された演算を順番に行うことを意味する)，反復文 (DO 文) の構文，条件分岐と無条件分岐の形式などが含まれます。
 制御構造が与えられれば，課題を達成するためのプログラミングという明確な問題が再存在する。
 制御構造ではなく，基本的な操作だけが与えられた場合，どのような操作の順序が可能であるか，あるいは不可能であるか，あるいは時間と空間の制約の中で可能であるかを言うことはできません。
-<!-- What is that, the control structure? 
-It is best illustrated by programming languages. 
+<!-- What is that, the control structure?
+It is best illustrated by programming languages.
 A language such as FORTRAN (or any other, for tha t ma tter) may be seen as a device to evoke a sequence of primitive operations, the exact sequence being conditional upon the data.
-The primi tive operations in FORTRAN are the arithmetic operations, the given functions (sine, cosine, logarithm, etc.), the assignment of a value to a variable, the input and output operations, etc. 
-Each of these has a name in the language (+ , -, SIN, LOG, etc.). 
-However, just having names for the opera tions is not enough. 
-Specifying the conditional sequence is also required and what does that is called the control structure. 
-In FORTRAN it includes the syntax of algebraic expressions, which governs how the arithmetic operations are evoked, the order of statements, which implies that the operations specified by these statements are to be done in order, the syntax of the iteration statement (the DO statement), the format of the conditional and unconditional branch. 
-Given the control structure, the reexists a definite problem of programming to get a task done. 
+The primi tive operations in FORTRAN are the arithmetic operations, the given functions (sine, cosine, logarithm, etc.), the assignment of a value to a variable, the input and output operations, etc.
+Each of these has a name in the language (+ , -, SIN, LOG, etc.).
+However, just having names for the opera tions is not enough.
+Specifying the conditional sequence is also required and what does that is called the control structure.
+In FORTRAN it includes the syntax of algebraic expressions, which governs how the arithmetic operations are evoked, the order of statements, which implies that the operations specified by these statements are to be done in order, the syntax of the iteration statement (the DO statement), the format of the conditional and unconditional branch.
+Given the control structure, the reexists a definite problem of programming to get a task done.
 Given only the basic operations, but not control structure, it is not possible to say what sequences of operations are or are not possible, or are possible within constraints of time and space.
 -->
 
@@ -688,13 +682,13 @@ Given only the basic operations, but not control structure, it is not possible t
 しかし，この作品は，理論的な技術の現状をよく表しています。
 制御構造 (接着剤) が欠けている限り，与えられた課題がどのように実行されたかについて，無限の代替可能性を提案することが可能です。
 そのため，理論的な問題が解決されないままになってしまうのです。
-<!-- Much of the new progress in the experimental analysis of the inf orma tion processing of humans has eschewed attention to the control strurture. 
-The present papers of this symposium are no exception. 
-However, my best example (my canonical one, so to speak) is the deservedly well-known paper by Atkinson and Shiffrin (1968) entitled: "Human Memory: A proposed system and its con trol processes." 
-The model of memory is there all right, and is applied to a number of tasks with quantitative precision. 
-However, the control structure is completely absent and is used as a deus ex machina to concoct separate models for each task. 
-Criticism is not directed at that justly influential piece of work. 
-But it does illustrate well the current state of the theoretical art. 
+<!-- Much of the new progress in the experimental analysis of the inf orma tion processing of humans has eschewed attention to the control strurture.
+The present papers of this symposium are no exception.
+However, my best example (my canonical one, so to speak) is the deservedly well-known paper by Atkinson and Shiffrin (1968) entitled: "Human Memory: A proposed system and its con trol processes."
+The model of memory is there all right, and is applied to a number of tasks with quantitative precision.
+However, the control structure is completely absent and is used as a deus ex machina to concoct separate models for each task.
+Criticism is not directed at that justly influential piece of work.
+But it does illustrate well the current state of the theoretical art.
 As long as the control structure - the glue -is missing, so long will it be possible to suggest an indefinite sequence of alternative possibilities for how a given task was
 performed, hence to keep theoretical issues from becoming settled. -->
 
@@ -707,12 +701,12 @@ performed, hence to keep theoretical issues from becoming settled. -->
 私たちは，ポスナーもそうですが，一連の実験を関連付けています。
 しかし，その関連性は非常に緩いものです。
 与えられた実験の質的・量的要素の中から，何を前面に出し，現在の治療の関心事と並置するかを選択するのです。
-<!-- There is a second source of our difficulties, distinct from the one discussed above, though not unrelated to it. 
-We never seem in the experimental literature to put the results of all the experiments together. 
-The paper by Posner in the present symposium is an excellent example - excellent both in showing the skillful attempts we do currently make and in showing how far short this falls of really integrating the results. 
-We do - Posner does - relate sets of experiments. 
-But the linkage is extraord inarily loose. 
-One picks and chooses among the qualitatives ummaries of a given experiment what to bring forward and juxtapose with the concerns of a present treatment. 
+<!-- There is a second source of our difficulties, distinct from the one discussed above, though not unrelated to it.
+We never seem in the experimental literature to put the results of all the experiments together.
+The paper by Posner in the present symposium is an excellent example - excellent both in showing the skillful attempts we do currently make and in showing how far short this falls of really integrating the results.
+We do - Posner does - relate sets of experiments.
+But the linkage is extraord inarily loose.
+One picks and chooses among the qualitatives ummaries of a given experiment what to bring forward and juxtapose with the concerns of a present treatment.
 -->
 
 これは，冒頭で述べたように，実験結果を二項対立の支持・反論という形で捉える傾向が，現在の科学スタイルを助長していると言えるでしょう。
@@ -720,14 +714,14 @@ One picks and chooses among the qualitatives ummaries of a given experiment what
 状況の無数の側面は抑制されることが許される。
 そのため，以前の研究が，現在調査中のものと実際に一致しているかどうか，あるいは実際に矛盾しているかどうかを知る方法はありません。
 例えば，長期記憶と短期記憶の 2 つの記憶構造ではなく，1 つの記憶構造であると主張するような，いわばあからさまな矛盾がある場合にのみ，適切な衝突が起こるのである。
-もちろん，このような他の側面が抑えられているかというとそうではありません。 
+もちろん，このような他の側面が抑えられているかというとそうではありません。
 不確実性と再解釈のサイクルを維持するために，その気になればレビュアーは誰でも掘り起こすことができるのだ。
-<!-- This aspect of our current scientific style is abetted by our tendency noted at the beginning to case the results of experiments in terms of their support or refutation of various binary oppos itions. 
-Thus, what is brought forward from an experiment is suppose d to be just such qualitative summaries. 
-Innumerable aspects of the situations are permitted to be suppressed. 
-Thus, no way exists of knowing whether the earlier studies are in fact commensurate with whatever ones are under present scrutiny, or are in fact contradictory. 
-Only if the contradiction is blatant, so to speak - e.g., asserting a s ingle memory structure versus two, a long-term and a short-term memory - will the appropriate clash occur. 
-Of course, it is not true that these other aspects are suppressed.  
+<!-- This aspect of our current scientific style is abetted by our tendency noted at the beginning to case the results of experiments in terms of their support or refutation of various binary oppos itions.
+Thus, what is brought forward from an experiment is suppose d to be just such qualitative summaries.
+Innumerable aspects of the situations are permitted to be suppressed.
+Thus, no way exists of knowing whether the earlier studies are in fact commensurate with whatever ones are under present scrutiny, or are in fact contradictory.
+Only if the contradiction is blatant, so to speak - e.g., asserting a s ingle memory structure versus two, a long-term and a short-term memory - will the appropriate clash occur.
+Of course, it is not true that these other aspects are suppressed.
 They remain available to be dug up by any reviewer who cares to do so, thus to keep the cycle of uncertainty and re-interpretation going.
 -->
 
@@ -735,9 +729,9 @@ They remain available to be dug up by any reviewer who cares to do so, thus to k
 いわば，一つの結果がかなり大きな建造物に挑戦することが許されているのです。
 ゆるやかに結合された私たちの建造物は，分割統治の戦略を用いることができるのです。
 全体の一部を抜き出して，それだけで平然と挑戦することができるのです。
-<!-- The article of Wingfield and Byrnes in Science, discussed above, provides a good example of what is permissible in our present experimental style. 
-A single result is permitted, so to speak, to challenge a rather large edifice. 
-So loose join ted are our edifices that a divide and conquer strategy can be used. 
+<!-- The article of Wingfield and Byrnes in Science, discussed above, provides a good example of what is permissible in our present experimental style.
+A single result is permitted, so to speak, to challenge a rather large edifice.
+So loose join ted are our edifices that a divide and conquer strategy can be used.
 A part of the totality can be pulled out and a ttacked in isolation with seeming impunity.
 -->
 
@@ -745,9 +739,9 @@ A part of the totality can be pulled out and a ttacked in isolation with seeming
 実験結果のパターンの一部分に異議を唱えることは，既存のパターン全体のかなりの部分に異議を唱えることに成功しない限り (あるいは整合性があることを示さない限り)，許されるべきではありません。
 これは，科学的責任がどこにあるのかという問題です。
 私たちの実験の縦糸と横糸は非常に緩んでいるので，Wingfield と Byrnes 論文のようなものが理論的に無責任であるというのは斬新な提案です。
-<!-- What should be the case? 
-A challenge to one part of a pattern of experimental results s hould not be permitted unless it can successfully challenge (or be shown to be consistent with) a substantial part of the total existing pattern. 
-It is a question of where scientific responsibility lays. 
+<!-- What should be the case?
+A challenge to one part of a pattern of experimental results s hould not be permitted unless it can successfully challenge (or be shown to be consistent with) a substantial part of the total existing pattern.
+It is a question of where scientific responsibility lays.
 The warp and woof of our experimental web hangs so loose that it comes as a novel suggestion that a paper such as the Wingfield Byrnes one is being theoretically irresponsible. -->
 
 そろそろ抗議の声，あるいは迷惑の声が上がってもおかしくない。
@@ -758,13 +752,13 @@ The warp and woof of our experimental web hangs so loose that it comes as a nove
 同じ人間が，同じ基本的な課題に対して，目標や背景知識，報酬構造や課題の質感などの細かい点に応じて，多くの (根本的に異なる) 方法を採用できるということは，科学の「通常の」手段では不十分であることを意味しています。
 最初の質問である「厳しさ」については，最初に述べたように，これは混乱して悩んでいる私の半分の意見です。
 もう一人の私は，この 2 日間はもちろんのこと，この 10 年間で私たちがどれだけ早く，どれだけ遠くに行ってしまったかについて，くすぐったい気持ちでいっぱいです。
-<!-- A reaction of protest, or at least annoyance, should by now s urely have set in. 
-Am I not being harsh? 
-How do I expect experimental work and interpretation to proceed? 
-Is n't this the way all sciences proceed？ 
-As to the latter (since I get to give the answers, I get to select the questions), the other sciences may not have had such a slippery eel to contend with. 
-That the same human subject can adopt many (radically different) methods for the same basic task depending on goal, background knowledge, and minor details of pay off structure and task texture - all this - implies that the "normal" means of science may not suffice. 
-As to the first question, the harshness, I restate my initial point: this is my confused and distressed half speaking. 
+<!-- A reaction of protest, or at least annoyance, should by now s urely have set in.
+Am I not being harsh?
+How do I expect experimental work and interpretation to proceed?
+Is n't this the way all sciences proceed？
+As to the latter (since I get to give the answers, I get to select the questions), the other sciences may not have had such a slippery eel to contend with.
+That the same human subject can adopt many (radically different) methods for the same basic task depending on goal, background knowledge, and minor details of pay off structure and task texture - all this - implies that the "normal" means of science may not suffice.
+As to the first question, the harshness, I restate my initial point: this is my confused and distressed half speaking.
 My other half is tickled pink at how fast and how far we have come in the last decade, not to speak of the last two days. -->
 
 なお，この懸念は，実験的事実の抽出への依存度や実験技術の開発の必要性を低下させるものではありません。
@@ -773,11 +767,11 @@ My other half is tickled pink at how fast and how far we have come in the last d
 これらは，私たちが現在行っている研究から得られる実験的洞察の一例です。
 今後 10 年の間に 2 倍になることを願っています。
 私の関心は，もう一度言いますが，それらがどのように加算されるかということです。
-<!-- Let me stress as well that nothing in my concern implies a lessened dependence on the extraction of experimental fact or the need to develop experimental techniques. 
-The benefits yielde d to this symposium from the chronometric analysis of reaction times, a tool that the last five years has honed to a fine edge, are immense. 
-In fact, I really approve of all those phenomena in Figure 1. 
-They are examples of the kinds of experimental insights that we reap from our current in vestigations. 
-I do in fact hope they double in the next te n years. 
+<!-- Let me stress as well that nothing in my concern implies a lessened dependence on the extraction of experimental fact or the need to develop experimental techniques.
+The benefits yielde d to this symposium from the chronometric analysis of reaction times, a tool that the last five years has honed to a fine edge, are immense.
+In fact, I really approve of all those phenomena in Figure 1.
+They are examples of the kinds of experimental insights that we reap from our current in vestigations.
+I do in fact hope they double in the next te n years.
 My concern, to state it once more, is with how they will add up.
 -->
 
@@ -786,11 +780,11 @@ My concern, to state it once more, is with how they will add up.
 
 <!-- # Prognos -->
 
-<!-- 
-What can be done about these concerns, assuming I have convinced you to take them seriously, at least by half? 
+<!--
+What can be done about these concerns, assuming I have convinced you to take them seriously, at least by half?
 I will spend no time arguing th at what is needed is to view man as an information processing system.
 This has been argued at length in several places (e.g., see Newell and Simon, 1972, for our contribution).
-More important, all of the papers in the present syposium are executed enough within that conceptual view to demons trate that the lack of such a metaview is not the culpr it. 
+More important, all of the papers in the present syposium are executed enough within that conceptual view to demons trate that the lack of such a metaview is not the culpr it.
 From this vantage point the work of Cooper and Shepard, raising as it does the possibility of continuous processing mechanisms, is as much a scientific exemplar of an information processing view as is, say, the discrete symbolic models of Chase and Simon. -->
 
 これらの問題について、少なくとも半分は真剣に受け止めるように説得したとして、どうすればいいのでしょうか？
@@ -799,9 +793,9 @@ From this vantage point the work of Cooper and Shepard, raising as it does the p
 さらに重要なことは、本シンポジウムのすべての論文は、そのようなメタビューの欠如が原因ではないことを主張するために、そのような概念的な見解の中で十分に実行されているということです。
 このような観点から見ると、連続的な処理メカニズムの可能性を提起しているクーパーとシェパードの研究は、例えばチェイスとサイモンの離散的な記号モデルと同様に、情報処理ビューの科学的な模範となっています。
 
-<!-- I will not assert that I know exactly what should be done. 
-My distress is genuine. 
-I am worried that our efforts, even the excellent ones I see occurring here, will not add up. 
+<!-- I will not assert that I know exactly what should be done.
+My distress is genuine.
+I am worried that our efforts, even the excellent ones I see occurring here, will not add up.
 Let me, however, discuss at least three possible (non-exclusive) courses of action.
 These might be viewed as possible paradigms within which to operate experimentally. -->
 何をすべきか、自分でもよくわかっているとは言いません。
@@ -813,15 +807,15 @@ These might be viewed as possible paradigms within which to operate experimental
 ## 3.1 完全な処理モデル (Complete Processing Models)
 
 <!-- The first suggestion is to construct complete processing models rather than the partial ones we now do.
-In the present company the work of Chase and Simon fits this mold best, expecially when you add to it the simulations of Simon and Gilmartin (1973). 
+In the present company the work of Chase and Simon fits this mold best, expecially when you add to it the simulations of Simon and Gilmartin (1973).
 This theory, embodied in the simulation, actually carries out the experimental task, thus is fairly tight. -->
 第一の提案は、現在行っている部分的な処理モデルではなく、完全な処理モデルを構築することです。
 特に、Simon and Gilmartin (1973) のシミュレーションを加えた場合、現在の会社では、Chase と Simonの仕事がこの型に最もよく当てはまります。
 シミュレーションで具現化されたこの理論は、実際に実験課題を実行しているので、かなりタイトなものとなっています。
 
-<!-- As I noted earlier, the attempts in some of the other papers to move toward a process model by giving a flow diagram (Cooper-Shepard and Klahr[2]) seem to me not to be tight enough. 
-Too much is left unspecified and unconstrained. 
-To make the comparison with Chase and Simon some what sharp, these flow diagrams are not sufficient to perform their tasks. 
+<!-- As I noted earlier, the attempts in some of the other papers to move toward a process model by giving a flow diagram (Cooper-Shepard and Klahr[2]) seem to me not to be tight enough.
+Too much is left unspecified and unconstrained.
+To make the comparison with Chase and Simon some what sharp, these flow diagrams are not sufficient to perform their tasks.
 That flow diagrams may leave something to be desired as a scheme for cumulating knowledge might be inferred from a comparison of Donald Broadbent's two books (1958 and 19 71) , both of which contain flow diagrams representing what is known (at each respective date) about short-term memory and the immediate processor. -->
 先に述べたように、他のいくつかの論文では、フローダイアグラムを与えることでプロセスモデルに移行しようとする試み（Cooper-Shepard and Klahr[2]）は、私には十分にタイトではないように思えます。
 あまりにも多くのことが指定されておらず、制約されていないのです。
@@ -829,32 +823,32 @@ Chase and Simon との比較を少し鋭くすると、これらのフローダ�
 フローダイアグラムが知識を蓄積するためのスキームとしては不十分であることは、ドナルド・ブロードベント の 2 冊の本 (1958年 と 1971年) を比較するとわかるかもしれません。
 この 2 冊の本には、短期記憶と即時処理装置について (それぞれの時点で) わかっていることがフローダイアグラムで表現されています。
 
-<!-- In one important respect, however, the Chase and Simon (and Gilmartin) work is deficient for present purposes. 
-It does not employ a psychologically relevant model of the control processes. 
+<!-- In one important respect, however, the Chase and Simon (and Gilmartin) work is deficient for present purposes.
+It does not employ a psychologically relevant model of the control processes.
 I argued above (and I believe) that until one has a model of the control processes (along with a model of the memories and the primitive operations) we will not be able to bring the problem of specifying subjects' methods under control. -->
 しかし、1 つの重要な点において、Chase と Simon (および Gilmartin) の研究は、現在の目的のためには不十分である。
 それは、制御プロセスの心理学的に関連したモデルを採用していないことです。
 私は、制御プロセスのモデル (記憶と原始的な操作のモデルと一緒に) を持つまでは、被験者の方法を特定する問題を制御下に置くことはできないと上で論じた (そして私はそう信じている)。
 
-<!-- At the moment I know of only one model of the human control processes, that of production systems (Newell & Simon, 1972; Newell, 1972). 
-These area form of programming system that have proved useful in discussing complex cognitive tasks (such as the crypt arithmetic, logic and chess tasks treated in Newell and Simon, 1972). 
-At one level they are like any programming language, providing a way of specifying a conditional sequence of primitive operations to be applied. 
-However, in most work on simulation programs the control structure has been treated about as casually as it is in the flow diagrams declared above to be deficient (see for instance Johnson, 1964). 
-The production systems, by a route that need not be recounted, have become tied in with a model of the structure of memory. 
+<!-- At the moment I know of only one model of the human control processes, that of production systems (Newell & Simon, 1972; Newell, 1972).
+These area form of programming system that have proved useful in discussing complex cognitive tasks (such as the crypt arithmetic, logic and chess tasks treated in Newell and Simon, 1972).
+At one level they are like any programming language, providing a way of specifying a conditional sequence of primitive operations to be applied.
+However, in most work on simulation programs the control structure has been treated about as casually as it is in the flow diagrams declared above to be deficient (see for instance Johnson, 1964).
+The production systems, by a route that need not be recounted, have become tied in with a model of the structure of memory.
 They thus find themselves providing a detailed model of the control processes. -->
 今のところ、私が知っている人間の制御プロセスのモデルは、プロダクションシステム (Newell & Simon, 1972; Newell, 1972) のものだけです。
 これは、複雑な認知タスク (Newell and Simon, 1972 で扱われている暗号の算術、論理、チェスのタスクなど) を議論するのに役立つことが証明されているプログラミングシステムのエリアフォームです。
 シミュレーション・プログラムは、一面では他のプログラミング言語と同じで、適用されるプリミティブな操作の条件付きシーケンスを指定する方法を提供します。
 しかし、シミュレーション・プログラムに関するほとんどの研究では、制御構造は、上述のフロー・ダイアグラムに欠陥があるのと同様にさりげなく扱われています (例えば Johnson, 1964 を参照)。
-プロダクションシステムは、説明するまでもなく、記憶の構造のモデルと結びついています。 
+プロダクションシステムは、説明するまでもなく、記憶の構造のモデルと結びついています。
 その結果、制御プロセスの詳細なモデルを提供することになる。
 
 
-<!-- It is not my main purpose in these comments to extol the advantages of production systems. 
-However, as noted they are the sole exemplars to my knowledge of human control processes (though they will surely not be the last). 
-Since the notion of modeling the control and the benefits that accrue the reby in putting experimental results together is not familiar, it seems incumbent on me to provide an illustration. 
-The attempt  to do this, though it fit s in this comment as a single paragraph, so to speak, is extensive enough to require an independent statement. 
-This I have done in a companion article (Chapter 10). 
+<!-- It is not my main purpose in these comments to extol the advantages of production systems.
+However, as noted they are the sole exemplars to my knowledge of human control processes (though they will surely not be the last).
+Since the notion of modeling the control and the benefits that accrue the reby in putting experimental results together is not familiar, it seems incumbent on me to provide an illustration.
+The attempt  to do this, though it fit s in this comment as a single paragraph, so to speak, is extensive enough to require an independent statement.
+This I have done in a companion article (Chapter 10).
 One should simply imagine it inserted in this es say at this point. -->
 このコメントでは、プロダクション・システムの優位性を強調することは主目的ではありません。
 しかし、前述のように、プロダクションシステムは、私が知る限り、人間の制御プロセスの唯一の模範となっています (最後の模範ではないでしょうが)。
@@ -864,10 +858,10 @@ One should simply imagine it inserted in this es say at this point. -->
 この点については、本稿の中に挿入されていることを想像していただければと思います。
 
 
-<!-- Let me summarize the results of that excursion vis a vis the present argument. 
-It is possible to construct models of the detailed control structure coupled with equally detailed assumptions about memories and elementary processes. 
-Within s uch a system the question of what method the subject employs in an experimental task can be investigated in the same fashion as discovering a program in a given pro gramming language to perform a specified task. 
-Just as with programming, several organizations may lead to adequate performance of the task. 
+<!-- Let me summarize the results of that excursion vis a vis the present argument.
+It is possible to construct models of the detailed control structure coupled with equally detailed assumptions about memories and elementary processes.
+Within s uch a system the question of what method the subject employs in an experimental task can be investigated in the same fashion as discovering a program in a given pro gramming language to perform a specified task.
+Just as with programming, several organizations may lead to adequate performance of the task.
 However, each method makes definite predictions as to time and space used, providing the basis for experimental operations to determine which method was actually operating. -->
 その結果を、今回の議論と照らし合わせてみましょう。
 詳細な制御構造のモデルを、記憶や基本プロセスに関する同様に詳細な仮定と組み合わせて構築することが可能である。
@@ -875,9 +869,9 @@ However, each method makes definite predictions as to time and space used, provi
 プログラミングと同じように、いくつかの組織がタスクの適切な実行につながる可能性があります。
 しかし、それぞれの方法は、使用する時間と空間を明確に予測しており、どの方法が実際に動作しているかを実験的に操作する根拠となる。
 
-<!-- There is an immense space of possible control organization and each provides a scheme within which almost any method can be programmed. 
+<!-- There is an immense space of possible control organization and each provides a scheme within which almost any method can be programmed.
 Thus, the problem of determining what control system is used by the human is analogous to determining what machine language is used by a computer, given that you can never see any written code but only the outputs of running programs.
-However, each control organization has different details of encoding, processing time, and memory load. 
+However, each control organization has different details of encoding, processing time, and memory load.
 They provide a basis for identifying the system experimentally if a sufficiently large and diverse set of tasks is analysed. -->
 膨大な数の制御組織が存在し、それぞれがほぼすべての方法をプログラム可能なスキームを提供しています。
 このように、人間がどのような制御方式を使っているかを判断する問題は、書かれたコードを見ることはできず、実行中のプログラムの出力だけを見ることができるという点で、コンピュータがどのような機械語を使っているかを判断することに似ています。
@@ -894,9 +888,9 @@ They provide a basis for identifying the system experimentally if a sufficiently
 一連の調整された実験が行われる場合，それは通常，現象に基づいて行われます。
 例えば，Underwood らによる言語学習に関する一連の実験がそうです。
 これにより，それぞれの実験が独立したものとなり，私が懸念していたような緩い結合を保証するのに十分なバラバラさが保たれます。
-<!-- The second experimental strategy, or paradigm, to help overcome the difficulties enumerated earlier is to accept a single complex task and do all of it. 
-The current experimental style is to design specific small experiments to attempt to settle specific small questions - often as not, as I've said, dictated by the empirical explora tion of a new phenomenon or by one of the polar issues. 
-Whenever a coordinated series of experiments is created, it is us ually phenomenon driven, e.g., one thinks of the sequences by Under wood and colleagues on verbal learning. 
+<!-- The second experimental strategy, or paradigm, to help overcome the difficulties enumerated earlier is to accept a single complex task and do all of it.
+The current experimental style is to design specific small experiments to attempt to settle specific small questions - often as not, as I've said, dictated by the empirical explora tion of a new phenomenon or by one of the polar issues.
+Whenever a coordinated series of experiments is created, it is us ually phenomenon driven, e.g., one thinks of the sequences by Under wood and colleagues on verbal learning.
 The effect of this is to keep each experiment a thing-in-itself- -disparate enough to guarantee the sort of loose jointed fabric I've be moaned.
  -->
 
@@ -907,11 +901,11 @@ The effect of this is to keep each experiment a thing-in-itself- -disparate enou
 残念なことに，私はこの方式がうまく機能していることを示す例を一つも知りません。
 これは難しいからではなく，実際に試されていないからだと思います。
 しかし，いくつかの部分的な例を挙げてみましょう。
-<!-- An alternative is to focus a series of experimental and theoretical studies around a single complex task, the aim being to demonstrate that one has a sufficient theory of a genuine slab of human behavior. 
-All of the studies would be designed to fit together and add up to a total picture in detail. 
-Such a paradigm is best described by illustration. 
-Unfortunately, I know of no single example which successfully shows this scheme at work. 
-I attribute this not to its difficulty but to its not really having been tried. 
+<!-- An alternative is to focus a series of experimental and theoretical studies around a single complex task, the aim being to demonstrate that one has a sufficient theory of a genuine slab of human behavior.
+All of the studies would be designed to fit together and add up to a total picture in detail.
+Such a paradigm is best described by illustration.
+Unfortunately, I know of no single example which successfully shows this scheme at work.
+I attribute this not to its difficulty but to its not really having been tried.
 However, let me give several partial examples.
 -->
 
@@ -922,12 +916,12 @@ Dave Klahr の研究は，その一例であると思います。
 今回の論文は，さらにそのサブコンポーネントであり，量化演算子のモデルを固めるための新鮮なデータを得る試みです。
 このように、研究プログラム全体が，最終的には発達段階の集合包含タスクの完全なモデルを生み出すために構築されているのです。
 私はこの戦略について Klahr に明確に尋ねたことはありませんが，そのように解釈することは私の目的にかなっています。
-<!-- The work of Dave Klahr provides, I believe, one example. 
-The paper presented at this symposium is ac omponent of a general at tack on some problems of development. 
-Initial work with a Piagetian set inclusion task (Klahr & Wallace, 1970) led to a model that depended on quantification operators. 
-There followed a paper (Klahr & Wallace, 1972) that attempted to construct a theory of quantification operators, to be used in pursuing the larger plan. 
-The paper we heard here is a further sub component - the attempt to obtain some fresh data to solidify the models of quantification operators. 
-Thus, the entire program of research is built to produce, ultimately, a complete model of the developmental set - inclusion task. 
+<!-- The work of Dave Klahr provides, I believe, one example.
+The paper presented at this symposium is ac omponent of a general at tack on some problems of development.
+Initial work with a Piagetian set inclusion task (Klahr & Wallace, 1970) led to a model that depended on quantification operators.
+There followed a paper (Klahr & Wallace, 1972) that attempted to construct a theory of quantification operators, to be used in pursuing the larger plan.
+The paper we heard here is a further sub component - the attempt to obtain some fresh data to solidify the models of quantification operators.
+Thus, the entire program of research is built to produce, ultimately, a complete model of the developmental set - inclusion task.
 I'v never explicitly asked Klahr about the strategy, but it serves my purposes to interpret it so.
 -->
 
@@ -940,13 +934,13 @@ Dansereau は，この過程の情報処理モデルを構築し，その結果�
 重要なのは，これらのパラメータを，シミュレーション結果をタイミングデータに当てはめるのではなく，独立した一連のマイクロスタディによって推定したことです。
 これらの研究は，大規模なモデルで使用される 1 つまたは複数のパラメータ値を提供するために構築されました。
 このようにして，一連の実験結果を密接に結びつけることができました。
-<!-- A second example is a thesis done awhile ago by Donald Dansereau on mental multiplication (Dansereau, 1969). 
-The goal was a theory of how people did tasks such as 17x638=?, all in their heads. 
-Dansereau constructed an information processing model of the process and simulated it to predict the results. 
-That model had half a dozen or more parameters: memory transfer times, operation times, etc. 
+<!-- A second example is a thesis done awhile ago by Donald Dansereau on mental multiplication (Dansereau, 1969).
+The goal was a theory of how people did tasks such as 17x638=?, all in their heads.
+Dansereau constructed an information processing model of the process and simulated it to predict the results.
+That model had half a dozen or more parameters: memory transfer times, operation times, etc.
 The important point, for our purposes, was that he estimated all these parameters, not by fitting the simulation results to the timing data, but by conducting a series of
-independent micro-studies. 
-Each of theses tudies was built to supply one or more parameter values to be used in the larger model. 
+independent micro-studies.
+Each of theses tudies was built to supply one or more parameter values to be used in the larger model.
 Thus, he forced a close coupling between the entire set of exp erimental results.
  -->
 
@@ -961,16 +955,16 @@ Thus, he forced a close coupling between the entire set of exp erimental results
 チェスではうまく表現できない重要な精神活動がたくさんあるという点については，どんな課題も普遍的ではないという答えになるでしょう。
 重要なのは，私たちが現在取り組んでいる課題の断片的な散らばりに対して，統合のレベルを 2, 3 段階上げることです。
 完全性への関心は，後の反復作業に取っておくことができます。
-<!-- A final example, clearly mostly prospect, would be to take chess as the target super-task. 
+<!-- A final example, clearly mostly prospect, would be to take chess as the target super-task.
 We know already from existing work that the task involves forms of reasoning and search (de Groot, 1965; Newell & Simon, 1972; Wagner & Scurrah, 1972) and complex perceptual
-and memorial processes (de Groot, 1966; Chase & Simon, This volume, Chapter 5). 
-From more general considerations we know that it also involves planning, evaluation, means-ends analysis, and redefinition of the situation, as well as several varieties of learning-short term, post-hoc analysis, preparatory analysis, study fro m books, etc. 
-Why should one not accept the task of understanding thoroughly how chess is learned and played and how this interacts with the general capabilities brought to the game? 
-To the query of why pick chess, the response must be, Why not? 
-Or pick another. 
-It doesn't matter much what task is picked as long as we settle on a total complex task to force all studies into intimate relation to each other. 
-To the point that there are lots of important mental activities not well represented by chess, the answer must be that no task is universal. 
-What is important is to rise up a couple of levels of integration over the disaggregated scattering of tasks we now address. 
+and memorial processes (de Groot, 1966; Chase & Simon, This volume, Chapter 5).
+From more general considerations we know that it also involves planning, evaluation, means-ends analysis, and redefinition of the situation, as well as several varieties of learning-short term, post-hoc analysis, preparatory analysis, study fro m books, etc.
+Why should one not accept the task of understanding thoroughly how chess is learned and played and how this interacts with the general capabilities brought to the game?
+To the query of why pick chess, the response must be, Why not?
+Or pick another.
+It doesn't matter much what task is picked as long as we settle on a total complex task to force all studies into intimate relation to each other.
+To the point that there are lots of important mental activities not well represented by chess, the answer must be that no task is universal.
+What is important is to rise up a couple of levels of integration over the disaggregated scattering of tasks we now address.
 Concern with completeness can be saved for later iterations. -->
 
 
@@ -981,25 +975,25 @@ Concern with completeness can be saved for later iterations. -->
 この単一のシステム (人間の情報処理装置のモデル) は，それぞれの指示を受け，課題を実行しなければなりません。
 私たちが求める統合を実現するためには，本当に一つのシステムでなければならないのです。
 <!--
-The third alternative paradigm I have in mind is to stay with the diverse collection of small experimental tasks, as now, but to construct a single system to perform them all. 
-This single system (this model of the human information processor) would have to take the instructions for each, as well as carry out the task. 
+The third alternative paradigm I have in mind is to stay with the diverse collection of small experimental tasks, as now, but to construct a single system to perform them all.
+This single system (this model of the human information processor) would have to take the instructions for each, as well as carry out the task.
 For it must truly be a single system in order to provide the integration that we seek.-->
 
 プロダクションシステムについて 関連する断片 (Newell 本編第 10 章) と，Klahr  のプロダクションシステム (Klahr 本編第 11 章) は，そのような試みがどのようなものかを示しています。
 まだ始まったばかりだが，すでに一定の期待が持てるように思えます。
-<!-- The companion piece on productions systems (Newell, this volume, Chapter 10) in conjunction with Klahr's production system (Klahr, this volume, Chapter 11) indicates how such an endeavor might go. 
+<!-- The companion piece on productions systems (Newell, this volume, Chapter 10) in conjunction with Klahr's production system (Klahr, this volume, Chapter 11) indicates how such an endeavor might go.
 It is only a beginning, but it shows already a certain promise, it seems to me. -->
 
 このような課題の別の型として，WAIS や Stanford-Binet などの標準的な知能検査を受ける単一のプログラムを構築することがあります。
 これは，ずっと以前から求められていた事業ですが (Green, 1964)，実際に動き出したのはごく最近のことです (Hunt, Frost, & Lunneborg, 1972)。
-<!-- An alternative mold for such a task is to construct a single program that would take a standard intelligence test, say the WAIS or the St&nford-Binet. 
+<!-- An alternative mold for such a task is to construct a single program that would take a standard intelligence test, say the WAIS or the St&nford-Binet.
 This is actually an enterprise that was called for much earlier (Green, 1964), but only, recently has anything really stirred (Hunt, Frost, & Lunneborg, 1972).
 -->
 
-# 4. 結語 
+# 4. 結語
 <!--Conclusion-->
 
-この論文では、私の苦悩と混乱の半分が主導権を握っています。 
+この論文では、私の苦悩と混乱の半分が主導権を握っています。
 これは，このシンポジウムの論文を検討する過程で出てきたものですが，単なるコメンテーターの策略とは考えていません。
 私の人生のもう一つの半分は，このような問題に関わっています。
 私の人生のもう半分は人工知能に関係しています。
@@ -1008,19 +1002,19 @@ This is actually an enterprise that was called for much earlier (Green, 1964), b
 ウィノグラードのシステム (1972) は，最初の自然言語処理の取り組みよりも真の意味で進歩している。
 ロボットはかつてよりも格段に良くなっています。
 挑戦者たちは，先人たちが行ったことをすべて行い，さらにそれ以上のことを行うプログラムを次々と発表しています。
-<!-- My distressed and confused half has held the ascendancy throughout this paper.  
-I do not believe that it is just a commentator's ploy, though it emerged in the act of reviewing the papers of this symposium. 
-It is certainly not a universal complaint I voice wherever occasion offers. 
-Another half of my life is concerned with artificial intelligence, a part of computer science devoted to the construction of artifacts that do what mind can do - an enterprise not unrelated to the psychology of thought, though still distinct (Newell, 1970). 
-There, despite the constant chorus of critics, whose universal complaint is that man and machine are of different categories, hence that progress is not possible in principle, and illusory at best I feel that we have the ingredients of accumulation. 
-Winograd's system (1972) is a genuine advance over the first natural language efforts. 
-The robots do significantly better than they once did. 
+<!-- My distressed and confused half has held the ascendancy throughout this paper.
+I do not believe that it is just a commentator's ploy, though it emerged in the act of reviewing the papers of this symposium.
+It is certainly not a universal complaint I voice wherever occasion offers.
+Another half of my life is concerned with artificial intelligence, a part of computer science devoted to the construction of artifacts that do what mind can do - an enterprise not unrelated to the psychology of thought, though still distinct (Newell, 1970).
+There, despite the constant chorus of critics, whose universal complaint is that man and machine are of different categories, hence that progress is not possible in principle, and illusory at best I feel that we have the ingredients of accumulation.
+Winograd's system (1972) is a genuine advance over the first natural language efforts.
+The robots do significantly better than they once did.
 Challengers keep showing up with programs that do all that their predecessors did and more besides.-->
 
 このように，私は私の懸念が現実のものであると診断します。
 そして，すべてをまとめる方法を見つけようという私の呼びかけを真剣に受け止めています。
 たとえそれが，実験的にも概念的にもかつてないほどの成功を収めた時代に叫ばれたものであり，論文がその成功を完璧に示すシンポジウムであったとしてもです。
-<!-- 
+<!--
 Thus, I diagnose my concern as real. And I take seriously my call that we find some way to put it all together - even though this is voiced in an era when we have never been so successful experimentally and conceptually,
 and at a symposium where the papers exhibit so perfectly this success. -->
 
@@ -1028,9 +1022,9 @@ and at a symposium where the papers exhibit so perfectly this success. -->
 そうすれば，物事をまとめる作業は理論家に委ねられ，実験家は自分のやり方で進めることができます。
 (物理学ではそのようにはいきませんが，それは問題ではありません)。
 今回のケースはそうではないようですが，そうなるかもしれません。
-<!-- Maybe we are reaching the day of the theorist in psychology, much as it exists in other sciences such as physics. 
-Then the task of putting things together falls to them, and experimentalists can proceed their own way. 
-(That is not quite the way it works in physics, but no matter.) 
+<!-- Maybe we are reaching the day of the theorist in psychology, much as it exists in other sciences such as physics.
+Then the task of putting things together falls to them, and experimentalists can proceed their own way.
+(That is not quite the way it works in physics, but no matter.)
 This does not seem to me our present case, but it could be.
 -->
 
@@ -1038,13 +1032,13 @@ This does not seem to me our present case, but it could be.
 前節の私の前向きな提案は，そのための方法を提案したものです。
 これらの提案に共通しているのは，実験的研究を結びつける推論の網を強固にするために，十分な詳細さと範囲を強いることです。
 これは，この分野にとって良いことだと思います。
-<!-- Maybe we should cooperate in working on larger experimental wholes than we now do. 
-My positive suggestions in the prior section were proposals of how to do that. 
-They all have in common forcing enough detail and scope to tighten the inferential web that ties our experimental studies together. 
+<!-- Maybe we should cooperate in working on larger experimental wholes than we now do.
+My positive suggestions in the prior section were proposals of how to do that.
+They all have in common forcing enough detail and scope to tighten the inferential web that ties our experimental studies together.
 This is what I think would be good for the field.  -->
 
 もしかしたら，我々は 20 の質問のゲームを続けるべきなのかもしれません。
 そして 1992 年に到着したときには (私が選んだ退職日のように) ，我々は心の本質的な構造にたどり着いているのかもしれません。
-<!-- Maybe we should all simply continue playing our collective game of 20 questions. 
+<!-- Maybe we should all simply continue playing our collective game of 20 questions.
 Maybe all is well, as my other half assures me, and when we arrive in 1992 (the retirement date I pick might as well be my own) we will have homed in to the essential structure of the mind.
 -->
