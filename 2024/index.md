@@ -47,12 +47,12 @@ Appache 2.0 license<br/><br/>
 <!-- キーワード: サイバネティクス，ニューラルネットワーク。マッカロック&ピッツ。パンデモニウム。 -->
 - [第 02 回 04月19日](2024lect02): <!-- ヒューベルとウィーゼル。
 <!--キーワード: 特徴検出細胞。オン中心，オフ周辺細胞。単純型，複雑型細胞。SIFT，HOG, DOG。畳み込み演算 -->
-- [第 03 回 04月26日](2024lect03){:target="_blank"}: HMAX, プーリング
+- [第 03 回 04月26日](2024lect03){:target="_blank"}: HMAX, プーリング。Hubel&Wiesel と Blakemore&Cooper1970 のビデオ閲覧
 - 05 月 03 日: 健康記念日 休講
-- [第 04 回 05月10日](2024lect04){:target="_blank"}: 腹側経路，背側経路
-- [第 05 回 05月17日](2024lect05){:target="_blank"}: 顔認識，表情認識
-- 第 06 回 05月24日: 特徴統合理論，注意，ボトムアップ，トップダウン
-- 第 07 回 05月31日: CAM, Stroop
+- [第 04 回 05月10日](2024lect04){:target="_blank"}: 腹側 ventral 経路と背側 dorsal 経路。紡錘状回 fusiform gyrus，扁桃体 amygdala の接続と。ラマチャンドラン Ramachandan の「脳の中の幽霊」にでてくるカプグラ症候群。
+- [第 05 回 05月17日](2024lect05){:target="_blank"}: 顔認識，表情認識，VGG, ResNet の第一層における特徴検出器の視覚化。
+- [第 06 回 05月24日](2024lect06){:target="_blank"}: CNN，畳み込みの演算実習。
+- 第 07 回 05月31日: 特徴統合理論，注意，ボトムアップ，トップダウン。画像切り出し segmentation
 - 第 08 回 06月07日: 言語モデル，リカレントニューラルネットワーク
 - 第 09 回 06月14日: Transformer
 - 第 10 回 06月21日: 意味表現，word2vec
@@ -70,17 +70,17 @@ Appache 2.0 license<br/><br/>
 5. RNN, Language modeling, Elman, Jordan, BPTT,
 6. LSTM, BPTT, Language modeling, seq2seq
 7. Transformer, Attention,
-1. BERT, GPT, transfer learning, fine-tuning
-1. CNN, LeNet, AlexNet, data augmentation
-1. ResNet, skip-connection, R-CNN, dropout, layer normalization
-1. difusion model
-1. hemi-neglect
-1. Prosoagnosia (face blindness)
-1. Geometorical illusion
-1. visual search
-1. Simon and Stroop effects
-1. picture naming
-1. GAN, generative modeling, VAE-->
+8. BERT, GPT, transfer learning, fine-tuning
+9. CNN, LeNet, AlexNet, data augmentation
+10. ResNet, skip-connection, R-CNN, dropout, layer normalization
+11. difusion model
+12. hemi-neglect
+13. Prosoagnosia (face blindness)
+14. Geometorical illusion
+15. visual search
+16. Simon and Stroop effects
+17. picture naming
+18. GAN, generative modeling, VAE-->
 
 # 諸元
 
