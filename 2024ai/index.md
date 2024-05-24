@@ -16,10 +16,12 @@ Date: 12/Apr/2024<br/>
 Appache 2.0 license<br/><br/>
 </div>
 
-
+<!--
 ## TA
 * 阿部雄大: 3084102y@komazawa-u.ac.jp
-* 王迪浩: 3084101d@komazawa-u.ac.jp
+* 王迪浩: 3084101d@komazawa-u.ac.jp -->
+
+
 
 <!-- ## 心理統計法標準カリキュラム作成小委員会からのお知らせ
 
