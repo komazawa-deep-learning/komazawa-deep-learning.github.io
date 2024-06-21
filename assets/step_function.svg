@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="313.2047pt"
+   height="150.482pt"
+   viewBox="0 0 313.2047 150.482"
+   version="1.1"
+   id="svg12"
+   sodipodi:docname="step_function.pdf"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview12"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="pt" />
+  <defs
+     id="defs2">
+    <g
+       id="g2">
+      <g
+         id="glyph-0-0">
+        <path
+           d="M 4.78125 0.25 C 3.488281 0.25 2.441406 -0.351562 1.640625 -1.5625 C 0.847656 -2.769531 0.453125 -4.359375 0.453125 -6.328125 C 0.453125 -8.285156 0.847656 -9.875 1.640625 -11.09375 C 2.441406 -12.3125 3.488281 -12.921875 4.78125 -12.921875 C 6.070312 -12.921875 7.113281 -12.3125 7.90625 -11.09375 C 8.707031 -9.875 9.109375 -8.285156 9.109375 -6.328125 C 9.109375 -4.359375 8.707031 -2.769531 7.90625 -1.5625 C 7.113281 -0.351562 6.070312 0.25 4.78125 0.25 Z M 4.78125 -0.25 C 5.625 -0.25 6.25 -0.753906 6.65625 -1.765625 C 7.070312 -2.773438 7.28125 -4.316406 7.28125 -6.390625 C 7.28125 -8.429688 7.070312 -9.945312 6.65625 -10.9375 C 6.25 -11.925781 5.625 -12.421875 4.78125 -12.421875 C 3.9375 -12.421875 3.3125 -11.910156 2.90625 -10.890625 C 2.5 -9.878906 2.289062 -8.332031 2.28125 -6.25 C 2.289062 -4.21875 2.5 -2.707031 2.90625 -1.71875 C 3.3125 -0.738281 3.9375 -0.25 4.78125 -0.25 Z M 4.78125 -0.25 "
+           id="path1" />
+      </g>
+      <g
+         id="glyph-0-1">
+        <path
+           d="M 4.0625 -2.03125 L 4.0625 -10.453125 C 4.0625 -10.960938 3.925781 -11.25 3.65625 -11.3125 C 3.382812 -11.382812 2.875 -11.25 2.125 -10.90625 L 2.125 -11.1875 L 3.875 -12.046875 L 5.640625 -12.921875 L 5.71875 -12.859375 L 5.71875 -2.03125 C 5.71875 -1.351562 5.832031 -0.910156 6.0625 -0.703125 C 6.300781 -0.492188 6.804688 -0.378906 7.578125 -0.359375 L 7.578125 0 L 2.21875 0 L 2.21875 -0.359375 C 2.976562 -0.378906 3.476562 -0.492188 3.71875 -0.703125 C 3.945312 -0.910156 4.0625 -1.351562 4.0625 -2.03125 Z M 4.0625 -2.03125 "
+           id="path2" />
+      </g>
+    </g>
+  </defs>
+  <path
+     fill="none"
+     stroke-width="5.625"
+     stroke-linecap="butt"
+     stroke-linejoin="miter"
+     stroke="rgb(0%, 0%, 0%)"
+     stroke-opacity="1"
+     stroke-miterlimit="1"
+     d="M 359.998312 6479.98125 L 3194.998312 6479.98125 "
+     transform="matrix(0.1, 0, 0, -0.1, -24.4803, 763.92)"
+     id="path3" />
+  <path
+     fill-rule="nonzero"
+     fill="rgb(100%, 100%, 100%)"
+     fill-opacity="1"
+     d="M 299.519531 115.921875 L 295.019531 117.605469 L 295.019531 114.230469 "
+     id="path4" />
+  <path
+     fill-rule="nonzero"
+     fill="rgb(0%, 0%, 0%)"
+     fill-opacity="1"
+     d="M 299.519531 115.921875 L 295.019531 117.605469 L 295.019531 114.230469 "
+     id="path5" />
+  <path
+     fill="none"
+     stroke-width="5.625"
+     stroke-linecap="butt"
+     stroke-linejoin="miter"
+     stroke="rgb(0%, 0%, 0%)"
+     stroke-opacity="1"
+     stroke-miterlimit="1"
+     d="M 1799.998312 6209.98125 L 1799.998312 7514.98125 "
+     transform="matrix(0.1, 0, 0, -0.1, -24.4803, 763.92)"
+     id="path6" />
+  <path
+     fill-rule="nonzero"
+     fill="rgb(100%, 100%, 100%)"
+     fill-opacity="1"
+     d="M 155.519531 7.921875 L 157.207031 12.421875 L 153.832031 12.421875 "
+     id="path7" />
+  <path
+     fill-rule="nonzero"
+     fill="rgb(0%, 0%, 0%)"
+     fill-opacity="1"
+     d="M 155.519531 7.921875 L 157.207031 12.421875 L 153.832031 12.421875 "
+     id="path8" />
+  <g
+     fill="rgb(0%, 0%, 0%)"
+     fill-opacity="1"
+     id="g8">
+    <use
+       xlink:href="#glyph-0-0"
+       x="137.5197"
+       y="133.92"
+       id="use8" />
+  </g>
+  <g
+     fill="rgb(0%, 0%, 0%)"
+     fill-opacity="1"
+     id="g9">
+    <use
+       xlink:href="#glyph-0-1"
+       x="128.5197"
+       y="52.92"
+       id="use9" />
+  </g>
+  <path
+     fill="none"
+     stroke-width="28.125"
+     stroke-linecap="butt"
+     stroke-linejoin="miter"
+     stroke="rgb(0%, 0%, 0%)"
+     stroke-opacity="1"
+     stroke-miterlimit="1"
+     d="M 1799.998312 7199.98125 L 3239.998312 7199.98125 "
+     transform="matrix(0.1, 0, 0, -0.1, -24.4803, 763.92)"
+     id="path9" />
+  <path
+     fill="none"
+     stroke-width="28.125"
+     stroke-linecap="butt"
+     stroke-linejoin="miter"
+     stroke="rgb(0%, 0%, 0%)"
+     stroke-opacity="1"
+     stroke-miterlimit="1"
+     d="M 359.998312 6479.98125 L 1799.998312 6479.98125 "
+     transform="matrix(0.1, 0, 0, -0.1, -24.4803, 763.92)"
+     id="path10" />
+  <path
+     fill-rule="nonzero"
+     fill="rgb(0%, 0%, 0%)"
+     fill-opacity="1"
+     stroke-width="16.875"
+     stroke-linecap="butt"
+     stroke-linejoin="miter"
+     stroke="rgb(0%, 0%, 0%)"
+     stroke-opacity="1"
+     stroke-miterlimit="1"
+     d="M 1889.998312 6479.98125 C 1889.998312 6430.29375 1849.685812 6389.98125 1799.998312 6389.98125 C 1750.310812 6389.98125 1709.998312 6430.29375 1709.998312 6479.98125 C 1709.998312 6529.707812 1750.310812 6569.98125 1799.998312 6569.98125 C 1849.685812 6569.98125 1889.998312 6529.707812 1889.998312 6479.98125 "
+     transform="matrix(0.1, 0, 0, -0.1, -24.4803, 763.92)"
+     id="path11" />
+  <path
+     fill-rule="nonzero"
+     fill="rgb(100%, 100%, 100%)"
+     fill-opacity="1"
+     stroke-width="16.875"
+     stroke-linecap="butt"
+     stroke-linejoin="miter"
+     stroke="rgb(0%, 0%, 0%)"
+     stroke-opacity="1"
+     stroke-miterlimit="1"
+     d="M 1889.998312 7199.98125 C 1889.998312 7150.29375 1849.685812 7109.98125 1799.998312 7109.98125 C 1750.310812 7109.98125 1709.998312 7150.29375 1709.998312 7199.98125 C 1709.998312 7249.707812 1750.310812 7289.98125 1799.998312 7289.98125 C 1849.685812 7289.98125 1889.998312 7249.707812 1889.998312 7199.98125 "
+     transform="matrix(0.1, 0, 0, -0.1, -24.4803, 763.92)"
+     id="path12" />
+</svg>
