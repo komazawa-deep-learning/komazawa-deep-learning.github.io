@@ -1,13 +1,11 @@
 ---
-title: 2024年度開講 駒澤大学 人工知能 I および II
+title: 2024 年度開講 駒澤大学 人工知能 I および II
 author: 浅川 伸一
 layout: home
 ---
 <link href="/css/asamarkdown.css" rel="stylesheet">
 <div style="text-align:right">
-<!-- <font size="+1" color="navy"><strong>人工知能</strong></font><br/><br/> -->
 <img src="/2024assets/2024ai_qrcode.png" style="width:19%">
-<!-- <img src="/assets/header_logo.png" sytle="width:09%"> -->
 </div>
 
 <div align='right'>
@@ -56,7 +54,7 @@ Appache 2.0 license<br/><br/>
 - [第 08 回 06月07日](2024ai_lect08){:target="_blank"}: 機械学習 (6) 機械学習のまとめ リッジ回帰，ラッソ回帰，エラスティック回帰，ナイーブベイズ，TFIDF, AdaBoost
 - [第 09 回 06月14日](2024ai_lect09){:target="_blank"}: ニューラルネットワーク (1) パーセプトロン，パンデモニアムモデル 初期視覚特徴，HOG，SIFT, ガウシアンピラミッド，ラプラシアンピラミッド，ヒューベルとウィーゼルの生理実験
 - [第 10 回 06月21日](2024ai_lect10){:target="_blank"}: ニューラルネットワーク(2) 畳み込み，ネオコグニトロン，プーリング，ドロップアウト
-- 第 11 回 06月28日: ニューラルネットワーク(3) 領域分割と物体認識，特徴ピラミッドネットワーク，スキップ結合，ソフトマックス関数, 視覚野の結線 (van Essen)
+- [第 11 回 06月28日](2024ai_lect11){:target="_blank"}: ニューラルネットワーク(3) 領域分割と物体認識，特徴ピラミッドネットワーク，スキップ結合，ソフトマックス関数, 視覚野の結線 (van Essen)
 - 第 12 回 07月05日: ニューラルネットワーク(4) CAM，注意，転移学習，微調整，蒸留
 - 第 13 回 07月12日: ニューラルネットワーク(5) 変分自己符号化器，生成敵対ネットワーク，ゲーム理論，ナッシュ均衡
 - 第 14 回 07月19日: ニューラルネットワーク(6) 画風変換，蒸留，ファインチューニング，転移学習，医療画像診断
