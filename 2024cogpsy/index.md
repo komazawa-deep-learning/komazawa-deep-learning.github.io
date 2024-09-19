@@ -4,6 +4,81 @@ layout: home
 ---
 <link href="/css/asamarkdown.css" rel="stylesheet">
 
+<div style="text-align:right">
+<img src="/2024assets/qrcode2024_0920_2.png" style="width:19%">
+</div>
+
+- 授業名: 認知心理学研究 II (b)
+- 担当者名: 永田 陽子, 竹市 博臣, 浅川 伸一 (アサカワ シンイチ)
+- 電子メールアドレス: <educ20233@komazawa-u.ac.jp>, <asakawa@cis.twcu.a.jp>
+- 開講年度・期:　2024年 後期
+- 開講曜日・時限: 金曜日 2 限 10:40-12:10
+- 教室: 2 号館 研-001 教場
+- 単位数　2
+
+## 授業概要
+
+認知心理学・神経生理学・人工知能のリレー講義です。認知を情報処理過程として捉え，共通トピックとして「多感覚統合」を取り上げます。
+認知心理学・神経生理学・人工知能の３領域の結びつきがわかるように，幅広くお話ししてゆく予定です。理解を深めるためのハンズオンを取り入れます。
+
+
+## 到達目標(ねらい)
+
+本講義の到達目標は、受講生各自が、①認知心理学と関連する神経生理学および人工知能のキーワードを理解し，関係を説明できるようになること、②心理学と関連する分野の話題を理解し，多様な見方を持った実践ができるようになることです。
+
+### 自己紹介
+
+<center>
+<p align="left" style="width:88%">
+浅川伸一 博士(文学) 東京女子大学情報処理センター勤務。早稲田大学在学時はピアジェの発生論敵認識論に心酔する。
+卒業後エルマンネットの考案者ジェフ・エルマンに師事，薫陶を受ける。
+以来人間の高次認知機能をシミュレートすることを通して知的であるとはどういうことかを考えていると思っていた。
+著書に「Python で体験する深層学習」(2016) コロナ社。
+「深層学習教科書 ディープラーニング G検定（ジェネラリスト）公式テキスト」(2017) 共著，翔泳社。
+「ディープラーニング，ビッグデータ，機械学習あるいはその心理学」(2015) 新曜社。
+「ニューラルネットワークの数理的基礎」「脳損傷とニューラルネットワークモデル，神経心理学への適用例」いずれも守
+一雄他編「コネクショニストモデルと心理学」(2001)北大路書房など</p>
+<center>
+<img src="/assets/Elman_portrait.jpg" width="49%"><br/>
+</center></center>
+
+
+## 授業計画
+
+* [第01回 (Sep.20)](2023cogpsy_lect01)
+  * 永田：オリエンテーション 授業の概要について説明します。
+  * 竹市：脳波の基礎 脳波を用いた研究の基礎的な事項（脳波の発見、覚醒水準、誘発反応と事象関連電位：CNV・N100・MMN・P300・N170・N400・ERN、周波数分析：帯域・τとμ、定常反応、同期、BCIなど）について説明します。
+* 第02回 (Sep.27)
+  * 竹市：脳波の計測と解析】Karapetian+(2023) で報告されている脳波実験を題材に、脳波の計測と解析の実際、脳波がどのような神経活動に対応づくか、脳波を測ることでどのような認知過程について調べられるかについて説明します。
+* 第03回 (Oct.04)
+  * 竹市：脳波実験と計算モデル】Karapetian+(2023) で報告されている脳波実験を題材に、行動や生理学的なデータがどのように計算モデルに結びつくのか，計算モデルによって認知心理学のどのような問題が解かれるかについて説明します。
+* 第04回 (Oct.11)
+  * 浅川：クラウドコンピューティング Google Colaboratory を用いて基礎的な使い方を確認します。
+* 第05回 (Oct.18)
+  * 竹市：脳磁図の基礎 脳磁図を用いた研究の基礎的な事項（生体磁気、脳神経系の解剖、逆問題、他の計測法：fMRI・ECoG・NIRSとの比較、ニューロデコーディング、最近の話題：超伝導・光と量子）について説明します。
+* 第06回 (Oct.25)
+  * 竹市：音声言語と文字の知覚 言語の知覚認知の心理学・認知神経科学（言語音の音響特性・包絡追跡・音韻修復、言語の神経心理学、言語の起源と発達、難読、単語の知覚認知、視線解析）など、音声言語と文字の知覚に関する最近の話題について説明します。
+* 第07回 (Nov.08)
+  * 竹市：音声言語知覚の脳磁図実験 Gwilliams&King(2020) で報告されている読字の脳磁図実験を題材に、言語に関する脳磁図計測と解析について説明します
+* 第08回 (Nov.15)
+  * 畳み込みニューラルネットワークの基礎 浅川：畳み込みニューラルネットワークの基礎 [Spoerer+2020](https://doi.org/10.1371/journal.pcbi.1008215) での提案モデルを用いるているので，この論文を取り上げる。畳み込みニューラルネットワークの種類と技法を検討する。
+* 第09回 (Nov.22)
+  * 残差結合 浅川：リカレントネットワークの基礎 BL ネットワークと異なるモデルである[CORnet](https://doi.org/10.1101/408385) を取り上げる。スキップ結合，すなわち ResNet で提案された残差結合の意義を考察する([He+2015](https://arXiv.org/abs/1406.4729/)) 下記の論文をダウンロードしてアブストラクトと図の脚注に目を通しておく：[CORnet](https://doi.org/10.1101/408385) [He+2015](https://arXiv.org/abs/1406.4729/)
+* 第10回 (Nov.29)
+  * リカレントネットワークによる時空間表現 下記の論文をダウンロードしてアブストラクトと図の脚注に目を通しておく：[Carion+2020](https://arxiv.org/abs/:2005.12872/)
+* 第11回 (Dec.06)
+  * ボトムアップとトップダウン処理の相互作用 浅川：BU-TD ネットワーク [Ullman+2020](https://arxiv.org/abs/2105.05592) の BU-TD モデルを取り上げ，リカレント結合の異なる意味を考える。
+下記の論文をダウンロードしてアブストラクトと図の脚注に目を通しておく：[Ullman+2020](https://arxiv.org/abs/2105.05592)
+* 第12回 (Dec.13)
+  * 物体認識と領域切り分けとの相互作用 【浅川：物体情報と位置情報】 前回でのモデルを考慮した上で，画像切り分けと物体同定との相互作用の問題を考える。[Neyshabur+2021](https://arxiv.org/abs/2008.11687/)* 第13回 (Dec.20)
+* 第13回 (Dec.20)
+  * Transformer の導入 浅川：Transformer Transformer を取り上げ，リカレント表現以外の State-of-the-arts である時間表現を取り上げる([Vaswani+2017](https://arXiv.org/abs/1706.03762/))。
+下記の論文をダウンロードしてアブストラクトと図の脚注に目を通しておく：[Vaswani+2017](https://arXiv.org/abs/1706.03762/)
+* 第14回 (Jan.10)
+  * エンコーダ・デコーダモデル 浅川：エンコーダ・デコーダモデル [Gwilliams&King2020](https://doi.org/10.7554/eLife.56603) では，出力系まで考慮したモデルが求められる。入力と出力との相互作用に，リカレント，フィードフォワードのいずれの処理を考える。[End-to-End Object Detection with Transformers](https://arxiv.org/abs/2005.12872) 及び，その [コード](https://github.com/facebookresearch/detr) をダウンロードして眺めておく。
+
+
+
 * N400 への PDP approach:
   * [Simulating Event-Related Potential Reading Data in a Neurally Plausible Parallel Distributed Processing Model](/Users/_asakawa/study/2022documents/2011LaszloPlaut_CogSciConf_ERPmodel.pdf)
   * Laszlo, S., & Federmeier, K.D. (2009). A beautiful day in the neighborhood: An event-related potential study of lexical relationships and prediction in context. Journal of Memory and Language, 61, 326-338.
@@ -14,7 +89,17 @@ layout: home
 
 <div class="abstract">
 
-Humans effortlessly make quick and accurate perceptual decisions about the nature of their immediate visual environment, such as the category of the scene they face.
+ヒトは，自分が直面している情景のカテゴリーなど，身近な視覚環境の性質について，早くて正確な知覚判断を難なく下している。
+これまでの研究で，このような特性の基礎となる皮質表現が豊富にあることが明らかになっている。
+しかし，これらの表象のうち，どの表象が意思決定に適しているかはまだわかっていない。
+ここでは，ニューロイメージングと計算モデリングを用いて，経験的，計算的にこの問題にアプローチした。
+経験的な部分では，情景分類課題 (自然物対人工物) 中の参加者の脳波データと RT を収集した。
+そして，信号検出理論の多変量拡張を用いて，波データと行動を関連付けた。
+その結果，刺激開始後約 100 ミリ秒から約 200 ミリ秒の間に特に神経データと行動の相関が観察され，この時間帯の神経情景表現が意思決定に適したフォーマットになっていることが示唆された。
+計算部分については，脳と行動のモデルとしてリカレント畳み込みニューラルネットワーク (RCNN) を評価した。
+RCNN は，我々のこれまでの観察を画像計算可能なモデルに統合し，神経表現，情景分類データ，およびそれらの間の関係をよく予測した。
+我々の結果は，ヒトにおける情景分類の神経と行動の相関を同定し，計算によって特徴付けるものである。
+<!-- Humans effortlessly make quick and accurate perceptual decisions about the nature of their immediate visual environment, such as the category of the scene they face.
 Previous research has revealed a rich set of cortical representations potentially underlying this feat.
 However, it remains unknown which of these representations are suitably formatted for decision-making.
 Here, we approached this question empirically and computationally, using neuroimaging and computational modeling.
@@ -23,7 +108,7 @@ We then related EEG data to behavior to behavior using a multivariate extension 
 We observed a correlation between neural data and behavior specifically between ∼100 msec and ∼200 msec after stimulus onset, suggesting that the neural scene representations in this time period are suitably formatted for decision-making.
 For the computational part, we evaluated a recurrent convolutional neural network (RCNN) as a model of brain and behavior.
 Unifying our previous observations in an image-computable model, the RCNN predicted well the neural representations, the behavioral scene categorization data, as well as the relationship between them.
-Our results identify and computationally characterize the neural and behavioral correlates of scene categorization in humans.
+Our results identify and computationally characterize the neural and behavioral correlates of scene categorization in humans. -->
 </div>
 
 <div class="figcenter">
@@ -35,6 +120,7 @@ Our results identify and computationally characterize the neural and behavioral 
 * B) 刺激セット。Places-365  (Zhou+2018) から刺激を選択し，30 個の自然情景と 30 個の人工情景の集合を作成した。
 * C) 実験パラダイム。参加者はブロックの半分で情景分類課題を行い，残りの半分で直交固視 + 字色検出課題 (妨害課題と呼ぶ) を行った。
 * D) 距離-超平面アプローチ。距離と RT の相関が有意に負になったときに起こる，神経表象が意思決定に適した形になるタイミングを決定するために，すべての時点において分析を適用した。
+
 <!-- Figure 1. Stimulus set, paradigm, and distance-to-hyperplane approach.
 * (A) Analysis approach. To link neural and behavioral data, we used the distance-to-hyperplane approach, an extension of signal detection theory in a multivariate space.
 * (B) Stimulus set. We selected stimuli from Places-365 (Zhou+2018), creating a set of 30 natural and 30 man-made scenes.
@@ -46,7 +132,8 @@ Our results identify and computationally characterize the neural and behavioral 
 <img src="/2024assets/2023Karapetian_fig2.jpg" style="width:39%">
 </div>
 
-Figure 2. Scene identity and category decoding.
+図 2. 情景の同一性とカテゴリの復号化
+<!-- Figure 2. Scene identity and category decoding. -->
 
 * (A) Pairwise scene identity decoding results on EEG data from the categorization task (blue), distraction task (magenta), and their difference (black).
 The vertical dashed gray line at 0 msec represents the stimulus onset.
@@ -88,60 +175,6 @@ The dashed vertical lines indicate the peaks.
 The shaded gray area represents the noise ceiling.
 * (C) RSA results with features from B-Dnet (Spoerer et al., 2020), the feedforward, parameter-matched version of BLnet.
 * (D) Difference waves between RCNN and FCNN results (two-tailed, p < 0.05, FDR-corrected). -->
-
-
-- 授業名: 認知心理学研究 II (b)
-- 担当者名: 永田 陽子, 竹市 博臣, 浅川 伸一 (アサカワ シンイチ)
-- 電子メールアドレス: <educ20233@komazawa-u.ac.jp>, <asakawa@cis.twcu.a.jp>
-- 開講年度・期:　2024年 後期
-- 開講曜日・時限: 金曜日 2 限 10:40-12:10
-- 教室: 2 号館 研-001 教場
-- 単位数　2
-
-## 授業概要
-
-認知心理学・神経生理学・人工知能のリレー講義です。認知を情報処理過程として捉え，共通トピックとして「多感覚統合」を取り上げます。
-認知心理学・神経生理学・人工知能の３領域の結びつきがわかるように，幅広くお話ししてゆく予定です。理解を深めるためのハンズオンを取り入れます。
-
-## 到達目標(ねらい)
-
-本講義の到達目標は、受講生各自が、①認知心理学と関連する神経生理学および人工知能のキーワードを理解し，関係を説明できるようになること，
-②心理学と関連する分野の話題を理解し，多様な見方を持った実践ができるようになることです。
-
-
-## 授業計画
-
-* [第01回 (Sep.20)](2023cogpsy_lect01)
-  * 永田：オリエンテーション 授業の概要について説明します。
-  * 竹市：脳波の基礎 脳波を用いた研究の基礎的な事項（脳波の発見、覚醒水準、誘発反応と事象関連電位：CNV・N100・MMN・P300・N170・N400・ERN、周波数分析：帯域・τとμ、定常反応、同期、BCIなど）について説明します。
-* 第02回 (Sep.27)
-  * 竹市：脳波の計測と解析】Karapetian+(2023) で報告されている脳波実験を題材に、脳波の計測と解析の実際、脳波がどのような神経活動に対応づくか、脳波を測ることでどのような認知過程について調べられるかについて説明します。
-* 第03回 (Oct.04)
-  * 竹市：脳波実験と計算モデル】Karapetian+(2023) で報告されている脳波実験を題材に、行動や生理学的なデータがどのように計算モデルに結びつくのか，計算モデルによって認知心理学のどのような問題が解かれるかについて説明します。
-* 第04回 (Oct.11)
-  * 浅川：クラウドコンピューティング Google Colaboratory を用いて基礎的な使い方を確認します。
-* 第05回 (Oct.18)
-  * 竹市：脳磁図の基礎 脳磁図を用いた研究の基礎的な事項（生体磁気、脳神経系の解剖、逆問題、他の計測法：fMRI・ECoG・NIRSとの比較、ニューロデコーディング、最近の話題：超伝導・光と量子）について説明します。
-* 第06回 (Oct.25)
-  * 竹市：音声言語と文字の知覚 言語の知覚認知の心理学・認知神経科学（言語音の音響特性・包絡追跡・音韻修復、言語の神経心理学、言語の起源と発達、難読、単語の知覚認知、視線解析）など、音声言語と文字の知覚に関する最近の話題について説明します。
-* 第07回 (Nov.08)
-  * 竹市：音声言語知覚の脳磁図実験 Gwilliams&King(2020) で報告されている読字の脳磁図実験を題材に、言語に関する脳磁図計測と解析について説明します
-* 第08回 (Nov.15)
-  * 畳み込みニューラルネットワークの基礎 浅川：畳み込みニューラルネットワークの基礎 [Spoerer+2020](https://doi.org/10.1371/journal.pcbi.1008215) での提案モデルを用いるているので，この論文を取り上げる。畳み込みニューラルネットワークの種類と技法を検討する。
-* 第09回 (Nov.22)
-  * 残差結合 浅川：リカレントネットワークの基礎 BL ネットワークと異なるモデルである[CORnet](https://doi.org/10.1101/408385) を取り上げる。スキップ結合，すなわち ResNet で提案された残差結合の意義を考察する([He+2015](https://arXiv.org/abs/1406.4729/)) 下記の論文をダウンロードしてアブストラクトと図の脚注に目を通しておく：[CORnet](https://doi.org/10.1101/408385) [He+2015](https://arXiv.org/abs/1406.4729/)
-* 第10回 (Nov.29)
-  * リカレントネットワークによる時空間表現 下記の論文をダウンロードしてアブストラクトと図の脚注に目を通しておく：[Carion+2020](https://arxiv.org/abs/:2005.12872/)
-* 第11回 (Dec.06)
-  * ボトムアップとトップダウン処理の相互作用 浅川：BU-TD ネットワーク [Ullman+2020](https://arxiv.org/abs/2105.05592) の BU-TD モデルを取り上げ，リカレント結合の異なる意味を考える。
-下記の論文をダウンロードしてアブストラクトと図の脚注に目を通しておく：[Ullman+2020](https://arxiv.org/abs/2105.05592)
-* 第12回 (Dec.13)
-  * 物体認識と領域切り分けとの相互作用 【浅川：物体情報と位置情報】 前回でのモデルを考慮した上で，画像切り分けと物体同定との相互作用の問題を考える。[Neyshabur+2021](https://arxiv.org/abs/2008.11687/)* 第13回 (Dec.20)
-* 第13回 (Dec.20)
-  * Transformer の導入 浅川：Transformer Transformer を取り上げ，リカレント表現以外の State-of-the-arts である時間表現を取り上げる([Vaswani+2017](https://arXiv.org/abs/1706.03762/))。
-下記の論文をダウンロードしてアブストラクトと図の脚注に目を通しておく：[Vaswani+2017](https://arXiv.org/abs/1706.03762/)
-* 第14回 (Jan.10)
-  * エンコーダ・デコーダモデル 浅川：エンコーダ・デコーダモデル [Gwilliams&King2020](https://doi.org/10.7554/eLife.56603) では，出力系まで考慮したモデルが求められる。入力と出力との相互作用に，リカレント，フィードフォワードのいずれの処理を考える。[End-to-End Object Detection with Transformers](https://arxiv.org/abs/2005.12872) 及び，その [コード](https://github.com/facebookresearch/detr) をダウンロードして眺めておく。
 
 <center>
 <div class="fig">
