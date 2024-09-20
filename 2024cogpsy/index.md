@@ -79,6 +79,33 @@ layout: home
 
 
 
+# Glaser(2019) の 教師あり機械学習の 4 つのレベル
+
+<!-- <div class="figure figcenter">
+<img src="figures/2019Glaser_fig2.jpg" width="49%">
+<div class="figcaption" style="width:44%">
+
+Glaser+2019 による，機械学習の 4 レベル
+[Glaser+2019](https://www.sciencedirect.com/science/article/abs/pii/S0301008218300856?via%3Dihub) Fig. 2 より
+</div></div>-->
+
+<div>
+  <img src="/assets/2019Glaser_fig2.jpg" style="width:74%;align:center;"><br/>
+</div>
+
+1. 工学的な問題の解決: 機械学習は，医療診断，ブレインコンピュータインターフェース，研究ツールなど，神経科学者
+が使用する手法の予測性能を向上させることができる。
+2. 予測可能な変数の特定: 機械学習により，脳や外界に関連する変数がお互いを予測しているかどうかをより正確に判断
+することができる。
+3. 単純なモデルのベンチマーク: 解釈可能な簡易モデルと精度の高い ML モデルの性能を比較することで，簡易モデルの
+良し悪しを判断するのに役立つ。
+4. 脳のモデルとしての役割: 脳が機械学習システム，例えばディープニューラルネットワークと同様の方法で問題を解決
+しているかどうかを論じることができる。
+
+[Glaser+2019](https://www.sciencedirect.com/science/article/abs/pii/S0301008218300856?via%3Dihub) Fig. 2 より
+
+
+
 * N400 への PDP approach:
   * [Simulating Event-Related Potential Reading Data in a Neurally Plausible Parallel Distributed Processing Model](/Users/_asakawa/study/2022documents/2011LaszloPlaut_CogSciConf_ERPmodel.pdf)
   * Laszlo, S., & Federmeier, K.D. (2009). A beautiful day in the neighborhood: An event-related potential study of lexical relationships and prediction in context. Journal of Memory and Language, 61, 326-338.
