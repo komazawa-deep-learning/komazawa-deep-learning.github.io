@@ -45,14 +45,14 @@ layout: home
 
 ## 授業計画
 
-* [第01回 (Sep.20)](2023cogpsy_lect01)
+* [第01回 (Sep.20)](2024cogpsy_lect01){:target="_blank"}
   * 永田：オリエンテーション 授業の概要について説明します。
   * 竹市：脳波の基礎 脳波を用いた研究の基礎的な事項（脳波の発見、覚醒水準、誘発反応と事象関連電位：CNV・N100・MMN・P300・N170・N400・ERN、周波数分析：帯域・τとμ、定常反応、同期、BCIなど）について説明します。
 * 第02回 (Sep.27)
   * 竹市：脳波の計測と解析】Karapetian+(2023) で報告されている脳波実験を題材に、脳波の計測と解析の実際、脳波がどのような神経活動に対応づくか、脳波を測ることでどのような認知過程について調べられるかについて説明します。
 * 第03回 (Oct.04)
   * 竹市：脳波実験と計算モデル】Karapetian+(2023) で報告されている脳波実験を題材に、行動や生理学的なデータがどのように計算モデルに結びつくのか，計算モデルによって認知心理学のどのような問題が解かれるかについて説明します。
-* 第04回 (Oct.11)
+* [第04回 (Oct.11)](2024cogpsy_lect04){:target="_blank"}
   * 浅川：クラウドコンピューティング Google Colaboratory を用いて基礎的な使い方を確認します。
 * 第05回 (Oct.18)
   * 竹市：脳磁図の基礎 脳磁図を用いた研究の基礎的な事項（生体磁気、脳神経系の解剖、逆問題、他の計測法：fMRI・ECoG・NIRSとの比較、ニューロデコーディング、最近の話題：超伝導・光と量子）について説明します。
@@ -93,26 +93,18 @@ Glaser+2019 による，機械学習の 4 レベル
   <img src="/assets/2019Glaser_fig2.jpg" style="width:74%;align:center;"><br/>
 </div>
 
-1. 工学的な問題の解決: 機械学習は，医療診断，ブレインコンピュータインターフェース，研究ツールなど，神経科学者
-が使用する手法の予測性能を向上させることができる。
-2. 予測可能な変数の特定: 機械学習により，脳や外界に関連する変数がお互いを予測しているかどうかをより正確に判断
-することができる。
-3. 単純なモデルのベンチマーク: 解釈可能な簡易モデルと精度の高い ML モデルの性能を比較することで，簡易モデルの
-良し悪しを判断するのに役立つ。
-4. 脳のモデルとしての役割: 脳が機械学習システム，例えばディープニューラルネットワークと同様の方法で問題を解決
-しているかどうかを論じることができる。
+1. 工学的な問題の解決: 機械学習は，医療診断，ブレインコンピュータインターフェース，研究ツールなど，神経科学者が使用する手法の予測性能を向上させることができる。
+2. 予測可能な変数の特定: 機械学習により，脳や外界に関連する変数がお互いを予測しているかどうかをより正確に判断することができる。
+3. 単純なモデルのベンチマーク: 解釈可能な簡易モデルと精度の高い ML モデルの性能を比較することで，簡易モデルの良し悪しを判断するのに役立つ。
+4. 脳のモデルとしての役割: 脳が機械学習システム，例えばディープニューラルネットワークと同様の方法で問題を解決しているかどうかを論じることができる。
 
 [Glaser+2019](https://www.sciencedirect.com/science/article/abs/pii/S0301008218300856?via%3Dihub) Fig. 2 より
-
-
 
 * N400 への PDP approach:
   * [Simulating Event-Related Potential Reading Data in a Neurally Plausible Parallel Distributed Processing Model](/Users/_asakawa/study/2022documents/2011LaszloPlaut_CogSciConf_ERPmodel.pdf)
   * Laszlo, S., & Federmeier, K.D. (2009). A beautiful day in the neighborhood: An event-related potential study of lexical relationships and prediction in context. Journal of Memory and Language, 61, 326-338.
 * 竹市先生ご指定の文献:
-
-
-[Empirically Identifying and Computationally Modeling the Brain–Behavior Relationship for Human Scene Categorization](https://doi.org/10.1162/jocn_a_02043)
+  * [Karapetian+(2023) Empirically Identifying and Computationally Modeling the Brain–Behavior Relationship for Human Scene Categorization](https://doi.org/10.1162/jocn_a_02043)
 
 <div class="abstract">
 
