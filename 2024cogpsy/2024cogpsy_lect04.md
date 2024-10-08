@@ -3,7 +3,7 @@ title: "第04回 2024年度開講 駒澤大学 認知心理学研究"
 author: "浅川 伸一"
 layout: home
 ---
-<link href="/assets/css/asamarkdown.css" rel="stylesheet">
+<link href="/css/asamarkdown.css" rel="stylesheet">
 
 <div align="right">
 <a href='mailto:educ0233@komazawa-u.ac.jp'>Shin Aasakawa</a>, all rights reserved.<br>
@@ -16,8 +16,10 @@ $$
 \newcommand{\Of}[1]{\left[#1\right]}
 \newcommand{\KL}[2]{\operatorname{KL}\left(\left.{#1}\right\|{#2}\right)}
 \newcommand{\given}[1]{\left|{#1}\right.}
+\newcommand{\mb}[1]{\mathbf{#1}}
 $$
 
+* [ジェフェリー・ヒントンのマクセル賞受賞記念講演(2016)](/Hinton_Maxwell_award/){:target="_blank"}
 
 <div class="memo">
 クリストフ・コロンブスのアメリカ発見について，そもそも彼の偉大な点はどこにあるか，ということをきく人があるならば，それは西回りのルートでインドへ旅行するのに，地球が球形であることを利用するというアイディアではなかった，と答えなければならないだろう。
@@ -133,7 +135,7 @@ git clone https://github.com/CSAILVision/places365.git
 ```
 
 上例の場合，カレントディレクトリに `places365` というディレクトリが作成される。
-`git clone 第一引数 第二引数` のように指定すると，`places366` ではなく，第二引数で指定されたディレクトリ名で，リポジトリが作成される。
+`git clone 第一引数 第二引数` のように指定すると，`places365` ではなく，第二引数で指定されたディレクトリ名で，リポジトリが作成される。
 `2024palces365.git` というディレクトリ名にしたければ，以下のようにする:<br/>
 `git clone https://github.com/CSAILVision/places365.git 2024places365.git`
 
@@ -160,7 +162,40 @@ Git 上でコードやデータが変更されていれば，最新の状態へ�
 ロジスティック回帰の起源は，一説によれば人口動態を記述した Mathus(1789) であるとされる([Cramer2002](https://papers.tinbergen.nl/02119.pdf))。
 
 任意のデータ $x\in[1,D]$ に対して，真偽，賛否，あるいは，あるクラスに属するか否かを定めるためのデータ，もしくは特徴を $x$ とする。
-$x$ の範囲は $x\in(-\infty,+\infty)$ であるので，$P(x) + P(\neg x) = 1$ を満たすためには，$f(x)>0$ かつ $x>y\rightarrow f(x)>(y)$ を満たす変換を考えれば良い。
+$x$ の範囲は $x\in(-\infty,+\infty)$ であるので，$P(x) + P(\neg x) = 1$ を満たすためには，$f(x)>0$ かつ $x>y\rightarrow f(x)>(y)$ という条件を満たす変換を考えれば良い。
+
+この条件に合致する変換として $f(x)=e^{x}$ を考えれば，ロジスティック回帰式，あるいはシグモイド関数を得る。
+
+今，A か B か，賛成か反対か，を A と B で表すことにする。
+A と B とは互いに背反であり，A でなければ B が成り立つものとする。
+このとき $e^{A}, e^{B}$ を用いて，A である確率 $P(A)$ は次式で与えられる:
+$$
+P(A) = \frac{e^{A}}{e^{A}+e^{B}}
+$$
+上式右辺分母は，二項とも正である。
+したがって B である確率は $\displaystyle P(B)=1-P(A)=\frac{e^{B}}{e^{A}+e^{B}}=1-\frac{e^{A}}{e^{A}+e^{B}}$ である。
+ここで，分子分母を $e^{A}$ で割ると $\displaystyle P(A)=\frac{1}{1+e^{-(A+B)}}$ となる。
+このため，$P(A)=P(B)=0.5$ となる点は $e^{-(A+B)}=1$ であるから，指数の肩が 0 であれば $e^{0}=1$ である。
+このため $-(A+B)=0$ より $A=B$ であれば，$P(A)=P(B)=0.5$ が成り立つ。
+
+ここで，ニューラルネットワークとの関連を考える。
+入力ベクトル $\mb{x}$ に対して，$A$ または $\neg A$ を学習する場合，出力層素子が 1 つである 2 層のニューラルネットワークを設計することができる。
+$y = \mb{w}^{\top}\mb{x} +b$ なる線形結合により得られた $y$ に対してロジスティック回帰は $\displaystyle y=\frac{1}{1+e^{-\left(wx+b\right)}}$ である。
+このとき，$\mb{w}^{\top}\mb{x}+b>0$ であれば，$P(A)>0.5$ であり，$\mb{w}^{\top}\mb{x}+b<0$ であれば $P(A)<0.5$ となる。
+このことは，入力ベクトル $\mb{x}$ と重みベクトル $\mb{w}$ との内積 (バイアス項の和を除けば) の正負によって判断確率が定まることとなる。
+
+すなわち，ベクトルの内積が正であることわ，入力ベクトルと重みベクトルとの内積が正であるとは，二本のベクトル間の角度を $\theta$ とすれば
+${\mb{w}^{\top}\mb{x}}=|\mb{w}| |\mb{x}| \cos\theta$ であるから，$\cos$ によって右辺の正負が定まる。
+したがって，$\mb{w}$ と $\mb{x}$ との成す角が $-1/2\ge\theta\ge1/2$ であれば $\cos\theta>0$ である。
+すなわち，$A$ または $\neg A$ を判別するためには，ベクトル $\mb{x}$ に直交する
+
+
+したがって，入力データベクトル $\mb{x}$ に対して，同じ次元を持つ重みベクトル $\mb{w}$ との内積 $\mb{w}^{\top}\mb{x}$ が正であれば，その正規確率である出力値は 0.5 を上回る ($P\left(\mb{x}\right)>0$)。
+反対に内積が負であれば ($\mb{w}^{\top}\mb{x}<0$) その確率は 0.5 を下回る。
+
+
+k-means は
+
 
 
 
