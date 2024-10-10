@@ -19,8 +19,6 @@ $$
 \newcommand{\mb}[1]{\mathbf{#1}}
 $$
 
-* [ジェフェリー・ヒントンのマクセル賞受賞記念講演(2016)](/Hinton_Maxwell_award/){:target="_blank"}
-
 <div class="memo">
 クリストフ・コロンブスのアメリカ発見について，そもそも彼の偉大な点はどこにあるか，ということをきく人があるならば，それは西回りのルートでインドへ旅行するのに，地球が球形であることを利用するというアイディアではなかった，と答えなければならないだろう。
 このアイディアはすでに他の人々によって考えられたものであったし，彼の探検の慎重な準備，船の専門的な装備などということでもなかった。
@@ -28,6 +26,9 @@ $$
 そうではなくて，この発見的航海で最も困難であったことは，既知の陸地を完全に離れ，残余の貯えでは引き返すことがもはや不可能であった地点から，さらに西へ西へと船を走らせるという決心であったに違いない。<br>
 <div style="text-align:right">「部分と全体」ハイゼンベルク，山崎和夫訳，みすず書房，p.115，「VI 新世界への出発 1926-1927年」冒頭部</div>
 </div>
+
+* [ジェフェリー・ヒントンのマクセル賞受賞記念講演(2016)](/Hinton_Maxwell_award/){:target="_blank"}
+* [浅川, 2013, アトラクタニューラルネットワークモデルの数理解析とその神経心理学への応用](2013Asakawa_JPsychoReview_Published.pdf){:target="_blank"}
 
 
 <div class="figcenter">
@@ -82,8 +83,13 @@ Note that all these relationships are difficult to establish otherwise (gray dou
 4. [フレームワーク](/eco/)
 5. CNN
 
+## コード
+
+* [Karapetian+ (2023) データによるデモ](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2024notebooks/2024_1011Karapetian_demo.ipynb){:target="_blank"}
 
 # 1. Git のインストールと実行
+
+* [図解解説】これ1本でGitをマスターできるチュートリアル！【完全版】](https://qiita.com/Sicut_study/items/0318cc136c189b179b7f)
 
 ## 1.1 コマンドライン版 `git` のインストール
 
