@@ -85,7 +85,8 @@ Note that all these relationships are difficult to establish otherwise (gray dou
 
 ## コード
 
-* [Karapetian+ (2023) データによるデモ](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2024notebooks/2024_1011Karapetian_demo.ipynb){:target="_blank"}
+* [Karapetian+(2023) データによるデモ <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2024notebooks/2024_1011Karapetian_demo.ipynb){:target="_blank"}
+* [誤差逆伝播と注意を組み合わせたトップダウンネットワーク Abel &Ullman(2023) Top-Down Network Combines Back-Propagation with Attention <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2024notebooks/2024_0105royabel_BU_TD_multi_mnist.ipynb){:target="_blank"}
 
 # 1. Git のインストールと実行
 
@@ -204,9 +205,12 @@ k-means は
 
 
 
+## マルチモーダル統合，マルチタスク，トップダウン流とボトムアップ
 
+* [Ullman (2021) 系列探索と逆行流: 視覚野における双方向情報フローの計算モデル](/2023cogpsy/2021Ullman_bu_td_ja.pdf){:target="_blank"}
+* [Ullman (1995) ボトムアップ・トップダウンの反復処理による画像解釈](/2023cogpsy/1995Ullman_bidirectional_cortex_ja.pdf){:target="_blank"}
 
-
+<!--
 ## [世界モデル](https://worldmodels.github.io/){:target="_blank"}
 
 先週取り上げた変分符号化器モデルの応用として，[世界モデル](https://arxiv.org/abs/1803.10122) を取り上げます。
@@ -228,18 +232,14 @@ k-means は
 <div style="text-align: center;">
 <img src="/2023assets/world_models_1990.jpeg" style="width:44%;"/>
 <img src="/2023assets/world_models_1990_feedback.jpeg" style="width:44%;"/>
-<!-- <img src="/2023assets/world_models_1990.jpeg" style="display: block; margin: auto; width: 44%;"/>
-<img src="/2023assets/world_models_1990_feedback.jpeg" style="display: block; margin: auto; width: 44%;"/> -->
+<img src="/2023assets/world_models_1990.jpeg" style="display: block; margin: auto; width: 44%;"/>
+<img src="/2023assets/world_models_1990_feedback.jpeg" style="display: block; margin: auto; width: 44%;"/>
 </div>
 <div style="text-align: center;">
 世界 RNN モデルを内蔵したコントローラ。
 
 環境と相互作用する RNN ベースのコントローラの図 (Schmithuber1990)
-<!-- A controller with internal RNN model of the world.
-Ancient drawing (1990) of a RNN-based controller interacting with an environment. [20] -->
+A controller with internal RNN model of the world.
+Ancient drawing (1990) of a RNN-based controller interacting with an environment. [20]
 </div>
-
-## マルチモーダルインテグレーション，マルチタスク，トップダウン流とボトムアップ流
-
-* [系列探索と逆行流: 視覚野における双方向情報フローの計算モデル](/2023cogpsy/2021Ullman_bu_td_ja.pdf)
-* [ボトムアップ・トップダウンの反復処理による画像解釈](/2023cogpsy/1995Ullman_bidirectional_cortex_ja.pdf)
+-->
