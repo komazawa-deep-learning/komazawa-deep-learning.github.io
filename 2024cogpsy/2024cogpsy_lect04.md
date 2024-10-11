@@ -328,6 +328,13 @@ Other applications include reducing noise in measurements of the gravitational w
 近年では，分子や物質の特性を計算したり予測したりする際にも，この技術が利用され始めている。例えば，タンパク質分子の構造を計算してその機能を決定したり，より効率的な太陽電池に使用するのに最適な特性を持つ物質の新しいバージョンを特定したりするなどである。
 <!--In recent years, this technology has also begun to be used when calculating and predicting the properties of molecules and materials – such as calculating protein molecules’ structure, which determines their function, or working out which new versions of a material may have the best properties for use in more efficient solar cells. -->
 
+#### さらに詳しく<!-- #### Further reading-->
+
+今年の受賞に関する追加情報（英語による科学的背景を含む）は，スウェーデン王立科学アカデミーのウェブサイト（www.kva.se）および www.nobelprize.org で入手できる。
+www.nobelprize.org では，記者会見のビデオやノーベル賞受賞講演などを視聴できる。
+ノーベル賞および経済学賞に関連する展示会や活動に関する情報は，www.nobelprizemuseum.se で入手できる。
+<!--Additional information on this year’s prizes, including a scientific background in English, is available on the website of the Royal Swedish Academy of Sciences, www.kva.se, and at www.nobelprize.org, where you can watch video from the press conferences, the Nobel Lectures and more.
+Information on exhibitions and activities related to the Nobel Prizes and the Prize in Economic Sciences is available at www.nobelprizemuseum.se. -->
 
 * [Hopfield1982, Neural networks and physical systems with emergent collective computationalabilitie](/2024cogpsy/1982Hopfield_Neural_networks_and_physical_systems_with_emergent_collective_computational_abilities.pdf){:target="_blank"}
 * [Hopfiled&Tank1985, "Neural" Computation of Decisions in Optimization Problems](/2024cogpsy/1985Hopfield_Tank_Neural_computation_of_decisions_in_optimization_problems.pdf){:target="_blank"}
