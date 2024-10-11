@@ -32,6 +32,7 @@ $$
 ## コード
 
 * [Python の基礎 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2024notebooks/2024_1011python_primers.ipynb){:target="_blank"}
+* [Python, PyTorch の基礎 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2024notebooks/2024_1011Python_Numpy_Primers.ipynb){:target="_blank"}
 * [Karapetian+(2023) データによるデモ <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2024notebooks/2024_1011Karapetian_demo.ipynb){:target="_blank"}
 * [誤差逆伝播と注意を組み合わせたトップダウンネットワーク Abel &Ullman(2023) Top-Down Network Combines Back-Propagation with Attention <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2024notebooks/2024_0105royabel_BU_TD_multi_mnist.ipynb){:target="_blank"}
 
