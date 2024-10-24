@@ -48,7 +48,7 @@ Appache 2.0 license<br/><br/>
 - [第17回 10月04日](2024ai_lect17){:target="_blank"}: 自然言語処理 (2) 翻訳モデル: LSTM ゲート
 - [第18回 10月11日](2024ai_lect18){:target="_blank"}: 自然言語処理 (3) 意味モデル: word2vec, LDA, LSI, SVD，トピックモデル，意味記憶
 - [第19回 10月18日](2024ai_lect19){:target="_blank"}: 自然言語処理 (4) 符号化器・復号化器モデル，翻訳モデル，注意
-- 第20回 10月25日: 自然言語処理 (5) Transformer, マルチヘッド多頭注意, BERT, GLUE, GPT
+- [第20回 10月25日](2024ai_lect20){:target="_blank"}: 自然言語処理 (5) Transformer, マルチヘッド多頭注意, BERT, GLUE, GPT
 - 第21回 11月08日: 自然言語処理 (6) 視覚と言語との融合。NIC, VQA
 - 第22回 11月15日: 自然言語処理 (7) 自然言語処理のまとめ
 - 第23回 11月22日: 強化学習 (1) 報酬，価値，TD 誤差，方策，イプシロン貪欲探索，マルコフ決定過程，REINFORCE, SARSA, Q 学習
