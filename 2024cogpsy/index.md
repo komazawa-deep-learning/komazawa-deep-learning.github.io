@@ -60,23 +60,24 @@ layout: home
   * 竹市：音声言語と文字の知覚 言語の知覚認知の心理学・認知神経科学（言語音の音響特性・包絡追跡・音韻修復、言語の神経心理学、言語の起源と発達、難読、単語の知覚認知、視線解析）など、音声言語と文字の知覚に関する最近の話題について説明します。
 * 第07回 (Nov.08)
   * 竹市：音声言語知覚の脳磁図実験 Gwilliams&King(2020) で報告されている読字の脳磁図実験を題材に、言語に関する脳磁図計測と解析について説明します
-* 第08回 (Nov.15)
+* [第08回 (Nov.15)](2024cogpsy_lect08){:target="_blank"}
   * 畳み込みニューラルネットワークの基礎 浅川：畳み込みニューラルネットワークの基礎 [Spoerer+2020](https://doi.org/10.1371/journal.pcbi.1008215) での提案モデルを用いるているので，この論文を取り上げる。畳み込みニューラルネットワークの種類と技法を検討する。
 * 第09回 (Nov.22)
-  * 残差結合 浅川：リカレントネットワークの基礎 BL ネットワークと異なるモデルである[CORnet](https://doi.org/10.1101/408385) を取り上げる。スキップ結合，すなわち ResNet で提案された残差結合の意義を考察する([He+2015](https://arXiv.org/abs/1406.4729/)) 下記の論文をダウンロードしてアブストラクトと図の脚注に目を通しておく：[CORnet](https://doi.org/10.1101/408385) [He+2015](https://arXiv.org/abs/1406.4729/)
+  * 残差結合 浅川：リカレントネットワークの基礎 BL ネットワークと異なるモデルである [CORnet](https://doi.org/10.1101/408385){:target="_blank"} を取り上げる。
+スキップ結合，すなわち ResNet で提案された残差結合の意義を考察する ([He+2015](https://arXiv.org/abs/1406.4729/){:target="_blank"}) 下記の論文をダウンロードしてアブストラクトと図の脚注に目を通しておく：[CORnet](https://doi.org/10.1101/408385){:target="_blank"}, [He+2015](https://arXiv.org/abs/1406.4729/){:target="_blank"}
 * 第10回 (Nov.29)
-  * リカレントネットワークによる時空間表現 下記の論文をダウンロードしてアブストラクトと図の脚注に目を通しておく：[Carion+2020](https://arxiv.org/abs/:2005.12872/)
+  * リカレントネットワークによる時空間表現 下記の論文をダウンロードしてアブストラクトと図の脚注に目を通しておく：[Carion+2020](https://arxiv.org/abs/2005.12872/){:target="_blank"}
 * 第11回 (Dec.06)
-  * ボトムアップとトップダウン処理の相互作用 浅川：BU-TD ネットワーク [Ullman+2020](https://arxiv.org/abs/2105.05592) の BU-TD モデルを取り上げ，リカレント結合の異なる意味を考える。
-下記の論文をダウンロードしてアブストラクトと図の脚注に目を通しておく：[Ullman+2020](https://arxiv.org/abs/2105.05592)
+  * ボトムアップとトップダウン処理の相互作用 浅川：BU-TD ネットワーク [Ullman+2020](https://arxiv.org/abs/2105.05592){:target="_blank"} の BU-TD モデルを取り上げ，リカレント結合の異なる意味を考える。
+下記の論文をダウンロードしてアブストラクトと図の脚注に目を通しておく：[Ullman+2020](https://arxiv.org/abs/2105.05592){:target="_blank"}
 * 第12回 (Dec.13)
-  * 物体認識と領域切り分けとの相互作用 【浅川：物体情報と位置情報】 前回でのモデルを考慮した上で，画像切り分けと物体同定との相互作用の問題を考える。[Neyshabur+2021](https://arxiv.org/abs/2008.11687/)* 第13回 (Dec.20)
+  * 物体認識と領域切り分けとの相互作用 【浅川：物体情報と位置情報】 前回でのモデルを考慮した上で，画像切り分けと物体同定との相互作用の問題を考える。[Neyshabur+2021](https://arxiv.org/abs/2008.11687/){:target="_blank"}
 * 第13回 (Dec.20)
-  * Transformer の導入 浅川：Transformer Transformer を取り上げ，リカレント表現以外の State-of-the-arts である時間表現を取り上げる([Vaswani+2017](https://arXiv.org/abs/1706.03762/))。
-下記の論文をダウンロードしてアブストラクトと図の脚注に目を通しておく：[Vaswani+2017](https://arXiv.org/abs/1706.03762/)
+  * Transformer の導入 浅川：Transformer Transformer を取り上げ，リカレント表現以外の State-of-the-arts である時間表現を取り上げる([Vaswani+2017](https://arXiv.org/abs/1706.03762/){:target="_blank"})。
+下記の論文をダウンロードしてアブストラクトと図の脚注に目を通しておく：[Vaswani+2017](https://arXiv.org/abs/1706.03762/){:target="_blank"}
 * 第14回 (Jan.10)
-  * エンコーダ・デコーダモデル 浅川：エンコーダ・デコーダモデル [Gwilliams&King2020](https://doi.org/10.7554/eLife.56603) では，出力系まで考慮したモデルが求められる。入力と出力との相互作用に，リカレント，フィードフォワードのいずれの処理を考える。[End-to-End Object Detection with Transformers](https://arxiv.org/abs/2005.12872) 及び，その [コード](https://github.com/facebookresearch/detr) をダウンロードして眺めておく。
-
+  * エンコーダ・デコーダモデル 浅川：エンコーダ・デコーダモデル [Gwilliams&King2020](https://doi.org/10.7554/eLife.56603){:target="_blank"} では，出力系まで考慮したモデルが求められる。入力と出力との相互作用に，リカレント，フィードフォワードのいずれの処理を考える。
+  [End-to-End Object Detection with Transformers](https://arxiv.org/abs/2005.12872){:target="_blank"} 及び，その [コード](https://github.com/facebookresearch/detr){:target="_blank"} をダウンロードして眺めておく。
 
 
 # Glaser(2019) の 教師あり機械学習の 4 つのレベル
@@ -89,8 +90,8 @@ Glaser+2019 による，機械学習の 4 レベル
 [Glaser+2019](https://www.sciencedirect.com/science/article/abs/pii/S0301008218300856?via%3Dihub) Fig. 2 より
 </div></div>-->
 
-<div>
-  <img src="/assets/2019Glaser_fig2.jpg" style="width:74%;align:center;"><br/>
+<div class="figcenter">
+<img src="/assets/2019Glaser_fig2.jpg" style="width:74%;align:center;">
 </div>
 
 1. 工学的な問題の解決: 機械学習は，医療診断，ブレインコンピュータインターフェース，研究ツールなど，神経科学者が使用する手法の予測性能を向上させることができる。
@@ -101,99 +102,11 @@ Glaser+2019 による，機械学習の 4 レベル
 [Glaser+2019](https://www.sciencedirect.com/science/article/abs/pii/S0301008218300856?via%3Dihub) Fig. 2 より
 
 * N400 への PDP approach:
-  * [Simulating Event-Related Potential Reading Data in a Neurally Plausible Parallel Distributed Processing Model](/Users/_asakawa/study/2022documents/2011LaszloPlaut_CogSciConf_ERPmodel.pdf)
-  * Laszlo, S., & Federmeier, K.D. (2009). A beautiful day in the neighborhood: An event-related potential study of lexical relationships and prediction in context. Journal of Memory and Language, 61, 326-338.
-* 竹市先生ご指定の文献:
-  * [Karapetian+(2023) Empirically Identifying and Computationally Modeling the Brain–Behavior Relationship for Human Scene Categorization](https://doi.org/10.1162/jocn_a_02043)
-
-<div class="abstract">
-
-ヒトは，自分が直面している情景のカテゴリーなど，身近な視覚環境の性質について，早くて正確な知覚判断を難なく下している。
-これまでの研究で，このような特性の基礎となる皮質表現が豊富にあることが明らかになっている。
-しかし，これらの表象のうち，どの表象が意思決定に適しているかはまだわかっていない。
-ここでは，ニューロイメージングと計算モデリングを用いて，経験的，計算的にこの問題にアプローチした。
-経験的な部分では，情景分類課題 (自然物対人工物) 中の参加者の脳波データと RT を収集した。
-そして，信号検出理論の多変量拡張を用いて，波データと行動を関連付けた。
-その結果，刺激開始後約 100 ミリ秒から約 200 ミリ秒の間に特に神経データと行動の相関が観察され，この時間帯の神経情景表現が意思決定に適したフォーマットになっていることが示唆された。
-計算部分については，脳と行動のモデルとしてリカレント畳み込みニューラルネットワーク (RCNN) を評価した。
-RCNN は，我々のこれまでの観察を画像計算可能なモデルに統合し，神経表現，情景分類データ，およびそれらの間の関係をよく予測した。
-我々の結果は，ヒトにおける情景分類の神経と行動の相関を同定し，計算によって特徴付けるものである。
-<!-- Humans effortlessly make quick and accurate perceptual decisions about the nature of their immediate visual environment, such as the category of the scene they face.
-Previous research has revealed a rich set of cortical representations potentially underlying this feat.
-However, it remains unknown which of these representations are suitably formatted for decision-making.
-Here, we approached this question empirically and computationally, using neuroimaging and computational modeling.
-For the empirical part, we collected EEG data and RTs from human participants during a scene categorization task (natural vs. man-made).
-We then related EEG data to behavior to behavior using a multivariate extension of signal detection theory.
-We observed a correlation between neural data and behavior specifically between ∼100 msec and ∼200 msec after stimulus onset, suggesting that the neural scene representations in this time period are suitably formatted for decision-making.
-For the computational part, we evaluated a recurrent convolutional neural network (RCNN) as a model of brain and behavior.
-Unifying our previous observations in an image-computable model, the RCNN predicted well the neural representations, the behavioral scene categorization data, as well as the relationship between them.
-Our results identify and computationally characterize the neural and behavioral correlates of scene categorization in humans. -->
-</div>
-
-<div class="figcenter">
-<img src="/2024assets/2023Karapetian_fig1.jpg" style="width:59%"><br/>
-</div>
-
-図 1. 刺激セット，パラダイム，距離-平面アプローチ。
-* A) 解析アプローチ。神経データと行動データを結びつけるために，多変量空間における信号検出理論の拡張である距離-超平面アプローチを用いた。
-* B) 刺激セット。Places-365  (Zhou+2018) から刺激を選択し，30 個の自然情景と 30 個の人工情景の集合を作成した。
-* C) 実験パラダイム。参加者はブロックの半分で情景分類課題を行い，残りの半分で直交固視 + 字色検出課題 (妨害課題と呼ぶ) を行った。
-* D) 距離-超平面アプローチ。距離と RT の相関が有意に負になったときに起こる，神経表象が意思決定に適した形になるタイミングを決定するために，すべての時点において分析を適用した。
-
-<!-- Figure 1. Stimulus set, paradigm, and distance-to-hyperplane approach.
-* (A) Analysis approach. To link neural and behavioral data, we used the distance-to-hyperplane approach, an extension of signal detection theory in a multivariate space.
-* (B) Stimulus set. We selected stimuli from Places-365 (Zhou+2018), creating a set of 30 natural and 30 man-made scenes.
-* (C) Experimental paradigm. Participants performed a scene categorization task on half of the blocks and an orthogonal fixation cross color detection task (referred to as distraction task) on the other half.
-* (D) Distance-to-hyperplane approach. We applied the analysis at every time point to determine when neural representations are suitably formatted for decision-making, which occurs when the correlation between distances and RTs is significantly negative. -->
+  * [Laszlo&Plaut (2011) Simulating Event-Related Potential Reading Data in a Neurally Plausible Parallel Distributed Processing Model](https://ni.cmu.edu/~plaut/papers/pdf/LaszloPlaut11CogSciConf.ERPmodel.pdf){:target="_blank"}
+<!-- /Users/_asakawa/study/2022documents/2011LaszloPlaut_CogSciConf_ERPmodel.pdf){:target="_blank"} -->
+  * [Laszlo, S., & Federmeier, K.D. (2009). A beautiful day in the neighborhood: An event-related potential study of lexical relationships and prediction in context](https://www.sciencedirect.com/science/article/pii/S0749596X09000692){:target="_blank"}. Journal of Memory and Language, 61, 326-338.
 
 
-<div class="figcenter">
-<img src="/2024assets/2023Karapetian_fig2.jpg" style="width:39%">
-</div>
-
-図 2. 情景の同一性とカテゴリの復号化
-<!-- Figure 2. Scene identity and category decoding. -->
-
-* (A) Pairwise scene identity decoding results on EEG data from the categorization task (blue), distraction task (magenta), and their difference (black).
-The vertical dashed gray line at 0 msec represents the stimulus onset.
-The shaded area around the curves indicates the SEM.
-Significant time points (right tailed, p<0.01, FDR-adjusted) are indicated with asterisks.
-* (B) Scene category decoding (natural vs. man-made) results for both tasks and their difference.
-* (C) Multidimensional scaling results for scene identity decoding from the categorization and distraction tasks at the scene identity decoding peak and
-* (D) scene category decoding peak.
-* (E) Results from the searchlight analysis performed in channel space in both tasks at peak decoding latency for scene identity decoding and
-* (F) scene category decoding.
-Significant channels (right-tailed, p < 0.01, FDR-adjusted) are depicted with black dots.
-
-<div class="figcenter">
-<img src="/2024assets/2023Karapetian_fig4.jpg" style="width:39%">
-</div>
-
-図 4. 人間の神経情景表現を RCNN と FCNN とでモデル化
-<!-- Figure 4. Modeling human neural scene representations with an RCNN versus an FCNN. -->
-
-* A）解析に用いたリカレントCNN，BLnet (Spoerer+2020) のアーキテクチャ。
-ネットワークは 7 層からなり，ボトムアップ (緑の矢印) とラテラル (黒の矢印) 接続で結ばれている。
-特徴量は 3 つの層 (1, 4, 7) から 8 つの異なる時間ステップで抽出され，RT は読み出し層から収集された。
-* B) すべての情景，自然情景，人工的情景について，ヒトの神経表現と 3 つの異なる層からの RCNN 特徴量 (8 つの時間ステップの中央値) に対して RSA を実行した結果。
-0 ミリ秒の垂直破線は刺激開始を表す。
-曲線の周りの斜線部分は SEM を表す。
-有意な時点をアスタリスクで示す (右側検定 p＜0.05，FDR 補正)。
-破線の縦線はピークを示す。
-灰色の斜線はノイズの上限を示す。
-* (C) BLnet の フィードフォワード，パラメータマッチ版である B-Dnet (Spoerer+2020) の特徴量を用いた RSA 結果。
-* (D) RCNN と FCNN の結果の差の波 (両側, p < 0.05, FDR 補正)。
-
-<!-- * (A) Architecture of BLnet (Spoerer+2020), the recurrent CNN used in the analysis.
-The network consists of seven layers, linked via bottom–up (green arrows) and lateral (black arrows) connections.
-Features were extracted from three layers (1, 4, and 7) at eight different time steps, and RTs were collected from the readout layer.
-* (B) Results of the RSA performed on the neural representations of humans and RCNN features from three different layers (median over eight time steps), for all scenes, natural scenes, and man-made scenes.
-The vertical dashed gray line at 0 msec represents the stimulus onset.
-The shaded areas around the curves represent the SEM. Significant time points are denoted with asterisks (right-tailed, p < 0.05, FDR-corrected).
-The dashed vertical lines indicate the peaks.
-The shaded gray area represents the noise ceiling.
-* (C) RSA results with features from B-Dnet (Spoerer et al., 2020), the feedforward, parameter-matched version of BLnet.
-* (D) Difference waves between RCNN and FCNN results (two-tailed, p < 0.05, FDR-corrected). -->
 
 <center>
 <div class="fig">
