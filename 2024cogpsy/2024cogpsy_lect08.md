@@ -26,7 +26,7 @@ $$
 
 ## 本日のメニュー
 
-1. `git clone https://github.com/cjspoerer_rcnn-sat.git`, `git clone https://github.com/Agnessa14_Perceptual-decision-making.git`
+1. `git clone https://github.com/cjspoerer/rcnn-sat.git`, `git clone https://github.com/Agnessa14/Perceptual-decision-making.git`
 2. [Spoerer+2020](https://doi.org/10.1371/journal.pcbi.1008215) での提案モデルを用いるているので，この論文を取り上げる。
 3. 畳み込みニューラルネットワークの種類と技法を検討する。
 4. [フレームワーク](/eco/) について
