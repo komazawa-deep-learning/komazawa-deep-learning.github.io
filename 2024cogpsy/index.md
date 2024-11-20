@@ -62,7 +62,7 @@ layout: home
   * 竹市：音声言語知覚の脳磁図実験 Gwilliams&King(2020) で報告されている読字の脳磁図実験を題材に、言語に関する脳磁図計測と解析について説明します
 * [第08回 (Nov.15)](2024cogpsy_lect08){:target="_blank"}
   * 畳み込みニューラルネットワークの基礎 浅川：畳み込みニューラルネットワークの基礎 [Spoerer+2020](https://doi.org/10.1371/journal.pcbi.1008215) での提案モデルを用いるているので，この論文を取り上げる。畳み込みニューラルネットワークの種類と技法を検討する。
-* 第09回 (Nov.22)
+* [第09回 (Nov.22)](2024cogpsy_lect09){:target="_blank"}
   * 残差結合 浅川：リカレントネットワークの基礎 BL ネットワークと異なるモデルである [CORnet](https://doi.org/10.1101/408385){:target="_blank"} を取り上げる。
 スキップ結合，すなわち ResNet で提案された残差結合の意義を考察する ([He+2015](https://arXiv.org/abs/1406.4729/){:target="_blank"}) 下記の論文をダウンロードしてアブストラクトと図の脚注に目を通しておく：[CORnet](https://doi.org/10.1101/408385){:target="_blank"}, [He+2015](https://arXiv.org/abs/1406.4729/){:target="_blank"}
 * 第10回 (Nov.29)
