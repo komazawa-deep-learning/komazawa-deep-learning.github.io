@@ -1,5 +1,5 @@
 ---
-title: "第09回 2024年度開講 駒澤大学 認知心理学研究"
+title: "第10回 2024年度開講 駒澤大学 認知心理学研究"
 author: "浅川 伸一"
 layout: home
 ---
@@ -180,15 +180,6 @@ LeNet5 の論文より改変
 - MNIST を用いた１０種類の手書き文字認識
 - 最終２層は全結合層をつなげて最終層１０ニューロン，最終層の各ニューロンの出力がそれぞれの数字（０から９までの１０種）に対応する
 
-
-
-## AlexNet
-
-<img src="/2023assets/alex_net_block_diagram.png"><br/>
-
-
-## 畳み込み演算
-
 <center>
 <img src="/assets/dmoulin_gif/full_padding_no_strides.gif" style="width:33%">
 <img src="/assets/dmoulin_gif/same_padding_no_strides_transposed.gif" style="width:33%"><br/>
@@ -228,13 +219,7 @@ Dmoulin and Visin (2020) より
 </div>
 </center>
 
-<div class="figcenter">
-
-<iframe src="/conv-demo/index.html" width="140%" height="640px;" style="border:none;"></iframe>
-</div>
-
-
-## HMAX 最大値プーリング Riesenhuber&Poggio(1999)
+## Riesenhuber&Poggio(1999) HMAX 最大値プーリング
 
 <div class="figcenter">
 <img src="/assets/1999Riesenhuber_Poggio_fig2.svg" style="width:49%">
@@ -298,55 +283,14 @@ MAX 機構に対する追加的な間接的支持は，IT 細胞の好ましい�
 <!--Additional indirect support for a MAX mechanism comes from studies using a `simplification procedure`(26) or `complexity reduction`(27) to determine the preferred features of IT cells, that is, the stimulus components that are responsible for driving the cell.
 These studies commonly find a highly nonlinear tuning of IT cells (Fig. 3a).
 Such tuning is compatible with the MAX response function (Fig. 3b, black bars).
-Note that a linear model (Fig. 3b, gray bars) could not reproduce this strong change in response for small changes in the input image.-->
+Note that a linear model (Fig. 3b, gray bars) could not reproduce this strong change in response for small changes in the input image.
+-->
 
+<div class="figcenter">
 
-## 経路仮説と残差ネット
+<iframe src="/conv-demo/index.html" width="140%" height="640px;" style="border:none;"></iframe>
 
-* 腹側経路 ventral pathways ("what" 経路)
-* 背側経路 dorsan pathways ("where" 経路)
-
-<center>
-<img src="/assets/1982Ungerleider_Mishkin.jpg" width="49%">
-<div style="text-align:left;width:88%;color:teal">
-
-* 下左: 物体弁別課題と下側頭回損傷。
-* 下右: 目印課題と頭頂葉損傷。
-Ungerleider&Mishkin1982 より。
-</div></center>
-
-<center>
-<img src="/2023assets/2004Hickok_dorsal_ventral_language_fig1a.jpg" width="49%">
-<img src="/2023assets/2004Hickok_dorsal_ventral_language_fig1b.jpg" width="49%">
-<div style="text-align:left;width:94%;color:teal">
-左: 言語の機能解剖学的枠組み。Hickok&Poeppel2000 より
-
-右: 脳の側面図に示したモデル構成要素の一般的な場所。
-モデル内のある機能に関連する皮質領域は，その機能に特化しているという仮説ではない。
-調音に基づく音声符号を支援すると考えられる前頭葉領域の定義は，物品の命名と調音リハーサル処理の機能画像研究にお
-ける活性化領域の一般的な分布から得られる (例えば Awh+1996, Hickok+2003, Indefrey&Levelt)。
-帯状の領域 (上側頭溝) は，音素レベルの表現を支援すると思われる領域。
 </div>
-</center>
-
-## ResNet におけるスキップ結合
-
-<img src="/assets/ResNet_Fig2.svg" width="33%"><br/>
-<img src="/assets/2015ResNet30.svg" width="94%"><br/>
-
-#### R-CNN
-
-<img src="/2023assets/2015Ren_Faster_R-CNN_fig2.svg">
-
-<!--<img src="/assets/2017He_MaskRCNN_41.svg">
-<img src="/assets/2015Fast_R-CNN_Fig1.svg">
-<img src="/assets/2015Faster_RCNN_RPN.svg">
-<img src="/assets/1998LeCun_Fig2_CNN.svg">
-<img src="/assets/2017He_MaskRCNN_02SemSeg.svg">
-<img src="/assets/2017He_MaskRCNN_08.svg">
-<img src="/assets/2017He_MaskRCNN_02Oject.svg">
-<img src="/assets/2013Girshick_RCNN_Fig1.svg"> -->
-
 
 # CORnet [Kubilius+2018](https://doi.org/10.1101/408385){:target="_blank"}
 
@@ -425,3 +369,500 @@ In particular, the first time information is processed, the third convolution an
 The output is then used instead of the original input for further recurrent processing (referred to as "gate" in Fig. 1).
 We used batch normalization (Ioffe and Szegedy, 2015) and ReLU nonlinearity in this model, and batch normalization was not shared over time as suggested by (Jastrzebski+2017). -->
 
+
+# 10. 経路集約ネットワーク Path Aggregation Network (PANet)
+
+経路集約ネットワーク (PANet) [Liu+(2018)](https://arxiv.org/pdf/1803.01534.pdf) は最近, 経路集約ネットワーク Path Aggregation Network (PANet) を発表した。
+このネットワークは Masked RCNN と FPN の枠組みを ベースにしながら，情報伝播を強化している。
+このネットワークの特徴抽出器は FPN アーキテクチャを使用しており，低次層の特徴の伝搬を向上させる新たな拡張ボトムアップ経路を備えている。
+この第 3 経路の各ステージは，前のステージの特徴地図を入力として 3x3 の畳み込み層で処理する。
+その出力は，横方向に接続されたトップダウン経路の同じステージの特徴地図に追加され，これらの特徴地図は次のステージに供給される。
+<!-- S. Liu et al. (2018) have recently released the Path Aggregation Network (PANet).
+This network is based on the Mask R-CNN and the FPN frameworks while enhancing information propagation.
+The feature extractor of the network uses a FPN architecture with a new augmented bottom-up pathway improving the propagation of low-layer features.
+Each stage of this third pathway takes as input the feature maps of the previous stage and processes them with a 3x3 convolutional layer.
+The output is added to the same stage feature maps of the top-down pathway using lateral connection and these feature maps feed the next stage. -->
+
+<div class="figcenter">
+<img src="/2024assets/2018Ouaknine_fig21.jpg" width="33%">
+<div class="figcaption" style="width:44%;">
+
+**トップダウン経路と拡張されたボトムアップ経路の横の連結**<!-- Lateral connection between the top-down pathway and the augmented bottom-up pathway.  -->
+出典: [Liu+(2018)](https://arxiv.org/pdf/1803.01534.pdf)
+</div></div>
+
+補強されたボトムアップ経路の特徴地図は，RoI Align 層にプールされ，すべてのレベルの特徴から提案を抽出する。
+適応的な特徴プーリング層は，各段階の特徴地図を完全連結層で処理し，すべての出力を連結する。
+<!-- The feature maps of the augmented bottom-up pathway are pooled with a RoIAlign layer to extract proposals from all level features.
+An adaptative feature pooling layer processes the features maps of each stage with a fully connected layer and concatenate all the outputs.  -->
+
+<div class="figcenter">
+<img src="/2024assets/2018Ouaknine_fig22.jpg" width="49%">
+<div class="figcaption" style="width:44%;">
+
+**適応的特徴プーリング層**<!-- Adatative feature pooling layer. --> Source: [Liu+(2018)](https://arxiv.org/pdf/1803.01534.pdf)
+</div></div>
+
+適応型特徴プーリング層の出力は，Mask R-CNN と同様に 3 つのブランチに供給される。
+最初の 2 つのブランチでは，完全連結層を使用して，バウンディングボックスの座標と関連する物体クラスの予測を生成する。
+3 つ目のブランチでは FCN を用いて RoI を処理し，検出された物体の画素単位の 2 値マスクを予測する。
+さらに FCN の畳み込み層の出力を完全連結層で処理することで，予測される画素の位置関係を改善している。
+最後に，並列パスの出力を再形成し，2 値化マスクを生成する FCN の出力に連結する。
+<!-- The output of the adaptative feature pooling layer feeds three branches similarly to the Mask R-CNN.
+The two first branches uses a fully connected layer to generate the predictions of the bounding box coordinates and the associated object class.
+The third branch process the RoI with a FCN to predict a binary pixel-wise mask for the detected object.
+The authors have added a path processing the output of a convolutional layer of the FCN with a fully connected layer to improve the localisation of the predicted pixels.
+Finally the output of the parallel path is reshaped and concatenated to the output of the FCN generating the binary mask.  -->
+
+<div class="figcenter">
+<img src="/2024assets/2018Ouaknine_fig23.jpg" width="49%">
+<div class="figcaption" style="width:44%;">
+
+**FCN と完全連結層を持つ新しいパスを用いてバイナリマスクを予測する PANet のブランチ**
+<!-- Branch of the PANet predicting the binary mask using a FCN and a new path with a fully connected layer.  -->
+Source: https://arxiv.org/pdf/1803.01534.pdf
+</div></div>
+
+PANet は 2016COCO 画像切り分けチャレンジにおいて，特徴抽出器に ResNeXt を用いて 42.0 % の AP 得点を達成している。
+また 2017COCO 画像切り分けチャレンジでは，7 つの特徴抽出器のアンサンブルを用いて 46.7 %の AP 得点を達成している。
+ResNet ([He+(2015)](https://arxiv.org/pdf/1512.03385.pdf)), ResNeXt([Xie+(2016)](https://arxiv.org/pdf/1611.05431.pdf)), SENet ([Hu+(2017)](https://arxiv.org/pdf/1709.01507.pdf)) である。
+<!-- The PANet has achieved 42.0% AP score on the 2016 COCO segmentation challenge using a ResNeXt as feature extractor.
+They also performed the 2017 COCO segmentation challenge with an 46.7% AP score using a ensemble of seven feature extractors: ResNet (K. He et al. (2015), ResNeXt (S. Xie et al. (2016)) and SENet (J. Hu et al.(2017)).  -->
+
+<div class="figcenter">
+<img src="/2024assets/2018Ouaknine_fig24.jpg" widht="77%">
+<div class="figcaption" style="width:66%;">
+
+**PANet Achitecture**<br/>
+**(a)**: FPN アーキテクチャを用いた特徴抽出器。<br/>
+**(b)**: FPN アーキテクチャに新たに追加された増強されたボトムアップ経路。<br/>
+**(c)**: 適応的な特徴プーリング層．<br/>
+**(d)**: バウンディングボックスとオブジェクトクラスを表現する 2 つのブランチ．<br/>
+**(e)**: オブジェクトのバイナリマスクを予測するブランチ．破線は，低レベルのパターンと高レベルのパターンの間のリンクに対応しており，赤は FPN で 100 以上の層で構成されており，緑は PANet で 10 以下の層で構成されているショートカットであ
+る。
+出典: [Liu+(2018)](https://arxiv.org/pdf/1803.01534.pdf)
+<!-- PANet Achitecture. (a): Feature extractor using the FPN achitecture. (b): The new augmented bottom-up pathway added to the FPN architecture. ©: The adaptative feature pooling layer. (d): The two branches predicting the bounding box coordinated and the object class. (e): The branch predicting the binary mask of the object. The dashed lines correspond to links between low-level and high level patterns, the red one is in the FPN and consists in more than 100 layers, the green one is a shortcut in the PANet consisting of less than 10 layers. Source: S. Liu et al. (2018)  -->
+</div></div>
+
+# 11. Context Encoding Network (EncNet)
+
+H. Zhang+(2018) は，シーンセグメンテーションを改善するために，画像の大域的情報を取り込む Context Encoding Network (EncNet) を作成しました。
+このモデルは， 基本的な特徴抽出器 (ResNet) を使用することから始まり，特徴地図を H. Zhang ら (2016) の 符号化層からインスパイアされた Context Encoding Module に供給します。
+基本的には，クラスに依存する特徴地図を強調しつつ，文脈情報を考慮した埋め込みを作成するために，視覚的中心と平滑化係数を学習します。
+モジュールの上には，特徴地図注目層  (完全連結層) で文脈情報のスケーリング係数を学習します。
+これと並行して， 2 値の交差エントロピー損失に対応するセマンティック符号化損失 (SE-Loss)
+が，(画素単位の損失とは異なり) 物体クラスの存在を検出することで，モジュールの学習を正則化します。
+文脈符号化モジュールの出力は 2 つの SE-損失 と最終的な画素単位の損失を最小化しながら，希釈された畳み込み戦略によって再形成され，処理されます。
+最高の EncNet は，PASCAL-Context チャレンジにおいて 52.6% の mIoU と 81.2% の pixAcc スコアを達成しました。
+また 2012 年の PASCAL VOC セグメンテーションチャレンジでは 85.9% の mIoU スコアを達成しています。
+<!-- H. Zhang et al. (2018) have created a Context Encoding Network (EncNet) capturing global information in an image to improve scene segmentation.
+The model starts by using a basic feature extractor (ResNet) and feeds the feature maps into a Context Encoding Module inspired from the Encoding Layer of H. Zhang et al. (2016).
+Basically, it learns visual centers and smoothing factors to create an embedding taking into account the contextual information while highlighting class-dependant feature maps. On top of the module, scaling factors for the contextual information are learnt with a feature maps attention layer (fully connected layer).
+In parallel, a Semantic Encoding Loss (SE-Loss) corresponding to a binary cross-entropy loss regularizes the training of the module by detecting presence of object classes (unlike the pixel-wise loss).
+The outputs of the Context Encoding Module are reshaped and processed by a dilated convolution strategy while minimizing two SE-losses and a final pixel-wise loss.
+The best EncNet has reached 52.6% mIoU and 81.2% pixAcc scores on the PASCAL-Context challenge. It has also achieved a 85.9% mIoU score on the 2012 PASCAL VOC segmentation challenge. -->
+
+<div class="figcenter">
+<img src="/2024assets/2018Ouaknine_fig25.jpg" width="49%">
+<div class="figcaption" style="width:66%;">
+
+**拡張された畳み込み戦略**<br/>
+青色は畳み込みフィルタ，D は拡張率。
+SE-損失 (Semantic Encoding Loss) は，第 3 段階と第 4 段階の後に適用され，オブジェクトクラスを検出。
+最後の Seg-損失 (pixel-wise loss) は，セグメンテーションを改善するために適用される。
+<!-- Dilated convolution strategy.
+In blue the convolutional filter with D the dilatation rate.
+The SE-losses (Semantic Encoding Loss) are applied after the third and the fourth stages to detect object classes.
+A final Seg-loss (pixel-wise loss) is applied to improve the segmentation.-->
+Source: H. Zhang+(2018)
+</div></div>
+
+
+<div class="figcenter">
+<img src="/2024assets/2018Ouaknine_fig26.jpg" width="49%">
+<div class="figcaption" style="width:55%;">
+
+**EncNet のアーキテクチャ**<br/>
+特徴抽出器は，文脈符号化器モジュールの入力となる特徴地図を生成する。
+このモジュールは，意味符号化損失を用いた正則化によって学習される。
+このモジュールの出力は，希釈された畳み込み戦略によって処理され，最終的なセグメンテーションが生成される。
+<!-- Architecture of the EncNet.
+A feature extractor generates feature maps took as input of a Context Encoding Module.
+The module is trained with regularisation using the Semantic Encoding Loss.
+The outputs of the module are processed by a dilated convolution strategy to produce the final segmention.-->
+Source: [Zhang+(2018)](https://arxiv.org/pdf/1803.08904.pdf)
+</div></div>
+
+
+
+# `bl_net.py`
+
+```python
+'''
+Keras implementation of BL network
+'''
+
+import tensorflow as tf
+
+
+class BLConvLayer(object):
+    '''BL recurrent convolutional layer
+
+    Note that this is NOT A KERAS LAYER but is an object containing Keras layers
+
+    Args:
+        filters: Int, number of output filters in convolutions
+        kernel_size: Int or tuple/list of 2 integers, specifying the height and
+            width of the 2D convolution window. Can be a single integer to
+            specify the same value for all spatial dimensions.
+        layer_name: String, prefix for layers in the RCL
+        '''
+    def __init__(self, filters, kernel_size, layer_name):
+        # initialise convolutional layers
+        self.b_conv = tf.keras.layers.Conv2D(
+            filters, kernel_size, padding='same', use_bias=False,
+            kernel_initializer='glorot_uniform',
+            kernel_regularizer=tf.keras.regularizers.l2(1e-6),
+            name='{}_BConv'.format(layer_name))
+
+        self.l_conv = tf.keras.layers.Conv2D(
+            filters, kernel_size, padding='same', use_bias=False,
+            kernel_initializer='glorot_uniform',
+            kernel_regularizer=tf.keras.regularizers.l2(1e-6),
+            name='{}_LConv'.format(layer_name))
+
+        # layer for summing convolutions
+        self.sum_convs = tf.keras.layers.Lambda(
+            tf.add_n, name='{}_ConvSum'.format(layer_name))
+
+        # holds the most recent bottom-up conv
+        # useful when the bottom-up input does not change, e.g. input image
+        self.previous_b_conv = None
+
+    def __call__(self, b_input=None, l_input=None):
+        conv_list = []
+
+        if not b_input is None:
+            # run bottom-up conv and save result
+            conv_list.append(self.b_conv(b_input))
+            self.previous_b_conv = conv_list[-1]
+        elif not self.previous_b_conv is None:
+            # use the most recent bottom-up conv
+            conv_list.append(self.previous_b_conv)
+        else:
+            raise ValueError('b_input must be given on first pass')
+
+        # run lateral conv
+        if l_input is not None:
+            conv_list.append(self.l_conv(l_input))
+
+        # return element-wise sum of convolutions
+        return self.sum_convs(conv_list)
+
+
+def bl_net(input_tensor, classes, n_timesteps=8, cumulative_readout=False):
+        '''Build the computational graph for the model
+
+        Note that evaluations based on model outputs will reflect instantaneous
+        rather than cumulative readouts
+
+        Args:
+            input_tensor: Keras tensor (i.e. output of `layers.Input()`)
+                to use as image input for the model.
+            classes: int, number of classes to classify images into
+            n_timesteps: int, number of model time steps to build
+            cumulative_readout: Bool, if True then the outputs correspond to a
+                cumulative readout on each time step if True then they
+                correspond to a instant readout
+
+        Returns:
+            model
+        '''
+
+        data_format = tf.keras.backend.image_data_format()
+        norm_axis = -1 if data_format == 'channels_last' else -3
+
+        # initialise trainable layers (RCLs and linear readout)
+        layers = [
+            BLConvLayer(96, 7, 'RCL_0'),
+            BLConvLayer(128, 5, 'RCL_1'),
+            BLConvLayer(192, 3, 'RCL_2'),
+            BLConvLayer(256, 3, 'RCL_3'),
+            BLConvLayer(512, 3, 'RCL_4'),
+            BLConvLayer(1024, 3, 'RCL_5'),
+            BLConvLayer(2048, 1, 'RCL_6'),
+        ]
+        readout_dense = tf.keras.layers.Dense(
+                classes, kernel_initializer='glorot_uniform',
+                kernel_regularizer=tf.keras.regularizers.l2(1e-6),
+                name='ReadoutDense')
+
+        # initialise list for activations and outputs
+        n_layers = len(layers)
+        activations = [[None for _ in range(n_layers)]
+                       for _ in range(n_timesteps)]
+        presoftmax = [None for _ in range(n_timesteps)]
+        outputs = [None for _ in range(n_timesteps)]
+
+        # build the model
+        for t in range(n_timesteps):
+            for n, layer in enumerate(layers):
+
+                # get the bottom-up input
+                if n == 0:
+                    # B conv on the image does not need to be recomputed
+                    b_input = input_tensor if t == 0 else None
+                else:
+                    # pool b_input for all layers apart from input
+                    b_input = tf.keras.layers.MaxPool2D(
+                        pool_size=(2, 2),
+                        name='MaxPool_Layer_{}_Time_{}'.format(n, t)
+                        )(activations[t][n-1])
+
+                # get the lateral input
+                if t == 0:
+                    l_input = None
+                else:
+                    l_input = activations[t-1][n]
+
+                # convolutions
+                x_tn = layer(b_input, l_input)
+                # batch-normalisation
+                x_tn = tf.keras.layers.BatchNormalization(
+                    norm_axis,
+                    name='BatchNorm_Layer_{}_Time_{}'.format(n, t))(x_tn)
+                # ReLU
+                activations[t][n] = tf.keras.layers.Activation(
+                    'relu', name='ReLU_Layer_{}_Time_{}'.format(n, t))(x_tn)
+
+            # add the readout layers
+            x = tf.keras.layers.GlobalAvgPool2D(
+                name='GlobalAvgPool_Time_{}'.format(t)
+                )(activations[t][-1])
+            presoftmax[t] = readout_dense(x)
+
+            # select cumulative or instant readout
+            if cumulative_readout and t > 0:
+                x = tf.keras.layers.Add(
+                    name='CumulativeReadout_Time_{}'.format(t)
+                    )(presoftmax[:t+1])
+            else:
+                x = presoftmax[t]
+            outputs[t] = tf.keras.layers.Activation(
+                'softmax', name='Sotfmax_Time_{}'.format(t))(x)
+
+        # create Keras model and return
+        model = tf.keras.Model(
+            inputs=input_tensor,
+            outputs=outputs,
+            name='bl_net')
+
+        return model
+```
+
+## 畳み込みニューラルネットワーク
+
+<img src="/2023assets/alex_net_block_diagram.png"><br/>
+
+<img src="/assets/ResNet_Fig2.svg" width="33%"><br/>
+<img src="/assets/2015ResNet30.svg" width="94%"><br/>
+<img src="/2023assets/2015Ren_Faster_R-CNN_fig2.svg">
+
+<!-- <img src="/assets/2017He_MaskRCNN_41.svg">
+<img src="/assets/2015Fast_R-CNN_Fig1.svg">
+<img src="/assets/2015Faster_RCNN_RPN.svg">
+<img src="/assets/1998LeCun_Fig2_CNN.svg">
+<img src="/assets/2017He_MaskRCNN_02SemSeg.svg">
+<img src="/assets/2017He_MaskRCNN_08.svg">
+<img src="/assets/2017He_MaskRCNN_02Oject.svg">
+<img src="/assets/2013Girshick_RCNN_Fig1.svg"> -->
+
+## 経路仮説と残差ネット
+
+* 腹側経路 ventral pathways ("what" 経路)
+* 背側経路 dorsan pathways ("where" 経路)
+
+<center>
+<img src="/assets/1982Ungerleider_Mishkin.jpg" width="49%">
+<div style="text-align:left;width:88%;color:teal">
+
+* 下左: 物体弁別課題と下側頭回損傷。
+* 下右: 目印課題と頭頂葉損傷。
+Ungerleider&Mishkin1982 より。
+</div></center>
+
+<center>
+<img src="/2023assets/2004Hickok_dorsal_ventral_language_fig1a.jpg" width="49%">
+<img src="/2023assets/2004Hickok_dorsal_ventral_language_fig1b.jpg" width="49%">
+<div style="text-align:left;width:94%;color:teal">
+左: 言語の機能解剖学的枠組み。Hickok&Poeppel2000 より
+
+右: 脳の側面図に示したモデル構成要素の一般的な場所。
+モデル内のある機能に関連する皮質領域は，その機能に特化しているという仮説ではない。
+調音に基づく音声符号を支援すると考えられる前頭葉領域の定義は，物品の命名と調音リハーサル処理の機能画像研究にお
+ける活性化領域の一般的な分布から得られる (例えば Awh+1996, Hickok+2003, Indefrey&Levelt)。
+帯状の領域 (上側頭溝) は，音素レベルの表現を支援すると思われる領域。
+</div>
+</center>
+
+
+
+# [Top-Down Network Combines Back-Propagation with Attention](https://arxiv.org/abs/2306.02415)
+
+* [GitHub](https://github.com/royabel/Top-Down-Networks)
+
+* 生物学に着想を得たインストラクションモデルの学習法を提案
+* ボトムアップ (BU)-トップダウン (TD) モデルを用い，1 つの TD ネットワークを学習と注意誘導の両方に使用
+* 本論文の主な貢献は以下の通り
+<!-- The paper propose a biologically-inspired learning method for instruction-models.
+It uses a bottom-up (BU) - top-down (TD) model, in which a single TD network is used for both learning and guiding attention.
+The key contributions of the paper are: -->
+
+  * 誤差信号からの学習とトップダウンの注意を組み合わせた新しいトップダウン機構を提案
+  * 従来研究を拡張し，より生物学的に妥当な学習モデルへの新たなステップを提供
+  * 生物学的学習のためのカウンター Hebb 学習機構の提案
+  * 従来のネットワークの中に，課題依存した独自の部分ネットワークを動的作成。生物学に着想を得た新しい Multi Task Learning (MTL) アルゴリズムの提示
+
+<!-- * Propose a novel top-down mechanism that combines learning from error signals with top-down attention.
+* Extending earlier work, offering a new step toward a more biologically plausible learning model.
+* Suggest a Counter-Hebbian mechanism for biological learning.
+* Present a novel biologically-inspired MTL algorithm that dynamically creates unique task-dependent sub-networks within conventional networks. -->
+
+
+<div class="figcenter">
+<img src="/2023assets/top_down_processing.png" width="33%">
+</div>
+<div class="figcaption" style="width:66%">
+
+Bottom-up Top-down アプローチ<br/>
+BU-TD アプローチは，双方向接続を持つ BU (青色) と TD (オレンジ色) ネットワークから構成される。
+これらのネットワークは再帰的に動作できる。
+1 つの TD ネットワークは，ダウン誤差信号の伝搬と TD 注意の両方に使用され，BU ネットワークは入力信号の処理を行う。
+右図では，この概念をマルチタスク学習の設定で説明している。
+I は入力信号 (例：視覚の場合の画像)，E はエラー信号 (例 損失勾配)，A は注意信号(例: 選択された物体，場所，課題) を示す。
+</div>
+
+### カウンター Hebb 学習<!--Counter-Hebbian Learning-->
+
+
+<div class="figcenter">
+<img src="/2023assets/update_rule.png" width="44%">
+</div>
+<div class="figcaption">
+カウンター Hebb 学習
+
+* 生物学的に動機づけられた学習機構。
+* 古典的な Hebb 学習と同様に，カウンター Hebb 学習則はシナプスに接続されたニューロンの活動に基づいてシナプスを更新。
+* 右図に示す Counter-Hebb 学習則は，古典的 Hebb 則 (左図) のように上流ニューロンからの逆発射ではなく，側方結合を介して接続された下流 (オレンジ色で示された) カウンターニューロンに依存する。
+<!-- A biologically motivated learning mechanism.
+Similar to the classical Hebbian learning, the Counter-Hebb learning rule update the synapse based on the activity of the neurons connected to the synapse.
+However, the Counter-Hebb update rule, presented on the right, relies on the counterpart downstream (marked in  orange) counter neurons which is connected via lateral connections instead of a back firing from the upstream neuron as in the classical Hebb rule (on the left). -->
+</div>
+
+## 活性関数とバイアス<!--\label{section - activation functions}-->
+
+活性化関数 $\sigma$, $\bar{\sigma}$ は，要素ごとの関数であれば何でもよい。
+本研究では 2 つの関数に注目する。
+1 つ目はニューラルネットワークでよく用いられる ReLU である。
+
+$$
+\text{ReLU}(x):=(x)_{+}=\begin{cases}
+x & x > 0 \\
+0 & x\leq 0
+\end{cases}$$
+
+もう 1 つは Gated-Linear-Unit(GaLU) で，BU-TD の構造を利用し，カウンターニューロンに応じてゲーティングを行う。
+<!-- The activation functions $\sigma$, $\bar{\sigma}$, may be any element-wise functions.
+In this work, we focus on two functions.
+The first is ReLU which is commonly used for neural networks $ReLU(x):=(x)_+=\begin{cases} x & x > 0 \\ 0 & x
+\leq 0\end{cases}$.
+The second is Gated-Linear-Unit (GaLU), which exploits our BU-TD structure by gating according to the counter
+neurons. -->
+
+$$
+\tag{Couter Gating Def}
+\text{GaLU}(x):=\text{GaLU}(x, \bar{x}) := x \cdot I_{\bar{x} > 0} =
+\begin{cases}
+x & \bar{x} > 0 \\
+0 & \bar{x} \leq 0
+\end{cases}$$
+
+ここで，$\bar{x}$ は $x$ のカウンターニューロン，$I$ は指標関数である。
+<!-- Where $\bar{x}$ is the counter neuron of $x$, and $I$ is an indicator function. -->
+
+GaLU には興味深い特性がある。
+GaLU は，BU ネットワークと TD ネットワークの間に横方向の接続性を導入し，対になるニューロンの値に基づいて一時的にニューロンをオフにする。
+その結果，各ネットワークは，特定の部分的なサブネットワークで動作するように，その対応するネットワークを効果的に誘導することができる。
+ただし，この関数のゲート $\bar{x}$ に対する勾配は常にゼロである。
+加えて，GaLU は $x$ と インジケータ $l_{\bar{x}>0}$ これは，ReLU 関数の勾配 $\frac{\partial}{\partial\bar{x}}\text{ReLU}\left(\bar{x}\right)=I_{\bar{x}>0}$ と正確に同じであるである。
+この性質は，BP と等価なバックワードパスを構築するために，学習アルゴリズム で使われる。
+<!-- GaLU has some interesting properties.
+It introduces lateral connectivity between the BU and TD networks by temporarily turning off neurons based on the values of their counter neurons.
+As a result, each network can effectively guide its counterpart to operate on a specific partial sub-network.
+However, it is worth noting that the gradients of this function with respect to the gate $\bar{x}$ are always zero.
+Additionally, GaLU applies a product of $x$ with the indicator $I_{\bar{x} > 0}$ which is exactly the gradient of the ReLU function: $\frac{\partial}{\partial \bar{x}} ReLU(\bar{x}) = I_{\bar{x} > 0}$.
+This property will be used in section ~\ref{section: learning algorithm} to construct a backward pass that is equivalent to BP. -->
+
+
+#### Multi-task Learning (MTL)
+
+MTL アルゴリズムは，課題ごとに課題依存のサブネットワークを動的に学習する。
+MTL アルゴリズムは 2 つのフェーズから構成される：予測のための TD パスと，それに続くBU パス，そして学習のためのもう 1 つの TD パスである。
+選択された課題は TD ネットワークに入力を提供し，活性化は ReLU 非線形性を持つ下方への注意誘導信号を伝播する。
+ReLU を適用することで，課題はニューロンの部分集合 (すなわち非ゼロ値) を選択的に活性化し，前ネットワーク内の部分ネットワークを構成する。
+そして BU ネットワークは，ReLU と GaLU の合成を用いて入力画像を処理する。
+GaLU 関数 (破線の矢印で示す) は，対応する TD 隠れ層によって BU 隠れ層をゲートする。
+その結果，BU 計算は選択されたサブネットワーク上でのみ実行される。
+最後に，予測ヘッドはトップレベルの BU 隠れ層に基づいて予測を生成する。
+学習のために，同じ TD ネットワークが，予測ヘッドを起点として予測誤差信号を伝播するために再利用される。
+この計算は GaLU のみで行われ (ReLU なし)，これにより負の値が許容される。
+最後に，'Counter-Hebb’ 学習則は，隠れ層の活性化値に基づいて両方のネットワークの重みを調整する。
+したがって，標準的モデルとは対照的に，すべての計算はネットワーク内のニューロンによって実行され，学習に外部計算 (例えば誤差逆伝播法) は使用されない。
+あるいは，BU と TD の重みを共有するという制約のもとで，学習段階を標準的な BP で再現することもできる。
+これにより同等の学習フェーズが得られる。
+<!-- The MTL algorithm offers dynamically learning task-dependent sub-networks for each task.
+The MTL algorithm comprises of two phases: a TD pass followed by a BU pass for prediction, and another TD pass for learning.
+The selected task provides input to the TD network, and the activation propagates downward attention-guiding signals with ReLU non-linearity.
+By applying ReLU, the task selectively activates a subset of neurons (i.e. non-zero values), composing a sub-network within the full network.
+The BU network then processes an input image using a composition of ReLU and GaLU.
+The GaLU function (denoted with dashed arrows) gates the BU hidden layers by their corresponding counter TD hidden layers.
+As a result, the BU computation is performed only on the selected sub-network. Lastly, the prediction head generates a prediction based on the top-level BU hidden layer.
+For learning, the same TD network is then reused to propagate prediction error signals, starting from the prediction head.
+This computation is performed with GaLU exclusively (no ReLU), thereby permitting negative values.
+Finally, the 'Counter-Hebb' learning rule adjusts both networks' weights based on the activation values of their hidden layers.
+Therefore, in contrast with standard models, the entire computation is carried out by neurons in the network, and no external computation is used for learning (e.g. Back-Propagation).-->
+
+<div class="figcenter">
+<img src="/2023assets/MTL_schematic.png" width="49%">
+</div>
+
+**カウンター Hebbian 学習**<br/>
+
+1. BU ネットワークを実行し，入力 $x$ を非線形活性化関数を用いて出力 $y$ へと写像
+2. 誤差信号を計算
+3. 誤差信号を用いて TD ネットワークを GaLu (非線形性なし) のバイアスブロックモードで実行
+4. Counter-Hebb 学習則に従い，BU と TD パラメータの両方を更新
+
+<!-- 1. Run BU network to map the input x to an output y with non-linear activation function.
+2. Compute error signals.
+3. Run the TD network using the error signals, in a bias-blocking mode with GaLu (no non-lineality).
+4. Update both the BU and TD parameters according to the Counter-Hebb learning rule. -->
+
+**マルチタスク学習**<!--Multi-task learning--><br/>
+
+1. 課題ヘッドを使って，課題 $t$ を入力とする TD ネットワークを ReLU で実行する。
+2. BU ネットワークを実行し，入力 $x$ を出力 $y$ に ReLU と GaLU の合成で対応付ける。
+3. 誤差信号，すなわち BU 出力に対する損失 $L$ の勾配を計算： $\displaystyle -\frac{\partial L}{\partial y}$
+4. 誤差信号を入力として，GaLU (非線形性なし) のバイアスブロックモードで TD ネットワークを実行
+5. すべての重みを Counter-Hebb 学習則に従って更新する (課題ヘッドは除く，6 節参照)。
+
+<!-- 1. Run the TD network with task t as input with ReLU, using the task head.
+2. Run the BU network to map the input x to an output y with a composition of ReLU and GaLU.
+3. Compute error signals, i.e. the gradients of a loss L with respect to the BU output: $\displaystyle -\frac{\partial L}{\partial y}$
+4. Run the TD network using the error signals as inputs, in a bias-blocking mode with GaLU (no non-lineality).
+5. Update all the weights according to th Counter-Hebb learning rule. (Excluding the task head, see section 6) -->
+
+### 文献
+
+* [系列探索と逆行流: 視覚野における双方向情報フローの計算モデル](/2023cogpsy/2021Ullman_bu_td_ja.pdf)
+* [ボトムアップ・トップダウンの反復処理による画像解釈](/2023cogpsy/1995Ullman_bidirectional_cortex_ja.pdf)
