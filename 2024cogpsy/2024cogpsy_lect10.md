@@ -7,7 +7,7 @@ layout: home
 
 <div align="right">
 <a href='mailto:educ0233@komazawa-u.ac.jp'>Shin Aasakawa</a>, all rights reserved.<br>
-Date: 22/Nov/2024<br/>
+Date: 29/Nov/2024<br/>
 Appache 2.0 license<br/>
 </div>
 
@@ -19,6 +19,242 @@ $$
 \newcommand{\mb}[1]{\mathbf{#1}}
 $$
 
+# 先週の復習
+
+* 畳み込みニューラルネットワーク，ResNet によるスキップ結合，
+* 畳み込みニューラルネットワークについては，カーネルサイズ，ストライド，パディング，ダイアレーション(未言及)，
+* HMax 最大値プーリング，最大値プーリングが行われなくなった理由としては，画像切り分けの際に不利になるからという理由が考えられる。
+* ドロップアウト (未言及)
+* バッチ正規化 (未言及)
+* データ拡張 (未言及)
+
+# 本日のメニュー
+
+* 転移学習，微調整
+* ViT 視覚 Transformer ([Dosovitskiy+2020](https://arXiv.org/abs/2010.11929/))
+
+## [ViT 2020Dosovitskiy AN IMAGE IS WORTH 16X16 WORDS: TRANSFORMERS FOR IMAGE RECOGNITION AT SCALE](https://arxiv.org/abs/2010.11929/)
+
+### 3. 方法<!--3 METHOD-->
+
+モデル設計において，我々はオリジナルのTransformer（Vaswani+2017）に可能な限り忠実に従う。
+この意図的にシンプルなセットアップの利点は，スケーラブルなNLP Transformerアーキテクチャとその効率的な実装が，ほぼそのまま使えることである。
+<!-- In model design we follow the original Transformer (Vaswani+2017) as closely as possible.
+An advantage of this intentionally simple setup is that scalable NLP Transformer architectures – and their efficient implementations – can be used almost out of the box. -->
+
+#### 3.1 VISION TRANSFORMER (VIT)
+
+モデルの概要を図 1 に示す。
+標準的な Transformer はトークン埋込みの 1 次元系列を入力として受け取る。
+2 次元画像を扱うために，画像 $x\in\mathcal{R}^{H\times W\times C}$ を平坦化された 2 次元パッチの系列 $x_{p}$ に再形成する。
+(H,W) は原画像の解像度，C はチャンネル数，(P,P) は各画像パッチの解像度，$N=HW/P^{2}$ は結果のパッチ数であり，これは Transformer の有効入力系列長でもある。
+Transformer は全ての層で一定の潜在ベクトルサイズ D を用いるので，パッチを平坦化し，訓練可能な線形射影（式 1）を用いて D 次元に写像する。
+この射影の出力をパッチ埋め込みと呼ぶ。
+<!-- An overview of the model is depicted in Figure 1.
+The standard Transformer receives as input a 1D sequence of token embeddings.
+To handle 2D images, we reshape the image $x\in\mathcal{R}^{H\times W\times C}$ into a sequence of flattened 2D patches $x_{p}\in\mathcal{R}^{N\times(P^{2}\cdot C)}$, where (H,W) is the resolution of the original
+image, C is the number of channels, (P,P) is the resolution of each image patch, and $N=HW/P^{2}$ is the resulting number of patches, which also serves as the effective input sequence length for the Transformer.
+The Transformer uses constant latent vector size D through all of its layers, so we flatten the patches and map to D dimensions with a trainable linear projection (Eq. 1).
+We refer to the output of this projection as the patch embeddings. -->
+
+<div class="figcenter">
+<img src="/2024assets/2020Dosovitskiy_ViT_fig1.svg" style="width:66%;">
+</div>
+<div class="figcaption" style="width:77%;">
+
+**図 1：モデルの概要**<br/>
+画像を固定サイズのパッチに分割し，それぞれを線形に埋め込み，位置埋め込みを追加し，得られたベクトル列を標準的な Transformer 符号化器に与える。
+分類を行うために，学習可能な 「分類トークン 」を系列に追加するという標準的なアプローチを用いる。
+Transformer 符号化器の図は，Vaswani+(2017) に触発された。
+<!-- Figure 1: Model overview.
+We split an image into fixed-size patches, linearly embed each of them, add position embeddings, and feed the resulting sequence of vectors to a standard Transformer encoder.
+In order to perform classification, we use the standard approach of adding an extra learnable “classification token” to the sequence.
+The illustration of the Transformer encoder was inspired by Vaswani+(2017). -->
+</div>
+
+BERT の `[class]` トークンと同様に，学習可能な埋め込みを埋め込みパッチのシーケンス($z_0^0=x_{text{class}}$) の前に付加し，Transformer エンコーダの出力 ($z_{L}^{0}$) の状態が画像表現yとなる（式 4）。
+事前学習時と微調整時の両方で，分類ヘッドが $z^{0}_{L}$ に取り付けられる。
+分類ヘッドは，事前学習時には 1 つの隠れ層を持つ MLP によって実装され，微調整時には 1 つの線形層によって実装される。
+<!-- Similar to BERT’s `[class]` token, we prepend a learnable embedding to the sequence of embedded patches ($z_0^0=x_{\text{class}}$), whose state at the output of the Transformer encoder ($z_{L}^{0}$) serves as the
+image representation y (Eq. 4).
+Both during pre-training and fine-tuning, a classification head is attached to $z^{0}_{L}$.
+The classification head is implemented by a MLP with one hidden layer at pre-training time and by a single linear layer at fine-tuning time. -->
+
+位置埋め込みは位置情報を保持するためにパッチ埋め込みに追加される。
+我々は標準的な学習可能な 1 次元の位置埋め込みを使用する (付録 D.3)。
+結果として得られる埋め込みベクトルの系列スは符号化器の入力となる。
+Transformer 符号化器 (Vaswani+2017) は，多頭自己注意 (MSA 付録 A) と MLP ブロックの交互の層で構成される (式 2, 3)。
+各ブロックの前には層正規化 (LN) が適用され，各ブロックの後には残差接続が適用される (Wang+2019, Baevski&Auli2019)。
+MLP には GELU 非線形性を持つ 2 つの層が含まれる。
+<!-- Position embeddings are added to the patch embeddings to retain positional information.
+We use standard learnable 1D position embeddings, since we have not observed significant performance gains from using more advanced 2D-aware position embeddings (Appendix D.3).
+The resulting sequence of embedding vectors serves as input to the encoder.
+The Transformer encoder (Vaswani+2017) consists of alternating layers of multiheaded selfattention (MSA, see Appendix A) and MLP blocks (Eq. 2, 3).
+Layer-norm (LN) is applied before every block, and residual connections after every block (Wang+2019, Baevski&Auli2019).
+The MLP contains two layers with a GELU non-linearity. -->
+
+$$\tag{1}
+z_0 = \left[x_{\text{class}}; x_{p}^{1}\mathbf{E};x_{p}^{2}\mathbf{E};\ldots;x_{p}^{N}\mathbf{E}\right]+\mathbf{E}_{pos},
+$$
+where, $\mathbf{E}\in\mathcal{R}^{(p^{2}\cdot C)}$, and $\mathbf{E}_{pos}\in\mathcal{R}^{(N+1)\times D}$
+
+$$\tag{2}
+\mathcal{z}^{\top}_{\ell}= \text{MSA}\left(LN\left(\mathbf{z}_{\ell-1}\right)\right)+\mathbf{z}_{\ell-1},
+$$
+where $\ell=1\ldots,L$
+
+$$\tag{3}
+\mathbf{z}_{\ell}=\text{MLP}\left(LN\left(\mathbf{z}^{\top}_{\ell}\right)\right)+\mathbf{z}^{\top}_{\ell},
+$$
+where $\ell=1,\ldots,L$
+
+$$\tag{4}
+\mathbf{y}=LN\left( \mathbf{z}_{L}^{0}\right),
+$$
+
+**ハイブリッド・アーキテクチャ**<!-- **Hybrid Architecture**.-->
+生の画像パッチの代わりに，入力系列を CNN の特徴地図から形成することができる (LeCun+1989)。
+このハイブリッド・モデルでは，パッチ埋め込み射影 E (式 1) が CNN 特徴地図から抽出されたパッチに適用される。
+特殊なケースとして，パッチは空間サイズ 1x1 を持つことができ，これは入力系列が単に特徴地図の空間次元を平坦化し，Transformer 次元に射影することによって得られることを意味する。
+分類入力埋め込みと位置埋め込みは上述のように追加される。
+<!--As an alternative to raw image patches, the input sequence can be formed from feature maps of a CNN (LeCun+1989).
+In this hybrid model, the patch embedding projection E (Eq. 1) is applied to patches extracted from a CNN feature map.
+As a special case, the patches can have spatial size 1x1, which means that the input sequence is obtained by simply flattening the spatial dimensions of the feature map and projecting to the Transformer dimension.
+The classification input embedding and position embeddings are added as described above. -->
+
+#### 3.2 微調整と高解像度化<!-- #### 3.2 FINE-TUNING AND HIGHER RESOLUTION-->
+
+通常，ViT を大規模なデータセットで事前学習し，(より小規模な) 下流課題に対して微調整を行う。
+このために，事前訓練された予測ヘッドを取り除き，ゼロ初期化された DxK フィードフォワード層を追加する。
+事前学習よりも高い解像度で微調整を行うことが有益な場合が多い (Touvron+2019, Kolesnikov+2020)。
+より高い解像度の画像を与える場合，パッチサイズを同じにすることで，有効系列長が大きくなる。
+Vision Transformer は任意の系列長（メモリ制約まで）を扱うことができるが，事前に学習された位置埋め込みはもはや意味をなさないかもしれない。
+そこで我々は，事前に学習された位置埋め込みを，元画像の位置に応じて 2 次元補間する。
+この解像度調整とパッチ抽出は，画像の 2 次元構造に関する帰納的バイアスが Vision Transformer に手動で注入される唯一の点であることに注意してください。
+<!--Typically, we pre-train ViT on large datasets, and fine-tune to (smaller) downstream tasks.
+For this, we remove the pre-trained prediction head and attach a zero-initialized DxK feedforward layer, where K is the number of downstream classes.
+It is often beneficial to fine-tune at higher resolution than pre-training (Touvron+2019, Kolesnikov+2020).
+When feeding images of higher resolution, we keep the patch size the same, which results in a larger effective sequence length.
+The Vision Transformer can handle arbitrary sequence lengths (up to memory constraints), however, the pre-trained position embeddings may no longer be meaningful.
+We therefore perform 2D interpolation of the pre-trained position embeddings, according to their location in the original image.
+Note that this resolution adjustment and patch extraction are the only points at which an inductive bias about the 2D structure of the images is manually injected into the Vision Transformer. -->
+
+### 4. 実験<!-- ### 4 EXPERIMENTS-->
+
+ResNet, Vision Transformer (ViT)，ハイブリッドの表現学習能力を評価する。
+各モデルのデータ要件を理解するために，様々なサイズのデータセットで事前学習を行い，多くのベンチマーク課題を評価する。
+モデルを事前学習する計算コストを考慮すると，ViT は非常に有利な性能を示し，より低い事前学習コストで，ほとんどの認識ベンチマークで最先端技術を達成した。
+最後に，自己教師あり学習を用いた小規模な実験を行い，自己教師付き学習 ViT が将来有望であることを示す。
+<!--We evaluate the representation learning capabilities of ResNet, Vision Transformer (ViT), and the hybrid.
+To understand the data requirements of each model, we pre-train on datasets of varying size and evaluate many benchmark tasks.
+When considering the computational cost of pre-training the model, ViT performs very favourably, attaining state of the art on most recognition benchmarks at a lower pre-training cost.
+Lastly, we perform a small experiment using self-supervision, and show that self-supervised ViT holds promise for the future. -->
+
+#### 4.1 セットアップ<!-- #### 4.1 SETUP-->
+
+**データセット:**<!--**Datasets.**-->
+モデルのスケーラビリティを調べるために，1k クラスと 1.3M 画像を持つ ILSVRC-2012 ImageNet データセット (以下 ImageNet と呼ぶ)，21k クラスと 14M 画像を持つそのスーパーセット ImageNet-21k (Deng+2009)，18k クラスと 303M 高解像度画像を持つ JFT (Sun+2017) を用いる。
+Kolesnikov+(2020) に従い，下流課題のテストセットに対して事前学習データセットの重複を排除する。
+これらのデータセットで学習したモデルをいくつかのベンチマークタスクに移植する： オリジナルの検証ラベルとクリーンアップされた ReaL ラベルの ImageNet (Beyer+2020)，CIFAR-10/100 (Krizhevsky2009)，Oxford-IIIT Pets (Parkhi+2012)，Oxford Flowers-102  (Nilsback&Zisserman2008)。
+これらのデータセットの前処理は Kolesnikov+(2020) に従う。
+<!--To explore model scalability, we use the ILSVRC-2012 ImageNet dataset with 1k classes and 1.3M images (we refer to it as ImageNet in what follows), its superset ImageNet-21k with 21k classes and 14M images (Deng+2009), and JFT (Sun+2017) with 18k classes and 303M high-resolution images.
+We de-duplicate the pre-training datasets w.r.t. the test sets of the downstream tasks following Kolesnikov+(2020).
+We transfer the models trained on these dataset to several benchmark tasks: ImageNet on the original validation labels and the cleaned-up ReaL labels (Beyer+2020), CIFAR-10/100 (Krizhevsky2009), Oxford-IIIT Pets (Parkhi+2012), and Oxford Flowers-102 (Nilsback&Zisserman2008).
+For these datasets, pre-processing follows Kolesnikov+(2020). -->
+
+また，19 課題の VTAB 分類スイート (Zhai+2019b) でも評価する。
+VTAB は，1 課題あたり 1,000 の学習例を用いて，多様な課題への低データ転移を評価する。
+課題は 3 群に分けられる：
+* 自然 - 上記のような課題，PET，CIFARなど。
+* 専門 - 医療や衛星画像。
+* 構造化課題 - 局在化のような幾何学的理解を必要とする課題。
+<!-- We also evaluate on the 19-task VTAB classification suite (Zhai+2019b).
+VTAB evaluates low-data transfer to diverse tasks, using 1,000 training examples per task.
+The tasks are divided into three groups:
+* Natural – tasks like the above, Pets, CIFAR, etc.
+* Specialized – medical and satellite imagery, and
+* Structured – tasks that require geometric understanding like localization. -->
+
+**モデルの変種:**<!-- **Model Variants.**-->
+表 1 にまとめたように，BERT（Devlin+2019）で使用されたものを ViT 構成のベースとしている。
+Base モデルと Large モデルは BERT からそのまま採用し，より大きなHuge モデルを追加した。
+以下では，モデルサイズと入力パッチサイズを示すために簡潔な表記を使用します：例えば，ViT-L/16 は 16x16 入力パッチサイズの Large バリアントを意味する。
+Transformer の系列長はパッチサイズの 2 乗に反比例するので，パッチサイズの小さいモデルは計算コストが高くなることに注意。
+<!--We base ViT configurations on those used for BERT (Devlin+2019), as summarized in Table 1.
+The "Base" and "Large" models are directly adopted from BERT and we add the larger "Huge" model.
+In what follows we use brief notation to indicate the model size and the input patch size: for instance, ViT-L/16 means the "Large" variant with 16x16 input patch size.
+Note that the Transformer’s sequence length is inversely proportional to the square of the patch size, thus models with smaller patch size are computationally more expensive. -->
+
+<div class="figcenter">
+<img src="/2024assets/2020Dosovitskiy_ViT_tab1and2.svg" style="width:66%;">
+</div><div class="figcaption" style="width:77%;">
+
+**表 2：一般的な画像分類ベンチマークにおける最新技術との比較**<br/>
+精度の平均と標準偏差を3回の微調整の平均値で示す。
+JFT-300M データセットで事前訓練された Vision Transformer モデルは，すべてのデータセットで ResNet ベースのベースラインを上回った。
+より小さなパブリック ImageNet-21k データセットで事前に訓練された ViT も良好な結果を示した。
+Touvron+(2020) で報告された 88.5% の結果をわずかに改善。
+<!-- Table 2: Comparison with state of the art on popular image classification benchmarks.
+We report mean and standard deviation of the accuracies, averaged over three fine-tuning runs.
+Vision Transformer models pre-trained on the JFT-300M dataset outperform ResNet-based baselines on all datasets, while taking substantially less computational resources to pre-train.
+ViT pre-trained on the smaller public ImageNet-21k dataset performs well too.
+Slightly improved 88:5% result reported in Touvron+(2020). -->
+</div>
+
+ベースライン CNN には ResNet (He+2016) を用いるが，バッチ正規化層 (Ioffe&Szegedy2015) を群正規化 (Wu&He2018) に置き換え，標準化畳み込み (Salimans&Kingma2016) を用いる。
+これらの修正により伝達が改善され (Kolesnikov+2020)，この修正モデルを ResNet (BiT) と呼ぶ。
+ハイブリッドの場合，中間特徴地図を 1 画素のパッチサイズで ViT に送り込む。
+異なる系列長を実験するために，(i) 通常の ResNet50 のステージ 4 の出力を取るか，(ii) ステージ 4 を取り除き，同じ数の層をステージ 3 に配置し (層の総数を維持する），この拡張ステージ 3 の出力を取る。
+オプション (ii) の場合，系列の長さが 4 倍長くなり，ViT モデルのコストが高くなる。
+<!-- For the baseline CNNs, we use ResNet (He+2016), but replace the Batch Normalization layers (Ioffe&Szegedy2015) with Group Normalization (Wu&He2018), and used standardized convolutions (Salimans&Kingma2016).
+These modifications improve transfer (Kolesnikov+2020), and we denote the modified model “ResNet (BiT)”.
+For the hybrids, we feed the intermediate feature maps into ViT with patch size of one "pixel".
+To experiment with different sequence lengths, we either (i) take the output of stage 4 of a regular ResNet50 or (ii) remove stage 4, place the same number of layers in stage 3 (keeping the total number of layers), and take the output of this extended stage 3.
+Option (ii) results in a 4x longer sequence length, and a more expensive ViT model. -->
+
+**学習と微調整:**<!-- **Training & Fine-tuning.**-->
+ResNets を含む全てのモデルを，$\beta_1=0.9$, $\beta_2=0.999$，バッチサイズ 4096，重み減衰 0.1 の Adam で学習した。
+我々は，線形学習率のウォームアップと減衰を使用する。
+詳細については付録 B.1.1 を参照。
+微調整のために，すべてのモデルでモメンタム付き SGD，バッチサイズ 512 を使用した。
+表 2 の ImageNet の結果については，より高い解像度で微調整を行った：
+ViT-L/16 では 512，ViT-H/14 では 518，また Polyak&Juditsky(1992) の係数 0.9999 を用いた平均化も行った (Ramachandran+2019, Wang+2020b)。
+<!--We train all models, including ResNets, using Adam with  $\beta_1=0.9$, $\beta_2=0.999$, a batch size of 4096 and apply a high weight decay of 0.1, which we found to be useful for transfer of all models (Appendix D.1 shows that, in contrast to common practices, Adam works slightly better than SGD for ResNets in our setting).
+We use a linear learning rate warmup and decay, see Appendix B.1 for details.
+For fine-tuning we use SGD with momentum, batch size 512, for all models, see Appendix B.1.1.
+For ImageNet results in Table 2, we fine-tuned at higher resolution:
+512 for ViT-L/16 and 518 for ViT-H/14, and also used Polyak&Juditsky(1992) averaging with a factor of 0.9999 (Ramachandran+2019, Wang+2020b). -->
+
+**計量:**<!-- **Metrics.**-->
+下流課題データセットの結果は，少数撃精度または微調整精度によって報告される。
+微調整精度は，それぞれのデータセットで微調整した後の各モデルの性能を捉える。
+少数撃精度は，訓練画像の部分集合の（凍結）表現を ${-1,1}$ の標的ベクトルに写像する正則化線形回帰問題を解くことによって得られる。
+我々は主に性能の微調整に重点を置いているが，微調整にコストがかかりすぎる場合，その場で高速に評価するために線形少数撃精度を使用することもある。
+<!--We report results on downstream datasets either through few-shot or fine-tuning accuracy.
+Fine-tuning accuracies capture the performance of each model after fine-tuning it on the respective dataset.
+Few-shot accuracies are obtained by solving a regularized linear regression problem that maps the (frozen) representation of a subset of training images to $\{-1,1\}$ target vectors.
+Though we mainly focus on fine-tuning performance, we sometimes use linear few-shot accuracies for fast on-the-fly evaluation where fine-tuning would be too costly. -->
+
+<div class="figcenter">
+<img src="/2024assets/2020Dosovitskiy_ViT_fig2-3-4.svg" style="width:77%;">
+</div><div class="figcaption" style="width:77%;">
+
+**図 3：ImageNet への転移学習**<br/>
+小さなデータセットで事前訓練した場合，大きな ViT モデルは BiT ResNets (斜線部分) よりも性能が劣るが，大きなデータセットで事前訓練した場合は輝く。
+同様に，データセットが大きくなるにつれて，大きな ViT モデルは小さな ViT モデルを追い越す。
+
+**図 4：ImageNet における事前訓練サイズに対する線形少数撃学習の評価**<br/>
+ResNets は事前学習データセットが小さいほど良い性能を示すが，事前学習が大きいほど良い性能を示す ViT よりも早くプラトーする。
+ViT-b はすべての隠れ次元を半分にした ViT-B である。
+<!-- Figure 3: Transfer to ImageNet.
+While large ViT models perform worse than BiT ResNets (shaded area) when pre-trained on small datasets, they shine when pre-trained on larger datasets.
+Similarly, larger ViT variants overtake smaller ones as the dataset grows.
+
+Figure 4: Linear few-shot evaluation on ImageNet versus pre-training size.
+ResNets perform better with smaller pre-training datasets but plateau sooner than ViT, which performs better with larger pre-training.
+ViT-b is ViT-B with all hidden dimensions halved. -->
+</div>
+
 # 視覚モデルの歴史
 
 人間の視覚処理のモデリングは，Hubel&Wiesel にさかのぼることができる。
@@ -28,7 +264,9 @@ Hubel&Wiesel では，視覚野 V1 の単純な細胞の応答特性はエッジ
 これらは，今日の特徴検出器とプーリング演算子を交互に用いた物体認識の深層学習モデルとして用いられれている。
 (ただし，画像切り分けでは，プーリングを除外する傾向にある。)
 AlexNet (Russakovsky+2015) 以前は，ネットワークをどのように組み込むか，あるいは他の方法で訓練するか，明確ではなかった（Olshausen&Field1996, Lowe1999, Torralba&Oliva2003）。
-深層ニューラルネットワークを訓練する少なくとも 1 つの方法が示された 。同時に，このような不変
+深層ニューラルネットワークを訓練する少なくとも 1 つの方法が示された。
+同時に，このような不変
+
 ImageNet 画像認識コンテストで優勝したモデルでは，視覚野 V4 と IT のニューロンの応答を圧倒的によくモデル化した内部「神経」表現を生成することが実証された（Yamins+2013, Cadieu+2014, Yamins+2014）。
 ヒトの fMRI や MEG といった，より高度な実験レベルでの説明力の向上が確認された（Khaligh-Razavi&Kriegeskorte2014, Güçlü&van Gerven2015, Cichy+2016）。
 <!-- Modeling human visual processing traces back at least to Hubel and Wiesel where response properties of simple cells in visual area V1 were formalized as feature detection of edges and properties of complex cells were conceptualized as a set of operations that were spatially repeated over the visual field (Hubel&Wiesel1962, i.e., translationally invariant).
