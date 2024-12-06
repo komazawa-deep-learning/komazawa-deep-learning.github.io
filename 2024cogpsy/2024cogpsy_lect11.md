@@ -28,6 +28,115 @@ $$
 * [7–1 リカレントニューラルネットワーク](/2022/6657.pdf){:target="_blank"}
 * [7–1 リカレントネットワークによる文法学習](/2022/6685.pdf){:target="_blank"}
 
+* [系列探索と逆行流: 視覚野における双方向情報フローの計算モデル](/2023cogpsy/2021Ullman_bu_td_ja.pdf){:target="_blank"}
+* [ボトムアップ・トップダウンの反復処理による画像解釈](/2023cogpsy/1995Ullman_bidirectional_cortex_ja.pdf){:target="_blank"}
+
+
+# 言語モデル，あるいは時系列予測モデル
+
+$$
+P(x_{t+1}) = P(x|x_{i<t})
+$$
+
+1. RNN
+2. LSTM, GRU
+3. Transformer
+
+<center>
+
+<img src="/assets/SRN_J.svg" style="width:23%">
+<img src="/assets/SRN_E.svg" style="width:23%">
+<img src="/assets/2015Greff_LSTM_ja.svg" width="29%"><br/>
+<img src="/assets/RNN_fold.svg" style="width:49%"><br>
+Time unfoldings of recurrent neural networks
+
+左：マイケル・ジョーダン発案ジョーダンネット [@1986Jordan]
+中：ジェフ・エルマン発案エルマンネット
+右: LSTM
+</center>
+
+の LSTM は一つのニューロンに該当します。このニューロンには 3 つのゲート(gate, 門) が付いている。
+3 つのゲートは以下の名前で呼ばれる。
+
+1. 入力ゲート input gate
+2. 出力ゲート output gate
+3. 忘却ゲート forget gate
+
+各ゲートの位置を上図で確認せよ。
+入力ゲートと出力ゲートが閉じていれば，セルの内容(中間層の状態)が保持されることになる。
+出力ゲートが開いている場合には，セル内容が出力される。
+一方出力ゲートが閉じていればそのセル内容は出力さない。
+このように入力ゲートと出力ゲートはセル内容の入出力に関与する。
+忘却ゲートはセル内容の保持に関与する。
+忘却ゲートが開いていれば一時刻前のセル内容が保持されることを意味する。
+反対に忘却ゲートが閉じていれば一時刻前のセル内容は破棄される。
+全セルの忘却ゲートが全閉ならば通常の多層ニューラルネットワークであることと同義である。
+すなわち記憶内容を保持しないことを意味する。
+SRN でフィードバック信号が存在しない場合に相当する。セルへの入力は，以下のような:
+
+1. 下層からの信号，
+2. 上層からの信号, すなわち Jordan ネットの帰還信号
+3. 自分自身の内容，すなわち Elman ネットの帰還信号
+
+が用いられる。
+これら入力信号が:
+
+1. 入力信号そのもの
+2. 入力ゲートの開閉制御用信号
+3. 出力ゲートの開閉制御用信号
+4. 忘却ゲートの開閉制御用信号
+
+という 4 種類に用いられる。
+従って LSTM のパラメータ数は SRN に比べて 4 倍になる。
+
+LSTM に限らず一般のニューラルネットワークの出力には非線形関数が用いられる。
+代表的な非線形出力関数としては，以下のような関数が挙げられる。
+
+1. シグモイド関数: $f(x)=\left[1+e^{-x}\right]^{-1}$
+2. ハイパーボリックタンジェント関数:  $f(x)=\left(e^{x}-e^{-x}\right)/\left(e^{x}+e^{-x}\right)$
+3. 整流線形ユニット関数: $f(x)=\max\left(0,x\right)$
+
+この中で，セルの出力関数として 2. のハイパーボリックタンジェント関数が，ゲートの出力関数にはシグモイド関数が使われる。
+その理由はハイパーボリックタンジェント関数の方が収束が早いこと，シグモイド関数は値域が $[0,1]$ であるためゲートの開閉に直接対応しているからである。
+
+- Le Cun, Y. Bottou, L., Orr, G. B, Muller K-R. (1988) Efficient BackProp, in Orr, G. and Muller, K. (Eds.) Neural Networks: tricks and trade, Springer.
+
+<!--
+The LSTM (left figure) can be described as the input signals $\mathbf{x}_t$ at
+time $t$, the output signals $\mathbf{o}_t$, the forget gate $\mathbf{f}_t$, and
+the output signal $\mathbf{y}_t$, the memory cell $\mathbf{c}_t$, then we can get
+the following:
+$i_{t}=\sigma\left(W_{xi}x_{t}+W_{hi}y_{t-1}+b_{i}\right)$, <br>
+$f_{t}=\sigma\left(W_{xf}x_{t}+W_{hf}y_{t-1}+b_{f}\right)$, <br>
+$o_{t}=\sigma\left(W_{xo}x_{t}+W_{ho}y_{t-1}+b_{o}\right)$, <br>
+$g_{t}=\phi\left(W_{xc}x_{t}+W_{hc}y_{t-1}+b_{c}\right)$,<br>
+$c_{t}=f_{t}\odot c_{t-1} + i_{t}\odot g_{t}$,<br>
+$h_{t}=o_{t}\odot\phi\left(c_{t}\right)$<br>\label{eq:LSTM}
+where
+$\sigma\left(x\right)=\displaystyle\frac{1}{1+\mbox{exp}\left(-x\right)}$ (logistic function)
+%% =1/2\left(\phi\Brc{x}+1\right)$,
+$\phi\left(x\right)=\displaystyle\frac{\mbox{exp}\left(x\right)-\mbox{exp}\left(-x\right)}{\mbox{exp}\left(x\r
+ight)+\mbox{exp}\left(-x\right)}$ (hyper tangent)
+%% $=2\sigma\left(x\right)-1$
+and $\odot$ menas Hadamard (element--wise) product.
+-->
+
+## LSTM におけるゲートの生理学的対応物 <!--Physiological correlates of gates in LSTM-->
+
+以下の画像は <http://kybele.psych.cornell.edu/~edelman/Psych-2140/week-2-2.html> よりの引用。
+ウミウシのエラ引っ込め反応時に，ニューロンへの入力信号ではなく，入力信号を修飾する結合が存在する。下図参照。
+
+<center>
+<img src="/assets/2016McComas_presynaptic_inhibition.jpg" style="width:24%">
+<img src="/assets/C87-fig2_24.jpg" width="17%">
+<img src="/assets/C87-fig2_25.jpg" width="33%"><br>
+アメフラシ (Aplysia) のエラ引っ込め反応(a.k.a. 防御反応)の模式図[^seaslang]
+<!-- <img src="/assets/shunting-inhibition.jpg" width="29%"> -->
+</center>
+
+* [注意機構の補足説明 大門他 (2023) <img src="https://www.adobe.com/content/dam/cc/en/legal/images/badges/PDF_32.png">](/2023/2023cnps注意機構の補足説明.pdf){:target="_blank"}
+
+
 ## [Top-Down Network Combines Back-Propagation with Attention](https://arxiv.org/abs/2306.02415)
 
 * [GitHub](https://github.com/royabel/Top-Down-Networks)
@@ -39,10 +148,10 @@ $$
 It uses a bottom-up (BU) - top-down (TD) model, in which a single TD network is used for both learning and guiding attention.
 The key contributions of the paper are: -->
 
-  * 誤差信号からの学習とトップダウンの注意を組み合わせた新しいトップダウン機構を提案
-  * 従来研究を拡張し，より生物学的に妥当な学習モデルへの新たなステップを提供
-  * 生物学的学習のためのカウンター Hebb 学習機構の提案
-  * 従来のネットワークの中に，課題依存した独自の部分ネットワークを動的作成。生物学に着想を得た新しい Multi Task Learning (MTL) アルゴリズムの提示
+* 誤差信号からの学習とトップダウンの注意を組み合わせた新しいトップダウン機構を提案
+* 従来研究を拡張し，より生物学的に妥当な学習モデルへの新たなステップを提供
+* 生物学的学習のためのカウンター Hebb 学習機構の提案
+* 従来のネットワークの中に，課題依存した独自の部分ネットワークを動的作成。生物学に着想を得た新しい Multi Task Learning (MTL) アルゴリズムの提示
 
 <!-- * Propose a novel top-down mechanism that combines learning from error signals with top-down attention.
 * Extending earlier work, offering a new step toward a more biologically plausible learning model.
@@ -182,8 +291,3 @@ Therefore, in contrast with standard models, the entire computation is carried o
 3. Compute error signals, i.e. the gradients of a loss L with respect to the BU output: $\displaystyle -\frac{\partial L}{\partial y}$
 4. Run the TD network using the error signals as inputs, in a bias-blocking mode with GaLU (no non-lineality).
 5. Update all the weights according to th Counter-Hebb learning rule. (Excluding the task head, see section 6) -->
-
-### 文献
-
-* [系列探索と逆行流: 視覚野における双方向情報フローの計算モデル](/2023cogpsy/2021Ullman_bu_td_ja.pdf)
-* [ボトムアップ・トップダウンの反復処理による画像解釈](/2023cogpsy/1995Ullman_bidirectional_cortex_ja.pdf)
