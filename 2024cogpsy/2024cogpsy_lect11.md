@@ -28,9 +28,10 @@ $$
 * [7–1 リカレントニューラルネットワーク](/2022/6657.pdf){:target="_blank"}
 * [7–1 リカレントネットワークによる文法学習](/2022/6685.pdf){:target="_blank"}
 
+* [Bahdanau and Loung attentions <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_1022Two_attentions_additive_and_multiplicative_Seq2seq.ipynb)
+
 * [系列探索と逆行流: 視覚野における双方向情報フローの計算モデル](/2023cogpsy/2021Ullman_bu_td_ja.pdf){:target="_blank"}
 * [ボトムアップ・トップダウンの反復処理による画像解釈](/2023cogpsy/1995Ullman_bidirectional_cortex_ja.pdf){:target="_blank"}
-
 
 # 言語モデル，あるいは時系列予測モデル
 
