@@ -52,7 +52,7 @@ DETR の概略 Carion+(2020) Fig. 2 を改変
 
 ## 実習ファイル
 
-- [ResNet, LeNet 実習 <img src="/asssets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2024notebooks/2024_1129ResNet_LeNet_with_Karapetian2023.ipynb){:target="_blank"}
+- [ResNet, LeNet 実習 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2024notebooks/2024_1129ResNet_LeNet_with_Karapetian2023.ipynb){:target="_blank"}
 - [DETR を用いた領域切り出し  <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2022notebooks/2022_0625DETR_demo.ipynb){:target="_blank"}
 - [フィラデルフィア絵画命名検査課題 PNT を転移学習 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_0618pnt_transfer_learning.ipynb){:target="_blank"}
 - [データ拡張 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/2021notebooks/2021_0617plot_transforms_demo.ipynb){:target="_blank"}
@@ -106,9 +106,6 @@ Ronnenberger+(2015) Fig. 1
 [Zhou+(2018)](https://arXiv.org/abs/1807.10165/){:target="_blank"} Fig. 2
 </div>
 </div>
-
-<!-- <img src="/assets/2014Friston_Fig1.svg" style="width:99%"><br/> -->
-<!--  <img src="../assets/2009Friston_box3.svg" style="width:99%"><br/> -->
 
 
 # 転移学習の定義

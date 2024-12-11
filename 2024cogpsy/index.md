@@ -70,7 +70,7 @@ layout: home
 * [第11回 (Dec.06)](2024cogpsy_lect11){:target="_blank"}
   * ボトムアップとトップダウン処理の相互作用 浅川：BU-TD ネットワーク [Ullman+2020](https://arxiv.org/abs/2105.05592){:target="_blank"} の BU-TD モデルを取り上げ，リカレント結合の異なる意味を考える。
 下記の論文をダウンロードしてアブストラクトと図の脚注に目を通しておく：[Ullman+2020](https://arxiv.org/abs/2105.05592){:target="_blank"}
-* 第12回 (Dec.13)
+* [第12回 (Dec.13)](2024cogpsy_lect12){:target="_blank"}
   * 物体認識と領域切り分けとの相互作用 【浅川：物体情報と位置情報】 前回でのモデルを考慮した上で，画像切り分けと物体同定との相互作用の問題を考える。[Neyshabur+2021](https://arxiv.org/abs/2008.11687/){:target="_blank"}
 * 第13回 (Dec.20)
   * Transformer の導入 浅川：Transformer Transformer を取り上げ，リカレント表現以外の State-of-the-arts である時間表現を取り上げる([Vaswani+2017](https://arXiv.org/abs/1706.03762/){:target="_blank"})。
