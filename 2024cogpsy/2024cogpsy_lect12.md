@@ -315,6 +315,43 @@ A: カルマンフィルタのモデルを模式的に示しており，2 つの
 (B～E) センサー運動統合過程のカルマンフィルタモデルによる偏りと分散の伝播を，実データに即してシミュレートしたもの
 </div></div>
 
+カルマンフィルタは，ベイズ推論による推定値の逐次更新とみなしうる。
+
+##### カルマンフィルタ
+
+<div class="figcenter">
+<img src="/2024assets/2024_1213Kalman_residual_chart_ja.svg"><br/>
+</div>
+<div class="figcenter">
+フィルタリングの考え方の模式図
+</div>
+
+<div class="figcenter">
+<img src="/2024assets/2024_1213Kalman_chart_ja.svg" style="width:44%;">
+<img src="/assets/2015Greff_LSTM_ja.svg" style="width:39%;">
+<div class="figcaption">
+左: 状態空間モデル (カルマンフィルタ)の模式図.<br/>
+右: LSTM の模式図
+</div></div>
+
+##### LSTM におけるゲートの生理学的対応物 <!--Physiological correlates of gates in LSTM-->
+
+以下の画像は <http://kybele.psych.cornell.edu/~edelman/Psych-2140/week-2-2.html> よりの引用。
+ウミウシのエラ引っ込め反応時に，ニューロンへの入力信号ではなく，入力信号を修飾する結合が存在する。下図参照。
+
+<center>
+<img src="/assets/2016McComas_presynaptic_inhibition.jpg" style="width:24%">
+<img src="/assets/C87-fig2_24.jpg" width="17%">
+<img src="/assets/C87-fig2_25.jpg" width="33%"><br>
+アメフラシ (Aplysia) のエラ引っ込め反応(a.k.a. 防御反応)の模式図[^seaslang]
+<!-- <img src="/assets/shunting-inhibition.jpg" width="29%"> -->
+</center>
+
+* [注意機構の補足説明 大門他 (2023) <img src="https://www.adobe.com/content/dam/cc/en/legal/images/badges/PDF_32.png">](/2023/2023cnps注意機構の補足説明.pdf){:target="_blank"}
+
+<!--
+<img src="/2024assets/2024_1213Kalman_chart_ja.svg">
+<img src="/2024assets/2024_1213Kalman_residual_chart_ja.svg"> -->
 
 ### 自由エネルギーモデル (Friston+2014 他)
 
@@ -329,15 +366,10 @@ A: カルマンフィルタのモデルを模式的に示しており，2 つの
 <img src="/2024assets/1993Kawato_Fig1.svg" style="width:44%">
 <img src="/2024assets/1993Kawato_fig2.svg" style="width:44%">
 <!-- <img src="/2024assets/1993Kawato_fig3_.svg" style="width:44%"><br/> -->
-<img src="/2024assets/1993Kawato_fig3all.jpg" style="width:66%"><br/> -->
+<!--<img src="/2024assets/1993Kawato_fig3all.jpg" style="width:66%"><br/> -->
 
 
-#### [Puppy book, ベイズ統計モデリング: R,JAGS, Stan によるチュートリアル](https://www.amazon.co.jp/dp/4320113160/){:target="_blank"} を超えて
-
-* [原著 Doing Bayesian Data Analysis: A Tutorial Introduction with R, JAGS, and STAN](https://www.amazon.com/dp/0124058884/){:target="_blank"}
-* [原著 A Tutorial Introduction with R](https://www.amazon.com/dp/B004QOB460/){:target="_blank"}
-
-## Bayes の定理
+##### Bayes の定理
 
 $$
 P(X,Y) = P(X|Y)P(Y) = P(Y|X) P(X)
@@ -348,9 +380,13 @@ P(Y|X) &= \frac{P(X|Y)P(Y)}{P(X)} &= \frac{\text{尤度 $\times$ 事前確率}} 
 &= \frac{P(X|Y)P(Y)}{P(X|Y)P(\neg Y)+ P(X|Y)P(Y)}
 \end{aligned}$$
 
+* [Puppy book, ベイズ統計モデリング: R,JAGS, Stan によるチュートリアル](https://www.amazon.co.jp/dp/4320113160/){:target="_blank"} を超えて
+
+* [原著 Doing Bayesian Data Analysis: A Tutorial Introduction with R, JAGS, and STAN](https://www.amazon.com/dp/0124058884/){:target="_blank"}
+* [原著 A Tutorial Introduction with R](https://www.amazon.com/dp/B004QOB460/){:target="_blank"}
 
 
-## KL ダイバージェンス
+#### KL ダイバージェンス
 
 KL ダイバージェンスは，2 つの分布間の距離に相当する量を与える。
 だが KL ダイバージェンスは通常の距離と異なり非対称で，どちらの分布を基準に考えるかによって値が異なる。
@@ -386,10 +422,11 @@ KL ダイバージェンスの非対称性
 
 このようなフォワード，リバース KL ダイバージェンスの値から VAE の表現性能などを考えることが可能です。
 
-
+<!--
 ## Colab 実習ファイル
 
-* [2024_1205Karapetian_RNN.ipynb <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2024notebooks/2024_1205Karapetian_RNN.ipynb){:target="blank"}
+* [2024_1205Karapetian_RNN.ipynb <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2024notebooks/2024_1205Karapetian_RNN.ipynb){:target="blank"} -->
+
 
 ## 参考資料
 
@@ -400,38 +437,6 @@ KL ダイバージェンスの非対称性
 
 * [系列探索と逆行流: 視覚野における双方向情報フローの計算モデル](/2023cogpsy/2021Ullman_bu_td_ja.pdf){:target="_blank"}
 * [ボトムアップ・トップダウンの反復処理による画像解釈](/2023cogpsy/1995Ullman_bidirectional_cortex_ja.pdf){:target="_blank"}
-
-# 言語モデル，あるいは時系列予測モデル
-
-<div class="figcenter">
-<img src="/2024assets/2024_1213Kalman_residual_chart_ja.svg"><br/>
-</div>
-<div class="figcenter">
-フィルタリングの考え方の模式図
-</div>
-
-<div class="figcenter">
-<img src="/2024assets/2024_1213Kalman_chart_ja.svg" style="width:44%;">
-<img src="/assets/2015Greff_LSTM_ja.svg" style="width:39%;">
-<div class="figcaption">
-左: 状態空間モデル (カルマンフィルタ)の模式図.<br/>
-右: LSTM の模式図
-</div></div>
-
-## LSTM におけるゲートの生理学的対応物 <!--Physiological correlates of gates in LSTM-->
-
-以下の画像は <http://kybele.psych.cornell.edu/~edelman/Psych-2140/week-2-2.html> よりの引用。
-ウミウシのエラ引っ込め反応時に，ニューロンへの入力信号ではなく，入力信号を修飾する結合が存在する。下図参照。
-
-<center>
-<img src="/assets/2016McComas_presynaptic_inhibition.jpg" style="width:24%">
-<img src="/assets/C87-fig2_24.jpg" width="17%">
-<img src="/assets/C87-fig2_25.jpg" width="33%"><br>
-アメフラシ (Aplysia) のエラ引っ込め反応(a.k.a. 防御反応)の模式図[^seaslang]
-<!-- <img src="/assets/shunting-inhibition.jpg" width="29%"> -->
-</center>
-
-* [注意機構の補足説明 大門他 (2023) <img src="https://www.adobe.com/content/dam/cc/en/legal/images/badges/PDF_32.png">](/2023/2023cnps注意機構の補足説明.pdf){:target="_blank"}
 
 
 ### A. 最大事後確率法：貧乏人の Bayes 推論
@@ -488,7 +493,8 @@ $$ \begin{aligned}
 &= \ln p(x\vert\theta) + \ln p(\theta) − \ln p(x).
 \end{aligned}\tag{A.4} $$
 
-「EM アルゴリズムの別見解」節 の ML-EM の場合と同様の枠組みで，次のように書くことができる:
+上式は，下記のように書くことができる:
+<!-- 「EM アルゴリズムの別見解」節 の ML-EM の場合と同様の枠組みで，次のように書くことができる: -->
 <!-- Using a similar framework as for the ML-EM case in the section “An Alternative View of the EM Algorithm,” we can write-->
 
 $$\begin{aligned}
@@ -497,7 +503,7 @@ $$\begin{aligned}
 \end{aligned}\tag{A.5}$$
 
 ここで，$\ln p(x)$ は定数である。
-(A.5) の右辺は，EM アルゴリズムと同様に交互に最大化することができる。
+(A.5) 式右辺は，EM アルゴリズムと同様に交互に最大化することができる。
 $q(z)$  に関して最適化すると，先に説明した ML の場合と同じ E-step が得られる。
 $\theta$ に関して最適化すると，目的関数が $\ln p(\theta)$  の項を含むので，異なるM-step が得られる．
 <!-- 一般に MAP-EM アルゴリズムの M-ステップは，ML の場合よりも複雑であり，例えば  [30]  や [31] を参照されたい。
