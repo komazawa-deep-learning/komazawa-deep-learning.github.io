@@ -365,8 +365,8 @@ A: カルマンフィルタのモデルを模式的に示しており，2 つの
 
 <img src="/2024assets/1993Kawato_Fig1.svg" style="width:44%">
 <img src="/2024assets/1993Kawato_fig2.svg" style="width:44%">
-<!-- <img src="/2024assets/1993Kawato_fig3_.svg" style="width:44%"><br/> -->
-<!--<img src="/2024assets/1993Kawato_fig3all.jpg" style="width:66%"><br/> -->
+<img src="/2024assets/1993Kawato_fig3_.svg" style="width:44%"><br/>
+<img src="/2024assets/1993Kawato_fig3all.jpg" style="width:66%"><br/> -->
 
 
 ##### Bayes の定理
