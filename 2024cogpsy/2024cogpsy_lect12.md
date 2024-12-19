@@ -23,7 +23,6 @@ $$
 ## Colab 実習ファイル
 
 * [2024_1213royabel_BU_TD_multi_mnist.ipynb <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2024notebooks/2024_1213royabel_BU_TD_multi_mnist.ipynb)
-* [2024_1220Karapetian_demo.ipynb <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2024notebooks/2024_1220Karapetian_demo.ipynb)
 
 # 先週の話題の補足
 

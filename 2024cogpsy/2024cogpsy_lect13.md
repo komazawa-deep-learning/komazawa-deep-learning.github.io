@@ -20,15 +20,15 @@ $$
 $$
 
 
-## Colab 実習ファイル
+##### Colab 実習ファイル
 
 * [2024_1213royabel_BU_TD_multi_mnist.ipynb <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2024notebooks/2024_1213royabel_BU_TD_multi_mnist.ipynb)
+* [2024_1220Karapetian_demo.ipynb <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2024notebooks/2024_1220Karapetian_demo.ipynb)
 
+# トップダウン，ボトムアップネットワーク (Ullman lab)
 
-## トップダウン，ボトムアップネットワーク
-
-* [Able+(2023) Top-Down Network Combines Back-Propagation with Attention](https://arxiv.org/abs/2306.02415){:target="_blank"}
-* [GitHub](https://github.com/royabel/Top-Down-Networks){:target="_blank"}
+* [原著論文 Able+(2023) Top-Down Network Combines Back-Propagation with Attention](https://arxiv.org/abs/2306.02415){:target="_blank"}
+* [ソースコード GitHub](https://github.com/royabel/Top-Down-Networks){:target="_blank"}
 
 * 生物学に着想を得たインストラクションモデルの学習法を提案
 * ボトムアップ (BU)-トップダウン (TD) モデルを用い，1 つの TD ネットワークを学習と注意誘導の両方に使用
