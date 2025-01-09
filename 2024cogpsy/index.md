@@ -75,7 +75,7 @@ layout: home
 * [第13回 (Dec.20)](2024cogpsy_lect13){:target="_blank"}
   * Transformer の導入 浅川：Transformer Transformer を取り上げ，リカレント表現以外の State-of-the-arts である時間表現を取り上げる([Vaswani+2017](https://arXiv.org/abs/1706.03762/){:target="_blank"})。
 下記の論文をダウンロードしてアブストラクトと図の脚注に目を通しておく：[Vaswani+2017](https://arXiv.org/abs/1706.03762/){:target="_blank"}
-* 第14回 (Jan.10)
+* [第14回 (Jan.10)](2024cogpsy_lect14){:target="_blank"}
   * エンコーダ・デコーダモデル 浅川：エンコーダ・デコーダモデル [Gwilliams&King2020](https://doi.org/10.7554/eLife.56603){:target="_blank"} では，出力系まで考慮したモデルが求められる。入力と出力との相互作用に，リカレント，フィードフォワードのいずれの処理を考える。
   [End-to-End Object Detection with Transformers](https://arxiv.org/abs/2005.12872){:target="_blank"} 及び，その [コード](https://github.com/facebookresearch/detr){:target="_blank"} をダウンロードして眺めておく。
 
