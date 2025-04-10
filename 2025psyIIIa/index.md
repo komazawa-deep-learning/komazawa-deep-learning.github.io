@@ -6,7 +6,7 @@ layout: home
 <link href="/css/asamarkdown.css" rel="stylesheet">
 <div style="text-align:right">
 <font size="+1" color="navy"><strong>ディープラーニングの心理学的解釈</strong></font><br/><br/>
-<img src="/2025assets/exported_qrcode_image_600_undergraduate.png" style="width:19%">
+<img src="/2025assets/2025psyIIIa_exported_qrcode_image_600.png" style="width:19%">
 </div>
 
 <div align='right'>
@@ -17,45 +17,49 @@ Appache 2.0 license<br/><br/>
 
 ## 目次
 
-- [予定](#予定)
-- [諸元](#諸元)
-- [概要](#概要)
-- [履修に際して必要と知識や技能](#履修に際して必要と知識や技能)
-- [到達目標](#到達目標)
-- [成績評価の方法](#成績評価の方法)
-- [授業の進め方](#授業の進め方)
-- [キーワード](#キーワード)
-- [履修にあたっての注意事項](#履修にあたっての注意事項)
-- [SNS への投稿について](#sns-への投稿について)
-- [教科書/テキスト](#教科書テキスト)
-- [授業で使用するソフトウェア](#授業で使用するソフトウェア)
-- [本授業で獲得できる知識，メリット](#本授業で獲得できる知識メリット)
-- [Q and A](#q-and-a)
-- [関連授業](#関連授業)
-- [関連用語](#関連用語)
-- [関連分野](#関連分野)
-- [関連企業，団体](#関連企業団体)
+- [予定](#予定){:target="_blank"}
+- [諸元](#諸元){:target="_blank"}
+- [概要](#概要){:target="_blank"}
+- [履修に際して必要と知識や技能](#履修に際して必要と知識や技能){:target="_blank"}
+  - [数学とプログラミングの知識，技法](#数学とプログラミングの知識技法){:target="_blank"}
+- [到達目標](#到達目標){:target="_blank"}
+- [成績評価の方法](#成績評価の方法){:target="_blank"}
+- [授業の進め方](#授業の進め方){:target="_blank"}
+- [キーワード](#キーワード){:target="_blank"}
+- [履修にあたっての注意事項](#履修にあたっての注意事項){:target="_blank"}
+  - [履修にあたっての注意事項](#履修にあたっての注意事項){:target="_blank"}
+  - [数学とプログラミングの知識，技法](#数学とプログラミングの知識技法){:target="_blank"}
+- [SNS への投稿について](#sns-への投稿について){:target="_blank"}
+- [教科書/テキスト](#教科書テキスト){:target="_blank"}
+- [授業で使用するソフトウェア](#授業で使用するソフトウェア){:target="_blank"}
+- [本授業で獲得できる知識，メリット](#本授業で獲得できる知識メリット){:target="_blank"}
+- [Q and A](#q-and-a){:target="_blank"}
+  - [自己紹介](#自己紹介){:target="_blank"}
+- [関連授業](#関連授業){:target="_blank"}
+- [関連用語](#関連用語){:target="_blank"}
+  - [関連用語](#関連用語){:target="_blank"}
+- [関連企業，団体](#関連企業団体){:target="_blank"}
 
 ---
 
 # 予定
 
-- 第 01 回 04月11日: イントロダクション。
+- [第 01 回 04月11日](2025psyIIIa_lect01){:target="_blank"}: イントロダクション。
 <!-- キーワード: サイバネティクス，ニューラルネットワーク。マッカロック&ピッツ。パンデモニウム。 -->
-- [第 02 回 04月18日](2025lect02): <!-- ヒューベルとウィーゼル。
+- [第 02 回 04月18日](2025psyIIIa_lect02){:target="_blank"}: <!-- ヒューベルとウィーゼル。
 <!--キーワード: 特徴検出細胞。オン中心，オフ周辺細胞。単純型，複雑型細胞。SIFT，HOG, DOG。畳み込み演算 -->
-- [第 03 回 04月25日](2025lect03){:target="_blank"}: HMAX, プーリング。Hubel&Wiesel と Blakemore&Cooper1970 のビデオ閲覧
-- [第 04 回 05月09日](2025lect04){:target="_blank"}: 腹側 ventral 経路と背側 dorsal 経路。紡錘状回 fusiform gyrus，扁桃体 amygdala の接続と。ラマチャンドラン Ramachandan の「脳の中の幽霊」にでてくるカプグラ症候群。
-- [第 05 回 05月16日](2025lect05){:target="_blank"}: 顔認識，表情認識，VGG, ResNet の第一層における特徴検出器の視覚化。
-- [第 06 回 05月23日](2025lect06){:target="_blank"}: CNN，畳み込みの演算実習。二名欠席のため，雑談回となった。
+- [第 03 回 04月25日](2025psyIIIa_lect03){:target="_blank"}: HMAX, プーリング。Hubel&Wiesel と Blakemore&Cooper1970 のビデオ閲覧
+- [第 04 回 05月09日](2025psyIIIa_lect04){:target="_blank"}: 腹側 ventral 経路と背側 dorsal 経路。紡錘状回 fusiform gyrus，扁桃体 amygdala の接続と。ラマチャンドラン Ramachandan の「脳の中の幽霊」にでてくるカプグラ症候群。
+- [第 05 回 05月16日](2025psyIIIa_lect05){:target="_blank"}: 顔認識，表情認識，VGG, ResNet の第一層における特徴検出器の視覚化。
+- [第 06 回 05月23日](2025psyIIIa_lect06){:target="_blank"}: CNN，畳み込みの演算実習。
 - 第 07 回 05月30日 休講予定  畳み込み演算，
-- [第 08 回 06月06日](2025lect08){:target="_blank"}: 画像切り出し segmentation
-- [第 09 回 06月13日](2025lect08){:target="_blank"}: 転移学習と微調整 Stroop 効果
-- [第 10 回 06月20日](2025lect10){:target="_blank"}: Stroop 効果 2，転移学習の調整
-- [第 11 回 06月27日](2025lect11){:target="_blank"}: 言語モデル，リカレントニューラルネットワーク，Transformer，エンコーダ・デコーダモデル, FIT，特徴統合理論，注意，ボトムアップ，トップダウン，意味表現，word2vec
-- [第 12 回 07月04日](2025lect12){:target="_blank"}: NIC
-- [第 13 回 07月11日](2025lect13){:target="_blank"}: 強化学習
-- [第 14 回 07月18日](2025lect14){:target="_blank"}: 強化学習，エピソード記憶，経験再生，
+- [第 08 回 06月06日](2025psyIIIa_lect08){:target="_blank"}: 画像切り出し segmentation
+- [第 09 回 06月13日](2025psyIIIa_lect08){:target="_blank"}: 転移学習と微調整 Stroop 効果
+- [第 10 回 06月20日](2025psyIIIa_lect10){:target="_blank"}: Stroop 効果 2，転移学習の調整
+- [第 11 回 06月27日](2025psyIIIa_lect11){:target="_blank"}: 言語モデル，リカレントニューラルネットワーク，Transformer，エンコーダ・デコーダモデル, FIT，特徴統合理論，注意，ボトムアップ，トップダウン，意味表現，word2vec
+- [第 12 回 07月04日](2025psyIIIa_lect12){:target="_blank"}: NIC
+- [第 13 回 07月11日](2025psyIIIa_lect13){:target="_blank"}: 強化学習
+- [第 14 回 07月18日](2025psyIIIa_lect14){:target="_blank"}: 強化学習，エピソード記憶，経験再生，
 
 <!--### 代替案
 
@@ -81,6 +85,7 @@ Appache 2.0 license<br/><br/>
 # 諸元
 
 - 授業名: 心理学特講 IIIA
+- 履修コード: 074401
 - 担当者名: [浅川 伸一 (アサカワ シンイチ)](2024self_intro){:target="_blank"}
 - 電子メールアドレス: <educ0233@komazawa-u.ac.jp>, <asakawa@cis.twcu.a.jp>
 - 開講年度・期:　2025年 前期
@@ -126,10 +131,14 @@ Appache 2.0 license<br/><br/>
 * 99 % 平常点
 
 毎回 WebClass での出席をお願いします。
-
 加えて，名前を呼んで出席も取ります。これは，履修者の顔と名前を覚えるために行います。
-
 あらかじめ欠席されることが分かっている場合には，事前に知らせていただけると助かります。
+
+* 具体的な評価方法は以下の通り：
+  * 一回の出席で 6.6 点。したがって 15 回の出席点で $6.6\times15=99.0$ 点。
+  * 遅刻 (30 分以内) は 3.0 点，早退 も 3.0 点。
+  * 定期試験は実施しません。
+
 
 # 授業の進め方
 
@@ -274,7 +283,7 @@ Appache 2.0 license<br/><br/>
 卒業後エルマンネットの考案者ジェフ・エルマンに師事，薫陶を受ける。
 以来人間の高次認知機能をシミュレートすることを通して知的であるとはどういうことかを考えていると思っていた。
 著書に「Python で体験する深層学習」(2016) コロナ社。
-「深層学習教科書 ディープラーニング G検定（ジェネラリスト）公式テキスト」(2017) 共著，翔泳社。
+「深層学習教科書 ディープラーニング G 検定（ジェネラリスト）公式テキスト」(2017) 共著，翔泳社。
 「ディープラーニング，ビッグデータ，機械学習あるいはその心理学」(2015) 新曜社。
 「ニューラルネットワークの数理的基礎」「脳損傷とニューラルネットワークモデル，神経心理学への適用例」いずれも守一雄他編「コネクショニストモデルと心理学」(2001)北大路書房など</p>
 
@@ -284,13 +293,16 @@ Appache 2.0 license<br/><br/>
 
 # 関連授業
 
-* [情報処理 IB]() 石岡 綾香 先生 火曜日 3 時限，[PsychoPy](https://www.psychopy.org/)
-* [情報処理 IIB]() 嵩原 宇宙 先生，木曜日 1 時限 [HAD](https://norimune.net/had), [R](https://www.R.org)
-* [心理学実験演習 IA, IB]()  白間　綾 先生，木曜日 1 時限 Stroop 効果, Simon 効果
-* [心理学実験演習 IIA, IIB]()  久保 尚也 先生，金曜日 2 時限
-* [心理学実験演習 IIIA, IIIA，IIIB](), 堀　直人 先生，木曜日 4時限，特徴統合理論，視覚探索課題
-* [心理学実験演習 IVA, IVB](), 岩城 達也 先生，金曜日 3 時限，PsychoPy
-* [データサイエンス・ＡＩ入門](https://koneco.komazawa-u.ac.jp/syllabus/browse/54385/2023) 坂野井　和代 先生，金曜日 2 時限 (前期) AI data science
+* [542311 / プログラミング入門](https://koneco.komazawa-u.ac.jp/syllabus/browse/542311/2025){:taget="_blank"} 仲田 資季（ナカタ モトキ）先生 月曜日 2 時限
+* [542321 / プログラミング入門](https://koneco.komazawa-u.ac.jp/syllabus/browse/542311/2025){:taget="_blank"} 仲田 資季（ナカタ モトキ）先生 月曜日 2 時限
+* [542351 / プログラミング初級](https://koneco.komazawa-u.ac.jp/syllabus/browse/54235/2025){:taget="_blank"} 仲田 資季（ナカタ モトキ）先生 月曜日 3 時限
+* [72001 / 学習・言語心理学（学習）](https://koneco.komazawa-u.ac.jp/syllabus/browse/07200/2025){:taget="_blank"} 久保 尚也（クボ ナオヤ）先生 月曜日 4 時限
+* [072051 / 学習・言語心理学（言語）](https://koneco.komazawa-u.ac.jp/syllabus/browse/07205/2025){:taget="_blank"} 久保 尚也（クボ ナオヤ）先生 月曜日 4 時限
+* [542301 / プログラミング入門](https://koneco.komazawa-u.ac.jp/syllabus/browse/54230/2025){:taget="_blank"} 仲田 資季（ナカタ モトキ）先生  火曜日 1 時限
+* [072401 / 知覚・認知心理学（知覚）](https://koneco.komazawa-u.ac.jp/syllabus/browse/07240/2025) 永田 陽子（ナガタ ヨウコ）先生 火曜日 4 時限
+* [072801 / 心理学実験演習ⅢＡ](https://koneco.komazawa-u.ac.jp/syllabus/browse/07280/2025){:taget="_blank"} 堀 直人（ホリ ナオト）先生 木曜日 4 時限
+* [072851 / 心理学実験演習ⅢＢ](https://koneco.komazawa-u.ac.jp/syllabus/browse/07285/2025){:taget="_blank"} 堀 直人（ホリ ナオト）先生 木曜日 4 時限
+* [072601 / 心理学実験演習ⅠＡ](https://koneco.komazawa-u.ac.jp/syllabus/browse/07260/2025){:taget="_blank"} 永田 陽子（ナガタ ヨウコ）先生，津田 涼太朗（ツダ リヨウタロウ）先生， 金曜日 1 時限
 
 
 # 関連用語
