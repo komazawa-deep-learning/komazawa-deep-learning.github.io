@@ -4,14 +4,17 @@ author: 浅川 伸一
 layout: home
 ---
 <link href="/css/asamarkdown.css" rel="stylesheet">
-<div style="text-align:right">
+<div align="center">
 <font size="+1" color="navy"><strong>ディープラーニングの心理学的解釈</strong></font><br/><br/>
+</div>
+
+<div style="text-align:right">
 <img src="/2025assets/2025psyIIIa_exported_qrcode_image_600.png" style="width:19%">
 </div>
 
 <div align='right'>
 <a href='mailto:educ0233@komazawa-u.ac.jp'>Shin Aasakawa</a>, all rights reserved.<br>
-Date: 11/Apr/2025<br/>
+Date: 11/Apr./2025<br/>
 Appache 2.0 license<br/><br/>
 </div>
 
@@ -42,24 +45,32 @@ Appache 2.0 license<br/><br/>
 
 ---
 
+# Candidates for the class
+
+* Simon and Stroop effects,
+* Face recognition,
+* Hemi-neglect,   
+* Picture naming tasks,
+* Reading Word modelings,
+* Semantic dimentia, aphasia, dyslexia
+
 # 予定
 
 - [第 01 回 04月11日](2025psyIIIa_lect01){:target="_blank"}: イントロダクション。
-<!-- キーワード: サイバネティクス，ニューラルネットワーク。マッカロック&ピッツ。パンデモニウム。 -->
-- [第 02 回 04月18日](2025psyIIIa_lect02){:target="_blank"}: <!-- ヒューベルとウィーゼル。
-<!--キーワード: 特徴検出細胞。オン中心，オフ周辺細胞。単純型，複雑型細胞。SIFT，HOG, DOG。畳み込み演算 -->
-- [第 03 回 04月25日](2025psyIIIa_lect03){:target="_blank"}: HMAX, プーリング。Hubel&Wiesel と Blakemore&Cooper1970 のビデオ閲覧
-- [第 04 回 05月09日](2025psyIIIa_lect04){:target="_blank"}: 腹側 ventral 経路と背側 dorsal 経路。紡錘状回 fusiform gyrus，扁桃体 amygdala の接続と。ラマチャンドラン Ramachandan の「脳の中の幽霊」にでてくるカプグラ症候群。
-- [第 05 回 05月16日](2025psyIIIa_lect05){:target="_blank"}: 顔認識，表情認識，VGG, ResNet の第一層における特徴検出器の視覚化。
-- [第 06 回 05月23日](2025psyIIIa_lect06){:target="_blank"}: CNN，畳み込みの演算実習。
-- 第 07 回 05月30日 休講予定  畳み込み演算，
-- [第 08 回 06月06日](2025psyIIIa_lect08){:target="_blank"}: 画像切り出し segmentation
-- [第 09 回 06月13日](2025psyIIIa_lect08){:target="_blank"}: 転移学習と微調整 Stroop 効果
-- [第 10 回 06月20日](2025psyIIIa_lect10){:target="_blank"}: Stroop 効果 2，転移学習の調整
-- [第 11 回 06月27日](2025psyIIIa_lect11){:target="_blank"}: 言語モデル，リカレントニューラルネットワーク，Transformer，エンコーダ・デコーダモデル, FIT，特徴統合理論，注意，ボトムアップ，トップダウン，意味表現，word2vec
-- [第 12 回 07月04日](2025psyIIIa_lect12){:target="_blank"}: NIC
-- [第 13 回 07月11日](2025psyIIIa_lect13){:target="_blank"}: 強化学習
-- [第 14 回 07月18日](2025psyIIIa_lect14){:target="_blank"}: 強化学習，エピソード記憶，経験再生，
+- 第 02 回 04月18日: サイバネティクス，ニューラルネットワーク。マッカロック&ピッツ。パンデモニウム。
+- 第 03 回 04月25日: HMAX, プーリング。Hubel&Wiesel と Blakemore&Cooper1970 のビデオ閲覧
+- 第 04 回 05月09日: 特徴検出細胞。オン中心，オフ周辺細胞。単純型，複雑型細胞。SIFT，HOG, DOG。畳み込み演算
+- 第 05 回 05月16日: 腹側 ventral 経路と背側 dorsal 経路。紡錘状回 fusiform gyrus
+<!-- 扁桃体 amygdala の接続。ラマチャンドラン Ramachandan の「脳の中の幽霊」にでてくるカプグラ症候群。 -->
+- 第 06 回 05月23日: 顔認識，表情認識，VGG, ResNet の第一層における特徴検出器の視覚化
+- 第 07 回 05月30日: 休講(予定)
+- 第 08 回 06月06日: 画像切り出し segmentation
+- 第 09 回 06月13日: 転移学習と微調整 Stroop 効果
+- 第 10 回 06月20日: Stroop 効果，転移学習の調整
+- 第 11 回 06月27日: 言語モデル，リカレントニューラルネットワーク，Transformer，エンコーダ・デコーダモデル, FIT，特徴統合理論，注意，ボトムアップ，トップダウン，意味表現，word2vec
+- 第 12 回 07月04日: NIC
+- 第 13 回 07月11日: 強化学習
+- 第 14 回 07月18日: 強化学習，エピソード記憶，経験再生
 
 <!--### 代替案
 

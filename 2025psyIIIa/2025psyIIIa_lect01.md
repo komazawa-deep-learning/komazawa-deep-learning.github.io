@@ -8,6 +8,10 @@ layout: home
 <font size="+1" color="navy"><strong>ディープラーニングの心理学的解釈</strong></font><br/><br/>
 </div>
 
+<div style="text-align:right">
+<img src="/2025assets/2025psyIIIa_exported_qrcode_image_600.png" style="width:19%">
+</div>
+
 <div align='right'>
 <a href='mailto:educ0233@komazawa-u.ac.jp'>Shin Aasakawa</a>, all rights reserved.<br>
 Date: 11/Apr/2025<br/>
@@ -64,16 +68,7 @@ https://drive.google.com/drive/u/3/folders/1lAnh977u2ktPvmlFD1e3pKLkem1JHn0D){:t
 * [スタンダード](https://standard-dx.com/){:target="_blank"}
 * [日本ディープラーニング協会](https://www.jdla.org/){:target="_blank"}
 
-# 先週の復讐を兼ねた情勢
-
-2027 年度からセンター試験に「情報 I」が加わります。
-データサイエンス，人工知能系のエンジニアの育成が急務です。
-すなわち，資格，就職にとって武器になり得るでしょう。
-実際に，検索すれば，文化系だけどデータサイエンティストになった，という宣伝をする YouTuber が多数見つかります。
-
-<!-- 加えて，2022 年度から，駒澤大学ではデータサイエンス AI コースが始まったようです。
-本授業は，これら関連授業とも関連します。
-カリキュラムを観る限りでは，本授業は，関連授業よりも，やや高度な内容を含むようです。 -->
+# 情勢
 
 * [政府、AI 人材年 25 万人育成へ　全大学生に初級教育](https://www.nikkei.com/article/DGXMZO42932250W9A320C1SHA000/)
 * [AI人材25万人目標達成へ 政府、統合イノベ戦略を閣議決定](https://www.nikkei.com/article/DGXMZO46386930R20C19A6EAF000/)
@@ -98,8 +93,8 @@ https://drive.google.com/drive/u/3/folders/1lAnh977u2ktPvmlFD1e3pKLkem1JHn0D){:t
 # 概念の整理
 
 <div class="figcenter">
-
-<img src='/assets/2017Goodfellow_Fig1_4ja.svg' width="66%"><br/>
+<img src="/2025assets/2018Kriegeskorte_fig2_new.svg" style="width:49%;">
+<img src='/assets/2017Goodfellow_Fig1_4ja.svg' width="33%"><br/>
 Goodfellow et al. (2017) Fig.1 を改変
 </div>
 
