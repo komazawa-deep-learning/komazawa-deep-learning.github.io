@@ -79,6 +79,7 @@ Appache 2.0 license<br/><br/>
 # 諸元
 
 - 授業名: 人工知能 I および II
+- 履修コード: 074021 (前期), 074031(後期)
 - 担当者名: [浅川 伸一 (アサカワ シンイチ)](../2024/2024self_intro){:target="_blank"}
 - 電子メールアドレス: <educ0233@komazawa-u.ac.jp>, <asakawa@cis.twcu.a.jp>
 - 開講年度・期:　2025 年 前期 および 後期
@@ -205,14 +206,17 @@ Appache 2.0 license<br/><br/>
 
 # 関連授業
 
-* [情報処理IA](https://koneco.komazawa-u.ac.jp/syllabus/browse/07480/2023), [情報処理 IB](https://koneco.komazawa-u.ac.jp/syllabus/browse/07485/2023) 佐藤理晴 先生 水曜日 4 時限，◎予（前期）心２３４選，[PsychoPy](https://www.psychopy.org/), [Psychopy Builder](https://www.psychopy.org/builder/), [R](https://www.r-project.org/),
-* [情報処理 IIA](https://koneco.komazawa-u.ac.jp/syllabus/browse/07490/2023), [情報処理 IIB](https://koneco.komazawa-u.ac.jp/syllabus/browse/07495/2023) 堀内　正彦 先生，火曜日 3時限 [HAD](https://norimune.net/had)
-* [心理学実験演習 IA](https://koneco.komazawa-u.ac.jp/syllabus/browse/07260/2023) [心理学実験演習 ⅠB](https://koneco.komazawa-u.ac.jp/syllabus/browse/07265/2023) 白間　綾 先生，木曜日 1 時限 Stroop 効果, Simon 効果
-* [心理学実験演習 IIIA](https://koneco.komazawa-u.ac.jp/syllabus/browse/07280/2023), [心理学実験演習 IIIB](https://koneco.komazawa-u.ac.jp/syllabus/browse/07285/2023), 堀　直人 先生，木曜日 4時限，特徴統合理論，視覚探索課題
-* [心理学実験演習 VIIA](https://koneco.komazawa-u.ac.jp/syllabus/browse/07320/2023) 堀内　正彦 先生 金曜日 4時限
-* [コンピュータ実習 II](https://koneco.komazawa-u.ac.jp/syllabus/browse/07115/2023)，佐藤理晴 先生，HAD ，金曜日 2 時限 (後期)
-* [データサイエンス・ＡＩ入門](https://koneco.komazawa-u.ac.jp/syllabus/browse/54385/2023) 坂野井　和代 先生，金曜日 2 時限 (前期) AI data science
-
+* [542311 / プログラミング入門](https://koneco.komazawa-u.ac.jp/syllabus/browse/542311/2025){:taget="_blank"} 仲田 資季（ナカタ モトキ）先生 月曜日 2 時限
+* [542321 / プログラミング入門](https://koneco.komazawa-u.ac.jp/syllabus/browse/542311/2025){:taget="_blank"} 仲田 資季（ナカタ モトキ）先生 月曜日 2 時限
+* [542351 / プログラミング初級](https://koneco.komazawa-u.ac.jp/syllabus/browse/54235/2025){:taget="_blank"} 仲田 資季（ナカタ モトキ）先生 月曜日 3 時限
+* [72001 / 学習・言語心理学（学習）](https://koneco.komazawa-u.ac.jp/syllabus/browse/07200/2025){:taget="_blank"} 久保 尚也（クボ ナオヤ）先生 月曜日 4 時限
+* [072051 / 学習・言語心理学（言語）](https://koneco.komazawa-u.ac.jp/syllabus/browse/07205/2025){:taget="_blank"} 久保 尚也（クボ ナオヤ）先生 月曜日 4 時限
+* [542301 / プログラミング入門](https://koneco.komazawa-u.ac.jp/syllabus/browse/54230/2025){:taget="_blank"} 仲田 資季（ナカタ モトキ）先生  火曜日 1 時限
+* [072401 / 知覚・認知心理学（知覚）](https://koneco.komazawa-u.ac.jp/syllabus/browse/07240/2025) 永田 陽子（ナガタ ヨウコ）先生 火曜日 4 時限
+* [072801 / 心理学実験演習ⅢＡ](https://koneco.komazawa-u.ac.jp/syllabus/browse/07280/2025){:taget="_blank"} 堀 直人（ホリ ナオト）先生 木曜日 4 時限
+* [072851 / 心理学実験演習ⅢＢ](https://koneco.komazawa-u.ac.jp/syllabus/browse/07285/2025){:taget="_blank"} 堀 直人（ホリ ナオト）先生 木曜日 4 時限
+* [072601 / 心理学実験演習ⅠＡ](https://koneco.komazawa-u.ac.jp/syllabus/browse/07260/2025){:taget="_blank"} 永田 陽子（ナガタ ヨウコ）先生，津田 涼太朗（ツダ リヨウタロウ）先生， 金曜日 1 時限
+ 
 
 # 関連用語
 
