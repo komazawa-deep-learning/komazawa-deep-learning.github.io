@@ -5,7 +5,8 @@ layout: home
 ---
 <link href="/css/asamarkdown.css" rel="stylesheet">
 <div style="text-align:right">
-<img src="/2025assets/2025ai_exported_qrcode_image_600.png" style="width:19%">
+<img src="/2025assets/2025ai_exported_qrcode_image_600.png" style="width:19%"><br/>
+<font size="+3">URL: https://komazawa-deep-learning.github.io/2025ai/</font>
 </div>
 
 <div align='right'>
