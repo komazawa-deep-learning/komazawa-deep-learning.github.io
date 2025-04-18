@@ -98,7 +98,8 @@ Hubel と Wiesel の実験結果 (Hubel & Wiesel, 1968 の Fig.2.7 をトレー�
 
 # ヒューベルとウィーゼル Hubel and Wiesel (1969)
 <center>
-<iframe width="450" height="300" src="https://www.youtube.com/embed/4nwpU7GFYe8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br/> 
+<iframe width="1024" height="768" src="https://www.youtube.com/embed/4nwpU7GFYe8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br/> 
+<!-- <iframe width="450" height="300" src="https://www.youtube.com/embed/4nwpU7GFYe8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br/>  -->
 source: https://youtu.be/4nwpU7GFYe8
 </center>
 
@@ -119,7 +120,8 @@ source: https://youtu.be/4nwpU7GFYe8
 ## ブレイクモア と クーパー Blackmore and Cooper (1970)
 
 <center>
-<iframe width="450" height="300" src="https://www.youtube.com/embed/QzkMo45pcUo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="1024" height="768" src="https://www.youtube.com/embed/QzkMo45pcUo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<!-- <iframe width="450" height="300" src="https://www.youtube.com/embed/QzkMo45pcUo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
 <!--<iframe width="845" height="676" src="https://www.youtube.com/embed/QzkMo45pcUo" frameborder="0"
  allow="ac
 celerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
@@ -134,7 +136,8 @@ source:` https://youtu.be/QzkMo45pcUo`
 
 
 <center>
-<iframe width="450" height="300" src="https://www.youtube.com/embed/RSNofraG8ZE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br/>
+<iframe width="1024" height="768" src="https://www.youtube.com/embed/RSNofraG8ZE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br/>
+<!-- <iframe width="450" height="300" src="https://www.youtube.com/embed/RSNofraG8ZE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br/> -->
 source: https://youtu.be/RSNofraG8ZE
 </center>
 
