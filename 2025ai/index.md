@@ -1,9 +1,12 @@
 ---
-title: 2025 年度開講 駒澤大学 人工知能 I および II
+title: 2025 年度開講 人工知能 I および II 駒澤大学 
 author: 浅川 伸一
 layout: home
 ---
 <link href="/css/asamarkdown.css" rel="stylesheet">
+<div align="center">
+<font size="+1" color="navy"><strong>人工知能</strong></font>
+</div>
 <div style="text-align:right">
 <img src="/2025assets/2025ai_exported_qrcode_image_600.png" style="width:19%"><br/>
 <font size="+3">URL: https://komazawa-deep-learning.github.io/2025ai/</font>
@@ -11,15 +14,9 @@ layout: home
 
 <div align='right'>
 <a href='mailto:educ0233@komazawa-u.ac.jp'>Shin Aasakawa</a>, all rights reserved.<br>
-Date: 11/Apr/2025<br/>
+Date: 11/Apr./2025<br/>
 Appache 2.0 license<br/><br/>
 </div>
-
-<!--
-## TA
-* 阿部雄大: 3084102y@komazawa-u.ac.jp
-* 王迪浩: 3084101d@komazawa-u.ac.jp
--->
 
 # 目次
 
@@ -47,10 +44,10 @@ Appache 2.0 license<br/><br/>
 # 前期予定
 
 - [第 01 回 04月11日 イントロダクション](2025ai_lect01){:target="_blank"}: Google Colaboratory
-- [第 02 回 04月18日 人工知能の歴史](2025ai_lect02){:target="_blank"}, [東京技術計算コンサルタント (TTC) 様ピッチ](https://www.ttc-net.co.jp/){:target="_blank"}。
-AI の歴史と進歩の背景。認知心理学，認知科学，脳画像研究との関連。
-- 第 03 回 04月25日: 機械学習(1)。Python, PyTorch。チューリングテスト，中国語の部屋，歴史，ダートマス会議，AI の冬。線形代数の基礎
-オリベッティ顔データベースを用いたロジスティック回帰。<!--確率論，回帰と分類，教師あり学習，データセットの種類，交差検証。Naive Bayes, AdaBoost, Nearest Neighbors, sklearn-->
+- [第 02 回 04月18日 人工知能の歴史](2025ai_lect02){:target="_blank"}, [東京技術計算コンサルタント (TTC) 様ピッチ](https://www.ttc-net.co.jp/){:target="_blank"}。サイバネティクス，ダートマス会議，AI の冬。2024 年度ノーベル物理学賞，生物学賞
+<!-- AI の歴史と進歩の背景。認知心理学，認知科学，脳画像研究との関連。-->
+- [第 03 回 04月25日](2025ai_lect03){:target="_blank"}: 機械学習(1)。Python, PyTorch。チューリングテスト，中国語の部屋。数式の読み方。線形代数の基礎。
+<!--確率論，回帰と分類，教師あり学習，データセットの種類，交差検証。Naive Bayes, AdaBoost, Nearest Neighbors, sklearn-->
 - 第 04 回 05月09日: 機械学習(2)。ソーカル事件。相関係数と内積。PCA と tSNE <!--確率，尤度，エントロピー，交差エントロピー，過学習，正則化，ラグランジェ乗数，最小二乗法，LMS，損失関数，最尤法，情報量，EM アルゴリズム，-->
 - 第 05 回 05月16日: 機械学習(3)。記号接地問題，中国語の部屋。線形代数の基本。回帰を題材に。F 分布と分散の分解定理。openCV による顔領域の切り出し，矩形回帰。<!--サポートベクターマシン，ランダムフォレスト，最近傍法-->
 - 第 06 回 05月23日: 機械学習(4) Eigenfaces versus Fisherfaces, ランダムフォレスト，<!--教師なし学習，PCA，SVD, NMF, 自己組織化，インフォマックス基準，Kohonen SOM,-->
