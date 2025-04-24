@@ -1,15 +1,15 @@
 ---
-title: 2025 年度開講 駒澤大学 心理学特講 IIIA
+title: 2025 年度開講 心理学特講 IIIA 駒澤大学 
 author: 浅川 伸一
 layout: home
 ---
 <link href="/css/asamarkdown.css" rel="stylesheet">
 <div align="center">
-<font size="+1" color="navy"><strong>ディープラーニングの心理学的解釈</strong></font><br/><br/>
+<font size="+1" color="navy"><strong>ディープラーニングの心理学的解釈</strong></font>
 </div>
-
 <div style="text-align:right">
-<img src="/2025assets/2025psyIIIa_exported_qrcode_image_600.png" style="width:19%">
+<img src="/2025assets/2025psyIIIa_exported_qrcode_image_600.png" style="width:19%"><br/>
+<font size="+3">URL: https://komazawa-deep-learning.github.io/2025psyIIIa/</font>
 </div>
 
 <div align='right'>
@@ -18,7 +18,7 @@ Date: 11/Apr./2025<br/>
 Appache 2.0 license<br/><br/>
 </div>
 
-## 目次
+# 目次
 
 - [予定](#予定){:target="_blank"}
 - [諸元](#諸元){:target="_blank"}
@@ -45,20 +45,21 @@ Appache 2.0 license<br/><br/>
 
 ---
 
-# Candidates for the class
+# 取り上げる話題の候補
 
-* Simon and Stroop effects,
-* Face recognition,
-* Hemi-neglect,   
-* Picture naming tasks,
-* Reading Word modelings,
-* Semantic dimentia, aphasia, dyslexia
+* サイモン効果，ストループ効果
+* 顔認識
+* 販促空間無視
+* 絵画命名検査
+* 単語音読モデル
+* 意味痴呆，失語症
+* 神経症
 
 # 予定
 
 - [第 01 回 04月11日](2025psyIIIa_lect01){:target="_blank"}: イントロダクション。
-- [第 02 回 04月18日](2025psyIIIa_lect02){:target="_blank"}: サイバネティクス，ニューラルネットワーク。マッカロック&ピッツ。パンデモニウム。
-- 第 03 回 04月25日: HMAX, プーリング。Hubel&Wiesel と Blakemore&Cooper1970 のビデオ閲覧
+- [第 02 回 04月18日](2025psyIIIa_lect02){:target="_blank"}: Hubel&Wiesel と Blakemore&Cooper1970 のビデオ閲覧，オリベッティ顔データベースを用いたロジスティック回帰。訓練データと検証データ。
+- [第 03 回 04月25日](2025psyIIIa_lect03){:target="_blank"}: マッカロック&ピッツ。パンデモニウム。HMAX, プーリング。ニューラルネットワーク。
 - 第 04 回 05月09日: 特徴検出細胞。オン中心，オフ周辺細胞。単純型，複雑型細胞。SIFT，HOG, DOG。畳み込み演算
 - 第 05 回 05月16日: 腹側 ventral 経路と背側 dorsal 経路。紡錘状回 fusiform gyrus
 <!-- 扁桃体 amygdala の接続。ラマチャンドラン Ramachandan の「脳の中の幽霊」にでてくるカプグラ症候群。 -->
