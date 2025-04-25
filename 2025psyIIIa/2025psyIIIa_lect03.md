@@ -129,8 +129,13 @@ Lindsey&Norma(1977) Human Information Processing より。Fig. 7-2, 7-7
 ## 大細胞系と小細胞系の区別と視覚経験の成立
 
 <div class="figcenter">
-<img src="/2025assets/1987LivingstoneHubel_tab2.svg" style="width:44%;">
+<img src="/2025assets/1987LivingstoneHubel_tab2.svg" style="width:66%;">
 <img src="/2025assets/1987LivingstoneHubel_tab7ja.svg" style="width:88%;">>
+</div>
+
+<div class="figcenter">
+<img src="/2025assets/1988Livingstone_Hubel_fig2.jpeg" style="width:22%;">
+<img src="/2025assets/1988Livingstone_Hubel_fig3.svg" style="width:44%;">
 </div>
 
 ## 従来モデルと深層学習との対比
