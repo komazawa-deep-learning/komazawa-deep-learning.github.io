@@ -47,20 +47,20 @@ Appache 2.0 license<br/><br/>
 
 # 取り上げる話題の候補
 
-* サイモン効果，ストループ効果
-* 顔認識
-* 販促空間無視
-* 絵画命名検査
-* 単語音読モデル
-* 意味痴呆，失語症
-* 神経症
+* サイモン効果，ストループ効果 Simon and Stroop effects
+* 顔認識 face recognition
+* 半側空間無視 hemi-neglect
+* 絵画命名検査 Picture naming test
+* 単語音読モデル Wrod reading model
+* 意味痴呆，失語症 Semantic dementia, aphasia
+* 神経症 Neurosis
 
 # 予定
 
 - [第 01 回 04月11日](2025psyIIIa_lect01){:target="_blank"}: イントロダクション。
 - [第 02 回 04月18日](2025psyIIIa_lect02){:target="_blank"}: Hubel&Wiesel と Blakemore&Cooper1970 のビデオ閲覧，オリベッティ顔データベースを用いたロジスティック回帰。訓練データと検証データ。
 - [第 03 回 04月25日](2025psyIIIa_lect03){:target="_blank"}: マッカロック&ピッツ。パンデモニウム。HMAX, プーリング。ニューラルネットワーク。
-- 第 04 回 05月09日: 特徴検出細胞。オン中心，オフ周辺細胞。単純型，複雑型細胞。SIFT，HOG, DOG。畳み込み演算
+- [第 04 回 05月09日](2025psyIIIa_lect04){:target="_blank"}: 特徴検出細胞。オン中心，オフ周辺細胞。単純型，複雑型細胞。SIFT，HOG, DOG。畳み込み演算
 - 第 05 回 05月16日: 腹側 ventral 経路と背側 dorsal 経路。紡錘状回 fusiform gyrus
 <!-- 扁桃体 amygdala の接続。ラマチャンドラン Ramachandan の「脳の中の幽霊」にでてくるカプグラ症候群。 -->
 - 第 06 回 05月23日: 顔認識，表情認識，VGG, ResNet の第一層における特徴検出器の視覚化

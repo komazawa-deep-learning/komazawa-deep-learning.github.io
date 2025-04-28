@@ -14,6 +14,10 @@ Date: 09/May/2025<br/>
 Appache 2.0 license<br/>
 </div>
 
+# 実習ファイル
+
+* [顔検出 <img src="/assets/colab_icon.svg" alt="顔検出">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2025notebooks/2025_0428opencv_face_detect_recognizer.ipynb){:target="_blank"}
+* [課題提出用フォルダ](https://drive.google.com/drive/u/3/folders/1aenqcvlAQ7T-hv9-zsbrfntqpTbUj2EP){:target="_blank"}
 
 ## 福島のネオコグニトロン (Fukushima, 1980)
 
