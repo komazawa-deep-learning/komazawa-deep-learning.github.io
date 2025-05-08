@@ -16,8 +16,29 @@ Appache 2.0 license<br/>
 
 # 実習ファイル
 
+* [最小限のニューラルネットワーク <img src="/assets/colab_icon.svg" alt="最小限のニューラルネットワーク">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2023notebooks/2023_0929miniam_XOR.ipynb){:target="_blank"}
+* [画像認識モデル実習 <img src="/assets/colab_icon.svg" alt="画像認識モデル実習">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021komazawa_cogsy000_CNN_demo.ipynb#scrollTo=3LVOKnq2NuPj){:target="_blank"}
 * [顔検出 <img src="/assets/colab_icon.svg" alt="顔検出">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2025notebooks/2025_0428opencv_face_detect_recognizer.ipynb){:target="_blank"}
 * [課題提出用フォルダ](https://drive.google.com/drive/u/3/folders/1aenqcvlAQ7T-hv9-zsbrfntqpTbUj2EP){:target="_blank"}
+
+* [畳み込みニューラルネットワークの事前訓練済モデルによる中間表現の可視化 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2022notebooks/2022_1024CNN_layer_visualization.ipynb){:target="_blank"}
+- [LeNet PyTorch <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2021_0528LeNet_pytorch.ipynb){:target="_blank"}
+* [特徴点検出アルゴリズム 画像フィルタ <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2020Sight_visit_feature_extractions_demo.ipynb){:target="_blank"}
+* [DOG などのフィルタと Harr 特徴による顔検出 a.k.a ビオラ＝ジョーンズ アルゴリズム <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2021_0528edge_and_face_detection_algorithm_not_cnn.ipynb){:target="_blank"}
+
+
+## デモ
+
+- [グーグルによるニューラルネットワークの遊び場 (プレイグランド)](https://project-ccap.github.io/tensorflow-playground/){:target="_blank"}
+
+---
+
+先週の最小ネットワークの解
+<center>
+<img src="/2023assets/xor.svg">
+<img src="/2023assets/xor-graph.svg">
+</center>
+
 
 ## 福島のネオコグニトロン (Fukushima, 1980)
 
@@ -50,6 +71,54 @@ LeNet5 の論文より改変
   - 畳込とプーリングは<font color="green">局所結合</font>
 - MNIST を用いた１０種類の手書き文字認識
 - 最終２層は全結合層をつなげて最終層１０ニューロン，最終層の各ニューロンの出力がそれぞれの数字（０から９までの１０種）に対応する
+
+
+# ニューラルネットワーク
+
+* イメージネットコンテストの結果
+
+<!-- ## 本日のキーワード -->
+
+
+<center>
+<img src='/assets/imagenet_result2017.png' style='width:74%'><br/>
+画像認識の進歩
+</center>
+
+## ニューラルネットワークの歴史
+
+### 第 1 次ニューロブーム
+
+#### 1950年代:
+- ウォーレン・マッカロックとワイルダー・ピッツによる **形式ニューロン** の提案
+(サイバネティクスの創始者ノーバート・ウィーナーの集めた研究者集団)
+
+<center>
+<img src='/assets//mcculloch.jpg' style="width:38%">
+<img src='/assets//pitts.jpg' style='width:50%'><br>
+<!-- <img src='https://komazawa-deep-learning.github.io/assets//mcculloch.jpg' style="width:38%">
+<img src='https://komazawa-deep-learning.github.io/assets//pitts.jpg' style='width:50%'><br> -->
+ウォーレン・マッカロック と ワイルダー・ピッツ<br>
+<!--img src='../assets/mcculloch.jpg' style="width:19%">
+<img src='../assets/pitts.jpg' style='width:25%'><br>-->
+</center>
+
+形式ニューロンは，シナプス結合荷重ベクトルと出力を決定するための伝達関数とで構成される(次式)
+
+$$
+y_{i}=\phi\left(\sum_jw_{ij}x_j\right),\tag{eq:formal_neuron}
+$$
+
+ここで $y_{i}$ は $i$ 番目のニューロンの出力，$x_{j}$ は $j$ 番目のニューロンの出力，$w_{ij}$ はニュ
+ーロン $i$ と $j$ との間の **シナプス結合荷重**。
+$\phi$ は活性化関数。
+
+<center>
+<img src='/assets/Formal_r.svg' style="width:84%"><br/>
+<!-- <img src='https://komazawa-deep-learning.github.io/assets//Formal_r.svg' style="width:84%"><br>
+ -->
+形式ニューロン
+</center>
 
 
 
