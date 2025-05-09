@@ -14,25 +14,25 @@ Date: 25/Apr/2025<br/>
 Appache 2.0 license<br/>
 </div>
 
-
+<!-- 
 * [相貌失認 prosoagnosia](https://en.wikipedia.org/wiki/Prosopagnosia){:target="_blank"}，
 * [パレイドリア](https://en.wikipedia.org/wiki/Pareidolia){:target="_blank"} ，
-* シミュルクラ現象,
+* シミュラクラ現象 simulacra phenomenon
 
 * Eigenface, Fisherface,
-* Viola-Jones 
+* Viola-Jones  -->
 
 # 実習
 
 * [DNN の特徴検出器視覚化<img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2024notebooks/2021_1029Visualization_the_visual_features_on_CNN.ipynb){:target="_blank"}
-* [DOG などのフィルタと Harr 特徴による顔検出 a.k.a ビオラ＝ジョーンズ アルゴリズム<img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2021_0528edge_and_face_detection_algorithm_not_cnn.ipynb){:target="_blank"}
+
+<!-- * [DOG などのフィルタと Harr 特徴による顔検出 a.k.a ビオラ＝ジョーンズ アルゴリズム<img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2021_0528edge_and_face_detection_algorithm_not_cnn.ipynb){:target="_blank"}
 * [いくつかの画像フィルタ 特徴点検出アルゴリズム<img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2020Sight_visit_feature_extractions_demo.ipynb){:target="_blank"}
 
 * [顔，非顔判別データセットを用いた紡錘状回のモデル化 --- 転移学習を用いた顔検出モデル ---  <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_0925face_dataset_transfer_learning.ipynb){:target="_blank"}
     - Robust Real-Time Face Detection, Viola, P. and Jones, M. (2004)
 
-* [ヴィオラ=ジョーンズ アルゴリズム(従来手法) による顔認識実験 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_0930viola_jones_ipynb.ipynb){:target="_blank"}
-
+* [ヴィオラ=ジョーンズ アルゴリズム(従来手法) による顔認識実験 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_0930viola_jones_ipynb.ipynb){:target="_blank"} -->
 
 # 本日のメニュー
 
@@ -137,30 +137,6 @@ Lindsey&Norma(1977) Human Information Processing より。Fig. 7-2, 7-7
 <img src="/2025assets/1988Livingstone_Hubel_fig2.jpeg" style="width:22%;">
 <img src="/2025assets/1988Livingstone_Hubel_fig3.svg" style="width:44%;">
 </div>
-
-## 従来モデルと深層学習との対比
-
-<div class="figcenter">
-<img src='/assets/2013LeCun-tutorial-icml_15.svg' style="width:66%"><br/>
-
-LeCun (2013)
-</div>
-
-我々人間は，外界を認識するために必要な計算を，生物種としての発生の過程と，個人の発達を通しての経験に基づく認識系を保持していると見ることができる。
-従って我々の視覚認識には化石時代に始まる光の受容器としての眼の進化の歴史と発達を通じた個人の視覚経験が反映された結果でもある。
-人工知能の目標は，この複雑な特徴検出過程をどうやったらコンピュータが獲得できるかということでもある。
-外界を認識するために今日まで考案されてきたモデル（例えば，ニューラルネットワーク，サポートベクターマシンなどは）は複雑である。
-ですがモデルを訓練するための学習方法はそれほど難しくない。
-この意味で画像認識課題が正しく動作するためのポイントは，認識系が問題を解く事が可能なほど複雑であるかどうかではなく，十分に複雑が視覚環境，すなわち画像認識の場合，外部の艦橋を反映するために十分な量の像データを容易すことができるか否かにある。
-今日の CNN による画像認識性能の向上は，簡単な計算方法を用いて複雑な外部環境に適応できる認識系を構築する方法が確立したからであると言うことが可能であろう。
-
-下図 <!--[fig:2012Ng_01](#fig:2012Ng_01){reference-type="ref"reference="fig:2012Ng_01"} -->
-に画像処理の例を挙げた。
-
-<center>
-<img src="/assets/2012Ng_ML_and_AI_01.png" style="width:66%">
-</center>
-
 
 ### ワン・アルゴリズム仮説 One algorithm hypothesis
 
@@ -378,27 +354,4 @@ The bitter lesson is based on the historical observations that
 4) breakthrough progress eventually arrives by an opposing approach based on scaling computation by search and  learning.
 The eventual success is tinged with bitterness, and often incompletely digested, because it is success over a
 favored, human-centric approach.-->
-
-## Sutton のブログより
-
-<center>
-<div style="text-align: left;width: 88%;background-color: powderblue;">
-人工知能の長年の目標は，困難な領域でも超人的な能力をタブラ・ラサ方式で学習するアルゴリズムである。
-最近では AlphaGo が囲碁の世界チャンピオンを破った初めてのプログラムとなった。
-AlphaGo の木探索は，深層ニューラルネットワークを用いて局面の評価と手の選択を行う。
-このニューラルネットワークは，人間の熟練した手からの教師付き学習と， 自分自身の競技からの強化学習によって訓練されている。
-ここでは，人間のデータやガイダンス，ゲームルール以外の領域の知識を必要としない，強化学習のみに基づいたアルゴリズムを導入する。
-AlphaGo は自分自身の教師となり AlphaGo 自身の手の選択や AlphaGo のゲームの勝敗を予測するようにニューラルネットワークが学習される。
-このニューラルネットワークは，木探索の強度を向上させ，その結果，より質の高い手の選択が可能となり，次の反復ではより強力な自己対戦が可能となる。
-タブララサからスタートした私たちの新しいプログラム AlphaGo Zero は，既発表のチャンピオンに敗れた AlphaGo に対して 100-0 で勝利するという超人的な成績を達成した。
-</div>
-</center>
-
-* [David Silver homepage](https://www.davidsilver.uk/){:target="_blank"}
-
-1. [計算論的認知神経科学 Kriegeskorte and Douglas, 2018, Cognitive computational neuroscience](https://project-ccap.github.io/2018Kriegeskorte_Douglas_Cognitive_Computational_Neuroscience.pdf){:target="_blank"}
-1. [視覚系の畳み込みニューラルネットワークモデル，過去現在未来 Lindsay, 2020, Convolutional Neural Networks as a Model of the Visual System: Past, Present, and Future](https://project-ccap.github.io/2020Lindsay_Convolutional_Neural_Networks_as_a_Model_of_the_Visual_System_Past_Present_and_Future.pdf){:target="_blank"}
-1. [計算論的視覚と正則化理論 Poggio, Torre, Koch, 1985](https://komazawa-deep-learning.github.io/2021cogpsy/1985Poggio_Computational_Vision_and_Regularization_Theory.pdf){:target="_blank"}
-1. [皮質における物体認識の階層モデル Riesenhuber and Poggio (1999) Nature](https://komazawa-deep-learning.github.io/2021cogpsy/1999Riesenhuber_Poggio_Hierarchical_models_of_object_recognition_in_cortex.pdf){:target="_blank"}
-
 
