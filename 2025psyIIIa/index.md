@@ -61,7 +61,7 @@ Appache 2.0 license<br/><br/>
 - [第 02 回 04月18日](2025psyIIIa_lect02){:target="_blank"}: Hubel&Wiesel と Blakemore&Cooper1970 のビデオ閲覧，オリベッティ顔データベースを用いたロジスティック回帰。訓練データと検証データ。
 - [第 03 回 04月25日](2025psyIIIa_lect03){:target="_blank"}: マッカロック&ピッツ。パンデモニウム。HMAX, プーリング。ニューラルネットワーク。
 - [第 04 回 05月09日](2025psyIIIa_lect04){:target="_blank"}: 特徴検出細胞。オン中心，オフ周辺細胞。単純型，複雑型細胞。SIFT，HOG, DOG。畳み込み演算
-- 第 05 回 05月16日: 腹側 ventral 経路と背側 dorsal 経路。紡錘状回 fusiform gyrus
+- [第 05 回 05月16日](2025psyIIIa_lect05){:target="_blank"}: 腹側 ventral 経路と背側 dorsal 経路。紡錘状回 fusiform gyrus
 <!-- 扁桃体 amygdala の接続。ラマチャンドラン Ramachandan の「脳の中の幽霊」にでてくるカプグラ症候群。 -->
 - 第 06 回 05月23日: 顔認識，表情認識，VGG, ResNet の第一層における特徴検出器の視覚化
 - 第 07 回 05月30日: 休講(予定)
