@@ -19,6 +19,8 @@ Appache 2.0 license<br/>
 
 # 実習ファイル
 
+* [Olivetti 顔データを用いた簡単な CNN <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_1112Olivetti_CNN.ipynb#scrollTo=YJZrdGnR4Sr7){:target="_blank"}
+
 * [最小限のニューラルネットワーク <img src="/assets/colab_icon.svg" alt="最小限のニューラルネットワーク">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2023notebooks/2023_0929miniam_XOR.ipynb){:target="_blank"}
 * [画像認識モデル実習 <img src="/assets/colab_icon.svg" alt="画像認識モデル実習">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021komazawa_cogsy000_CNN_demo.ipynb#scrollTo=3LVOKnq2NuPj){:target="_blank"}
 * [顔検出 <img src="/assets/colab_icon.svg" alt="顔検出">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2025notebooks/2025_0428opencv_face_detect_recognizer.ipynb){:target="_blank"}
