@@ -19,19 +19,22 @@ Appache 2.0 license<br/>
 * 連絡事項： 5 月 30 日 は休講。
 * [課題提出用フォルダ<img src="/2025assets/Google_Drive_icon_2020.svg" style="width:02%">](https://drive.google.com/drive/u/3/folders/1EdOL_Wz1656fWqD0RmmKgLmf_fUsl2QY){:target="_blank"}
 
----
+## 実習
 
 * [BIT 線分二等分線試作機 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/2022notebooks/2022_1210bit_line_bisection.ipynb#scrollTo=UDyOZj1LLnX8){:target="_blank"}
 * [2022_0604bit_faster-rcnn_fine_tuning.ipynb <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/bit/blob/main/notebooks/2022_0617bit_faster_rcnn_fine_tuning.ipynb#scrollTo=D1v9Zb5hOzsl){:target="_blank"}
 
 
-
-## 実習
+<!-- ## 実習
 
 * [ResNet 実習 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2022notebooks/2022_0603ResNet_with_Olivetti_faces_.ipynb)
-* [セグメンテーション実習 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2022notebooks/2022_0603Image_segmentation_demo.ipynb)
+* [セグメンテーション実習 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2022notebooks/2022_0603Image_segmentation_demo.ipynb)-->
 
-* [BIT 線分二等分課題 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/2022notebooks/2022_1210bit_line_bisection.ipynb#scrollTo=moT9LtTZDV-J)
+
+## キーワード
+
+転移学習, 紡錘状回, 残差ネット, セマンティックセグメンテーション, 意味的切り分け, 実体切り分け, U-Net
+
 
 # 1. 経路仮説と残差ネット
 
