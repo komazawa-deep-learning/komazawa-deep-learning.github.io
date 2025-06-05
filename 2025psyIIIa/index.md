@@ -64,8 +64,8 @@ Appache 2.0 license<br/><br/>
 - [第 05 回 05月16日](2025psyIIIa_lect05){:target="_blank"}: 腹側 ventral 経路と背側 dorsal 経路。紡錘状回 fusiform gyrus
 <!-- 扁桃体 amygdala の接続。ラマチャンドラン Ramachandan の「脳の中の幽霊」にでてくるカプグラ症候群。 -->
 - [第 06 回 05月23日](2025psyIIIa_lect06): 顔認識，表情認識，VGG, ResNet の第一層における特徴検出器の視覚化
-- 第 07 回 05月30日: 休講(予定)
-- 第 08 回 06月06日: 画像切り出し segmentation
+- 05月30日: 休講(予定)
+- [第 07 回 06月06日](2025psyIIIa_lect07){:target="_blank"}: 画像切り出し segmentation
 - 第 09 回 06月13日: 転移学習と微調整 Stroop 効果
 - 第 10 回 06月20日: Stroop 効果，転移学習の調整
 - 第 11 回 06月27日: 言語モデル，リカレントニューラルネットワーク，Transformer，エンコーダ・デコーダモデル, FIT，特徴統合理論，注意，ボトムアップ，トップダウン，意味表現，word2vec
