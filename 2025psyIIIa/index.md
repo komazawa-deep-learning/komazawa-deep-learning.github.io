@@ -66,7 +66,7 @@ Appache 2.0 license<br/><br/>
 - [第 06 回 05月23日](2025psyIIIa_lect06): 顔認識，表情認識，VGG, ResNet の第一層における特徴検出器の視覚化
 - 05月30日: 休講(予定)
 - [第 07 回 06月06日](2025psyIIIa_lect07){:target="_blank"}: 画像切り出し segmentation
-- 第 09 回 06月13日: 転移学習と微調整 Stroop 効果
+- [第 08 回 06月13日](2025psyIIIa_lect08){:target="_blank"}: 転移学習と微調整 Stroop 効果
 - 第 10 回 06月20日: Stroop 効果，転移学習の調整
 - 第 11 回 06月27日: 言語モデル，リカレントニューラルネットワーク，Transformer，エンコーダ・デコーダモデル, FIT，特徴統合理論，注意，ボトムアップ，トップダウン，意味表現，word2vec
 - 第 12 回 07月04日: NIC
