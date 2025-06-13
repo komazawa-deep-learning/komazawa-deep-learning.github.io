@@ -15,7 +15,159 @@ Date: 13/Jun/2025<br/>
 Appache 2.0 license<br/>
 </div>
 
+
+* [課題提出用フォルダ <img src="/2025assets/Google_Drive_icon_2020.svg" style="width:02%">](https://drive.google.com/drive/folders/1H0gLVVqBCuc0NjTeTTksytj_1zcStzHr?usp=drive_link){:target="_blank"}
+
+### デモンストレーション
+
+- [リカレントニューラルネットワークによる文字ベース言語モデルデモ](https://komazawa-deep-learning.github.io/character_demo.html){:target="_blank"}
+- [リカレントニューラルネットワークによる文字ベース言語モデルデモ みんなの日本語](https://komazawa-deep-learning.github.io/minnichi_char_rnn.html)
+
+### 実習ファイル
+
+* [最小コードの排他的論理和  <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/220komazawa_miniumXOR.ipynb)
+* [3 層パーセプトロンと確率的勾配降下法のデモ <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2021_0521mlp_Adam_SGD.ipynb)
+
+* [三夕の歌  <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/2022notebooks/2022_0925RNN_3twilight_poetries.ipynb)
+* [足し算モデル <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/2019cnps/blob/master/notebooks/2019cnps_addtion_rnn.ipynb)
+* [百人一首の上の句とエンコーダによって符号化し，下の句をデコーダで生成する自作 Transformer モデル <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/2023notebooks/2023_1113chihaya_Transformer.ipynb){:target="_blank"}
+
+- [SRN のデモ <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_0702rnn_demo.ipynb){:target="_blank"}
+- [足し算のデモ <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_0702RNN_binary_addtion_demo.ipynb){:target="_blank"}
+<!-- - [百人一首データ取得](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_0917get_hyakunin_isshu.ipynb){:target="_blank"} -->
+
+<!-- - [BERT の超簡単な使い方 <img src="/assets/colab_icon.svg">](https://colab.research.google.c
+om/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_0903BERT_demo.ipynb){:target="_blank"} -->
+<!-- - [最小限の MeCab](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2022_0916mecab_test.ipynb) -->
+<!-- * [word2vec 実習 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0619word2vec.ipynb) -->
+
+<!-- - [SRN のデモ <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_0702rnn_demo.ipynb)
+- [足し算のデモ <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_0702RNN_binary_addtion_demo.ipynb) - [足し算のデモ keras 版 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/2019cnps/blob/master/notebooks/2019cnps_addtion_rnn.ipynb)-->
+
+- [Bahdanau and Loung attentions <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_1022Two_attentions_additive_and_multiplicative_Seq2seq.ipynb)
+* [Attention is all you need <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_1022The_Annotated_%22Attention_is_All_You_Need%22.ipynb)
+
+<!--
+* [注意つき翻訳モデル <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_1008seq2seq_attention_demo.ipynb)
+* [バニラ風味 注意なし翻訳モデル <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_1003vanilla_seq2seq2.ipynb) -->
+
+* [GPT-3 を使って，自発話のシミュレーション <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/2022notebooks/2022_0719japanese_gpt_1b.ipynb)
+* [T5 による，文章穴埋め問題  <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/2022notebooks/2022_0918T5_demo_filling_blank_question.ipynb)
+* [Seq2seq モデル による翻訳デモ 注意付きリカレントニューラルネットワーク <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_1008seq2seq_attention_demo.ipynb)
+* [BERT の微調整実習 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/2022notebooks/2022_0623BERT_SNOW_training.ipynb)
+
+
 # 第 8 回
+
+
+
+# 注意
+
+
+* 認知心理学，生理学，などではトップダウンとボトムアップの 2 種類の注意が区別されてきた。計算論的には Crick (1984) のサーチライト仮説などにより提唱された **勝者占有回路 winner-take-all 回路** である。
+* 自然言語処理 (Vaswani+2017)，画像処理 (Ramachandran2019) や眼球運動の DeepGaze (Kummerer2019) などがある。
+
+### 文献
+
+- [⼼理学，神経科学，機械学習における注意, Lindsay, 2019](https://project-ccap.github.io/2020Lindsay_Attention_inPsychology_Neuroscience_and_Machine_Learning.pdf){:target="_blank"}
+
+
+## 心理学的注意
+
+<img src="/assets/1988Treisman_Fig1.svg" width="24%">
+<img src="/assets/1994Wolfe_GS2Fig2.jpg" width="39%">
+<img src="/assets/1998IttiKoch_fig1.jpg" width="29%"><br/>
+
+<p style="text-align: left;width:88%;background-color: cornsilk;">
+左: Treisman1988 Fig.1，特徴統合理論の概念図。ボトムアップ注意
+中: Wolfe1994 Fig.2 ガイド付き探索 バージョン 2 モデル。トップダウン注意
+右: Itti and Koch (1998) Fig. 1 計算モデルの実装例
+</p>
+
+## ニューラルネットワーク的注意
+
+### CAM
+
+<center>
+<img src="/assets/2016Zhou_CAM_fig2ja.svg" width="66%"><br/>
+CAM の概念図 Zhou (2016) Fig. 2 を改変
+</center>
+
+<br/><br/><br/>
+<center>
+<img src="/assets/2016Grad-CAM_boxer_tigercat.png" style="width:20%">
+<img src="/assets/2016Grad-CAM_boxer.png" style="width:20%">
+<img src="/assets/2016Grad-CAM_tigercat.png" style="width:20%"><br/>
+Grad-CAM の結果。Selvaraj (2016) Fig. 5 より。左: 元画像。央: ボクサー犬と判断した場合のヒートマップ。右:トラ猫と判断した場合のヒートマップ
+</center>
+
+
+
+1. 交差エントロピー: $t\log(p) + (1-t)\log(1-p)$
+損失関数として，最小自乗誤差を用いるよりも，分類課題での離散変数については，交差エントロピーを用いる方が収束が早く便利である。
+
+# 注意とソフトマックス関数，CAM
+
+前回は，自然画像分類のために訓練した畳み込みニューラルネットワークの結合係数を視覚化すると，特徴地図が現れることを示した。
+
+今回は，この特徴地図を顕著性地図と考えて，ボトムアップによる注意を考える。
+
+
+#### 付録 読み物
+
+<!-- - [ジェフェリー・ヒントンのマクセル賞受賞記念講演(2016)](/Hinton_Maxwell_award/){:target="_blank"}
+- [データサイエンス小史](/data_science/){:target="_blank"}
+- [数式の読み方](/how_to_read_math/){:target="_blank"} -->
+- [Sutton のブログ，苦い教訓](/2019sutton_bitter_Lesson.pdf){:target="_blank"}
+
+<!-- - [Sutton のブログ，苦い教訓](/2019Sutton_Bitter_Lesson/){:target="_blank"} (../2019sutton_bitter_Lesson.pdf)
+- オリジナル Sutton's blog [bitter lesson](http://www.incompleteideas.net/IncIdeas/BitterLesson.html){:target="_blank"} -->
+<!--[その和訳](2019sutton_bitter_lesson.pdf)-->
+
+コンピュータビジョンにおいても、同様のパターンがある。
+初期の手法では，視覚をエッジや一般化された円柱の探索，あるいは SIFT 特徴の観点から考えていた。
+しかし今日では，このような考え方はすべて捨て去られている。
+現代のディープラーニングニューラルネットワークは，畳み込みとある種の不変性という概念のみを使用し，はるかに優れた性能を発揮する。
+<!--In computer vision, there has been a similar pattern.
+Early methods conceived of vision as searching for edges, or generalized cylinders, or in terms of SIFT features.
+But today all this is discarded. Modern deep-learning neural networks use only the notions of convolution and certain kinds of invariances, and perform much better.-->
+
+これは大きな教訓である。
+我々は同じような過ちを犯し続けている。
+このことを理解し，それに効果的に抵抗するためには，我々はこうした間違いの魅力を理解しなければならない。
+我々は，我々の考え方を構築しても長期的にはうまくいかないという苦い教訓を学ばなければならない。
+この苦い教訓は，次のような歴史的観察に基づいている。
+1) AI 研究者は、しばしばエージェントに知識を組み込もうとしてきた，
+2) これは短期的には常に役に立ち，研究者を個人的に満足させた，
+3) 長期的には，それは停滞し，さらなる進歩を阻害した，
+4) 探索と学習による計算のスケーリングに基づく反対のアプローチによって，画期的な進歩がもたらされる，
+
+最終的な成功は苦渋を帯びたものであり，しばしば不完全に消化される、
+なぜなら，それは人間中心のアプローチに対する成功だからである。
+
+<!--This is a big lesson.
+As a field, we still have not thoroughly learned it, as we are continuing to make the s ame kind of mistakes.
+To see this, and to effectively resist it, we have to understand the appeal of these mistakes.
+We have to learn the bitter lesson that building in how we think we think does not work in the long run.
+The bitter lesson is based on the historical observations that
+1) AI researchers have often tried to build knowledge into their agents,
+2) this always helps in the short term, and is personally satisfying to the researcher, but
+3) in the long run it plateaus and even inhibits further progress, and
+4) breakthrough progress eventually arrives by an opposing approach based on scaling computation by search and learning.
+The eventual success is tinged with bitterness, and often incompletely digested, because it is success over a favored, human-centric approach.-->
+
+## U-Net 
+
+画像分割の SOTA (State of the arts)
+
+<center>
+<img src="/assets/2015Ronneberger_U-Net_Fig1_ja.svg" style="width:66%"><br/>
+Ronnenberger et. al (2015) Fig. 1 より
+</center>
+
+<!-- <img src="/assets/2014Friston_Fig1.svg" style="width:99%"><br/> -->
+<!--  <img src="../assets/2009Friston_box3.svg" style="width:99%"><br/> -->
+
 
 ## キーワード
 
@@ -44,45 +196,6 @@ One hot vector,
 word embeddings,
 winners-take-all (winner takes it all) circuit.
 ちはやふる -->
-
-### 実習ファイル
-
-* [最小コードの排他的論理和  <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/220komazawa_miniumXOR.ipynb)
-* [3 層パーセプトロンと確率的勾配降下法のデモ <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2021_0521mlp_Adam_SGD.ipynb)
-
-* [三夕の歌  <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/2022notebooks/2022_0925RNN_3twilight_poetries.ipynb)
-* [足し算モデル <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/2019cnps/blob/master/notebooks/2019cnps_addtion_rnn.ipynb)
-
-
-## デモと実習
-
-- [リカレントニューラルネットワークによる文字ベース言語モデルデモ](https://komazawa-deep-learning.github.io/character_demo.html){:target="_blank"}
-- [リカレントニューラルネットワークによる文字ベース言語モデルデモ みんなの日本語](https://komazawa-deep-learning.github.io/minnichi_char_rnn.html)
-- [SRN のデモ <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_0702rnn_demo.ipynb){:target="_blank"}
-- [足し算のデモ <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-l
-earning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_0702RNN_binary_addtion_demo.ipynb){:target="_blank"}
-- [百人一首データ取得](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_0917get_hyakunin_isshu.ipynb){:target="_blank"}
-<!-- - [BERT の超簡単な使い方 <img src="/assets/colab_icon.svg">](https://colab.research.google.c
-om/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_0903BERT_demo.ipynb){:target="_blank"} -->
-- [最小限の MeCab](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2022_0916mecab_test.ipynb)
-
-
-<!-- * [word2vec 実習 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0619word2vec.ipynb) -->
-
-<!-- - [SRN のデモ <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_0702rnn_demo.ipynb)
-- [足し算のデモ <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_0702RNN_binary_addtion_demo.ipynb) - [足し算のデモ keras 版 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/2019cnps/blob/master/notebooks/2019cnps_addtion_rnn.ipynb)-->
-
-- [Bahdanau and Loung attentions <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_1022Two_attentions_additive_and_multiplicative_Seq2seq.ipynb)
-* [Attention is all you need <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_1022The_Annotated_%22Attention_is_All_You_Need%22.ipynb)
-
-<!--
-* [注意つき翻訳モデル <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_1008seq2seq_attention_demo.ipynb)
-* [バニラ風味 注意なし翻訳モデル <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_1003vanilla_seq2seq2.ipynb) -->
-
-* [GPT-3 を使って，自発話のシミュレーション <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/2022notebooks/2022_0719japanese_gpt_1b.ipynb)
-* [T5 による，文章穴埋め問題  <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/2022notebooks/2022_0918T5_demo_filling_blank_question.ipynb)
-* [Seq2seq モデル による翻訳デモ 注意付きリカレントニューラルネットワーク <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_1008seq2seq_attention_demo.ipynb)
-* [BERT の微調整実習 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/2022notebooks/2022_0623BERT_SNOW_training.ipynb)
 
 
 # 言語モデル
