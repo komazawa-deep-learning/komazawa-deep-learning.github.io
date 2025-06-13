@@ -26,7 +26,8 @@ Appache 2.0 license<br/>
 - [リカレントニューラルネットワークによる文字ベース言語モデルデモ](https://komazawa-deep-learning.github.io/character_demo.html){:target="_blank"}
 - [リカレントニューラルネットワークによる文字ベース言語モデルデモ みんなの日本語](https://komazawa-deep-learning.github.io/minnichi_char_rnn.html)
 
-- [絵画命名課題 TLPA+SALA <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/project-ccap/project-ccap.github.io/blob/master/2025notebooks/2024_0913cnps2024_v2s.ipynb){:target="_blank"}
+<!-- - [絵画命名課題 TLPA+SALA <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/project-ccap/project-ccap.github.io/blob/master/2025notebooks/2024_0913cnps2024_v2s.ipynb){:target="_blank"} -->
+* [フィラデルフィア絵画命名検査課題 PNT を転移学習 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_0618pnt_transfer_learning.ipynb){:target="_blank"}
 
 ### 実習ファイル
 
