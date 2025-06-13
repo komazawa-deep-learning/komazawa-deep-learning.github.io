@@ -63,6 +63,36 @@ om/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/20
 * [Seq2seq モデル による翻訳デモ 注意付きリカレントニューラルネットワーク <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_1008seq2seq_attention_demo.ipynb)
 * [BERT の微調整実習 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/2022notebooks/2022_0623BERT_SNOW_training.ipynb) -->
 
+## キーワード
+
+<!-- * 誤差逆伝播法 back propagation
+* 勾配降下法 gradient descent method
+* 学習率 -->
+<!-- * モーメンタム -->
+* [ソフトマックス関数 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2023notebooks/2023_0512softmax.ipynb){:target="_blank"}
+<!-- * 勾配消失問題 gradient vanishing problem，勾配爆発問題 gradient explosion problem, -->
+* ワンホットベクトル
+<!-- * 単語埋め込み -->
+* 勝者占有回路
+<!-- One hot vector,
+word embeddings,
+winners-take-all (winner takes it all) circuit.
+ちはやふる -->
+
+<!-- ## クイズ
+
+* ML Machiine Learning, Mailing list, Maximum Likelihood
+* SGD
+* learning ratio
+* pdf: probalility density function, portable document format
+
+One hot vector,
+word embeddings,
+winners-take-all (winner takes it all) circuit.
+ちはやふる -->
+
+
+
 
 ## 注意
 
@@ -115,6 +145,105 @@ Grad-CAM の結果。Selvaraj (2016) Fig. 5 より。左: 元画像。央: ボ�
 今回は，この特徴地図を顕著性地図と考えて，ボトムアップによる注意を考える。
 
 
+# 言語モデル
+
+$$
+P(x_{t+1}) = P(x|x_{i<t})
+$$
+
+1. RNN
+2. LSTM, GRU
+3. Transformer
+
+<center>
+
+<img src="/assets/SRN_J.svg" style="width:23%">
+<img src="/assets/SRN_E.svg" style="width:23%">
+<img src="/assets/2015Greff_LSTM_ja.svg" width="29%"><br/>
+<img src="/assets/RNN_fold.svg" style="width:49%"><br>
+Time unfoldings of recurrent neural networks
+
+左：マイケル・ジョーダン発案ジョーダンネット [@1986Jordan]
+中：ジェフ・エルマン発案エルマンネット
+右: LSTM
+</center>
+
+の LSTM は一つのニューロンに該当します。このニューロンには 3 つのゲート(gate, 門) が付いています。
+3 つのゲートは以下の名前で呼ばれます。
+
+1. 入力ゲート input gate
+2. 出力ゲート output gate
+3. 忘却ゲート forget gate
+
+各ゲートの位置を上図で確認してください。入力ゲートと出力ゲートが閉じていれば，セルの内容(これまでは中間層の状
+態と呼んできました)が保持されることになります。
+出力ゲートが開いている場合には，セル内容が出力されます。一方出力ゲートが閉じていればそのセル内容は出力されませ
+ん。このように入力ゲートと出力ゲートはセル内容の入出力に関与します。
+忘却ゲートはセル内容の保持に関与します。忘却ゲートが開いていれば一時刻前のセル内容が保持されることを意味します
+。反対に忘却ゲートが閉じていれば一時刻前のセル内容は破棄されます。全セルの忘却ゲートが全閉ならば通常の多層ニュ
+ーラルネットワークであることと同義です。すなわち記憶内容を保持しないことを意味します。SRN でフィードバック信号
+が存在しない場合に相当します。セルへの入力は，
+
+1. 下層からの信号，
+2. 上層からの信号, すなわち Jordan ネットの帰還信号
+3. 自分自身の内容，すなわち Elman ネットの帰還信号
+
+が用いられます。これら入力信号が
+
+1. 入力信号そのもの
+2. 入力ゲートの開閉制御用信号
+3. 出力ゲートの開閉制御用信号
+4. 忘却ゲートの開閉制御用信号
+
+という 4 種類に用いられます。従って LSTM のパラメータ数は SRN に比べて 4 倍になります。
+
+LSTM に限らず一般のニューラルネットワークの出力には非線形関数が用いられます。代表的な非線形出力関数としては，
+以下のような関数が挙げられます。
+
+1. シグモイド関数: $f(x)=\left[1+e^{-x}\right]^{-1}$
+2. ハイパーボリックタンジェント関数:  $f(x)=\left(e^{x}-e^{-x}\right)/\left(e^{x}+e^{-x}\right)$
+3. 整流線形ユニット関数: $f(x)=\max\left(0,x\right)$
+
+この中で，セルの出力関数として 2. のハイパーボリックタンジェント関数が，ゲートの出力関数にはシグモイド関数が使われます。
+その理由はハイパーボリックタンジェント関数の方が収束が早いこと，シグモイド関数は値域が $[0,1]$ であるためゲートの開閉に直接対応しているからです。
+
+- Le Cun, Y. Bottou, L., Orr, G. B, Muller K-R. (1988) Efficient BackProp, in Orr, G. and Muller, K. (Eds.) Neural Networks: tricks and trade, Springer.
+
+<!--
+The LSTM (left figure) can be described as the input signals $\mathbf{x}_t$ at
+time $t$, the output signals $\mathbf{o}_t$, the forget gate $\mathbf{f}_t$, and
+the output signal $\mathbf{y}_t$, the memory cell $\mathbf{c}_t$, then we can get
+the following:
+$i_{t}=\sigma\left(W_{xi}x_{t}+W_{hi}y_{t-1}+b_{i}\right)$, <br>
+$f_{t}=\sigma\left(W_{xf}x_{t}+W_{hf}y_{t-1}+b_{f}\right)$, <br>
+$o_{t}=\sigma\left(W_{xo}x_{t}+W_{ho}y_{t-1}+b_{o}\right)$, <br>
+$g_{t}=\phi\left(W_{xc}x_{t}+W_{hc}y_{t-1}+b_{c}\right)$,<br>
+$c_{t}=f_{t}\odot c_{t-1} + i_{t}\odot g_{t}$,<br>
+$h_{t}=o_{t}\odot\phi\left(c_{t}\right)$<br>\label{eq:LSTM}
+where
+$\sigma\left(x\right)=\displaystyle\frac{1}{1+\mbox{exp}\left(-x\right)}$ (logistic function)
+%% =1/2\left(\phi\Brc{x}+1\right)$,
+$\phi\left(x\right)=\displaystyle\frac{\mbox{exp}\left(x\right)-\mbox{exp}\left(-x\right)}{\mbox{exp}\left(x\r
+ight)+\mbox{exp}\left(-x\right)}$ (hyper tangent)
+%% $=2\sigma\left(x\right)-1$
+and $\odot$ menas Hadamard (element--wise) product.
+-->
+
+## LSTM におけるゲートの生理学的対応物 <!--Physiological correlates of gates in LSTM-->
+
+以下の画像は <http://kybele.psych.cornell.edu/~edelman/Psych-2140/week-2-2.html> よりの引用。
+ウミウシのエラ引っ込め反応時に，ニューロンへの入力信号ではなく，入力信号を修飾する結合が存在する。下図参照。
+
+<center>
+<img src="/assets/2016McComas_presynaptic_inhibition.jpg" style="width:24%">
+<img src="/assets/C87-fig2_24.jpg" width="17%">
+<img src="/assets/C87-fig2_25.jpg" width="33%"><br>
+アメフラシ (Aplysia) のエラ引っ込め反応(a.k.a. 防御反応)の模式図[^seaslang]
+<!-- <img src="/assets/shunting-inhibition.jpg" width="29%"> -->
+</center>
+
+* [注意機構の補足説明 大門他 (2023) <img src="https://www.adobe.com/content/dam/cc/en/legal/images/badges/PDF_32.png">](/2023/2023cnps注意機構の補足説明.pdf){:target="_blank"}
+
 #### 付録 読み物
 
 <!-- - [ジェフェリー・ヒントンのマクセル賞受賞記念講演(2016)](/Hinton_Maxwell_award/){:target="_blank"}
@@ -158,6 +287,7 @@ The bitter lesson is based on the historical observations that
 4) breakthrough progress eventually arrives by an opposing approach based on scaling computation by search and learning.
 The eventual success is tinged with bitterness, and often incompletely digested, because it is success over a favored, human-centric approach.-->
 
+<!-- 
 ## U-Net 
 
 画像分割の SOTA (State of the arts)
@@ -165,39 +295,11 @@ The eventual success is tinged with bitterness, and often incompletely digested,
 <center>
 <img src="/assets/2015Ronneberger_U-Net_Fig1_ja.svg" style="width:66%"><br/>
 Ronnenberger et. al (2015) Fig. 1 より
-</center>
+</center> -->
 
 <!-- <img src="/assets/2014Friston_Fig1.svg" style="width:99%"><br/> -->
 <!--  <img src="../assets/2009Friston_box3.svg" style="width:99%"><br/> -->
 
-
-## キーワード
-
-* 誤差逆伝播法 back propagation
-* 勾配降下法 gradient descent method
-* 学習率
-<!-- * モーメンタム -->
-* [ソフトマックス関数 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2023notebooks/2023_0512softmax.ipynb){:target="_blank"}
-* 勾配消失問題 gradient vanishing problem，勾配爆発問題 gradient explosion problem,
-* ワンホットベクトル
-* 単語埋め込み
-* 勝者占有回路
-<!-- One hot vector,
-word embeddings,
-winners-take-all (winner takes it all) circuit.
-ちはやふる -->
-
-<!-- ## クイズ
-
-* ML Machiine Learning, Mailing list, Maximum Likelihood
-* SGD
-* learning ratio
-* pdf: probalility density function, portable document format
-
-One hot vector,
-word embeddings,
-winners-take-all (winner takes it all) circuit.
-ちはやふる -->
 
 
 # 言語モデル
