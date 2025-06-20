@@ -1,5 +1,5 @@
 ---
-title: 第08回 2025 年度開講 駒澤大学 心理学特講 IIIA
+title: 第09回 2025 年度開講 駒澤大学 心理学特講 IIIA
 author: 浅川 伸一
 layout: home
 ---
