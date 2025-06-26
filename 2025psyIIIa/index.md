@@ -64,13 +64,13 @@ Appache 2.0 license<br/><br/>
 - [第 05 回 05月16日](2025psyIIIa_lect05){:target="_blank"}: 腹側 ventral 経路と背側 dorsal 経路。紡錘状回 fusiform gyrus
 <!-- 扁桃体 amygdala の接続。ラマチャンドラン Ramachandan の「脳の中の幽霊」にでてくるカプグラ症候群。 -->
 - [第 06 回 05月23日](2025psyIIIa_lect06): 顔認識，表情認識，VGG, ResNet の第一層における特徴検出器の視覚化
-- 05月30日: 休講(予定)
+- 05月30日: 休講
 - [第 07 回 06月06日](2025psyIIIa_lect07){:target="_blank"}: 画像切り出し segmentation
 - [第 08 回 06月13日](2025psyIIIa_lect08){:target="_blank"}: 注意 CAM, 転移学習と微調整
-- [第 09 回 06月20日](2025psyIIIa_lect09){:target="_blank"}: Stroop 効果，リカレントニューラルネットワーク
-- 第 10 回 06月27日: 言語モデル，Transformer，エンコーダ・デコーダモデル, FIT，特徴統合理論，注意，ボトムアップ，トップダウン，意味表現，word2vec
-- 第 11 回 07月04日: NIC
-- 第 12 回 07月11日: 強化学習
+- [第 09 回 06月20日](2025psyIIIa_lect09){:target="_blank"}: Stroop 効果，
+- [第 10 回 06月27日](2025psyIIIa_lect10){:target="_blank"}: リカレントニューラルネットワーク, 言語モデル，Transformer，エンコーダ・デコーダモデル, 
+- 第 11 回 07月04日: ボトムアップ，トップダウン，意味表現，word2vec
+- 第 12 回 07月11日: NIC, 特徴統合理論，注意，強化学習
 - 第 13 回 07月18日: 強化学習，エピソード記憶，経験再生
 
 <!--### 代替案
