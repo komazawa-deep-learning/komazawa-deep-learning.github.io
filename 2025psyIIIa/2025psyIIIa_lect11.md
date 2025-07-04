@@ -11,7 +11,7 @@ layout: home
 
 <div align='right'>
 <a href='mailto:educ0233@komazawa-u.ac.jp'>Shin Aasakawa</a>, all rights reserved.<br/>
-Date: 04/Jul/2025<br/>
+Date: 04/Jul./2025<br/>
 Appache 2.0 license<br/>
 </div>
 
