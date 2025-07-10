@@ -70,7 +70,7 @@ Appache 2.0 license<br/><br/>
 - [第 09 回 06月20日](2025psyIIIa_lect09){:target="_blank"}: Stroop 効果，
 - [第 10 回 06月27日](2025psyIIIa_lect10){:target="_blank"}: リカレントニューラルネットワーク, 言語モデル，Transformer，エンコーダ・デコーダモデル, 
 - [第 11 回 07月04日](2025psyIIIa_lect11){:target="_blank"}: ボトムアップ，トップダウン，意味表現，word2vec
-- 第 12 回 07月11日: NIC, 特徴統合理論，注意，強化学習
+- [第 12 回 07月11日](2025psyIIIa_lect12){:target="_blank"}: NIC, 特徴統合理論，注意，強化学習
 - 第 13 回 07月18日: 強化学習，エピソード記憶，経験再生
 
 <!--### 代替案
