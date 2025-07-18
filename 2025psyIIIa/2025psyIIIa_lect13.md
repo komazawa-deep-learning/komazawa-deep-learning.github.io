@@ -49,6 +49,8 @@ Appache 2.0 license<br/>
 * アルファ碁, アルファ碁ゼロ, DQN, [Atari ゲーム (OpenAI Gym)](https://gym.openai.com/){:target="_blank"}
 * [エージェント 57](https://deepmind.com/blog/article/Agent57-Outperforming-the-human-Atari-benchmark){:target="_blank"}
 
+- [労働新聞平成31年2月25日号 知識を拡張する道具 人類の歴史の延長線上に](/2019laborNews.pdf){:target="_blank"}
+
 
 ## 苦い教訓
 
