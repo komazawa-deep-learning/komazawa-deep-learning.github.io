@@ -42,11 +42,13 @@ Appache 2.0 license<br/>
 - [方針勾配法 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_rl_ogawa_2_3_policygradient.ipynb){:target="_blank"}
 - [SARSA <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_rl_ogawa_2_5_Sarsa.ipynb){:target="_blank"}
 - [Q 学習 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_rl_ogawa_2_6_Qlearning.ipynb){:target="_blank"}
-* [DQN](https://komazawa-deep-learning.github.io/2020pytorch_tutorail_reinforcement_q_learning/){:target="_blank"}
-* [REINFORCE.js](https://komazawa-deep-learning.github.io/reinforcejs/){:target="_blank"}
 
+## 参考
+
+* [REINFORCE.js](https://komazawa-deep-learning.github.io/reinforcejs/){:target="_blank"}
 * アルファ碁, アルファ碁ゼロ, DQN, [Atari ゲーム (OpenAI Gym)](https://gym.openai.com/){:target="_blank"}
 * [エージェント 57](https://deepmind.com/blog/article/Agent57-Outperforming-the-human-Atari-benchmark){:target="_blank"}
+
 
 ## 苦い教訓
 
@@ -1080,15 +1082,19 @@ Agent57 は 次のような観察に基づいて構築されている。
 <!-- # Meta-controller: learning to balance exploration with exploitation
 Agent57 is built on the following observation: what if an agent can learn when it’s better to exploit, and when it’s better to explore? We introduced the notion of a meta-controller that adapts the exploration-exploitation trade-off, as well as a time horizon that can be adjusted for games requiring longer temporal credit assignment. With this change, Agent57 is able to get the best of both worlds: above human-level performance on both easy games and hard games.-->
 
-具体的には，内在的動機付け方法には 2 つの欠点がある。<!-- Specifically, intrinsic motivation methods have two shortcomings:-->
-<!-- * Exploration: Many games are amenable to policies that are purely exploitative, particularly after a game has been fully explored. This implies that much of the experience produced by exploratory policies in Never Give Up will eventually become wasteful after the agent explores all relevant states.
-* Time horizon: Some tasks will require long time horizons (e.g. Skiing, Solaris), where valuing rewards that will be earned in the far future might be important for eventually learning a good exploitative policy, or even to learn a good policy at all. At the same time, other tasks may be slow and unstable to learn if future rewards are overly weighted. This trade-off is commonly controlled by the discount factor in reinforcement learning, where a higher discount factor enables learning from longer time horizons. -->
+具体的には，内在的動機付け方法には 2 つの欠点がある。
+
 
 * **探索** 多くのゲームは，特にゲームが完全に探索 explore された後に 純粋に 利用可能 exploit な方針に従順である。
 これは NGU での 探索的 (explore) 方策によって生成された経験の多くは，エージェントが関連するすべての状態を探索した後に，最終的に無駄になることを意味している。
 * **時間の地平線** Skiing や Solaris のように 遠い将来に得られる報酬を評価することは，最終的に良い 利用可能 (搾取的 exploitive) な政策を学ぶために，あるいは良い政策を全く学ぶために重要かもしれない。
 同時に，将来の報酬が過度に重み付けされている場合，他の課題は学習に時間がかかり，不安定になる可能性がある。
 このトレードオフは，一般的に強化学習では割引率によって制御され，割引率が高いほど長い時間軸からの学習が可能になる。
+
+<!-- Specifically, intrinsic motivation methods have two shortcomings:-->
+<!-- * Exploration: Many games are amenable to policies that are purely exploitative, particularly after a game has been fully explored. This implies that much of the experience produced by exploratory policies in Never Give Up will eventually become wasteful after the agent explores all relevant states.
+* Time horizon: Some tasks will require long time horizons (e.g. Skiing, Solaris), where valuing rewards that will be earned in the far future might be important for eventually learning a good exploitative policy, or even to learn a good policy at all. At the same time, other tasks may be slow and unstable to learn if future rewards are overly weighted. This trade-off is commonly controlled by the discount factor in reinforcement learning, where a higher discount factor enables learning from longer time horizons. -->
+
 
 このことから，可変長の時間水平線と新規性の重要性を考慮して，異なる方策で生成される経験の量を制御するオンライン適応メカニズムを使用した。
 研究者たちは，異なるハイパーパラメータを持つエージェントの集団を訓練する，勾配降下法によってハイパーパラメータの値を直接学習する，ハイパーパラメータの値を学習するために中央集権型バンディットを使用するなど，複数の方法でこれに取り組むことを試みてきた。
@@ -1142,300 +1148,143 @@ Agent57 は計算量の増加に伴ってスケーリングすることができ
 そのためには Agent57 が探索，計画，および信用割り当てのために使用する表現を強化することが，使用するための重要な改善点になるかもしれない。 -->
 
 
-
-
-
-### NIC (Neural Caption Generation)
-
-<center>
-<img src="/assets//17VISIOn-slide-WBE2-jumbo.jpg" width="49%"><br/>
-- 人間: A group of men playing Frisbee in the park.
-- 機械: A group of young people playing a game of Frisbee.
-</center>
-
-<img src="/assets/2014Vinyals_Fig5_left.jpg" width="44%">
-<img src="/assets/2014Vinyals_Fig5_right.jpg" width="44%"><br/>
-Vinyals et. al (2014) より
-
-# Transformer, [Attention is all you need](https://arxiv.org/abs/1706.03762)
-
-単語の多義性解消のために，あるいは単語のベクトル表現を超えて，より大きな意味単位である，句，節，文のベクトル表現を得る努力がなされてきた。
-適切な普遍文表現ベクトルを得ることができれば，翻訳を含む多くの下流課題にとって有効だと考えられる。
-
-そこで，注意機構を積極的に取り込んだゲームチェンジャーが Transformer である。
-
-
-* 注意を用いて，RNN を置き換える [Devlin+2017,Attention Is All You Need](https://arxiv.org/abs/1706.03762)
-* Transformer の注意とは，このソフトマックス関数である。
-* 専門用語としては，**多頭=自己注意** Multi-Head Self-Attention (以下 MHSA と表記)と呼ぶ。
-* **自己** がつく注意である理由は，トップダウン信号がないためであろう。
-* 上図，クエリ，キー，バリュー ，意味としては，問い合わせ，キー（鍵），値，であるが，とりわけ，Q と K との間に明確な相違はない。
-* ある問い合わせ Q に対して，キー K を与えて，その答え A となる値を得ることに相当する。
-* この操作を入力情報から作り出して答えを出力する仕組みに，ワンホット表現を使う。
-
-<!-- 下図左は上図右と同じものです。この下図右を複数個束ねると下図中央になります。 -->
-
-- 図中央の Scaled Dot-Product Attention と書かれた右脇に小さく h と書かれている。この h とは ヘッド の意味。
-- 図中央を 1 つの単位として，次に来る情報と連結させる。図右。
-- リカレントニューラルネットワークでは，中間層の状態が次の時刻の処理に継続して用いられていた。
-- ところが 多頭=自己注意 MHSA では一つ前の入力情報を，現在の時刻の情報に対するクエリとキーのように扱って情報を処理する。
-- 図右の下から入力される情報は，input と output と書かれている。
-さらに output の下には (Shifted right) と書かれています。
-すなわち，時系列情報を一時刻分だけ右にずらし（シフト）させて逐次情報を処理することを意味している。
-- 図右の下から入力される情報は，embedding つまり埋め込み表現 と 位置符号化 position embedding が足し合わされたもの。
-埋め込み表現とは先週 word2vec で触れたベクトルで表現された，単語（あるいはそれぞれの項目）の 意味表現 に対応。
-
-<div class="pagebreak"></div>
-
-#### Transformer の概略図
+# 世界モデル
 
 <div class="figcenter">
-<img src="/2023assets/2017Vaswani_Fig2_1ja.svg" width="15%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img src="/2023assets/2017Vaswani_Fig2_2ja.svg" width="25%">&nbsp;&nbsp;&nbsp;
-<img src="/assets/2017Vaswani_Fig1.svg" width="25%">
+<img src="/2024assets/1990Schmithuber_Making_in_World_fig1.jpg" style="width:33%;">
+<img src="/2024assets/1990Schmithuber_Making_in_World_fig2ja.svg" style="width:39%;">
+</div>
 <div class="figcaption">
 
-Transformer [2017Vaswani++](https://arxiv.org/abs/1706.03762) Fig.2 を改変。
-`matmul` は行列の積，`scale` は，平均 0 分散 1 への標準化，`mask` は 0 と 1 とで，データを制限すること，`softmax` はソフトマックス関数
-</div></div>
-Transformer における注意 = ソフトマックス関数。<br/>
-
-<div class="pagebreak"></div>
-
-### Transformer における位置符号化器 (PE: position encoders)
-
-$$
-\text{PE}_{(\text{pos},2i)} = \sin\left(\frac{\text{pos}}{10000^{\frac{2i}{d_{\mathop{model}}}}}\right)
-$$
-
-$$
-\mathop{PE}_{(\mathop{pos},2i+1)} = \cos\left(\frac{\mathop{pos}}{10000^{\frac{2i}{d_{\mathop{model}}}}}\right)
-$$
-
-<div class="figcenter">
-<img src="/2024assets/2023_0723PE_Transformer_curves.png" width="77%">
-<div class="figcaption" style="width:55%">
-
-Transformer の位置符号化器の出力。
-Transformer は位置情報を持たないので，位置情報を周波数変換して用いる。
-</div></div>
-
-<div class="pagebreak"></div>
-
-### 事前訓練
-
-#### マスク化言語モデル
-
-<div class="figcenter">
-<img src="/2024assets/2019Lample_Fig1.svg" width="55%">
+Schmithuber1990 **Making in World Differentiable: On Using Self-Supervised Fully Recurrent Neural Networks for Dynamic Reinforcement Learning and Planning in Non-Stationary Environments**, Fig. 1 and 2.
 </div>
 
-#### 次文予測課題
-
-言語モデルの欠点を補完する目的，次の文を予測
-
-[SEP] トークンで区切られた 2 文入力
-
-- 入力: the man went to the store [SEP] he bought a gallon of milk.
-- ラベル:  IsNext
-- 入力:  the man went to the store [SEP] penguins are flightless birds.
-- ラベル:  NotNext
-
-#### ファインチューニング GLUE 課題 (General Language Understanding Evaluation)
-
-- **CoLA**: 入力文が英語として正しいか否かを判定
-- **SST-2**: スタンフォード大による映画レビューの極性判断
-- **MRPC**: マイクロソフトの言い換えコーパス。2 文 が等しいか否かを判定
-- **STS-B**: ニュースの見出し文の類似度を5段階で評定
-- **QQP**: 2 つの質問文の意味が等価かを判定
-- **MNLI**: 2 入力文が意味的に含意，矛盾，中立を判定
-- **QNLI**: 2 入力文が意味的に含意，矛盾，中立を判定
-- **RTE**: MNLI に似た2つの入力文の含意を判定
-- **WNI**: ウィノグラッド会話チャレンジ
-
-### ファインチューニング手続きによる性能比較
-
-マスク化言語モデルのマスク化割合は マスクトークン:ランダム置換:オリジナル=80:10:10 だけでなく，他の割合で訓練した場合の 2 種類下流課題，
-MNLI と NER で変化するかを下図 に示した。
-80:10:10 の性能が最も高いが大きな違いがあるわけではないようである。
-
 <div class="figcenter">
-<img src="/assets/2019Devlin_mask_method21.jpg" width="49%"><br/>
+<img src="/2024assets/world_model_schematic.svg" style="display: block; margin: auto; width: 49%;"/>
 </div>
 <div class="figcaption">
-マスク化言語モデルのマスク化割合の違いによる性能比較
+
+モデルのフロー図。
+観測データは，まず各時間ステップ $t$ で視覚処理器 $V$ によって処理され，潜在表現 $z_t$ が生成される。
+コントローラ $C$ への入力はこの潜在ベクトル $z_t$ と各時間ステップでの，内部モデル M の隠れ状態 $h_t$ が結合されたもの。
+$C$ は次に，運動制御のための行動ベクトル $a_t$ を出力する。
+$M$ は現在の $z_t$ と行動 $a_t$ を入力として，自身の隠れ状態を更新し，時間 $t+1$ で使用する $h_{t+1}$ を生成。
 </div>
 
-<div class="pagebreak"></div>
 
-#### モデルサイズ比較
+## 世界モデル カーレース
 
 <div class="figcenter">
-<img src="/assets/2019Devlin_model_size20.jpg" width="59%"><br/>
+<video src="/2024assets/mp4/carracing_z_only.mp4" type="video/mp4" autoplay muted playsinline loop style="margin:auto; width:44%;" ></video>
+<video src="/2024assets/mp4/carracing_z_and_h.mp4" type="video/mp4" autoplay muted playsinline loop style="margin:auto; width:44%;" ></video>
 </div>
 <div class="figcaption">
-モデルのパラメータ数による性能比較
+
+左: 外界入力の圧縮表現 $z_t$ のみを用いた場合。
+右: 外界入力の圧縮表現 $z-t$ と内部モデルの中間層表現 $h_t$ とを使った場合。
+左図では，ふらついた不安定な行動となる
+<!-- Limiting our controller to see only $z_t$, but not $h_t$ results in wobbly and unstable driving behaviors. -->
 </div>
 
-パラメータ数を増加させて大きなモデルにすれば精度向上が期待できる。
-下図では，横軸にパラメータ数で MNLI は青と MRPC は赤 で描かれている。
-パラメータ数増加に伴い精度向上が認められる。
-図に描かれた範囲では精度が天井に達している訳ではない。
-パラメータ数が増加すれば精度は向上していると認められる。
+<!--<div class="figcenter">
+<video src="/2024assets/mp4/carracing_vae_compare.mp4" type="video/mp4" autoplay muted playsinline loop style="margin:auto; width:44%;" ></video>
+</div>
 
-#### モデル単方向，双方向モデル比較
+外部入力を，実入力にせずとも，実行可能。<font style="color:teal;font-weight:900">イメージトレーニングに相当</font> -->
+
+<!-- <video src="/2024assets/mp4/sketch_rnn_insect.mp4" type="video/mp4" autoplay muted playsinline loop style="margin:auto; width:44%;" ></video> -->
+<!-- <video src="/2024assets/mp4/pendulum01.mp4" type="video/mp4" autoplay muted playsinline loop style="margin:auto; width:44%;" ></video>
+<video src="/2024assets/mp4/pendulum20.mp4" type="video/mp4" autoplay muted playsinline loop style="margin:auto; width:44%;" ></video> -->
+<!-- <video src="/2024assets/mp4/carracing_mistake_short.mp4" type="video/mp4" autoplay muted playsinline loop style="width:33%;" ></video> -->
+<!-- <video src="/2024assets/mp4/carracing_mistake_short.mp4" type="video/mp4" autoplay muted playsinline loop style="display: block; margin: auto; width:33%;" ></video>
+
+<!--* [先週までの実習ファイル <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2023notebooks/2023_1222stable_baselines3_demo_LunaLander_V2_etc.ipynb){:target="_blank"}
+* [Q 学習 チュートリアル <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/2022notebooks/2022_1209Q_learning_tutorial%2BRendering_OpenAi_Gym_in_Colaboratory.ipynb){:target="_blank"} -->
+
+<!--* [TD (時間差)学習, SARSA, 期待 SARSA, Q 学習 と Python 実装](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_1105Sarsa_Q_learning_expected_sarsa.ipynb){:target="_blank"}
+* アルファ碁, アルファ碁ゼロ, DQN, [Atari ゲーム (OpenAI Gym)](https://gym.openai.com/){:target="_blank"}
+* [エージェント57](https://deepmind.com/blog/article/Agent57-Outperforming-the-human-Atari-benchmark){:target="_blank"}
+* [ランダム探索 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_rl_ogawa_2_2_maze_random.ipynb){:target="_blank"}
+* [方策勾配法 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_rl_ogawa_2_3_policygradient.ipynb){:target="_blank"}
+- [SARSA <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_rl_ogawa_2_5_Sarsa.ipynb){:target="_blank"}
+- [Q学習 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/2019komazawa/blob/master/notebooks/2019komazawa_rl_ogawa_2_6_Qlearning.ipynb){:target="_blank"} -->
+
+<!--* [PyTorch チュートリアルによる DQN (2021_1105 現在未完成)](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_1105reinforcement_q_learning.ipynb) -->
+
+<!-- (file:///Users/asakawa/study/2020personal/2020-1030deepmind_agent57.md)-->
+<!-- 1. [A (Long) Peek into Reinforcement Learning](https://lilianweng.github.io/lil-log/2018/02/19/a-long-pee
+k-into-reinforcement-learning.html)
+1. [Policy Gradient Algorithms](https://lilianweng.github.io/lil-log/2018/04/08/policy-gradient-algorithms.htm
+l) -->
+
+
+<!-- * [Google Colab で OpenAI の Gym 環境を動かすための下準備](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_1106Remote_rendering_OpenAI_Gym_envs_on_Colab.ipynb) -->
+
+<!-- * [Annotated Transformers <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/2022notebooks/2022_1007Annotated_Transformer.ipynb)
+* [BERT head visualization <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/2022notebooks/2022_1007BERT_head_view.ipynb)
+- [日本語 BERT 2 つの文の距離を求める <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0624BERTja_test.ipynb) -->
+
+<!-- * [PyTorch チュートリアルによる DQN (2021_1105 現在未完成)](https://colab.research.google.com/github/koma
+zawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2021notebooks/2021_1105reinforcement_q_learnin
+g.ipynb) -->
+
+<!--# 第 25 回 精神医学(統合失調症, 強迫神経症, 依存症, 幻覚幻聴)
+, 神経心理学(意味痴呆, 相貌失認, 失語, 失行)-->
+
+### エージェントモデル<!-- ## Agent Model-->
+
+<!-- 我々は，我々自身の認知システムに触発された単純なモデルを提示する。 -->
+世界モデルでは，エージェントは見たものを小さな代表的なコードに圧縮する視覚的な感覚成分を持っている。
+また，過去の情報に基づいて将来のコードの予測を行う記憶成分も持っている。
+最後に，我々のエージェントは，視覚と記憶の成分によって作成された表現のみに基づいて，取るべき行動を決定する意思
+決定成分を持っている。
+<!--We present a simple model inspired by our own cognitive system.
+In this model, our agent has a visual sensory component that compresses what it sees into a small representati
+ve code.
+It also has a memory component that makes predictions about future codes based on historical information.
+Finally, our agent has a decision-making component that decides what actions to take based only on the represe
+ntations created by its vision and memory components. -->
+
+<img src="/2024assets/world_model_overview.svg" style="display: block; margin: auto; width: 720px;"/>
+
+我々のエージェントは，密接に連携する 3 つの成分で構成されている： 視覚(V)，記憶(M)，コントローラ(C) である。
+<!-- Our agent consists of three components that work closely together: Vision (V), Memory (M), and Controller  (C). -->
+
+###  VAE（V）モデル<!-- ### VAE (V) Model-->
+
+環境は，各時間ステップでエージェントに高次元の入力観測を与える。
+この入力は通常，動画系列の一部である 2D 画像フレームである。
+V モデルの役割は，観察された各入力フレームの抽象的で圧縮表現を学習することである。
+<!-- The environment provides our agent with a high dimensional input observation at each time step.
+This input is usually a 2D image frame that is part of a video sequence.
+The role of the V model is to learn an abstract, compressed representation of each observed input frame. -->
+
+<img src="/2024assets/vae.svg" style="display: block; margin: auto; width:49%;"/><br/>
+<div class="figcaption">
+変分自己符号化器の流れ図
+</div>
+
+
+### Rao(1990) の世界モデル
 
 <div class="figcenter">
-<img src="/assets/2019Devlin_directionality19.jpg" width="59%"><br/>
-</div>
+<img src="/2024assets/1999Rao_Fig1.jpg" style="width:39%;">
+<img src="/2024assets/1999Rao_fig2.jpg" style="width:44%;">
 <div class="figcaption">
-言語モデルの相違による性能比較
+
+左 図 1. 内部世界モデルと隠れ状態の最適推定問題。
+* (a): 環境の内部モデルに依存する生物が直面する一般的な問題の本質を伝えている(O'Reilly, 1996)。
+その根底にある目標は，感覚的な測定値 $\mathbf{I}$ だけが与えられた環境の隠れた内部状態を，各時間瞬間に最適に推定することである。
+* (b): 推定問題に対するカルマンフィルタに基づく解の例示。
+内部モデルは状態遷移行列 $\bar{\mathbf{V}}$ と生成行列 $\bar{\mathbf{U}}$ によって共同で符号化され，フィルタはこの内部モデルを用いて環境の現在の内部状態$\mathbf{r}$ の最適推定値 $\hat{\mathbf{r}}$ を計算する。
+
+<!-- Fig. 1. Internal world models and the problem of optimal estimation of hidden state.
+(a) conveys the essence of the general problem faced by an organism relying on an internal model of its environment (from O’Reilly, 1996).
+The underlying goal is to optimally estimate, at each time instant, the hidden internal state of the environment given only the sensory measurements mathbf{I}.
+(b) depicts a Kalman filter-based solution to the estimation problem.
+The internal model is encoded jointly by the state transition matrix bar{mathbf{V}} and the generative matrix bar{mathbf{U}}, and the filter uses this internal model to compute optimal estimates hat{mathbf{r}} of the current internal state mathbf{r} of the environment. -->
+
+右 図 2. カルマンフィルタの概念図<!--Fig. 2. Schematic diagram of the Kalman filter.-->
 </div>
-
-<!-- 言語モデルをマスク化言語モデルか次単語予測の従来型の言語モデルによるかの相違による性能比較を下図に示した。
-横軸には訓練ステップである。訓練が進むことでマスク化言語モデルとの差は 2 パーセントではあるが認められるようである。 -->
-
-## Transformer (SBERT) の文ベクトル
-
-先に紹介した word2vec は，単語ベクトルを得る手法であるが，Transformer は文ベクトルを扱う。
-そこで，文単位での類似性を検討した。
-下の画像に対して，5 つの脚注がある。
-
-<center>
-<img src="/assets/coco175469.jpg" width="55%"><br/>
-</center>
-
-1. 夕暮れのハーバーに汽船と複数の鳥が浮かんでいる
-2. 水面に浮かぶ4羽の水鳥と、その向こうに停泊している2隻の船
-3. 船着き場に2艘の船がとまっている
-4. 朝焼けの中待機場所にある旅客船とマガモ
-5. 停められた船の近くで水鳥が泳いでいる<br/>
-MS COCO データセットより: <http://farm5.staticflickr.com/4055/4704393899_a041476b4a_z.jpg>
-
-上図は，MS COCO 画像データと画像に対応する脚注からなるデータセットからの一例である。
-日本語文は，千葉工業大学 STAIRLABO が公開しているデータである。
-人間が見れば，写真と文章とは結びいていることが分かる。
-加えて，5 つの脚注も相互に似ていることが分かる。
-MS COCO データセットでは，一枚の写真に 5 つの脚注が紐付けられている。
-
-コンピュータにこれらの文章が似ていることを判断させようとすると，最近まで難しい仕事であった。
-本章で紹介する，文の意味ベクトルを用いると，これらの文章が相互に似ていると判断させることが可能である。
-下図は tSNE を用いて，日本語の文章の類似度を sentence BERT を用いて表現し，文章の類似度に従って地図を描いたものである。
-図では，同じ写真に紐付いている文章は同じ色で表現している。
-
-<center>
-<img src="/2024assets/2022_0915sbert_staircoco500.svg" style="width:77%">
-</center>
-
-<div class="pagebreak"></div>
-
-<!--# マルチタスク学習，転移学習
-
-- 学習したことがらを応用することは賢さの尺度であろう。
-
-たとえば，映画[カラテキッド](https://youtu.be/DsLk6hVBE6Y)(1984)では，ミヤギ先生はダニエルさんに車のワックスがけや床掃除を教えました :-) ワックスがけや床磨きは空手の技術習得にとって必要な技能であったというオチです。
-
-## 実習ファイル
-
-- [マルチタスク学習2 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0703four_in_one_network2.ipynb){target="_blank"}
-- [マルチタスク学習3 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0703four_in_one_network3.ipynb){target="_blank"}
-
-    1. 画像脚注付け<br>
-    ![](https://twitter.com/paraschopra/status/1096710728092995584/photo/1){target="_blank"}
-    2. 類義語<br>
-    ![](https://cdn-images-1.medium.com/max/1280/1*tWrGWKXwWMbuocw2nXBysA.png){target="_blank"}
-    3. 類義画像<br>
-    ![](https://cdn-images-1.medium.com/max/1280/1*NZSJiMUMQi9u07oA6vI9cA.png){target="_blank"}
-    4. 文章からの画像検索
-        - __犬__を検索<br>
-    ![犬](https://cdn-images-1.medium.com/max/1280/1*VmIgBrrr-3XwGGwoXwiQMg.png){target="_blank"}<br>
-        - __笑顔の少年__ を検索<br>
-    ![笑顔の少年](https://cdn-images-1.medium.com/max/1280/1*4Km1YpfFbwhRF8Obu54EaA.png){target="_blank"}<br>
-
----
-
-- [マーガレット ミッチェルによるソーシャルメディアを用いたメンタルヘルスのマルチタスク学習](http://m-mitchell.com/publications/multitask-blurb.html){target="_blank"}
-    - [arXiv 論文](https://arxiv.org/abs/1712.03538){target="_blank"}
-- [One neural network, many uses](https://towardsdatascience.com/one-neural-network-many-uses-image-captioning-image-search-similar-image-and-words-in-one-model-1e22080ce73d){target="_blank"}
-    - [ソースコード](https://github.com/paraschopra/one-network-many-uses){target="_blank"}
-    - [An Overview of Multi-Task Learning in Deep Neural Networks](http://ruder.io/multi-task/){target="_blank"}
-    - [上の arXiv](https://arxiv.org/abs/1706.05098){target="_blank"}
-
----
-
-### Hard parameter sharing
-
-<center>
-<img src="http://ruder.io/content/images/2017/05/mtl_images-001-2.png" style="width:44%">
-<img src="http://ruder.io/content/images/size/w2000/2019/03/transfer_learning_taxonomy-1.png" style="width:44%"><br>
-左:マルチタスク学習, 右:転移学習, いずれも Sebastuan Ruder のブログより<br>
-</center>
-
----
-
-### Soft parameter sharing
-
-In soft parameter sharing on the other hand, each task has its own model with its own parameters.
-The distance between the parameters of the model is then regularized in order to encourage the parameters to be similar. [8]
-for instance use the $l2$ norm for regularization, while [9] use the trace norm.
-
-- [8]: Duong, L., Cohn, T., Bird, S., & Cook, P. (2015). Low Resource Dependency Parsing: Cross-lingual Parameter Sharing in a Neural Network Parser. Proceedings of the 53rd Annual Meeting of the Association for Computational Linguistics and the 7th International Joint Conference on Natural Language Processing (Short Papers), 845–850.
-- [9]: Yang, Y., & Hospedales, T. M. (2017). Trace Norm Regularised Deep Multi-Task Learning. In Workshop track - ICLR 2017. Retrieved from http://arxiv.org/abs/1606.04038
-
-![](http://ruder.io/content/images/size/w2000/2017/05/mtl_images-002-2.png)
-
----
-
-# Recent work on MTL for Deep Learning
-
-### Deep Relationship Networks
-![](http://ruder.io/content/images/2017/05/relationship_networks.png)
-__A Deep Relationship Network with shared convolutional and task-specific fully connected layers with matrix priors (Long and Wang, 2015).__
-
-- Long, M., & Wang, J. (2015). Learning Multiple Tasks with Deep Relationship Networks. arXiv Preprint arXiv:1506.02117. Retrieved from http://arxiv.org/abs/1506.02117 ↩︎
-
----
-
-### Fully-Adaptive Feature Sharing
-![](http://ruder.io/content/images/2017/05/fully_adaptive_feature_sharing.png)<br>
-__The widening procedure for fully-adaptive feature sharing (Lu et al., 2016).__
-
-Lu, Y., Kumar, A., Zhai, S., Cheng, Y., Javidi, T., & Feris, R. (2016). Fully-adaptive Feature Sharing in Multi-Task Networks with Applications in Person Attribute Classification. Retrieved from http://arxiv.org/abs/1611.05377
-
----
-
-### Cross-stitch Networks
-![](http://ruder.io/content/images/2017/05/cross-stitch_networks.png)<br>
-__Cross-stitch networks for two tasks (Misra et al., 2016).__
-
-Misra, I., Shrivastava, A., Gupta, A., & Hebert, M. (2016). Cross-stitch Networks for Multi-task Learning. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. https://doi.org/10.1109/CVPR.2016.433
-
-
-<!--
-### Low supervision
-
-Søgaard, A., & Goldberg, Y. (2016). Deep multi-task learning with low level tasks supervised at lower layers. Proceedings of the 54th Annual Meeting of the Association for Computational Linguistics, 231–235.
-
----
-
-## A Joint Many-Task Model
-![](http://ruder.io/content/images/2017/05/joint_many_task_model.png)<br>
-__A Joint Many-Task Model (Hashimoto et al., 2016).__
-
----
-
-### Weighting losses with uncertainty
-![](http://ruder.io/content/images/2017/05/weighting_using_uncertainty.png)<br>
-__Uncertainty-based loss function weighting for multi-task learning (Kendall et al., 2017).__
-
-Kendall, A., Gal, Y., & Cipolla, R. (2017). Multi-Task Learning Using Uncertainty to Weigh Losses for Scene Geometry and Semantics. Retrieved from http://arxiv.org/abs/1705.07115
-
----
-
-### Sluice Networks
-![](http://ruder.io/content/images/2017/05/sluice_network-003.png)<br>
-__A sluice network for two tasks (Ruder et al., 2017).__
-
-Ruder, S., Bingel, J., Augenstein, I., & Søgaard, A. (2017). Sluice networks: Learning what to share between loosely related tasks. Retrieved from http://arxiv.org/abs/1705.08142
--->
+</div>
 
