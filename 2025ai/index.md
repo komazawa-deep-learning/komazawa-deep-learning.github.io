@@ -75,8 +75,7 @@ Appache 2.0 license<br/><br/>
 - [第26回 12月12日](2025ai_lect26){:target="_blank"}: 強化学習 (4) エージェント 57 の続き，短期記憶，内発的動機づけ，エピソード記憶
 - 12月19日 休講
 - [第27回 01月09日](2025ai_lect27){:target="_blank"}: 強化学習のまとめ，世界モデル，メタ学習，少事例学習，一撃学習
-- [第28回 01月16日 補講 12月19日分 Google Meet 1:00 – 2:30pm https://meet.google.com/zji-ebna-cvm](https://meet.google.com/zji-ebna-cvm){:target="_blank"}
-
+- [第28回 01月16日](2025ai_lect28){:target="_blank"}: 補講 [https://meet.google.com/zji-ebna-cvm](https://meet.google.com/zji-ebna-cvm){:target="_blank"}
 
 # 諸元
 
