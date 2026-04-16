@@ -8,7 +8,7 @@ layout: home
 <font size="+1" color="navy"><strong>計算モデルによる課題の理解：認知課題から神経心理学検査への適用</strong></font>
 </div>
 <div style="text-align:right">
-<img src="/2025assets/2025psyIIIa_exported_qrcode_image_600.png" style="width:19%"><br/>
+<img src="/2026assets/2026komazawa_psy3a_logo.png" style="width:19%"><br/>
 <font size="+3">URL: https://komazawa-deep-learning.github.io/2026psy3a/</font>
 </div>
 
@@ -277,7 +277,7 @@ Appache 2.0 license<br/><br/>
 <center>
 <p align="left" style="width:88%">
 
-浅川伸一 博士(文学) 東京女子大学情報処理センター勤務。早稲田大学在学時はピアジェの発生論敵認識論に心酔する。
+浅川伸一 博士(文学) 東京女子大学情報処理センター勤務。早稲田大学在学時はピアジェの発生論的認識論に心酔する。
 卒業後エルマンネットの考案者ジェフ・エルマンに師事，薫陶を受ける。
 以来人間の高次認知機能をシミュレートすることを通して知的であるとはどういうことかを考えていると思っていた。
 著書に「Python で体験する深層学習」(2016) コロナ社。
