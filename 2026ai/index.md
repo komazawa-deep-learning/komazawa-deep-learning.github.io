@@ -19,7 +19,8 @@ Date: 01/Apr./2026<br/>
 Appache 2.0 license<br/><br/>
 </div>
 
-WebClass での出席をお願いします。
+* WebClass での出席をお願いします。
+* 床に転がっている電源コードは自由にお使いください。
 
 
 ### 目次
