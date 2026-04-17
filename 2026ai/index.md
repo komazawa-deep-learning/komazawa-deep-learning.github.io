@@ -4,15 +4,14 @@ author: 浅川 伸一
 layout: home
 ---
 <link href="/css/asamarkdown.css" rel="stylesheet">
-<div align="center">
+<!-- <div align="center">
 <font size="+1" color="navy"><strong>人工知能</strong></font>
-</div>
+</div> -->
 <div style="text-align:right">
 <img src="/2026assets/2026komazawa_ai_logo.png" style="width:19%"><br/>
 <font size="+3">URL: https://komazawa-deep-learning.github.io/2026ai/</font>
 </div>
 
-# 2026 年度開講 人工知能 I および II 駒澤大学 **人工知能 (Artificial Intelligence)**
 
 <div align='right'>
 <a href='mailto:educ0233@komazawa-u.ac.jp'>Shin Aasakawa</a>, all rights reserved.<br>
@@ -20,8 +19,12 @@ Date: 01/Apr./2026<br/>
 Appache 2.0 license<br/><br/>
 </div>
 
+WebClass での出席をお願いします。
+
 
 ### 目次
+
+
 - [前期予定（人工知能 I）](#前期予定人工知能-i)
 - [後期予定（人工知能 II）](#後期予定人工知能-ii)
 - [授業概要](#授業概要)
