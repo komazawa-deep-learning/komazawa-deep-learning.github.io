@@ -118,7 +118,7 @@ H H S H H   ← 不一致条件（中央のみS）
 **条件間の差異**（Figure 1）
 
 <div class="figcenter">
-<img src="/2026assets/1974Eriksen_Fig1.png" alt="Figure 1" width="55%">
+<img src="/2026assets/1974Eriksen_fig1.png" alt="Figure 1" width="55%">
 </div>
 
 
