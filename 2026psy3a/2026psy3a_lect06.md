@@ -22,6 +22,208 @@ Appache 2.0 license<br/>
 
 
 
+## 前回の復習：Flanker 課題
+
+**第4回の発見**
+- 周辺の妨害刺激（Flanker）は課題に無関連でも処理される
+- ターゲットとの距離が小さいほど干渉が大きい
+- 注意のスポットライトには空間的な広がりがある
+
+**本日との関連**
+```
+Flanker 課題：注意の焦点の「外」への波及
+視覚探索課題：注意をどう配分して目標を見つけるか
+```
+
+→ いずれも**選択的注意**のメカニズムを問う課題
+
+---
+
+## 視覚探索課題（Visual Search Task）とは
+
+**基本的な設定**
+
+```
+多数の刺激（妨害刺激）の中に
+目標刺激（ターゲット）が含まれているかどうかを
+できるだけ速く正確に判断する
+```
+
+**日常生活の例**
+- 人込みの中から知人を探す
+- 冷蔵庫の中から特定の食品を探す
+- 本棚から特定の本を探す
+
+**2 つの反応**
+- **Target Present（目標あり）**：「あった」
+- **Target Absent（目標なし）**：「なかった」
+
+---
+
+## Treisman & Gelade (1980)
+
+**A Feature-Integration Theory of Attention**  
+*Cognitive Psychology, 12*, 97–136.
+
+**基本的な問い**
+
+> 視覚的な「注意」はどのように機能しているのか？  
+> なぜある探索は速く，ある探索は遅いのか？
+
+**2 種類の探索の発見**
+
+| 探索の種類 | 旧来の用語 | 別称 |
+|-----------|----------|------|
+| 単一特徴による探索 | Disjunction search | **Feature search** |
+| 複数特徴の結合による探索 | Conjunction search | — |
+
+---
+
+## Feature Search（Disjunction Search）
+
+**1 つの特徴次元でターゲットを識別できる探索**
+
+**特徴**
+- ターゲットが「飛び出して見える」（Pop-out）
+- 妨害刺激の数が増えても反応時間は変わらない
+- **Display size の影響を受けない**
+
+→ 注意を必要としない**前注意的処理**（pre-attentive）
+
+---
+
+## Conjunction Search
+
+**2 つ以上の特徴次元の結合でターゲットを識別する探索**
+
+**特徴**
+- ターゲットが「飛び出して見えない」
+- 妨害刺激の数が増えるほど反応時間が増加
+- **Display size の影響を強く受ける**
+
+→ 注意が必要な**系列的処理**（serial）
+
+---
+
+## 特徴統合理論（Feature Integration Theory）
+
+**Treisman & Gelade (1980) の主張**
+
+**Stage 1：前注意的処理（並列・自動）**
+
+```
+すべての刺激の個別の特徴（色・形・傾き）が
+同時に・自動的に処理される
+→ 「赤さ」「丸さ」は自由に浮かぶ特徴マップに登録
+```
+
+**Stage 2：注意的処理（系列・意識的）**
+```
+注意のスポットライトが1箇所ずつを照らし
+複数の特徴マップを「糊付け（binding）」して
+ターゲットかどうかを確認する
+```
+
+→ Conjunction search では Stage 2 が必要なため遅くなる
+
+---
+
+## Set Size 効果
+
+**Display size（表示項目数）と反応時間の関係**
+
+**Feature Search の場合**
+
+
+---
+
+## Treisman & Gelade (1980) Figure 1
+
+**Search for Colored Shapes**
+
+4 条件の Display size × RT の関係：
+
+| 条件 | 線の種類 |
+|------|---------|
+| Conjunction NEG（目標なし） | 実線・急峻 |
+| Conjunction POS（目標あり） | 実線・中程度 |
+| Feature NEG（目標なし） | 破線・緩やか |
+| Feature POS（目標あり） | 破線・ほぼ平坦 |
+
+
+---
+
+## 2:1 則（Target Present vs Absent）
+
+**Conjunction Search での重要な発見**
+
+**なぜ NEG の傾きが POS の約 2 倍になるのか？**
+
+**Target Present（POS）の場合**
+```
+系列探索でターゲットを「発見」したら止まる
+平均して全刺激の約半分を確認したところで発見
+→ slope = s × (n/2) / n = s/2
+```
+
+**Target Absent（NEG）の場合**
+```
+「なかった」と判断するには全刺激を確認する必要
+→ slope = s × n / n = s
+```
+
+$$\frac{\text{NEG slope}}{\text{POS slope}} \approx 2$$
+
+---
+
+## Feature Search では 2:1 則は成立しない
+
+**なぜか？**
+
+Feature search は**並列処理**
+- 全刺激を同時に処理する
+- 1 つずつ確認する必要がない
+- Target Present でも Absent でも処理時間は変わらない
+
+```
+NEG slope ≈ POS slope ≈ 0 ms/item
+```
+
+**まとめ**
+
+| 探索の種類 | 処理様式 | 2:1 則 |
+|-----------|---------|--------|
+| Feature search | 並列（前注意的） | 成立しない |
+| Conjunction search | 系列（注意的） | **成立する** |
+
+---
+
+<!-- 
+
+## 前注意的処理の特性
+**Feature search が並列・自動的である証拠**
+
+```
+○ ○ ○ ○ ○        ○ ○ ○ ○ ○ ○ ○ ○
+○ ● ○ ○ ○        ○ ○ ● ○ ○ ○ ○ ○
+○ ○ ○ ○ ○        ○ ○ ○ ○ ○ ○ ○ ○
+5 項目            8 項目
+```
+
+**どちらも同じくらいの速さで ● を見つけられる**
+
+→ 「赤さ」は前注意的に処理される特徴マップに登録
+→ 注意を向けなくても、ターゲットが「飛び出して見える」 -->
+
+**代表的な前注意的特徴**
+- 色（Color）
+- 形（Shape：○か×か）
+- 傾き（Orientation）
+- 輝度（Luminance）
+
+---
+
+
 <div class="figcenter">
 <img src="/2026assets/1980Treisman_fig1.svg" width="33%">
 <img src="/2026assets/1980Treisman_tab1.svg" width="60%">
@@ -53,3 +255,11 @@ Appache 2.0 license<br/>
 特徴ターゲットを用いた場合、結果は大きく異なった。正試行では、検索時間は妨害刺激の数にほとんど影響を受けず、傾きの平均はわずか 3.1 ミリ秒であった。直線性からの逸脱は有意であり、直線成分はディスプレイサイズによる分散の 68% しか説明しなかった。負試行の場合、直線成分はディスプレイサイズによる分散の 96% を説明し、直線性からの逸脱は有意水準に達しなかった。しかし、その傾きは結合否定刺激の場合の半分以下であった。特徴ターゲットを用いた場合の肯定刺激と否定刺激の傾きの比率はわずか 0.12 であった。いずれの条件においても、被験者全員で同様の結果パターンが示され、個人間の差異は主に傾きの絶対値と切片の値に見られた。
 <!--With the feature targets, the results were very different. For the positive displays, search times were hardly affected by the number of distractors, the slopes averaging only 3.1 msec. Deviations from linearity were significant, and the linear component accounted for only 68% of the variance due to display size. For the negatives, the linear component accounted for 96% of the variance due to display size, and departures from linearity did not reach significance. The slope was, however, less than half the slope for conjunction negatives. The ratio of positive to negative slopes with feature targets was only 0. 1 2 . In both conditions, all subjects showed the same pattern of results, with individuals varying mainly in the absolute values of slope s and intercepts. -->
 
+
+# 探索非対称性 search asymmetry
+
+<div class="figcenter">
+<img src="/2026assets/1985Treisman_fig9.png" width="77%">
+
+<img src="/2026assets/1985Treisman_fig1.png" width="44%"><img src="/2026assets/1985Treisman_fig2.png" width="44%">
+</div>
