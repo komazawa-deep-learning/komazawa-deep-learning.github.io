@@ -15,10 +15,21 @@ Date: 05/Jun/2026<br/>
 Appache 2.0 license<br/>
 </div>
 
+来週 ６ 月 １２ 日は休講。
+
+課題：以下の用語を最低一回は用いて，自分の考えを述べよ。（A4 用紙 1 枚程度）
+1. ロゴジェンモデル
+2. IAM （Interactive Activation Model）
+3. DRC（Dual Route Cascaded）モデル
+4. WAB（Western Aphasia Battery）
+5. 失読症（surface dyslexia, phonological dyslexia）
+6. DRC モデル
+7. Triangle モデル
+
 # 07440 心理学特講ⅢA - 第 08 回
 
 * [課題提出フォルダ](https://drive.google.com/drive/u/6/folders/1wYaBn4dovEwtlOfOhcAFP2bJdyDqM9ZL){:target="_blank"}
-* [実習コード <img src="/assets/colab_icon.svg">](){:target="_blank"}
+<!-- * [実習コード <img src="/assets/colab_icon.svg">](){:target="_blank"} -->
 
 <!-- https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2026notebooks/2026psy3a_lect07_iam_dell_model.ipynb){:target="_blank"}
  -->
