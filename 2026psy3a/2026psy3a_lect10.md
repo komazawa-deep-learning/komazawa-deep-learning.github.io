@@ -119,7 +119,6 @@ Note. The pictures are from Bildgeschichten [Picture stories] (pp. I , 22) by F.
 * 累積意味，意味ブロック，意味妨害効果 A. Roelofs+ (2018) __A unified computational account of cumulative semantic, semantic blocking, and semantic distractor effects in picture naming__. https://doi.org/10.1016/j.cognition.2017.12.007
 
 
-
 ## ブロードマン (Brodman) の脳地図
 
 1910 年の論文に掲載された図。左図が，左脳を外側から眺めた図，右図は右脳を内側から眺めた図である。
