@@ -161,3 +161,49 @@ SLF 第 2 枝は、いくつかの興味深い側性化した行動的相関と�
 <div style="width:77%;text-align:center; background-color:cornsilk">
 </div></div>
 
+
+#### BIT 注意検査の線分二等分線課題のシミュレーション
+
+<div class="figcenter">
+<img src="/2026assets/2024_1109line_bisection_grandtruth.png" style="width:30%">
+<img src="/2026assets/2024_1109line_bisection_prediction.png" style="width:30%">
+<img src="/2026assets/2024_1109line_bisection_output.png" style="width:30%">
+</div>
+
+
+<div class="figcenter">
+<img src="/2026assets/2023_0721bit_line_bisection_demo0.svg" width="42%">
+<img src="/2026assets/2023_0721bit_line_bisection_demo1.svg" width="42%">
+<div class="figcaption">
+浅川・武藤 (準備中) より
+</div></div>
+
+
+#### 文字抹消課題
+
+<div class="figcenter">
+<img src="/2026assets/2024_1109letter_cancellation_grandtruth2.png" style="width:30%">
+<img src="/2026assets/2024_1109letter_cancellation_prediction2.png" style="width:30%">
+</div>
+
+
+<div class="figcenter">
+<img src="/2026assets/2024_1109line_cancellation_demo.png" style="width:30%">
+<img src="/2026assets/2024_1109letter_cancellation_demo.png" style="width:30%">
+</div>
+
+
+
+# 考察とまとめ
+
+一般画像認識モデルに対して，神経心理学検査における下位課題ごとに転移学習を行うことで，任意の課題を
+解く健常モデルを作成し，
+この健常モデルに対して，半側空間無視症例データを用いて，症状を模す症例モデルを提案した。
+本研究に示す方法を用いることで，一般画像認識と，神経心理課題に特化した課題を解くモデルが作成できる
+。
+更に，症例ごとに微調整を行うことで，症状を記述するモデルを作成することが可能となった。
+
+本研究で示した方法に従うことにより，画像認識モデルと人間の知覚あるいは認知課題との関係を考察するこ
+とが可能となる。
+このことは，臨床応用事例としても興味深く，今後，方法論の精緻化を進めることで，医療応用への発展が期
+待できる。
