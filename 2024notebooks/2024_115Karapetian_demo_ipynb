@@ -1,0 +1,859 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2024notebooks/2024_115Karapetian_demo_ipynb\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "smqScWvOFSmf"
+      },
+      "source": [
+        "Karapetian+ (2023), Empirically Identifying and Computationally Modeling the Brain–Behavior Relationship for Human Scene Categorization, Journal of Cognitive Neuroscience 35:11, pp. 1879–1897, doi:10.1162/jocn_a_02043\n",
+        "\n",
+        "データは，https://osf.io/4fdky/ より入手して，駒澤 Gdrive で共有"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from google.colab import drive\n",
+        "drive.mount('/content/drive')\n"
+      ],
+      "metadata": {
+        "id": "dXWdtWctsxyj"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "Gh4muqj62K43"
+      },
+      "outputs": [],
+      "source": [
+        "import torch\n",
+        "device = 'cuda' if torch.cuda.is_available() else 'mps' if torch.backends.mps.is_available() else 'cpu'\n",
+        "print(f'device:{device}')\n",
+        "\n",
+        "import os\n",
+        "import numpy as np\n",
+        "import sys\n",
+        "import zipfile\n",
+        "import glob\n",
+        "\n",
+        "import IPython\n",
+        "isColab = 'google.colab' in str(IPython.get_ipython())\n",
+        "\n",
+        "if isColab:\n",
+        "    from google.colab import drive\n",
+        "    drive.mount('/content/drive')\n",
+        "\n",
+        "    basedir = '/content/drive/Shareddrives/2023Karapetian_data'\n",
+        "    fnames = list(sorted(glob.glob(os.path.join(basedir,'Stimuli/*.jpg'))))\n",
+        "else:\n",
+        "    HOME = os.environ['HOME']\n",
+        "    basedir = os.path.join(HOME, 'study/2024Agnessa14_Perceptual-decision-making.git/Stimuli')\n",
+        "    fnames = list(sorted(glob.glob(os.path.join(basedir,'*.jpg'))))\n",
+        "\n",
+        "import matplotlib.pyplot as plt\n",
+        "import PIL\n",
+        "\n",
+        "try:\n",
+        "    import japanize_matplotlib\n",
+        "except ImportError:\n",
+        "    !pip install japanize_matplotlib\n",
+        "    import japanize_matplotlib"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "VAxNlbbLLAsl"
+      },
+      "source": [
+        "# 刺激画像の表示"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# 刺激画像の表示\n",
+        "nrows, ncols = 6, 10\n",
+        "fig, ax = plt.subplots(nrows=nrows, ncols=ncols, figsize=(12,9))\n",
+        "#fig, ax = plt.subplots(nrows=nrows, ncols=ncols, figsize=(14,10))\n",
+        "\n",
+        "i=0\n",
+        "for row in range(nrows):\n",
+        "    for col in range(ncols):\n",
+        "        img = PIL.Image.open(os.path.join(basedir, 'Stimuli/'+str(i+1)+'.jpg')).convert('RGB')\n",
+        "        ax[row][col].imshow(img)\n",
+        "        ax[row][col].axis('off')\n",
+        "        ax[row][col].set_title(f'{i+1}')\n",
+        "        i += 1\n",
+        "\n",
+        "# 1-10: アパート\n",
+        "#11-20: ベッド\n",
+        "#21-30: 高速道路\n",
+        "#31-40: 海岸\n",
+        "#41-50: 峡谷\n",
+        "#51-60: 森林\n",
+        "# 1-30 は，人工物情景であり，31-60 は，自然情景"
+      ],
+      "metadata": {
+        "id": "8ux8stsvpRxu"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "_uAoDVgMLAsl"
+      },
+      "source": [
+        "# 画像を相関係数行列として可視化\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "K8K4meZP44Qu"
+      },
+      "outputs": [],
+      "source": [
+        "# 画像を相関係数行列として可視化\n",
+        "import seaborn\n",
+        "Imgs = []\n",
+        "for i in range(1,61):\n",
+        "    img = PIL.Image.open(os.path.join(basedir, 'Stimuli/'+str(i)+'.jpg'))\n",
+        "    x = np.array(img)\n",
+        "    Imgs.append(x.reshape(-1))\n",
+        "\n",
+        "R_img = np.corrcoef(np.array(Imgs))\n",
+        "cmap = 'seismic'\n",
+        "cmap = 'rainbow'\n",
+        "ax = plt.axes()\n",
+        "seaborn.heatmap(R_img, ax=ax, cmap=cmap)\n",
+        "ax.set_title('生データ')\n",
+        "plt.show()"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "kQP6eexdLAsl"
+      },
+      "source": [
+        "# 深層学習モデルの出力を相関係数行列として可視化\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "5Tg9kX5981Af"
+      },
+      "outputs": [],
+      "source": [
+        "# 深層学習モデルの出力を相関係数行列として可視化\n",
+        "import torchvision.models as models\n",
+        "from torchvision import transforms\n",
+        "\n",
+        "Img_transform = transforms.Compose([\n",
+        "    transforms.ToTensor(),\n",
+        "    transforms.Resize(224),\n",
+        "    transforms.Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225))])\n",
+        "\n",
+        "model = models.resnet18(weights=\"DEFAULT\") # .double()\n",
+        "\n",
+        "model.eval()\n",
+        "outputs = []\n",
+        "for i in range(1,61):\n",
+        "    img = PIL.Image.open(os.path.join(basedir, 'Stimuli', str(i)+'.jpg')).convert('RGB')\n",
+        "    _img = Img_transform(img)\n",
+        "    out = model(_img.unsqueeze(0))\n",
+        "    outputs.append(out.detach().numpy()[0])\n",
+        "\n",
+        "R_out = np.corrcoef(np.array(outputs))\n",
+        "\n",
+        "ax = plt.axes()\n",
+        "seaborn.heatmap(R_out, ax=ax, cmap=cmap)\n",
+        "ax.set_title('ResNet 出力')\n",
+        "plt.show()"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "ort7ZYc6LAsl"
+      },
+      "source": [
+        "# 深層モデルの詳細"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "LTjeXyS_EIxz"
+      },
+      "outputs": [],
+      "source": [
+        "# print(model.eval())\n",
+        "# print(f'model.layer4:{model.layer4}')\n",
+        "# print(f'model.avgpool:{model.avgpool}')\n",
+        "# print(f'model.fc:{model.fc}')"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## 深層モデルの各層ごとに特徴を取り出す準備"
+      ],
+      "metadata": {
+        "id": "yiy-4k7_Q79L"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "FUTRlAAe_FeF"
+      },
+      "outputs": [],
+      "source": [
+        "model = models.resnet18(weights=\"DEFAULT\") # .double()\n",
+        "model = models.resnet50(weights=\"DEFAULT\") # .double()\n",
+        "\n",
+        "_avgpool = torch.nn.AdaptiveAvgPool2d((1, 1))\n",
+        "l1_data = []\n",
+        "def get_layer1_output(module, input, output):\n",
+        "    tmp = _avgpool(output.data)\n",
+        "    tmp = tmp.detach().cpu().numpy()\n",
+        "    l1_data.append(tmp.reshape(-1))\n",
+        "\n",
+        "l2_data = []\n",
+        "def get_layer2_output(module, input, output):\n",
+        "    tmp = _avgpool(output.data)\n",
+        "    tmp = tmp.detach().cpu().numpy()\n",
+        "    l2_data.append(tmp.reshape(-1))\n",
+        "\n",
+        "l4_data = []\n",
+        "def get_layer4_output(module, input, output):\n",
+        "    tmp = _avgpool(output.data)\n",
+        "    tmp = tmp.detach().cpu().numpy()\n",
+        "    l4_data.append(tmp.reshape(-1))\n",
+        "\n",
+        "l3_data = []\n",
+        "def get_layer3_output(module, input, output):\n",
+        "    tmp = _avgpool(output.data)\n",
+        "    tmp = tmp.detach().cpu().numpy()\n",
+        "    l3_data.append(tmp.reshape(-1))\n",
+        "\n",
+        "\n",
+        "fc_data = []\n",
+        "def get_fc_output(module, input, output):\n",
+        "    fc_data.append(output.data.detach().cpu().numpy()[0])\n",
+        "\n",
+        "#features = ['layer4', 'fc']\n",
+        "model.fc.register_forward_hook(get_fc_output)\n",
+        "model.layer1.register_forward_hook(get_layer1_output)\n",
+        "model.layer2.register_forward_hook(get_layer2_output)\n",
+        "model.layer3.register_forward_hook(get_layer3_output)\n",
+        "model.layer4.register_forward_hook(get_layer4_output)\n",
+        "\n",
+        "model.eval()\n",
+        "outputs = []\n",
+        "for i in range(1,61):\n",
+        "    img = PIL.Image.open(os.path.join(basedir, 'Stimuli', str(i)+'.jpg')).convert('RGB')\n",
+        "    _img = Img_transform(img)\n",
+        "    out = model(_img.unsqueeze(0))\n",
+        "    outputs.append(out.detach().numpy()[0])\n",
+        "\n",
+        "\n",
+        "print(len(fc_data), np.array(fc_data).shape)\n",
+        "R_L1 = np.corrcoef(np.array(l1_data))\n",
+        "R_L2 = np.corrcoef(np.array(l2_data))\n",
+        "R_L3 = np.corrcoef(np.array(l3_data))\n",
+        "R_L4 = np.corrcoef(np.array(l4_data))\n",
+        "R_fc = np.corrcoef(np.array(fc_data))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## 各層ごとの刺激画像間の相関係数行列 (RDM)"
+      ],
+      "metadata": {
+        "id": "ShqJjmaBRC2W"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "g6q4ToyMkI_5"
+      },
+      "outputs": [],
+      "source": [
+        "fig, axes = plt.subplots(2, 3, figsize=(15, 8))\n",
+        "i, row, col = 0, 0, 0\n",
+        "for _title, _R in [('生画像', R_img), ('第一層', R_L1), ('第二層', R_L2),\n",
+        "                   ('第三層', R_L3), ('第四層', R_L4), ('全結合層', R_fc)]:\n",
+        "    seaborn.heatmap(_R, cmap=cmap, ax=axes[row][col])\n",
+        "    axes[row][col].set_title(_title)\n",
+        "\n",
+        "    col += 1\n",
+        "    if col > 2:\n",
+        "        col = 0\n",
+        "        row += 1\n",
+        "\n",
+        "plt.show()"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## 機械学習による判別"
+      ],
+      "metadata": {
+        "id": "T_xikBhiRSbU"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "x7LbukPpLAsm"
+      },
+      "outputs": [],
+      "source": [
+        "import numpy as np\n",
+        "#from sklearn.pipeline import make_pipeline\n",
+        "#from sklearn.preprocessing import StandardScaler\n",
+        "\n",
+        "from sklearn.svm import SVC\n",
+        "from sklearn.linear_model import LogisticRegression as LogReg\n",
+        "from sklearn.cluster import KMeans\n",
+        "from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA\n",
+        "from sklearn.model_selection import train_test_split\n",
+        "from sklearn.decomposition import PCA\n",
+        "from sklearn.manifold import TSNE\n",
+        "\n",
+        "# 教師信号の作成\n",
+        "Tch = np.array([1 for i in range(30)] + [0 for i in range(30)])\n",
+        "models = [KMeans(), LDA(), SVC(), LogReg()]\n",
+        "for model in models:\n",
+        "    print(model.__doc__.split('\\n')[:2])\n",
+        "    for D in [Imgs, l1_data, l2_data, l3_data, l4_data]:\n",
+        "        _X, _y = np.array(D), Tch\n",
+        "        _X, _test, _y, _test_y = train_test_split(_X, Tch, test_size=0.2)\n",
+        "        model.fit(_X, _y)\n",
+        "        print(f'予測:{model.predict(_test)}',\n",
+        "              f'正解:{_test_y}')"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# 各層ごとに刺激画像の関係を視覚化 PCA"
+      ],
+      "metadata": {
+        "id": "CkEWg-XcRXfH"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "99-bKjFbLAsm"
+      },
+      "outputs": [],
+      "source": [
+        "fig, axes = plt.subplots(2, 3, figsize=(15, 10))\n",
+        "colors = ['r','g', 'b', 'c', 'm', 'y']\n",
+        "fontsize=12\n",
+        "i, row, col = 0, 0, 0\n",
+        "for _title, D in [('生画像', Imgs), ('第一層', l1_data), ('第二層', l2_data),\n",
+        "                   ('第三層', l3_data), ('第四層', l4_data), ('全結合層', fc_data)]:\n",
+        "    pca = PCA(n_components=2)\n",
+        "    A = pca.fit(np.array(D))\n",
+        "    A2 = pca.transform(D)\n",
+        "    for idx, z in enumerate(A2):\n",
+        "        color = colors[int(idx / 10)]\n",
+        "        axes[row][col].scatter(z[0], z[1], c=color)\n",
+        "        axes[row][col].annotate(str(idx+1), (z[0], z[1]), ha='center', fontsize=fontsize, c=color)\n",
+        "    axes[row][col].set_title(_title)\n",
+        "\n",
+        "    col += 1\n",
+        "    if col > 2:\n",
+        "        col = 0\n",
+        "        row += 1\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# 各層ごとに刺激画像の関係を視覚化 tSNE"
+      ],
+      "metadata": {
+        "id": "_Ko-SeRyRfUO"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "0DOlD5z-LAsm"
+      },
+      "outputs": [],
+      "source": [
+        "fig, axes = plt.subplots(2, 3, figsize=(15, 10))\n",
+        "colors = ['r','g', 'b', 'c', 'm', 'y']\n",
+        "fontsize=12\n",
+        "row, col = 0, 0\n",
+        "for _title, D in [('生画像', Imgs), ('第一層', l1_data), ('第二層', l2_data),\n",
+        "                   ('第三層', l3_data), ('第四層', l4_data), ('全結合層', fc_data)]:\n",
+        "\n",
+        "    A2 = TSNE().fit_transform(np.array(D))\n",
+        "    for idx, z in enumerate(A2):\n",
+        "        color = colors[int(idx / 10)]\n",
+        "        axes[row][col].scatter(z[0], z[1], c=color)\n",
+        "        axes[row][col].annotate(str(idx+1), (z[0], z[1]), ha='center', fontsize=fontsize, c=color)\n",
+        "    axes[row][col].set_title(_title)\n",
+        "    col += 1\n",
+        "    if col > 2:\n",
+        "        col = 0\n",
+        "        row += 1\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# [Karapetian+2023 Github readme.txt](https://github.com/Agnessa14/Perceptual-decision-making/blob/master/README.md)\n",
+        "\n",
+        "## readme.txt\n",
+        "\n",
+        "この ReadMe は Empirically identifying and computationally modelling the brain-behaviour relationship for human scene categorization プロジェクトの OSF リポジトリの ReadMe である。\n",
+        "原稿で使用されたヒト (N=30) とモデルのデータが含まれている。\n",
+        "<!-- This is a ReadMe for the OSF repository to the project \"Empirically identifying and computationally modelling the brain-behaviour relationship for human scene categorization\" containing human (N=30) and model data used in the manuscript. -->\n",
+        "\n",
+        "### 一般情報<!-- %%% General information %%%-->\n",
+        "\n",
+        "注意散漫課題のデータは、後に用語が変更されたため fixation という名前で保存されている。\n",
+        "被験者の名前は，元の記録ファイルとの整合性を保つため，記録された名前 (5:26, 28:35) に従っている。\n",
+        "アップロードされたのは前処理済みのデータのみである。\n",
+        "生データにアクセスするには，遠慮なく agnessakarapetian@gmail.com まで。\n",
+        "<!--The data for the distraction task is saved under the name \"fixation\" due to a later change in terminology.\n",
+        "The subjects are named according to the names under which they were recorded (5:26, 28:35) to remain consistent with the original recording files.\n",
+        "Only preprocessed data were uploaded; to get access to raw data, don't hesitate to contact agnessakarapetian@gmail.com.   -->\n",
+        "\n",
+        "### 前処理済 EEG データ<!-- %%% Preprocessed EEG data %%%--->\n",
+        "\n",
+        "EEG データは，Fieldtrip の関数を用いて Matlab 2021a で前処理した。\n",
+        "そのため，前処理されたデータは Matlab の構造体（`timelock_categorization.mat` または `timelock_fixation.mat`）ファイルとして保存され，`timelock.trial` には各試行，電極 (計 63)，時点 (合計 200) の情報が含まれている。\n",
+        "刺激 ID は `timelock.trialinfo` の下にある。\n",
+        "前処理の詳細は原稿を参照。\n",
+        "<!--EEG data were preprocessed in Matlab 2021a using functions from Fieldtrip. The preprocessed data are therefore saved as a Matlab structure (timelock_categorization.mat or timelock_fixation.mat) file and timelock.trial contains information for each trial, electrode (total 63) and time point (total 200).\n",
+        "The stimulus IDs are under timelock.trialinfo. For preprocessing details, please refer to the manuscript.   -->\n",
+        "\n",
+        "### 前処理済行動データ<!-- %%% Preprocessed behavioural data %%% -->\n",
+        "\n",
+        "被験者レベルの反応時間と課題精度は，EEG データの前処理後の全試行について利用可能である。\n",
+        "各被験者の正しい試行の反応時間は，刺激セットと同じ順序で `Behaviour/All_subjects` にある。\n",
+        "完全な行動データファイルについては，問い合わせてほしい。\n",
+        "<!--Subject-level reaction times and task accuracy are available for all trials that remained after preprocessing the EEG data.\n",
+        "The reaction times for the correct trials for each subject are available in Behaviour/All_subjects, in the same order as in the stimulus set.  \n",
+        "For complete behavioural data files, please get in touch.  -->\n",
+        "\n",
+        "### モデル（RCNN）の行動データと重み<!-- %%% Model (RCNN) behavioural data and weights %%%-->\n",
+        "\n",
+        "RCNN フォルダには，論文で使用した微調整済 RCNN の重み係数行列がある。\n",
+        "これは，BLnet (Spoerer+2020) であり，econet データセット (Mehrer2017) を用いて訓練し，Places-365 データセット (Zhou+2018) をもちいて微調整した。\n",
+        "シーン分類課題に対するモデルの反応時間を利用可能にし、刺激セットと同じ順序に従う。\n",
+        "<!--The RCNN folder contains weights for the fine-tuned RCNN used in the paper, BLnet (Spoerer et al., 2020), initially trained on ecoset (Mehrer et al., 2017)\n",
+        "but fine-tuned on a subset of Places-365 (Zhou et al., 2018).\n",
+        "The reaction times of the model to the scene categorization task are made available and follow the same order as in the stimulus set.  -->\n",
+        "\n",
+        "### 刺激セット<!-- %%% Stimulus set %%%-->\n",
+        "\n",
+        "刺激セットは 60 の情景画像で構成され，前半は人工物の情景，後半は自然物情景の画像である。\n",
+        "これらは Places-365 (Zhou+2018) の検証セットから取られ，中央で切り取られ，480x480 にリサイズされた。\n",
+        "オリジナルの画像については、`http://places2.csail.mit.edu/download.html`\n",
+        "<!--The stimulus set consists of 60 scene images: the first half depicts man-made scenes and the second half natural. These were taken from the validation set of Places-365 (Zhou et al., 2018), center-cropped and resized to 480x480.\n",
+        "For original images, please refer to http://places2.csail.mit.edu/download.html.  -->\n",
+        "\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "zjNzb99BTXGn"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "#  反応時間データの読み込み"
+      ],
+      "metadata": {
+        "id": "5Y5X_kAJUS1l"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "vtn2bRqLLAsn"
+      },
+      "outputs": [],
+      "source": [
+        "import scipy\n",
+        "import scipy.io\n",
+        "\n",
+        "if isColab:\n",
+        "    basedir = \"/content/drive/Shareddrives/#2024認知心理学研究(1)b/浅川先生/2023Karapetian+OSF/Behaviour/All_subjects/RTs\"\n",
+        "else:\n",
+        "    basedir = os.path.join(HOME, 'study/2024Agnessa14_Perceptual-decision-making.git/Behaviour/All_subjects/RTs')\n",
+        "\n",
+        "fname = 'RT_all_subjects_5_35_categorization.mat'\n",
+        "RT_subs_cats = scipy.io.loadmat(os.path.join(basedir, fname))\n",
+        "print(f\"RT_subs_cats['RTs'].shape:{RT_subs_cats['RTs'].shape}\")\n",
+        "\n",
+        "R_cat_subs = np.corrcoef(RT_subs_cats['RTs'])\n",
+        "ax = plt.axes()\n",
+        "seaborn.heatmap(R_cat_subs, ax=ax, cmap=cmap)\n",
+        "ax.set_title('カテゴリ判断課題における被験者の反応時間にもとづく相関係数行列')\n",
+        "#ax.set_title('Categorization RT correlation matrix among subjects')\n",
+        "plt.show()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "R_cat_stims = np.corrcoef(RT_subs_cats['RTs'].T)\n",
+        "ax = plt.axes()\n",
+        "seaborn.heatmap(R_cat_stims, ax=ax, cmap=cmap)\n",
+        "ax.set_title('カテゴリ判断課題における被験者の反応時間にもとづく刺激間の相関係数行列')\n",
+        "#ax.set_title('Categorization RT correlation matrix among subjects')\n",
+        "plt.show()"
+      ],
+      "metadata": {
+        "id": "hjFZTxuHWLkz"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "fname = 'RT_all_subjects_5_35_fixation.mat'\n",
+        "RT_destract = scipy.io.loadmat(os.path.join(basedir, fname))\n",
+        "\n",
+        "R_destract = np.corrcoef(RT_destract['RTs'])\n",
+        "ax = plt.axes()\n",
+        "seaborn.heatmap(R_destract, ax=ax, cmap=cmap)\n",
+        "ax.set_title('固視＋字色判断課題における被験者の反応時間に基づく相関係数行列')\n",
+        "#ax.set_title('Fixation RT correlation matrix among images')\n",
+        "plt.show()"
+      ],
+      "metadata": {
+        "id": "vBzB0Dd3TyZx"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "#  EEG データの読み込み"
+      ],
+      "metadata": {
+        "id": "VKJZ9BJeXL7T"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "!wget https://komazawa-deep-learning.github.io/2024assets/ASP-64.png -O ASP-64.png\n",
+        "eeg_channels_img = PIL.Image.open('./ASP-64.png')\n",
+        "plt.figure(figsize=(10,10))\n",
+        "plt.axis(False)\n",
+        "plt.imshow(eeg_channels_img)"
+      ],
+      "metadata": {
+        "id": "d3USn3YGhg6C"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "if isColab:\n",
+        "    eeg_basedir = '/content/drive/Shareddrives/#2024認知心理学研究(1)b/浅川先生/2023Karapetian+OSF/EEG/Preprocessed'\n",
+        "else:\n",
+        "    eeg_basedir = os.path.join(HOME, 'study/2024Agnessa14_Perceptual-decision-making.git/EEG/Preprocessed')\n",
+        "\n",
+        "fname = 'sub35/timelock_categorization.mat'\n",
+        "s_cat = scipy.io.loadmat(os.path.join(eeg_basedir,fname))\n",
+        "print(f\"scat['timelock'].shape:{s_cat['timelock'].shape}\")   # (1,1)\n",
+        "print(f\"scat['timelock'][0].shape:{s_cat['timelock'][0].shape}\") # (1,)\n",
+        "print(f\"len(s_cat['timelock'][0][0]):{len(s_cat['timelock'][0][0])}\") # 7\n",
+        "# この 7 つのデータは，time, label, sampleinfo, trial, trialinfo, dimord, cfg らしい。\n",
+        "for i, x in enumerate(s_cat['timelock'][0][0]):\n",
+        "    print(i, x.shape)"
+      ],
+      "metadata": {
+        "id": "fbVRVzK1XK3n"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# `timelock` EEG data の読み込み\n",
+        "fnames = sorted(glob.glob(os.path.join(eeg_basedir,'sub*/timelock_categorization.mat')))\n",
+        "n_subs = len(fnames)\n",
+        "Data = {}\n",
+        "for fname in fnames:\n",
+        "    sub_idx = fname.replace(eeg_basedir, '').split('/')[1]\n",
+        "    s_cat = scipy.io.loadmat(fname)['timelock'][0][0]\n",
+        "    trials = s_cat[3]\n",
+        "    stim_ord = [x[0] for x in s_cat[4]]\n",
+        "    channels = [str(x[0][0]) for x in s_cat[1]]\n",
+        "    print(f'sub_idx:{sub_idx}',\n",
+        "          f'trials.shape:{trials.shape}',\n",
+        "          f'len(channels):{len(channels)}',\n",
+        "          f'len(stim_ord):{len(stim_ord)}', # trialinfo\n",
+        "         )\n",
+        "    Data[sub_idx] = {}\n",
+        "    Data[sub_idx]['trials'] = trials\n",
+        "    Data[sub_idx]['channels'] = channels\n",
+        "    Data[sub_idx]['stim_order'] = stim_ord\n",
+        "\n",
+        "print('# データは，被験者 X 試行 X EEG チャンネル X 時刻刻み という 4 次元超直方体になっている' )\n",
+        "print(f'list(Data.keys()):{list(Data.keys())}')"
+      ],
+      "metadata": {
+        "id": "EErzcFn4XUxo"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# 各被験者は刺激画像を複数回提示されている。\n",
+        "# その各試行で同一刺激画像である場合を潰して，被験者毎 X 刺激画像番号毎に集計\n",
+        "Sub_Img = {}\n",
+        "for sub_idx, val in Data.items():\n",
+        "    Sub_Img[sub_idx] = {}\n",
+        "    for idx, stim_no in enumerate(val['stim_order']):\n",
+        "        if not stim_no in Sub_Img[sub_idx]:\n",
+        "            Sub_Img[sub_idx][stim_no] = []\n",
+        "        Sub_Img[sub_idx][stim_no].append(val['trials'][idx])\n",
+        "    for stim_no in sorted(Sub_Img[sub_idx].keys()):\n",
+        "        X = np.array(Sub_Img[sub_idx][stim_no]).mean(axis=0)\n",
+        "        Sub_Img[sub_idx][stim_no] = X\n"
+      ],
+      "metadata": {
+        "id": "xXRuzU7ZXjFv"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# 被験者を潰して，刺激画像 X EEG チャンネル X 時刻刻みのデータを作成\n",
+        "\n",
+        "from collections import OrderedDict\n",
+        "Stim_sum = OrderedDict()\n",
+        "Stim_Chn = OrderedDict()\n",
+        "for idx, sub_idx in enumerate(list(Sub_Img.keys())):\n",
+        "\n",
+        "    # 各被験者 sub_idx の各刺激画像 stim_no について\n",
+        "    for stim_no in list(Sub_Img[sub_idx].keys()):\n",
+        "        if not stim_no in Stim_sum:\n",
+        "            Stim_sum[stim_no] = []\n",
+        "        Stim_sum[stim_no].append(Sub_Img[sub_idx][stim_no])\n",
+        "\n",
+        "        if not stim_no in Stim_Chn:\n",
+        "            Stim_Chn[stim_no] = OrderedDict()\n",
+        "\n",
+        "        # 各刺激画像毎 EEG チャンネルごとに\n",
+        "        for idx, chn in enumerate(Data[sub_idx]['channels']):\n",
+        "            if not chn in Stim_Chn[stim_no]:\n",
+        "                Stim_Chn[stim_no][chn] = []\n",
+        "            Stim_Chn[stim_no][chn].append(Sub_Img[sub_idx][stim_no][idx])\n",
+        "\n",
+        "# channels_p = ['Fp1', 'Fp2', 'AF7','AF3','AFz','AF4','AF8',\n",
+        "#               'F7', 'F5', 'F3', 'F1', 'Fz', 'F2', 'F4', 'F6', 'F8',\n",
+        "#               'FT9', 'FT7', 'FC5', 'FC3', 'FC1', 'FCz', 'FC2', 'FC4', 'FC6', 'FT8', 'FT10',\n",
+        "#               'T7', 'C5', 'C3', 'C1', 'Cz', 'C2', 'C4', 'C6', 'T8',\n",
+        "#               'TP9', 'TP7', 'CP5', 'CP3', 'CP1', 'CPz', 'CP2', 'CP4', 'CP6', 'TP8', 'TP10',\n",
+        "#               'P7', 'P5', 'P3', 'P1', 'Pz', 'P2', 'P4', 'P6', 'P8',\n",
+        "#               'PO7', 'PO3', 'POz', 'PO4', 'PO8',\n",
+        "#               'O1', 'Oz', 'O2']"
+      ],
+      "metadata": {
+        "id": "XwqiGDdWhbjJ"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "channels =  [#'Fp1', 'Fp2', 'AF7','AF3','AFz','AF4','AF8',\n",
+        "             #'F7', 'F5', 'F3', 'F1', 'F2', 'F4', 'F6', 'F8',\n",
+        "             #'FT9', 'FT7', 'FC5', 'FC3', 'FC1', 'FCz', 'FC2', 'FC4', 'FC6', 'FT8', 'FT10',\n",
+        "             #'T7', 'C5', 'C3', 'C1', 'Cz', 'C2', 'C4', 'C6', 'T8',\n",
+        "             #'TP9', 'TP7', 'CP5', 'CP3', 'CP1', 'CPz', 'CP2', 'CP4', 'CP6', 'TP8', 'TP10',\n",
+        "             #'P7', 'P5', 'P3', 'P1', 'Pz', 'P2', 'P4', 'P6', 'P8',\n",
+        "             'PO7', 'PO3', 'POz', 'PO4', 'PO8',\n",
+        "             'O1', 'Oz', 'O2'\n",
+        "             ]\n",
+        "\n",
+        "#channels_p.reverse()\n",
+        "#nrows, ncols = 12, 5\n",
+        "nrows, ncols = 6, 10\n",
+        "#figsize = (18, 18)\n",
+        "figsize = (18, 10)\n",
+        "fig, axes = plt.subplots(nrows, ncols, figsize=figsize)\n",
+        "legends = []\n",
+        "row, col = 0, 0\n",
+        "for stim_no in list(sorted(Sub_Img[sub_idx].keys())):\n",
+        "    for chn in channels:\n",
+        "        X = np.mean(np.array(Stim_Chn[stim_no][chn]), axis=0)\n",
+        "        axes[row][col].plot(X)\n",
+        "        axes[row][col].set_title(f'刺激番号:{stim_no}')\n",
+        "        axes[row][col].axis(False)\n",
+        "\n",
+        "    col += 1\n",
+        "    if col > ncols-1:\n",
+        "        col = 0\n",
+        "        row += 1\n",
+        "fig.legend(channels)\n",
+        "plt.show()\n"
+      ],
+      "metadata": {
+        "id": "oxn7pzxAhdqJ"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "channels =  [#'Fp1', 'Fp2', 'AF7','AF3','AFz','AF4','AF8',\n",
+        "             #'F7', 'F5', 'F3', 'F1', 'F2', 'F4', 'F6', 'F8',\n",
+        "             'FT9', 'FT7', 'FC5', 'FC3', 'FC1', 'FCz', 'FC2', 'FC4', 'FC6', 'FT8', 'FT10',\n",
+        "             'T7', 'C5', 'C3', 'C1', 'Cz', 'C2', 'C4', 'C6', 'T8',\n",
+        "             'TP9', 'TP7', 'CP5', 'CP3', 'CP1', 'CPz', 'CP2', 'CP4', 'CP6', 'TP8', 'TP10',\n",
+        "             'P7', 'P5', 'P3', 'P1', 'Pz', 'P2', 'P4', 'P6', 'P8',\n",
+        "             'PO7', 'PO3', 'POz', 'PO4', 'PO8',\n",
+        "             'O1', 'Oz', 'O2'\n",
+        "             ]\n",
+        "_Stim_Chn = {}\n",
+        "for stim_no in list(sorted(Sub_Img[sub_idx].keys())):\n",
+        "    _Stim_Chn[stim_no] = []\n",
+        "    for chn in channels:\n",
+        "        tmp = np.mean(np.array(Stim_Chn[stim_no][chn]), axis=0)\n",
+        "        _Stim_Chn[stim_no].append(tmp)\n",
+        "    _Stim_Chn[stim_no] = np.array(_Stim_Chn[stim_no]).reshape(-1)\n",
+        "\n",
+        "X = np.array([v for k, v in _Stim_Chn.items()])\n",
+        "\n",
+        "print(f'データ行列のサイズ:{X.shape}')\n",
+        "R_EEG = np.corrcoef(X)\n",
+        "ax = plt.axes()\n",
+        "seaborn.heatmap(R_EEG, ax=ax, cmap=cmap)\n",
+        "ax.set_title('EEG 各チャンネルに基づく刺激画像間の相関係数行列')\n",
+        "plt.show()"
+      ],
+      "metadata": {
+        "id": "2ZBx_6fTSCZ8"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "fig, axes = plt.subplots(1, 2, figsize=(12, 6))\n",
+        "#fig, axes = plt.subplots(1, 2, figsize=(8, 4))\n",
+        "colors = ['r','g', 'b', 'c', 'm', 'y']\n",
+        "fontsize=12\n",
+        "pca = PCA(n_components=2)\n",
+        "A = pca.fit(X)\n",
+        "A2 = pca.transform(X)\n",
+        "for idx, z in enumerate(A2):\n",
+        "    color = colors[int(idx / 10)]\n",
+        "    axes[0].scatter(z[0], z[1], c=color)\n",
+        "    axes[0].annotate(str(idx+1), (z[0], z[1]), ha='center', fontsize=fontsize, c=color)\n",
+        "axes[0].set_title('PCA')\n",
+        "\n",
+        "A2 = TSNE().fit_transform(X)\n",
+        "for idx, z in enumerate(A2):\n",
+        "    color = colors[int(idx / 10)]\n",
+        "    axes[1].scatter(z[0], z[1], c=color)\n",
+        "    axes[1].annotate(str(idx+1), (z[0], z[1]), ha='center', fontsize=fontsize, c=color)\n",
+        "axes[1].set_title('tSNE')\n",
+        "fig.tight_layout()\n",
+        "fig.suptitle('EEG に基づく刺激類似性行列の布置')\n",
+        "plt.show()"
+      ],
+      "metadata": {
+        "id": "i2jzGxe6aG83"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "fz0wSP3BblUo"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ],
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "display_name": "Python 3 (ipykernel)",
+      "language": "python",
+      "name": "python3"
+    },
+    "language_info": {
+      "codemirror_mode": {
+        "name": "ipython",
+        "version": 3
+      },
+      "file_extension": ".py",
+      "mimetype": "text/x-python",
+      "name": "python",
+      "nbconvert_exporter": "python",
+      "pygments_lexer": "ipython3",
+      "version": "3.10.13"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}
