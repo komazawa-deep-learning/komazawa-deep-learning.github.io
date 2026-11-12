@@ -1,14 +1,14 @@
 ---
-title: 2026年度 駒澤大学 認知心理学研究 I(a) 浅川担当分
+title: 2026年度 830441/認知心理学研究（１）ｂ 浅川担当分
 layout: home
 ---
 <link href="/css/asamarkdown.css" rel="stylesheet">
 
-<!-- <div style="text-align:right">
-<img src="/2024assets/qrcode2024_0920_2.png" style="width:19%">
-</div> -->
+<div style="text-align:right">
+<img src="/2026assets/2026cogpsy_qrcode_image_600.png" style="width:19%">
+</div>
 
-- 授業名: 認知心理学研究 I(a)
+- 授業名: 認知心理学研究 (1) b
 - 担当者名: 永田 陽子, 竹市 博臣, 浅川 伸一 (アサカワ シンイチ)
 - 電子メールアドレス: <educ20233@komazawa-u.ac.jp>, <asakawa@cis.twcu.a.jp>
 - 開講年度・期:　2026年 後期
@@ -45,20 +45,31 @@ layout: home
 
 ## 授業計画
 
-* [09月18日 第01回](2026cogpsy_lect01){:target="_blank"}
+* 09月18日 第01回
 * 09月25日 第02回
 * 10月02日 第03回
 * 10月09日 第04回
 * 10月16日 第05回
 * 10月23日 第06回
 * 11月06日 第07回
-* 11月13日 第08回
+* [11月13日 第08回 畳み込みニューラルネットワークの基礎](2026cogpsy_lect08){:target="_blank"}
+  <!-- 浅川：畳み込みニューラルネットワークの基礎 [Spoerer+2020](https://doi.org/10.1371/journal.pcbi.1008215) での提案モデルを用いるているので，この論文を取り上げる。畳み込みニューラルネットワークの種類と技法を検討する。 -->
 * 11月20日 第09回
+  <!-- * 残差結合 浅川：リカレントネットワークの基礎 BL ネットワークと異なるモデルである [CORnet](https://doi.org/10.1101/408385){:target="_blank"} を取り上げる。
+スキップ結合，すなわち ResNet で提案された残差結合の意義を考察する ([He+2015](https://arXiv.org/abs/1406.4729/){:target="_blank"}) 下記の論文をダウンロードしてアブストラクトと図の脚注に目を通しておく：[CORnet](https://doi.org/10.1101/408385){:target="_blank"}, [He+2015](https://arXiv.org/abs/1406.4729/){:target="_blank"} -->
 * 11月27日 第10回
+  <!-- * リカレントネットワークによる時空間表現 下記の論文をダウンロードしてアブストラクトと図の脚注に目を通しておく：[Carion+2020](https://arxiv.org/abs/2005.12872/){:target="_blank"} -->
 * 12月04日 第11回
+  <!-- * ボトムアップとトップダウン処理の相互作用 浅川：BU-TD ネットワーク [Ullman+2020](https://arxiv.org/abs/2105.05592){:target="_blank"} の BU-TD モデルを取り上げ，リカレント結合の異なる意味を考える。
+下記の論文をダウンロードしてアブストラクトと図の脚注に目を通しておく：[Ullman+2020](https://arxiv.org/abs/2105.05592){:target="_blank"} -->
 * 12月11日 第12回
+  <!-- * 物体認識と領域切り分けとの相互作用 【浅川：物体情報と位置情報】 前回でのモデルを考慮した上で，画像切り分けと物体同定との相互作用の問題を考える。[Neyshabur+2021](https://arxiv.org/abs/2008.11687/){:target="_blank"} -->
 * 12月18日 第13回
+  <!-- * Transformer の導入 浅川：Transformer Transformer を取り上げ，リカレント表現以外の State-of-the-arts である時間表現を取り上げる([Vaswani+2017](https://arXiv.org/abs/1706.03762/){:target="_blank"})。
+下記の論文をダウンロードしてアブストラクトと図の脚注に目を通しておく：[Vaswani+2017](https://arXiv.org/abs/1706.03762/){:target="_blank"} -->
 * 01月08日 第14回
+  <!-- * エンコーダ・デコーダモデル 浅川：エンコーダ・デコーダモデル [Gwilliams&King2020](https://doi.org/10.7554/eLife.56603){:target="_blank"} では，出力系まで考慮したモデルが求められる。入力と出力との相互作用に，リカレント，フィードフォワードのいずれの処理を考える。
+  [End-to-End Object Detection with Transformers](https://arxiv.org/abs/2005.12872){:target="_blank"} 及び，その [コード](https://github.com/facebookresearch/detr){:target="_blank"} をダウンロードして眺めておく。 -->
 
 
 
@@ -83,58 +94,6 @@ Glaser+2019 による，機械学習の 4 レベル
 
 [Glaser+2019](https://www.sciencedirect.com/science/article/abs/pii/S0301008218300856?via%3Dihub) Fig. 2 より
 
-* N400 への PDP approach:
-  * [Laszlo&Plaut (2011) Simulating Event-Related Potential Reading Data in a Neurally Plausible Parallel Distributed Processing Model](https://ni.cmu.edu/~plaut/papers/pdf/LaszloPlaut11CogSciConf.ERPmodel.pdf){:target="_blank"}
-<!-- /Users/_asakawa/study/2022documents/2011LaszloPlaut_CogSciConf_ERPmodel.pdf){:target="_blank"} -->
-  * [Laszlo, S., & Federmeier, K.D. (2009). A beautiful day in the neighborhood: An event-related potential study of lexical relationships and prediction in context](https://www.sciencedirect.com/science/article/pii/S0749596X09000692){:target="_blank"}. Journal of Memory and Language, 61, 326-338.
-
-
-
-<center>
-<div class="fig">
-<img src="/2023assets/1999Shelton_Caramazza_fig1.png" width="33%">
-<div class="figcaption">
-図 1. 語彙系の概要
-<!-- Figure 1. A general overview of the lexical system -->
-</div></div>
-</center>
-
-<center>
-<div class="fig">
-<img src="/2023assets/1999Shelton_Caramazza_fig2.png" width="33%">
-<img src="/2023assets/1999Shelton_Caramazza_fig3.png" width="33%">
-<div class="figcaption">
-左 図 2. モダリティ別の意味体系を仮定したモデルの例<br/>
-右 図 3. 単一のアモーダルな意味体系を仮定したモデルの例。
-<!-- left: Figure 2. An example of a model postulating separate modality-specific semantic systems.<br/>
-right: Figure 3. An example of a model postulating a single, amodal semantic system. -->
-</div></div>
-</center>
-
-<center>
-<div class="fig">
-<img src="/2023assets/1999Shelton_Caramazza_fig4.png" width="33%">
-<img src="/2023assets/1999Shelton_Caramazza_fig5.png" width="33%"><br/>
-<div class="figcaption">
-左 図 4. 感覚的特徴と非感覚的特徴に基づく別々の知識特異的意味系を仮定したモデルの例<br/>
-右 図 5. 意味カテゴリーに従って組織化された単一の意味系を仮定したモデルの例。
-<!-- left: Figure 4. An example of a model postulating separate knowledge-specific semantic systems based on sensory features versus nonsensory features.<br/>
-rigth: Figure 5. An example of a model postulating a single semantic system organized according to semantic category. -->
-</div></div>
-</center>
-
-<center>
-<div class="fig">
-<img src="/2023assets/1999Shelton_Caramazza_fig6.png" width="33%">
-<img src="/2023assets/1999Shelton_Caramazza_fig7.png" width="33%"><br/>
-<div class="figcaption">
-左 図 6. 音韻サポートと書記素出力の間に義務的な関係を仮定したモデルの一例。<br/>
-右 図 7. 音韻サポートと書記素出力の間に非義務的な関係を仮定したモデルの例。
-<!-- left: Figure 6. An example of a model postulating an obligatory relationship between phonological support and orthographic output.<br/>
-right: Figure 7. An example of a model postulating a nonobligatory relationship between phonological support and orthographic output. -->
-</div></div>
-</center>
-
 
 ## 文献資料
 
@@ -149,3 +108,12 @@ right: Figure 7. An example of a model postulating a nonobligatory relationship 
 1. [計算論的視覚と正則化理論 Poggio, Torre, Koch, 1985](https://komazawa-deep-learning.github.io/2021cogpsy/1985Poggio_Computational_Vision_and_Regularization_Theory.pdf){:target="_blank"}
 1. [皮質における物体認識の階層モデル Riesenhuber and Poggio (1999) Nature](https://komazawa-deep-learning.github.io/2021cogpsy/1999Riesenhuber_Poggio_Hierarchical_models_of_object_recognition_in_cortex.pdf){:target="_blank"}
 1. [注意レビュー論文 Lindsay, 2020, Attention in Psychology, Neuroscience, and Machine Learning](https://project-ccap.github.io/2020Lindsay_Attention_in_Psychology_Neuroscience_and_Machine_Learning.pdf){:target="_blank"}
+
+
+<!-- <center> -->
+<!-- <img src="/2021/2008Fuster_Prefrontal_Cortex_fig8_4.svg" width="39%"> -->
+<!-- <img src="https://komazawa-deep-learning.github.io/2021/2008Fuster_Prefrontal_Cortex_fig8_4.svg" width="39%"> -->
+<!-- <img src="/assets/2015Ronneberger_U-Net_Fig1_ja.svg" width="48%"> -->
+<!-- <img src="https://komazawa-deep-learning.github.io/assets/2015Ronneberger_U-Net_Fig1_ja.svg" width="48%"> -->
+<!-- </center> -->
+
