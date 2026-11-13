@@ -5,6 +5,21 @@ layout: home
 ---
 <link href="/css/asamarkdown.css" rel="stylesheet">
 
+$$
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+\newcommand{\mb}[1]{\mathbf{#1}}
+\newcommand{\Brc}[1]{\left(#1\right)}
+\newcommand{\BRc}[1]{\left[#1\right]}
+\newcommand{\Rank}{\text{rank}\;}
+\newcommand{\Hat}[1]{\widehat{#1}}
+\newcommand{\Prj}[1]{\mb{#1}\Brc{\mb{#1}^{\top}\mb{#1}}^{-1}\mb{#1}^{\top}}
+\newcommand{\RegP}[2]{\Brc{\mb{#1}^{\top}\mb{#1}}^{-1}\mb{#1}^{\top}\mb{#2}}
+\newcommand{\NSQ}[1]{\left|\mb{#1}\right|^2}
+\newcommand{\Norm}[1]{\left|#1\right|}
+\newcommand{\IP}[2]{\left({#1}\cdot{#2}\right)}
+\newcommand{\Bar}[1]{\overline{\;#1\;}}
+$$
+
 <div align="right">
 <a href='mailto:educ0233@komazawa-u.ac.jp'>Shin Aasakawa</a>, all rights reserved.<br>
 Date: 15/Nov/2024<br/>
@@ -43,134 +58,962 @@ $$
 
 今回から，数回で，これらモデルを概説して行きます。
 
+
 ## 実習ファイル
 
 * [[Karapetian+(2023)](https://direct.mit.edu/jocn/article/35/11/1879/117201/Empirically-Identifying-and-Computationally) <img src="/assets/colab_icon.svg"> ](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2024notebooks/2024_115Karapetian_demo.ipynb)
 * [ResNet 実習 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2022notebooks/2022_0603ResNet_with_Olivetti_faces_.ipynb){:target="_blank"}
 * [実習 LeNet PyTorch 版 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2021_0528LeNet_pytorch.ipynb){:target="_blank"}
 
-
-##### [Karapetian+(2023) Empirically Identifying and Computationally Modeling the Brain–Behavior Relationship for Human Scene Categorization](https://doi.org/10.1162/jocn_a_02043){:target="_blank"} 竹市先生ご指定の文献
-
-<div class="abstract">
-
-ヒトは，自分が直面している情景のカテゴリーなど，身近な視覚環境の性質について，早くて正確な知覚判断を難なく下している。
-これまでの研究で，このような特性の基礎となる皮質表現が豊富にあることが明らかになっている。
-しかし，これらの表象のうち，どの表象が意思決定に適しているかはまだわかっていない。
-ここでは，ニューロイメージングと計算モデリングを用いて，経験的，計算的にこの問題にアプローチした。
-経験的な部分では，情景分類課題 (自然物対人工物) 中の参加者の脳波データと RT を収集した。
-そして，信号検出理論の多変量拡張を用いて，波データと行動を関連付けた。
-その結果，刺激開始後約 100 ミリ秒から約 200 ミリ秒の間に特に神経データと行動の相関が観察され，この時間帯の神経情景表現が意思決定に適したフォーマットになっていることが示唆された。
-計算部分については，脳と行動のモデルとしてリカレント畳み込みニューラルネットワーク (RCNN) を評価した。
-RCNN は，我々のこれまでの観察を画像計算可能なモデルに統合し，神経表現，情景分類データ，およびそれらの間の関係をよく予測した。
-我々の結果は，ヒトにおける情景分類の神経と行動の相関を同定し，計算によって特徴付けるものである。
-<!-- Humans effortlessly make quick and accurate perceptual decisions about the nature of their immediate visual environment, such as the category of the scene they face.
-Previous research has revealed a rich set of cortical representations potentially underlying this feat.
-However, it remains unknown which of these representations are suitably formatted for decision-making.
-Here, we approached this question empirically and computationally, using neuroimaging and computational modeling.
-For the empirical part, we collected EEG data and RTs from human participants during a scene categorization task (natural vs. man-made).
-We then related EEG data to behavior to behavior using a multivariate extension of signal detection theory.
-We observed a correlation between neural data and behavior specifically between ∼100 msec and ∼200 msec after stimulus onset, suggesting that the neural scene representations in this time period are suitably formatted for decision-making.
-For the computational part, we evaluated a recurrent convolutional neural network (RCNN) as a model of brain and behavior.
-Unifying our previous observations in an image-computable model, the RCNN predicted well the neural representations, the behavioral scene categorization data, as well as the relationship between them.
-Our results identify and computationally characterize the neural and behavioral correlates of scene categorization in humans. -->
-</div>
+# 竹市先生からの引き継ぎ
 
 <div class="figcenter">
-<img src="/2024assets/2023Karapetian_fig1.jpg" style="width:66%"><br/>
+<img src="/2026assets/20261106Takeichi_page1.png" style="width:77%;"><br/>
+竹市先生の授業資料の １ ページ
 </div>
 
-**図 1. 刺激セット，パラダイム，距離-平面アプローチ**<!-- Figure 1. Stimulus set, paradigm, and distance-to-hyperplane approach.--><br/>
-**A**: 解析アプローチ。神経データと行動データを結びつけるために，多変量空間における信号検出理論の拡張である距離-超平面アプローチを用いた。<br/>
-**B**: 刺激セット。Places-365  (Zhou+2018) から刺激を選択し，30 個の自然情景と 30 個の人工情景の集合を作成した。<br/>
-**C**: 実験パラダイム。参加者はブロックの半分で情景分類課題を行い，残りの半分で直交固視 + 字色検出課題 (妨害課題と呼ぶ) を行った。<br/>
-**D**: 距離-超平面アプローチ。距離と RT の相関が有意に負になったときに起こる，神経表象が意思決定に適した形になるタイミングを決定するために，すべての時点において分析を適用した。
-
-<!--* (A) Analysis approach. To link neural and behavioral data, we used the distance-to-hyperplane approach, an extension of signal detection theory in a multivariate space.
-* (B) Stimulus set. We selected stimuli from Places-365 (Zhou+2018), creating a set of 30 natural and 30 man-made scenes.
-* (C) Experimental paradigm. Participants performed a scene categorization task on half of the blocks and an orthogonal fixation cross color detection task (referred to as distraction task) on the other half.
-* (D) Distance-to-hyperplane approach. We applied the analysis at every time point to determine when neural representations are suitably formatted for decision-making, which occurs when the correlation between distances and RTs is significantly negative. -->
-
+# もう少し
 
 <div class="figcenter">
-<img src="/2024assets/2023Karapetian_fig2.jpg" style="width:55%">
+<img src="/2025assets/2020Bahg_GP_fig1.svg" style="width:66%;">
+</div>
+<div class="figcaption" style="width:77%;">
+
+実験情報と構造情報に基づいて脳機能の生成モデルの構造を規定する、同時モデルの枠組みの概略図。
+この図式は、反応時間、血中酸素濃度依存反応、脳波活動など、利用可能なすべての顕在変数を同時に説明することを示す<br/>
+Bahg et al.2020 Fig.1 心、脳、行動を結びつける枠組み
+<!-- 本稿では、潜在ガウス過程を用いて顕在変数を関連付け、モデルをデータに当てはめる際に最も妥当な関連付け関数を導き出すことを可能にする。 -->
+<!-- Fig. 1. Framework for connecting mind, brain, and behavior. Shown is a schematic of the joint modeling framework, where experimental information and structural information specify the structure of a generative model of brain function. The generative model is used to jointly explain all available manifest variables such as response times, blood oxygenated level-dependent response, or electroencephalogram activity. In the present article, a latent Gaussian process is used to link the manifest variables, enablin g the most plausible linking function to emerge from fitting the model to data. -->
 </div>
 
-**図 2. 情景の同一性とカテゴリの復号化**<!-- Figure 2. Scene identity and category decoding. --><br/>
-**(A)** カテゴリ課題(青)，気晴らし課題(マゼンタ)，およびその差(黒)の EEG データにおける，情景同一性復号化の結果。
-0 ミリ秒の灰色の縦破線は刺激の開始を表す。曲線の周囲の斜線部分は SEM を示す。
-有意な時点(右側，p < 0.01, FDR 調整済み) はアスタリスクで示されている。<br/>
-**(B)** 課題の結果と両者の差異における，情景カテゴリーの復号化 (自然対人工) の結果<br/>
-**(C)** カテゴリー化および気晴らし課題における，情景同一性の復号化のピーク<br/>
-**(D)** 情景カテゴリーの復号化ピークにおける，多次元尺度構成法の結果<br/>
-**(E)** 情景の同一性復号化と情景カテゴリ復号化の頂点復号化潜時における両課題のチャネル空間で実行されたサーチライト解析の結果と<br/>
-**(F)** 情景カテゴリー復号化。
-有意なチャネル (右側 p < 0.01, FDR 調整済み) は黒点で示されている。
 
-<!--**(A)** Pairwise scene identity decoding results on EEG data from the categorization task (blue), distraction task (magenta), and their difference (black).
-The vertical dashed gray line at 0 msec represents the stimulus onset.
-The shaded area around the curves indicates the SEM.
-Significant time points (right tailed, p<0.01, FDR-adjusted) are indicated with asterisks.<br/>
-**(B)** Scene category decoding (natural vs. man-made) results for both tasks and their difference.<br/>
-**(C)** Multidimensional scaling results for scene identity decoding from the categorization and distraction tasks at the scene identity decoding peak and
-**(D)** scene category decoding peak.
-**(E)** Results from the searchlight analysis performed in channel space in both tasks at peak decoding latency for scene identity decoding and
-**(F)** scene category decoding.
-Significant channels (right-tailed, p < 0.01, FDR-adjusted) are depicted with black dots.-->
+# CNN の特徴
 
-<div class="figcenter">
-<img src="/2024assets/2023Karapetian_fig4.jpg" style="width:55%">
-</div>
+<!--[@2017Asakawa_deep_jps][^2017Aakawa\_deep\_jps\]-->。
 
-**図 4. 人間の神経情景表現を RCNN と FCNN とでモデル化**<!-- Figure 4. Modeling human neural scene representations with an RCNN versus an FCNN. -->
+1. 畳込み演算 (convolutional operation)
+2. 非線形活性化関数 (nonlinear activation functions)
+3. プーリング処理 (pooling)
+4. ReLU 整流線形化関数 (Rectified Linear functions)
 
-**(A)** 解析に用いたリカレントCNN，BLnet (Spoerer+2020) のアーキテクチャ。
-ネットワークは 7 層からなり，ボトムアップ (緑の矢印) とラテラル (黒の矢印) 接続で結ばれている。
-特徴量は 3 つの層 (1, 4, 7) から 8 つの異なる時間ステップで抽出され，RT は読み出し層から収集された。<br/>
-**(B)** すべての情景，自然情景，人工的情景について，ヒトの神経表現と 3 つの異なる層からの RCNN 特徴量 (8 つの時間ステップの中央値) に対して RSA を実行した結果。
-0 ミリ秒の垂直破線は刺激開始を表す。
-曲線の周りの斜線部分は SEM を表す。
-有意な時点をアスタリスクで示す (右側検定 p＜0.05，FDR 補正)。
-破線の縦線はピークを示す。
-灰色の斜線はノイズの上限を示す。<br/>
-**(C)** BLnet の フィードフォワード，パラメータマッチ版である B-Dnet (Spoerer+2020) の特徴量を用いた RSA 結果。<br/>
-**(D)** RCNN と FCNN の結果の差の波 (両側, p < 0.05, FDR 補正)。
+<!-- 8. GPU の使用 -->
 
-<!-- * (A) Architecture of BLnet (Spoerer+2020), the recurrent CNN used in the analysis.
-The network consists of seven layers, linked via bottom–up (green arrows) and lateral (black arrows) connections.
-Features were extracted from three layers (1, 4, and 7) at eight different time steps, and RTs were collected from the readout layer.
-* (B) Results of the RSA performed on the neural representations of humans and RCNN features from three different layers (median over eight time steps), for all scenes, natural scenes, and man-made scenes.
-The vertical dashed gray line at 0 msec represents the stimulus onset.
-The shaded areas around the curves represent the SEM. Significant time points are denoted with asterisks (right-tailed, p < 0.05, FDR-corrected).
-The dashed vertical lines indicate the peaks.
-The shaded gray area represents the noise ceiling.
-* (C) RSA results with features from B-Dnet (Spoerer et al., 2020), the feedforward, parameter-matched version of BLnet.
-* (D) Difference waves between RCNN and FCNN results (two-tailed, p < 0.05, FDR-corrected). -->
+* カーネル, ストライド，ダイアレーション，勾配消失問題，整流線形化関数 (ReLU),
+* 完全結合層，交差エントロピー損失
+* データ拡張 data augumentation
+* 転移学習 transfer learning 
 
 
-# `bl_net.py`
 
-<div class="figcenter">
-<img src="/2024assets/2020Spoerer_fig1.svg" style="width:66%;">
+## ディープラーニングの短所
+
+- データハングリー data hungry
+- 計算資源ハングリー resource hungry
+- 理論欠如 theory lagging
+- 不透明 opacity
+- ニューラルネットワークは素人の統計学である, Anderson et. al (1993)
+
+
+## 生理学的知見 ヒューベルとウィーゼルによる視覚野の生理学研究
+
+<div class="figure figcenter">
+<!-- <div class="figure figcenter" style="width:66%"> -->
+
+<img src="/assets/1968Hubel_Wiesel_1.svg" style="width:66%">
 <div class="figcaption">
+Hubel と Wiesel (1959, 1962, 1968) の実験の模式図
+</div>
 
-<font style="font-weight:bold">図 1. パラメータを一致させたネットワークの模式図</font><br/>
-白箱は畳み込み層を表し，幅は畳み込み層の空間次元，高さは特徴地図数を表す。
-モデル:<br/>
-<font style="font-weight:bold">(1)</font> 畳み込みカーネル (B-K) のサイズを大きくすることで，パラメータ数を一致させたモデル <br/>
-<font style="font-weight:bold">(2)</font> 特徴地図の数を一致させたモデル (B-F)，<br/>
-<font style="font-weight:bold">(3)</font> ネットワークの深さを一致させたモデル (B-D)<br/>
-例となる素子 (黒点) は，入力カーネル (B-K では幅が異なる) を表す色つきの領域にリンクされている。
-範囲は例示的なもので，縮尺通りに描かれていない。
+<img src="/assets/1968Hubel_Wiesel_2.svg" style="width:74%"><br/>
+<div class="figcaption">
+Hubel と Wiesel の実験結果 (Hubel&Wiesel, 1968 の Fig.2.7 をトレーシングしたもの)
+</div>
+</div>
 
-[Spoerer+2020 Fig.1](https://doi.org/10.1371/journal.pcbi.1008215)
-<!-- Fig 1. Schematic representation of the parameter-matched networks.
-White boxes represent convolutional layers, with the width representing the spatial dimensions of the convolut
-ional layers and the height representing the number of feature maps.
-Models were matched in the number of parameters by increasing (1) the size of the convolutional kernels (B-K),
- (2) the number of feature maps (B-F), and (3) the depth of the network (B-D).
-Example units (black dots) are linked to coloured regions representing their input kernels (which differ in wi
-dth in B-K).
-The extents are illustrative and not drawn to scale. -->
+
+* [実習 いくつかの画像フィルタ 特徴点検出アルゴリズム<img src="https://raw.githubusercontent.com/komazawa-deep-learning/komazawa-deep-learning.github.io/8ff17b2977309e5943f512b6d10b76ac0cddbbe3/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2020Sight_visit_feature_extractions_demo.ipynb){:target="_blank"}
+
+* [実習 DOG などのフィルタと Harr 特徴による顔検出 a.k.a ビオラ＝ジョーンズ アルゴリズム<img src="https://raw.githubusercontent.com/komazawa-deep-learning/komazawa-deep-learning.github.io/8ff17b2977309e5943f512b6d10b76ac0cddbbe3/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2021_0528edge_and_face_detection_algorithm_not_cnn.ipynb){:target="_blank"}
+
+
+
+
+# 視覚モデルの歴史
+
+人間の視覚処理のモデリングは，Hubel&Wiesel にさかのぼることができる。
+Hubel&Wiesel では，視覚野 V1 の単純な細胞の応答特性はエッジの特徴検出として形式化され，複雑な細胞の特性は視野上で空間的に繰り返される一連の操作として概念化された（Hubel&Wiesel1962，translationaly invariant 並進不変）。
+この計算原理は，コンピュータビジョンに霊長類の視覚系の特性を取り入れる試みとして Neocognitron（Fukushima1980）に取り入れられた。
+さらに HMAX モデルファミリー（Riesenhuber&Poggio1999, Serre+2007）にも影響を与えた。
+これらは，今日の特徴検出器とプーリング演算子を交互に用いた物体認識の深層学習モデルとして用いられれている。
+(ただし，画像切り分けでは，プーリングを除外する傾向にある。)
+AlexNet (Russakovsky+2015) 以前は，ネットワークをどのように組み込むか，あるいは他の方法で訓練するか，明確ではなかった（Olshausen&Field1996, Lowe1999, Torralba&Oliva2003）。
+深層ニューラルネットワークを訓練する少なくとも 1 つの方法が示された 。同時に，このような不変
+ImageNet 画像認識コンテストで優勝したモデルでは，視覚野 V4 と IT のニューロンの応答を圧倒的によくモデル化した内部「神経」表現を生成することが実証された（Yamins+2013, Cadieu+2014, Yamins+2014）。
+ヒトの fMRI や MEG といった，より高度な実験レベルでの説明力の向上が確認された（Khaligh-Razavi&Kriegeskorte2014, Güçlü&van Gerven2015, Cichy+2016）。
+<!-- Modeling human visual processing traces back at least to Hubel and Wiesel where response properties of simple cells in visual area V1 were formalized as feature detection of edges and properties of complex cells were conceptualized as a set of operations that were spatially repeated over the visual field (Hubel&Wiesel1962, i.e., translationally invariant).
+These computational principles inspired the first models of object recognition, most notably, the Neocognitron (Fukushima1980) and the HMAX model family (Riesenhuber&Poggio1999; Serre+2007), where feature detectors and pooling operators were used in turns to build deep hierarchical models of object recognition.
+However, such models lacked robust feature representations as it was not clear at the time how to either build in or otherwise train these networks to learn their spatially-repeated operations from input statistics – particularly for areas beyond visual area V1 (Olshausen&Field1996, Lowe1999, Torralba&Oliva2003).
+These issues were first addressed by the AlexNet ANN (Krizhevsky+2012) in that it demonstrated at least one way to train a deep neural network for a large-scale invariant object recognition task (Russakovsky+2015).
+Concurrently, deep networks optimized for such invariant object recognition tasks were demonstrated to produce internal "neural" representations that were by far the best models of the responses of neurons in non-human primate visual areas V4 and IT (Yamins+2013, Cadieu+2014, Yamins+2014).
+Later work in humans confirmed these gains in explanatory power at the courser experimental level of fMRI and MEG (Khaligh-Razavi&Kriegeskorte2014; Güçlü&van_Gerven2015, Cichy+2016), with detailed measures of behavioral response patterns in both humans and non-human primates (e.g., Rajalingham+2015, Kubilius+2016, Rajalingham+2018), and with non-human primate neural spiking measures from the cortical area V1 (Cadena+2017). -->
+
+
+#### キーとなる概念図
+
+<div class="figcenter">
+<img src="/assets/ResNet_Fig2.svg" style="width:24%">
+<!-- <img src="/2024assets/2024_0514Pythagoras.svg" style="width:24%;"> -->
+<img src="/2024assets/2012Wagner_Face_Recognition_fig1.svg" style="width:24%;">
+<img src="/2024assets/2024_0517Projection_concept.svg" style="width:24%;">
+<img src="/assets/2017Vaswani_Fig1.svg" width="24%;"><br/>
+</div>
+<div class="figcaption" style="width:88%">
+左: ResNet の構成単位, 中央：分散分析の概念図, 右：[Vaswani+2017](https://arxiv.org/abs/1706.03762) Fig. 1 より
+</div>
+
+## 畳込みニューラルネット(CNN)
+
+<div class="figcenter">
+<img src='/assets/imagenet_result2017.png' style='width:74%'><br/>
+イメージネットコンテストの結果
+<!-- 画像認識の進歩 -->
+</div>
+
+深層学習 (ディープラーニング) の中で **畳み込みニューラルネットワーク** CNN と呼ばれるニューラルネットワークについて解説する。
+
+最初に画像処理の概略を述べる CNN が，それまで主流であった従来の手法の性能を凌駕したことはすでに述べました。
+CNN の特徴の一つに **エンドツーエンド** と呼ばれる考え方があります。
+エンドツーエンドとは，従来手法によるパターン認識システムでは，専門家による手の込んだ詳細な作り込みを必要としていたことと異なり，面倒な作り込みをせずとも性能が向上したことを指します。
+
+エンドツーエンドなニューラルネットワークにより，次のことが実現しました。
+
+- ニューラルネットワークの層ごとに，特徴抽出が行われ，抽出された特徴がより高次の層へと伝達される
+- ニューラルネットワークの各層では，比較的単純な特徴から次第に複雑な特徴へと段階的に変化する
+- 高次層にみられる特徴は低次層の特徴より大域的，普遍的である
+- 高次層のニューロンは，低次層で抽出された特徴を共有している
+
+このことを簡単に説明してみます。
+
+我々人間は，外界を認識するために必要な計算を，生物種としての発生の過程と，個人の発達を通しての経験に基づく認識システムを保持していると見ることができます。
+従って我々の視覚認識には化石時代に始まる光の受容器としての眼の進化の歴史と発達を通じた個人の視覚経験が反映された結果でもあります。
+人工知能の目標は，この複雑な特徴検出過程をどうやったらコンピュータが獲得できるかということでもあります。
+外界を認識するために今日まで考案されてきたモデル（例えば，ニューラルネットワークサポートベクターマシンなどは）は複雑です。
+ですがモデルを訓練するための学習方法はそれほど難しくありません。
+この意味で画像認識課題が正しく動作するためのポイントは，認識システムが問題を解く事が可能なほど複雑であるかどうかではなく，十分に複雑が視覚環境，すなわち画像認識の場合，外部の艦橋を反映するために十分な量の像データを容易すことができるか否かにあります。
+今日の CNN による画像認識性能の向上は，簡単な計算方法を用いて複雑な外部環境に適応できる認識システムを構築する方法が確立したからであると言うことが可能です。
+
+下図<!--[fig:2012Ng_01](#fig:2012Ng_01){reference-type="ref"reference="fig:2012Ng_01"} -->に画像処理の例を挙げました。
+
+<center>
+<img src="/assets/2012Ng_ML_and_AI_01.png" style="width:66%">
+</center>
+<!-- 図[[fig:2012Ng_01]](#fig:2012Ng_01){reference-type="ref"reference="fig:2012Ng_01"} -->
+
+<center>
+<img src='/assets/2013LeCun-tutorial-icml_15.svg' style="width:66%"><br/>
+
+**LeCun (2013) より**
+</center>
+
+## LeNet5 (LeCun1998)
+
+* **LeNet**. Yann LeCun (現 Facebook AI 研究所所長)による CNN 実装
+ [LeNet](http://yann.lecun.com/exdb/publis/pdf/lecun-98.pdf){:target="_blank"} 手書き数字認識
+
+<center>
+<img src="/assets/1998LeNet5.png" width="84%"><br/>
+<div style="text-align:left; width:77%;background-color:cornsilk">
+
+LeNet5 の論文より改変
+</div>
+</center>
+
+- 畳込層とプーリング層（発表当初はサブサンプリング）との繰り返し
+  - 畳込とプーリングは<font color="green">局所結合</font>
+- MNIST を用いた１０種類の手書き文字認識
+- 最終２層は全結合層をつなげて最終層１０ニューロン，最終層の各ニューロンの出力がそれぞれの数字（０から９までの１０種）に対応する
+
+
+
+## AlexNet
+
+<img src="/2023assets/alex_net_block_diagram.png"><br/>
+
+
+## 畳み込み演算
+
+<center>
+<img src="/assets/dmoulin_gif/full_padding_no_strides.gif" style="width:33%">
+<img src="/assets/dmoulin_gif/same_padding_no_strides_transposed.gif" style="width:33%"><br/>
+<div style="text-align=:left; width:66%; background-color:cornsilk">
+
+左:入力層 5x5青，出力層緑，カーネルサイズ3x3, フルパディング，ストライド=1.<br/>
+右:入力層 5x5青，出力層緑，カーネルサイズ3x3, フルパディング，ストライド=1. トランスポーズド畳み込み
+</div>
+<img src="/assets/dmoulin_gif/numerical_max_pooling.gif" style="width:33%">
+<img src="/assets/dmoulin_gif/numerical_average_pooling.gif" style="width:33%"><br/>
+<div style="text-align=:left; width:66%; background-color:cornsilk">
+
+左: 最大値プーリング。
+右: 平均値プーリング
+</div>
+<div style="text-align=:left; width:44%; background-color:cornsilk">
+Dmoulin and Visin (2020) より
+</div>
+
+<img src="/assets/dmoulin_gif/padding_strides.gif" style="width:33%">
+<img src="/assets/dmoulin_gif/padding_strides_odd.gif" style="width:33%">
+<img src="/assets/dmoulin_gif/padding_strides_odd_transposed.gif" style="width:33%"><br/>
+<div style="text-align=:left; width:44%; background-color:cornsilk">
+
+左: padding_strides, 中:padding_strides_odd, 右:padding_stride_transposed
+</div>
+<img src="/assets/dmoulin_gif/same_padding_no_strides.gif" style="width:33%">
+<img src="/assets/dmoulin_gif/same_padding_no_strides_transposed.gif" style="width:33%">
+<div style="text-align=:left; width:44%; background-color:cornsilk">
+
+右:same_padding_no_strides, 左: same_padding_no_strides_transposed
+</div>
+<img src="/assets/dmoulin_gif/arbitrary_padding_no_strides.gif" style="width:33%">
+<img src="/assets/dmoulin_gif/arbitrary_padding_no_strides_transposed.gif" style="width:33%">
+<div style="text-align=:left; width:44%; background-color:cornsilk">
+右:arbitrary padding no strides, 左: artibtrary padding no stride transposed
+</div>
+</center>
+
+<div class="figcenter">
+
+<iframe src="/conv-demo/index.html" width="140%" height="640px;" style="border:none;"></iframe>
+</div>
+
+
+## HMAX 最大値プーリング Riesenhuber&Poggio(1999)
+
+<div class="figcenter">
+<img src="/assets/1999Riesenhuber_Poggio_fig2.svg" style="width:49%">
+<div class="figcaption" style="width:66%;">
+
+<font style="font-weight:bold">モデルのスケッチ</font><br/>
+単純細胞から作られた複雑細胞の古典的なモデルを拡張したもので，線形演算 (福島の表記法では `S` ユニット，テンプレート・マッチング 図中の実線) と非線形演算 (`C`プーリングユニット，最大値 MAX 演算を行う 図中破線) を持つ層の階層で構成。
+細胞入力の最大値を選択，その値を用いてセルを駆動する非線形の MAX 演算は複雑細胞に対して，線形入力の合計とは異なりモデルの特性の鍵となる概念である。
+この 2 種類の操作は 異なる位置にチューニングされた求心性結合をプールすることでパターン特異性と並進不変性を，また異なるスケールにチューニングされた求心性結合をプールすることで、スケール不変性をもたらした (図示せず)。<br/>
+Riesenhuber&Poggio(1999) Fig. 2 より
 </div></div>
+
+
+<div class="figcenter">
+<img src="/assets/1999Riesenhuber_Poggio_fig3a.svg" style="width:44%">
+<img src="/assets/1999Riesenhuber_Poggio_fig3b.svg" style="width:44%"><br/>
+<div class="figcaption" style="width:99%">
+
+MAX 機構 高度に非線形な形状調整の特性。<br/>
+「最適」特徴を決定するために考案された「単純化手順」を用いて得られた下側頭葉細胞の応答（選好刺激に対する反応が等しくなるように正規化された反応)。
+実験では，もともと細胞は「水のボトル」の画像 (一番左の物体) に非常に強い反応を示した。
+その後，刺激を単色の輪郭に単純化したところ，細胞の発火が増加し，さらに，楕円を支える棒からなるパドルのような物体に変化した。
+この物体が強い反応を引き起こすのに対し，棒や楕円だけではほとんど反応しなかった。
+Riesenhuber&Poggio(1999) Fig 3A.
+</div></div>
+
+実験とモデルの比較。
+白棒はの実験用ニューロンの反応を示す。
+黒と灰色の棒は 選好刺激の 幹-楕円 の基部の遷移に合わせてチューニングしたモデル細胞の反応を示している。
+モデル細胞は 直上図に示したモデルを簡略化したもの。
+受容野の各位置に 2 種類の S1 特徴があり，それぞれが遷移領域の左側または右側にチューンしていて，その出力が C1 ユニットに入力され MAX 関数 (黒棒) または SUM 関数 (灰色棒) を用いてプールされている。
+モデル細胞は 実験ニューロンの 選好刺激が受容野内にあるときに反応が最大になるよう，C1 ユニットに接続されていた。
+
+図 3. MAX 機構の高度に非線形な形状チューニング特性。
+(a) `最適` 特徴を決定するために考案された `単純化手続`(26) を用いて得られた，実験的に観察された IT 細胞の応答 (好ましい刺激に対する応答が 1 に等しくなるように正規化された応答)。
+実験では，細胞はもともと「水瓶」 (一番左の物体) の画像にかなり強く反応した。
+その後，刺激は単色の輪郭に「単純化」され，細胞の発火が増加し，さらに楕円を支える棒からなるパドルのような物体に変化した。
+この物体は強い反応を引き起こしたが，棒や楕円だけではほとんど全く反応を起こさなかった (図は許可を得て使用)。
+(b) 実験とモデルの比較。
+白棒は (a) の実験ニューロンの反応。
+黒棒と灰色棒は，優先刺激の幹-楕円底遷移に同調させたモデルニューロンの反応を示す。
+このモデルニューロンは，図 2 に示したモデルの単純化された版の最上部にあり，受容野の各位置に 2 種類の S1 特徴のみが存在し，それぞれが遷移領域の左側または右側に同調し，MAX 関数 (黒棒グラフ) または SUM 関数 (灰色棒グラフ) のいずれかを用いてそれらをプールする C1 ユニットに供給される。
+モデルニューロンは，実験ニューロンの好ましい刺激がその受容野にあるときに，その反応が最大になるように，これらの C1 ユニットに接続された。
+<!-- Fig. 3. Highly nonlinear shape-tuning properties of the MAX mechanism.
+(a) Experimentally observed responses of IT cells obtained using a `simplification procedure`(26) designed to determine `optimal` features (responses normalized so that the response to the preferred stimulus is equal to 1).
+In that experiment, the cell originally responded quite strongly to the image of a `water bottle` (leftmost object).
+The stimulus was then `simplified` to its monochromatic outline, which increased the cell’s firing, and further, to a paddle-like object consisting of a bar supporting an ellipse.
+Whereas this object evoked a strong response, the bar or the ellipse alone produced almost no response at all (figure used by permission).
+(b) Comparison of experiment and model.
+White bars show the responses of the experimental neuron from (a).
+Black and gray bars show the response of a model neuron tuned to the stem-ellipsoidal base transition of the preferred stimulus.
+The model neuron is at the top of a simplified version of the model shown in Fig. 2, where there were only two types of S1 features at each position in the receptive field, each tuned to the left or right side of the transition region, which fed into C1 units that pooled them using either a MAX function (black bars) or a SUM function (gray bars).
+The model neuron was connected to these C1 units so that its response was maximal when the experimental neuron’s preferred stimulus was in its receptive field. -->
+
+
+<!-- MAX 機構に対する追加的な間接的支持は，IT 細胞の好ましい特徴，つまり細胞を駆動するための刺激成分を決定するために，「単純化手順」(26 )または「複雑性減少」(27) を用いた研究から得られている。 -->
+MAX 機構に対する追加的な間接的支持は，IT 細胞の好ましい特徴，つまり細胞を駆動するための刺激成分を決定するために，「単純化手順」または「複雑性減少」を用いた研究から得られている。
+これらの研究では一般的に，IT 細胞の高度に非線形な同調を発見している (図 3a)。
+このような同調は MAX 応答関数 (図 3b 黒棒) と一致する。
+線形モデル (図 3b 灰色棒) では，入力画像のわずかな変化に対す るこの強い応答の変化を再現できないことに注意。
+<!--Additional indirect support for a MAX mechanism comes from studies using a `simplification procedure`(26) or `complexity reduction`(27) to determine the preferred features of IT cells, that is, the stimulus components that are responsible for driving the cell.
+These studies commonly find a highly nonlinear tuning of IT cells (Fig. 3a).
+Such tuning is compatible with the MAX response function (Fig. 3b, black bars).
+Note that a linear model (Fig. 3b, gray bars) could not reproduce this strong change in response for small changes in the input image.-->
+
+
+
+
+
+## 畳み込み演算を利用したニューラルネットワーク
+
+<div align="center">
+<!--<img src='https://komazawa-deep-learning.github.io/assets/2012AlexNet.svg" style="width:94%">-->
+<img src="https://komazawa-deep-learning.github.io/assets/Neocognitron.svg" style="width:74%">
+<img src="https://komazawa-deep-learning.github.io/assets/Fukushima.jpeg" style="width:24%"><br>
+ネオコグニトロンの概略図(Fukushima, 1979)<br>
+</div>
+
+
+## LeNet5 (LeCun, 1998)
+<center>
+<img src="https://komazawa-deep-learning.github.io/assets/1998LeCun_Fig2_CNN.svg" style='width:94%'><br>
+LeCun (1998) より
+</center>
+
+## AlexNet (Krizensky, et al., 2012)
+
+<center>
+<img src="https://komazawa-deep-learning.github.io/assets/2012AlexNet.svg" style="width:94%"><br/>
+Krzensky et al (2012) より
+</center>
+
+## GooLeNet (Inception) (Szegedy et. al, 2014)
+
+<center>
+<img src="https://komazawa-deep-learning.github.io/assets/2014Szegedy_GoogLeNet.svg" style='width:99%'><br/>
+</center>
+
+<!-- <center>
+<img src='https://komazawa-deep-learning.github.io/assets/2013Uijings_Selective_Search_Fig1.svg' style='width:94%'><br>
+空間ピラミッド (2015) より
+</center>
+
+
+
+<div align="center" style="width:94%">
+	<img src="https://komazawa-deep-learning.github.io/assetsdmoulin_gif/full_padding_no_strides.gif" style="width:33%">
+	<img src="https://komazawa-deep-learning.github.io/assetsdmoulin_gif/same_padding_no_strides_transposed.gif" style="width:33%"><br/>
+	<div align="left" style="width:66%">
+		左:入力層 5x5青，出力層緑，カーネルサイズ3x3, フルパディング，ストライド=1.
+		右:入力層 5x5青，出力層緑，カーネルサイズ3x3, フルパディング，ストライド=1. トランスポーズド畳み込み
+	</div>
+	<img src="https://komazawa-deep-learning.github.io/assetsdmoulin_gif/numerical_max_pooling.gif" style="width:33%">
+	<img src="https://komazawa-deep-learning.github.io/assetsdmoulin_gif/numerical_average_pooling.gif" style="width:33%"><br/>
+	<div align="left" style="width:66%">
+		左: 最大値プーリング。
+		右: 平均値プーリング
+	</div>
+	<div align="left" style="width:66%">
+		Dmoulin and Visin (2020) より
+	</div>
+	<img src="https://komazawa-deep-learning.github.io/assetsdmoulin_gif/padding_strides.gif" style="width:33%">
+	<img src="https://komazawa-deep-learning.github.io/assetsdmoulin_gif/padding_strides_odd.gif" style="width:33%">
+	<img src="https://komazawa-deep-learning.github.io/assetsdmoulin_gif/padding_strides_odd_transposed.gif" style="width:33%"><br/>
+	<div align="left" style="width:66%">
+		左: padding_strides, 中:padding_strides_odd, 右:padding_stride_transposed
+	</div>
+	<img src="https://komazawa-deep-learning.github.io/assetsdmoulin_gif/same_padding_no_strides.gif" style="width:33%">
+	<img src="https://komazawa-deep-learning.github.io/assetsdmoulin_gif/same_padding_no_strides_transposed.gif" style="width:33%">
+    <div align="left" style="width:66%">
+	 右:same_padding_no_strides, 左: same_padding_no_strides_transposed
+	</div>
+	<img src="https://komazawa-deep-learning.github.io/assetsdmoulin_gif/arbitrary_padding_no_strides.gif" style="width:33%">
+	<img src="https://komazawa-deep-learning.github.io/assetsdmoulin_gif/arbitrary_padding_no_strides_transposed.gif" style="width:33%">
+    <div align="left" style="width:66%">
+	 右:arbitrary padding no strides, 左: artibtrary padding no stride transposed
+	</div>
+</div>
+-->
+
+
+### イメージネットコンテスト，アレックスネットの出力にみる問題点
+
+<div align="center" style="width:89%">
+	<img src="https://komazawa-deep-learning.github.io/assets/2012AlexNetResult0.svg" style="width:33%">
+	<img src="https://komazawa-deep-learning.github.io/assets/2012AlexNetResult.svg" style="width:33%">
+	<div align="left" style="width:66%">
+	アレックスネットの結果: 画像のすぐ下の英単語は正解ラベルを表す。Krizensky et. al (2012) Fig. 4 より。
+	ピンク色は正解ラベルの確率を表す。ブルーは不正解ラベル判断確率を表している。
+	チェリーが正解であるが，画像を見る限り，第一回答候補のダルマチアンを正解だと考えても問題は無いと考えられる。
+</div>
+</div>
+
+
+
+## 復習
+
+内積は，<span style="color:teal">$\overrightarrow{x}$</span> と表記している高等学校の教科書が多い。
+駄菓子菓子，ここでは，太文字を使って次のように表記する <span style="color:blue">$\mathbf{x}$</span>
+
+相関係数を，二次元上の n 個の点からなる散布図から計算される量であると考えるのが，統計学の伝統であった。
+具体的には，x から y への回帰係数と y から x への回帰係数の幾何平均に相当する。
+
+一方，先週取り上げたベクトルを用いた解釈では，n 次元上の二本のベクトル x と y のなす角の余弦 (コサイン) を相関係数と呼ぶ
+
+<!-- 内積の定義は，以下の通りである:
+$$\tag{2:内積の定義}
+\begin{align}
+\left(\mathbf{x}\cdot\mathbf{y}\right) & =\left|\mathbf{x}\right|\left|\mathbf{y}\right|\cos\theta=x_1y_1+x_2y
+_2+\ldots+x_{n}y_{n}\\
+                                       & =\sum_{i=1}^{n}x_{i}y_{i}\\
+\end{align}$$
+
+(2) 式を変形すると
+$$
+\cos\theta=\frac{\mathbf{x}^{\top}\mathbf{y}}{\left|\mathbf{x}\right| \left|\mathbf{y}\right|}
+$$
+を得る。
+すなわち (ピアソンの積率) 相関係数とは，2 つの変量 $x$ と $y$ とを多次元ベクトルと考え，それぞれの平均を引いたベクトル間のなす角の余弦 ($\cos) である。
+余弦 $\cos$ の値は $[-1,1]$ であることから，相関係数の範囲は -1 から +1 までの値を取ることが分かる。
+
+加えて，相関係数が 1 であとは，2 本のベクトルが一致することを意味し，相関係数が 0 であるとは，2 本のベクトルが直交することを表す，
+相関係数が -1 とは，2 本のベクトルが反対方向であることを表している。 -->
+
+<!-- <div style="background-color:lightgray;width:66%;text-align:left;"> -->
+
+#### ピアソンの積率相関係数と平均偏差ベクトル
+
+$n$ 個のデータからなる $n$ 次元ベクトル $\mb{x}=\Brc{x_1, x_2,\ldots, x_n}^{\top}$, $\mb{y}=\Brc{y_1, y_2, \ldots, y_n}^{\top}$ の個々の要素から平均値を引いたベクトルを平均偏差ベクトルという。
+
+$$
+\pmatrix{x_1-\Bar{x}\cr x_2-\Bar{x}\cr\vdots\cr x_n-\Bar{x}},\qquad
+   \pmatrix{y_1-\Bar{y}\cr y_2-\Bar{y}\cr\vdots\cr y_n-\Bar{y}},
+$$
+
+すべての要素が $1$ であるベクトル ${\bf 1}=(\;\overbrace{1,1,\ldots,1}^{n個}\;)^{\top}$ によって張られる部分空間 $L\Brc{\mb{1}}$ への射影行列をつくると以下のようになる:
+
+$$
+\mb{P}=\mathbf{1}\Brc{\mb{1}^{\top}\mb{1}}^{-1}{\mb{1}^{\top}}=\pmatrix{
+                        1/n    & \cdots & 1/n    \cr
+                        \vdots & \ddots & \vdots \cr
+                        1/n    & \cdots & 1/n    \cr}
+$$
+
+この射影行列に右から $\mb{y}$ を乗ずると, $\mb{Py}=\Brc{\Bar{y},\Bar{y},\ldots,\Bar{y}}^{\top}$ となる。
+
+したがって, 平均偏差ベクトルは次式で与えられる: $\mb{y}-\Bar{y}\mb{1}=\mb{y}-\mb{Py}=\Brc{\mb{I}-\mb{P}}\mb{y}$
+
+すなわち, 平均偏差ベクトルとは $L\Brc{\mathbf{1}}$ の補空間への射影ベクトルである。
+
+この平均偏差ベクトルの長さの 2 乗 $\Norm{x}^2$ をデータ数で割ったものは，以下のとおり:
+
+$$
+\frac{1}{n}\Norm{x}^2=\frac{1}{n}\Brc{\mb{x},\mb{x}}=\frac{1}{n}\sum_1^n\Brc{x-\Bar{x}}^2=s_x^2,
+$$
+
+平均偏差ベクトルをもちいると次式 $x$ と $y$ との (ピアソンの積率) 相関係数 $r_{xy}$ の関係式を得る:
+
+$$\begin{aligned}
+r_{xy} &= \frac{S_{xy}}{S_xS_y} \left(=\frac{\text{$x$ と $y$ との共分散}}{\text{$x$ の標準偏差}\times \text{$y$ の標準偏差}}
+      = \frac{\sum_i\left(x_i-\bar{x}\right)\left(y_i-\bar{y}\right)}{\sqrt{\sum_i\left(x_i-\bar{x}\right)^{2}}\,\sqrt{\sum_i\left(y_i-\bar{y}\right)^{2}}}\right)\\
+&=\frac{\IP{\mb{x}}{\mb{y}}}{\Norm{\mb{x}}\Norm{\mb{y}}}
+\left(=
+    \frac{\text{ベクトル $\mb{x}$ とベクトル $\mb{y}$ との内積}}
+         {\text{ベクトル $\mb{x}$ の長さ (ノルム) $\times$ ベクトル $\mb{y}$ の長さ(ノルム)}}
+\right)\\
+&=\cos\theta
+\end{aligned}$$
+
+
+* **相関係数が 1 ($r_{xy}=+1$):** 2 本のベクトルが一致することを意味し，
+* **相関係数が 0 ($r_{xy}=0$):** 2 本のベクトルが直交することを表す，
+* **相関係数が -1 ($r_{xy}=-1$):** 2 本のベクトルが反対方向であることを表している
+
+
+# 回帰 Regression
+
+$$
+y = ax + b
+$$
+
+誤差は，次式となる:
+$$
+\epsilon = y - \left(ax + b\right)
+$$
+
+ここで，誤差の分散 (誤差ベクトルの自分自身との内積)
+$$
+\mathbf{\epsilon}^{\top}\mathbf{\epsilon}=\left\{\mathbf{y}-\left(a\mathbf{x}-\mathbf{b}\right)\right\}^{\top}\left\{\mathbf{y}-\left(a\mathbf{x}-b\right)\right\}
+$$
+
+<div class="figcenter">
+<img src="/2024assets/2024_0514Pythagoras.svg" style="width:33%;">
+</div>
+
+すなわち，単回帰の $y = ax + b$ における $a$ の求め方とは，ベクトル $\mathbf{y}$ からベクトル $\mathbf{x}$ へ垂線を下ろした場合，その距離が最も短くなる。
+そのような場合の $a$ は，ピタゴラスの定理，あるいは三平方の定理が成り立つので，$\left|a\mathbf{x}\right|^{2}+\left|\epsilon\right|^{2}=\left|\mathbf{y}\right|^2$ となる。
+
+### 基本仮定
+
+
+$$
+\mb{y}=\mb{X\beta}+\mb{\epsilon}\qquad(\mb{X}=\{\mb{x}_1,\mb{x}_2,\ldots,\mb{x}_p\}).
+$$
+
+$\mb{y}$ を従属変数,
+$\mb{X}=\{\mb{x}_1,\mb{x}_2,\ldots,\mb{x}_p\}$ を独立変数,
+$\mb{\beta}$ を回帰係数,
+$\mb{\epsilon}$ を誤差項または残差 という.
+
+* 仮定 1: $E\Brc{\mb{\epsilon}}={\bf{0}}$.
+* 仮定 2: $V\Brc{\mb{\epsilon}}=\sigma^2\mb{I}$.
+* 仮定 3: $\Rank{\Brc{\mb{X}}}=p$.
+* 仮定 4: 誤差項 $\epsilon_i$ はそれぞれ独立に $N\Brc{0,\sigma^2}$ に従う.
+
+## 解法
+
+### ベクトル幾何学的解法
+
+<div class="figcenter">
+<img src="/2024assets/2024_0517Projection_concept.svg" style="width:44%;">
+</div>
+
+誤差項 $\mb{\epsilon}$ は回帰モデルによって説明されない部分である。
+この $\mb{\epsilon}$ のノルムを最小にするよに $\mb{\beta}$ を定める。
+すなわち $\NSQ{\epsilon}=\Norm{\mb{y}-\mb{X\beta}}^2\rightarrow\min$.
+これは $L\Brc{X}$ 上へ $\mb{y}$ を射影することに相当する。
+この射影は $\Prj{X}\mb{y}$ によって与えられる。
+
+これによって
+$\Hat{\mb{y}}=\mb{X}\Hat{\mb{\beta}}=\Prj{X}\mb{y}$.
+
+すなわち
+$$
+\Hat{\mb{\beta}}=\RegP{X}{y}.
+$$
+
+$\Hat{\mb{\beta}}$ を $\mb{\beta}$ の **最小 $2$ 乗推定量** という。
+
+$\mb{X}$ によって張られる線形部分空間 $L\Brc{\mb{X}}$ への射影行列 $\Prj{X}$ を $\mb{P}$ と表現すれば回帰式は
+
+$$
+\mb{y}=\mb{Py}+\mb{\epsilon},
+$$
+
+となる。
+
+さらに $\mb{\epsilon}=\mb{y}-\mb{Py}=\Brc{\mb{I}-\mb{P}}\mb{y}$,
+すなわち, 回帰式を射影行列による独立変数ベクトルの分解
+
+$$
+\mb{y}=\mb{Py}+\Brc{\mb{I}-\mb{P}}\mb{y},
+$$
+と考えることができる。
+
+
+### 別解 1. 最小 $2$ 乗解
+
+誤差の $2$ 乗和 $\Norm{\mb{\epsilon}}^2$ を最小にする。
+$$\begin{aligned}
+\Norm{\mb{\epsilon}}^2 &= \Brc{\mb{y}-\mb{X\beta}}'\Brc{\mb{y}-\mb{X\beta}}\\
+                       &= \mb{y'y}-2\mb{\beta'X'y}+\mb{\beta}'\Brc{\mb{X'X}}\mb{\beta},
+\end{aligned}$$
+
+だから
+$$
+\frac{\partial \Norm{\mb{\epsilon}}^2}{\partial \mb{\beta}} = -2\mb{X}^{\top}\mb{y}+2\mb{X}^{\top}\mb{X\beta} = 0
+$$
+
+$$
+\mb{X}^{\top}\mb{X\beta} = \mb{X}^{\top}\mb{y}
+$$
+
+これを解いて, $\Hat{\mb{\beta}}=\RegP{X}{y}$.
+
+### 別解 2.
+
+誤差ベクトルと予測ベクトル $\Hat{\mb{y}}=\mb{X\beta}$ とは直交するからその内積は $0$ である。
+
+$$\begin{eqnarray*}
+\IP{\Brc{\mb{X\beta}}}{\Brc{\mb{y}-\mb{X\beta}}}&=&0\\
+\mb{\beta'X'y}-\mb{\beta'X'X\beta}&=&0.
+\end{eqnarray*}$$
+
+これを解いて, $\Hat{\mb{\beta}}=\RegP{X}{y}$.
+
+
+
+
+
+## 一般化とオーバーフィッティング，アンダーフィッティング
+<!--Generalization, Overfitting and Under-fitting-->
+
+- データへの当てはまりが良いことが良いモデルではない
+- 未知のデータに対してどれほど当てはまるのかがモデルの性能を決める
+<!--
+* 訓練データ training data 実際に学習に用いたデータ
+* テストデータ test data 未知のデータ，訓練時には使用していないデータ
+-->
+* オーバーフィッティング 訓練データへの過剰適合
+* アンダーフィッティング 訓練データを十分に学習できない場合
+<!--
+* データ数(*小*) アンダーフィットする可能性**大**
+-->
+
+<center>
+<img src="/assets/04_07underOverFittings.svg" style="width:59%"><br/>
+</center>
+
+- [多項回帰による過剰適合，デモ <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/ShinAsakawa/ShinAsakawa.github.io/blob/master/notebooks/2020Sight_Visit_polynomilal_fittings_demo.ipynb)
+
+<!--
+It's not a good idea to test a machine learning model on a dataset which we used to train it, since it won't g
+ive any indication of how well our model performs on unseen data. The ability to perform well on unseen data i
+s called generalization, and is the desirable characteristic we want in a model.
+When a model performs well on training data (the data on which the algorithm was trained) but does not perform
+ well on test data (new or unseen data), we say that it has overfit the training data or that the model is ove
+rfitting. This happens because the model learns the noise present in the training data as if it was a reliable
+ pattern. 
+Conversely, when a model does not perform well on training data (i.e. it fails to capture patterns present in 
+the training data) as well as unseen data then it is said to be under-fitting. That is, the model is unable to
+ capture patterns present in the training data. 
+A smaller dataset can significantly increase the chance of overfitting. This is because it is much tougher to 
+separate reliable patterns from noise when the dataset is small. [1]
+Examples of overfitting and under-fitting
+-->
+
+$y = w_0 + w_1 x$, 
+
+$y = w_0 + w_1 x_1 + w_2 x_2$, 
+
+$y = w_0 + w_1 x_1 +\cdots + x_nx_n$
+
+
+<!--
+Suppose we have the following dataset (red points in the figure), where we have only one input variable x and 
+one output variable y. 
+
+If we fit y = w0 + w1x to the above dataset, we get the straight line fit as shown above. Note that this is no
+t a good fit since it is quite far from many data points. This is an example of under-fitting. 
+
+Now, if we add another feature x2 and fit y = w0 + w1x1 + w2x2 then we'll get a curve fit as shown above. (Sid
+e note: This is still a linear model. x2 is a feature, i.e. input. The weights are w's and they are interactin
+g linearly with the features x and x2. The curve we are fitting is a quadratic curve). As you can see, this is
+ slightly better since it passes much closer to the data points above. 
+
+If we keep adding more features we'll get a curve that is more and more complex and that passes through more a
+nd more data points. Above figure shows an example. This is an example of overfitting. In this case, we are pe
+rforming polynomial fitting y = w0 + w1x1 + w2x2 + ... + wdxd.
+Even though the fitted curve passes through almost all points, it won't perform well on unseen data. 
+-->
+
+### オーバーフィッティングの回避
+<!-- Strategies to Avoid Overfitting
+
+One way to avoid overfitting it to collect more data. However, that is not always feasible. Below are some oth
+er strategies to overcome the problem of overfitting - regularization and cross-validation. -->
+### 正則化 Regularization
+
+モデルの複雑さを調整する
+
+<!--
+In regularization, we combat overfitting by controlling the model's complexity, i.e. by introducing an additio
+nal term in our cost function in-order to penalize large weights. This biases our model to be simpler, where s
+impler is weights of smaller magnitude (or even zero). We want to make the weights smaller, because complex mo
+dels and overfitting are characterized by large weights. Recall the mean-squared error cost function, 
+J(w)=1nn∑i=1(y(xi)−yit)2
+-->
+
+### L2 正則化 リッジ回帰 
+<!--Regularization or Ridge Regression-->
+
+$$
+\text{目的関数} = \text{誤差} + \lambda \left|w\right|^2
+$$
+
+<!--
+In L2 regularization, a commonly used regularization technique, we add a penalty proportional to the squared m
+agnitude of each weight. Our new cost function with L2 regularization is as follows:-
+J(w)=1nn∑i=1(y(xi)−yit)2+λ||w2||
+where, the first term is the same as in regular linear regression (without any regularization), and the second
+ term is the regularization term. λ is a hyper-parameter that we choose and decides the regularization strengh. Larger values of λ imply more regularization, i.e. smaller values for the model parameters. ||w2|| is w12  w22 + ... wd2. 
+-->
+- L2 正則化はパラメータの絶対値が大きくなると罰則項 pernalty term として作用
+
+<!--
+L2 regularization penalizes the larger weights more (since the penalty is proportional to the weight squared).
+ For example, reducing w = 10 to w = 9 has a larger effect on the penalty term (102-92) than reducing w = 3 to
+ w = 2 (32-22).  
+-->
+### L1 正則化 Lasso 回帰 <!--Regularization or Lasso Regression-->
+
+$$
+\text{目的関数} = \text{誤差} + \lambda\left|w\right|
+$$
+
+<!--
+In L1 regularization, we the penalty term is λ ||w||. That is, our cost function is:
+J(w)=1nn∑i=1(y(xi)−yit)2+λ||w||
+-->
+<!--
+An interesting property of L1 regularization is that model's parameters become sparse during optimization, i.e
+. it promotes a larger number of parameters w to be zero. This is because smaller weights are equally penalize
+d as larger weights, whereas in L2 regularizations, larger weights are being penalized much more. This sparse 
+property is often quite useful. For example, it might help us identify which features are more important for m
+aking predictions, or it might help us reduce the size of a model (the zero values don't need to be stored). 
+Ordinary least square (which we saw earlier in linear regression) with L2 regularization is known as Ridge Reg
+ression and with L1 regularization it is known as Lasso Regression.
+Cross Validation and Validation Datasets
+-->
+
+### 正則化項
+
+- 簡潔さ原理 simplicity principle L1
+- 滑らかさ原理 smoothness principle L2
+- 疎性原理 sparseness principle L0
+
+<center>
+<img src="/assets/Regularization.svg" style="width:44%"><br/>
+</center>
+
+#### 正則化項の影響
+
+<center>
+<img src="/assets/2001Hastie_p84.png" style="width:66%"><br/>
+<img src="/assets/2001Hastie_p89.png" style="width:66%"><br/>
+<img src="/assets/2001Hastie_p91.png" style="width:69%"><br/>
+</center>
+Hastie (2001) より
+
+### まとめ
+
+- アンダーフィッテイングとオーバーフィッティング
+- データ数に比べて，推定すべきパラメータが多過ぎ = オーバーフィッティング
+- データ数に比べて，推定すべきパラメータが少な過ぎ = アンダーフィッティング
+- 正則化 L1, L2, L0, エラスティック
+- 正則化項の大きさ $\lambda$ はハイパーパラメータと呼ぶ
+
+
+## 交差妥当性 cross validation
+
+<!--
+is a method for finding the best hyper-parameters of a model. 
+For example, in gradient descent, we need to choose a stopping criteria. 
+The simplest stopping criteria is to check whether our accuracy is improving on the training dataset. 
+However, this is prone to overfitting since the model might be capturing noise present in the training data as reliable patterns. -->
+
+## ホールド・アウト法 Holdout method
+
+データを訓練データと検証データに分割 
+<!--
+We can overcome this problem by not using the entire training data while training a model. 
+Instead we will hold out some data (validation dataset) and we'll train only on remaining data. 
+For example, we can split our training dataset into 70/30 and use 70% data for training and 30% data for validation. 
+In the above example of gradient descent, now we train our algorithm on the training data, but check whether or not our model is getting better on the validation dataset. 
+This is known as the holdout method and it is one of the simplest cross validation methods. 
+We can also use the validation data for other types of experimentation. Such as if we want to run multiple experiments where we choose different features to use to train our machine learning model. 
+-->
+
+- kホールド法 K-fold Cross Validation
+
+データを k 個に分割して, k-1 データで訓練，残りの 1 で検証
+<!--
+In K-fold cross validation, the dataset is divided into k separate parts. We repeat training process k times. 
+Each time, one part is used as validation data, and the rest is used for training a model. 
+Then we average the error to evaluate a model. Note that k-fold cross validation increases the computational requirements for training our model by a factor of k.
+-->
+
+<!--
+The main advantages of k-fold cross validation are that 
+1. It is more robust to over-fitting than the holdout method when performing large number of experiments. 
+2. It is better to use when the dataset size is small. This is because when performing k-fold cross-validation, we can use a much smaller validation split (say 10% instead of 30%) since we are testing the model on various subsamples of the data being in the 10%.
+Leave-one-out cross validation is a special instance of k-fold cross validation in which k is equal to the number of data points in the dataset. 
+Each time, we hold out a single data point and train a model on rest of the data. 
+We use the single data point to test our model. Then we calculate the average error to evaluate a model.
+-->
+
+
+- 初期停止 early stopping
+
+オーバーフィッティングを避ける方法の一つ: 学習打ち切り基準
+
+<center>
+<img src="/assets/04_07earlyStopping.svg" style="width:66%"><br/>
+</center>
+
+
+
+## SGD は SDG に貢献できるのか？
+
+報道などで昨今耳にする SDG 持続可能な成長目標 ですが，大変紛らわしいことに，ニューラルネットワーク，機械学習の分野では SGD があります。
+
+同じ ３ 文字で同じ文字で，順番が異なるだけでややこしいですが， SGD は 確率的勾配降下法 Stochastic Gradient Descent methods のことです。
+レオン・ボットーらを中心に，
+
+前回までと同様に，この授業では，損失関数，目標関数，誤差関数，を区別せずに用います。
+ニューラルネットワークに限らず最適化手法として，これら関数の最大化，もしくは最小化を行うことを学習と呼びます。
+
+
+
+<center>
+<img src='https://komazawa-deep-learning.github.io/assets/2014Imgur_Saddle_point.gif' style='width:74%'><br>
+<img src='https://komazawa-deep-learning.github.io/assets/2014Imgur_Beales_function.gif' style='width:74%'><br>
+<img src='https://komazawa-deep-learning.github.io/assets/2014Imgur_Long_Valley.gif' style='width:74%'><br>
+</center>
+
+
+## 整流線型ユニット ReLU (Recutified Linear Unit)
+
+**整流線型ユニット ReLU** とは，ニューラルネットワークの活性化関数の一つです。
+シグモイド関数や，ハイパータンジェント関数に比べて，極端に単純な形をしています。
+駄菓子菓子，生理学との対応についても根拠を持っています。
+
+<!-- The **ReLU** (rectified linear unit) layer is another step to our convolution layer. 
+You’re applying an activation function onto your feature maps to increase non-linearity in the network. 
+This is because images themselves are highly non-linear! 
+It removes negative values from an activation map by setting them to zero.
+
+Convolution is a linear operation with things like element wise matrix
+multiplication and addition. 
+The real-world data we want our CNN to learn will be non-linear. 
+We can account for that with an operation like ReLU. 
+You can use other operations like tanh or sigmoid. ReLU, however, is a popular choice because it can train the network faster without any major penalty to generalization accuracy.
+
+Want to dig deeper? Try Kaiming He, et al. [Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification](https://arxiv.org/abs/1502.01852).
+
+If you need a little more info about [the absolute basics of activation functions, you can find that here](https://towardsdatascience.com/simply-deep-learning-an-effortless-introduction-45591a1c4abb)!
+
+
+Here’s how our little buddy is looking after a ReLU activation function turns all of the negative pixel values black
+
+
+```python
+viz_layer(activated_layer)
+```
+
+<center>
+<img src="https://komazawa-deep-learning.github.io/assets/output2.jpg" style="width:84%">
+</center>
+-->
+
+
+
+# 標準正則化理論と条件付き最適化
+
+視覚情報処理の分野では，ディビッド・マー David Marr や トマソ・ポッジオ らによって視覚情報処理を定式化する研究が行われました。
+以下に論文を引用します。
+
+<div align="center" style="width:94%">
+<img src="https://komazawa-deep-learning.github.io/assets/1985Poggio_2.svg" style="width:98%">
+</div>
+
+以下に上記引用部分の拙訳を付けます:
+
+データ $y$ から $z$ を見つけ出す不良設定問題の正則化
+$$
+Az = y
+$$
+では，正則化項 $\left\|\cdot\right\|$ の選択と汎関数の安定化項 $\left\|Pz\right\|$ が必要となる。
+標準正則化理論においては，$A$ は線形演算子，ノルムは 2 次，$P$ は線形である。
+2 種類の方法が適用可能である。
+すなわち 
+1. $\left\|Az-y\right\|\leqslant\epsilon$ を満たし，次式を最小化する $z$ を探す
+$$
+\left\|Pz\right\|^2
+$$
+
+2. 次式を最小化する $z$ を探す
+$$
+\left\|Az-y\right\|+\lambda\left\|Pz\right\|^2,
+$$
+ここで $\lambda$ はいわゆる正則化パラメータである。
+
+最初の方法は，十分にデータを近似し，かつ，「基準」$\left\|Pz\right\|$ を最小化するという意味で「正則」な $z$ を探す方法である。
+二番目の方法は，$\lambda$ が正則化の程度と解のデータへの近似とをコントロールする。
+標準正則化理論は，最良の $\lambda$ を決定する手法を提供する。
+標準正則化の手法は，上式に制約を導入することで変分原理の問題としている。
+最小化するコストは物理的制約条件を満たす良い解を反映している。
+すなわち，データへの近似もよく，かつ，正則化項 $\left\|Pz\right\|^2$ も小さいことを意味する。
+$P$ は問題の物理的制約を表しており，2 次の変分原理であり，解空間内での唯一解が存在する。
+標準正則化手法は，不良設定問題に対して注意深い分析が必要であることを注記しておく。
+ノルム $\left\|\cdot\right\|$，正則化関数 $\left\|Pz\right\|$, および，汎関数空間の選択は数学的性質と，物理的説得性を有する必要がある。
+これらにより，正しい正則化の詳細条件が定まる。
+
+変分原理は物理学，経済学，工学，で幅広く用いられている。例えば物理学における基本法則は変分原理を用いて，
+エネルギーやラグランジェ関数を用いて簡潔に表現されている。
+
+<!--
+- [上を訳してみました。github.io だと数式が表示されない場合があるため colab にしています](https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2020_0529Poggios_standard_regularization_translation.ipynb){:target="_blank"}
+-->
+
+様々な視覚課題に適用されていて，以下のようなリストが挙げられています。
+
+<div align="center" style="width:94%">
+<img src="https://komazawa-deep-learning.github.io/assets/1985Poggio_1.svg" style="width:44%">
+<img src="https://komazawa-deep-learning.github.io/assets/1985Poggio_3math.svg" style="width:44%">
+<!-- <div align="left" sytle="width:49%">-->
+<br/>
+</div>
+
+1. 縁検出 Edge detection $\int[(Sf-i)^2 +\lambda(f_{xx}^2)]dx$ 
+1. 光学フローの計算 Computation of optical flow $\int[(V\cdot N - V^N )^2+\lambda(\partial/\partial_x)v^2]dx$
+1. 表面の再構成 $\int[(S\cdot f - d)^2+\lambda(f_{xx}^2+2f_{xy}^2+f_{yy}^2)^2]dxdy$
+1. 時空間近似 spatiotemporal approximation: $\int[(S\cdot i)^2+\lambda(\nabla fV+f_t)^2]dxdydt$
+1. 色: $\|I^v-Az\|^2 +\lambda\|Pz\|^2$
+1. 陰影からの形状復元 shape from shading: $\int[(E-R(f,g))^2+\lambda(f_x^2+f_y^2+g_x^2+g_y^2)]dxdy$
+1. 立体視: $\int\{[
+\nabla^2 G * (L(x,y)-R(x+d(x,y),y))]^2
++\lambda(\nabla d)^2]\} dxdy$
+
+<!--
+1. 時空間内挿，近似 Spatio-temporal interpolation and approximation $\int[i_x+i,v+i)^2+\lambda(u_x^2+u_y^2+v_x^2+v_y^2)]dxdy$
+1. 明度，環境光の計算 Computation of lightness and albedo
+1. 輪郭線からの形状復元 Shape from contours
+1. キメからの形状復元 Shape from texture
+1. 陰影からの形状復元 Shape from shading
+1. 両眼立体視 Binocular stereo matching
+1. 運動からの形状復元 Structure from motion
+1. 両眼立体視 Structure from stereo
+1. 表面復元 Surface reconstruction
+1. 表面色の計算 Computation of surface colour
+
+
+The regularization of the ill-posed problem of finding $z$ from the 'data' $y$
+
+\begin{equation}
+Az=y \;\;\;\;\;\;\;\;\;\;(1)
+\end{equation}
+
+requires the choice of norms $||\cdot||$ and of a stabilizing functional $|Pz|$.  In standard regularization theory, $A$ is a linear operator, the norms are quadratic and $P$ is linear.  Two methods that can be applied are: (1) among $z$ that satisfy $|Az-y|<\epsilon$ find $z$ that minimizes $\epsilon$ depends on the estimated measurement errors and is zero if the data are noiseless
+
+\begin{equation}
+|Pz|^{2} \;\;\;\;\;\;\;\;\;\;(2)
+\end{equation}
+
+p(2) find $z$ minimizes
+
+\begin{equation}
+|Az-y|^2+\lambda|Pz|^2 \;\;\;\;\;\;\;\;\;\;(3)
+\end{equation}
+
+where $\lambda$ is a so-call regualarization parameter.
+
+- Bridging the Gaps Between Residual Learning, Recurrent Neural Networks and Visual Cortex by Qianli Liao and Tomaso Poggio は注目すべき？ 
+- ResNet の解釈
+
+- Hinton, Deep Learning, (Rumelhart backprop also) は Sutton の Bitter lesson の具現化である。end-to-end 一気通貫学習は，特徴抽出(特徴分析)，表現学習(内部表象)，分類器(意思決定)を含む。
+
+Roe et. al (1992) Visual Projections Routed to the Auditory Pathway in Ferrets: Receptive Fields of Visual Neurons in Primary Auditory Cortex
+
+<!-- 
+あるモダリティからの入力を通常処理する皮質は、異なるモダリティからの入力を与えられたときにどのように反応するのだろうか？網膜入力が西洋イタチ，フェレットの聴覚経路にルーティングされる実験でそのような状況を作り出した。新生児外科手術に続いて、網膜神経節細胞の特定の集団が聴覚視床を神経支配するように誘導し、聴覚皮質の細胞に視覚的な入力を提供した（Sur+1988）。 今回、これらの再配線された動物の一次聴覚皮質（A1）における単細胞の視覚反応特性を詳細に調べ、正常な動物の一次視覚皮質（V1）におけるそれらとの反応を比較した。再配線された動物の A1 細胞は、正常な V1 細胞とは異なっていた：それらはより大きい受容野の大きさと劣った視覚的反応性を示し、入力電気刺激に対してより長い潜時で反応した。 だが、驚くほどの類似点も見つかった。正常な V1 の細胞と同様、再配線された動物の A1 細胞は、方向選択性と方位選択性を示し、単純型，複雑型の受容野組織を有していた。 さらに、方位選択性および方向選択性、ならびに A1および V1 に見られる単純、複雑、および無配向のセルの割合は非常に類似していた。 これらの結果は、皮質内処理回路における知覚皮質間の可能な共通性、および皮質内回路の指定における入力の役割に対して重要な意味を持つ。
+
+How does cortex that normally processes inputs from one sensory modality respond when provided with input from a different modality? We have addressed such a question with an experimental preparation in which retinal input is routed to the auditory pathway in ferrets. Following neonatal surgical manipulations, a specific population of retinal ganglion cells is induced to innervate the auditory thalamus and provides visual input to cells in auditory cortex (Sur+1988).  We have now examined in detail the visual response properties of single cells in primary auditory cortex (A 1) of these rewired animals and compared the responses to those in primary visual cortex (V1) of normal animals. Cells in A 1 of rewired animals differed from cells in normal V1: they exhibited larger receptive field sizes and poorer visual responsivity, and responded with longer latencies to electrical stimulation of their inputs. However, striking similarities were also found. Like cells in normal V1, A 1 cells in rewired animals exhibited orientation and direction selectivity and had simple and complex receptive field organizations. Furthermore, the degree of orientation and directional selectivity as well as the proportions of simple, complex, and nonoriented cells found in A1 and V1 were very similar. These results have significant implications for possible commonalities in intracortical processing circuits between sensory cortices, and for the role of inputs in specifying intracortical circuitry. 
+-->
+
+<!--
+- Metin and Frost (1988) Visual responses of neurons in somatosensory cortex of hamsters with experimentally induced retinal projections to somatosensory thalamus
+
+これらの実験は、感覚系における視床と皮質構造が、通常は別の系と関連するモダリティの情報を処理する能力を調査するものだ。新生シリアハムスターの網膜神経節細胞を、主要な視床体性感覚（腹側基底）核に永久的に投射するようにした。動物が成体になった後、腹側基底核の主要な投射先である体性感覚皮質で単一神経細胞記録を行った。体性感覚神経細胞は、異なる受容野における視覚刺激に反応し、その反応特性は、いくつかの特徴的な点で正常な視覚皮質神経細胞の特性と類似していた。正常な動物の視覚皮質と手術を受けた動物の体性感覚皮質では、同じ機能分類の神経細胞が類似した割合で存在し、視覚刺激の運動方向に対する選択性は比較可能なものでした。これらの結果は、視覚経路と体性感覚経路に対応するレベルの視床核または皮質領域が、入力に対して類似した変換を行うことを示唆している。
+These experiments investigate the capacity of thalamic and cortical structures in a sensory system to proces..  information of a modality normally associated with another system. Retinal ganglion ceUs in newborn Syrian hamsters were made to project permanently to the main thalamic somatosensory (ventrobasal) nucleus. When the animals were adults, single unit recordings were made in the somatosensory cortices, the principal targets of the ventrobasal nucleus. The somatosensory neurons responded to visual stimulation of distinct receptive fields, and their response properties resembled, in several characteristic features, those of normal visual cortical neurons. In the visual cortex of normal animals and the somatosensory cortex of operated animals, the same functional categories of neurons occurred in similar proportions, and the neurons' selectivity for the orientation or direction of movement of visual stimuli was comparable. These results suggest that thalamic nuclei or cortical areas at corresponding levels in the visual and somatosensory pathways perform similar transformations on their inputs.
+-->
+
+
+
+
+
+
 
