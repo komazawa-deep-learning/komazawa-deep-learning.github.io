@@ -54,7 +54,7 @@ layout: home
 * 11月06日 第07回
 * [11月13日 第08回 畳み込みニューラルネットワークの基礎](2026cogpsy_lect08){:target="_blank"}
   <!-- 浅川：畳み込みニューラルネットワークの基礎 [Spoerer+2020](https://doi.org/10.1371/journal.pcbi.1008215) での提案モデルを用いるているので，この論文を取り上げる。畳み込みニューラルネットワークの種類と技法を検討する。 -->
-* [11月20日 第09回](2026cogpsy_lect09){:target="_blank"}
+* [11月20日 第09回 残差結合](2026cogpsy_lect09){:target="_blank"}
   <!-- * 残差結合 浅川：リカレントネットワークの基礎 BL ネットワークと異なるモデルである [CORnet](https://doi.org/10.1101/408385){:target="_blank"} を取り上げる。
 スキップ結合，すなわち ResNet で提案された残差結合の意義を考察する ([He+2015](https://arXiv.org/abs/1406.4729/){:target="_blank"}) 下記の論文をダウンロードしてアブストラクトと図の脚注に目を通しておく：[CORnet](https://doi.org/10.1101/408385){:target="_blank"}, [He+2015](https://arXiv.org/abs/1406.4729/){:target="_blank"} -->
 * 11月27日 第10回
