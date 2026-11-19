@@ -12,10 +12,10 @@ Appache 2.0 license<br/>
 </div>
 
 $$
-\newcommand{\of}[1]{\left(#1\right)}
+<!--\newcommand{\of}[1]{\left(#1\right)}
 \newcommand{\Of}[1]{\left[#1\right]}
 \newcommand{\given}[1]{\left|{#1}\right.}
-\newcommand{\mb}[1]{\mathbf{#1}}
+\newcommand{\mb}[1]{\mathbf{#1}}-->
 $$
 
 # ResNet 以降
