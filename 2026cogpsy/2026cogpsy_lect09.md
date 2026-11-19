@@ -14,7 +14,6 @@ Appache 2.0 license<br/>
 $$
 \newcommand{\of}[1]{\left(#1\right)}
 \newcommand{\Of}[1]{\left[#1\right]}
-\newcommand{\KL}[2]{\operatorname{KL}\left(\left.{#1}\right\|{#2}\right)}
 \newcommand{\given}[1]{\left|{#1}\right.}
 \newcommand{\mb}[1]{\mathbf{#1}}
 $$
