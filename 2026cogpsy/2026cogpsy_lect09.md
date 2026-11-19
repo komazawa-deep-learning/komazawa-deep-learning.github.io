@@ -12,134 +12,84 @@ Appache 2.0 license<br/>
 </div>
 
 $$
-<!--\newcommand{\of}[1]{\left(#1\right)}
+\newcommand{\of}[1]{\left(#1\right)}
 \newcommand{\Of}[1]{\left[#1\right]}
+% \newcommand{\KL}[2]{\operatorname{KL}\left(\left.{#1}\right\|{#2}\right)}
 \newcommand{\given}[1]{\left|{#1}\right.}
-\newcommand{\mb}[1]{\mathbf{#1}}-->
+\newcommand{\mb}[1]{\mathbf{#1}}
 $$
 
-# ResNet 以降
+# スキップ結合，経路分割
 
-## 脱線
+## 実習ファイル
+
+* [オリベッティ顔データセットを用いた分類デモ <img src="/assets/colab_icon.svg">](https://github.com/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2026notebooks/2026_0914olivetti_face_classification_demo.ipynb){:target="_blank"}
+* [オリベッティ顔データセットを用いた時系列データ処理 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2026notebooks/2026_0924olivetti_face_as_time_series.ipynb){:target="_blank"}
+
+* [XOR <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2026notebooks/2026miniumXOR.ipynb){:target="_blank"}
+
+<!-- * [ [Karapetian+(2023)](https://direct.mit.edu/jocn/article/35/11/1879/117201/Empirically-Identifying-and-Computationally) <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2024notebooks/2024_115Karapetian_demo.ipynb){:target="_blank"}
+* [ResNet 実習 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2022notebooks/2022_0603ResNet_with_Olivetti_faces_.ipynb){:target="_blank"}
+* [実習 LeNet PyTorch 版 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2021_0528LeNet_pytorch.ipynb){:target="_blank"} -->
+
+
+#### 脱線 1. STEM 教育
 
 * STEM 教育： Science, Technology, Engineering, Mathematics 教育の重要性，バラク・オバマ政権時のアメリカ合衆国の教育改革で叫ばれたスローガン
-* 竹市先生の STEM: Statistics, Technology (プログラミングを含む IT 全般)，English, Mathematics 
+<!-- * 竹市先生の STEM: Statistics, Technology (プログラミングを含む IT 全般)，English, Mathematics  -->
 
 | | S | T | E | M |
 |---|---|---|---|---|
 |O's STEM | Science   | Technology| Engineering| Mathematics|
 |T's STEM | Statistics| Technology| English| Mathematics|
 
-
-```mermaid
----
-config:
-  htmlLabels: false
-  flowchart:
-    htmlLabels: false
----
-flowchart LR
-
-    Inp3["入力<br/>x"]
-
-    I["恒等写像<br/>入力をそのまま保持: x"]
-    Res["残差経路<br/>F(x)"]
-    Out["出力<br/>y=x+F(x)"]
-    M["$\plus$"]
-
-    Inp3 --> Out
-    Inp --> Res
-    I --> M
-    Res --> M
-    M --> Out
-
-    Inp["入力<br/>x"]
-
-    I["恒等写像<br/>入力をそのまま保持: x"]
-    Res["残差経路<br/>F(x)"]
-    Out["出力<br/>y=x+F(x)"]
-    M["$\plus$"]
-
-    Inp --> I
-    Inp --> Res
-    I --> M
-    Res --> M
-    M --> Out
-
-    Inp2["入力<br/>x"]
-
-    I2["恒等写像<br/>入力をそのまま保持: U"]
-    Res2["スクイーズ ＆ エクステンション"]
-    Out2["出力<br/>U=s⦿U"]
-    M2["⦿"]
-
-    Inp2 --> I2
-    Inp2 --> Res2
-    I2 --> M2
-    Res2 --> M2
-    M2 --> Out2
-
-```    
+#### 脱線 2. [Cargo cult science](https://calteches.library.caltech.edu/51/2/CargoCult.htm){:target="_blank"}
 
 
-#### 排他的論理和 (XOR) 回路
-
-<img src="/assets/xor.svg" style="width:44%;">
-<img src="/assets/xor-graph.svg" style="width:44%;">
-
-<!-- <center>
-![xor](/assets/xor.svg){#fig:xor style="width:49%"}
-
-![xor-graph](/assets/xor-graph.svg){#fig:xor-graph style="width:29%"}
-</center> -->
-
-
-#### PDP book (1986) chapter 8 Figure 2
-
-<img src="/assets/1986pdp_chap8_Fig2.svg">
-
-<!--
-<center>
-![](/assets/1986pdp_chap8_Fig2.svg){#fig:1986PDP_Fig2 style="width:39%"}
-</center> -->
-
----
-## 経路仮説と残差ネット
+## 経路仮説 (と 残差ネット ResNet)
 
 * 腹側経路 ventral pathways ("what" 経路)
 * 背側経路 dorsan pathways ("where" 経路)
 
-<center>
-<img src="/assets/1982Ungerleider_Mishkin.jpg" width="49%">
+<div class="figcenter figpair">
+
+<img src="/assets/1982Ungerleider_Mishkin.jpg" style="width:44%">
+<img src="/2023assets/2004Hickok_dorsal_ventral_language_fig1a.jpg" style="width:33%"><br/>
+<img src="/2023assets/2004Hickok_dorsal_ventral_language_fig1b.jpg" style="width:22%">
+</div>
+
+
 <div style="text-align:left;width:88%;color:teal">
 
-* 下左: 物体弁別課題と下側頭回損傷。
-* 下右: 目印課題と頭頂葉損傷。
+左図：<br/>
+* 左下: 物体弁別課題と下側頭回損傷。
+* 右下: 目印課題と頭頂葉損傷。
 Ungerleider&Mishkin1982 より。
-</div></center>
 
-<center>
-<img src="/2023assets/2004Hickok_dorsal_ventral_language_fig1a.jpg" width="49%">
-<img src="/2023assets/2004Hickok_dorsal_ventral_language_fig1b.jpg" width="49%">
-<div style="text-align:left;width:94%;color:teal">
-左: 言語の機能解剖学的枠組み。Hickok&Poeppel2000 より
-
-右: 脳の側面図に示したモデル構成要素の一般的な場所。
+右図：<br/>
+左: 言語の機能解剖学的枠組み。Hickok&Poeppel2000 より<br/>
+右: 脳の側面図に示したモデル構成要素の一般的な場所。<br/>
 モデル内のある機能に関連する皮質領域は，その機能に特化しているという仮説ではない。
 調音に基づく音声符号を支援すると考えられる前頭葉領域の定義は，物品の命名と調音リハーサル処理の機能画像研究における活性化領域の一般的な分布から得られる (例えば Awh+1996, Hickok+2003, Indefrey&Levelt)。
 帯状の領域 (上側頭溝) は，音素レベルの表現を支援すると思われる領域。
 </div>
-</center>
 
-## ResNet におけるスキップ結合
 
-<img src="/assets/ResNet_Fig2.svg" width="33%"><br/>
-<img src="/assets/2015ResNet30.svg" width="94%"><br/>
+### ResNet におけるスキップ結合
 
-#### R-CNN
+<div class="figcenter figpair" style="width:99%;">
+
+<img src="/assets/ResNet_Fig2.svg" style="width:22%">
+<img src="/assets/2015ResNet30.svg" style="width:66%">
+</div>
+
+
+### R-CNN における経路分割
+
+<div class="figcenter figpair">
 
 <img src="/2023assets/2015Ren_Faster_R-CNN_fig2.svg">
-
+</div>
 <!--<img src="/assets/2017He_MaskRCNN_41.svg">
 <img src="/assets/2015Fast_R-CNN_Fig1.svg">
 <img src="/assets/2015Faster_RCNN_RPN.svg">
@@ -150,189 +100,188 @@ Ungerleider&Mishkin1982 より。
 <img src="/assets/2013Girshick_RCNN_Fig1.svg"> -->
 
 
-# CORnet [Kubilius+2018](https://doi.org/10.1101/408385){:target="_blank"}
 
+### Dueling net における経路分割
 
+<div class="figcenter">
 
-
-## 本日のメニュー
-
-1. `git clone https://github.com/cjspoerer/rcnn-sat.git`, `git clone https://github.com/Agnessa14/Perceptual-decision-making.git`
-2. [Spoerer+2020](https://doi.org/10.1371/journal.pcbi.1008215) での提案モデルを用いるているので，この論文を取り上げる。
-3. 畳み込みニューラルネットワークの種類と技法を検討する。
-4. [フレームワーク](/eco/) について
-
-竹市先生から引き継いて，この授業を行います。
-竹市先生によれば (浅川が受け止めている限りにおいて)，この授業の目標は以下だと考えます:
-
-1. コードを書けるようにするという
-2. データとモデルとの関係を考える
-
-とりわけ，心理実験から得られる行動データを模倣するモデルと，EEG, MEG をはじめとする生理データを模倣するのか，それら両方なのかで考え方が異なります。
-
-深層学習モデルで言えば，フィードフォワード型とリカレント型のニューラルネットワーク，さらに最近では Transformer 型のモデルを用いた実装となります。
-
-今回から，数回で，これらモデルを概説して行きます。
-
-
-<!-- <div style="height: 200px; display: flex; align-items: center; justify-content: center;">
-<img src="/assets/2016duelingNet.svg" width="19%">
-<img src="/assets/2017Vaswani_Fig2_1.svg" style="width: 9%; transform: rotate(90deg);">
-</div> -->
-
-
-
-
-
-<div class="figcenter" figpair>
-<img src="/assets/ResNet_Fig2.svg" width="19%">
-<img src="/assets/2015ResNet30.svg" width="59%">
+<img src="/assets/2016duelingNet.svg" style="width: 44%; margin: 50px 0;">
 </div>
 
+
+
+### Transformer における経路分割
+
+<div class="figcenter">
+
+<img src="/assets/2017Vaswani_Fig2_1.svg" style="width:22%;transform:rotate(0deg);">
+<!-- <img src="/assets/2017Vaswani_Fig2_1.svg" style="width:09%;transform:rotate(90deg);"> -->
+</div>
+
+<!-- 
 <div style="display: flex; align-items: center; justify-content: center;">
 <img src="/assets/2016duelingNet.svg" style="width: 19%; margin: 50px 0;">
-<img src="/assets/2017Vaswani_Fig2_1.svg" style="width:09%;transform:rotate(90deg);">
 </div>
 
 <div class="figcaption">
 Transformer ([2017Vaswani++](https://arxiv.org/abs/1706.03762)) Fig.2 を改変
 </div>
 
+</div> -->
+
+
+#### 排他的論理和 (XOR) 回路
+
+<div class="figcenter figpair" style="width:99%;">
+
+<img src="/assets/xor.svg" style="width:33%;">
+<img src="/assets/xor-graph.svg" style="width:22%;">
+<img src="/assets/1986pdp_chap8_Fig2.svg" style="width:22%;">
 </div>
 
-
-<!-- <div style="width:77%;text-align:center; background-color:cornsilk">
-</div></div> -->
+<!-- #### PDP book (1986) chapter 8 Figure 2 -->
 
 
-## 実習ファイル
+# CORnet [Kubilius+2018](https://doi.org/10.1101/408385){:target="_blank"}
 
-* [ [Karapetian+(2023)](https://direct.mit.edu/jocn/article/35/11/1879/117201/Empirically-Identifying-and-Computationally) <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2024notebooks/2024_115Karapetian_demo.ipynb){:target="_blank"}
-* [ResNet 実習 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/2022notebooks/2022_0603ResNet_with_Olivetti_faces_.ipynb){:target="_blank"}
-* [実習 LeNet PyTorch 版 <img src="/assets/colab_icon.svg">](https://colab.research.google.com/github/komazawa-deep-learning/komazawa-deep-learning.github.io/blob/master/notebooks/2021_0528LeNet_pytorch.ipynb){:target="_blank"}
+<div class="figcenter">
+<img src="/2024assets/2018Kubillus_CORnet_fig1.svg" width="77%">
+</div>
+<div class="figcaption" style="width:77%;">
 
-
-##### [Karapetian+(2023) Empirically Identifying and Computationally Modeling the Brain–Behavior Relationship for Human Scene Categorization](https://doi.org/10.1162/jocn_a_02043){:target="_blank"} 竹市先生ご指定の文献
-
-<div class="abstract">
-
-ヒトは，自分が直面している情景のカテゴリーなど，身近な視覚環境の性質について，早くて正確な知覚判断を難なく下している。
-これまでの研究で，このような特性の基礎となる皮質表現が豊富にあることが明らかになっている。
-しかし，これらの表象のうち，どの表象が意思決定に適しているかはまだわかっていない。
-ここでは，ニューロイメージングと計算モデリングを用いて，経験的，計算的にこの問題にアプローチした。
-経験的な部分では，情景分類課題 (自然物対人工物) 中の参加者の脳波データと RT を収集した。
-そして，信号検出理論の多変量拡張を用いて，波データと行動を関連付けた。
-その結果，刺激開始後約 100 ミリ秒から約 200 ミリ秒の間に特に神経データと行動の相関が観察され，この時間帯の神経情景表現が意思決定に適したフォーマットになっていることが示唆された。
-計算部分については，脳と行動のモデルとしてリカレント畳み込みニューラルネットワーク (RCNN) を評価した。
-RCNN は，我々のこれまでの観察を画像計算可能なモデルに統合し，神経表現，情景分類データ，およびそれらの間の関係をよく予測した。
-我々の結果は，ヒトにおける情景分類の神経と行動の相関を同定し，計算によって特徴付けるものである。
-<!-- Humans effortlessly make quick and accurate perceptual decisions about the nature of their immediate visual environment, such as the category of the scene they face.
-Previous research has revealed a rich set of cortical representations potentially underlying this feat.
-However, it remains unknown which of these representations are suitably formatted for decision-making.
-Here, we approached this question empirically and computationally, using neuroimaging and computational modeling.
-For the empirical part, we collected EEG data and RTs from human participants during a scene categorization task (natural vs. man-made).
-We then related EEG data to behavior to behavior using a multivariate extension of signal detection theory.
-We observed a correlation between neural data and behavior specifically between ∼100 msec and ∼200 msec after stimulus onset, suggesting that the neural scene representations in this time period are suitably formatted for decision-making.
-For the computational part, we evaluated a recurrent convolutional neural network (RCNN) as a model of brain and behavior.
-Unifying our previous observations in an image-computable model, the RCNN predicted well the neural representations, the behavioral scene categorization data, as well as the relationship between them.
-Our results identify and computationally characterize the neural and behavioral correlates of scene categorization in humans. -->
+**図 1. CORnet 族のアーキテクチャ**<br/>
+この族のすべてのモデルには，皮質領域 V1, V2, V4, IT にあらかじめ写像された 4 領域がある。
+網膜と LGN の処理は現在のところモデル化されていない (灰色で塗りつぶされた領域)。
+すべての領域はフィードフォワードかリカレント (領域内) のどちらかであるが，現在のところ，領域間のスキップ接続やフィードバック接続を持つモデルは考慮していない (灰色で塗りつぶした破線の矢印)。
+本論文では，3  種類の CORnet を検討し，それぞれ異なる機能を提供する： CORnet-Z は軽量な AlexNet 代替モデル，CORnet-R は生物学的に説得力のある時間的アンロールを持つ単純なリカレントモデル，そしてCORnet-S は Brain-Score で現時点で最も高い性能を発揮するモデルである。
+下段の図は各モデルの領域内の回路を表している。
+<!-- Fig. 1. CORnet family of architectures.
+All models in this family have four areas that are pre-mapped to cortical areas V1, V2, V4, and IT.
+Retinal and LGN processing is currently not modeled (greyed-out areas).
+All areas can be either feedforward or recurrent (within area) but currently we do not consider models with skip or feedback connections between areas (grayed-out dashed arrows).
+In this paper, we consider three flavors of CORnet, each serving distinct functions: CORnet-Z is a lightweight AlexNet alternative, CORnet-R is a simple recurrent model with biologically-plausible unrolling in time, and CORnet-S is our highest-performing model on Brain-Score at the moment.
+Diagrams in the bottom panel depict circuitry within an area of each model. -->
 </div>
 
 <div class="figcenter">
-<img src="/2024assets/2023Karapetian_fig1.jpg" style="width:66%"><br/>
+<img src="/2024assets/2018Kubillus_CORnet_tab1.svg">
 </div>
 
-**図 1. 刺激セット，パラダイム，距離-平面アプローチ**<!-- Figure 1. Stimulus set, paradigm, and distance-to-hyperplane approach.--><br/>
-**A**: 解析アプローチ。神経データと行動データを結びつけるために，多変量空間における信号検出理論の拡張である距離-超平面アプローチを用いた。<br/>
-**B**: 刺激セット。Places-365  (Zhou+2018) から刺激を選択し，30 個の自然情景と 30 個の人工情景の集合を作成した。<br/>
-**C**: 実験パラダイム。参加者はブロックの半分で情景分類課題を行い，残りの半分で直交固視 + 字色検出課題 (妨害課題と呼ぶ) を行った。<br/>
-**D**: 距離-超平面アプローチ。距離と RT の相関が有意に負になったときに起こる，神経表象が意思決定に適した形になるタイミングを決定するために，すべての時点において分析を適用した。
+モデルの復号化部は，単純な線形分類器 (各物体カテゴリに対して 1 つの総和を持つ重み付き線形和の集合) を実装する。
+ImageNet で学習する場合，最後のモデル領域 (再帰の場合は最後の時間ステップ) の応答は，さらにソフトマックス非線形に渡され，1000 通りの分類が実行される。
+この分類器に投影される神経応答の量を減らすために，まず特徴地図ごとの受容野全体の応答を平均化する。
+現在の CORnet 族の定義では，領域横断バイパス接続や領域横断フィードバック接続は存在しない。
+網膜と LGN の処理は省略されている (考察参照)。
+また，計算要求が高いため，CORnet-S の第 1 領域は簡略化され，2 つの畳み込みのみが含まれる (下記参照)。
+<!-- The decoder part of a model implements a simple linear classifier – a set of weighted linear sums with one sum for each object category.
+When training on ImageNet, responses of last model area (and last time step in the case of recurrence) are further passed through a softmax nonlinearity to perform a 1000-way classification.
+To reduce the amount of neural responses projecting to this classifier, we first average responses over the entire receptive field per feature map.
+There are no across-area bypass or across-area feedback connections in the current definition of CORnet family.
+Retinal and LGN processing are omitted (see Discussion).
+Also, due to high computational demands, the first area in CORnet-S is simplified to only include two convolutions (see below). -->
 
-<!--* (A) Analysis approach. To link neural and behavioral data, we used the distance-to-hyperplane approach, an extension of signal detection theory in a multivariate space.
-* (B) Stimulus set. We selected stimuli from Places-365 (Zhou+2018), creating a set of 30 natural and 30 man-made scenes.
-* (C) Experimental paradigm. Participants performed a scene categorization task on half of the blocks and an orthogonal fixation cross color detection task (referred to as distraction task) on the other half.
-* (D) Distance-to-hyperplane approach. We applied the analysis at every time point to determine when neural representations are suitably formatted for decision-making, which occurs when the correlation between distances and RTs is significantly negative. -->
+**CORnet-Z** (通称 Zero) は我々の最も単純なモデルであり，(i) AlexNet は既に深いモデル(Schrimpf+2018) とほぼ同程度に神経応答を予測しており，(ii) VGG (Simonyan&Zisserman2014) 以降に提案されたほとんどのアーキテクチャが 1 つの 1000-way 線形分類層のみを含むため，ImageNetの良好な性能を達成するために複数の完全連結層は必要ないようであることを観察することによって導き出された。
+従って，CORnet-Z の面積回路は単一の畳み込み，それに続く ReLU 非線形と最大プーリングのみで構成される。
+<!-- CORnet-Z (a.k.a. "Zero") is our simplest model, derived by observing that (i) AlexNet is already nearly as good in predicting neural responses as deeper models (Schrimpf+2018) and (ii) multiple fully-connected layers do not appear necessary to achieve good ImageNet performance, as most architectures proposed after VGG (Simonyan&Zisserman2014) contain only a singe 1000-way linear classification layer.
+Thus, CORnet-Z’s area circuits consist of only a single convolution, followed by a ReLU nonlinearity and max pooling. -->
 
+**CORnet-R** (通称 Recurrent) は，生物学的に妥当な方法でネットワークを伝播するリカレントダイナミクスを導入する (生物学的ネットワーク・アンローリングと非生物学的ネットワーク・アンローリングの比較については図 2 参照)。
+CORnet-R では，リカレンスは領野内でのみ導入される (エリア間のフィードバック接続はない) ため，アンロールの特殊な方法は (より多くのメモリを消費することを除けば) ほとんど影響を及ぼさないが，それでもこのモデルを神経ダイナミクスの調査に役立てるため，生物学的に妥当なアンロールを使用することにした。
+<!-- CORnet-R (a.k.a. "Recurrent") introduces recurrent dynamics that would propagate through the network in a biologically-valid manner (see Fig. 2 for a comparison between biological and non-biologicall network unrolling).
+In CORnet-R, recurrence is introduced only within an area (no feedback connections between areas), so the particular way of unrolling has little effect (apart from consuming much more memory), but we chose to use biologically-valid unrolling nonetheless to make this model useful for investigating neural dynamics. -->
 
-<div class="figcenter">
-<img src="/2024assets/2023Karapetian_fig2.jpg" style="width:55%">
-</div>
+入力はまず，畳み込みを通すことでチャンネル数を 2 倍に増やしながら 2 倍にダウンスケールされ，続いて正規化と非線形化が行われる。
+状態 (最初はゼロ) が結果に追加され，別の畳み込み，正規化，非線形性を経て，結果が領域の新しい状態として保存される。
+我々は，群正規化 (Wu&He2018) と ReLU 非線形性を使用した。
+<!-- The input is first downscaled twofold while increasing the number of channels twofold by passing it through a convolution, followed by normalization and a nonlinearity.
+The state (initially zero) is added to the result and passed through another convolution, normalization, and nonlinearity, and the result is saved as a new state of the area.
+We used group normalization (Wu and He, 2018) and ReLU nonlinearity -->
 
-**図 2. 情景の同一性とカテゴリの復号化**<!-- Figure 2. Scene identity and category decoding. --><br/>
-**(A)** カテゴリ課題(青)，気晴らし課題(マゼンタ)，およびその差(黒)の EEG データにおける，情景同一性復号化の結果。
-0 ミリ秒の灰色の縦破線は刺激の開始を表す。曲線の周囲の斜線部分は SEM を示す。
-有意な時点(右側，p < 0.01, FDR 調整済み) はアスタリスクで示されている。<br/>
-**(B)** 課題の結果と両者の差異における，情景カテゴリーの復号化 (自然対人工) の結果<br/>
-**(C)** カテゴリー化および気晴らし課題における，情景同一性の復号化のピーク<br/>
-**(D)** 情景カテゴリーの復号化ピークにおける，多次元尺度構成法の結果<br/>
-**(E)** 情景の同一性復号化と情景カテゴリ復号化の頂点復号化潜時における両課題のチャネル空間で実行されたサーチライト解析の結果と<br/>
-**(F)** 情景カテゴリー復号化。
-有意なチャネル (右側 p < 0.01, FDR 調整済み) は黒点で示されている。
+**CORnet-S** (通称 Skip) は，非常に深いフィードフォワードアーキテクチャを浅いリカレントモデルに変換することで，Brain-Score の最高モデルに匹敵することを目指している。
+具体的には，CORnet-S は我々の行動ベンチマークで最も優れたモデルのいくつかである ResNets からインスピレーションを得ている (Rajalingham+2018, Schrimpf+2018)。
+Liao&Poggio(2016) は ResNet 構造をアンロール型リカレントネットワークと考えることができると提案し，さらに最近の研究では CIFAR や ImageNet の性能に大きな損失を与えることなく重み共有が実際に可能であることを実証した (Jastrzebski+2017, Leroux+2018)。
+<!-- CORnet-S (a.k.a. "Skip") aims to rival the best models on Brain-Score by transforming very deep feedforward architectures into a shallow recurrent model.
+Specifically, CORnet-S draws inspiration from ResNets that are some of the best models on our behavioral benchmark (Rajalingham+2018, Schrimpf+2018).
+Liao&Poggio(2016) proposed that ResNet structure could be thought of as an unrolled recurrent network and recent studies further demonstrated that weight sharing was indeed possible without a significant loss in CIFAR and ImageNet performance (Jastrzebski+2017, Leroux+2018). -->
 
-<!--**(A)** Pairwise scene identity decoding results on EEG data from the categorization task (blue), distraction task (magenta), and their difference (black).
-The vertical dashed gray line at 0 msec represents the stimulus onset.
-The shaded area around the curves indicates the SEM.
-Significant time points (right tailed, p<0.01, FDR-adjusted) are indicated with asterisks.<br/>
-**(B)** Scene category decoding (natural vs. man-made) results for both tasks and their difference.<br/>
-**(C)** Multidimensional scaling results for scene identity decoding from the categorization and distraction tasks at the scene identity decoding peak and
-**(D)** scene category decoding peak.
-**(E)** Results from the searchlight analysis performed in channel space in both tasks at peak decoding latency for scene identity decoding and
-**(F)** scene category decoding.
-Significant channels (right-tailed, p < 0.01, FDR-adjusted) are depicted with black dots.-->
-
-<div class="figcenter">
-<img src="/2024assets/2023Karapetian_fig4.jpg" style="width:55%">
-</div>
-
-**図 4. 人間の神経情景表現を RCNN と FCNN とでモデル化**<!-- Figure 4. Modeling human neural scene representations with an RCNN versus an FCNN. -->
-
-**(A)** 解析に用いたリカレントCNN，BLnet (Spoerer+2020) のアーキテクチャ。
-ネットワークは 7 層からなり，ボトムアップ (緑の矢印) とラテラル (黒の矢印) 接続で結ばれている。
-特徴量は 3 つの層 (1, 4, 7) から 8 つの異なる時間ステップで抽出され，RT は読み出し層から収集された。<br/>
-**(B)** すべての情景，自然情景，人工的情景について，ヒトの神経表現と 3 つの異なる層からの RCNN 特徴量 (8 つの時間ステップの中央値) に対して RSA を実行した結果。
-0 ミリ秒の垂直破線は刺激開始を表す。
-曲線の周りの斜線部分は SEM を表す。
-有意な時点をアスタリスクで示す (右側検定 p＜0.05，FDR 補正)。
-破線の縦線はピークを示す。
-灰色の斜線はノイズの上限を示す。<br/>
-**(C)** BLnet の フィードフォワード，パラメータマッチ版である B-Dnet (Spoerer+2020) の特徴量を用いた RSA 結果。<br/>
-**(D)** RCNN と FCNN の結果の差の波 (両側, p < 0.05, FDR 補正)。
-
-<!-- * (A) Architecture of BLnet (Spoerer+2020), the recurrent CNN used in the analysis.
-The network consists of seven layers, linked via bottom–up (green arrows) and lateral (black arrows) connections.
-Features were extracted from three layers (1, 4, and 7) at eight different time steps, and RTs were collected from the readout layer.
-* (B) Results of the RSA performed on the neural representations of humans and RCNN features from three different layers (median over eight time steps), for all scenes, natural scenes, and man-made scenes.
-The vertical dashed gray line at 0 msec represents the stimulus onset.
-The shaded areas around the curves represent the SEM. Significant time points are denoted with asterisks (right-tailed, p < 0.05, FDR-corrected).
-The dashed vertical lines indicate the peaks.
-The shaded gray area represents the noise ceiling.
-* (C) RSA results with features from B-Dnet (Spoerer et al., 2020), the feedforward, parameter-matched version of BLnet.
-* (D) Difference waves between RCNN and FCNN results (two-tailed, p < 0.05, FDR-corrected). -->
+CORnet-S は CORnet-R の回路の上にさらに 2 つの畳み込み（それぞれ正規化と非線形化が続く）を積み重ねる。
+さらに，ResNet のボトルネックブロック構造に従い，2 回目の畳み込みでチャンネル数を4倍に拡大し，最後の畳み込みでチャンネル数を減少させる。
+また，入力に状態を追加した結果が非線形を適用する直前に最後の畳み込みの出力と結合されるように，スキップ接続も含めた。
+CORnet-S が領域内リカレント接続のみを有することを考慮し，メモリフットプリントを最小化するために，時間的にネットワークのアンロールを利用することなくこのモデルを訓練した (すなわち 図 2 に描かれているようなアンロールはないが，繰り返される計算にわたって重みは依然として共有される)。
+特に，最初に情報が処理されるとき，3 回目の畳み込みとスキップ畳み込みは，入力をダウンスケールするために 2 のストライドを使用する。
+そして，その出力は，さらなるリカレント処理（図 1 では gate と呼ばれる）のために，元の入力の代わりに使われる。
+このモデルではバッチ正規化 (Ioffe&Szegedy2015) と ReLU 非線形性を使用し，バッチ正規化は (Jastrzebski+2017) が示唆するように経時的に共有されなかった。
+<!-- CORnet-S stacks two more convolutions (each followed by a normalization and nonlinearity) on top of CORnet-R’s circuit.
+Moreover, following ResNet’s bottleneck block structure, the second convolution expands the number of channels fourfold while the last one decreases them back.
+We also included a skip connection, such that the result of adding the state to the input is combined with the output of the last convolution just prior to applying a nonlinearity.
+Given that CORnet-S only has within-area recurrent connections, in order to minimize memory footprint we trained this model without making use of any network unrolling in time (i.e. no unrolling as depicted in Fig. 2, but weights are still shared over repeated computations).
+In particular, the first time information is processed, the third convolution and the skip convolution use a stride of two to downscale inputs.
+The output is then used instead of the original input for further recurrent processing (referred to as "gate" in Fig. 1).
+We used batch normalization (Ioffe and Szegedy, 2015) and ReLU nonlinearity in this model, and batch normalization was not shared over time as suggested by (Jastrzebski+2017). -->
 
 
-# `bl_net.py`
 
-<div class="figcenter">
-<img src="/2024assets/2020Spoerer_fig1.svg" style="width:66%;">
-<div class="figcaption">
+# [Brainscore](https://www.brain-score.org/){:target="_blank"}
 
-<font style="font-weight:bold">図 1. パラメータを一致させたネットワークの模式図</font><br/>
-白箱は畳み込み層を表し，幅は畳み込み層の空間次元，高さは特徴地図数を表す。
-モデル:<br/>
-<font style="font-weight:bold">(1)</font> 畳み込みカーネル (B-K) のサイズを大きくすることで，パラメータ数を一致させたモデル <br/>
-<font style="font-weight:bold">(2)</font> 特徴地図の数を一致させたモデル (B-F)，<br/>
-<font style="font-weight:bold">(3)</font> ネットワークの深さを一致させたモデル (B-D)<br/>
-例となる素子 (黒点) は，入力カーネル (B-K では幅が異なる) を表す色つきの領域にリンクされている。
-範囲は例示的なもので，縮尺通りに描かれていない。
 
-[Spoerer+2020 Fig.1](https://doi.org/10.1371/journal.pcbi.1008215)
-<!-- Fig 1. Schematic representation of the parameter-matched networks.
-White boxes represent convolutional layers, with the width representing the spatial dimensions of the convolut
-ional layers and the height representing the number of feature maps.
-Models were matched in the number of parameters by increasing (1) the size of the convolutional kernels (B-K),
- (2) the number of feature maps (B-F), and (3) the depth of the network (B-D).
-Example units (black dots) are linked to coloured regions representing their input kernels (which differ in wi
-dth in B-K).
-The extents are illustrative and not drawn to scale. -->
-</div></div>
+Brain-Score の代表的な PLS ベンチマークでは、**説明変数 \(X\) はニューラルネットワークの層の活性値、被説明変数 \(Y\) は実測した神経応答**。
+(PLS: Partial Least Squares)
+
+* `sklearn.cross_decomposition.PLSRegression` : 部分最小二乗法（Partial Least Squares）を使って，ニューラルネットワークの中間層の活性値 X と神経活動 Y の関係をモデル化。
+* X と Y との共分散を最大化する潜在変数を抽出しながら回帰を行うため、多重共線性がある場合や特徴量が多いデータに有効。
+* V1・V2・V4・IT の代表的な `-pls` ベンチマークでは、**サルの各領域から電極で記録したスパイク応答** を予測。
+* EEG, MEG からこれらの領域の活動を推定する手続きとは異なる。
+* V1, V2 には FreemanZiemba2013, V4・IT には MajajHong2015 が用いられている。
+* [V1・V2 の公式実装](https://github.com/brain-score/vision/blob/master/brainscore_vision/benchmarks/freemanziemba2013/benchmarks/benchmark.py)
+* [V4・IT の公式実装](https://github.com/brain-score/vision/blob/master/brainscore_vision/benchmarks/majajhong2015/benchmark.py)］
+
+
+* **PLS に渡すデータは、同じ画像に対する「モデル応答」と「神経応答」を対応させた二つの行列**
+
+| 項目 | 説明変数 \(X\) | 被説明変数 \(Y\) |
+|---|---|---|
+| データの由来 | 評価するニューラルネットワーク | 生理実験による記録 |
+| 行 | 刺激画像 | \(X\) と同じ刺激画像 |
+| 列 | 対象領域に対応づけたモデル層のユニット・特徴次元 | 対象領域の各神経記録部位 |
+| 各要素 | 画像を入力したときのユニットの活性値 | 同じ画像に対する記録部位の応答値 |
+| 行列の大きさ | 画像数 \(N\) × 特徴数 \(p\) | 画像数 \(N\) × 記録部位数 \(q\) |
+
+例えば IT を評価するなら、画像 \(i\) に対するモデルの特徴ベクトル \(\boldsymbol{x}_i\) から、IT の各記録部位の応答を次式のように予測する：
+$$
+\widehat{y}_{ij} = b_j+\sum_{k=1}^{p}x_{ik}B_{kj},
+$$
+ここで、$j$ は IT の記録部位、$k$ はモデルの特徴次元。<br/>
+**モデルの一つのユニットを一つの生物学的ニューロンに対応させるのではなく、モデルの多数の特徴の重み付き和から各神経応答を予測**<br/>
+V1, V2, V4, IT ごとに、対応するモデル層と回帰の重みを用いる。
+* [領域とモデル層を対応づける公式実装](https://github.com/brain-score/vision/blob/master/brainscore_vision/model_helpers/brain_transformation/__init__.py)
+
+* PLS を使う理由は、モデルの特徴が高次元で、特徴間の相関も強いため (多重共線性)。
+* PLS は **神経応答 $Y$ との共変動を考慮して、モデル特徴 $X$ から少数の潜在成分を抽出し、その成分から $Y$ を予測。
+* ** PCA のように $X$ 自体の分散だけで成分を選ぶ方法とは、この点で異なる。[scikit-learn 1.9.1 documentation](https://scikit-learn.org/stable/modules/cross_decomposition.html?utm_source=chatgpt.com)
+
+* Brain-Score の標準実装では、次の設定で scikit-learn の `PLSRegression` を呼び出している。
+
+```python
+PLSRegression(n_components=25, scale=False)
+```
+
+* 上の **25 は潜在成分数**であり、画像数、神経記録部位数、モデル層数ではない。
+* 実装では対象領域の複数の神経応答を行列 \(Y\) としてまとめて渡す、多出力の PLS 回帰を行っている。[PLS と評価処理の公式実装](https://github.com/brain-score/vision/blob/master/brainscore_vision/metrics/regression_correlation/metric.py)
+
+* 神経応答は、標準的な静的ベンチマークでは、時間窓や同一画像の反復提示について集約される。
+* 例えば FreemanZiemba2013 の実装では、刺激提示後 **50–200 ms** の応答を平均し、モデルとの比較には反復平均を用いる。
+* したがって、この場合の行列の行は**時点ではなく画像**。
+* 学習用画像で回帰を学習した後、別の画像に対する神経応答を予測し、各記録部位について予測値と実測値の Pearson 相関を求める。
+* これを集約し、記録の信頼性に基づく ceiling で補正する。[時間平均・反復平均の実装](https://github.com/brain-score/vision/blob/master/brainscore_vision/benchmarks/freemanziemba2013/benchmarks/benchmark.py)
+ <!-- [brain-score.org](https://www.brain-score.org/tutorials/benchmarks/neural-benchmarks/?utm_source=chatgpt.com) -->
+
+* EEG については、現行の **Gifford2022** が具体例。
+* この実装では、目的変数の列を **電極 × 時点** として構成し、登録された評価方法には PLS ではなく **ridge／ridgecv** を使っている。
+* さらに、名称にある `IT` は、既存インターフェースに合わせた便宜上の割り当てであることがコードに明記されている。
+* EEG 信号が解剖学的な IT 活動として局在化されたことを意味しない。[EEG データの構成](https://github.com/brain-score/vision/blob/master/brainscore_vision/benchmarks/gifford2022/benchmark.py)、[評価方法の登録](https://github.com/brain-score/vision/blob/master/brainscore_vision/benchmarks/gifford2022/__init__.py)
+
+したがって、EEG, MEG を扱う際には、$Y$ の各列が「センサーの信号」なのか「ソース推定後の領域活動」なのかを確認する必要がある。
+**PLS という回帰手法の選択だけで、信号と V1・V2・V4・IT との解剖学的対応が決まるわけではない。**
+
+<!-- 確認日時：2026年11月20日 07:56 JST -->
 
