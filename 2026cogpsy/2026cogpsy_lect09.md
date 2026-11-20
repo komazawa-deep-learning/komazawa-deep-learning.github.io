@@ -7,7 +7,7 @@ layout: home
 
 <div align="right">
 <a href='mailto:educ0233@komazawa-u.ac.jp'>Shin Aasakawa</a>, all rights reserved.<br>
-Date: 15/Nov/2024<br/>
+Date: 20/Nov/2026<br/>
 Appache 2.0 license<br/>
 </div>
 
@@ -54,12 +54,13 @@ $$
 <div class="figcenter figpair">
 
 <img src="/assets/1982Ungerleider_Mishkin.jpg" style="width:44%">
-<img src="/2023assets/2004Hickok_dorsal_ventral_language_fig1a.jpg" style="width:33%"><br/>
+<img src="/2023assets/2004Hickok_dorsal_ventral_language_fig1a.jpg" style="width:33%">
 <img src="/2023assets/2004Hickok_dorsal_ventral_language_fig1b.jpg" style="width:22%">
 </div>
 
 
-<div style="text-align:left;width:88%;color:teal">
+<!-- <<div style="text-align:left;width:88%;color:teal"> -->
+<div class="figcaption">
 
 左図：<br/>
 * 左下: 物体弁別課題と下側頭回損傷。
@@ -67,8 +68,9 @@ $$
 Ungerleider&Mishkin1982 より。
 
 右図：<br/>
-左: 言語の機能解剖学的枠組み。Hickok&Poeppel2000 より<br/>
-右: 脳の側面図に示したモデル構成要素の一般的な場所。<br/>
+* 左: 言語の機能解剖学的枠組み。Hickok&Poeppel2000 より
+* 右: 脳の側面図に示したモデル構成要素の一般的な場所。<br/>
+
 モデル内のある機能に関連する皮質領域は，その機能に特化しているという仮説ではない。
 調音に基づく音声符号を支援すると考えられる前頭葉領域の定義は，物品の命名と調音リハーサル処理の機能画像研究における活性化領域の一般的な分布から得られる (例えば Awh+1996, Hickok+2003, Indefrey&Levelt)。
 帯状の領域 (上側頭溝) は，音素レベルの表現を支援すると思われる領域。
@@ -140,6 +142,95 @@ Transformer ([2017Vaswani++](https://arxiv.org/abs/1706.03762)) Fig.2 を改変
 </div>
 
 <!-- #### PDP book (1986) chapter 8 Figure 2 -->
+
+
+#### 世界モデルと状態空間モデル
+
+<!-- 我々は，我々自身の認知システムに触発された単純なモデルを提示する。 -->
+世界モデルでは，エージェントは見たものを小さな代表的なコードに圧縮する視覚的な感覚成分を持っている。
+また，過去の情報に基づいて将来のコードの予測を行う記憶成分も持っている。
+最後に，我々のエージェントは，視覚と記憶の成分によって作成された表現のみに基づいて，取るべき行動を決定する意思決定成分を持っている。
+<!--We present a simple model inspired by our own cognitive system.  In this model, our agent has a visual sensory component that compresses what it sees into a small representative code. It also has a memory component that makes predictions about future codes based on historical information. Finally, our agent has a decision-making component that decides what actions to take based only on the represe ntations created by its vision and memory components. -->
+
+<div class="figcenter">
+<img src="/2024assets/world_model_overview.svg" style="display: block; margin: auto; width: 720px;"/>
+</div>
+
+我々のエージェントは，密接に連携する 3 つの成分で構成されている： 視覚(V)，記憶(M)，コントローラ(C) であ
+る。
+<!-- Our agent consists of three components that work closely together: Vision (V), Memory (M), and Controller  (C). -->
+
+
+<!-- <div class="figcenter figpair">
+
+<img src="/2024assets/1990Schmithuber_Making_in_World_fig1.jpg" style="width:33%;">
+<img src="/2024assets/1990Schmithuber_Making_in_World_fig2ja.svg" style="width:39%;">
+</div>
+<div class="figcaption">
+
+Schmithuber1990 **Making in World Differentiable: On Using Self-Supervised Fully Recurrent Neural Networks for Dynamic Reinforcement Learning and Planning in Non-Stationary Environments**, Fig. 1 and 2.
+</div> -->
+
+<!-- <div class="figcenter">
+<img src="/2024assets/world_model_schematic.svg" style="display: block; margin: auto; width: 49%;"/>
+</div>
+<div class="figcaption">
+
+モデルのフロー図。
+観測データは，まず各時間ステップ $t$ で視覚処理器 $V$ によって処理され，潜在表現 $z_t$ が生成される。コントローラ $C$ への入力はこの潜在ベクトル $z_t$ と各時間ステップでの，内部モデル M の隠れ状態 $h_t$ が結合されたもの。$C$ は次に，運動制御のための行動ベクトル $a_t$ を出力する。$M$ は現在の $z_t$ と行動 $a_t$ を入力として，自身の隠れ状態を更新し，時間 $t+1$ で使用する $h_{t+1}$ を生成。
+</div> -->
+
+
+<!-- #### 世界モデル カーレース
+
+<div class="figcenter figpair">
+<video src="/2024assets/mp4/carracing_z_only.mp4" type="video/mp4" autoplay muted playsinline loop style="margin:auto; width:44%;" ></video>
+<video src="/2024assets/mp4/carracing_z_and_h.mp4" type="video/mp4" autoplay muted playsinline loop style="margin:auto; width:44%;" ></video>
+</div>
+<div class="figcaption">
+
+左: 外界入力の圧縮表現 $z_t$ のみを用いた場合。
+右: 外界入力の圧縮表現 $z-t$ と内部モデルの中間層表現 $h_t$ とを使った場合。
+左図では，ふらついた不安定な行動となる
+<!-- Limiting our controller to see only $z_t$, but not $h_t$ results in wobbly and unstable driving beha
+viors.
+</div> -->
+
+<!--<div class="figcenter">
+<video src="/2024assets/mp4/carracing_vae_compare.mp4" type="video/mp4" autoplay muted playsinline loop s
+tyle="margin:auto; width:44%;" ></video>
+</div>
+-->
+
+
+### Rao(1990) の世界モデル
+
+<div class="figcenter">
+<img src="/2024assets/1999Rao_Fig1.jpg" style="width:39%;">
+<img src="/2024assets/1999Rao_fig2.jpg" style="width:44%;">
+<div class="figcaption">
+
+左 図 1. 内部世界モデルと隠れ状態の最適推定問題。
+* (a): 環境の内部モデルに依存する生物が直面する一般的な問題の本質を伝えている(O'Reilly, 1996)。
+その根底にある目標は，感覚的な測定値 $\mathbf{I}$ だけが与えられた環境の隠れた内部状態を，各時間瞬間に最
+適に推定することである。
+* (b): 推定問題に対するカルマンフィルタに基づく解の例示。
+内部モデルは状態遷移行列 $\bar{\mathbf{V}}$ と生成行列 $\bar{\mathbf{U}}$ によって共同で符号化され，フィ
+ルタはこの内部モデルを用いて環境の現在の内部状態$\mathbf{r}$ の最適推定値 $\hat{\mathbf{r}}$ を計算する。
+
+<!-- Fig. 1. Internal world models and the problem of optimal estimation of hidden state.
+(a) conveys the essence of the general problem faced by an organism relying on an internal model of its e
+nvironment (from O’Reilly, 1996).
+The underlying goal is to optimally estimate, at each time instant, the hidden internal state of the envi
+ronment given only the sensory measurements mathbf{I}.
+(b) depicts a Kalman filter-based solution to the estimation problem.
+The internal model is encoded jointly by the state transition matrix bar{mathbf{V}} and the generative ma
+trix bar{mathbf{U}}, and the filter uses this internal model to compute optimal estimates hat{mathbf{r}} 
+of the current internal state mathbf{r} of the environment. -->
+
+右 図 2. カルマンフィルタの概念図<!--Fig. 2. Schematic diagram of the Kalman filter.-->
+</div>
+</div>
 
 
 # CORnet [Kubilius+2018](https://doi.org/10.1101/408385){:target="_blank"}
