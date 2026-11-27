@@ -368,3 +368,21 @@ A recurrent network needs to pass information through its computational units mu
 </div>
 
 
+## ReAlnet
+
+<div class="figcenter">
+<img src="/2026assets/2024Lu_realnet_fig1.jpeg" style="width:66%;">
+
+<div class="figcaption">
+
+ReAlnets: 人間の脳により近い視覚モデルとして、人間の EEG 信号とを整合<br/>
+* (A) ReAlnet 整合フレームワークの概要。ImageNet で事前学習された CORnet-S に、追加の多層符号化モジュールを加えることで、出力にはカテゴリ分類結果と生成された EEG 信号が含まれる。
+THINGS EEG2 訓練データセットを用い、分類損失と生成損失の両方を最小化することを目指した。これにより、CORnet は分類性能を安定させるだけでなく、人間の脳の特徴を効果的に学習し、ReAlnets へと変換することが可能となる。
+* (B) モデル内の内部表現と、THINGS EEG2 テストデータセット由来の人間の側頭部 EEG 信号との間の表現類似性。モデルには、ReAlnets とその主要な比較モデルである CORnet-S に加え、追加のベースラインとしてResNet101 および CLIP（ResNet101 バックボーンを使用）が含まれる。追加のベースラインは層数が異なるため、本解析ではすべてのモデルについて、最初の層を「初期層（Early Layer）」とし、分類層の直前の層（CLIP の場合は最後の視覚層）を「後期層（Late Layer）」とした。ReAlnet とラベル付けされた線は、それぞれ異なる被験者の EEG データ（N=10）で学習された 10 個の個別の ReAlnet における類似度の平均値を示している。比較モデルについては、各線が同じ10人のヒト EEG データセットと単一のモデルインスタンスとの間の類似度の平均値を示している。ReAlnet は一貫してヒトの脳との類似度が最も高い。線と網掛けは平均値 ±SEM を示す。<br/>
+Lu & Wang (2024) Fig. 1
+
+<!-- Figure 1:  -->
+<!-- ReAlnets aligned with human EEG signals as more human brain-like vision models. 
+(A) An overview of ReAlnet alignment framework. Adding an additional multi-layer encoding module to an ImageNet pre-trained CORnet-S, the outputs contain the category classification results and the generated EEG signals. Using THINGS EEG2 training dataset, we aim to minimize both classification loss and generation loss, enabling CORnet to not only stabilize the classification performance but also effectively learn human brain features and transform into ReAlnets. 
+(B) Representational similarity between internal representations in models and human temporal EEG signals from THINGS EEG2 test dataset. Models include ReAlnets and their primary comparison model CORnet-S, along with ResNet101 and CLIP (with a ResNet101 backbone) as additional baselines. Because the additional baselines have different number of layers, for all models we took the first layer as the Early Layer, and the layer before the classification layer (or last visual layer in CLIP) as the Late Layer for this analysis. The line labeled ”ReAlnet” reflects the mean similarity across 10 individual ReAlnets, each trained on a different subject’s EEG data (N=10). For comparison models, each line reflects the mean similarity between the same 10 human EEG datasets and the single model instance. ReAlnets consistently show the highest similarity to the human brain. Lines and shading reflect mean±SEM. -->
+</div></div>
