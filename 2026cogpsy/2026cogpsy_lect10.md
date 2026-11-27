@@ -386,3 +386,18 @@ Lu & Wang (2024) Fig. 1
 (A) An overview of ReAlnet alignment framework. Adding an additional multi-layer encoding module to an ImageNet pre-trained CORnet-S, the outputs contain the category classification results and the generated EEG signals. Using THINGS EEG2 training dataset, we aim to minimize both classification loss and generation loss, enabling CORnet to not only stabilize the classification performance but also effectively learn human brain features and transform into ReAlnets. 
 (B) Representational similarity between internal representations in models and human temporal EEG signals from THINGS EEG2 test dataset. Models include ReAlnets and their primary comparison model CORnet-S, along with ResNet101 and CLIP (with a ResNet101 backbone) as additional baselines. Because the additional baselines have different number of layers, for all models we took the first layer as the Early Layer, and the layer before the classification layer (or last visual layer in CLIP) as the Late Layer for this analysis. The line labeled ”ReAlnet” reflects the mean similarity across 10 individual ReAlnets, each trained on a different subject’s EEG data (N=10). For comparison models, each line reflects the mean similarity between the same 10 human EEG datasets and the single model instance. ReAlnets consistently show the highest similarity to the human brain. Lines and shading reflect mean±SEM. -->
 </div></div>
+
+
+##### CLIP 
+
+<div class="figcenter">
+<img src="/2024assets/CLIP.png" style="width:77%;">
+</div>
+<div class="figcaption">
+**CLIP の概要**<br/>
+標準的な画像モデルが画像特徴抽出器と線形分類器を同時に学習し，何らかのラベルを予測するのに対し，CLIP は画像符号化器とテキスト符号化器を同時に学習し (画像とテキストの) バッチ学習例の正しいペアリングを予測する。
+検証時に，学習したテキスト符号化器は，目標データセットのクラスの名前や説明を埋め込むことで，ゼロ撃の線形分類器を合成する。
+<!-- Figure 1. Summary of our approach.
+While standard image models jointly train an image feature extractor and a linear classifier to predict some label, CLIP jointly trains an image encoder and a text encoder to predict the correct pairings of a batch of (image, text) training examples.
+At test time the learned text encoder synthesizes a zero-shot linear classifier by embedding the names or descriptions of the target dataset’s classes. -->
+</div>
