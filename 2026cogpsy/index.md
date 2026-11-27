@@ -57,7 +57,7 @@ layout: home
 * [11月20日 第09回 残差結合](2026cogpsy_lect09){:target="_blank"}
   <!-- * 残差結合 浅川：リカレントネットワークの基礎 BL ネットワークと異なるモデルである [CORnet](https://doi.org/10.1101/408385){:target="_blank"} を取り上げる。
 スキップ結合，すなわち ResNet で提案された残差結合の意義を考察する ([He+2015](https://arXiv.org/abs/1406.4729/){:target="_blank"}) 下記の論文をダウンロードしてアブストラクトと図の脚注に目を通しておく：[CORnet](https://doi.org/10.1101/408385){:target="_blank"}, [He+2015](https://arXiv.org/abs/1406.4729/){:target="_blank"} -->
-* 11月27日 第10回
+* [11月27日 第10回](2026cogpsy_lect10){:target="_blank"}
   <!-- * リカレントネットワークによる時空間表現 下記の論文をダウンロードしてアブストラクトと図の脚注に目を通しておく：[Carion+2020](https://arxiv.org/abs/2005.12872/){:target="_blank"} -->
 * 12月04日 第11回
   <!-- * ボトムアップとトップダウン処理の相互作用 浅川：BU-TD ネットワーク [Ullman+2020](https://arxiv.org/abs/2105.05592){:target="_blank"} の BU-TD モデルを取り上げ，リカレント結合の異なる意味を考える。
